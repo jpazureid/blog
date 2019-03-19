@@ -46,7 +46,7 @@ Azure AD Connect の既定の構成では、オンプレミス AD の ObjectGUID
 5. distinguishedName 値 (以下、DN 値) の内容をコピーします。
 6. コマンド プロンプト (PowerShell でも可) を起動し、以下のコマンドを実行します。
 
-```cmd
+```ps1
 ldifde -f c:\ ldifde_user.txt -d "手順 5. でコピーした内容" -p subtree
 ```
 
@@ -73,7 +73,8 @@ Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
 ```
 
 コマンド例：
-```cmd
+
+```ps1
 Get-MsolUser -UserPrincipalName "hm_test3@test01.onmicrosoft.com" | fl
 ```
 
@@ -81,7 +82,7 @@ Get-MsolUser -UserPrincipalName "hm_test3@test01.onmicrosoft.com" | fl
 
 出力結果例：
 
-```cmd
+```ps1
 ImmutableId                            : （クラウド内ユーザーの場合、空白になります）
 UserPrincipalName                      : hm_test3@test01.onmicrosoft.com
 ```
@@ -97,19 +98,19 @@ Azure AD 側：ImmutableId
   ※認証ダイアログが表示されますので、管理者ユーザーの資格情報を入力して [OK] ボタンをクリックします。
 3. 下記のコマンドを実行します。
 
-```cmd
+```ps1
 Set-MsolUser -UserPrincipalName <対象ユーザーの UPN> -ImmutableId <オンプレ AD ユーザーの  Base64 エンコードされた objectGUID 値>
 ```
 
 コマンド実行例：
 
-```cmd
+```ps1
 Set-MsolUser -UserPrincipalName hm_test3@test01.onmicrosoft.com -ImmutableId 2/9JCtHr0EmH+hL07o11vA==
 ```
 
 3-4. 下記のコマンドを実行します。
 
-```cmd
+```ps1
 Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
 ```
 
@@ -125,7 +126,7 @@ Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
 1. ディレクトリ同期サーバーに管理者権限でログインします。
 2. 管理者の PowerShell を起動して、以下のコマンドを実行します。
 
-```cmd
+```ps1
 Start-ADSyncSyncCycle -PolicyType Delta
 ```
 
