@@ -86,7 +86,7 @@
 - Office 365 の TLS 1.0/1.1 無効化に伴う AD FS / WAP (AD FS Proxy) の対応
 - [フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない](active-directory-federation-service/kmsi-not-shown-wia.md)
 - AD FS の自動証明書ロールオーバー機能について
-- [AD FS の証明書更新手順 （SSLサーバー証明書）](active-directory-federation-service/update-ssl-server-certificate.md)
+- [AD FS の証明書更新手順 (SSLサーバー証明書)](active-directory-federation-service/update-ssl-server-certificate.md)
 - [AD FS の証明書更新手順 (トークン署名証明書、トークン暗号化解除証明書)](active-directory-federation-service/update-token-certificate.md)
 - AD FS が PDC と通信するケース
 - 証明書利用者信頼のセキュア ハッシュ アルゴリズムについて
