@@ -18,7 +18,7 @@ timezone: asia/Tokyo
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://jpazureid.github.io
-root: /docs/
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -83,5 +83,5 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/jpazureid/docs.git
+  repo: https://github.com/jpazureid/blog.git
   branch: gh-pages
