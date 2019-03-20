@@ -15,7 +15,7 @@
 - Azure MFA の多要素認証設定の統合
 - [Azure AD におけるロール管理の新しい方法](./azure-active-directory/roles-and-administrators.md)
 - 「ユーザーはアプリケーションを登録できる」の設定について
-- RBAC のスコープについて
+- [RBAC のスコープについて](./azure-active-directory/about-rbac.md)
 - [Azure AD B2B におけるユーザーの新しい招待方法](./azure-active-directory/b2b-invitation.md)
 - Azure AD のサインイン画面に関するアップデートのお知らせ
 - ハイブリッド Azure Active Directory 参加済みデバイスの構成について
