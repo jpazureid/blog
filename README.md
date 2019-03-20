@@ -24,7 +24,6 @@
 - Azure AD 有償ライセンスの購入方法
 - [クレーム ルールと条件付きアクセスの比較](./active-directory-federation-service/claim-rule-conditional-access.md)
 - Azure AD Reporting API を利用して PowerShell より Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを CSV ファイルで取得する方法
-- デバイス ベースのアクセス制御
 - [Azure AD の追加・変更・削除](./azure-active-directory/add-modify-delete-directory.md)
 - [Azure ポータルへのアクセス制限](./azure-active-directory/access-restriction-azure-portal.md)
 - ACS の移行スケジュール
