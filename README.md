@@ -13,7 +13,7 @@
 - テナント制限について
 - Azure Active Directory への接続で使用する IP アドレス範囲の変更
 - Azure MFA の多要素認証設定の統合
-- Azure AD におけるロール管理の新しい方法
+- [Azure AD におけるロール管理の新しい方法](./azure-active-directory/roles-and-administrators.md)
 - 「ユーザーはアプリケーションを登録できる」の設定について
 - RBAC のスコープについて
 - [Azure AD B2B におけるユーザーの新しい招待方法](./azure-active-directory/b2b-invitation.md)
