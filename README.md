@@ -9,7 +9,7 @@
 - [サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」](create-subscription-error.md)
 - [多要素認証 (MFA) のリセット手順](./azure-active-directory/mfa-reset.md)
 - [条件付きアクセスの基本的な考え方](./azure-active-directory/conditional-access-basuc.md)
-- [Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい](./azure-active-directory/output-directory-roll-members)
+- [Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい](./azure-active-directory/output-directory-roll-members.md)
 - [テナント制限について](./azure-active-directory/tenant-restriction.md)
 - Azure Active Directory への接続で使用する IP アドレス範囲の変更
 - Azure MFA の多要素認証設定の統合
