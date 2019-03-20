@@ -80,7 +80,6 @@
 - AD FS 証明書認証のトラブルシューティング
 - Windows Server 2019 AD FS の新機能
 - AD FS プロキシの混雑回避アルゴリズムの動作
-- クレーム ルールと条件付きアクセスの比較
 - [デバイス ベースのアクセス制御](./azure-active-directory/device-based-access-control.md)
 - Office 365 の TLS 1.0/1.1 無効化に伴う AD FS / WAP (AD FS Proxy) の対応
 - [フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない](./active-directory-federation-service/kmsi-not-shown-wia.md)
