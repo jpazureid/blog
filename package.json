@@ -18,8 +18,13 @@
     "hexo-server": "^0.3.3"
   },
   "devDependencies": {
+    "del": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-copy": "^4.0.1",
     "gulp-string-replace": "^1.1.2"
+  },
+  "scripts": {
+    "start": "npx gulp",
+    "deploy": "npx gulp publish"
   }
 }
