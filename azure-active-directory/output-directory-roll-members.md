@@ -38,8 +38,7 @@ Azure AD PowerShell のインストールなどについては、以下の公開
 
 ------
 
-```cmd
-
+```ps1
 Import-Module MSOnline
 Connect-MsolService
 
