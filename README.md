@@ -1,4 +1,4 @@
-# docs
+# blog
 日本マイクロソフト Azure Identity サポート チームのブログです。
 
 チームの担当製品である Azure Active Directory、Azure AD Connect、AD FS の情報を中心にお届けします。その他の Azure 関連サポートチームのブログへのリンクもありますのでぜひご確認ください。
@@ -9,8 +9,8 @@
 - [サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」](create-subscription-error.md)
 - [多要素認証 (MFA) のリセット手順](./azure-active-directory/mfa-reset.md)
 - [条件付きアクセスの基本的な考え方](./azure-active-directory/conditional-access-basuc.md)
-- Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい
-- テナント制限について
+- [Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい](./azure-active-directory/output-directory-roll-members)
+- [テナント制限について](./azure-active-directory/tenant-restriction.md)
 - Azure Active Directory への接続で使用する IP アドレス範囲の変更
 - Azure MFA の多要素認証設定の統合
 - [Azure AD におけるロール管理の新しい方法](./azure-active-directory/roles-and-administrators.md)
@@ -21,7 +21,7 @@
 - ハイブリッド Azure Active Directory 参加済みデバイスの構成について
 - Azure AD プロビジョニング機能について
 - Azure AD が発行するトークンの有効期間について
-- Azure AD 有償ライセンスの購入方法
+- [Azure AD 有償ライセンスの購入方法](./active-directory-federation-service/azure-ad-purchase.md)
 - [クレーム ルールと条件付きアクセスの比較](./active-directory-federation-service/claim-rule-conditional-access.md)
 - Azure AD Reporting API を利用して PowerShell より Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを CSV ファイルで取得する方法
 - [Azure AD の追加・変更・削除](./azure-active-directory/add-modify-delete-directory.md)
@@ -32,7 +32,7 @@
 - [Azure AD の条件付きアクセスに関する Q&A](./azure-active-directory/qanda-conditional-access.md)
 - [Azure Active Directory の PowerShell モジュール](./azure-active-directory/powershell-module.md)
 - [Azure サブスクリプションと Azure AD の管理者](./azure-active-directory/subscription-azure-ad-relationship.md)
-- 「アクセス権がありません」のエラーについて
+- [「アクセス権がありません」のエラーについて](./azure-active-directory/azuread-access-denied.md)
 - サブスクリプションが見えない
 - 招待したユーザーが利用できない
 - 招待メールを使用しないユーザーの追加方法
