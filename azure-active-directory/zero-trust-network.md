@@ -10,7 +10,7 @@ tags:
   - Azure AD Application Proxy
 ---
 
-# Microsoft 365 を用いたゼロ トラスト ネットワークの実現
+
 
 本記事は、米国時間 2018年 6 月 14 日に公開された [Building Zero Trust networks with Microsoft 365](https://cloudblogs.microsoft.com/microsoftsecure/2018/06/14/building-zero-trust-networks-with-microsoft-365/) の抄訳です。
  

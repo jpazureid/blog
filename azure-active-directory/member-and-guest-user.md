@@ -5,7 +5,7 @@ tags:
   - Azure AD B2B
 ---
 
-# Member ユーザーと Guest ユーザーについて
+
 
 こんにちは、Azure & Identity サポート チームの坂井です。
  

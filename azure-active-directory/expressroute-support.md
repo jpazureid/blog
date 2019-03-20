@@ -6,7 +6,7 @@ tags:
   - ExpressRoute
 ---
 
-# Azure AD の ExpressRoute サポート
+
 
 こんにちは、 Azure ID チームの三浦です。
 

@@ -5,7 +5,7 @@ tags:
   - AD FS
 ---
 
-# AD FS の証明書更新手順 (SSLサーバー証明書)
+
 
 皆様、こんにちは。Azure & Identity サポート担当の竹村です。
 

@@ -6,7 +6,7 @@ tags:
   - RBAC
 ---
 
-# Azure AD B2B とは
+
 
 こんにちは、Azure & Identity サポート チームの坂井です。
  

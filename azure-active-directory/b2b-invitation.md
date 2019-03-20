@@ -5,7 +5,7 @@ tags:
   - Azure AD B2B
 ---
 
-# Azure AD B2B におけるユーザーの新しい招待方法
+
 
 こんにちは、Azure ID チームの高田です。
 

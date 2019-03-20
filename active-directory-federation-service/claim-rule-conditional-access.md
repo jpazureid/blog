@@ -6,7 +6,7 @@ tags:
   - Conditional Access
 ---
 
-# クレーム ルールと条件付きアクセスの比較
+
 
 こんにちは、Azure & Identity サポート チームの坂井です。
  

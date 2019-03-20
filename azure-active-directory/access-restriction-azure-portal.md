@@ -5,7 +5,7 @@ tags:
   - Azure AD
 ---
 
-# Azure ポータルへのアクセス制限
+
 
 こんにちは、Azure & Identity サポート チームの坂井です。
 

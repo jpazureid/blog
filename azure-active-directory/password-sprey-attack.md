@@ -9,7 +9,7 @@ tags:
   - AD FS
 ---
 
-# Azure AD と AD FS のベスト プラクティス - パスワード スプレー攻撃の防御
+
 
 こんにちは、Azure Identity サポートの宮林と高田です。
 

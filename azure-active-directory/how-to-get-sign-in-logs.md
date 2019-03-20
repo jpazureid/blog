@@ -6,7 +6,7 @@ tags:
   - Sgin-in log
 ---
 
-# Azure AD サインイン ログ取得方法まとめ
+
 
 こんにちは。Azure Identity チームの三浦です。
 
