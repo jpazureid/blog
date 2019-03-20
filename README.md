@@ -71,7 +71,7 @@
 - Azure AD Connect で実現するシングル サインオン
 - DirSync & ADSync – 2017/12/31 で終了のお知らせ
 - [Azure AD Connect] ID 同期と重複属性の回復性の動作について
-- 自動アップグレード機能の問題
+- [自動アップグレード機能の問題](azure-active-directory-connect\auto-upgrade-issue.md)
 - [調査に有効な採取情報] Azure AD Connect サーバーの全般情報
 - [調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題
 
