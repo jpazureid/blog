@@ -1,3 +1,10 @@
+---
+title: Azure AD Connect アップグレード手順
+date: 2018-08-10
+tags:
+  - AAD Connect
+---
+
 # Azure AD Connect アップグレード手順
 
 こんにちは。 Azure Identity サポートの谷です。

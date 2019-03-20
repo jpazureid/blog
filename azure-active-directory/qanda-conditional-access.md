@@ -1,3 +1,11 @@
+---
+title: Azure AD の条件付きアクセスに関する Q&A
+date: 2017-12-04
+tags:
+  - Azure AD
+  - Conditional Access
+---
+
 # Azure AD の条件付きアクセスに関する Q&A
 
 こんにちは、Azure & Identity サポート チームの高田です。
@@ -23,6 +31,7 @@
 <span style="color:blue">Q</span>. Azure AD B2B コラボレーション機能により招待されたゲスト ユーザーに対して条件付きアクセスのルールを適用する場合には、Azure AD Premium のライセンスを購入する必要があるのでしょうか。
 
 <span style="color:red">A</span>. いいえ、テナントに割り当てられている Azure AD Premium ライセンス数の 5 倍までのアカウントであれば、ゲスト ユーザーに対して条件付きアクセスを含む Azure AD Premium の機能を利用させることが可能です。詳細は下記公開情報を参照ください。
+
 Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-licensing
  
@@ -79,8 +88,8 @@ X-Forwarded-For HTTP ヘッダーは HTTP ヘッダー フィールドの 1 つ�
 <span style="color:red">A</span>. このような状況の場合は、残念ながらお客様側での解除はできません。そのため、設定の解除をご希望の場合は、お手数ですが弊社サポート サービスをご利用いただけますと幸いです。Azure ポータルにもアクセスができない状況と存じますので、ほかにお持ちのテナントからお問い合わせを発行ください。
 サポート サービスをご利用いただくには、Azure ポータル上から、Azure Active Directory を選択し、[新しいサポート要求] を選択ください。以下のような画面からお問い合わせいただければと思います。
  
-![Create Support Ticket 1](images/create-support-ticket-1.png)
+![](./qanda-conditional-access/create-support-ticket-1.png)
 
-![Create Support Ticket 2](images/create-support-ticket-2.png)
+![](./qanda-conditional-access/create-support-ticket-2.png)
 
 上記内容が少しでもお客様の参考となりますと幸いです。

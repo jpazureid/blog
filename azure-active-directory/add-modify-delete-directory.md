@@ -1,3 +1,10 @@
+---
+title: Azure AD の追加・変更・削除
+date: 2018-01-16
+tags:
+  - Azure AD
+---
+
 # Azure AD の追加・変更・削除
 
 こんにちは、Azure & Identity サポート チームの坂井です。
@@ -12,7 +19,7 @@
 
 Azure AD とは、Azure や Office 365 などの Microsoft クラウド サービスに組織がサインアップしたときに作成されます (もう少し平易な言い方をすると、 Office 365 など Azure AD が必須のサービスの新規利用を開始した時点で自動的に作成されます)。Azure AD に所属しているユーザーは、その Azure AD に紐づいているクラウドサービスを利用することが可能です。
 
-![](images/user-access-o365-subscription.png)
+![](./add-modify-delete-directory/user-access-o365-subscription.png)
 
 ## Azure AD の追加手順
 
@@ -76,7 +83,7 @@ Azure AD ディレクトリは必ず xxxxx.onmicrosoft.com という名前を持
  
 削除時に前提条件のチェックが走るため、すべての条件をクリアすることで削除が可能となります。前提条件に抵触している場合は、下記のように ! の警告が表示され削除が完了しません。
 
-![](images/confirm-delete-directory.png)
+![](./add-modify-delete-directory/confirm-delete-directory.png)
 
 なお、Azure のサインアップ時に自動作成された Azure AD  (既定のディレクトリ) やセルフサインアップテナント については削除が想定されていません。そのディレクトリはもう利用することはないが、ユーザーが Azure ポータルにサインインしたときにディレクトリが表示されるので煩わしいという場合には、そのディレクトリからユーザーを削除する方法で対応が可能です。
  

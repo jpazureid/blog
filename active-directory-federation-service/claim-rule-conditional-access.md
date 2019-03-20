@@ -1,3 +1,11 @@
+---
+title: クレーム ルールと条件付きアクセスの比較
+date: 2018-01-30
+tags:
+  - AD FS
+  - Conditional Access
+---
+
 # クレーム ルールと条件付きアクセスの比較
 
 こんにちは、Azure & Identity サポート チームの坂井です。
@@ -32,8 +40,6 @@
  
     Azure Active Directory の価格  
     https://azure.microsoft.com/ja-jp/pricing/details/active-directory/
- 
-
  
 ## 機能比較
 

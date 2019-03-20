@@ -1,4 +1,12 @@
-# Azure AD サインイン ログ 取得方法まとめ
+---
+title: Azure AD サインイン ログ取得方法まとめ
+date: 2019-02-04
+tags:
+  - Azure AD
+  - Sgin-in log
+---
+
+# Azure AD サインイン ログ取得方法まとめ
 
 こんにちは。Azure Identity チームの三浦です。
 
@@ -12,6 +20,7 @@ Azure AD のサインイン ログは Azure ポータルで確認するほかに
  
 
 それぞれ簡単に概要を紹介します。
+
 なお、 Azure ポータルのサインインからログを確認することを含めて Azure AD テナントに Azure AD Premium のライセンスが必要ですのでご注意ください。
  
 ## 1. ポータルから CSV 形式のファイルをダウンロード

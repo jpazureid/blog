@@ -1,3 +1,11 @@
+---
+title: Azure AD B2B とは
+date: 2017-12-12
+tags:
+  - Azure AD B2B
+  - RBAC
+---
+
 # Azure AD B2B とは
 
 こんにちは、Azure & Identity サポート チームの坂井です。
@@ -20,16 +28,16 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-wha
  Azure サブスクリプションは必ず 1 つの Azure AD に関連付けられています。
 そのため、その関連付けられた Azure AD に所属しているユーザーのみがそのサブスクリプションに紐づくリソースを利用可能です。
 
-![Subscription and User](images/subscription-user.png)
+![](./what-is-b2b/subscription-user.png)
  
 では、複数の Azure AD がある場合はどのようになるでしょうか。
 この場合、別の Azure AD へのアクセスや別の Azure AD に関連付けられているサブスクリプションにアクセスできません。
 
-![Subscription and User](images/subscription-user-inaccessible.png)
+![](./what-is-b2b/subscription-user-inaccessible.png)
  
 こんな時、Azure AD B2B を利用することで、別 Azure AD にユーザーを追加(コピーのようなイメージ)することで、別の Azure AD に所属してリソースを利用することが可能です。
  
-![](images/invite-user-to-tenant.png)
+![](./what-is-b2b/invite-user-to-tenant.png)
 
 ## 詳細
 
@@ -39,7 +47,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-wha
 
 明示的に別の Azure AD (または outlook.com や gmail.com などのマイクロソフト アカウント) を追加する操作です。Azure ポータルのメニューより [Azure Active Directory] – [ユーザーとグループ] – [すべてのユーザー] の順に進みます。下記、[新しいゲスト ユーザー] から別の Azure AD のユーザーを追加できます。招待メールが送られ、そのメールよりウィザードを完了する必要があります。
  
-![](images/screenshot-new-guest-user.png)
+![](./what-is-b2b/screenshot-new-guest-user.png)
  
 ### 2. RBAC (アクセス制御 IAM) によるユーザーの追加
 
@@ -50,7 +58,7 @@ Azure ポータルの [サブスクリプション] – [サブスクリプシ�
 
 下記、[追加] から別の Azure AD のユーザーを追加することができます。招待メールが送られ、そのメールよりウィザードを完了する流れは同様になりますが、同時にサブスクリプションに対するロールを割り当てられます。
 
-![](images/screenshot-iam.png)
+![](./what-is-b2b/screenshot-iam.png)
  
 ## よくあるお問い合わせ
 

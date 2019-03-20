@@ -1,4 +1,15 @@
-# Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御
+---
+title: Azure AD と AD FS のベスト プラクティス - パスワード スプレー攻撃の防御
+date: 2018-03-19
+tags:
+  - Azure AD
+  - Security
+  - Smart lockout
+  - MFA
+  - AD FS
+---
+
+# Azure AD と AD FS のベスト プラクティス - パスワード スプレー攻撃の防御
 
 こんにちは、Azure Identity サポートの宮林と高田です。
 
@@ -54,14 +65,13 @@ IP ロックアウトは、数十億のサインインを分析して、マイ�
 
 [現在公開中のプレビュー機能](https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Announcing-the-Public-Preview-of-Attack-Simulator-for-Office-365/ba-p/162412) ですが、Office 365 Threat Intelligence では攻撃シミュレーターの機能を利用いただけます。これにより、自らのシステムに対して攻撃のシミュ―レーションを行うことができます。その結果をもとにセキュリティ ポリシーを更新することや、パスワード スプレー攻撃のような脅威から組織を守るために適切なツールを社内に準備しておくこともできます。
 
-![attach-simulation](images/fig1-attack-simulator.jpg)
+![](./password-sprey-attack/fig1-attack-simulator.jpg)
 
 今すぐに以下の点を検討ください。
 
 1. クラウド認証を使用する (すでに利用中の場合は問題ありません)
 2. AD FS などのハイブリッド シナリオを使用している場合は、2018 年 3 月のスマート ロックアウトのための AD FS アップグレードを検討する
 3. [攻撃のシミュレーター](https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Announcing-the-Public-Preview-of-Attack-Simulator-for-Office-365/ba-p/162412) を使用し、セキュリティの体制を評価し必要な対策を実施する
-
 
 ### Step 2: 多要素認証の使用
 
@@ -72,7 +82,7 @@ IP ロックアウトは、数十億のサインインを分析して、マイ�
 Azure AD Identity Protection は、サインイン データを使用し、高度な機械学習と検出アルゴリズムを駆使して、システムに来るすべてのサインインのリスク スコアを算出します。 これにより、企業での Azure AD 利用者は Identity Protection にポリシーを作成して、ユーザーまたはセッションに対してリスクが検出された場合にのみ、ユーザーに追加での認証を促すことができます。これでユーザーの負担を軽減しつつも、攻撃者をブロックすることができます。[Azure AD Identity Protection の詳細はこちら](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection) をご覧ください。
 
 
-![risk-based](images/fig2-risk-based-mfa.jpg)
+![](./password-sprey-attack/fig2-risk-based-mfa.jpg)
 
 #### 多要素認証の強制
 
@@ -97,7 +107,7 @@ AD FS 2016 では、[パスワードなしの認証として Azure MFA をプラ
 
 Azure AD では、すべてのパスワードの変更とリセット時に禁止パスワードのチェックが行われます。 新しいパスワードが送信されると、パスワードに含めるべきではない単語のリストと曖昧さを考慮してマッチングされます (また、綴りを記号で置き換える leetspeak -> l33t-sp3@k のようなものもチェックされます)。マッチングされると拒否され、ユーザーは推測することが難しいパスワードにするよう求められます。 マイクロソフトでは最もよく攻撃されるパスワードのリストを作成し、頻繁に更新しています。
 
-![banned-password](images/fig3-banned-password.jpg)
+![](./password-sprey-attack/fig3-banned-password.jpg)
  
 #### 禁止パスワードのカスタマイズ
 

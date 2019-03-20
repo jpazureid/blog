@@ -1,3 +1,11 @@
+---
+title: Azure Active Directory の PowerShell モジュール
+date: 2017-12-04
+tags:
+  - Azure AD
+  - PowerShell
+---
+
 # Azure Active Directory の PowerShell モジュール
 
 こんにちは、 Azure ID チームの三浦です。今回は Azure Active Directory (Azure AD) の PowerShell モジュールの種類、インストール方法についてご案内します。
@@ -50,18 +58,18 @@ Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | Get-
 
 以下の例では 4.7.02046 という新しいバージョンがインストールされていることが確認できます (4.7 のバージョンは OS によっては追加のモジュールのインストールが必要なのでここでは 4.6 の紹介にしていますが、もちろん 4.7 のインストールで構いません)。
 
-![.NET Framework install](images/.net-install.jpg)
+![](./powershell-module/.net-install.jpg)
  
 ### PowerShell モジュール
 
 PowerShell のバージョンを 5.0 以上にするために Windows Management Framework (WMF) 5.1 を以下のサイトからダウンロードしてインストールします。
  
 Windows Management Framework 5.1  
-URL：https://www.microsoft.com/en-us/download/details.aspx?id=54616
+https://www.microsoft.com/en-us/download/details.aspx?id=54616
  
 システムの PowerShell のバージョンは $psversiontable で確認できます。以下の例だと 5.1.15063.726 というバージョンがインストールされていることが確認できます。
 
-![PowerShell Version](images/powershell-version.jpg)
+![](./powershell-module/powershell-version.jpg)
 
 ### Azure AD PowerShell インストール方法
 上記の前提条件を満たしたうえで、次の手順でインストールを実施します。
@@ -153,7 +161,7 @@ $ProxyCredential = New-Object System.Net.NetworkCredential("ユーザー名","�
 
 モジュールがインストールされているかは Get-InstalledModule コマンドで確認できます。
 
-![Get-InstalledModule](images/get-installedmodule.jpg)
+![](./powershell-module/get-installedmodule.jpg)
  
 <モジュールのアンインストール方法>
 

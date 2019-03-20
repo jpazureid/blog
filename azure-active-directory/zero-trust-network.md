@@ -1,3 +1,15 @@
+---
+title: Microsoft 365 を用いたゼロ トラスト ネットワークの実現
+date: 2018-06-29
+tags:
+  - Azure AD
+  - Security
+  - Conditional Access
+  - Windows Defender ATP
+  - Intune
+  - Azure AD Application Proxy
+---
+
 # Microsoft 365 を用いたゼロ トラスト ネットワークの実現
 
 本記事は、米国時間 2018年 6 月 14 日に公開された [Building Zero Trust networks with Microsoft 365](https://cloudblogs.microsoft.com/microsoftsecure/2018/06/14/building-zero-trust-networks-with-microsoft-365/) の抄訳です。
@@ -13,7 +25,7 @@
 - ユーザーまたはデバイスがセキュリティ管理者によって設定されたポリシーに準拠しているかどうかを判断するポリシー評価サービス
 - 組織リソースへのアクセスを許可または拒否する上記の方式を利用したプロキシ
  
-![fig 1](images/fig1-basic-components-of-general-zero-trust-network-model-2.png)
+![fig 1](./zero-trust-network/fig1-basic-components-of-general-zero-trust-network-model-2.png)
 図 1. 一般的なゼロトラスト ネットワークモデルの基本構成
  
 動的に信頼性を評価してリソースへのアクセスを制御することで、デバイスから特定のリソースへのアクセスを可能にし、一方で管理された準拠済みデバイス上の価値あるデータへのアクセスを制限することができます。標的型およびデータ漏洩を目的とした攻撃では、攻撃者は組織内の 1 つのデバイスに侵入し、盗んだ資格情報を使用してネットワーク全体を次々と横断的に移動していきます。ユーザーとデバイスに適切なポリシーが構成されたゼロ トラスト ネットワークに基づくソリューションは、盗まれたネットワーク資格情報を利用してネットワークにアクセスされるのを防ぐことができます。
@@ -28,7 +40,7 @@
 
 条件付きアクセスには、ユーザーが企業のリソースにアクセスできる条件を制御するための一連のポリシーが用意されています。 アクセスの際に利用できる条件としては、ユーザーの役割、グループ メンバーシップ、デバイスの健全性やコンプライアンス (準拠状態)、モバイル アプリケーション、場所、サインインのリスクが挙げられます。これらの条件が、(1) アクセスを許可するか、(2) アクセスを拒否するか、または (3) 追加認証 (例えば多要素認証) の要求や利用規約の提示などのアクセス制限を行うかを決定するために使用されます。 条件付きアクセスは、Azure Active Directory と連携して動作する全てのアプリケーションで動作します。
 
-![fig 2](images/fig2-Microsoft-high-level-approach-to-Zero-Trust-networks-using-conditional-access.png)
+![fig 2](./zero-trust-network/fig2-Microsoft-high-level-approach-to-Zero-Trust-networks-using-conditional-access.png)
 図 2. 条件付きアクセスを用いてゼロトラスト ネットワークを実現するためのマイクロソフトのアプローチ (概要)
 
 ゼロ トラスト モデルを実現するため、マイクロソフトは Windows Defender Advanced Threat Protection、Azure Active Directory、Windows Defender System Guard、Microsoft Intune など、Microsoft 365 におけるいくつかのコンポーネントと機能を統合して利用しています。
@@ -113,7 +125,7 @@ Microsoft Intune は、クライアント デバイスの導入、登録、お�
 
 Microsoft Word、Microsoft PowerPoint、Microsoft Excel などの Office 365 アプリケーションを用いることで、組織の従業員は連携して日々の業務を完了することができます。ただし、業務の機密性や性質、所属するグループやその他の要因によって、ユーザーは一人ひとり異なる権限を持っています。アプリケーションと条件付きアクセスは統合されているため、このような様々なユーザー権限のある環境であっても条件付きアクセスを用いることでアクセス管理が容易となります。条件付きアクセスにより、セキュリティ管理者はカスタム ポリシーを実装することができ、アプリケーションは目的のリソースに対する部分的または完全なアクセスを得ることができます。
 
-![fig 3](images/fig-3-zero-trust-network-model-for-azure-ad-applications.png)  
+![fig 3](./zero-trust-network/fig-3-zero-trust-network-model-for-azure-ad-applications.png)  
 図 3. Azure AD アプリケーションのゼロトラスト ネットワークモデル
  
 ### 業務アプリケーション
@@ -122,7 +134,7 @@ Microsoft Word、Microsoft PowerPoint、Microsoft Excel などの Office 365 ア
 
 どのような組織にも、従業員の生産性や事業の成功に直接かかわるミッション クリティカルなビジネス アプリケーションがあります。これらのアプリケーションには、通常、電子商取引システム、顧客情報の管理システム、文書管理システムなどのカスタム　アプリケーションが含まれます。Azure AD は、必要なコンプライアンスおよびリスク ポリシーを満たしていない場合、これらのアプリケーションにアクセス トークンを付与しません。つまりリソースへのアクセスを許可または拒否するかどうか明確な判断を下すことができます。
  
-![fig 4](images/fig4-zero-trust-network-model-expanded-for-line-of-business-apps.png)  
+![fig 4](./zero-trust-network/fig4-zero-trust-network-model-expanded-for-line-of-business-apps.png)  
 図 4. ビジネス アプリケーション向けに拡張されたゼロトラスト ネットワークモデル
  
 ### オンプレミス Web アプリケーション
@@ -133,7 +145,7 @@ Microsoft Word、Microsoft PowerPoint、Microsoft Excel などの Office 365 ア
 > 
 > 条件付きアクセスがなければ、攻撃者は悪意あるアプリケーションを作成およびコード署名し、さらには Intune 経由で展開することができます。 これら悪意あるアプリは、Intune に登録されているすべてのデバイスにプッシュされ、ハッカーはこれまでにない量の機密情報を取ることができます。 このような攻撃はこれまでにも確認されており、こういった攻撃の防御に企業は非常に強い関心を寄せています。
  
-![fig 5](images/fig5-zero-trust-network-model-for-on-premises-web-applications.png)  
+![fig 5](./zero-trust-network/fig5-zero-trust-network-model-for-on-premises-web-applications.png)  
 図 5. オンプレミス Web アプリケーションのゼロトラスト ネットワークモデル
  
 ## 継続的なイノベーション

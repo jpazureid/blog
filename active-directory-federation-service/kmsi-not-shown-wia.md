@@ -1,3 +1,11 @@
+---
+title: フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない
+date: 2017-12-14
+tags:
+  - AD FS
+  - Azure AD
+---
+
 # フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない
 
 こんにちは、Azure ID サポートチームの高田です。
@@ -9,13 +17,13 @@
  
 ▼古いサインイン エクスペリエンス
 
-![](images/old-signin-page.png)
+![](./kmsi-not-shown-wia/old-signin-page.png)
 
 ▼新しいサインイン エクスペリエンス
 
-![](images/new-signin-page.png)
+![](./kmsi-not-shown-wia/new-signin-page.png)
 
-![](images/new-signin-page-kmsi.png)
+![](./kmsi-not-shown-wia/new-signin-page-kmsi.png)
 
 ※画面遷移の説明は、下記ブログを参照ください。
 

@@ -1,16 +1,23 @@
+---
+title: Member ユーザーと Guest ユーザーについて
+date: 2017-12-12
+tags:
+  - Azure AD B2B
+---
+
 # Member ユーザーと Guest ユーザーについて
 
 こんにちは、Azure & Identity サポート チームの坂井です。
  
 Azure AD に所属しているユーザーの種類として、下記のように 「Member」 と 「Guest」があります。今回は、こちらのユーザーの種類について説明します。
 
-![](images/member-and-guest.png)
+![](./member-and-guest-user/member-and-guest.png)
  
 ## はじめに
 
 下記のように、個人アカウントや別テナントの職場または学校アカウント (組織アカウント) を追加した (Azure AD B2B の機能を利用した) 場合に、ユーザーの種類が 「Guest」 として追加されます。
  
-![](images/personal-work-account.png)
+![](./member-and-guest-user/personal-work-account.png)
  
 これ以外の Azure のサブスクリプションのサインアップで利用した個人アカウントや組織内のドメイン (上記の例の場合：contso.com) をユーザー名 (例：test@contoso.com) に持つユーザーは「Member」として登録されます。また、クラシックポータル  (旧ポータル) より追加した外部ユーザーについては 「Member」として登録されております。
  
@@ -19,13 +26,13 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
 既定ではゲスト ユーザーに対しては、 Azure AD のデータへのアクセスを制限しています。そのため、ゲスト ユーザーでサインインした場合、招待された Azure AD のユーザーの一覧を参照することもできませんし、各種設定の参照・変更も制限されています。もちろん、サブスクリプションに対する権限を付与していない場合は、サブスクリプションのリソースを操作することもできません。
 (一般ユーザーとゲスト ユーザーがそれぞれできること (アクセス許可の比較) は、こちらをご参照ください。)
  
-![](images/access-denied.png)
+![](./member-and-guest-user/access-denied.png)
 
-![](images/no-access-permission.png)
+![](./member-and-guest-user/no-access-permission.png)
  
 ゲストに対するアクセス制限は、以下の赤枠の箇所 (ゲストのアクセス許可を制限する) で変更できます。この設定が “はい” の場合には「Guest」の操作は上記のように制限されています。
  
-![](images/guest-users-permissions-are-limited.png)
+![](./member-and-guest-user/guest-users-permissions-are-limited.png)
  
 ユーザーの属性については、PowerShell を利用することで Member から Guest、またその逆についても変更が可能です。Guest から Member  に変更する際は「Guest」に対して行っていた制御の対象外のユーザーとなるため、セキュリティポリシーに沿った対応や特定のユーザーに絞った設定変更をお勧め致します。
  

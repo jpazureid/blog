@@ -1,3 +1,11 @@
+---
+title: Azure サブスクリプションと Azure AD の管理者
+date: 2017-11-04
+tags:
+  - Azure AD
+  - Subscription
+---
+
 # Azure サブスクリプションと Azure AD の管理者
 
 こんにちは、 Azure ID サポートチームの三浦です。
@@ -8,12 +16,12 @@
 
 まず、 Azure サブスクリプションと Azure AD の関係ですが、 Azure のサブスクリプションに Azure AD が含まれているというイメージを持たれている方もいるかもしれませんが、以下の図のようなイメージは間違いです。
  
-![wrong](images/wrong-understanding.png)
+![](./subscription-azure-ad-relationship/wrong-understanding.png)
  
  
 正しくは Azure サブスクリプションと Azure AD には包含関係は無く、独立しています。Azure サブスクリプションは必ず 1 つの Azure AD に関連付けられています (*注1) ので、両者の関係性は次のような図になります。
  
-![relationship](images/subscription-relationship.png)
+![](./subscription-azure-ad-relationship/subscription-relationship.png)
  
 上の図では 2 つのサブスクリプションが Office 365 を利用中の同一の Azure AD に関連づけられている例です。この例では Office 365 で利用しているアカウント情報を Azure のサブスクリプションも参照し、サブスクリプションへのアクセス権限の付与などにもそのまま利用します。
  
@@ -45,13 +53,13 @@ Azure サブスクリプションと Azure AD はそれぞれ独立したもの�
 
 company1 という会社ではすでに Azure AD を保持しており、その Azure AD のディレクトリ名は company1com.onmicrosoft.com です。この Azure AD にはカスタムドメインとして company1.com というドメイン名が紐づけられています (*注3)。以下の図では user1@company1.com というアカウントが Azure のサブスクリプションを作成した状態での関係を示しています。
 
-![relationship1](images/subscription-relationship-a.png)
+![](./subscription-azure-ad-relationship/subscription-relationship-a.png)
 
 user1@company1.com というアカウントは Azure のサブスクリプションのアカウント管理者でありサービス管理者です。そのため、サブスクリプション内のすべての権限を持ちます。例えばこのサブスクリプション内で仮想マシンを作成したり、仮想ネットワークを設定したりすることができます。しかし、関連づけられている Azure AD に対しては user1 は管理者権限を持ちません。Azure AD に対して管理者権限を必要とする作業を実施する場合には admin1@company1com.onmicrosoft.com または admin2@company1.com という全体管理者に、作業を依頼するか、あるいは自身に Azure AD の権限を与えてくれるように依頼する必要があります。
  
 別のパターンを考えてみます。
 
-![relationship1](images/subscription-relationship-b.png)
+![](./subscription-azure-ad-relationship/subscription-relationship-b.png)
 
 ここでは Microsoft アカウントの user2@outlook.com を指定して Azure サブスクリプションを作成しています。この例の outlook.com のように企業に紐づかない Microsoft アカウントを利用して Azure サブスクリプションを作成した場合など、サブスクリプション作成時に利用したアカウントが所属する Azure AD が無い場合には、新規で Azure AD ディレクトリが自動的に作成されます。この場合、特に役割の追加作業をしていなくても Azure サブスクリプションのアカウント管理者 = Azure AD の全体管理者になります。
 

@@ -4,7 +4,7 @@ date: 2017-10-05
 tags:
   - AAD Connect
   - UPN
-  - ハードマッチ
+  - Hard match
 ---
 
 

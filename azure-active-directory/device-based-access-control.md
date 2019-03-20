@@ -1,3 +1,15 @@
+---
+title: デバイス ベースのアクセス制御
+date: 2018-01-25
+tags:
+  - Azure AD
+  - AD FS
+  - Conditional Access
+  - Hybrid Azure AD Join
+  - Workplace Join
+  - Intune
+---
+
 # デバイス ベースのアクセス制御
 
 こんにちは、Azure & Identity サポート チームの下野です。
@@ -10,7 +22,7 @@
  
 昨今話題の働き方改革を実現する手段の一つとして、テレワークができる環境を整える - オフィス内で利用する端末だけでなく、会社支給の端末、モバイルデバイスなど多種多様なデバイスから企業のリソースにアクセスできるようにする - ということも有効だと思います。
 
-![](images/access-o365-from-everywhere.png)
+![](./device-based-access-control/access-o365-from-everywhere.png)
 
 それを検討する際に、管理者側で会社のリソースにアクセスできるデバイスを限定したいとのご要望をいただくことが多くあります。
 そのような要望の実現を検討する際に、今回ご紹介させていただく内容が少しでもお役に立ちましたら幸いです。

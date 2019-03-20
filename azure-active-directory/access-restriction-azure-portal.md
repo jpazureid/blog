@@ -1,3 +1,10 @@
+---
+title: Azure ポータルへのアクセス制限
+date: 2017-12-29
+tags:
+  - Azure AD
+---
+
 # Azure ポータルへのアクセス制限
 
 こんにちは、Azure & Identity サポート チームの坂井です。
@@ -35,7 +42,7 @@ Azure ポータル自体へのアクセスを限られたユーザーのみに�
 
 該当ユーザーで Azure ポータルへアクセスすると下記の画面が表示され、アクセスがブロックされます。
 
-![](images/access-restricted.png)
+![](./access-restriction-azure-portal/access-restricted.png)
  
 ## Azure AD へのアクセスを制限する方法
 
@@ -53,7 +60,7 @@ Azure AD の管理者権限（全体管理者または制限付き管理者）�
 
 ※ 上記 5. で [はい] を選択することで管理者以外の一般ユーザーは、Azure ポータル内での [Azure Active Directory] にアクセスしようとすると、下記の画面が表示されアクセス権がなくなります。
 
-![](images/no-access.png)
+![](./access-restriction-azure-portal/no-access.png)
  
 上記設定は、Azure ポータル上のアクセス制限になるため、設定完了後も PowerShell を使用すれば、ユーザーの一覧は参照できます。その対処策となる設定についても下記にご案内させていただきます。
 

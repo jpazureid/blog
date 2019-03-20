@@ -1,3 +1,11 @@
+---
+title: Azure AD の ExpressRoute サポート
+date: 2018-07-19
+tags:
+  - Azure AD
+  - ExpressRoute
+---
+
 # Azure AD の ExpressRoute サポート
 
 こんにちは、 Azure ID チームの三浦です。
@@ -10,7 +18,7 @@ Azure AD の認証トラフィックを処理するエンドポイント (IP ア
  
 これが 2018 年 8 月 1 日から次のように変更されます。
  
-> Microsoft ピアリング、かつ ExpressRoute を利用するサービスとして “その他の Office 365 Online サービス (12076:5100)” の BGP コミュニティを利用するように構成されている場合のみ ExpressRoute を経由する
+**Microsoft ピアリング、かつ ExpressRoute を利用するサービスとして “その他の Office 365 Online サービス (12076:5100)” の BGP コミュニティを利用するように構成されている場合のみ ExpressRoute を経由する**
  
 結果として、上記のような構成以外では、 ExpressRoute を経由することなく、インターネットを利用して通信するようになります。
 なお、 Azure AD にはリージョンが無いため、その認証トラフィックは必ずしも指定したリージョンに留まりません。そのため、これまでも ExpressRoute の構成として [ExpressRoute Premium アドオン](https://azure.microsoft.com/ja-jp/pricing/details/expressroute/) を利用していなかった場合には、 Azure AD への認証トラフィックは必ずしも ExpressRoute を経由しませんでした。つまり、現状でも ExpressRoute を利用している環境でも今回の変更とは関係なく、Azure AD への通信はインターネット経由となっている可能性があります。
