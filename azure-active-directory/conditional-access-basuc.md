@@ -97,11 +97,11 @@ tags:
 ### 関連サイト
 条件付きアクセスに関する公式ドキュメントのリンクです。ぜひご覧ください。
 
-[Azure AD の条件付きアクセスのドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/)
-[Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/overview)
-[Active Directory 条件付きアクセスの条件の概要](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/conditions)
-[Azure Active Directory の条件付きアクセスのベスト プラクティス](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/best-practices)
-[Azure Active Directory の条件付きアクセスに関する FAQ](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/faqs)
+- [Azure AD の条件付きアクセスのドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/)
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/overview)
+- [Active Directory 条件付きアクセスの条件の概要](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/conditions)
+- [Azure Active Directory の条件付きアクセスのベスト プラクティス](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/best-practices)
+- [Azure Active Directory の条件付きアクセスに関する FAQ](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/faqs)
 などの公式情報が公開されています。
 
  
