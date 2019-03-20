@@ -5,7 +5,7 @@
 
 ## Azure Active Directory
 
-- PowerShell にて全ユーザーの最終サインイン日時を一括で取得する方法
+- [PowerShell にて全ユーザーの最終サインイン日時を一括で取得する方法](./azure-active-directory/last-signin-reports.md)
 - サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」
 - 多要素認証 (MFA) のリセット手順
 - [条件付きアクセスの基本的な考え方](./azure-active-directory/conditional-access-basuc.md)
