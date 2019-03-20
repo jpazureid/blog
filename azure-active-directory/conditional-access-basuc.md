@@ -34,7 +34,7 @@ tags:
 - 複数のポリシーでアクセスを制限された場合、すべての条件を満たさないかぎり、アクセスはブロックされます。
 - どのポリシーの対象にもならない場合、あるいはすべての条件を満たした場合、アクセスが許可されます。
 
-![](./conditional-access-basuc/conditional-access-flow.png)
+![](./conditional-access-basic/conditional-access-flow.png)
 
 ## 条件付きアクセスのポリシーの設定とアクセス可否の図
 以下に、条件付きアクセスのポリシーの設定とアクセス可否の関係を簡潔なチャートで示します。
@@ -54,7 +54,7 @@ tags:
 3. 「アクセス権の付与」条件を満たすかどうか
 「アクセス権の付与」のコントロールが設定されているポリシーでは、アクセス権の付与条件が少なくとも一つ以上設定されています。
 
-![](./conditional-access-basuc/conditional-access-cofig.png)
+![](./conditional-access-basic/conditional-access-cofig.png)
 
 この項目によって設定される条件を満たした場合、アクセスが許可されます。
 条件を満たさない場合には、アクセスはブロックされます。
@@ -71,13 +71,13 @@ tags:
 
 ### ポリシーA
 
-![](./conditional-access-basuc/policyA.png)
+![](./conditional-access-basic/policyA.png)
 「全体管理者以外のすべてのユーザーに対して、いずれのクラウドアプリにログインする場合にも、スマートフォン (iOS、Android、Windows Phone) からのアクセスを禁止したい」場合の設定です。
 
  
 
 ### ポリシーB
-![](./conditional-access-basuc/policyB.png)
+![](./conditional-access-basic/policyB.png)
 
 「特定のユーザーがアクセスする際に、多要素認証を要求したい」場合の設定です。
 
