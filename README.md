@@ -42,7 +42,7 @@
 - “Baseline policy: Require MFA for admins” について
 - [Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御](./azure-active-directory/password-sprey-attack.md)
 - Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト
-- Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない
+- [Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない](ios-accounts.md)
 - [Azure AD の ExpressRoute サポート変更](./azure-active-directory/expressroute-support.md)
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./azure-active-directory/zero-trust-network.md)
 - 4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)
@@ -70,13 +70,13 @@
 - DirSync & ADSync – 2017/12/31 で終了のお知らせ
 - [Azure AD Connect] ID 同期と重複属性の回復性の動作について
 - [自動アップグレード機能の問題](./azure-active-directory-connect/auto-upgrade-issue.md)
-- [調査に有効な採取情報] Azure AD Connect サーバーの全般情報
-- [調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題
+- [[調査に有効な採取情報] Azure AD Connect サーバーの全般情報](./azure-active-directory-connect/general-information.md)
+- [[調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題](./azure-active-directory-connect/problem-user-synchronize.md)
 
 ## AD FS
 
 - AD FS クレームルール関連のトラブルシューティング
-- AD FS 証明書認証のトラブルシューティング
+- [AD FS 証明書認証のトラブルシューティング](./active-directory-federation-service/adfs-cba-ts.md)
 - Windows Server 2019 AD FS の新機能
 - AD FS プロキシの混雑回避アルゴリズムの動作
 - [デバイス ベースのアクセス制御](./azure-active-directory/device-based-access-control.md)
