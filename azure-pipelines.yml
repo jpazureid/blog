@@ -16,6 +16,8 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    git config --global user.email "jpazidbot@microsoft.com"
+    git config --global user.name "jpazidbot"
     npm install
-    npm run deploy
+    npm run build
   displayName: 'npm install and build'
