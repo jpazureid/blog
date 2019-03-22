@@ -1,5 +1,5 @@
 ---
-title: [調査に有効な採取情報] Azure AD Connect サーバーの全般情報
+title: Azure AD Connect サーバーの全般情報
 date: 2017-10-24
 tags:
   - AAD Connect
