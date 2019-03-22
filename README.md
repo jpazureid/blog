@@ -39,7 +39,7 @@
 - 登録されたデバイスの管理方法
 - [調査に有効な採取情報] Azure AD に関する問題全般
 - [調査に有効な採取情報] ブラウザ経由での Azure AD 認証
-- “Baseline policy: Require MFA for admins” について
+- [“Baseline policy: Require MFA for admins” について](./azure-active-directory/about-baseline-policy-require-mfa-for-admins.md)
 - [Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御](./azure-active-directory/password-sprey-attack.md)
 - Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト
 - [Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない](./azure-active-directory/ios-accounts.md)
