@@ -1,52 +1,52 @@
 ---
-title: [�����ɗL���ȍ̎���] Azure AD Connect �T�[�o�[�̑S�ʏ��
+title: [調査に有効な採取情報] Azure AD Connect サーバーの全般情報
 date: 2017-10-24
 tags:
   - AAD Connect
-  - �T�|�[�g
-  - ���̎�
+  - サポート
+  - 情報採取
 ---
 
-# [�����ɗL���ȍ̎���] Azure AD Connect �T�[�o�[�̑S�ʏ��
+# [調査に有効な採取情報] Azure AD Connect サーバーの全般情報
 
-����ɂ��́AAzure & Identity �T�|�[�g �`�[���̌㓡�ł��B
+こんにちは、Azure & Identity サポート チームの後藤です。
  
-����� Azure AD Connect �T�[�o�[�\���Ɋւ����̎�ɂ��Ă��Љ�܂��B
-Azure AD Connect �Ɋւ����̂Ƃ��ɗL���ł����A�����̃g���u���ł� �gAzure AD Connect �Ń��[�U�[�������ł��Ȃ����h �̏��擾�����킹�Ă��肢���܂��B
+今回は Azure AD Connect サーバー構成に関わる情報採取についてご紹介します。
+Azure AD Connect に関わる問題のときに有効ですが、同期のトラブルでは “Azure AD Connect でユーザー同期ができない問題” の情報取得も合わせてお願いします。
  
-<�̎���>
-�ȉ��̏��� Azure AD Connect �T�[�o�[��ō̎悵�܂��B
+<採取情報>
+以下の情報を Azure AD Connect サーバー上で採取します。
  
-1.�A�v���P�[�V���� / �V�X�e���̃C�x���g���O
-2.Azure AD Connect�g���[�X ���O
-3.Azure AD Connect �̍\�����
-4.Azure AD Connect �̃o�[�W�������
+1.アプリケーション / システムのイベントログ
+2.Azure AD Connectトレース ログ
+3.Azure AD Connect の構成情報
+4.Azure AD Connect のバージョン情報
  
-<�擾�菇>
-1.�A�v���P�[�V���� / �V�X�e���̃C�x���g���O
+<取得手順>
+1.アプリケーション / システムのイベントログ
 =================================
-1-1. Azure AD Connect �T�[�o�[�ɊǗ��Ҍ����ɂă��O�C�����܂��B
-1-2. �R�}���h �v�����v�g�����s���܂��B
-1-3. �ȉ��̃R�}���h�����s���A�o�͂��ꂽ .evtx �t�@�C�����̎悵�܂��B
+1-1. Azure AD Connect サーバーに管理者権限にてログインします。
+1-2. コマンド プロンプトを実行します。
+1-3. 以下のコマンドを実行し、出力された .evtx ファイルを採取します。
 
 ``cmd 
 wevtutil epl system C:\SystemEvent.evtx
 wevtutil epl Application C:\AppliEvent.evtx
 ```
  
-2.Azure AD Connect �g���[�X ���O
+2.Azure AD Connect トレース ログ
 =====================================
-���L�t�H���_�[����уt�H���_�[�z���̃t�@�C���� zip �t�@�C���Ȃǂɂ܂Ƃ߂ĕۑ����܂��B
+下記フォルダーおよびフォルダー配下のファイルを zip ファイルなどにまとめて保存します。
 
 ```
 c:\ProgramData\AADConnect
 %localappdata%\AADConnect
-��: c:\Users\admin001\AppData\Local\AADConnect
+例: c:\Users\admin001\AppData\Local\AADConnect
 ```
  
-3.Azure AD Connect �̍\�����
+3.Azure AD Connect の構成情報
 =====================================
-PowerShell �ɂĈȉ��̃R�}���h���b�g�����s���A�o�͂��ꂽ�t�H���_�[����уt�@�C���� Zip �t�@�C�����ɂ܂Ƃ߂ĕۑ����܂��B
+PowerShell にて以下のコマンドレットを実行し、出力されたフォルダーおよびファイルを Zip ファイル等にまとめて保存します。
 
 ```powershell 
 Get-ADSyncAutoUpgrade > c:\ADSyncAutoUpgrade.txt
@@ -56,22 +56,22 @@ Get-ADSyncSchedulerConnectorOverride > c:\ADSyncSchedulerConnectorOverride.txt
 Get-ADSyncServerConfiguration -Path c:\aadconnect
 ```
  
-4.Azure AD Connect �̃o�[�W�������
+4.Azure AD Connect のバージョン情報
 =====================================
-4-1. �R�}���h �v�����v�g���Ǘ��҂Ƃ��ċN�����āA�ȉ��̃R�}���h�����s���܂��B
+4-1. コマンド プロンプトを管理者として起動して、以下のコマンドを実行します。
 
 ```cmd
 wmic product list > product.txt
 ```
 
-4-2. �J�����g �f�B���N�g���� product.txt �Ƃ��ĕۑ�����܂��B
+4-2. カレント ディレクトリに product.txt として保存されます。
  
-�����ł��ē����܂����������O�Ɏ擾���A���₢���킹�ƍ��킹�Ă��񋟂����������ƂŎ��̂悤�ȃ����b�g������܂��B
+ここでご案内しました情報を事前に取得し、お問い合わせと合わせてご提供いただくことで次のようなメリットがあります。
  
-1.���₢���킹�ɑ΂���񓚁E�����������͂₭�ł��܂��B
-2.��X�A�Č��ł��Ȃ��Ȃ�A��蔭�����̏�񂪂Ȃ����߂ɁA���̔����v����ǋy�ł��Ȃ��Ȃ�P�[�X�����点�܂��B
-3.�T�|�[�g �G���W�j�A�����̎���ē�����镪�̂��������点�܂��B
-4.��񂪂��邽�߁A�T�|�[�g �G���W�j�A����莖�ۂɂ��Ă��c��������Ԃł��q�l�ƃS�[���ݒ肪�ł��܂��B
+1.お問い合わせに対する回答・問題解決をよりはやくできます。
+2.後々、再現できなくなり、問題発生時の情報がないために、問題の発生要因を追及できなくなるケースが減らせます。
+3.サポート エンジニアより情報採取を案内される分のやり取りを減らせます。
+4.情報があるため、サポート エンジニアがより事象についてより把握した状態でお客様とゴール設定ができます。
  
-�u�R�~���j�e�B�ɂ�����}�C�N���\�t�g�Ј��ɂ�锭����R�����g�́A�}�C�N���\�t�g�̐����Ȍ����܂��̓R�����g�ł͂���܂���B�v
-���{���̓��e�i�Y�t�����A�����N��Ȃǂ��܂ށj�́A�쐬�����_�ł̂��̂ł���A�\���Ȃ��ύX�����ꍇ������܂��B
+「コミュニティにおけるマイクロソフト社員による発言やコメントは、マイクロソフトの正式な見解またはコメントではありません。」
+※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。

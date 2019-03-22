@@ -42,7 +42,7 @@
 - “Baseline policy: Require MFA for admins” について
 - [Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御](./azure-active-directory/password-sprey-attack.md)
 - Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト
-- [Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない](ios-accounts.md)
+- [Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない](./azure-active-directory/ios-accounts.md)
 - [Azure AD の ExpressRoute サポート変更](./azure-active-directory/expressroute-support.md)
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./azure-active-directory/zero-trust-network.md)
 - 4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)
