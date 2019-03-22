@@ -1,6 +1,6 @@
 ---
 title: Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない
-date: 
+date: 2018-05-16
 tags:
   - Azure AD
   - トラブルシューティング
