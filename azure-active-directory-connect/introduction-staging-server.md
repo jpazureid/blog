@@ -1,7 +1,8 @@
 ﻿---
 title: ステージング サーバーのすゝめ
 date: 2018-11-27
-tags: AAD Connect
+tags: 
+ - AAD Connect
 ---
 # Azure AD Connect : ステージング サーバーのすゝめ
 
