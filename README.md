@@ -21,7 +21,7 @@
 - ハイブリッド Azure Active Directory 参加済みデバイスの構成について
 - Azure AD プロビジョニング機能について
 - Azure AD が発行するトークンの有効期間について
-- [Azure AD 有償ライセンスの購入方法](./active-directory/azure-ad-purchase.md)
+- [Azure AD 有償ライセンスの購入方法](./azure-active-directory/azure-ad-purchase.md)
 - [クレーム ルールと条件付きアクセスの比較](./active-directory-federation-service/claim-rule-conditional-access.md)
 - Azure AD Reporting API を利用して PowerShell より Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを CSV ファイルで取得する方法
 - [Azure AD の追加・変更・削除](./azure-active-directory/add-modify-delete-directory.md)
