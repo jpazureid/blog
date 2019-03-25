@@ -6,7 +6,7 @@
 ## Azure Active Directory
 
 - [PowerShell にて全ユーザーの最終サインイン日時を一括で取得する方法](./azure-active-directory/last-signin-reports.md)
-- [サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」](create-subscription-error.md)
+- [サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」](./azure-active-directory/create-subscription-error.md)
 - [多要素認証 (MFA) のリセット手順](./azure-active-directory/mfa-reset.md)
 - [条件付きアクセスの基本的な考え方](./azure-active-directory/conditional-access-basuc.md)
 - [Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい](./azure-active-directory/output-directory-roll-members.md)
@@ -17,9 +17,9 @@
 - 「ユーザーはアプリケーションを登録できる」の設定について
 - [RBAC のスコープについて](./azure-active-directory/about-rbac.md)
 - [Azure AD B2B におけるユーザーの新しい招待方法](./azure-active-directory/b2b-invitation.md)
-- Azure AD のサインイン画面に関するアップデートのお知らせ
+- [Azure AD のサインイン画面に関するアップデートのお知らせ](./azure-active-directory/azure-ad-sign-in-experience.md)
 - ハイブリッド Azure Active Directory 参加済みデバイスの構成について
-- Azure AD プロビジョニング機能について
+- [Azure AD プロビジョニング機能について](./azure-active-directory/azure-ad-provisioning.md)
 - Azure AD が発行するトークンの有効期間について
 - [Azure AD 有償ライセンスの購入方法](./azure-active-directory/azure-ad-purchase.md)
 - [クレーム ルールと条件付きアクセスの比較](./active-directory-federation-service/claim-rule-conditional-access.md)
@@ -45,30 +45,30 @@
 - [Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない](./azure-active-directory/ios-accounts.md)
 - [Azure AD の ExpressRoute サポート変更](./azure-active-directory/expressroute-support.md)
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./azure-active-directory/zero-trust-network.md)
-- 4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)
+- [4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)](./azure-active-directory/20180406-rca-azure-ad.md)
 - Azure MFA を求められるタイミングについて
 - 入れ子 (ネスト) グループへの権限付与について
 - [Azure AD サインイン ログ 取得方法まとめ](./azure-active-directory/how-to-get-sign-in-logs.md)
 
 ## Azure AD Connect
 
-- Azure AD Connect : ステージング サーバーのすゝめ
-- Azure AD Connect : ディレクトリ同期の応用 – オブジェクト間の属性値の移動
+- [Azure AD Connect : ステージング サーバーのすゝめ](./azure-active-directory-connect/introduction-staging-server.md)
+- [Azure AD Connect : ディレクトリ同期の応用 – オブジェクト間の属性値の移動](./azure-active-directory-connect/move-attribute-values-between-objects.md)
 - Azure AD Connect : 2018/11/7 以降 AADC 1.0.8641.0 以前では Password Writeback が利用できない
 - Office 365 の TLS 1.0/1.1 無効化に伴うAzure AD Connectの対応
-- Azure AD Connect サーバーの CPU 使用率が頻繁に 100% になる問題について
+- [Azure AD Connect サーバーの CPU 使用率が頻繁に 100% になる問題について](./azure-active-directory-connect/problem-cpu-usage-100-aadc-server.md)
 - [Azure AD Connect アップグレード手順](./azure-active-directory-connect/how-to-upgrade.md)
-- Azure AD Connect サーバー : ウィルス対策ソフト除外項目 / 使用する通信ポート
-- Azure AD Connect : ディレクトリ同期の基本的なポイント
-- Azure AD Connect：属性フロー（変換フロー）のためのカスタム同期ルールの作り方
-- “AAD Notification” から送られた DirSync に関するメールについて
+- [Azure AD Connect サーバー : ウィルス対策ソフト除外項目 / 使用する通信ポート](./azure-active-directory-connect/port-used-by-aadc.md)
+- [Azure AD Connect : ディレクトリ同期の基本的なポイント](./azure-active-directory-connect/basic-points-directory-synchronization.md)
+- [Azure AD Connect：属性フロー（変換フロー）のためのカスタム同期ルールの作り方](./azure-active-directory-connect/how-to-create-a-custom-aadsync-synchronization-rule.md)
+- [AAD Notification から送られた DirSync に関するメールについて](./azure-active-directory-connect/aad-notification.md)
 - Azure AD Connect Health Notification メールについて
 - Azure AD Connect ビルド 1.1.749.0 の注意点
 - Azure AD Connect サービスアカウントに関するセキュリティ アドバイザリについて (MC125948)
-- Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
+- [Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](./azure-active-directory-connect/upn-hard-match.md)
 - Azure AD Connect で実現するシングル サインオン
 - DirSync & ADSync – 2017/12/31 で終了のお知らせ
-- [Azure AD Connect] ID 同期と重複属性の回復性の動作について
+- [[Azure AD Connect] ID 同期と重複属性の回復性の動作について](./azure-active-directory-connect/duplicate-attribute-recoverability-behavior.md)
 - [自動アップグレード機能の問題](./azure-active-directory-connect/auto-upgrade-issue.md)
 - [[調査に有効な採取情報] Azure AD Connect サーバーの全般情報](./azure-active-directory-connect/general-information.md)
 - [[調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題](./azure-active-directory-connect/problem-user-synchronize.md)
