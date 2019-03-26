@@ -34,12 +34,12 @@ Azure AD Connect サーバーの通信要件は下記弊社サイトにてまと
 Title : [ハイブリッド ID で必要なポートとプロトコル](https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-ports)
 上記サイト内で Azure AD Connect の要件として必要な表は下記となります。
 
-表 1 - Azure AD Connect とオンプレミスの AD
-表 2 - Azure AD Connect と Azure AD
-表 6a - SSO でのパススルー認証のトラブルシューティング
-表 6b - SSO でのパスワード ハッシュ同期
-表 7a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル
-表 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
+表 1 - Azure AD Connect とオンプレミスの AD<br>
+表 2 - Azure AD Connect と Azure AD<br>
+表 6a - SSO でのパススルー認証のトラブルシューティング<br>
+表 6b - SSO でのパスワード ハッシュ同期<br>
+表 7a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル<br>
+表 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント<br>
 
 上述のサイト内にもリンクがありますが、Azure AD Connect の接続先である Azure サービス (AAD など) の接続先 IP アドレスは下記となります。
 
