@@ -47,6 +47,7 @@ tags:
 ** マッチングする属性や仕組みは連携アプリケーションによって異なります。
  
 //参考: プロビジョニング設定画面
+
 ![](./azure-ad-provisioning/azure-ad-provisioning-3.png)
  
 ### よくあるお問い合わせ・ご質問
@@ -58,6 +59,7 @@ tags:
 3. [監査ログ] を選択します。
  
 // 参考: Google Apps にアカウントが作成された際の監査ログ
+
 ![](./azure-ad-provisioning/azure-ad-provisioning-4.png)
  
 #### <span style="color: #ff0000; ">Q.</span> プロビジョニング対象に Azure AD のセキュリティ グループを割り当てているが、セキュリティ グループのメンバーを入れ替えても変更したユーザー情報が SaaS アプリケーションにプロビジョニングされない
@@ -88,6 +90,7 @@ tags:
 - プロビジョニングの設定画面
  
 // 参考: プロビジョニングの設定画面
+
 ![](./azure-ad-provisioning/azure-ad-provisioning-5.png)
  
 こちらでは同期の詳細を割愛しておりますが、お問い合わせ頂く際には同期の詳細結果も見えるように情報をお寄せください。
