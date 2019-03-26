@@ -52,8 +52,7 @@ Title: [Office 365 の URL と IP アドレスの範囲](https://docs.microsoft.
 
 ![](./port-used-by-aadc/ports.jpg) 
 
-1 : ポート番号 : 49152 ～ 65535
-
+1 : ポート番号 : 49152 ～ 65535<br>
 2 : Azure AD Connect Health Agent を使用する場合のみです。
 Azure AD Connect Healt Agent の通信ポート以外の要件については [こちら](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-health-agent-install) をご参照ください。
 その他ご利用のサービスなどで使用するポートや懸念事項がございましたら、お気軽に弊社テクニカル サポートまでご連絡いただければ幸いです。
