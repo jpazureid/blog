@@ -107,7 +107,9 @@ Name : contoso.onmicrosoft.com - AAD : 同期先 AAD テナント向けのコネ
 Name : contoso.local : 同期元オンプレ AD 向けのコネクター名です。
 ``` 
 2. 最新の情報を学習する同期の終了後、コマンド プロンプトを管理者として起動して以下のコマンドを実行します。
-C:\Program Files\Microsoft Azure AD Sync\Bin\csexport.exe "contoso.onmicrosoft.com - AAD" C:\temp\AADexport.xml /f:x 
+```
+C:\Program Files\Microsoft Azure AD Sync\Bin\csexport.exe "contoso.onmicrosoft.com - AAD" C:\temp\AADexport.xml /f:x
+```
  
 引数の AAD テナント向けコネクター名はご利用環境に即したものを指定します。<br>
 出力する xml ファイルのパスとファイル名の指定は任意で問題ありません。<br>
@@ -116,7 +118,9 @@ C:\Program Files\Microsoft Azure AD Sync\Bin\csexport.exe "contoso.onmicrosoft.c
 これで AADC が把握している最新の学習情報より、Export を実行したら追加/変更/削除される予定のデータのみが xml に出力されます。
  
 3. そのままでは見づらいので以下のコマンドを実行して解析しやすく整形して csv ファイルとして保存します。
+```
 C:\Program Files\Microsoft Azure AD Sync\Bin\CSExportAnalyzer.exe C:\temp\AADexport.xml > C:\temp\AADexport.csv
+```
 
 4. 出力された csv ファイルを開きます。エクセルで開いてカンマ区切りで表示すると見やすいです。
  
