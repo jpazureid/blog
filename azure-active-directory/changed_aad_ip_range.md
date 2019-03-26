@@ -5,14 +5,18 @@ tags:
   - Azure AD
 ---
 
+# Azure Active Directory への接続で使用する IP アドレス範囲の変更
+
 日々ブログをご愛読してくれている皆様、Azure Identity チームの宮林です。
 
 先日、新着情報にて広報された、2018 年 9 月 10 日までに変更が行われる Azure Active Directory の IP アドレス範囲についてお知らせいたします。
+
 IP アドレス範囲の変更とありますが、去年から追加となった範囲内への変更となりますので、すでにご対応済みの場合は影響がございません。
 
 以下のページで告知している Azure Active Directory の新着情報の抜粋と、Q＆A 形式で IP アドレス範囲の変更に伴う影響について補足します。
 
 - Azure Active Directory の新着情報
+
   https://docs.microsoft.com/ja-jp/azure/active-directory/fundamentals/whats-new
 
 
@@ -63,6 +67,7 @@ Azure Active Directory に対しての通信に必要な宛先 IP アドレス�
 
 
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。
+
 上記内容が少しでも皆様の参考となりますと幸いです。
 
 ※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
