@@ -45,8 +45,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 
 上述のサイト内にもリンクがありますが、Azure AD Connect の接続先である Azure サービス (AAD など) の接続先 IP アドレスは下記となります。
 
-Title: Office 365 URL および IP アドレス範囲<br>
-https://support.office.com/ja-jp/article/office-365-url-%E3%81%8A%E3%82%88%E3%81%B3-ip-%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E7%AF%84%E5%9B%B2-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=ja-JP&rs=ja-JP&ad=JP
+Title: [Office 365 の URL と IP アドレスの範囲](https://docs.microsoft.com/ja-jp/office365/enterprise/urls-and-ip-address-ranges?redirectSourcePath=%252fja-jp%252farticle%252foffice-365-url-%25e3%2581%258a%25e3%2582%2588%25e3%2581%25b3-ip-%25e3%2582%25a2%25e3%2583%2589%25e3%2583%25ac%25e3%2582%25b9%25e7%25af%2584%25e5%259b%25b2-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
 
 この情報は将来的に変更が行われる可能性があります。<br>
 上記の内容を下記表にて纏めさせていただきました。
