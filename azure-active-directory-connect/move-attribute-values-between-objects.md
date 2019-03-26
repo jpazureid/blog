@@ -27,7 +27,7 @@ Synchronization Service Manager での表示は下から上へ、となります
 6. Export : 現在の MV のデータを元に更新されたオンプレ AD 用 CS のデータをオンプレ AD へ Export する処理
  
 AADC の管理画面である Synchronization Service Manager で見た場合のイメージを以下に示します。
-![](./sync-routine-1024x569.jpg) 
+![](./application-directory-synchronization/sync-routine-1024x569.jpg) 
 
 
 
@@ -51,7 +51,7 @@ b. 新 AD ユーザーのメール アドレス (mail) 属性に、旧 AD ユー
  
 上記 a、b の変更を 1 回のディレクトリ同期で処理した場合、AAD に向けて同期されるオブジェクトの順序によっては、新 AAD ユーザーに変更が反映しない場合があります。
 前述の同期処理の [5. の AAD への Export] 時に a と b の処理を AAD に反映させる処理が試みられますが、a と b のどちらの処理が先に行われるかは担保されません。このとき b の処理 (新 AAD ユーザー オブジェクトへの同期) が先に行われると、新 AAD ユーザーに反映したかったメール アドレスが旧 AD ユーザーで利用されているために更新が行われず、結果として a の処理のみが行われて b の処理が行われません。この状況をもう少し詳しく記載したのが下図になります。
-![](./mail-duplicate-1024x568.jpg)  
+![](./application-directory-synchronization/mail-duplicate-1024x568.jpg)  
 
 このような状態になった場合、<span style="color: green; ">"次回の同期で新 AD ユーザーの mail 属性値が改めて新 AAD の mail 属性に更新されるのでは？" </span>と考える方もいるかもしれません。
 しかし、次回の同期時には <span style="color: green; ">AD からの Import において、AADC の MV 情報は何も更新されないため、AADC は AAD に改めて Export すべき更新が無い</span>と判断します。
