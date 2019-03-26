@@ -41,7 +41,7 @@
 - [調査に有効な採取情報] ブラウザ経由での Azure AD 認証
 - [“Baseline policy: Require MFA for admins” について](./azure-active-directory/about-baseline-policy-require-mfa-for-admins.md)
 - [Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御](./azure-active-directory/password-sprey-attack.md)
-- [Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト](./azure-active-directory/azure-ad-reporting-api.md)
+- [Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト](./azure-active-directory/microsoft-graph-api-signin-activity-reports.md)
 - [Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない](./azure-active-directory/ios-accounts.md)
 - [Azure AD の ExpressRoute サポート変更](./azure-active-directory/expressroute-support.md)
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./azure-active-directory/zero-trust-network.md)
