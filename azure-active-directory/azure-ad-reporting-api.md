@@ -20,11 +20,13 @@ Azure AD のサインイン アクティビティ レポートと監査アクテ
 以下の公開情報では、それぞれのレポートを PowerShell スクリプトを用いて取得する方法を紹介しています。
  
 - Azure Active Directory サインイン アクティビティ レポート API のサンプル
-  - https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-sign-in-activity-samples
+
+  https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-sign-in-activity-samples
 
 
 - Azure Active Directory レポートの監査 API の例
-  -https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-audit-samples
+
+  https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-audit-samples
  
 しかし、上記の方法は、レポートを .json ファイル形式で保持し、取得する方法です。
 
@@ -100,6 +102,7 @@ Invoke-AzureADGraphAPIQuery -TenantDomain $tenantdomain -AccessToken $AccessToke
 ```
  
 ### 監査レポートの場合
+
 ```powershell
 # Import AzureADUtils Module
 Import-Module AzureADUtils
@@ -125,12 +128,15 @@ Invoke-AzureADGraphAPIQuery -TenantDomain $tenantdomain -AccessToken $AccessToke
 Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートについては、以下の公開情報も参考いただければと思います。
 
 - Azure Active Directory レポートの保持ポリシー
+
     https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-retention
  
 - Azure Active Directory 監査 API リファレンス
+
     https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-audit-reference
  
 - Azure Active Directory サインイン アクティビティ レポート API リファレンス
+
     https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-sign-in-activity-reference
  
 本ブログの情報がお客様の検証や運用のお役に少しでもお役に立てば幸いです。
