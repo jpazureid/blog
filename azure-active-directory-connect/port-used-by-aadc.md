@@ -48,7 +48,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 Title: Office 365 URL および IP アドレス範囲
 https://support.office.com/ja-jp/article/office-365-url-%E3%81%8A%E3%82%88%E3%81%B3-ip-%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E7%AF%84%E5%9B%B2-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=ja-JP&rs=ja-JP&ad=JP
 
-この情報は将来的に変更が行われる可能性があります。br
+この情報は将来的に変更が行われる可能性があります。<br>
 上記の内容を下記表にて纏めさせていただきました。
 
 ![](./port-used-by-aadc/ports.jpg) 
