@@ -20,7 +20,7 @@
 - [Azure AD のサインイン画面に関するアップデートのお知らせ](./azure-active-directory/azure-ad-sign-in-experience.md)
 - ハイブリッド Azure Active Directory 参加済みデバイスの構成について
 - [Azure AD プロビジョニング機能について](./azure-active-directory/azure-ad-provisioning.md)
-- Azure AD が発行するトークンの有効期間について
+- [Azure AD が発行するトークンの有効期間について](./azure-active-directory/aad-token-lifetime.md)
 - [Azure AD 有償ライセンスの購入方法](./azure-active-directory/azure-ad-purchase.md)
 - [クレーム ルールと条件付きアクセスの比較](./active-directory-federation-service/claim-rule-conditional-access.md)
 - [Azure AD Reporting API を利用して PowerShell より Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを CSV ファイルで取得する方法](./azure-active-directory/azure-ad-reporting-api.md)
