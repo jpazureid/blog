@@ -124,7 +124,7 @@ $daysago = "{0:s}" -f (get-date).AddDays(-<採取したいログの過去の日�
 Invoke-AzureADGraphAPIQuery -TenantDomain $tenantdomain -AccessToken $AccessToken -GraphQuery "/activities/audit?api-version=beta&`$filter=activityDate gt $daysago" | Export-Csv -Path "<出力ファイルのファイル名>.csv"
 ```
 
-### 参考情報
+#### 参考情報
 
 Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートについては、以下の公開情報も参考いただければと思います。
 
