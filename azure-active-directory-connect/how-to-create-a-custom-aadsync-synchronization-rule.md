@@ -56,7 +56,7 @@ Azure AD Connect の同期ルール作成についてのチュートリアルが
    6. Link Type: join
    7. Precedence: 93
 
-      <span style="background-color: #ffff00;">注意）注意）優先度を上げるために”小さい”数字を選びました。</span>
+      <span style="background-color: #ffff00;">注意）優先度を上げるために”小さい”数字を選びました。</span>
 
       ![](./how-to-create-a-custom-aadsync-synchronization-rule/clip_image0052.jpg)
 
