@@ -74,6 +74,7 @@ json ファイル形式は以下のようになり、このままは利用しづ
 9. 以下のドキュメントに記載された手順に従って、アプリケーションを登録し、"構成設定を収集する" に従って必要な情報を取得します。
  
    Azure AD Reporting API にアクセスするための前提条件
+   
    https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal
  
 10. テキスト エディタを開き、次の中身をコピーしたうえで、環境に合わせて赤字部分の内容を設定した上で、実行します。
