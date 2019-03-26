@@ -72,14 +72,14 @@ AADC のバージョン 1.1.486.0 以前では ObjectGUID 属性が規定値と�
  
 AADC 構成ウィザードにて、SourceAnchor と UPNSource それぞれの設定値を選択する画面を以下にご紹介します。
  
-**SourceAnchor**
+#### SourceAnchor
 ![](./basic-points-directory-synchronization/select-sourceanchor.jpg) 
 [Azure でソース アンカーを管理します] を選択すると、mS-DS-ConsistencyGUID 属性が利用できる場合は本属性を SourceAnchor に選択しようとします。<br>
 もし mS-DS-ConsistencyGUID 属性が利用できない場合は ObjectGUID 属性を SourceAnchor に選択しようとします。<br>
 こちらの動きに関しては以下の技術情報に説明を公開していますので、併せてご参照ください。<br>
 [Azure AD Connect: 設計概念](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/plan-connect-design-concepts)
  
-**UPNSource**
+#### UPNSource
 ![](./basic-points-directory-synchronization/select-upnsource.jpg) 
  
 なお、この2つの設定は [基本的に] AADC の最初の構成ウィザード時にのみ指定が可能ですので、構成後に後から変更したい場合は、AADC の再セットアップが必要になります。<br>
