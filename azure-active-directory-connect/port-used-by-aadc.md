@@ -5,18 +5,17 @@ tags: AAD Connect
 ---
 # Azure AD Connect サーバー : ウィルス対策ソフト除外項目 / 使用する通信ポート
 
-こんにちは！Azure Identity サポートの谷です。
+こんにちは！Azure Identity サポートの谷です。<br>
 Azure AD Connect サーバーを新規構築に構築する場合や既存環境のセキュリティ面での見直しなどの背景により、
 サードパーティ製のウィルス対策ソフトやファイアウォールでの通信制限についてのお問い合わせを多くいただいています。
-公開情報等の情報を踏まえ、これらの情報を一目できるようにお纏めしました。
+公開情報等の情報を踏まえ、これらの情報を一目できるようにお纏めしました。<br>
 構築時や運用時の参考にしていただければ幸いです。
  
 
 ## ウィルス対策ソフトでのスキャン除外項目
 
 基本的には SQL Server 2012 Express LocalDB としての除外をご考慮いただければと存じますので、以下の技術情報をまずは参考としてご参照いただければと存じます。
-Title: SQL Server を実行しているコンピューター上で実行するウイルス対策ソフトウェアを選択する方法
-https://support.microsoft.com/ja-jp/help/309422/how-to-choose-antivirus-software-to-run-on-computers-that-are-running
+Title: [SQL Server を実行しているコンピューター上で実行するウイルス対策ソフトウェアを選択する方法](https://support.microsoft.com/ja-jp/help/309422/how-to-choose-antivirus-software-to-run-on-computers-that-are-running)
 上記技術情報を踏まえ、AADC 製品を添付の SQL Server 2012 Express LocalDB をご利用いただいた状態で、既定でセットアップされた際の除外対象は以下となります。
 - SQL Server データ ファイル格納先
 ```
@@ -32,8 +31,7 @@ C:\Program Files\Microsoft SQL Server\110\LocalDB\Binn\sqlservr.exe
 
 ## 通信ポート要件
 Azure AD Connect サーバーの通信要件は下記弊社サイトにてまとめさせていただいております。
-Title : ハイブリッド ID で必要なポートとプロトコル
-https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-ports
+Title : [ハイブリッド ID で必要なポートとプロトコル](https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-ports)
 上記サイト内で Azure AD Connect の要件として必要な表は下記となります。
 
 表 1 - Azure AD Connect とオンプレミスの AD
