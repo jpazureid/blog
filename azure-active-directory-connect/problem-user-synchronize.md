@@ -53,20 +53,17 @@ ldifde.exe -f c:\user1_ad.txt -t 3268 -d "CN=user1,OU=OU1,DC=contoso,DC=com" -p 
 =====================================
 -  1 の手順で ldifde コマンドにて取得したオブジェクトと同オブジェクトについて採取します。
  
-2-1. 既定で “C:\Program Files\Microsoft Azure AD Sync\UIShell” にあります “miisclient.exe” を実行し、[Synchronization Service Manager] を開きます。
- 
-2-2. 画面上部の [Metaverse Search] ボタンを押します。
-2-3. 画面上部の [Scope by Objects Type] から、[person]を選びます。
- 
-あまりにも多くのユーザーが [Search Results] として出力され、さらに細かい条件を指定する場合は、[Attribute] に属性を指定し、[Operator]に "Equal" や "Starts with(前方一致) "を選択し、[Value] に検索するユーザーのキーワードをご指定ください。
- 
-2-4. 表示された ユーザーをダブルクリックします。
-2-5. [Metaverse Object Properties]の画面をひろげ、 [Attributes] タブの設定全体が見えるようにした上で画面キャプチャを取得します。（画面が切れる場合は、スクロールなどして全体の情報を採取します）
-2-6. [Connectors]タブを選択します。
-2-7. [Distinguished Name] にAzure AD とオンプレAD の二つの表示を確認します。
-2-8. 一方の [Distinguished Name] 設定を選択します。
-2-9. 表示された [Connector Space Object Properties] の設定全体が見えるように画面キャプチャを取得します。
-2-10 [Close] を押し、先ほど選択しなかった、もう一方の [Connector Space Object Properties] についても画面キャプチャを取得します。
+2-1. 既定で “C:\Program Files\Microsoft Azure AD Sync\UIShell” にあります “miisclient.exe” を実行し、[Synchronization Service Manager] を開きます。<br>
+2-2. 画面上部の [Metaverse Search] ボタンを押します。<br>
+2-3. 画面上部の [Scope by Objects Type] から、[person]を選びます。<br>
+あまりにも多くのユーザーが [Search Results] として出力され、さらに細かい条件を指定する場合は、[Attribute] に属性を指定し、[Operator]に "Equal" や "Starts with(前方一致) "を選択し、[Value] に検索するユーザーのキーワードをご指定ください。<br>
+2-4. 表示された ユーザーをダブルクリックします。<br>
+2-5. [Metaverse Object Properties]の画面をひろげ、 [Attributes] タブの設定全体が見えるようにした上で画面キャプチャを取得します。（画面が切れる場合は、スクロールなどして全体の情報を採取します）<br>
+2-6. [Connectors]タブを選択します。<br>
+2-7. [Distinguished Name] にAzure AD とオンプレAD の二つの表示を確認します。<br>
+2-8. 一方の [Distinguished Name] 設定を選択します。<br>
+2-9. 表示された [Connector Space Object Properties] の設定全体が見えるように画面キャプチャを取得します。<br>
+2-10 [Close] を押し、先ほど選択しなかった、もう一方の [Connector Space Object Properties] についても画面キャプチャを取得します。<br>
  
 3.Synchronization Service Manager のエラー画面ショット
 =====================================
