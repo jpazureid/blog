@@ -36,7 +36,7 @@ AADC が担っているディレクトリ同期やパスワード同期は AADC 
 ## 1. Staging サーバーとは？
 シンプルに言えば [Export (書き込み) を行わない、アイドリング状態のサーバー] です。
 以下は Active サーバーと Staging サーバーを並べて構成したイメージとなります。
-![](./aadc_staging_1-1.jpg)
+![](./introduction-staging-server/aadc_staging_1-1.jpg)
 
 左が Active サーバー、右が Staging サーバーになります。
 見ての通り [Import で最新の情報を取り込み、Sync でデータベースを更新する] ところまでは一緒ですが、最後の Export (書き込み) 処理をしない、というのが Staging サーバーの動作です。
@@ -57,12 +57,12 @@ Staging サーバーの構成方法はすこぶる簡単です！
 また、インストール後に Active から Staging へ、もしくはその逆にモードを変更するのも非常に簡単です。
 インストール後の環境で Azure AD Connect ウィザード　(C:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe)　を起動して、追加のタスク画面にて [ステージング モードの構成] メニューを選択するだけです。
 ※ [こちら](https://github.com/jpazureid/blog/blob/master/azure-active-directory-connect/how-to-upgrade.md) の Blog でも Staging サーバーの構成手順をご紹介しておりますので、併せて参考にしていただければと思います！
-![](./aadc_staging_2-1.jpg)
+![](./introduction-staging-server/aadc_staging_2-1.jpg)
 
 (バージョン 1.2.67.0 の画面です。バージョンによって表示が違う場合があります。)
  
 ウィザードを進めると以下のようなメニューが表示されるので、チェックを入れて進めれば Staging モードに、チェックを外して進めれば Active モードに切り替えられます。
-![](./aadc_staging_2-2.jpg)
+![](./introduction-staging-server/introduction-staging-server/aadc_staging_2-2.jpg)
  
 ご注意いただきたいポイントとして [1つの AAD テナントには1台の AADC Active サーバーのみがサポートされるトポロジである] 点です。
 前述した [こちら](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/plan-connect-topologies) の技術情報でサポートされる/されないトポロジをご案内していますが、<span style="color: red; ">**1つの AAD テナントに複数の Active な AADC サーバーから同期を行う構成は取れません**</span>のでご注意ください。
@@ -121,7 +121,7 @@ C:\Program Files\Microsoft Azure AD Sync\Bin\CSExportAnalyzer.exe C:\temp\AADexp
 4. 出力された csv ファイルを開きます。エクセルで開いてカンマ区切りで表示すると見やすいです。
  
 新規ユーザーの作成、既存ユーザーの属性値変更、既存ユーザーの削除、の3つのオブジェクトの更新がある状態で取得したサンプルが以下です。
-![](./aadc_staging_3-1.jpg)
+![](./introduction-staging-server/aadc_staging_3-1.jpg)
 
 見やすくなるように整形していますが、ポイントになる見方は以下の通りです。
 - OMODT 欄は [オブジェクトに対する処理の種類] です。この欄が add なら新規のオブジェクト追加、update なら既存のオブジェクトへの変更、delete なら既存オブジェクトの削除を意味します。
