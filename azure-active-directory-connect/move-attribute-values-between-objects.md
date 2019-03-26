@@ -6,7 +6,8 @@ tags:
 # Azure AD Connect : ディレクトリ同期の応用 – オブジェクト間の属性値の移動
 
 こんにちは。Azure Identity チームの金森です。
-今回は Azure AD Connect (AADC) ツールを利用している環境で "オンプレミス AD ユーザー B にセットしたメール アドレス値が同期先 AAD ユーザーに反映されない" という事象について AADC の動作仕様を元に解説します。今回 AADC の動作についての応用編となりますので、先に基本的な考え方については、以下の Blog もぜひご参照いただけたら嬉しいです。
+今回は Azure AD Connect (AADC) ツールを利用している環境で "オンプレミス AD ユーザー B にセットしたメール アドレス値が同期先 AAD ユーザーに反映されない" という事象について AADC の動作仕様を元に解説します。
+今回 AADC の動作についての応用編となりますので、先に基本的な考え方については、以下の Blog もぜひご参照いただけたら嬉しいです。
  
 Azure AD Connect : ディレクトリ同期の基本的なポイント
 https://blogs.technet.microsoft.com/jpazureid/2018/05/09/synchronization-basic-point/
