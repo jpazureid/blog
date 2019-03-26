@@ -42,8 +42,9 @@ Azure AD Connect に関わる問題のときに有効ですが、同期のトラ
 ```
 c:\ProgramData\AADConnect
 %localappdata%\AADConnect
-例: c:\Users\admin001\AppData\Local\AADConnect
 ```
+例: c:\Users\admin001\AppData\Local\AADConnect
+
  
 ## 3.Azure AD Connect の構成情報
 
