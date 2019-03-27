@@ -18,7 +18,7 @@
 - [RBAC のスコープについて](./azure-active-directory/about-rbac.md)
 - [Azure AD B2B におけるユーザーの新しい招待方法](./azure-active-directory/b2b-invitation.md)
 - [Azure AD のサインイン画面に関するアップデートのお知らせ](./azure-active-directory/azure-ad-sign-in-experience.md)
-- [ハイブリッド Azure Active Directory 参加済みデバイスの構成について](./azure-active-directory\hybrid-azuread-joined-devices-setup.md)
+- [ハイブリッド Azure Active Directory 参加済みデバイスの構成について](./azure-active-directory/ybrid-azuread-joined-devices-setup.md)
 - [Azure AD プロビジョニング機能について](./azure-active-directory/azure-ad-provisioning.md)
 - [Azure AD が発行するトークンの有効期間について](./azure-active-directory/aad-token-lifetime.md)
 - [Azure AD 有償ライセンスの購入方法](./azure-active-directory/azure-ad-purchase.md)
