@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- hackathon
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -12,12 +12,12 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '11.x'
   displayName: 'Install Node.js'
 
 - script: |
     git config --global user.email "jpazidbot@microsoft.com"
     git config --global user.name "jpazidbot"
     npm install
-    npm run build
-  displayName: 'npm install and build'
+    npm test
+  displayName: 'npm test'

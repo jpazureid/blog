@@ -15,7 +15,9 @@
     "hexo-renderer-ejs": "^0.3.1",
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
-    "hexo-server": "^0.3.3"
+    "hexo-server": "^0.3.3",
+    "textlint": "^11.2.3",
+    "textlint-rule-ms-japanese-style-guide-modoki": "0.0.4"
   },
   "devDependencies": {
     "del": "^4.0.0",
@@ -26,6 +28,7 @@
   "scripts": {
     "start": "npx gulp",
     "deploy": "npx gulp publish",
-    "build": "npx gulp build"
+    "build": "npx gulp build",
+    "test": "npx textlint ./azure-active-directory/*.md"
   }
 }
