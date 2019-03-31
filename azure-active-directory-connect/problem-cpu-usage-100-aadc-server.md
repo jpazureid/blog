@@ -6,9 +6,9 @@ tags:
 ---
 # Azure AD Connect サーバーの CPU 使用率が頻繁に 100% になる問題について
 
-こんにちは、Azure ID チームの松枝です。<br>
-本記事では、Azure AD Connect サーバーの CPU 使用率が頻繁に 100% になる問題について、次のとおりご案内いたします。<br>
-先日より同様の事象について、多くのお問い合わせをいただいております (ご迷惑をお掛けしまして申し訳ありません)。<br>
+こんにちは、Azure ID チームの松枝です。  
+本記事では、Azure AD Connect サーバーの CPU 使用率が頻繁に 100% になる問題について、次のとおりご案内いたします。  
+先日より同様の事象について、多くのお問い合わせをいただいております (ご迷惑をお掛けしまして申し訳ありません)。  
 先日修正を含む Azure AD Connect のバージョンがリリースされましたので、もし本問題事象が発生しましたら、下記の対処方法を実施ください。
 
 ## 本事象の概要：
@@ -31,15 +31,15 @@ KB4345418
 もし、高負荷状態にあるプロセスが ”Microsoft.Identity.Health.AadSync.MonitoringAgent.Startup.exe” の場合、本事象に該当する可能性が高いと考えられます。
 
 ## 根本的な対処方法：
-Azure AD Connect を、本事象に対する修正を含む最新バージョン Azure AD Connect 1.1.880.0 にアップグレードします。<br>
+Azure AD Connect を、本事象に対する修正を含む最新バージョン Azure AD Connect 1.1.880.0 にアップグレードします。  
 バージョン 1.1.880.0 における修正内容につきましては、下記の弊社技術情報をご参照ください。
 - [Azure AD Connect: Version release history - 1.1.880.0](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history#118800)
  
 ## 暫定的な対処方法：
-運用上の理由で上記の根本的な対処が難しい場合、本事象の原因となっているサービス「Azure AD Connect Health Sync Monitoring Service」を停止することでも回避できます。アップグレードするまでの暫定的な対処方法としてご検討ください。<br>
+運用上の理由で上記の根本的な対処が難しい場合、本事象の原因となっているサービス「Azure AD Connect Health Sync Monitoring Service」を停止することでも回避できます。アップグレードするまでの暫定的な対処方法としてご検討ください。  
 なお、このサービスを停止した場合、Azure AD Connect Health for Sync の機能は利用できなくなりますが、Azure AD Connect の同期処理や認証処理に影響はありません。
  
-上記内容が少しでも参考となりますと幸いです。<br>
+上記内容が少しでも参考となりますと幸いです。  
 製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。
  
 ## 関連する記事：
