@@ -33,7 +33,7 @@
 - [Azure Active Directory の PowerShell モジュール](./azure-active-directory/powershell-module.md)
 - [Azure サブスクリプションと Azure AD の管理者](./azure-active-directory/subscription-azure-ad-relationship.md)
 - [「アクセス権がありません」のエラーについて](./azure-active-directory/azuread-access-denied.md)
-- サブスクリプションが見えない
+- [サブスクリプションが見えない](./azure-active-directory/subscription-azuread.md)
 - 招待したユーザーが利用できない
 - 招待メールを使用しないユーザーの追加方法
 - 登録されたデバイスの管理方法
