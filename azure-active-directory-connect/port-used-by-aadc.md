@@ -5,10 +5,10 @@ tags: AAD Connect
 ---
 # Azure AD Connect サーバー : ウィルス対策ソフト除外項目 / 使用する通信ポート
 
-こんにちは！Azure Identity サポートの谷です。<br>
+こんにちは！Azure Identity サポートの谷です。  
 Azure AD Connect サーバーを新規構築に構築する場合や既存環境のセキュリティ面での見直しなどの背景により、
 サードパーティ製のウィルス対策ソフトやファイアウォールでの通信制限についてのお問い合わせを多くいただいています。
-公開情報等の情報を踏まえ、これらの情報を一目できるようにお纏めしました。<br>
+公開情報等の情報を踏まえ、これらの情報を一目できるようにお纏めしました。  
 構築時や運用時の参考にしていただければ幸いです。
  
 
@@ -34,23 +34,23 @@ Azure AD Connect サーバーの通信要件は下記弊社サイトにてまと
 Title : [ハイブリッド ID で必要なポートとプロトコル](https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-ports)
 上記サイト内で Azure AD Connect の要件として必要な表は下記となります。
 
-表 1 - Azure AD Connect とオンプレミスの AD<br>
-表 2 - Azure AD Connect と Azure AD<br>
-表 6a - SSO でのパススルー認証のトラブルシューティング<br>
-表 6b - SSO でのパスワード ハッシュ同期<br>
-表 7a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル<br>
-表 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント<br>
+表 1 - Azure AD Connect とオンプレミスの AD  
+表 2 - Azure AD Connect と Azure AD  
+表 6a - SSO でのパススルー認証のトラブルシューティング  
+表 6b - SSO でのパスワード ハッシュ同期  
+表 7a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル  
+表 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント  
 
 上述のサイト内にもリンクがありますが、Azure AD Connect の接続先である Azure サービス (AAD など) の接続先 IP アドレスは下記となります。
 
 Title: [Office 365 の URL と IP アドレスの範囲](https://docs.microsoft.com/ja-jp/office365/enterprise/urls-and-ip-address-ranges?redirectSourcePath=%252fja-jp%252farticle%252foffice-365-url-%25e3%2581%258a%25e3%2582%2588%25e3%2581%25b3-ip-%25e3%2582%25a2%25e3%2583%2589%25e3%2583%25ac%25e3%2582%25b9%25e7%25af%2584%25e5%259b%25b2-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
 
-この情報は将来的に変更が行われる可能性があります。<br>
+この情報は将来的に変更が行われる可能性があります。  
 上記の内容を下記表にて纏めさせていただきました。
 
 ![](./port-used-by-aadc/ports.jpg) 
 
-1 : ポート番号 : 49152 ～ 65535<br>
+1 : ポート番号 : 49152 ～ 65535  
 2 : Azure AD Connect Health Agent を使用する場合のみです。
 Azure AD Connect Healt Agent の通信ポート以外の要件については [こちら](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-health-agent-install) をご参照ください。
 その他ご利用のサービスなどで使用するポートや懸念事項がございましたら、お気軽に弊社テクニカル サポートまでご連絡いただければ幸いです。

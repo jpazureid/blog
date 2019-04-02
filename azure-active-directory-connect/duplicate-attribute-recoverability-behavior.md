@@ -8,7 +8,7 @@ tags:
 # [Azure AD Connect] ID 同期と重複属性の回復性の動作について
 
 こんにちは、Azure & Identity サポート チームの後藤です。<br>
-2017 年 3 月に多くのテナントで有効化された ID 同期と重複属性の回復性の動作についてご紹介します。<br>
+2017 年 3 月に多くのテナントで有効化された ID 同期と重複属性の回復性の動作についてご紹介します。  
 なお、2017 年 10 月 30 日以降は例外なくすべてのテナントでこの機能は有効になっています。
  
 以下のような流れでご紹介します。
@@ -23,13 +23,13 @@ tags:
 以前は、ディレクトリ同期の際に UPN または ProxyAddresses の属性が Azure AD 内で重複するようなユーザー オブジェクトを Azure AD に同期を試みた場合、エラーが発生し、ユーザー オブジェクトを Azure AD に作成することができませんでした。
  
 一例 :
-Azure AD に、UPN : user01@contoso.com (オリジナルuser01)のユーザーが存在します。<br>
-この user01@contoso.com ユーザーは、過去にディレクトリ同期によって登録されたユーザーですが、現在は一度ディレクトリ同期運用をやめており、テナントのディレクトリ同期も無効化しています。<br>
-この状態で、オンプレミス AD ドメインに UPN : user01@contoso.com (新user01)のユーザーを作成します。<br>
+Azure AD に、UPN : user01@contoso.com (オリジナルuser01)のユーザーが存在します。  
+この user01@contoso.com ユーザーは、過去にディレクトリ同期によって登録されたユーザーですが、現在は一度ディレクトリ同期運用をやめており、テナントのディレクトリ同期も無効化しています。  
+この状態で、オンプレミス AD ドメインに UPN : user01@contoso.com (新user01)のユーザーを作成します。  
 改めてディレクトリ同期を行う運用になったので、Azure AD Connect で同じテナントに同期を行うと、オリジナルuser01と新user01の UPN 重複エラーが発生し、Azure AD へのエクスポートに失敗します。
  
-同じ UPN を持つユーザーであれば UPN ソフトマッチにより [重複ではなく結合] するのでは？と思われる方もいらっしゃるかもしれませんが、オリジナルuser01は [過去にディレクトリ同期で登録されたユーザー] であるため、ImmutableID がすでにセットされています。<br>
-そのため、この例ではソフトマッチは行われず、オリジナルuser01と新user01が別のオブジェクトとして扱われ、UPN 値の重複が問題となります。<br>
+同じ UPN を持つユーザーであれば UPN ソフトマッチにより [重複ではなく結合] するのでは？と思われる方もいらっしゃるかもしれませんが、オリジナルuser01は [過去にディレクトリ同期で登録されたユーザー] であるため、ImmutableID がすでにセットされています。  
+そのため、この例ではソフトマッチは行われず、オリジナルuser01と新user01が別のオブジェクトとして扱われ、UPN 値の重複が問題となります。  
 なお、ProxyAddresses 属性のメール アドレス (プライマリ,セカンダリ共に) も UPN と同様に重複が問題となります。
  
 このエラーを検知した場合、下記のような内容のメールで技術的通知の連絡先に通知されます。
@@ -39,11 +39,11 @@ Azure AD に、UPN : user01@contoso.com (オリジナルuser01)のユーザー�
 - Unable to update this object because the following attributes associated with this object have values that may already be associated with another object in your local directory services: [**ProxyAddresses**SMTP:user01@contoso.com;]. Correct or remove the duplicate values in your local directory."
 (このオブジェクトに紐づく属性値 [**ProxyAddresses** SMTP:user01@contoso.com;] は、ローカル ディレクトリ サービスの他のオブジェクトに既に紐付けられているため、このオブジェクトを更新できません。ローカル ディレクトリの重複している属性値を変更または削除してください。)
  
-以降、重複した属性値の状態を解消する対処を実施するまでは、定期的な同期処理が行われる毎に失敗し、このメールが通知されます。<br>
+以降、重複した属性値の状態を解消する対処を実施するまでは、定期的な同期処理が行われる毎に失敗し、このメールが通知されます。  
 重複属性の回復性が有効になるまでは！
  
 ## 2. ID 同期と重複属性の回復性の動作
-前述の例のように、ディレクトリ同期の際に UPN または ProxyAddresses の属性が Azure AD にて重複するようなユーザー オブジェクトを Azure AD に同期しようとしても、重複属性の回復性が有効なテナントでは、Export 処理時のエラーが出力されることなく、ユーザー オブジェクトが Azure AD に作成されます。<br>
+前述の例のように、ディレクトリ同期の際に UPN または ProxyAddresses の属性が Azure AD にて重複するようなユーザー オブジェクトを Azure AD に同期しようとしても、重複属性の回復性が有効なテナントでは、Export 処理時のエラーが出力されることなく、ユーザー オブジェクトが Azure AD に作成されます。  
 もちろん、値が重複した2つのオブジェクトを登録することはできないため、後から同期により生成されるユーザーのプレフィックス部分には 4 桁の数字がつき、サフィックス部分にはイニシャル ドメイン名が付与されます。
  
 一例 :
@@ -60,8 +60,8 @@ Azure AD に、UPN : user01@contoso.com (オリジナルuser01)のユーザー�
  
 - このオブジェクトは Azure Active Directory で更新されましたが、次の属性が他のオブジェクト [ProxyAddresses SMTP:user01@contoso.com;] と関連付けられているため、一部のプロパティが変更されています。この問題を解決する手順に関しては、https://aka.ms/duplicateattributeresiliency をご覧ください。
  
-このメールは検知された初回のみ送信され、以降繰り返される同期のタイミングでは送信されません。<br>
-そのため、後から重複対象のオブジェクトをメールの履歴のみで探すのが困難になることが予想されますが、ご安心ください。<br>
+このメールは検知された初回のみ送信され、以降繰り返される同期のタイミングでは送信されません。  
+そのため、後から重複対象のオブジェクトをメールの履歴のみで探すのが困難になることが予想されますが、ご安心ください。  
 PowerShell コマンドで重複する属性の競合のエラー状況を DirSyncProvisioningErrors から確認できます。
  
 例 :
@@ -80,7 +80,7 @@ UserPrincipalName  : user012457@contoso.onmicrosoft.com
 以上は UserPrincipalName が重複する場合の動作ですが ProxyAddresses の値が重複する場合には重複した情報は削除されます。例えば UserPrincpalName と ProxyAddresses の両方が重複している場合には、ディレクトリ同期の結果 UserPricipalName は “+<4DigitNumber>@.onmicrosoft.com”　になり、 ProxyAddresses は null となります。
  
 ## 3. 重複状態からの解消について
-約一時間に一度のバック グラウンドのタイマー タスクが Azure プラットフォームで動作しており重複が解消されているか確認します。重複属性を持つユーザーの削除、重複属性の値の修正により、重複している属性の値の重複が解消されると、DirSyncProvisioningErrors を消す動作と UPN 及び ProxyAddresses に格納されている “+<*4DigitNumber>@.onmicrosoft.com*”　の値をオンプレミス AD から元々エクスポートしようとしていた UPN 及び ProxyAddresses に格納されている値に自動的に修正する動作が生じます。<br>
+約一時間に一度のバック グラウンドのタイマー タスクが Azure プラットフォームで動作しており重複が解消されているか確認します。重複属性を持つユーザーの削除、重複属性の値の修正により、重複している属性の値の重複が解消されると、DirSyncProvisioningErrors を消す動作と UPN 及び ProxyAddresses に格納されている “+<*4DigitNumber>@.onmicrosoft.com*”　の値をオンプレミス AD から元々エクスポートしようとしていた UPN 及び ProxyAddresses に格納されている値に自動的に修正する動作が生じます。  
 経験則にはなりますが、重複が解消されてから DirSyncProvisioningErrors を消す動作と UPN 及び ProxyAddresses の自動解決には早い場合には 1.5 時間、時間を要する場合では 24 時間ほどかかります。
  
 例 :
@@ -93,17 +93,17 @@ UserPrincipalName  : user012457@contoso.onmicrosoft.com
  
 **シナリオ1. オンプレミス Active Directory 上の UPN 名に含まれるドメイン名がAzure AD にはカスタムドメインとして登録されていない場合**
  
-オンプレミス AD ドメイン上でのあるユーザーの UPN の値が user01@contoso.com だとします。<br>
+オンプレミス AD ドメイン上でのあるユーザーの UPN の値が user01@contoso.com だとします。  
 この AD ドメインのディレクトリ同期先である Azure AD のイニシャル ドメインがonmicrosoft.com であり、カスタム ドメインとして contoso.com を登録していない環境であるとします。
  
-この環境でディレクトリ同期を実施した結果 Azure AD に作成されるユーザーの UPN の値は、呼応するカスタム ドメインが存在しないので user01@contoso.onmicrosoft.com というようになります。<br>
+この環境でディレクトリ同期を実施した結果 Azure AD に作成されるユーザーの UPN の値は、呼応するカスタム ドメインが存在しないので user01@contoso.onmicrosoft.com というようになります。  
 また、この Azure AD に同期作成されたユーザーに対して属性が重複するユーザーを同期した場合 (前述の 1. 2. のような条件を満たしたケース) が生じた場合には、後から同期されたユーザーはこれまでのご案内と同様に user012547@contoso.onmicrosoft.com というようになります。
 しかし、この状況ではオリジナルの user01 が削除されるなど、重複状態が解消されても、user012547@contoso.onmicrosoft.com ユーザーの自動　UPN 変更回復は実行されません。
  
 **シナリオ2. SipProxyAddress の値が重複する場合 :**
  
-ProxyAddress 属性に SIP: として指定する SipProxyAddress 値は、Azure AD ユーザーに同期されると SipProxyAddress属性にセットされます。<br>
-この SipProxyAddress は前述の 1. や2. のような条件で重複するケースの場合は、重複属性の回復性は動作せず、“+<4DigitNumber>@.onmicrosoft.com” のユーザーが Azure AD に作成されることもありません。<br>
+ProxyAddress 属性に SIP: として指定する SipProxyAddress 値は、Azure AD ユーザーに同期されると SipProxyAddress属性にセットされます。  
+この SipProxyAddress は前述の 1. や2. のような条件で重複するケースの場合は、重複属性の回復性は動作せず、“+<4DigitNumber>@.onmicrosoft.com” のユーザーが Azure AD に作成されることもありません。  
 これは、今回の重複属性の回復性の発動対象の値が Azure AD 側のユーザーが保持する UPN と ProxyAddresses のみとなり、SipProxyAddress の重複は発動対象ではないことが原因です。以下で詳細を解説します。
  
 SipProxyAddress とは、下記一例にあるコマンドで確認することができる属性です。
@@ -129,13 +129,13 @@ SipProxyAddress とは、下記一例にあるコマンドで確認すること�
 - この状態で、オンプレミス AD ドメインに ProxyAddresses 属性内に [SIP:user01@contoso.com] の値を持つユーザーを作成します(新user01)。
 - 改めてディレクトリ同期を行う運用になったので、Azure AD Connect で同じテナントに同期を行うと、オリジナルuser01と新user01の SipProxyAddress 重複状態が検知されますが、重複属性の回復性機能の対象外であるため、単純に重複エラーとなり、Azure AD へのエクスポートが行われない結果となります。
  
-このエラーを検知した場合、下記のような内容のメールで技術的通知の連絡先に通知されます。<br>
+このエラーを検知した場合、下記のような内容のメールで技術的通知の連絡先に通知されます。  
 また、本メールは同期の処理が繰り返し行われ、都度エクスポートが失敗する度に通知されます。
  
 - このオブジェクトを更新できません。このオブジェクトに関連付けられている次の属性の値が、ローカル ディレクトリ サービスの別のオブジェクトに既に関連付けられていることが原因として考えられます: [SipProxyAddress user01@contoso.com ディレクトリで重複している値を修正または削除してください。属性値が重複しているオブジェクトの検出方法については、http://support.microsoft.com/kb/2647098 を参照してください。
  
 **シナリオ3. 一度同期対象から外したユーザーを再度同期対象に戻した場合 :**
-一度同期対象から外した後で、別のユーザーに同じ ProxyAddresses を設定し、同期します。同期対象から外したユーザーは、 Azure AD 上でも削除されますが、完全に削除されるのではなく 30 日間はごみ箱に保存されます。このゴミ箱にユーザー情報が残っていても、この場合には重複は検出されません。その上で、同期対象から外したユーザーを再度同期対象にします。このとき、別のユーザーではすでに ProxyAddresses に同じものが設定されているので重複が生じますが、重複属性の回復性機能が動作すれば、ユーザー自体の同期はされますが、 ProxyAddresses は空になると予測されますが、そうなりません。<br>
+一度同期対象から外した後で、別のユーザーに同じ ProxyAddresses を設定し、同期します。同期対象から外したユーザーは、 Azure AD 上でも削除されますが、完全に削除されるのではなく 30 日間はごみ箱に保存されます。このゴミ箱にユーザー情報が残っていても、この場合には重複は検出されません。その上で、同期対象から外したユーザーを再度同期対象にします。このとき、別のユーザーではすでに ProxyAddresses に同じものが設定されているので重複が生じますが、重複属性の回復性機能が動作すれば、ユーザー自体の同期はされますが、 ProxyAddresses は空になると予測されますが、そうなりません。  
 わかりにくいと思いますので、具体例を紹介します。
  
 1. User01@contoso.com というユーザーは ProxyAddresses としてSMTP:user01@contoso.com をもち、その情報が Azure AD に同期されています。
@@ -148,7 +148,7 @@ SipProxyAddress とは、下記一例にあるコマンドで確認すること�
 
 このエラーを検知した場合も、下記のような内容のメールで技術的通知の連絡先に通知されます。
  
-Unable to update this object because the following attributes associated with this object have values that may already be associated with another object in your local directory services: [**ProxyAddresses**SMTP:user01@contoso.com;]. Correct or remove the duplicate values in your local directory."<br>
+Unable to update this object because the following attributes associated with this object have values that may already be associated with another object in your local directory services: [**ProxyAddresses**SMTP:user01@contoso.com;]. Correct or remove the duplicate values in your local directory."  
 (このオブジェクトに紐づく属性値 [**ProxyAddresses** SMTP:user01@contoso.com;] は、ローカル ディレクトリ サービスの他のオブジェクトに既に紐付けられているため、このオブジェクトを更新できません。ローカル ディレクトリの重複している属性値を変更または削除してください。)
  
 以降、重複した ProxyAddresses の値の状態を解消する対処を実施するまでは、定期的な同期処理が行われる毎に失敗し、このメールが通知されます。
