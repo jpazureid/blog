@@ -25,6 +25,7 @@ ID とパスワードはオンプレミス側で管理しつつも、Azure AD �
 2. ドメイン グループ ポリシーを使って、ユーザーのイントラネットゾーンの設定に次の Azure AD URL を追加するポリシーをユーザーに配布します。 
 
     https://autologon.microsoftazuread-sso.com
+    
     https://aadg.windows.net.nsatc.net (以前はこちらもイントラネットゾーンへの登録が必要でしたが、現在は不要です)
  
 [前提条件](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-sso-quick-start)などはいくつかありますが、必要な手順は大まかにこの 2 つだけです。
