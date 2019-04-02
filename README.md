@@ -66,7 +66,7 @@
 - Azure AD Connect ビルド 1.1.749.0 の注意点
 - Azure AD Connect サービスアカウントに関するセキュリティ アドバイザリについて (MC125948)
 - [Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](./azure-active-directory-connect/upn-hard-match.md)
-- Azure AD Connect で実現するシングル サインオン
+- [Azure AD Connect で実現するシングル サインオン](./azure-active-directory-connect/seamless-sso.md)
 - DirSync & ADSync – 2017/12/31 で終了のお知らせ
 - [[Azure AD Connect] ID 同期と重複属性の回復性の動作について](./azure-active-directory-connect/duplicate-attribute-recoverability-behavior.md)
 - [自動アップグレード機能の問題](./azure-active-directory-connect/auto-upgrade-issue.md)
