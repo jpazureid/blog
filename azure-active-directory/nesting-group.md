@@ -11,7 +11,6 @@ tags:
 今回は Azure AD における入れ子 (ネスト) グループの対応状況についてお伝え致します。
  
 ### 入れ子のグループとは
----
 
 そもそも入れ子のグループとは、グループの中にグループを所属させているグループを指します。  
 以下の図をご覧ください。
@@ -27,7 +26,6 @@ tags:
  
 
 ### Azure AD における入れ子グループの制限
----
 
 主にお問い合わせ頂く機能の中で、現時点では以下の機能については入れ子グループに対応していません。
  
@@ -50,6 +48,7 @@ tags:
 このシナリオは Office 365 E3 のライセンスを割り当てた場合としましたが、エンタープライズ アプリケーションの割り当ての場合にも同様の動作となります。
  
 #### 参考情報
+
 Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題  
 https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/licensing-group-advanced
  
@@ -57,6 +56,7 @@ SaaS アプリケーションへのアクセスをグループで管理する
 https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/groups-saasapps
  
 #### 備考
+
 グループの入れ子については多くのお客様よりフィードバックをいただいており、弊社開発部門も実装を検討しています。  
 https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15718164-add-support-for-nested-groups-in-azure-ad-app-acc
  
