@@ -12,9 +12,9 @@
 - [Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい](./azure-active-directory/output-directory-roll-members.md)
 - [テナント制限について](./azure-active-directory/tenant-restriction.md)
 - [Azure Active Directory への接続で使用する IP アドレス範囲の変更](./azure-active-directory/changed_aad_ip_range.md)
-- Azure MFA の多要素認証設定の統合
+- [Azure MFA の多要素認証設定の統合](./azure-active-directory/mfasetupinteg.md)
 - [Azure AD におけるロール管理の新しい方法](./azure-active-directory/roles-and-administrators.md)
-- 「ユーザーはアプリケーションを登録できる」の設定について
+- [「ユーザーはアプリケーションを登録できる」の設定について](./azure-active-directory/users-can-register-applications.md)
 - [RBAC のスコープについて](./azure-active-directory/about-rbac.md)
 - [Azure AD B2B におけるユーザーの新しい招待方法](./azure-active-directory/b2b-invitation.md)
 - [Azure AD のサインイン画面に関するアップデートのお知らせ](./azure-active-directory/azure-ad-sign-in-experience.md)
@@ -47,7 +47,7 @@
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./azure-active-directory/zero-trust-network.md)
 - [4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)](./azure-active-directory/20180406-rca-azure-ad.md)
 - Azure MFA を求められるタイミングについて
-- 入れ子 (ネスト) グループへの権限付与について
+- [入れ子 (ネスト) グループへの権限付与について](./azure-active-directory/nesting-group.md)
 - [Azure AD サインイン ログ 取得方法まとめ](./azure-active-directory/how-to-get-sign-in-logs.md)
 
 ## Azure AD Connect
@@ -82,7 +82,7 @@
 - [デバイス ベースのアクセス制御](./azure-active-directory/device-based-access-control.md)
 - Office 365 の TLS 1.0/1.1 無効化に伴う AD FS / WAP (AD FS Proxy) の対応
 - [フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない](./active-directory-federation-service/kmsi-not-shown-wia.md)
-- AD FS の自動証明書ロールオーバー機能について
+- [AD FS の自動証明書ロールオーバー機能について](./active-directory-federation-service/ad-fs-auto-rollover.md)
 - [AD FS の証明書更新手順 (SSLサーバー証明書)](./active-directory-federation-service/update-ssl-server-certificate.md)
 - [AD FS の証明書更新手順 (トークン署名証明書、トークン暗号化解除証明書)](./active-directory-federation-service/update-token-certificate.md)
 - AD FS が PDC と通信するケース
