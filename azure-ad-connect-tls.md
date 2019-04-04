@@ -1,8 +1,8 @@
 --- 
 title: Office 365 の TLS 1.0/1.1 無効化に伴うAzure AD Connectの対応 
-date: 2018-09-13 //日時 
+date: 2018-09-13
 tags: 
-  - AAD Connect //タグ 
+  - AAD Connect
   - Azure Active Directory
 ---
 こんにちは。 Azure Identity サポートの谷です。  
@@ -16,7 +16,7 @@ Azure AD Connect では、Azure AD Connect、OS (および更新プログラム�
 TLS 1.2 を Azure AD Connect の通信で使用するためのサマリは以下の通りです。  
  
 # 各バージョン毎での対応
-========================================
+========================================  
 □ **OS として TLS 1.2 を利用するために必要な対応**  
 ![](./azure-ad-connect-tls/aadc_tls_1-1024x221.jpg)  
 □ **Azure AD Connect の通信 (.NET Framework) を TLS 1.2 にするために必要な対応**  
