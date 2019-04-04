@@ -16,7 +16,6 @@ Azure AD Connect では、Azure AD Connect、OS (および更新プログラム�
 TLS 1.2 を Azure AD Connect の通信で使用するためのサマリは以下の通りです。  
  
 # 各バージョン毎での対応  
-========================================  
 □ **OS として TLS 1.2 を利用するために必要な対応**  
 ![](./azure-ad-connect-tls/aadc_tls_1-1024x221.jpg)  
 □ **Azure AD Connect の通信 (.NET Framework) を TLS 1.2 にするために必要な対応**  
@@ -32,7 +31,6 @@ https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrad
 ![](./azure-ad-connect-tls/aadc_tls_3-1024x291.jpg)  
 
 **各バージョンの確認方法**  
-========================================  
 #### OS のバージョンの確認  
 #### 修正モジュール適用状況の確認  
 #### Azure AD Connect のバージョンの確認  
