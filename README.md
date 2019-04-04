@@ -55,7 +55,7 @@
 - [Azure AD Connect : ステージング サーバーのすゝめ](./azure-active-directory-connect/introduction-staging-server.md)
 - [Azure AD Connect : ディレクトリ同期の応用 – オブジェクト間の属性値の移動](./azure-active-directory-connect/move-attribute-values-between-objects.md)
 - [Azure AD Connect : 2018/11/7 以降 AADC 1.0.8641.0 以前では Password Writeback が利用できない](./azure-active-directory-connect/cantphsback-aadc.md)
-- Office 365 の TLS 1.0/1.1 無効化に伴うAzure AD Connectの対応
+- [Office 365 の TLS 1.0/1.1 無効化に伴うAzure AD Connectの対応](./azure-ad-connect-tls.md)
 - [Azure AD Connect サーバーの CPU 使用率が頻繁に 100% になる問題について](./azure-active-directory-connect/problem-cpu-usage-100-aadc-server.md)
 - [Azure AD Connect アップグレード手順](./azure-active-directory-connect/how-to-upgrade.md)
 - [Azure AD Connect サーバー : ウィルス対策ソフト除外項目 / 使用する通信ポート](./azure-active-directory-connect/port-used-by-aadc.md)
