@@ -31,14 +31,14 @@ https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrad
 以上をまとめると次のようになります。  
 ![](./azure-ad-connect-tls/aadc_tls_3-1024x291.jpg)  
 ========================================  
-** 各バージョンの確認方法 **  
+## 各バージョンの確認方法 
 ========================================  
 □ OS のバージョンの確認  
 □ 修正モジュール適用状況の確認  
 □ Azure AD Connect のバージョンの確認  
 □ .Net Framework のバージョンの確認  
 
-□ ** OS のバージョンの確認 **  
+□ ### OS のバージョンの確認  
 ----------------------------------------  
 Azure AD Connect がインストールされたサーバーにログインします。  
 コマンド プロンプトを管理者権限で起動します。  
@@ -48,21 +48,21 @@ Azure AD Connect がインストールされたサーバーにログインしま
 ```
 上記コマンド実行結果より、OS バージョンを特定することができます。  
  
-□ ** 修正モジュール適用状況の確認 **  
+□ ### 修正モジュール適用状況の確認  
 ----------------------------------------  
 Windows Server 2012 R2 未満の OS にて、後述 .Net Framework 更新プログラム適用の前提条件となる更新プログラムが適用されていることを確認します。  
 マイクロソフト セキュリティ アドバイザリ 2868725  
 https://technet.microsoft.com/ja-jp/library/security/2868725.aspx  
 バージョン情報は下記のファイルのプロパティ - 詳細 タブ内のファイル バージョンより確認できます。  
----------------  
+```
 ファイル パス : C:\Windows\System32  
 ファイル名 : schannel.dll  
----------------  
+```
 確認結果より下記より新しいバージョンであれば、適用作業を実施する必要はなく、対応は不要となります。  
 Windows Server 2008 R2 : 6.1.7601.18270  
 Windows Server 2012    : 6.2.9200.16722  
  
-□ ** Azure AD Connect のバージョンの確認 **  
+□ ### Azure AD Connect のバージョンの確認
 --------------------------------------------------  
 Azure AD Connect のバージョンの確認方法は、Azure AD Connect の Help – About からなど何通りかありますが、以下の方法で確認できます。  
  
@@ -72,26 +72,26 @@ Azure AD Connect がインストールされたサーバーにログインしま
 # wmic product list > %userprofile%\desktop\product.txt  
 デスクトップ上に作成された product.txt を開き、"Microsoft Azure AD Connect" の欄の "Version" の項目を確認します。  
  
-□ .Net Framework のバージョンの確認  
+□ ### .Net Framework のバージョンの確認  
 --------------------------------------------------  
 下記弊社技術情報の手順にて確認ます。  
 Title: インストールされている .NET Framework バージョンを確認する  
 URL : <https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed>  
  
 ========================================  
-** 対応方法 **  
+## 対応方法
 ========================================  
 -------------------------------------------------------------------------------  
-□ ** OS バージョン毎での対応方法 **  
+□ ### OS バージョン毎での対応方法 
 -------------------------------------------------------------------------------  
-<** Windows Server 2008 での対応方法 **>  
+<Windows Server 2008 での対応方法>  
 -------------------------  
 Windows Server 2008 で TLS 1.2 を利用するためには、Update for Windows Server 2008 (KB4019276) を適用する必要があります。  
 Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2 and Windows Embedded POSReady 2009  
 <https://support.microsoft.com/en-us/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows>  
  
 
-<** Windows Server 2008 R2 での対応方法 **>  
+<Windows Server 2008 R2 での対応方法>  
 -------------------------  
 Windows Server 2008 R2 では下記のレジストリ値が明示的に設定されているか確認し、未設定の場合には、設定後に OS 再起動を実施します。 
 キー：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\TLS 1.2\Server  
@@ -102,14 +102,14 @@ Windows Server 2008 R2 では下記のレジストリ値が明示的に設定さ
   名前：DisabledByDefault  
 　タイプ: REG_DWORD  
 　値：0  
-<** Windows Server 2012 以降での対応方法 **>  
+<Windows Server 2012 以降での対応方法>  
 -------------------------  
 OS としては既定で TLS 1.2 を利用するため OS にて対応は不要です。  
    
 -------------------------------------------------------------------------------  
-□ ** Azure AD Connect がバージョン 1.1.614.0 未満の場合の対応 **  
+□ ### Azure AD Connect がバージョン 1.1.614.0 未満の場合の対応  
 -------------------------------------------------------------------------------  
-<** .NET Framework 4.5.x (4.5、4.5.1 など) の場合 **>  
+<.NET Framework 4.5.x (4.5、4.5.1 など) の場合>  
 -------------------------  
 セキュリティ アドバイザリ 2960358 で紹介されている修正プログラムが必要ですので適用します。  
 マイクロソフト セキュリティ アドバイザリ 2960358  
@@ -129,7 +129,7 @@ https://support.microsoft.com/ja-jp/kb/2978675
 　タイプ: REG_DWORD  
 　値：1  
    
-<** .NET Framework 4.6 以降の場合 **>  
+<.NET Framework 4.6 以降の場合>  
 -------------------------
 特に修正プログラムの適用は不要ですが、レジストリを手動で設定する必要があります。  
 設定後のシステムの再起動は不要です (PowerShell を起動している場合は設定を反映させて TLS 1.2 を利用させるためには PowerShell の再起動が必要です)。  
@@ -144,7 +144,7 @@ Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。
 　値：1  
    
 ========================================  
-** TLS 1.2 を利用しているか確認方法 **  
+## TLS 1.2 を利用しているか確認方法  
 ========================================  
 設定後に実際に TLS1.2 での通信が行われるか確認を行う場合、下記の手順にて確認を行うことが可能です。  
 - 手順:  
