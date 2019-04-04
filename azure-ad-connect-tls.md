@@ -30,7 +30,7 @@ https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrad
  
 以上をまとめると次のようになります。  
 ![](./azure-ad-connect-tls/aadc_tls_3-1024x291.jpg)  
-========================================  
+
 **各バージョンの確認方法**  
 ========================================  
 #### OS のバージョンの確認  
@@ -69,7 +69,9 @@ Azure AD Connect のバージョンの確認方法は、Azure AD Connect の Hel
 Azure AD Connect がインストールされたサーバーにログインします。  
 コマンド プロンプトを管理者権限で起動します。  
 以下のコマンドを実行します。  
-# wmic product list > %userprofile%\desktop\product.txt  
+```
+wmic product list > %userprofile%\desktop\product.txt  
+```
 デスクトップ上に作成された product.txt を開き、"Microsoft Azure AD Connect" の欄の "Version" の項目を確認します。  
  
 ### .Net Framework のバージョンの確認  
@@ -150,16 +152,22 @@ Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。
 - 手順:  
 1. Azure AD Connect サーバーにて、コマンド プロンプトを管理者として実行します。  
 2. 以下のコマンドを実行します。  
+```
 netsh trace start capture=yes  maxSize=2000M  
 ipconfig /flushdns  
 nbtstat -R  
 klist purge  
 klist purge -li 0x3e7  
 klist purge -li 0x3e4  
+```
 3. Azure AD Connect にて差分同期を実行します。以下の PowerShell コマンドにて実行いただけます。  
+```
 Start-ADSyncSyncCycle Delta  
+```
 4. 2 のコマンドプロンプトにて、以下のコマンドを実行します。  
+```
 netsh trace stop  
+```
 5. トレース ファイルの収集処理が完了しましたら "ファイルの場所" として表示されている NetTrace.etl ファイルを採取します。  
 6. 任意の端末にて Microsoft Network Monitor を実行します。  
 7. 採取したファイルを開きます。  
@@ -167,11 +175,13 @@ netsh trace stop
 TLS.TlsRecLayer.TlsRecordLayer.SSLHandshake.HandShake.ClientHello  
 9. Destination が adminwebservice*.microsoftonline.com のパケットを選択します。(adminwebservice-s1-co2.microsoftonline.com など)  
 10. 左下のウィンドウにて、TLS の詳細を開き確認します。  
+```
 例:  
 - TLS: TLS Rec Layer-1 HandShake: Client Hello.  
 - TlsRecordLayer: TLS Rec Layer-1 HandShake:  
 ContentType: HandShake:  
 - Version: TLS 1.2   <<< ◆ TLS 1.2 で通信していることを示します  
+```
 以上で確認方法は終了となります。  
 なお、Microsoft Network Monitor は以下よりダウンロードいただけます。  
 タイトル : Microsoft Network Monitor 3.4  
