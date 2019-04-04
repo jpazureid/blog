@@ -15,7 +15,7 @@ Azure AD Connect でも TLS 1.2 による接続を有効にする必要があり
 Azure AD Connect では、Azure AD Connect、OS (および更新プログラムの適用状況)、.Net Framework のバージョンに依存し、それぞれ対応が異なります。  
 TLS 1.2 を Azure AD Connect の通信で使用するためのサマリは以下の通りです。  
  
-# 各バージョン毎での対応
+# 各バージョン毎での対応  
 ========================================
 □ **OS として TLS 1.2 を利用するために必要な対応**  
 ![](./azure-ad-connect-tls/aadc_tls_1-1024x221.jpg)  
