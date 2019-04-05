@@ -175,11 +175,14 @@ netsh trace stop
 6. 任意の端末にて Microsoft Network Monitor を実行します。  
 7. 採取したファイルを開きます。  
 8. Filter に以下を入力し、[Apply] ボタンをクリックします。(ClientHello のみを表示します)  
+```
 TLS.TlsRecLayer.TlsRecordLayer.SSLHandshake.HandShake.ClientHello  
+```
 9. Destination が adminwebservice*.microsoftonline.com のパケットを選択します。(adminwebservice-s1-co2.microsoftonline.com など)  
 10. 左下のウィンドウにて、TLS の詳細を開き確認します。  
-```
-例:  
+
+例:
+```  
 - TLS: TLS Rec Layer-1 HandShake: Client Hello.  
 - TlsRecordLayer: TLS Rec Layer-1 HandShake:  
 ContentType: HandShake:  
