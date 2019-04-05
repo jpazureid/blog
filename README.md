@@ -75,7 +75,7 @@
 
 ## AD FS
 
-- AD FS クレームルール関連のトラブルシューティング
+- [AD FS クレームルール関連のトラブルシューティング](./active-directory-federation-service/adfs-crule-ts.md)
 - [AD FS 証明書認証のトラブルシューティング](./active-directory-federation-service/adfs-cba-ts.md)
 - Windows Server 2019 AD FS の新機能
 - AD FS プロキシの混雑回避アルゴリズムの動作
