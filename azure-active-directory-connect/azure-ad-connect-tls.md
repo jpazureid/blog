@@ -8,8 +8,8 @@ tags:
 こんにちは。 Azure Identity サポートの谷です。  
 以下のサイトで案内している Office 365 での TLS 1.0 と 1.1 の無効化に伴う、Azure AD Connect での対応についてまとめました。  
  
-タイトル : Office 365 への TLS 1.2 の実装に対する準備  
-URL : https://support.microsoft.com/ja-jp/help/4057306/preparing-for-tls-1-2-in-office-365  
+Office 365 への TLS 1.2 の実装に対する準備  
+https://support.microsoft.com/ja-jp/help/4057306/preparing-for-tls-1-2-in-office-365  
  
 Azure AD Connect でも TLS 1.2 による接続を有効にする必要があります。  
 Azure AD Connect では、Azure AD Connect、OS (および更新プログラムの適用状況)、.Net Framework のバージョンに依存し、それぞれ対応が異なります。  
@@ -27,8 +27,8 @@ TLS 1.2 を Azure AD Connect の通信で使用するためのサマリは以下
 対応は不要です。  
 アップグレードを行う場合、下記をご確認ください。  
   
-タイトル : Azure AD Connect アップグレード手順  
-URL : https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/  
+Azure AD Connect アップグレード手順  
+https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/  
   
 - 以上をまとめると次のようになります。  
 ![](./azure-ad-connect-tls/aadc_tls_3-1024x291.jpg)  
@@ -55,8 +55,8 @@ Azure AD Connect がインストールされたサーバーにログインしま
 ------------------------------------------------------------------------------- 
 Windows Server 2012 R2 未満の OS にて、後述 .Net Framework 更新プログラム適用の前提条件となる更新プログラムが適用されていることを確認します。  
   
-タイトル : マイクロソフト セキュリティ アドバイザリ 2868725  
-URL : https://technet.microsoft.com/ja-jp/library/security/2868725.aspx  
+マイクロソフト セキュリティ アドバイザリ 2868725  
+https://technet.microsoft.com/ja-jp/library/security/2868725.aspx  
   
 バージョン情報は下記のファイルのプロパティ - 詳細 タブ内のファイル バージョンより確認できます。  
 ```
@@ -87,7 +87,7 @@ wmic product list > %userprofile%\desktop\product.txt
 下記弊社技術情報の手順にて確認ます。  
   
 タイトル : インストールされている .NET Framework バージョンを確認する  
-URL : https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed  
+https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed  
   
   
 ## 対応方法
@@ -97,8 +97,8 @@ URL : https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-d
 - Windows Server 2008 での対応方法  
 Windows Server 2008 で TLS 1.2 を利用するためには、Update for Windows Server 2008 (KB4019276) を適用する必要があります。  
   
-タイトル : Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2 and Windows Embedded POSReady 2009  
-URL : https://support.microsoft.com/en-us/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows  
+Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2 and Windows Embedded POSReady 2009  
+https://support.microsoft.com/en-us/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows  
  
 - Windows Server 2008 R2 での対応方法  
 Windows Server 2008 R2 では下記のレジストリ値が明示的に設定されているか確認し、未設定の場合には、設定後に OS 再起動を実施します。  
@@ -122,14 +122,14 @@ OS としては既定で TLS 1.2 を利用するため OS にて対応は不要�
 - .NET Framework 4.5.x (4.5、4.5.1 など) の場合  
 セキュリティ アドバイザリ 2960358 で紹介されている修正プログラムが必要ですので適用します。  
   
-タイトル : マイクロソフト セキュリティ アドバイザリ 2960358  
-URL : https://technet.microsoft.com/library/security/2960358  
+マイクロソフト セキュリティ アドバイザリ 2960358  
+https://technet.microsoft.com/library/security/2960358  
   
  この更新プログラムのインストール時に発生する可能性のある既知の問題が報告されていますので、併せてご確認ください。  
 (.NET Framework を使用している製品は多くあります。 Azure AD Connect 以外の役割を兼ねている場合には、更新プログラムの適用、 TLS 1.2 を利用させるように変更する際に他に影響が無いかの動作確認が必要です)  
   
-タイトル : セキュリティ更新プログラム 2960358 をインストールした後に、Internet Explorer でホストされるマネージ コントロールを含むアプリケーションとノータッチ デプロイメントが正しく機能しないことがある  
-URL : https://support.microsoft.com/ja-jp/kb/2978675  
+セキュリティ更新プログラム 2960358 をインストールした後に、Internet Explorer でホストされるマネージ コントロールを含むアプリケーションとノータッチ デプロイメントが正しく機能しないことがある  
+https://support.microsoft.com/ja-jp/kb/2978675  
  
 更新プログラムが適用されると以下のレジストリが設定されます。設定されていることを確認し、もし設定されていなければ変更します。 
 ```
@@ -201,8 +201,8 @@ ContentType: HandShake:
 以上で確認方法は終了となります。  
 なお、Microsoft Network Monitor は以下よりダウンロードいただけます。  
   
-タイトル : Microsoft Network Monitor 3.4  
-URL : http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=983b941d-06cb-4658-b7f6-3088333d062f  
+Microsoft Network Monitor 3.4  
+http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=983b941d-06cb-4658-b7f6-3088333d062f  
   
 NM34_ia64.exe ... Network Monitor 3.4 IA64 版  
 NM34_x64.exe  ... Network Monitor 3.4 x64 版  
