@@ -98,7 +98,7 @@ Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2 and Win
 - Windows Server 2008 R2 での対応方法  
 Windows Server 2008 R2 では下記のレジストリ値が明示的に設定されているか確認し、未設定の場合には、設定後に OS 再起動を実施します。  
 ```
-キー：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\TLS 1.2\Server  
+  キー：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\TLS 1.2\Server  
 　名前：Enabled  
 　タイプ: REG_DWORD  
 　値：1  
@@ -137,7 +137,8 @@ https://support.microsoft.com/ja-jp/kb/2978675
 -.NET Framework 4.6 以降の場合  
 特に修正プログラムの適用は不要ですが、レジストリを手動で設定する必要があります。  
 設定後のシステムの再起動は不要です (PowerShell を起動している場合は設定を反映させて TLS 1.2 を利用させるためには PowerShell の再起動が必要です)。  
-Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。  
+Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。 
+```
 　キー：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319  
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
@@ -146,7 +147,7 @@ Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
 　値：1  
-   
+```  
 -------------------------------------------------------------------------------  
 ### TLS 1.2 を利用しているか確認方法  
 -------------------------------------------------------------------------------  
