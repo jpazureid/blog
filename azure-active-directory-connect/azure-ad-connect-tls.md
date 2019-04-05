@@ -129,7 +129,8 @@ https://support.microsoft.com/ja-jp/kb/2978675
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
 　値：1  
- 　キー：HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319  
+  
+  キー：HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319  
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
 　値：1  
@@ -143,6 +144,7 @@ Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
 　値：1  
+  
 　キー：HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319  
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
