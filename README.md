@@ -46,7 +46,7 @@
 - [Azure AD の ExpressRoute サポート変更](./azure-active-directory/expressroute-support.md)
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./azure-active-directory/zero-trust-network.md)
 - [4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)](./azure-active-directory/20180406-rca-azure-ad.md)
-- Azure MFA を求められるタイミングについて
+- [Azure MFA を求められるタイミングについて](./azure-active-directory/azure-mfa-timing.md)
 - [入れ子 (ネスト) グループへの権限付与について](./azure-active-directory/nesting-group.md)
 - [Azure AD サインイン ログ 取得方法まとめ](./azure-active-directory/how-to-get-sign-in-logs.md)
 
