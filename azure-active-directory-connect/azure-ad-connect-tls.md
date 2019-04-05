@@ -96,7 +96,8 @@ Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2 and Win
 <https://support.microsoft.com/en-us/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows>  
  
 - Windows Server 2008 R2 での対応方法  
-Windows Server 2008 R2 では下記のレジストリ値が明示的に設定されているか確認し、未設定の場合には、設定後に OS 再起動を実施します。 
+Windows Server 2008 R2 では下記のレジストリ値が明示的に設定されているか確認し、未設定の場合には、設定後に OS 再起動を実施します。  
+```
 キー：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols\TLS 1.2\Server  
 　名前：Enabled  
 　タイプ: REG_DWORD  
@@ -104,7 +105,9 @@ Windows Server 2008 R2 では下記のレジストリ値が明示的に設定さ
    
   名前：DisabledByDefault  
 　タイプ: REG_DWORD  
-　値：0  
+　値：0
+```
+  
 - Windows Server 2012 以降での対応方法  
 OS としては既定で TLS 1.2 を利用するため OS にて対応は不要です。  
    
