@@ -123,7 +123,8 @@ https://technet.microsoft.com/library/security/2960358
 セキュリティ更新プログラム 2960358 をインストールした後に、Internet Explorer でホストされるマネージ コントロールを含むアプリケーションとノータッチ デプロイメントが正しく機能しないことがある  
 https://support.microsoft.com/ja-jp/kb/2978675  
  
-更新プログラムが適用されると以下のレジストリが設定されます。設定されていることを確認し、もし設定されていなければ変更します。  
+更新プログラムが適用されると以下のレジストリが設定されます。設定されていることを確認し、もし設定されていなければ変更します。 
+```
 　キー：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319  
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
@@ -132,7 +133,7 @@ https://support.microsoft.com/ja-jp/kb/2978675
 　名前：SchUseStrongCrypto  
 　タイプ: REG_DWORD  
 　値：1  
-   
+```
 -.NET Framework 4.6 以降の場合  
 特に修正プログラムの適用は不要ですが、レジストリを手動で設定する必要があります。  
 設定後のシステムの再起動は不要です (PowerShell を起動している場合は設定を反映させて TLS 1.2 を利用させるためには PowerShell の再起動が必要です)。  
