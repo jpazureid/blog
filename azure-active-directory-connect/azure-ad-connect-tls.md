@@ -81,8 +81,8 @@ wmic product list > %userprofile%\desktop\product.txt
 下記弊社技術情報の手順にて確認ます。  
 Title: インストールされている .NET Framework バージョンを確認する  
 URL : <https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed>  
- 
-
+  
+  
 ## 対応方法
 -------------------------------------------------------------------------------  
 ### OS バージョン毎での対応方法 
