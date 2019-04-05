@@ -5,38 +5,21 @@ tags:
   - Azure AD Directory Rolls
 ---
 
+# Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい
+
 こんにちは！ Azure & Identity サポート チームの三浦 大です。
 
- 
+今回は Azure AD のディレクトリロールが割り当てられているユーザーの一覧を CSV で出力する PowerShell スクリプトをご紹介します。Azure AD はセキュリティの観点から、ディレクトリロールにて設定できるロールが細かく分類されております。各ロールのメンバーの一覧は、先日の [ブログ](./roles-and-administrators.md) で紹介しましたように、 Azure ポータルから参照することができます。
 
-今回は Azure AD のディレクトリロールが割り当てられているユーザーの一覧を CSV で出力する PowerShell スクリプトをご紹介します。
+しかし、この一覧をファイルとして出力したいというご要望もあるかと思います。以下のとおり、ディレクトリロールの一覧を出力する PowerShell スクリプトを作成いたしましたので、ぜひご利用ください！
 
-Azure AD はセキュリティの観点から、ディレクトリロールにて設定できるロールが細かく分類されております。
-
-各ロールのメンバーの一覧は、先日の [ブログ](roles-and-administrators.md) で紹介しましたように、 Azure ポータルから参照することができます。
-
-しかし、この一覧をファイルとして出力したいというご要望もあるかと思います。
-
- 
-
-以下のとおり、ディレクトリロールの一覧を出力する PowerShell スクリプトを作成いたしましたので、ぜひご利用ください！
-
- 
-
-※ 実行に際しては、事前に Install-Module -Name MSOnline コマンドを実行し、 Azure AD PowerShell モジュールのインストールをお願いいたします。
+> 実行に際しては、事前に Install-Module -Name MSOnline コマンドを実行し、 Azure AD PowerShell モジュールのインストールをお願いいたします。
 
 Azure AD PowerShell のインストールなどについては、以下の公開情報をご参照くださいませ。
 
- 
-
-[Azure Active Directory の PowerShell モジュール](powershell-module.md)
-
-
- 
+[Azure Active Directory の PowerShell モジュール](./powershell-module.md)
 
 ## PowerShell スクリプト
-
-------
 
 ```ps1
 Import-Module MSOnline
@@ -73,22 +56,12 @@ foreach ($test in $role) {
 }
 
 $DataList | Export-Csv $outfile -Encoding Default
-
 ```
-
 
 ## 出力結果の例
 
-------
+スクリプトを実行すると資格情報が求められますので、出力対象の Azure AD テナントの全体管理者の資格情報を入力します。その後自動的に csv ファイルにロールの一覧が出力されます。以下は出力のサンプルです。
 
- スクリプトを実行すると資格情報が求められますので、出力対象の Azure AD テナントの全体管理者の資格情報を入力します。
-
-その後自動的に csv ファイルにロールの一覧が出力されます。以下は出力のサンプルです。
-
-![](output-directory-roll-members/output-directory-roll-member011.png) 
-
- 
-
- 
+![](./output-directory-roll-members/output-directory-roll-member011.png) 
 
 本ブログにて、管理者の方のご負担、少しでも軽減されれば幸甚です。
