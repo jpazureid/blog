@@ -30,6 +30,7 @@ Azure AD Connect アップグレード手順
 https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/  
  
 以上をまとめると次のようになります。  
+- まとめ  
 ![](./azure-ad-connect-tls/aadc_tls_3-1024x291.jpg)  
 
 **各バージョンの確認方法**  
