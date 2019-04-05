@@ -53,17 +53,20 @@ Azure AD Connect がインストールされたサーバーにログインしま
 ### 修正モジュール適用状況の確認  
 ------------------------------------------------------------------------------- 
 Windows Server 2012 R2 未満の OS にて、後述 .Net Framework 更新プログラム適用の前提条件となる更新プログラムが適用されていることを確認します。  
+  
 マイクロソフト セキュリティ アドバイザリ 2868725  
 https://technet.microsoft.com/ja-jp/library/security/2868725.aspx  
+  
 バージョン情報は下記のファイルのプロパティ - 詳細 タブ内のファイル バージョンより確認できます。  
 ```
 ファイル パス : C:\Windows\System32  
 ファイル名 : schannel.dll  
 ```
 確認結果より下記より新しいバージョンであれば、適用作業を実施する必要はなく、対応は不要となります。  
+```
 Windows Server 2008 R2 : 6.1.7601.18270  
 Windows Server 2012    : 6.2.9200.16722  
-
+```
 ------------------------------------------------------------------------------- 
 ### Azure AD Connect のバージョンの確認
 ------------------------------------------------------------------------------- 
@@ -81,9 +84,9 @@ wmic product list > %userprofile%\desktop\product.txt
 ### .Net Framework のバージョンの確認  
 ------------------------------------------------------------------------------- 
 下記弊社技術情報の手順にて確認ます。  
+  
 Title: インストールされている .NET Framework バージョンを確認する  
 URL : <https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed>  
-  
   
   
 ## 対応方法
@@ -92,6 +95,7 @@ URL : <https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-
 ------------------------------------------------------------------------------- 
 - Windows Server 2008 での対応方法  
 Windows Server 2008 で TLS 1.2 を利用するためには、Update for Windows Server 2008 (KB4019276) を適用する必要があります。  
+  
 Update to add support for TLS 1.1 and TLS 1.2 in Windows Server 2008 SP2 and Windows Embedded POSReady 2009  
 <https://support.microsoft.com/en-us/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows>  
  
@@ -116,10 +120,13 @@ OS としては既定で TLS 1.2 を利用するため OS にて対応は不要�
 -------------------------------------------------------------------------------  
 - .NET Framework 4.5.x (4.5、4.5.1 など) の場合  
 セキュリティ アドバイザリ 2960358 で紹介されている修正プログラムが必要ですので適用します。  
+  
 マイクロソフト セキュリティ アドバイザリ 2960358  
 https://technet.microsoft.com/library/security/2960358  
+  
  この更新プログラムのインストール時に発生する可能性のある既知の問題が報告されていますので、併せてご確認ください。  
 (.NET Framework を使用している製品は多くあります。 Azure AD Connect 以外の役割を兼ねている場合には、更新プログラムの適用、 TLS 1.2 を利用させるように変更する際に他に影響が無いかの動作確認が必要です)  
+  
 セキュリティ更新プログラム 2960358 をインストールした後に、Internet Explorer でホストされるマネージ コントロールを含むアプリケーションとノータッチ デプロイメントが正しく機能しないことがある  
 https://support.microsoft.com/ja-jp/kb/2978675  
  
@@ -192,8 +199,10 @@ ContentType: HandShake:
 ```
 以上で確認方法は終了となります。  
 なお、Microsoft Network Monitor は以下よりダウンロードいただけます。  
+  
 タイトル : Microsoft Network Monitor 3.4  
 URL : http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=983b941d-06cb-4658-b7f6-3088333d062f  
+  
 NM34_ia64.exe ... Network Monitor 3.4 IA64 版  
 NM34_x64.exe  ... Network Monitor 3.4 x64 版  
 NM34_x86.exe  ... Network Monitor 3.4 x86 版  
