@@ -143,7 +143,7 @@ https://support.microsoft.com/ja-jp/kb/2978675
 　タイプ: REG_DWORD  
 　値：1  
 ```
--.NET Framework 4.6 以降の場合  
+- .NET Framework 4.6 以降の場合  
 特に修正プログラムの適用は不要ですが、レジストリを手動で設定する必要があります。  
 設定後のシステムの再起動は不要です (PowerShell を起動している場合は設定を反映させて TLS 1.2 を利用させるためには PowerShell の再起動が必要です)。  
 Windows Server 2016 は既定で .NET Framework 4.6 が含まれています。 
