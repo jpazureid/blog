@@ -63,7 +63,7 @@
 - [Azure AD Connect：属性フロー（変換フロー）のためのカスタム同期ルールの作り方](./azure-active-directory-connect/how-to-create-a-custom-aadsync-synchronization-rule.md)
 - [AAD Notification から送られた DirSync に関するメールについて](./azure-active-directory-connect/aad-notification.md)
 - [Azure AD Connect Health Notification メールについて](./azure-active-directory-connect/azure-ad-connect-health-notification.md)
-- Azure AD Connect ビルド 1.1.749.0 の注意点
+- [Azure AD Connect ビルド 1.1.749.0 の注意点](./azure-active-directory-connect/azure-ad-connect-117490.md)
 - [Azure AD Connect サービスアカウントに関するセキュリティ アドバイザリについて (MC125948)](./azure-active-directory-connect/azure-ad-connect-mc125948.md)
 - [Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](./azure-active-directory-connect/upn-hard-match.md)
 - [Azure AD Connect で実現するシングル サインオン](./azure-active-directory-connect/seamless-sso.md)
