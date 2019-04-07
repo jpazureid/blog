@@ -75,6 +75,7 @@ import-module .\AdSyncConfig.psm1
 Set-ADSyncRestrictedPermissions -ObjectDN "<AD 接続用サービスアカウントの DistinguishedName>" -Credential $credential  
 ```
 例: Set-ADSyncRestrictedPermissions -ObjectDN "CN=MSOL_546eeedf0b95,CN=Users,DC=contoso,DC=local" -Credential $credential  
+  
 11. スクリプトを続行するか確認が行われる場合は、"Y" キーを押して ENTER キーを押します。  
 以下のメッセージが表示されていれば成功です。  
 ```
