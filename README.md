@@ -67,7 +67,7 @@
 - [Azure AD Connect サービスアカウントに関するセキュリティ アドバイザリについて (MC125948)](./azure-active-directory-connect/azure-ad-connect-mc125948.md)
 - [Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](./azure-active-directory-connect/upn-hard-match.md)
 - [Azure AD Connect で実現するシングル サインオン](./azure-active-directory-connect/seamless-sso.md)
-- DirSync & ADSync – 2017/12/31 で終了のお知らせ
+- [DirSync & ADSync – 2017/12/31 で終了のお知らせ](./azure-active-directory-connect/dirsync-adsync-20171231.md)
 - [[Azure AD Connect] ID 同期と重複属性の回復性の動作について](./azure-active-directory-connect/duplicate-attribute-recoverability-behavior.md)
 - [自動アップグレード機能の問題](./azure-active-directory-connect/auto-upgrade-issue.md)
 - [[調査に有効な採取情報] Azure AD Connect サーバーの全般情報](./azure-active-directory-connect/general-information.md)
