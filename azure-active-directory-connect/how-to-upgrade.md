@@ -45,6 +45,19 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
  
 ## 手順
 
+### アップグレード手順
+
+弊社環境にて 1.1.819.0 から 1.1.880.0 にアップグレードを行った際の手順を纏めさせていただいています。
+
+[aadc-upgrade (PDF)](./how-to-upgrade/aadc-upgrade.pdf)
+
+### ステージング モード設定手順
+
+弊社環境にて 1.1.819.0 にて実施した手順を纏めさせていただいています。
+
+[staging-mode (PDF)](./how-to-upgrade/staging-mode.pdf)
+
+
 ### 健全性確認
 
 1. AADC サーバーにてイベント ログ (システム / アプリケーション) にてエラーや警告などの記録がないことを確認します。
