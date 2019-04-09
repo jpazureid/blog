@@ -90,7 +90,7 @@ AADC 構成ウィザードにて、SourceAnchor と UPNSource それぞれの設
  
 オンプレミス AD オブジェクトと AAD オブジェクトが紐づくイメージを以下にご紹介します。  
 この例では SourceAnchor として ObjectGUID 属性、UPNSource として UPN 属性が選択されている前提となります。
-![](./basi/c-points-directory-synchronization/sync-image-1024x566.jpg) 
+![](./basic-points-directory-synchronization/sync-image-1024x566.jpg) 
 SourceAnchor に指定したオンプレミス AD ユーザーの属性値が AAD ユーザーの ImmutableID にセットされ、この2つのオブジェクトが紐づいた状態になります。
 一度紐づいた状態では、オンプレミス AD ユーザー側の属性値が変更されると、同期処理時に紐づいた AAD ユーザー側の属性値が変更されます。
  
