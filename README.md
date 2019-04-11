@@ -49,6 +49,7 @@
 - [Azure MFA を求められるタイミングについて](./azure-active-directory/azure-mfa-timing.md)
 - [入れ子 (ネスト) グループへの権限付与について](./azure-active-directory/nesting-group.md)
 - [Azure AD サインイン ログ 取得方法まとめ](./azure-active-directory/how-to-get-sign-in-logs.md)
+- [Azure AD 登録 と Azure AD 参加 の違い](./azure-active-directory/azure-ad-join-vs-azure-ad-device-registration.md)
 
 ## Azure AD Connect
 
