@@ -4,6 +4,8 @@ date: 2018-02-26
 tags:
   - AAD Connect
 ---
+# Azure AD Connect ビルド 1.1.749.0 の注意点  
+  
 こんにちは！Azure Identity サポートの橋本です。  
 
 リリースが予定されている Azure AD Connect  ビルド 1.1.749.0 へのアップグレードについて事前に共有しておいたほうが良いと思ったことがありましたので、Azure AD Connect をご利用の方はぜひご確認ください。  
