@@ -1,17 +1,14 @@
-<<<<<<< HEAD
-
-=======
 ---
-title: \[Azure AD Connect\] ID 同期と重複属性の回復性の動作について
+title: [Azure AD Connect] ID 同期と重複属性の回復性の動作について
 date: 2017-11-08
 tags:
   - AAD Connect
   - Azure AD
 ---
->>>>>>> 02bbe2b070226d5cacc3e23a13bee3140f2863b8
 # [Azure AD Connect] ID 同期と重複属性の回復性の動作について
 
-こんにちは、Azure & Identity サポート チームの後藤です。<br>
+こんにちは、Azure & Identity サポート チームの後藤です。  
+  
 2017 年 3 月に多くのテナントで有効化された ID 同期と重複属性の回復性の動作についてご紹介します。  
 なお、2017 年 10 月 30 日以降は例外なくすべてのテナントでこの機能は有効になっています。
  
