@@ -77,7 +77,7 @@
 
 - [AD FS クレームルール関連のトラブルシューティング](./active-directory-federation-service/adfs-crule-ts.md)
 - [AD FS 証明書認証のトラブルシューティング](./active-directory-federation-service/adfs-cba-ts.md)
-- Windows Server 2019 AD FS の新機能
+- [Windows Server 2019 AD FS の新機能](./active-directory-federation-service/2019adfs.md)
 - [AD FS プロキシの混雑回避アルゴリズムの動作](./active-directory-federation-service/congestion_avoidance_algorithm.md)
 - [デバイス ベースのアクセス制御](./azure-active-directory/device-based-access-control.md)
 - [Office 365 の TLS 1.0/1.1 無効化に伴う AD FS / WAP (AD FS Proxy) の対応](./active-directory-federation-service/adfs-tls12.md)
