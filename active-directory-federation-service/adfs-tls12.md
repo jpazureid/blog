@@ -81,15 +81,15 @@ AD FS の構成変更のために Azure AD PowerShell モジュール (Connect-M
 注意事項:  
 Azure AD に接続するために利用される Azure AD PowerShell モジュールは更新されています。ご案内する TLS 1.2 を利用するための対処策は 1.1.166.0 以降の Azure AD PowerShell を利用していることが前提となります。利用している Azure AD PowerShell のバージョンは次の PowerShell のコマンドで確認できます。  
   
-```
+```powershell
 (get-item C:\Windows\System32\WindowsPowerShell\v1.0\Modules\MSOnline\Microsoft.Online.Administration.Automation.PSModule.dll).VersionInfo.FileVersion  
 ```
 このコマンドで実行結果が表示されない場合には次のコマンド実行します。  
-```
+```powershell
 (get-Item "C:\Program Files\WindowsPowerShell\Modules\MSOnline\Microsoft.Online.Administration.Automation.PSModule.dll").VersionInfo.FileVersion  
 ```
 このコマンドでも表示されない場合には次のコマンドを実行します。  
-```
+```powershell
 get-module -name MSOnline  
 ```
 実行結果として 1.1.166.0 以降が表示されれば最新バージョンを利用していますので問題ありません。  
@@ -100,7 +100,7 @@ get-module -name MSOnline
 AD FS および WAP (AD FS Proxy) サーバーで .NET Framework に関するレジストリを設定します。このとき .NET Framework 4.6 より前か、それ以降かによって必要な作業が変わってきます (Azure AD PowerShell の最新版を利用するためには .NET Framework 4.5 以上が必要ですので 4.5 以降であることを前提としています)。  
 .NET Framework のバージョン番号は次の PowerShell コマンドを実行することで確認できます。  
   
-```
+```powershell
 Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | Get-ItemProperty -name Version,Release -EA 0 | Where { $_.PSChildName -match '^(?!S)\p{L}'} | Select PSChildName, Version, Release  
 ```
   
@@ -189,7 +189,7 @@ https://support.microsoft.com/en-us/help/3194197/considerations-for-disabling-an
 ```
   
 なお、管理者権限で次の PowerShell コマンドを実行することで一括して上記設定が可能です。  
-```
+```powershell
 New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server' -Force | Out-Null  
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force | Out-Null  
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null  
