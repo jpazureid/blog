@@ -65,7 +65,7 @@ Windows Server  2008 R2 で構成された AD FS / AD FS Proxy の場合には�
 正確に言うと Windows Server 2008 R2 でも Enabled については、特に値を設定していなくても 1 を設定したときと同様となっています。ただ  AD FS が TLS 1.2 を利用できるかは Enabled が 1 になっていることに加えて DisabledByDefault が 0 になっている必要がありますが Windows Server 2008 R2 では 1 です (値は既定では存在しませんが、何もなければ Windows Server 2008 R2 では 1 相当の動作になります)。対応としては DisabledByDefault のみの設定でも構いませんが、上記のように両方とも明示的にレジストリを設定しておくことをお勧めします。  
   
 なお、管理者権限で次の PowerShell コマンドを実行することで一括して上記設定が可能です。  
-```
+```powershell
 New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server' -Force | Out-Null  
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server' -name 'Enabled' -value '1' -PropertyType 'DWord' -Force | Out-Null  
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server' -name 'DisabledByDefault' -value '0' -PropertyType 'DWord' -Force | Out-Null  
