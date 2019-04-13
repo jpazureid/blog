@@ -6,6 +6,8 @@ tags:
   - ADSync
   - DirSync
 ---
+# DirSync & ADSync – 2017/12/31 で終了のお知らせ  
+  
 Azure Identity サポートチームの橋本です。  
   
 もう 2 か月を切ったのでこちらでもご案内しておきます。  
