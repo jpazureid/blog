@@ -49,7 +49,6 @@
 - [Azure MFA を求められるタイミングについて](./azure-active-directory/azure-mfa-timing.md)
 - [入れ子 (ネスト) グループへの権限付与について](./azure-active-directory/nesting-group.md)
 - [Azure AD サインイン ログ 取得方法まとめ](./azure-active-directory/how-to-get-sign-in-logs.md)
-- [Azure AD 登録 と Azure AD 参加 の違い](./azure-active-directory/azure-ad-join-vs-azure-ad-device-registration.md)
 
 ## Azure AD Connect
 
@@ -79,7 +78,7 @@
 - [AD FS クレームルール関連のトラブルシューティング](./active-directory-federation-service/adfs-crule-ts.md)
 - [AD FS 証明書認証のトラブルシューティング](./active-directory-federation-service/adfs-cba-ts.md)
 - Windows Server 2019 AD FS の新機能
-- AD FS プロキシの混雑回避アルゴリズムの動作
+- [AD FS プロキシの混雑回避アルゴリズムの動作](./active-directory-federation-service/congestion_avoidance_algorithm.md)
 - [デバイス ベースのアクセス制御](./azure-active-directory/device-based-access-control.md)
 - [Office 365 の TLS 1.0/1.1 無効化に伴う AD FS / WAP (AD FS Proxy) の対応](./active-directory-federation-service/adfs-tls12.md)
 - [フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない](./active-directory-federation-service/kmsi-not-shown-wia.md)
