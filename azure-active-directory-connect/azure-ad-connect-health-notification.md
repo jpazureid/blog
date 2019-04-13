@@ -4,6 +4,8 @@ date: 2018-03-1
 tags:
   - AAD Connect
 ---
+# Azure AD Connect Health Notification メールについて  
+  
 こんにちは！Azure Identity サポートの谷です。  
   
 Azure AD Connect を利用してオンプレミスと Azure AD を連携している環境で最近 (2018 年 2 月) 突然次のような通知メールが届いているケースがあると思います。
