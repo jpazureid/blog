@@ -1,11 +1,13 @@
 ---
-title: タイトル
-date: 2019-05-09 //日時
+title: AD FS を利用しないマネージド ドメイン環境における Hybrid Azure AD Join の構成手順
+date: 2019-05-09
 tags:
-  - Azure AD //タグ
+  - Azure AD
   - Token
   - OAuth
 ---
+
+# AD FS を利用しないマネージド ドメイン環境における Hybrid Azure AD Join の構成手順
 
 こんにちは、 Azure Identity の山口です。
 今回は AD FS を利用しないマネージド ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。
