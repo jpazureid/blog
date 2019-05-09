@@ -1,10 +1,11 @@
 ---
 title: タイトル
-date: 2019-05-09 //日時
+date: 2019-05-09
 tags:
-  - Azure AD //タグ
-  - Token
-  - OAuth
+  - Azure AD
+  - Hybrid Azure AD Join
+  - Azure AD Connect
+  - Managed Domain
 ---
 
 こんにちは、 Azure Identity の山口です。
