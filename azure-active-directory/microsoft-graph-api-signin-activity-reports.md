@@ -1,5 +1,5 @@
 ---
-title: Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト
+title: Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートをファイルに出力する PowerShell スクリプト
 date: 2019-05-23
 tags:
   - Azure AD
@@ -7,7 +7,7 @@ tags:
   - signin log
 ---
 
-# Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト
+# Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートをファイルに出力する PowerShell スクリプト
 
 > 2019/05/22: サインインアクティビティレポートを取得するための Graph API エンドポイントが beta から v1.0 に移動したため、サンプルコードの一部を変更しました。また、アプリ登録の手順も変更されたため併せて記載内容を変更しています。
 
