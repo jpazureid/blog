@@ -13,20 +13,20 @@ tags:
 
 こんにちは Azure & Identity サポート チームの 姚 ヨウ です。
 
-前回、Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを Azure AD Graph API を経緯し、PowerShell で csv 形式で取得できるスクリプトを紹介しました。
+前回、Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを Azure AD Graph API を経緯し、PowerShell で JSON 形式で取得できるスクリプトを紹介しました。
 
-既にご存知の方もいらっしゃると思いますが、マイクロソフトとしては、Azure AD Graph API ではなく、 Microsoft Graph API の利用を推進しています。今回は、PowerShell スクリプトで Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを csv 形式で取得する方法を紹介します。
+既にご存知の方もいらっしゃると思いますが、マイクロソフトとしては、Azure AD Graph API ではなく、 Microsoft Graph API の利用を推進しています。今回は、PowerShell スクリプトで Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートを JSON 形式で取得する方法を紹介します。
 
 今回のスクリプトは前回紹介しましたスクリプトと比較して以下の利点があります。
 
-- サインイン アクティビティ レポートの内容をより詳細に csv ファイルに格納します
+- サインイン アクティビティ レポートの内容をより詳細に JSON ファイルに格納します
 - アプリケーションのキーではなく証明書を利用することでセキュリティを高めています (※)
 
 ※ セキュリティ観点で 平文のキーではなく証明書を用いたトークン取得を推奨しています。
  
 以下に一連の手順を大まかに 3 つに分けて解説します。
 
-事前に、`C:\SignInReport` フォルダーなど作業用のフォルダーを作成し、以下の手順にお進みください。
+事前に、C:\SignInReport フォルダーなど作業用のフォルダーを作成し、以下の手順にお進みください。
  
 ### 1. 認証に使用する証明書の準備
 
@@ -89,7 +89,7 @@ Remove-Item nuget.exe
 
 まず、以下の手順に沿って、アプリケーションを登録します。
 
-1. Azure ポータルに、アプリケーション管理者の権限を持つアカウントでサインインします。
+1. Azure ポータルに、全体管理者の権限を持つアカウントでサインインします。
 2. Azure Active Directory のブレードを選択します。
 3. [App registrations] を選択します。
 4. [+ 新規登録] を選択します。
@@ -107,18 +107,16 @@ Remove-Item nuget.exe
 
 ここで、このブログ記事の "1. 認証に使用する証明書の準備" の手順を実行した結果作成される SelfSignedCert.cer を以下の手順で Azure AD にアップロードします。
 
-1. Azure ポータルに、アプリケーション管理者の権限を持つアカウントでサインインします。
+1. Azure ポータルに、アプリケーションを登録したアカウントでサインインします。
 2. Azure Active Directory のブレードを選択します。
 3. [App registrations] を選択します。
 4. 上記手順で登録したアプリを選択します。
 5. [証明書とシークレット] を選択します。
-6. [証明書のアップロード] を選択し、SelfSignedCert.cer を選択します。
+6. [証明書のアップロード] を選択し、SelfSignedCert.cer をアップロードします。
  
 アプリケーションの登録、証明書の登録が完了しましたら、テキスト エディタを開き、次の中身をコピーして貼り付け、環境に合わせて冒頭部分の内容を設定します。
 
-設定が完了しましたら、 GetSignInLogs.ps1 ファイルとして C:\SignInReport 配下に保存し、実行します。
-
-これによりサインイン アクティビティ レポートを csv ファイルとして取得できます。
+設定が完了しましたら、 GetSignInLogs.ps1 ファイルとして C:\SignInReport 配下に保存し、実行します。これによりサインイン アクティビティ レポートを JSON ファイルとして取得できます。
 
 ```powershell
 Add-Type -Path ".\Tools\Microsoft.IdentityModel.Clients.ActiveDirectory\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
@@ -130,7 +128,7 @@ $tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $resource = "https://graph.microsoft.com" 
 $clientID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $thumprint = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-$outfile = "output.csv"
+$outfile = "output.json"
 $data = @()
 
 # tenantID は [Azure Active Directory] - [プロパティ] よりディレクトリ ID を取得します。
@@ -189,7 +187,7 @@ else {
     Write-Host "ERROR: No Access Token"
 }
 
-$data | Out-File -FilePath $outfile
+$data | ConvertTo-Json | Out-File -FilePath $outfile
 Write-Host "Sign-in log is exported to $outfile"
 ```
 
