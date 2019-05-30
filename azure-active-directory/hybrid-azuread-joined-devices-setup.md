@@ -337,7 +337,7 @@ Windows 10 のデバイス登録の流れについて説明します。
 
     ![](./hybrid-azuread-joined-devices-setup/003.png)
 
-9. このメッセージボックスが表示されている時点で Azure AD 側にもデバイスが登録されている
+9. 再起動後、ドメインのアカウントでサインインします。サインインが完了するとタスクが実行され Azure AD 側にもデバイスが登録される
 
     ![](./hybrid-azuread-joined-devices-setup/004-1024x298.png)
 
