@@ -1,8 +1,8 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
-rss: /atom.xml
+  Home: /blog/
+  Archives: /blog/archives
+rss: /blog/atom.xml
 
 # Content
 excerpt_link: Read More
@@ -30,7 +30,8 @@ show_count: false
 # Miscellaneous
 google_analytics:
 gauges_analytics:
-favicon: /favicon.png
+# favicon links are in header.ejs
+# favicon: /favicon.png
 twitter:
 google_plus:
 fb_admins:
