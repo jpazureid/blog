@@ -9,7 +9,7 @@ tags:
 
 こんにちは、Azure & Identity サポート チームの栗井です。
 
-本記事は、2018年7月末に公開された A new way to manage roles and administrators in Azure AD を元にしています。
+本記事は、2018 年 7 月末に公開された A new way to manage roles and administrators in Azure AD を元にしています。
 これまで、 Azure AD の全体管理者などのロールを割り当てられているユーザー一覧を取得することができなかったのですが、最近の更新により、簡単に確認できるようになりました。
 元記事を参考に、ユーザーへのディレクトリロールの新しい割り当て・管理方法について、画面キャプチャを含めてご紹介します。
 
@@ -64,11 +64,11 @@ tags:
 ![](./roles-and-administrators/pim-link.png)  
 図: Privileged Identity Management 画面から「ロールと管理者」へのリンク
 
-もし組織で PIM を有効にしていなくても、「PIMで管理」をクリックすれば、管理者保護のためにPIMをどのように活用できるか確認できます。無料のトライアルもご利用可能です。
+もし組織で PIM を有効にしていなくても、「PIM で管理」をクリックすれば、管理者保護のために PIM をどのように活用できるか確認できます。無料のトライアルもご利用可能です。
 
 ![](./roles-and-administrators/pim.png)
 
-「PIM」で管理から、Privileged Identity Managementの情報が閲覧できます。
+「PIM」で管理から、Privileged Identity Management の情報が閲覧できます。
 
 上記内容が少しでも参考となりますと幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。
 

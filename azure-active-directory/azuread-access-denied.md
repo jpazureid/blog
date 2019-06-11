@@ -35,17 +35,15 @@ Azure ポータル上で、[Azure Active Directory] を選択した際に、下�
 
 ![](./azuread-access-denied/azuread-access-denied.png)
 
- 
-
 こちらは、エラーメッセージの通りアクセスしようとしたユーザーの権限が不足している状況を示すエラーになります。
 
-ここでいう、権限とはサブスクリプションの権限（RBAC で付与した所有者の権限など）とは異なる、Azure AD の権限となります。
+ここでいう、権限とはサブスクリプションの権限 (RBAC で付与した所有者の権限など) とは異なる、Azure AD の権限となります。
 
 サブスクリプションの管理者と Azure AD の管理者の説明については、下記のブログをご確認ください。
 
  
 
--参考情報
+- 参考情報
 
 [Azure サブスクリプションと Azure AD の管理者](./subscription-azure-ad-relationship.md)
 

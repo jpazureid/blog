@@ -15,11 +15,11 @@ Azure AD への操作は主に Azure ポータル、 Office 365 ポータル、 
 ## Azure AD PowerShell の種類
 
 Azure AD の PowerShell には次のようなものがあります。
- 
+
 ### 1. MSOnline (Azure AD v1)
 
-Office 365 をご利用いただいている方にとっては Office 365 のライセンスを割り当てるときにも利用しますので馴染み深いかもしれません。当初からあるもので、あとから紹介する Azure AD v2 と明示的に区別する際に Azure AD v1 モジュールとも呼びます。Connect-Msolservice のようにコマンドレットに “Msol” という文字列が含まれています。現状でも Azure AD に対する PowerShell コマンドでよく使われています。
- 
+Office 365 をご利用いただいている方にとっては Office 365 のライセンスを割り当てるときにも利用しますので馴染み深いかもしれません。当初からあるもので、あとから紹介する Azure AD v2 と明示的に区別する際に Azure AD v1 モジュールとも呼びます。Connect-Msolservice のようにコマンドレットに ”Msol” という文字列が含まれています。現状でも Azure AD に対する PowerShell コマンドでよく使われています。
+
 ### 2. Azure AD for Graph (Azure AD v2)
 
 当初は Azure AD は Office 365 の認証基盤という意味合いが大きかったのですが、 Azure AD に新しい機能が追加されることに伴い Azure AD  PowerShell の機能を拡張させていく必要がでてきました。その対応のために従来の MSOnline を拡張するのではなく、別途異なるモジュールを開発するというアプローチを取ることになり Azure AD for Graph (Azure AD v2 と言うほうが一般的なので以降は Azure AD v2 とします) というモジュールが作成されました。基本的には MSOnline で提供していた機能は Azure AD v2 でも提供されます。例えばユーザー作成をおこなうときに MSOnline モジュールでは [New-Msoluser](https://docs.microsoft.com/en-us/powershell/module/msonline/new-msoluser?view=azureadps-1.0) というコマンドを使いますが、Azure AD v2 では [New-AzureADUser](https://docs.microsoft.com/ja-jp/powershell/azure/active-directory/new-user-sample?view=azureadps-2.0) を利用します。基本的に MSOL コマンドレットの拡張は予定されていないため、新しい機能などは Azure AD v2 のみで提供されます。というわけで今後は基本的に Azure AD v2 コマンドをご利用くださいと案内したいところなのですが、、、完全に MSOL コマンドで提供していたものをカバーしているわけではないため、残念なのですが (大変申し訳ないのですが)、従来の MSOL コマンドも併用していく必要があります。
@@ -136,13 +136,13 @@ InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure yo
     Save-Module -Name AzureAD -Path C:\temp\
     ```
 
-    > C:\temp\ は保存先フォルダの指定となりますので、任意の存在するパス/フォルダをご指定ください。
+> C:\temp\ は保存先フォルダーの指定となりますので、任意の存在するパス/フォルダーをご指定ください。
  
-3. 指定したフォルダ配下の \AzureAD\<バージョン番号>\ フォルダ配下に、リポジトリ ファイル群が展開されたことを確認します。
+3. 指定したフォルダー配下の \AzureAD\<バージョン番号>\ フォルダー配下に、リポジトリ ファイル群が展開されたことを確認します。
  
-4. 実際に Azure AD の PowerShell コマンドを利用したい端末の C:\Program Files\WindowsPowerShell\Modules フォルダに 2 でダウンロードしたフォルダ (今回の例の場合 c:\temp 配下の AzureAD フォルダ) をコピーします。
+4. 実際に Azure AD の PowerShell コマンドを利用したい端末の C:\Program Files\WindowsPowerShell\Modules フォルダーに 2 でダウンロードしたフォルダー (今回の例の場合 c:\temp 配下の AzureAD フォルダー) をコピーします。
  
-5. C:\Program Files\WindowsPowerShell\Modules フォルダに保存されたモジュールは PowerShell で自動的にロードされるため、そのまま実行ができるはずですが、コマンドがエラーになる場合には、以下を実行したうえで Connect-AzureAD  などを実行します。
+5. C:\Program Files\WindowsPowerShell\Modules フォルダーに保存されたモジュールは PowerShell で自動的にロードされるため、そのまま実行ができるはずですが、コマンドがエラーになる場合には、以下を実行したうえで Connect-AzureAD  などを実行します。
 
     ```powershell
     Import-Module C:\Program Files\WindowsPowerShell\Modules\AzureAD\<バージョン番号>\AzureAD.psd1
@@ -176,8 +176,9 @@ Uninstall-Module AzureAD
 ## 参考資料
 Azure Active Directory PowerShell for Graph  
 https://docs.microsoft.com/ja-jp/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
- 
+<!-- textlint-disable -->
 Azure​AD (Azure AD v2 コマンド一覧)  
+<!-- textlint-enable -->
 https://docs.microsoft.com/en-us/powershell/azuread/v2/azureactivedirectory
  
 AzureAD PowerShell's Profile (Azure AD PowerShell 最新版リスト。 V1、 V2、 V2Preview)  

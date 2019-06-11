@@ -9,7 +9,7 @@ tags:
 
 こんにちは、Azure ID チームの宮林です。
 今回は下記のとおり、6/22 より Public Preview となった "Baseline policy: Require MFA for admins" についてお知らせいたします。
- 
+
 - Baseline security policy for Azure AD admin accounts in public preview!
     - https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/
 - ベースラインの保護とは (プレビュー)
@@ -20,14 +20,15 @@ tags:
 
 (こちらが対象のポリシーとなります)
 
->"Baseline policy: Require MFA for admins" とは
-"Baseline policy: Require MFA for admins" は、特権ロールを持つアカウントに対して多要素認証 (MFA : Multi Factor Authentication) を必要とさせるポリシーです。将来的にすべての Azure Active Directory テナントにおいて、既定で有効となるポリシーです。有効化に際して別途、課金が発生することはございません。
->対象となる特権ロールは以下の 5 つのロールを持つアカウントとなり、下記 5 つのロール以外のユーザーにはこのポリシーは適用されず、影響はありません。
->- 全体管理者
->- SharePoint 管理者
->- Exchange 管理者
->- 条件付きアクセス管理者
->- セキュリティ管理者
+> "Baseline policy: Require MFA for admins" とは
+> "Baseline policy: Require MFA for admins" は、特権ロールを持つアカウントに対して多要素認証 (MFA : Multi Factor Authentication) を必要とさせるポリシーです。将来的にすべての Azure Active Directory テナントにおいて、既定で有効となるポリシーです。有効化に際して別途、課金が発生することはございません。
+> 対象となる特権ロールは以下の 5 つのロールを持つアカウントとなり、下記 5 つのロール以外のユーザーにはこのポリシーは適用されず、影響はありません。
+>
+> - 全体管理者
+> - SharePoint 管理者
+> - Exchange 管理者
+> - 条件付きアクセス管理者
+> - セキュリティ管理者
  
 現時点において "Baseline policy: Require MFA for admins(プレビュー)" の状態は、既定で [将来、ポリシーを自動的に有効化] です。
 
@@ -40,11 +41,11 @@ tags:
 
 このポリシーを将来、自動的に有効にしたくない場合には、該当のポリシーを今のうちから無効にしてください。以下の手順でポリシーを無効、あるいは、ポリシー自体は有効としておきつつも、特定の管理者のみを除外することが可能です。
 
-1. Azure ポータル(https://portal.azure.com/) にログイン
+1. Azure ポータル (https://portal.azure.com/) にログイン
 2. [Azure Active Directory] – [条件付きアクセス] – [Baseline policy: Require MFA for admins (プレビュー)] を選択
 3. [ポリシーを使用しない] もしくは、[ユーザーとグループの除外]より除外するユーザーを選択
-
-運用のご要件上、"Baseline policy: Require MFA for admins" を無効にする場合にも、改めてこのポリシーを有効にすることについては是非ご検討ください。なぜなら、昨今 ID に対する攻撃が大変に増加傾向にあり、この脅威への対策の必要性が高まっているからです。以下の参考ページでは、ID に対する代表的な攻撃手法の1つであるパスワードスプレーの説明と、その防衛策について紹介しています。
+1. 
+運用のご要件上、"Baseline policy: Require MFA for admins" を無効にする場合にも、改めてこのポリシーを有効にすることについては是非ご検討ください。なぜなら、昨今 ID に対する攻撃が大変に増加傾向にあり、この脅威への対策の必要性が高まっているからです。以下の参考ページでは、ID に対する代表的な攻撃手法の 1 つであるパスワードスプレーの説明と、その防衛策について紹介しています。
 
 [Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御](./password-sprey-attack.md)
  
