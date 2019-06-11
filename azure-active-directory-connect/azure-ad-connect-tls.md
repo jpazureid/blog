@@ -1,11 +1,12 @@
---- 
-title: Office 365 の TLS 1.0/1.1 無効化に伴うAzure AD Connectの対応 
+---
+title: 'Office 365 の TLS 1.0/1.1 無効化に伴う Azure AD Connect の対応'
 date: 2018-09-13
 tags: 
   - AAD Connect
   - Azure Active Directory
 ---
-# Office 365 の TLS 1.0/1.1 無効化に伴うAzure AD Connectの対応
+
+# Office 365 の TLS 1.0/1.1 無効化に伴う Azure AD Connect の対応
 こんにちは。 Azure Identity サポートの谷です。  
 以下のサイトで案内している Office 365 での TLS 1.0 と 1.1 の無効化に伴う、Azure AD Connect での対応についてまとめました。  
  

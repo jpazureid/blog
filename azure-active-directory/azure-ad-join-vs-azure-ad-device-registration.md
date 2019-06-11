@@ -40,7 +40,7 @@ BYOD デバイスの組織での管理
 ここからは、ユースケースとともに各登録の種類の詳細を説明させていただきます。
 
 
-## ・Azure AD 登録 (Azure AD registered)
+## Azure AD 登録 (Azure AD registered)
 
 ![](./azure-ad-join-vs-azure-ad-device-registration/AzureADRegistered.png)
 
@@ -53,12 +53,12 @@ Azure AD 登録は Bring Your Own Device (BYOD) ご利用時に使用するこ�
 Azure AD 登録を構成することでユーザーは、個人のデバイスで組織の管理するクラウド アプリケーションにサインインできるようになり
 組織の管理者は、 MDM と連携して組織に必要な設定を展開するなど、組織の要求するセキュリティ要件に満たすような構成をユーザーのデバイスに強制させることができます。
 
-加えて、 Microsoft Intune などのモバイル デバイス管理 (MDM)ソリューションとの連携を実施させることで、条件付きアクセス ポリシーでのアクセス制御が可能になります。
+加えて、 Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションとの連携を実施させることで、条件付きアクセス ポリシーでのアクセス制御が可能になります。
 
 
 
 
-## ・Azure AD 参加 (Azure AD joined)
+## Azure AD 参加 (Azure AD joined)
 
 ![](./azure-ad-join-vs-azure-ad-device-registration/AzureADJoined.png)
 
@@ -68,13 +68,13 @@ Azure AD 参加はオンプレ AD 環境を持たない組織、あるいはオ�
 
 Azure AD 参加を実施することで下記の機能を利用することが可能です。
 
-・Microsoft Intune などのモバイル デバイス管理 (MDM)ソリューションとの連携による、条件付きアクセス ポリシーでのアクセス制御
+- Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションとの連携による、条件付きアクセス ポリシーでのアクセス制御
 
-・Azure AD ユーザーでの Azure AD 参加端末へのWindows サインイン
+- Azure AD ユーザーでの Azure AD 参加端末への Windows サインイン
 
-・Window 10 デバイスへサインインを実施したユーザーの資格情報を利用したクラウド アプリケーションへの SSO (*)
+- Window 10 デバイスへサインインを実施したユーザーの資格情報を利用したクラウド アプリケーションへの SSO (*)
 
-※ 対象ブラウザ (IE /Edge)、対象アプリケーションに限定されます。
+※ 対象ブラウザー (IE /Edge)、対象アプリケーションに限定されます。
 
 利用可能な機能を見ても分かる通り、 Azure AD 参加は Azure AD 登録の機能を包合した機能となっています。 
 

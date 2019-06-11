@@ -16,7 +16,7 @@ tags:
 この障害では Azure / Office 365 ポータルへのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。
 
 改めてですが、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。
- 
+
 ## 4/6 RCA - Azure Active Directory - 認証エラー
  
 #### <span style="color: red; ">影響の概要：</span>
@@ -28,12 +28,12 @@ tags:
 
 障害が生じた期間では、 AAD を利用する Azure のサービスに影響が生じましたが、具体的には次のようなサービスで問題が発生した可能性があります。
  
-1. バックアップ： 新しいコンテナの登録およびバックアップ/リストア操作の失敗
-2. StorSimple： 新しいデバイス登録の失敗と StorSimple の管理/通信の失敗
+1. バックアップ: 新しいコンテナーの登録およびバックアップ/リストア操作の失敗
+2. StorSimple: 新しいデバイス登録の失敗と StorSimple の管理/通信の失敗
 3. Azure Bot サービス： ボットが応答しない
-4. Visual Studio Team Services： 実行時間の長期化と複数の地域における AAD トークン取得の失敗
-5.メディアサービス： 認証の失敗
-6. Azure Site Recovery： 新規登録と VM 複製の失敗
+4. Visual Studio Team Services: 実行時間の長期化と複数の地域における AAD トークン取得の失敗
+5. メディアサービス： 認証の失敗
+6. Azure Site Recovery: 新規登録と VM 複製の失敗
  
 Azure 以外でも Azure AD を利用する他の Microsoft サービスについても影響が生じました。
 

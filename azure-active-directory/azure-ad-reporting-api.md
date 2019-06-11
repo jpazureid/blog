@@ -9,7 +9,7 @@ tags:
 
 # Azure AD Reporting API を利用して PowerShell より Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを CSV ファイルで取得する方法
 
-こんにちは、Azure & Identity サポート チームの 姚 (ヨウ)です。
+こんにちは、Azure & Identity サポート チームの 姚 (ヨウ) です。
  
 Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートの保持期間は決まっており、例えばサインイン アクティビティであれば Azure AD Premium のライセンスがテナントに割り当てられていても 30 日です。
 
@@ -45,9 +45,9 @@ json ファイル形式は以下のようになり、このままは利用しづ
 
    https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1
  
-2. 任意の一時フォルダを作成し、AzureADUtils.psm1 をコピーします。
+2. 任意の一時フォルダーを作成し、AzureADUtils.psm1 をコピーします。
  
-3. 管理者権限で PowerShell を起動し、AzureADUtils.psm1 をコピーした一時フォルダに移動します。
+3. 管理者権限で PowerShell を起動し、AzureADUtils.psm1 をコピーした一時フォルダーに移動します。
  
 4. 次のコマンドを実行し、 Execution Policy Change の画面が表示されましたら "Y" を入力します。
    ```powershell
@@ -77,7 +77,7 @@ json ファイル形式は以下のようになり、このままは利用しづ
    
    https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal
  
-10. テキスト エディタを開き、次の中身をコピーしたうえで、環境に合わせて赤字部分の内容を設定した上で、実行します。
+10. テキスト エディターを開き、次の中身をコピーしたうえで、環境に合わせて赤字部分の内容を設定した上で、実行します。
 これによりサインイン アクティビティ レポートと監査アクティビティ レポートを csv ファイルに取得できます。
 
 ### サインイン レポートの場合

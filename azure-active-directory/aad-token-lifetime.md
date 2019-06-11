@@ -59,7 +59,7 @@ ID トークンは OpenID Connect での認証時に ID の属性情報を提示
 - 認証した AAD ユーザーのパスワードを変更する
 - AAD 側で対象ユーザーに発行済みの更新トークンを操作により失効する
 
-### ブラウザ クライアントによる AAD との SSO セッション フローと有効期限の考え方
+### ブラウザー クライアントによる AAD との SSO セッション フローと有効期限の考え方
 
 #### 非永続セッション (Cookie) の場合
 
@@ -69,7 +69,7 @@ ID トークンは OpenID Connect での認証時に ID の属性情報を提示
 
 - (既定では) 24 時間以上、Azure AD へのアクセスを行わない
 - 認証した AAD ユーザーのパスワードを変更する
-- ブラウザを閉じる
+- ブラウザーを閉じる
 
 #### 永続セッション (Cookie) の場合
 
@@ -106,11 +106,11 @@ MaxAge ～ 名のポリシーは `最終的にいつまで同じトークンを�
 ![](./aad-token-lifetime/adalclient100d.jpg)
 
 
-#### 非永続ブラウザ クライアント : MaxAgeSessionSingle/MultiFactor を 30 時間にした場合
+#### 非永続ブラウザー クライアント : MaxAgeSessionSingle/MultiFactor を 30 時間にした場合
 
 ![](./aad-token-lifetime/nokmsiclient30h.jpg)
 
-#### 永続ブラウザ クライアント : MaxAgeSessionSingle/MultiFactor を 200 日にした場合
+#### 永続ブラウザー クライアント : MaxAgeSessionSingle/MultiFactor を 200 日にした場合
 
 ![](./aad-token-lifetime/kmsiclient200d.jpg)
 

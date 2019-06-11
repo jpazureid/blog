@@ -1,8 +1,7 @@
-1. Staging サーバーとは？**
 ---
 title: ステージング サーバーのすゝめ
 date: 2018-11-27
-tags: 
+tags:
  - AAD Connect
 ---
 

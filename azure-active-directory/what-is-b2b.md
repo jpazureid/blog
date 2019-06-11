@@ -35,7 +35,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-wha
 
 ![](./what-is-b2b/subscription-user-inaccessible.png)
  
-こんな時、Azure AD B2B を利用することで、別 Azure AD にユーザーを追加(コピーのようなイメージ)することで、別の Azure AD に所属してリソースを利用することが可能です。
+こんな時、Azure AD B2B を利用することで、別 Azure AD にユーザーを追加 (コピーのようなイメージ) することで、別の Azure AD に所属してリソースを利用することが可能です。
  
 ![](./what-is-b2b/invite-user-to-tenant.png)
 
@@ -70,7 +70,7 @@ Azure ポータルの [サブスクリプション] – [サブスクリプシ�
 
 <span style="color:red">A</span>. はい、B2B の機能で要件を満たせます。Azure AD B2B の機能で別の Azure AD のユーザーを追加することで、そのユーザーは Azure AD 上のアプリケーションを利用することが可能です。
  
-<span style="color:blue">Q</span>. 旧ポータル(クラシックポータル)のように、個人アカウント(Microsoft アカウント)を明示的に指定して追加することはできますか？
+<span style="color:blue">Q</span>. 旧ポータル (クラシックポータル) のように、個人アカウント (Microsoft アカウント) を明示的に指定して追加することはできますか？
 
 <span style="color:red">A</span>. いいえ、できません。ただし、 ユーザーのドメイン名が live.com、 hotmail.com、 gmail.com のようなコンシューマー向けのフリーアドレスを利用している場合にはマイクロソフト アカウントが招待されます。
 それ以外では 個人アカウントを招待するのではなく、企業アカウントの招待が行われます。

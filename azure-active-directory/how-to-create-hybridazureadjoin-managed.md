@@ -21,21 +21,21 @@ URL:https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azure
 本 Blog では、 Azure AD にオンプレミス AD のデバイスが登録される仕組みを含め、一から Hybrid Azure AD Join を構成するまでの流れを画面ショット付きで解説します。
 
 ## 本 Blog を作成するために利用した環境について
-	1. Azure AD テナント
-	2. オンプレミス AD on Windows Server 2019 Datacenter 
-	3. Azure AD Connect(1.3.20.0) on Windows Server 2019 Detacenter
-	4. Windows 10 (1809)
+1. Azure AD テナント
+2. オンプレミス AD on Windows Server 2019 Datacenter 
+3. Azure AD Connect(1.3.20.0) on Windows Server 2019 Detacenter
+4. Windows 10 (1809)
 ※ Hybrid Azure AD Join を構成するためのオンプレミス AD 及び Azure AD Connect のサーバー OS は Windows Server 2012 R2 以降であれば可能です。
 
 ## 目次
-	1. Azure AD へのカスタム ドメイン登録
-	2. Azure AD Connect の設定
-	3. SCP とは、 SCP の構成の確認
-	4. Hybrid Azure AD Join 構成までの流れ
-	5. userCertificate 属性について
-	6. Azure AD へのデバイス同期の確認
-	7. PRT (Primary Refresh Token) の取得
-	8. おわりに
+1. Azure AD へのカスタム ドメイン登録
+2. Azure AD Connect の設定
+3. SCP とは、 SCP の構成の確認
+4. Hybrid Azure AD Join 構成までの流れ
+5. userCertificate 属性について
+6. Azure AD へのデバイス同期の確認
+7. PRT (Primary Refresh Token) の取得
+8. おわりに
 
 ## Azure AD へのカスタムドメイン登録
 詳細については後述しますが、 Hybrid Azure AD Join の処理では、各クライアントがオンプレミス AD に登録された SCP (サービス接続ポイント) を参照し、デバイスの登録処理を行います。SCP には、オンプレミス AD が利用しているインターネット ルーティング可能な (外部 DNS から名前が引ける) ドメインを Azure AD に登録する必要があります。もしもオンプレミス AD のドメイン名が xxxxx.local などインターネット ルーティングができない名前の場合には、オンプレミス AD で代替 UPN サフィックスの登録作業を事前に実施しておきます。
@@ -132,7 +132,7 @@ Azure AD に接続画面で、 Azure AD の対象テナントの全体管理者�
 
 ![](./hybrid-azuread-join-managed-domain/019.jpg)
 
-SCP の構成画面にて SCP (サービス接続ポイント)を構成します。
+SCP の構成画面にて SCP (サービス接続ポイント) を構成します。
 SCP はフォレスト単位ごとで構成する必要があります、今回は対象のオンプレミス AD のフォレストは 1 つしかないので、対象のフォレストにチェックをいれます。
 
 ![](./hybrid-azuread-join-managed-domain/020.jpg)
@@ -164,7 +164,7 @@ AD FS を構成している場合はフェデレーション サービス名を�
 
 ## SCP とは (SCP の構成の確認)
 
-そもそも SCP (サービス接続ポイント)とは何なんなのでしょうか。
+そもそも SCP (サービス接続ポイント) とは何なんなのでしょうか。
 端的にいうと、 SCP はオンプレミス AD に登録している Windows 10 コンピューターなどのデバイスが、 Azure AD のテナントがどこにあるのかを探すために必要な参照先になります。
 
 今回、 構成例として、 「xxx.work」 というフォレストに関する SCP を構成しました。
@@ -182,7 +182,7 @@ ADSI エディターを起動し「接続」をクリックします。
 ![](./hybrid-azuread-join-managed-domain/026.jpg)
 
 
-接続ポイントとして、「識別名または名前付けコンテキストを選択または入力する」を選択し、CN=Configuration,DC=fabrikam,DC=com (ドメイン名が fabrikan.comである場合)左記のように設定し「OK」ボタンをクリックします。
+接続ポイントとして、「識別名または名前付けコンテキストを選択または入力する」を選択し、CN=Configuration,DC=fabrikam,DC=com (ドメイン名が fabrikan.com である場合) 左記のように設定し「OK」ボタンをクリックします。
 
 ![](./hybrid-azuread-join-managed-domain/027.jpg)
 
@@ -224,9 +224,9 @@ AzureADId は、 Azure ポータルの「プロパティ」画面で確認でき
 
 userCertificate 属性に証明書が設定されるまでのプロセスは以下のとおりです。
 
-1. まず、自己署名ユーザー証明書を持つコンピュータオブジェクトのみが Azure AD と同期されます。つまり userCertificare 属性に証明書セットされている Windows 10 コンピューターのみが、 Azure AD と同期されます。
+1. まず、自己署名ユーザー証明書を持つコンピューターオブジェクトのみが Azure AD と同期されます。つまり userCertificare 属性に証明書セットされている Windows 10 コンピューターのみが、 Azure AD と同期されます。
 2. 動作としては、ユーザー証明書の生成プロセスを管理する、スケジュールされたタスクがあります。タスクが開始されると、プロセスは Azure AD Connect で構成した、 SCP を確認します。
-3. デバイスは SCP を検出し、 Hybrid Azure AD Join (正確には Azure AD Join)を試みます。
+3. デバイスは SCP を検出し、 Hybrid Azure AD Join (正確には Azure AD Join) を試みます。
 4. デバイスは、Azure デバイス登録サービス (DRS) を確認して、参加できるかどうかを確認します。
 5. 成功した場合、ユーザー証明書が生成され、オンプレミスの AD に userCertificate 属性が設定されます。
 
@@ -248,7 +248,7 @@ Start-ADSyncSyncCycle -PolicyType Delta コマンドレットで手動同期す�
 ![](./hybrid-azuread-join-managed-domain/032.jpg)
 
 
-下記は証明書の実態(一部)です。
+下記は証明書の実態 (一部) です。
 
 ![](./hybrid-azuread-join-managed-domain/033.jpg)
 
@@ -322,4 +322,4 @@ Azure AD Connect を使うことで、比較的容易に Hybrid Azure AD Join �
 
 少しでも本 Blog が参考になれば幸いです。ご不明な点等ございましたら、是非弊社サポート サービスをご利用ください。
 
-※本情報の内容(リンク先などを含む)は、作成日時点でのものであり、予告なく変更される場合があります。
+※本情報の内容 (リンク先などを含む) は、作成日時点でのものであり、予告なく変更される場合があります。
