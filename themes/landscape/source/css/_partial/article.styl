@@ -79,9 +79,9 @@
     padding: 10px 0
   blockquote
     font-family: font-serif
-    font-size: 1.4em
+    font-style: italic
     margin: line-height 20px
-    text-align: center
+    background-color: #f6f6f6
     footer
       font-size: font-size
       margin: line-height 0
@@ -294,6 +294,14 @@ $article-share-link
     background: color-pinterest
     text-shadow: 0 1px darken(color-pinterest, 20%)
 
+.article-share-linkedin
+  @extend $article-share-link
+  &:before
+    content: "\f08c"
+  &:hover
+    background: color-linkedin
+    text-shadow: 0 1px darken(color-pinterest, 20%)
+    
 .article-share-google
   @extend $article-share-link
   &:before

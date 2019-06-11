@@ -12,12 +12,31 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '11.x'
   displayName: 'Install Node.js'
 
 - script: |
+    npm install
+    # npm test
+  displayName: 'npm install'
+
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'wahaniya-corp(24cb7a23-a4cf-40e1-a530-af25a0a1060d)'
+    KeyVaultName: 'kv-jpazureid'
+    SecretsFilter: 'deploy-jpazureid-blog'
+
+- script: |
+    mkdir -p ~/.ssh
+    echo $Secret | base64 -d > ~/.ssh/id_rsa
+    chmod 600 ~/.ssh/id_rsa
+    ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+    chmod 600 ~/.ssh/known_hosts
     git config --global user.email "jpazidbot@microsoft.com"
     git config --global user.name "jpazidbot"
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    git push origin master:testbranch
+    # ssh-keygen -R github.com
+    npm run deploy
+  displayName: 'npm run deploy'
+  env:
+    Secret: $(deploy-jpazureid-blog)
