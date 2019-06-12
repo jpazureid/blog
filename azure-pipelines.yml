@@ -38,7 +38,6 @@ steps:
 
     echo Validating good known_hosts
     ssh-keygen -l -f ~/.ssh/known_hosts | grep $GITHUB_FINGERPRINT
-    if [ $? = 1 ]; then exit 1; fi;
 
     git config --global user.email "jpazidbot@microsoft.com"
     git config --global user.name "jpazidbot"
