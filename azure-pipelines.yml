@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-  - master
+  - fix-azure-pipelines
   
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -28,7 +28,7 @@ steps:
 
 - script: |
     # thanks https://gist.github.com/stjohnjohnson/3d2388b2a7ba658cdcdaffa8cd874e50
-    GITHUB_FINGERPRINT=16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+    GITHUB_FINGERPRINT=16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:49 #wrong key
 
     mkdir -p ~/.ssh
     echo $Secret | base64 -d > ~/.ssh/id_rsa
