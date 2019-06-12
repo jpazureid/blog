@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- fix-azure-pipelines
   
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -28,7 +28,7 @@ steps:
 
 - script: |
     # thanks https://gist.github.com/stjohnjohnson/3d2388b2a7ba658cdcdaffa8cd874e50
-    GITHUB_FINGERPRINT=nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8 
+    GITHUB_FINGERPRINT=nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8
 
     mkdir -p ~/.ssh
     echo $Secret | base64 -d > ~/.ssh/id_rsa
@@ -39,10 +39,10 @@ steps:
     echo Validating good known_hosts
     ssh-keygen -l -E sha256 -f ~/.ssh/known_hosts | grep $GITHUB_FINGERPRINT
     if [ $? = 1 ]; then exit 1; fi;
-
-    git config --global user.email "jpazidbot@microsoft.com"
-    git config --global user.name "jpazidbot"
-    npm run deploy
+    echo "fingerprint is valid"
+    # git config --global user.email "jpazidbot@microsoft.com"
+    # git config --global user.name "jpazidbot"
+    # npm run deploy
   displayName: 'npm run deploy'
   env:
     Secret: $(deploy-jpazureid-blog)
