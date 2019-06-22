@@ -129,3 +129,19 @@ gulp.task(
   "build",
   gulp.series("cleanOutputPath", gulp.parallel("copyMarkdown", "copyImage"), "generate")
 );
+
+
+gulp.task(
+  "hello",
+  (diff) => {
+    console.log(diff)
+    return console.log("hello");
+    }
+)
+
+gulp.task(
+  "watch",
+  ()=>{
+    console.log(sourceFiles)
+    gulp.watch('active-directory-federation-service/**/*', gulp.series(["hello"]))
+})

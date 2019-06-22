@@ -36,3 +36,12 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+
+root_tag_option:
+  root_tag_names:
+    - Azure AD
+    - AAD Connect
+    - AD FS
+    - 情報採取
+  sub_tag_limit: 20
+  sub_tag_sort: 'name' # 未実装
