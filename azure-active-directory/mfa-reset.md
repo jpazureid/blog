@@ -27,11 +27,11 @@ MFA のリセットは、Azure Portal または PowerShell より行うことが
 2. 多要素認証設定画面にて該当のユーザーにチェックをつけ、"ユーザー設定の管理"を選択します。
 
     ![](./mfa-reset/mfa-config-1.png)
- 
+
 3. "選択したユーザーについて連絡方法の再指定を必須にする" にチェックし、"保存" を選択します。
 
     ![](./mfa-reset/mfa-config-2.png)
- 
+
 この後、上記操作が行われたユーザーがサインインしようとすると、MFA のセットアップ画面が表示されます。ユーザーは、新しく電話・スマートフォンアプリ・メールなどを使用して、多要素認証を構成できます。
 
 ## PowerShell での手順
@@ -56,7 +56,7 @@ foreach ($user in $users) {
     Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationMethods @()
 }
 ```
-  
+
 ![](./mfa-reset/csv.png)  
 図: 用意する CSV の例
 

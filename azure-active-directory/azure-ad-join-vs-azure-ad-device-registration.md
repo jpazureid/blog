@@ -39,24 +39,19 @@ BYOD デバイスの組織での管理
 
 ここからは、ユースケースとともに各登録の種類の詳細を説明させていただきます。
 
-
 ## Azure AD 登録 (Azure AD registered)
 
 ![](./azure-ad-join-vs-azure-ad-device-registration/AzureADRegistered.png)
 
-
 対象デバイス : Windows 10, Android, iOS, macOS
 
-他の登録については、Windwos デバイスのみが対象となっていますが、 Android, iOS, macOS をサポートしていることからも分かるように
+他の登録については、Windows デバイスのみが対象となっていますが、 Android, iOS, macOS をサポートしていることからも分かるように
 Azure AD 登録は Bring Your Own Device (BYOD) ご利用時に使用することを想定した機能となります。
 
 Azure AD 登録を構成することでユーザーは、個人のデバイスで組織の管理するクラウド アプリケーションにサインインできるようになり
 組織の管理者は、 MDM と連携して組織に必要な設定を展開するなど、組織の要求するセキュリティ要件に満たすような構成をユーザーのデバイスに強制させることができます。
 
 加えて、 Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションとの連携を実施させることで、条件付きアクセス ポリシーでのアクセス制御が可能になります。
-
-
-
 
 ## Azure AD 参加 (Azure AD joined)
 
@@ -76,12 +71,11 @@ Azure AD 参加を実施することで下記の機能を利用することが�
 
 ※ 対象ブラウザー (IE /Edge)、対象アプリケーションに限定されます。
 
-利用可能な機能を見ても分かる通り、 Azure AD 参加は Azure AD 登録の機能を包合した機能となっています。 
+利用可能な機能を見ても分かる通り、 Azure AD 参加は Azure AD 登録の機能を包合した機能となっています。
 
 Azure AD 参加により、オンプレ AD でドメイン参加ユーザーがオンプレ AD ドメイン参加しているデバイスに自由にサインインできるのと同じように Azure 上のユーザーで Azure AD 参加デバイスに自由にサインインすることができます。
 
 オンプレ AD を持っていない組織でも、ローカル アカウントを使用するのではなく、 Azure AD 上のユーザーでデバイスにサインインできるようになるため、オンプレ AD と同様にユーザー アカウントを Azure AD 上で一元管理ができるようになります。
-
 
 ## ・ハイブリッド Azure AD 参加 (Hybrid Azure AD joined)
 
@@ -96,7 +90,7 @@ Azure AD 参加により、オンプレ AD でドメイン参加ユーザーが�
 
 ・ 条件付きアクセス ポリシーでのハイブリッド Azure AD 参加構成済みデバイスを条件としたアクセス制御
 
-・ ダウンレベル の Windows デバイス ( Windwows 8.1 , Windows 7 ) の Azure AD への登録
+・ ダウンレベル の Windows デバイス ( Windows 8.1 , Windows 7 ) の Azure AD への登録
 
 ・ Windows デバイスへサインインを実施したユーザーの資格情報を利用したクラウド アプリケーションへの SSO
 
@@ -115,6 +109,6 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/devices/
 ![](./azure-ad-join-vs-azure-ad-device-registration/CorrelationTable.png)
 
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。
- 
+
 上記内容が少しでも皆様の参考となりますと幸いです。
 ※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。

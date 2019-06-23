@@ -21,7 +21,7 @@ Azure AD PowerShell のインストールなどについては、以下の公開
 
 ## PowerShell スクリプト
 
-```ps1
+```powershell
 Import-Module MSOnline
 Connect-MsolService
 
@@ -34,25 +34,25 @@ $role = Get-MsolRole
 $dataList = @()
 
 foreach ($test in $role) {
-	$member = Get-MsolRoleMember -RoleObjectId $test.objectid
-	If ($null -eq $member) {
-		$role = $test.name
-		Write-Output "$role,"
-		$data = New-Object PSObject | Select-Object DirectoryRole, User
-		$data.DirectoryRole = $role
-		$data.User = $null
-		$dataList += $data
-	} Else {
-		foreach ($m in $member) {
-			$role = $test.name
-			$user = $m.EmailAddress
-			Write-Output "$role,$user"
-			$data = New-Object PSObject | Select-Object DirectoryRole, User
-			$data.DirectoryRole = $role
-			$data.User = $user
-			$dataList += $data
-		}
-	}
+    $member = Get-MsolRoleMember -RoleObjectId $test.objectid
+    If ($null -eq $member) {
+        $role = $test.name
+        Write-Output "$role,"
+        $data = New-Object PSObject | Select-Object DirectoryRole, User
+        $data.DirectoryRole = $role
+        $data.User = $null
+        $dataList += $data
+    } Else {
+        foreach ($m in $member) {
+            $role = $test.name
+            $user = $m.EmailAddress
+            Write-Output "$role,$user"
+            $data = New-Object PSObject | Select-Object DirectoryRole, User
+            $data.DirectoryRole = $role
+            $data.User = $user
+            $dataList += $data
+        }
+    }
 }
 
 $DataList | Export-Csv $outfile -Encoding Default
@@ -62,6 +62,6 @@ $DataList | Export-Csv $outfile -Encoding Default
 
 スクリプトを実行すると資格情報が求められますので、出力対象の Azure AD テナントの全体管理者の資格情報を入力します。その後自動的に csv ファイルにロールの一覧が出力されます。以下は出力のサンプルです。
 
-![](./output-directory-roll-members/output-directory-roll-member011.png) 
+![](./output-directory-roll-members/output-directory-roll-member011.png)
 
 本ブログにて、管理者の方のご負担、少しでも軽減されれば幸甚です。
