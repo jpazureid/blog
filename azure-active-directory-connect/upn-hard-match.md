@@ -7,7 +7,6 @@ tags:
   - Hard match
 ---
 
-
 # Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
 
 こんにちは、Azure & Identity サポート チームです。
@@ -33,7 +32,8 @@ Azure AD Connect の既定の構成では、オンプレミス AD の ObjectGUID
 2. Azure AD 上で ImmutableId が設定されてないことを確認します
 3. Azure AD 上のアカウントに ImmutableId を手動で設定します
 4. 手動で差分ディレクトリ同期を実施します
-* 4 を除き、同期処理が止まっている状態で作業をご実施ください。同期処理が止まっていないと紐づけしたいオンプレミス AD のアカウントが同期されてしまい、Immutable ID を紐づけできません。
+
+※ 4 を除き、同期処理が止まっている状態で作業をご実施ください。同期処理が止まっていないと紐づけしたいオンプレミス AD のアカウントが同期されてしまい、Immutable ID を紐づけできません。
 
 ### 1. オンプレミス AD にて Base64 でエンコードされた ObjectGUID を確認
 
@@ -46,7 +46,7 @@ Azure AD Connect の既定の構成では、オンプレミス AD の ObjectGUID
 5. distinguishedName 値 (以下、DN 値) の内容をコピーします。
 6. コマンド プロンプト (PowerShell でも可) を起動し、以下のコマンドを実行します。
 
-```ps1
+```powershell
 ldifde -f c:\ ldifde_user.txt -d "手順 5. でコピーした内容" -p subtree
 ```
 
@@ -90,27 +90,28 @@ UserPrincipalName                      : hm_test3@test01.onmicrosoft.com
 ### 3. ImmutableId を手動で設定
 
 ディレクトリ同期ツールにて、ユーザーの情報を関連付けるには下記の情報を使用します。
-オンプレミス AD 側：objectGUID
-Azure AD 側：ImmutableId
+
+- オンプレミス AD 側: objectGUID
+- Azure AD 側: ImmutableId
 
 1. インターネットに接続している任意のコンピューター上で "Windows PowerShell 用 Windows Azure Active Directory モジュール" を管理者として実行します。
 2. 起動した PowerShell にて Connect-MsolService コマンドを実行します。
   ※認証ダイアログが表示されますので、管理者ユーザーの資格情報を入力して [OK] ボタンをクリックします。
 3. 下記のコマンドを実行します。
 
-```ps1
+```powershell
 Set-MsolUser -UserPrincipalName <対象ユーザーの UPN> -ImmutableId <オンプレ AD ユーザーの  Base64 エンコードされた objectGUID 値>
 ```
 
 コマンド実行例：
 
-```ps1
+```powershell
 Set-MsolUser -UserPrincipalName hm_test3@test01.onmicrosoft.com -ImmutableId 2/9JCtHr0EmH+hL07o11vA==
 ```
 
 3-4. 下記のコマンドを実行します。
 
-```ps1
+```powershell
 Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
 ```
 
@@ -118,10 +119,9 @@ Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
 
 ![](./upn-hard-match/hardmatch_3.png)
 
-
 ### 4. 手動で差分ディレクトリ同期を実施
 
-※2016 年 2 月に公開された新しいバージョン（1.1.105.0 以上）の Azure AD Connectを使用した手順をご案内いたします。
+※ 2016 年 2 月に公開された新しいバージョン (1.1.105.0 以上) の Azure AD Connect を使用した手順をご案内いたします。
 
 1. ディレクトリ同期サーバーに管理者権限でログインします。
 2. 管理者の PowerShell を起動して、以下のコマンドを実行します。
@@ -130,9 +130,8 @@ Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
 Start-ADSyncSyncCycle -PolicyType Delta
 ```
 
-*今回ご紹介しているケースのように Azure AD Connect が構成済みである場合は上記コマンドで差分同期をすることとなります。
+※ 今回ご紹介しているケースのように Azure AD Connect が構成済みである場合は上記コマンドで差分同期をすることとなります。
 
 3. Office 管理ポータルで作業対象ユーザーの [同期の種類] が [クラウド] から [Active Directory ] に変わったことを確認します。
- 
 
 「コミュニティにおけるマイクロソフト社員による発言やコメントは、マイクロソフトの正式な見解またはコメントではありません。」

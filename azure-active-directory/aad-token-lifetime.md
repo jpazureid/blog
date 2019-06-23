@@ -37,7 +37,6 @@ Azure AD (AAD) は Office 365 をはじめ様々なクラウド サービスの�
 
 ![](./aad-token-lifetime/token-lifetime.jpg)
 
-
 (\*) に関して
 以前の公開技術情報には `14 日` と記載されており、これは Public クライアントに対する以前の既定値でした。
 現在の実装は Public クライアントも Confidential クライアントと同じ `90 日` に変更されています。
@@ -49,7 +48,6 @@ Azure AD (AAD) は Office 365 をはじめ様々なクラウド サービスの�
 ### ADAL クライアントによる認証フローと有効期限の考え方
 
 ![](./aad-token-lifetime/adalclientflow.jpg)
-
 
 ID トークンは OpenID Connect での認証時に ID の属性情報を提示するためのトークンであり、初回の SP へのアクセス時に提示された後は再利用されることが無いのが一般的です。
 そのため、上記の図では初回の SP へのアクセスに伴う認証時のみ取得している表現となっています。
@@ -75,7 +73,6 @@ ID トークンは OpenID Connect での認証時に ID の属性情報を提示
 
 ![](./aad-token-lifetime/kmsicookie.jpg)
 
-
 明示的な再認証が必要となるケースは以下の通りです。
 
 - (既定では) 180 日以上、Azure AD へのアクセスを行わない
@@ -90,7 +87,6 @@ AAD 制御ポリシーの `AccessTokenLifetime` パラメーターを変更す�
 
 ![](./aad-token-lifetime/samlflow.jpg)
 
-
 明示的な再認証が必要となるケース
 
 - (既定では) 24 時間以上、既存のセッション Cookie の再利用が必要な SP へのアクセスを行わない (結果、24 時間以上、AAD へのアクセスを行わない)
@@ -104,7 +100,6 @@ MaxAge ～ 名のポリシーは `最終的にいつまで同じトークンを�
 #### ADAL クライアント : MaxAgeSingle/MultiFactor を 100 日にした場合
 
 ![](./aad-token-lifetime/adalclient100d.jpg)
-
 
 #### 非永続ブラウザー クライアント : MaxAgeSessionSingle/MultiFactor を 30 時間にした場合
 

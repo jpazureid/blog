@@ -13,14 +13,14 @@ Azure AD Connect (AADC) のアップグレード手順をご紹介いたしま�
 
 - 最新バージョンの利用
 - 最低でも 6 カ月毎に最新バージョンへのアップグレード
- 
+
 Azure AD Connect: バージョンのリリース履歴  
 https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-version-history
- 
+
 なお、サポートという観点では、リリースされている全てのバージョンの AADC が現在サポート対象となります。特定のバージョンの AADC をサポート終了する場合にはアップグレードを実施いただくために十分な期間を設け、ご案内いたしますので、ご安心ください。
 
 (トラブルシューティングなどの中で古いバージョンをご利用されている場合に切り分けのためのバージョンアップをお願いする、より詳細な調査をするためにも、まずアップグレードをお願いするという可能性があることについては予めご承知おきください)
- 
+
 ## アップグレードの流れ
 
 ### AADC 1 台構成の場合
@@ -28,7 +28,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 1. バージョンアップ前にサーバーの健全性確認
 2. 設定情報 / ルールのバックアップ
 3. アップグレード
- 
+
 ### AADC 2 台以上の構成の場合
 
 1 台構成の場合と同様でも構いませんが、より慎重に行う場合には、バージョンアップ時に片方ずつステージング モードに切り替え、同期処理に影響を与えないように実施することも可能です。この場合には、下記の流れで実施します。
@@ -42,7 +42,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 7. ステージングモードの切り替え
 8. アップグレード後の動作確認
 9. 必要に応じてステージングモードの切り替え
- 
+
 ## 手順
 
 ### アップグレード手順
@@ -57,12 +57,11 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 
 [staging-mode (PDF)](./how-to-upgrade/staging-mode.pdf)
 
-
 ### 健全性確認
 
 1. AADC サーバーにてイベント ログ (システム / アプリケーション) にてエラーや警告などの記録がないことを確認します。
 2. Synchronization Service Manager にて同期処理にて success 以外の記録がないことを確認します。
- 
+
 ### 設定情報 / ルールのバックアップ
 
 バックアップは万が一アップグレードが正常に実施できなかった場合に備えて取得いただくことをお勧めしております。正常にアップグレードが行えた場合には特にバックアップからのリストア等は不要となります。問題が生じた場合、リストア可能なのはルールのみとなります。設定情報は記録情報から手動で設定し直す必要があります。

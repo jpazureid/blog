@@ -23,11 +23,11 @@ tags:
 - アプリケーションのキーではなく証明書を利用することでセキュリティを高めています (※)
 
 ※ セキュリティ観点で 平文のキーではなく証明書を用いたトークン取得を推奨しています。
- 
+
 以下に一連の手順を大まかに 3 つに分けて解説します。
 
 事前に、C:\SignInReport フォルダーなど作業用のフォルダーを作成し、以下の手順にお進みください。
- 
+
 ### 1. 認証に使用する証明書の準備
 
 トークン取得に証明書を用います。
@@ -165,17 +165,17 @@ if ($null -ne $authResult.AccessToken) {
     #
     $headerParams = @{'Authorization' = "$($authResult.AccessTokenType) $($authResult.AccessToken)"}
     $url = "$resource/v1.0/auditLogs/signIns"
-    
+
     Write-Output "Fetching data using Uri: $url"
- 
+
     Do {
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
         $myReportValue = ($myReport.Content | ConvertFrom-Json).value
- 
+
         for ($j = 0; $j -lt $myReportValue.Count; $j++) {
             $data += $myReportValue[$j]
         }
-        
+
         #
         # Get url from next link
         #
@@ -194,9 +194,9 @@ Write-Host "Sign-in log is exported to $outfile"
 
 signIn resource type  
 https://docs.microsoft.com/en-us/graph/api/resources/signin?view=graph-rest-1.0
- 
+
 次回は監査アクティビティ レポートの取得方法を紹介いたします。このブログの情報がお客様の検証や運用のお役に少しでもお役に立てばと思います。
- 
+
 製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。
 
 > 本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
