@@ -124,6 +124,7 @@ Azure AD はアプリに許可されたユーザーにトークンを発行し�
 <span style="color:red">A</span>. いいえ、テナントに割り当てられている Azure AD Premium ライセンス数の 5 倍までのアカウントであれば、ゲスト ユーザーに対して条件付きアクセスを含む Azure AD Premium の機能を利用させることが可能です。詳細は下記公開情報を参照ください。
 
 Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
+
 https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-licensing
 
 ---
@@ -137,15 +138,6 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-lic
 <span style="color:blue">Q</span>. 条件付きアクセスを利用するためには、Azure AD Premium のライセンス数を何個購入すればよいでしょうか？
 
 <span style="color:red">A</span>. 条件付きアクセスの機能を利用してアプリケーションへのアクセス可否の評価が行われるユーザーに対して、Azure AD Premium (P1 以上) を割り当てる必要があります。現時点の実装では、Azure AD Premium ライセンスを割り当てていないユーザーであっても、ポリシーの対象であれば条件付きアクセス ポリシーの内容に従ってアクセス制限が行われますが、このような状態での利用はライセンス違反となります。
-
----
-
-<span style="color:blue">Q</span>. Exchange Online に対して条件付きアクセスを設定したところ Office 365 ポータルに対しても条件付きアクセスが設定されてしまいました。これは想定される動作でしょうか？
-
-<span style="color:red">A</span>. はい、これは想定される動作です。 2017 年 8 月 24 日以降は Exchange Online または SharePoint Online を対象とした条件付きアクセスが Office 365 ポータルにも反映されます。詳細は英語での情報となりますが以下のリンクも参照ください。
-
-An update to Azure AD Conditional Access for Office.com  
-https://cloudblogs.microsoft.com/enterprisemobility/2017/08/04/an-update-to-azure-ad-conditional-access-for-office-com/
 
 ---
 
