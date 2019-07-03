@@ -1,13 +1,13 @@
 const gulp = require("gulp");
 const replace = require("gulp-string-replace");
-const del = require('del');
-const path = require('path');
+const del = require("del");
+const path = require("path");
 const blogRoot = "/blog"
 
-const sourceFolders = ["active-directory-federation-service/", "azure-active-directory/", "azure-active-directory-connect/"];
+const sourceFolders = ["articles"];
 const markdownFiles = sourceFolders.map(dir => path.join(dir, "**/*.md"));
 const imageFiles = sourceFolders.map(dir => path.join(dir, "**/*.+(jpg|jpeg|png|gif|svg)"));
-imageFiles.push('favicon/*.+(png|ico|svg|webmanifest|xml)')
+imageFiles.push("favicon/*.+(png|ico|svg|webmanifest|xml)")
 const sourceFiles = sourceFolders.map(dir => path.join(dir, "**/*"));
 
 const outputPath = "source/_posts/";
@@ -77,7 +77,7 @@ gulp.task("generate", function (cb) {
     });
 });
 
-gulp.task('cleanOutputPath', function () {
+gulp.task("cleanOutputPath", function () {
   return del([
     path.join(outputPath, "/**/*")
   ]);
@@ -101,7 +101,7 @@ gulp.task("copyMarkdown", () => {
       replace(/^# .*/m, "")
     ).pipe(
       replace(/\]\((.+?).md\)/g, (match, p1, offset, string) => {
-        const pathes = p1.split('/')
+        const pathes = p1.split("/")
         const area = pathes[pathes.length - 2]
         const title = pathes[pathes.length - 1].replace(".md", "")
         return `](${blogRoot}/${area}/${title}/)`;
@@ -143,5 +143,5 @@ gulp.task(
   "watch",
   ()=>{
     console.log(sourceFiles)
-    gulp.watch('active-directory-federation-service/**/*', gulp.series(["hello"]))
+    gulp.watch("active-directory-federation-service/**/*", gulp.series(["hello"]))
 })
