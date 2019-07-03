@@ -48,60 +48,60 @@ URL:https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azure
 
 オンプレミス AD に管理者アカウントにてサインイン後、[スタート] → [Windows 管理ツール] → [Active Directory ドメインと信頼関係] の順に選択します。
 
-![](./hybrid-azuread-join-managed-domain/001.jpg)
+![](./how-to-create-hybridazureadjoin-managed/001.jpg)
 
 Active Directory ドメインと信頼関係の画面より、[Active Directory ドメインと信頼関係] を右クリックし、「プロパティ」を選択します。
 
-![](./hybrid-azuread-join-managed-domain/002.jpg)
+![](./how-to-create-hybridazureadjoin-managed/002.jpg)
 
 UPN サフィックス画面より、代わりの UPN サフィックスの欄に、代替 UPN サフィックス名を入力後、「追加」をクリックし、「OK」ボタンをクリックします。
 「OK」ボタンをクリック後、 Active Directory ドメインと信頼関係の画面を「x」ボタンをクリックし、閉じます。
 
-![](./hybrid-azuread-join-managed-domain/003.jpg)
+![](./how-to-create-hybridazureadjoin-managed/003.jpg)
 
 [スタート] → [Windows 管理ツール] → [Active Directory ユーザーとコンピューター] の順に選択します。
 
-![](./hybrid-azuread-join-managed-domain/004.jpg)
+![](./how-to-create-hybridazureadjoin-managed/004.jpg)
 
 [ドメイン名] → [Users] → [代替 UPN サフィックスを設定するユーザー] の順に選択し、対象のユーザーを選択した状態で、右クリックより「プロパティ」を選択します。
 
-![](./hybrid-azuread-join-managed-domain/005.jpg)
+![](./how-to-create-hybridazureadjoin-managed/005.jpg)
 
 選択したユーザーのプロパティ画面より、「アカウント」タブを選択後、ユーザー ログオン名のドメイン名のプルダウン メニューより、上記手順で作成した「代替 UPN サフィックス」を選択し、「OK」ボタンをクリックします。
 「OK」ボタンをクリック後、 Active Directory ユーザーとコンピューターの画面を「x」ボタンをクリックし、閉じます。
 
-![](./hybrid-azuread-join-managed-domain/006.jpg)
+![](./how-to-create-hybridazureadjoin-managed/006.jpg)
 
 また、複数のユーザーの代替 UPN サフィックスを変更する場合は、変更対象のユーザーを複数選択した状態にて、右クリックより「プロパティ」を選択します。
 
-![](./hybrid-azuread-join-managed-domain/007.jpg)
+![](./how-to-create-hybridazureadjoin-managed/007.jpg)
 
 複数の項目のプロパティ画面より、「アカウント」タブをクリックし、UPN サフィックスのプルダウン メニューより、上記手順で作成した「代替 UPN サフィックス」を選択し、「OK」ボタンをクリックします。
 「OK」ボタンをクリック後、 Active Directory ユーザーとコンピューターの画面を「x」ボタンをクリックし、閉じます。
 
-![](./hybrid-azuread-join-managed-domain/008.jpg)
+![](./how-to-create-hybridazureadjoin-managed/008.jpg)
 
 Azure AD へのカスタム ドメイン登録の具体的な手順は下記のとおりです。
 
 カスタム ドメイン名より「＋カスタム ドメインの追加」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/009.jpg)
+![](./how-to-create-hybridazureadjoin-managed/009.jpg)
 
 オンプレミス AD 上に登録されているドメインのうち、 Hybrid Azure AD Join を構成するドメイン名を入力し、「ドメインの追加」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/010.jpg)
+![](./how-to-create-hybridazureadjoin-managed/010.jpg)
 
-![](./hybrid-azuread-join-managed-domain/011.jpg)
+![](./how-to-create-hybridazureadjoin-managed/011.jpg)
 
 
 ドメインの追加をクリックすると、 DNS サーバーに TXT レコードを登録するように指示されますので、お使いの DNS サーバーに記載されている TXT レコードを追加します。
 
-![](./hybrid-azuread-join-managed-domain/012.jpg)
+![](./how-to-create-hybridazureadjoin-managed/012.jpg)
 
 追加後に、 DNS が浸透するまで待ち、「確認」ボタンをクリックします。
 無事浸透が完了し、 Azure AD 側で対象ドメインが認識できるようになると、下記のとおり状態が「確認済み」となります。
 
-![](./hybrid-azuread-join-managed-domain/013.jpg)
+![](./how-to-create-hybridazureadjoin-managed/013.jpg)
 
 ## Azure AD Connect の設定
 
@@ -109,53 +109,53 @@ https://www.microsoft.com/en-us/download/details.aspx?id=47594 より Azure AD C
 
 Azure AD Connect を起動し、「構成」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/014.jpg)
+![](./how-to-create-hybridazureadjoin-managed/014.jpg)
 
 追加のタスクより、「デバイス オプションの構成」を選択し「次へ」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/015.jpg)
+![](./how-to-create-hybridazureadjoin-managed/015.jpg)
 
 Windows Server 2012 R2 以上であれば、 Hybrid Azure AD Join を構成できます。そのまま「次へ」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/016.jpg)
+![](./how-to-create-hybridazureadjoin-managed/016.jpg)
 
 Azure AD に接続画面で、 Azure AD の対象テナントの全体管理者の資格情報を入力し、「次へ」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/017.jpg)
+![](./how-to-create-hybridazureadjoin-managed/017.jpg)
 
 デバイス オプションより、「ハイブリッド Azure AD 参加の構成」を選択し「次へ」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/018.jpg)
+![](./how-to-create-hybridazureadjoin-managed/018.jpg)
 
 デバイスのオペレーティング システムの画面より、「Windows 10 以降のドメインに参加しているデバイス。」を選択し「次へ」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/019.jpg)
+![](./how-to-create-hybridazureadjoin-managed/019.jpg)
 
 SCP の構成画面にて SCP (サービス接続ポイント) を構成します。
 SCP はフォレスト単位ごとで構成する必要があります、今回は対象のオンプレミス AD のフォレストは 1 つしかないので、対象のフォレストにチェックをいれます。
 
-![](./hybrid-azuread-join-managed-domain/020.jpg)
+![](./how-to-create-hybridazureadjoin-managed/020.jpg)
 
 認証サービスに「Azure Active Directory」を選択します。
 AD FS を構成している場合はフェデレーション サービス名を指定する必要がありますが、今回は AD FS 環境がない Managed Domain 環境なので、 Azure Active Directory を選択します。
 
-![](./hybrid-azuread-join-managed-domain/021.jpg)
+![](./how-to-create-hybridazureadjoin-managed/021.jpg)
 
 エンタープライズ管理者の横の「追加」ボタンをクリックし、対象フォレストのエンタープライズ管理者の資格情報を入力し、「OK」ボタンをクリックします。
 
-![](./hybrid-azuread-join-managed-domain/022.jpg)
+![](./how-to-create-hybridazureadjoin-managed/022.jpg)
 
 すべての情報が入力されていることを確認し、「次へ」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/023.jpg)
+![](./how-to-create-hybridazureadjoin-managed/023.jpg)
 
 構成の準備完了の画面で「構成」をクリックし、対象フォレスト向けの SCP を構成します。
 
-![](./hybrid-azuread-join-managed-domain/024.jpg)
+![](./how-to-create-hybridazureadjoin-managed/024.jpg)
 
 構成が完了しましたの画面にて、「終了」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/025.jpg)
+![](./how-to-create-hybridazureadjoin-managed/025.jpg)
 
 ## SCP とは (SCP の構成の確認)
 
@@ -174,15 +174,15 @@ AD FS を構成している場合はフェデレーション サービス名を�
 という形で格納されています。下記手順で確認が可能です。
 ADSI エディターを起動し「接続」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/026.jpg)
+![](./how-to-create-hybridazureadjoin-managed/026.jpg)
 
 接続ポイントとして、「識別名または名前付けコンテキストを選択または入力する」を選択し、CN=Configuration,DC=fabrikam,DC=com (ドメイン名が fabrikan.com である場合) 左記のように設定し「OK」ボタンをクリックします。
 
-![](./hybrid-azuread-join-managed-domain/027.jpg)
+![](./how-to-create-hybridazureadjoin-managed/027.jpg)
 
 [CN=Services]→[CN=Device Registration Configuration] の中にある「CN=62a0ff2e-97b9-4513-943f-0d221bd30080」が SCP オブジェクトの実態になります。
 
-![](./hybrid-azuread-join-managed-domain/028.jpg)
+![](./how-to-create-hybridazureadjoin-managed/028.jpg)
 
 また、 Azure AD Connect で構成した SCP が正しく構成されているかについては、以下のコマンドレットで確認することができます。
 
@@ -198,7 +198,7 @@ $scp.Keywords;
 正しく、デバイス登録先の Azure AD のテナント名となっていることが確認できます。
 AzureADId は、 Azure ポータルの「プロパティ」画面で確認できる、「ディレクトリ ID」となります。
 
-![](./hybrid-azuread-join-managed-domain/029.jpg)
+![](./how-to-create-hybridazureadjoin-managed/029.jpg)
 
 ## Hybrid Azure AD Join 構成までの流れ
 
@@ -228,29 +228,29 @@ userCertificate 属性が設定されているかは、オンプレミス AD で
 
 なお、属性エディター タブは、既定のプロパティ画面では表示されないので、「Active Directory ユーザーとコンピューター」より、[表示] → [拡張機能]をクリックし、拡張機能を有効にした状態の後、コンピューターのプロパティ画面を開くことで、確認することが可能となります。
 
-![](./hybrid-azuread-join-managed-domain/030.jpg)
+![](./how-to-create-hybridazureadjoin-managed/030.jpg)
 
 下記は証明書が追加されていない状態。(この状態では Azure AD Connect によるデバイス同期は行われません)
 
-![](./hybrid-azuread-join-managed-domain/031.jpg)
+![](./how-to-create-hybridazureadjoin-managed/031.jpg)
 
 下記は証明書が追加されている状態。(この状態で Azure AD Connect は 30 分間隔でチェックを行い、 Azure AD にデバイスが登録されます)
 Start-ADSyncSyncCycle -PolicyType Delta コマンドレットで手動同期することも可能です。
 
-![](./hybrid-azuread-join-managed-domain/032.jpg)
+![](./how-to-create-hybridazureadjoin-managed/032.jpg)
 
 下記は証明書の実態 (一部) です。
 
-![](./hybrid-azuread-join-managed-domain/033.jpg)
+![](./how-to-create-hybridazureadjoin-managed/033.jpg)
 
  Azure AD Connect の同期ルールを見てみると、 userCertificate 属性が ISNOTNULL (証明書がセットされていることが必須) であることが分かります。
 [Synchronization Rules Editor] から Direction を「Outbound」を選択し、[Out to AAD - Device Join SOAInAD]を選択後に「View」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/034.jpg)
+![](./how-to-create-hybridazureadjoin-managed/034.jpg)
 
 Scoping Filter をクリックすると、 userCertificate が ISNOTNULL であることがわかります。
 
-![](./hybrid-azuread-join-managed-domain/035.jpg)
+![](./how-to-create-hybridazureadjoin-managed/035.jpg)
 
 ## Azure AD へのデバイス同期の確認
 
@@ -260,20 +260,20 @@ Azure AD Connect の「Synchronization Service」にて確認を行います。
 「Windows アイコン」→「Synchronization Service」の順に選択すると、「Synchronization Service Manager」が起動します。
 Start Time を見ると、19:51 の次に 20:21 に実行されておりますので、 30 分間隔で同期が行われていることが分かります。
 
-![](./hybrid-azuread-join-managed-domain/036.jpg)
+![](./how-to-create-hybridazureadjoin-managed/036.jpg)
 
 
 20 : 21 の Export の Adds がデバイスが追加されたことを意味しますので、選択後、「Properties」をクリックします。
 
-![](./hybrid-azuread-join-managed-domain/037.jpg)
+![](./how-to-create-hybridazureadjoin-managed/037.jpg)
 
 すると、 userCertificate を含む、 Windows 10 コンピューターの属性が、 Azure AD に同期されていることが確認できます。
 
-![](./hybrid-azuread-join-managed-domain/038.jpg)
+![](./how-to-create-hybridazureadjoin-managed/038.jpg)
 
 このタイミングで、 Windows 10 コンピューター上のコマンド プロンプトで dsregcmd /status のコマンドレットをたたくと下記のとおり、 AzureADJoined の値が 「YES」 になっていることが分かります。
 
-![](./hybrid-azuread-join-managed-domain/039.jpg)
+![](./how-to-create-hybridazureadjoin-managed/039.jpg)
 
 ## PRT (Primary Refresh Token) の取得
 
@@ -283,15 +283,15 @@ Azure AD にデバイスは登録されましたが、まだ Hybrid Azure AD Joi
 
 オンプレミス AD から Azure AD に同期済みの test001 から test003 のユーザーがいますので、対象の Windows 10 コンピューターに test001@xxx.work ユーザーでサインインします。
 
-![](./hybrid-azuread-join-managed-domain/040.jpg)
+![](./how-to-create-hybridazureadjoin-managed/040.jpg)
 
 資格情報を入力し、サインインします。
 
-![](./hybrid-azuread-join-managed-domain/041.jpg)
+![](./how-to-create-hybridazureadjoin-managed/041.jpg)
 
 コマンドプロンプトを起動し、このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。
 
-![](./hybrid-azuread-join-managed-domain/042.jpg)
+![](./how-to-create-hybridazureadjoin-managed/042.jpg)
 
 ## おわりに
 
