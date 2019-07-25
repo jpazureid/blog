@@ -5,6 +5,7 @@
 
 ## Azure Active Directory
 
+- [Azure AD 登録 と Azure AD 参加 の違い](./articles/azure-active-directory/azure-ad-join-vs-azure-ad-device-registration.md)
 - [PowerShell にて全ユーザーの最終サインイン日時を一括で取得する方法](./articles/azure-active-directory/last-signin-reports.md)
 - [サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」](./articles/azure-active-directory/create-subscription-error.md)
 - [多要素認証 (MFA) のリセット手順](./articles/azure-active-directory/mfa-reset.md)
