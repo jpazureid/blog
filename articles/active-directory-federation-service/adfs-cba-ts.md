@@ -120,13 +120,13 @@ Negotiate Client Certificate : Enabled
 certutil -f -addstore <任意の証明書ストア名> <クライアント証明書のルート証明書>
 ```
 
-# (例)
+(例)
 
 ```cmd
 certutil -f -addstore adfsclient c:\temp\rootca.cer
 ```
 
-※ c:\temp\rootca.cer は、クライアント証明書を発行したルートCA の証明書をエクスポートした .cer ファイルです。
+※ c:\temp\rootca.cer は、クライアント証明書を発行したルートCA の証明書をエクスポートした .cer ファイルです。  
 ※ このコマンドにより、adfsclient という名前のストアが作成され、ルートCA の証明書がインポートされます。
 
 2. 続いて以下のコマンドを実行し、作成したストア内にルート CA の証明書が存在することを確認します。
