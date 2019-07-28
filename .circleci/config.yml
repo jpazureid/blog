@@ -42,7 +42,13 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run deploy
+      - run:
+          name: npm run deploy
+          command: |
+            git config --global user.email "jpazidbot@microsoft.com"
+            git config --global user.name "jpazidbot"
+            npm run deploy
+
 
 workflows:
     version: 2
