@@ -29,6 +29,8 @@ jobs:
       - image: circleci/node:11.9.0-stretch
     working_directory: ~/repo
     steps:
+      - add_ssh_keys:
+        fingerprints: da:54:b2:47:c6:92:6e:3d:0a:55:31:16:08:3c:fd:3b
       - checkout
       - run: git submodule update -i
       # Download and cache dependencies
