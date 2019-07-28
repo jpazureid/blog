@@ -27,9 +27,11 @@ root_tag_generator:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://jpazureid.github.io
+github:
+  url: https://github.com/jpazureid/blog/  
 root: /blog/
 permalink: :title/
-permalink_defaults:
+permalink_defaults: 
 
 # Directory
 source_dir: source
@@ -89,7 +91,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: jpazure
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
