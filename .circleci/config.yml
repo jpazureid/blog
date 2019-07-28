@@ -30,7 +30,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - add_ssh_keys:
-        fingerprints: da:54:b2:47:c6:92:6e:3d:0a:55:31:16:08:3c:fd:3b
+        fingerprints: 70:3c:88:3a:3d:47:8b:8b:4f:e5:1b:b2:e6:8a:37:99
       - checkout
       - run: git submodule update -i
       # Download and cache dependencies
