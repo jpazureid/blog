@@ -23,7 +23,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run build
 
-  build:
+  deploy:
     docker:
       - image: circleci/node:11.9.0-stretch
     working_directory: ~/repo
@@ -40,15 +40,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: |
-          mkdir -p ~/.ssh
-          echo $Secret | base64 -d > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
-          git config --global user.email "jpazidbot@microsoft.com"
-          git config --global user.name "jpazidbot"
-          npm run deploy
+      - run: npm run deploy
 
 workflows:
     version: 2
@@ -60,4 +52,4 @@ workflows:
                 - build
             filters:
               branches:
-                only: circleci
+                only: master
