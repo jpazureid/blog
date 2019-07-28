@@ -4,7 +4,7 @@
 
 #### Document Details
 
-⚠ *Do not edit this section. It is required for docs.microsoft.com ➟ GitHub issue linking.*
+⚠ *Do not edit this section.
 
 * ID: {{ID}}
 * 対象記事: [{{TITLE}}]({{PostURL}})
