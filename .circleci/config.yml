@@ -57,14 +57,10 @@ workflows:
     deploy:
       jobs:
         - build:
-            filters:
-              branches:
-                ignore: gh-pages
         - deploy:
             requires:
                 - build
             filters:
               branches:
                 only: circleci
-                ignore: gh-pages
 

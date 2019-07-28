@@ -94,11 +94,12 @@ pagination_dir: page
 theme: jpazure
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/doc  s/deployment.html
 deploy:
   type: git
   repo: git@github.com:jpazureid/blog.git
   branch: gh-pages
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }} [skip ci]"
 
 feed:
   type: atom
