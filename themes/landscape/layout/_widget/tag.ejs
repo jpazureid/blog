@@ -3,7 +3,7 @@
     <h3 class="widget-title"><%= __('tags') %></h3>
     <div class="widget">
       <!-- <%- list_tags({show_count: theme.show_count}) %> -->
-      <%- list_tag_tree({show_count: theme.show_count, root_tag_option: theme.root_tag_option}) %>
+      <%- list_tag_tree({show_count: theme.show_count, root_tag_generator: config.root_tag_generator ? config.root_tag_generator : theme.root_tag_generator}) %>
     </div>
   </div>
 <% } %>

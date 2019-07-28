@@ -15,12 +15,23 @@ author: Azure Identity Support Japan
 language: ja
 timezone: asia/Tokyo
 
+root_tag_generator:
+  root_tag_names:
+    - Azure AD
+    - AAD Connect
+    - AD FS
+    - 情報採取
+  sub_tag_limit: 20
+  sub_tag_sort: 'name' # 未実装
+  
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://jpazureid.github.io
+github:
+  url: https://github.com/jpazureid/blog/  
 root: /blog/
 permalink: :title/
-permalink_defaults:
+permalink_defaults: 
 
 # Directory
 source_dir: source
@@ -80,7 +91,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: jpazure
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

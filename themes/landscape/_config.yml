@@ -37,7 +37,7 @@ google_plus:
 fb_admins:
 fb_app_id:
 
-root_tag_option:
+root_tag_generator:
   root_tag_names:
     - Azure AD
     - AAD Connect
