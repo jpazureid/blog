@@ -1,9 +1,9 @@
 {
-  "name": "hexo-site",
+  "name": "jpazureid-blog",
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "3.9.0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -34,6 +34,6 @@
     "start": "npx gulp",
     "deploy": "npx gulp publish",
     "build": "npx gulp build",
-    "test": "npx textlint ./a**/*.md"
+    "test": "npx textlint ./articles/**/*.md"
   }
 }

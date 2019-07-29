@@ -4,12 +4,9 @@ const del = require("del");
 const path = require("path");
 const blogRoot = "/blog"
 
-const sourceFolders = ["articles"];
-const markdownFiles = sourceFolders.map(dir => path.join(dir, "**/*.md"));
-const imageFiles = sourceFolders.map(dir => path.join(dir, "**/*.+(jpg|jpeg|png|gif|svg)"));
-imageFiles.push("favicon/*.+(png|ico|svg|webmanifest|xml)")
-const sourceFiles = sourceFolders.map(dir => path.join(dir, "**/*"));
-
+const sourceFolder = "articles";
+const markdownFiles = path.join(sourceFolder, "**/*.md");
+const imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg)");
 const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
@@ -90,7 +87,7 @@ gulp.task("open", () => {
 gulp.task("copyMarkdown", () => {
   return (
     gulp
-    .src(markdownFiles)
+    .src(markdownFiles, { base: sourceFolder })
     //fix absolute path image
     .pipe(
       replace(/!\[.*\]\(.*\/(.*)\)/g, (match, p1, offset, string) => {
@@ -112,7 +109,7 @@ gulp.task("copyMarkdown", () => {
 });
 
 gulp.task("copyImage", () => {
-  return gulp.src(imageFiles).pipe(gulp.dest(outputPath));
+  return gulp.src(imageFiles, { base: sourceFolder }).pipe(gulp.dest(outputPath));
 });
 
 gulp.task(
@@ -142,6 +139,5 @@ gulp.task(
 gulp.task(
   "watch",
   ()=>{
-    console.log(sourceFiles)
     gulp.watch("active-directory-federation-service/**/*", gulp.series(["hello"]))
 })
