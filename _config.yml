@@ -2,18 +2,19 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-# Site
+# ブログのタイトル
 title: Japan Azure Identity Support Blog 
-subtitle: 
+
+# サブタイトル
+subtitle: 日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。
 description: 日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。
 keywords:
   - Azure
   - Azure AD
   - Identity
   - AD FS
+
 author: Azure Identity Support Japan
-language: ja
-timezone: asia/Tokyo
 
 root_tag_generator:
   root_tag_names:
@@ -29,9 +30,26 @@ root_tag_generator:
 url: https://jpazureid.github.io
 github:
   url: https://github.com/jpazureid/blog/  
+
+skip_render:
+  - '_data/*.png'
+  - 'BingSiteAuth.xml'
+  - 'google4a4cd09c454aa91c.html'
+
+# Deployment
+## Docs: https://hexo.io/doc  s/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:jpazureid/blog.git
+  branch: gh-pages
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }} [skip ci]"
+
 root: /blog/
 permalink: :title/
 permalink_defaults: 
+
+language: ja
+timezone: asia/Tokyo
 
 # Directory
 source_dir: source
@@ -41,12 +59,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
-  - '_data/*.png'
-  - 'BingSiteAuth.xml'
-  - 'google4a4cd09c454aa91c.html'
 
-# Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
@@ -92,14 +105,6 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: jpazure
-
-# Deployment
-## Docs: https://hexo.io/doc  s/deployment.html
-deploy:
-  type: git
-  repo: git@github.com:jpazureid/blog.git
-  branch: gh-pages
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }} [skip ci]"
 
 feed:
   type: atom
