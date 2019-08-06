@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "private": true,
   "hexo": {
-    "version": "3.9.0"
+    "version": "3.8.0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -11,7 +11,7 @@
     "gulp": "^4.0.2",
     "gulp-copy": "^4.0.1",
     "gulp-string-replace": "^1.1.2",
-    "hexo": "^3.8.0",
+    "hexo": "3.8.0",
     "hexo-deployer-git": "^1.0.0",
     "hexo-generator-archive": "^0.1.5",
     "hexo-generator-category": "^0.1.3",
