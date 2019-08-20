@@ -16,6 +16,7 @@
 - [Azure MFA の多要素認証設定の統合](./articles/azure-active-directory/mfasetupinteg.md)
 - [Azure AD におけるロール管理の新しい方法](./articles/azure-active-directory/roles-and-administrators.md)
 - [「ユーザーはアプリケーションを登録できる」の設定について](./articles/azure-active-directory/users-can-register-applications.md)
+- [「エンタープライズアプリケーション」と「アプリの登録」の違いについて](./articles/azure-active-directory/enterprise-applications-app-registrations.md)
 - [RBAC のスコープについて](./articles/azure-active-directory/about-rbac.md)
 - [Azure AD B2B におけるユーザーの新しい招待方法](./articles/azure-active-directory/b2b-invitation.md)
 - [Azure AD のサインイン画面に関するアップデートのお知らせ](./articles/azure-active-directory/azure-ad-sign-in-experience.md)
