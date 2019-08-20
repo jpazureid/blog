@@ -35,6 +35,7 @@ tags:
 それぞれの SaaS アプリケーションに対する SSO、ユーザーのプロビジョニングの設定方法は以下のチュートリアルを参照ください。
 
 SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
+
 https://docs.microsoft.com/ja-jp/azure/active-directory/saas-apps/tutorial-list
 
 上記に加えて、オンプレミス環境で利用しているアプリケーションを、外部から Azure AD Application Proxy 経由で利用する場合も、「エンタープライズアプリケーション」より設定を行います。
@@ -42,6 +43,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/saas-apps/tutorial-list
 詳細については、以下の公開情報をご参照ください。
 
 オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
+
 https://docs.microsoft.com/ja-jp/azure/active-directory/manage-apps/application-proxy
 
 ## 「アプリの登録」、「アプリの登録(プレビュー)」からアプリケーションの登録を行う場合
@@ -53,6 +55,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/manage-apps/application-
 
 Azure AD v2.0 エンドポイントと v1.0 エンドポイントの比較
 \- 制限事項
+
 https://docs.microsoft.com/ja-jp/azure/active-directory/develop/azure-ad-endpoint-comparison#limitations
 
 「エンタープライズアプリケーション」と「アプリの登録」の管理項目の違いについては以上となります。
@@ -61,6 +64,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/develop/azure-ad-endpoin
 制限を加えることもできますが、既定の状態としておくことを推奨しています。推奨される理由については以下の投稿も併せてご参照ください。
 
 「ユーザーはアプリケーションを登録できる」の設定について
+
 https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/users-can-register-applications.md
 
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。
