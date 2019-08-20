@@ -5,6 +5,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/12/12/last-signin-reports/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # PowerShell にて全ユーザーの最終サインイン日時を一括で取得する方法
 
 こんにちは、Azure & Identity サポート チームの小野です。今回は、PowerShell で Azure AD 上の全ユーザー（ゲストユーザーも含む）の最終サインイン日時を一括で取得する方法をご紹介します。
