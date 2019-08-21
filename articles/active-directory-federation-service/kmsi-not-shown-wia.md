@@ -6,6 +6,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/12/14/kmsi-wia/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # フェデレーション環境 (Windows 統合認証) で [サインインの状態を維持しますか？] の画面が表示されない
 
 こんにちは、Azure ID サポートチームの高田です。

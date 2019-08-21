@@ -10,6 +10,9 @@ tags:
   - Intune
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/01/25/device_access/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # デバイス ベースのアクセス制御
 
 こんにちは、Azure & Identity サポート チームの下野です。

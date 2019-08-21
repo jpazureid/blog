@@ -5,6 +5,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/04/03/device-management-hybrid-azuread-joined-devices-setup/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # ハイブリッド Azure Active Directory 参加済みデバイスの構成について
 
 いつもお世話になります。Azure & Identity サポート チームの加藤です。
