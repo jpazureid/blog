@@ -5,6 +5,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/09/05/changes-to-aad-ip-address-ranges/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure Active Directory への接続で使用する IP アドレス範囲の変更
 
 日々ブログをご愛読してくれている皆様、Azure Identity チームの宮林です。

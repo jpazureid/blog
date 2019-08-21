@@ -5,6 +5,9 @@ tags:
   - Azure AD Directory Rolls
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/09/13/outputdirectoryrollmembers/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい
 
 こんにちは！ Azure & Identity サポート チームの三浦 大です。
