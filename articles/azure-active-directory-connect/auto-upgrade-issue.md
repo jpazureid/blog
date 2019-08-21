@@ -6,6 +6,9 @@ tags:
   - AD Sync
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/04/23/problemofautoupgrade/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # 自動アップグレード機能の問題
 
 皆さん、こんにちは。Azure AD Connect (AADC) のサポートを担当している福島です。

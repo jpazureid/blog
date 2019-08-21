@@ -6,6 +6,9 @@ tags:
   - MFA
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/06/01/azure-mfa-%e3%82%92%e6%b1%82%e3%82%81%e3%82%89%e3%82%8c%e3%82%8b%e3%82%bf%e3%82%a4%e3%83%9f%e3%83%b3%e3%82%b0%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure MFA を求められるタイミングについて
 
 こんにちは、Azure ID チームの田中です。
