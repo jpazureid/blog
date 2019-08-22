@@ -1,5 +1,5 @@
 ---
-title: [調査に有効な採取情報] ブラウザ経由での Azure AD 認証
+title: ブラウザ経由での Azure AD 認証
 date: 2017-10-24
 tags:
   - Azure AD
