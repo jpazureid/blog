@@ -5,7 +5,7 @@ tags:
     - AD FS
 ---
 
-> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/01/10/adfs-tls12/ の内容を移行したものです。
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/13/ad-fs-%E3%81%8C-pdc-%E3%81%A8%E9%80%9A%E4%BF%A1%E3%81%99%E3%82%8B%E3%82%B1%E3%83%BC%E3%82%B9/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
 # AD FS が PDC と通信するケース
