@@ -39,8 +39,8 @@
 - [招待したユーザーが利用できない](./articles/azure-active-directory/azuread-b2b-troubleshooting.md)
 - 招待メールを使用しないユーザーの追加方法
 - [登録されたデバイスの管理方法](./articles/azure-active-directory/registerd_device_managemant.md)
-- [調査に有効な採取情報] Azure AD に関する問題全般
-- [調査に有効な採取情報] ブラウザ経由での Azure AD 認証
+- [[調査に有効な採取情報] Azure AD に関する問題全般](./articles/azure-active-directory/troubleshoot-azure-ad.md)
+- [[調査に有効な採取情報] ブラウザ経由での Azure AD 認証](./articles/azure-active-directory/troubleshoot-browser-auth.md)
 - [“Baseline policy: Require MFA for admins” について](./articles/azure-active-directory/about-baseline-policy-require-mfa-for-admins.md)
 - [Azure AD と AD FS のベスト プラクティス: パスワード スプレー攻撃の防御](./articles/azure-active-directory/password-sprey-attack.md)
 - [Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートをファイルに出力する PowerShell スクリプト](./articles/azure-active-directory/microsoft-graph-api-signin-activity-reports.md)
@@ -88,9 +88,9 @@
 - [AD FS の自動証明書ロールオーバー機能について](./articles/active-directory-federation-service/ad-fs-auto-rollover.md)
 - [AD FS の証明書更新手順 (SSLサーバー証明書)](./articles/active-directory-federation-service/update-ssl-server-certificate.md)
 - [AD FS の証明書更新手順 (トークン署名証明書、トークン暗号化解除証明書)](./articles/active-directory-federation-service/update-token-certificate.md)
-- AD FS が PDC と通信するケース
-- 証明書利用者信頼のセキュア ハッシュ アルゴリズムについて
-- Extranet Lockout について
+- [AD FS が PDC と通信するケース](./articles/active-directory-federation-service/case-of-pdc.md)
+- [証明書利用者信頼のセキュア ハッシュ アルゴリズムについて](./articles/active-directory-federation-service/secure-hash.md)
+- [Extranet Lockout について](./articles/active-directory-federation-service/about-extranet-lockout.md)
 
 ## その他
 - サブスクリプションや請求・課金について (Azure サブスクリプション サポートチーム ブログ)

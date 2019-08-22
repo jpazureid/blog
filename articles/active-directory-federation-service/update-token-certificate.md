@@ -5,6 +5,9 @@ tags:
   - AD FS
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/03/ad-fs-tokencert/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # AD FS の証明書更新手順（トークン署名証明書、トークン暗号化解除証明書）
 
 皆様、こんにちは。Azure & Identity サポート担当の竹村です。
