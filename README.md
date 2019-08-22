@@ -36,7 +36,7 @@
 - [Azure サブスクリプションと Azure AD の管理者](./articles/azure-active-directory/subscription-azure-ad-relationship.md)
 - [「アクセス権がありません」のエラーについて](./articles/azure-active-directory/azuread-access-denied.md)
 - [サブスクリプションが見えない](./articles/azure-active-directory/subscription-azuread.md)
-- 招待したユーザーが利用できない
+- [招待したユーザーが利用できない](./articles/azure-active-directory/azuread-b2b-troubleshooting.md)
 - 招待メールを使用しないユーザーの追加方法
 - 登録されたデバイスの管理方法
 - [調査に有効な採取情報] Azure AD に関する問題全般
