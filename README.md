@@ -38,7 +38,7 @@
 - [サブスクリプションが見えない](./articles/azure-active-directory/subscription-azuread.md)
 - [招待したユーザーが利用できない](./articles/azure-active-directory/azuread-b2b-troubleshooting.md)
 - 招待メールを使用しないユーザーの追加方法
-- 登録されたデバイスの管理方法
+- [登録されたデバイスの管理方法](./articles/azure-active-directory/registerd_device_managemant.md)
 - [調査に有効な採取情報] Azure AD に関する問題全般
 - [調査に有効な採取情報] ブラウザ経由での Azure AD 認証
 - [“Baseline policy: Require MFA for admins” について](./articles/azure-active-directory/about-baseline-policy-require-mfa-for-admins.md)
