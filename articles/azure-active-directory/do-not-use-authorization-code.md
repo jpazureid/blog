@@ -21,7 +21,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/fundamentals/whats-new#c
 
 まず、OAuth 2.0 における Authorization Code について簡単に説明します。
 
-Authorization Code は、Azure AD にて利用されている OAuth 2.0 の Authorization Code Grant Flow の中でユーザーがリソースへのアクセスを承認したことを示するために、Authorization Server (Azure AD) が発行するものです。以下の図のとおり Authorization Code は Azure AD から発行されます (③)。その後、Web アプリケーションに渡され (④)、Web アプリケーションがこの Authorization Code を利用してアクセス トークンを取得 (⑤ ⑥)し、リソースへのアクセスを行います。
+Authorization Code は、Azure AD にて利用されている OAuth 2.0 の Authorization Code Grant Flow の中でユーザーがリソースへのアクセスを承認したことを示するために、Authorization Server (Azure AD) が発行するものです。以下の図のとおり Authorization Code は Azure AD から発行されます (③)。その後、Web アプリケーションに渡され (④)、Web アプリケーションがこの Authorization Code を利用してアクセス トークンを取得 (⑤ ⑥) し、リソースへのアクセスを行います。
 
 ![](./powershell-module/AuthorizationCodeFlow.png)
 

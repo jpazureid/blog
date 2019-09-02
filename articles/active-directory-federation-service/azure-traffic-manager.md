@@ -10,7 +10,7 @@ tags:
 
 # Azure VM 上の AD FS 構成と Azure トラフィック マネージャーとの構成での非推奨設定について
 
-こんにちは、Azure & Identity サポート チームの 姚 (ヨウ)です。
+こんにちは、Azure & Identity サポート チームの 姚 (ヨウ) です。
 
 Azure VM 上に AD FS を構成し、 Azure トラフィック マネージャーと組み合わせることで WAP サーバーと AD FS サーバーのセットを丸ごと冗長化できるメリットがあります。
 

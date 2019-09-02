@@ -14,7 +14,7 @@ tags:
 こんにちは、Azure & Identity サポート チームの石川です。
 今回は、Azure AD に登録されているデバイスの管理方法について紹介します。
 
-Azure ADにデバイスを登録しておくことで、条件付きアクセスでデバイス登録されていることを条件にアクセス制御をすることができますが、過去に使用していたデバイスを廃棄したり、別ユーザーに譲渡したりした場合、Azure AD 上のユーザーに紐づいたデバイス情報が残ったままになってしまうことがあります。
+Azure AD にデバイスを登録しておくことで、条件付きアクセスでデバイス登録されていることを条件にアクセス制御をすることができますが、過去に使用していたデバイスを廃棄したり、別ユーザーに譲渡したりした場合、Azure AD 上のユーザーに紐づいたデバイス情報が残ったままになってしまうことがあります。
 
 Azure ポータルのデバイスの管理画面でもデバイスの削除はできますが、複数のデバイスをまとめて削除するなどの操作は、現時点では実装されておりません。
 
@@ -62,13 +62,13 @@ Get-MsolDevice -RegisteredOwnerUpn <UPN> | ft Displayname, DeviceId,ApproximateL
 Remove-MsolDevice  -DeviceId <4. で確認した DeviceId> -force
 ```
 
-６．上記のコマンドを応用して、例えば、特定ユーザーの ApproximateLastLogonTimestam  が 1年以上前のデバイスを一括削除する場合、次のような構文を使用します。
+６．上記のコマンドを応用して、例えば、特定ユーザーの ApproximateLastLogonTimestam  が 1 年以上前のデバイスを一括削除する場合、次のような構文を使用します。
 
 ```
 Get-MsolDevice -RegisteredOwnerUpn <UPN> | where {$_.ApproximateLastLogonTimestamp.AddYears(1) -lt (Get-Date)} | foreach{Remove-MsolDevice -DeviceId $_.DeviceId} -force
 ```
 
-７．また、ディレクトリ内のすべての ApproximateLastLogonTimestam  が 1年以上前のデバイスを一括削除する場合は、次のような構文を使用します。
+７．また、ディレクトリ内のすべての ApproximateLastLogonTimestam  が 1 年以上前のデバイスを一括削除する場合は、次のような構文を使用します。
 
 ```
 Get-MsolDevice -All | where {$_.ApproximateLastLogonTimestamp.AddYears(1) -lt (Get-Date)} | foreach{Remove-MsolDevice -DeviceId $_.DeviceId} -force
@@ -82,7 +82,7 @@ Get-MsolDevice -RegisteredOwnerUpn で削除対象をなるデバイスを抽出
 
 いかがでしたでしょうか？
 
-今回ご紹介した PowerShellによるデバイスの管理方法はほんの一例となりますため、別の条件での管理方法を知りたいなどのご質問があれば、Azure サポートにお問い合わせをいただければ幸いです。
+今回ご紹介した PowerShell によるデバイスの管理方法はほんの一例となりますため、別の条件での管理方法を知りたいなどのご質問があれば、Azure サポートにお問い合わせをいただければ幸いです。
 
 また、お客様のご利用方法に則した構文やスクリプトの作成支援などは、弊社プレミア サポートにて承っておりますので、ぜひご利用ください。
 
