@@ -4,6 +4,10 @@ date: 2018-07-3
 tags:
   - AAD Connect
 ---
+
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/07/03/azure-ad-connect-requirement/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure AD Connect サーバー : ウィルス対策ソフト除外項目 / 使用する通信ポート
 
 こんにちは！ Azure Identity サポートの谷です。  

@@ -5,6 +5,9 @@ tags:
   - AAD Connect
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/09/20171107cantphsback-aadc108641/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure AD Connect: 2018/11/7 以降 AADC 1.0.8641.0 以前では Password Writeback が利用できない
 
 こんにちは。Azure Identity チームの金森です。  

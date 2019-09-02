@@ -5,6 +5,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/04/17/upcoming-improvements-to-the-azure-ad-sign-in-experience/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure AD のサインイン画面に関するアップデートのお知らせ
 
 こんにちは、Azure & Identity サポート チームの山口です。

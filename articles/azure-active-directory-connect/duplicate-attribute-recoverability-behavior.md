@@ -6,6 +6,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/11/08/azure-ad-connect-duplicate-attribute/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure AD Connect: ID 同期と重複属性の回復性の動作について
 
 こんにちは、Azure & Identity サポート チームの後藤です。  

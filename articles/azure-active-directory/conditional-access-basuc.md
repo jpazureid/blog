@@ -5,6 +5,9 @@ tags:
   - Azure AD
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/09/27/ca-basic/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # 条件付きアクセスの基本的な考え方
 
 こんにちは、Azure & Identity サポート チームの栗井です。

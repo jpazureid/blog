@@ -4,6 +4,9 @@ date: 2018-01-10
 tags:
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/01/10/adfs-tls12/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Office 365 の TLS 1.0/1.1 無効化に伴う AD FS / WAP (AD FS Proxy) の対応
 
 2018/02/15: TLS 1.2 の必須化は当初予定していた 2018/3/1 から 2018/10/31 に延期になりました。  

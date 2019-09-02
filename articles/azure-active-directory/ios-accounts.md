@@ -6,6 +6,9 @@ tags:
   - トラブルシューティング
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/05/16/ios-accounts/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Office 365 へのアクセスで iOS Accounts 登録のメッセージが表示され接続できない
 
 こんにちは。Azure ID チームの三浦です。

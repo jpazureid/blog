@@ -6,6 +6,9 @@ tags:
   - 証明書
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/06/ad-fs-auto-rollover/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # AD FS の自動証明書ロールオーバー機能について
 
 AD FS の自動証明書ロールオーバー機能についてご案内します。

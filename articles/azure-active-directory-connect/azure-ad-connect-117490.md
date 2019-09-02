@@ -5,6 +5,9 @@ tags:
   - AAD Connect
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/02/26/azure-ad-connect-117490/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure AD Connect ビルド 1.1.749.0 の注意点  
 
 こんにちは！ Azure Identity サポートの橋本です。  

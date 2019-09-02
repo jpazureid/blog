@@ -6,6 +6,9 @@ tags:
   - Subscription
 ---
 
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/11/04/azure-subscription-azuread-admin/ の内容を移行したものです。
+> 元の記事の最新の更新情報については、本内容をご参照ください。
+
 # Azure サブスクリプションと Azure AD の管理者
 
 こんにちは、 Azure ID サポートチームの三浦です。
