@@ -21,7 +21,7 @@ Azure ポータルのデバイスの管理画面でもデバイスの削除は�
 そこで、PowerShell を利用することで、条件に合致したデバイスをまとめて管理することができますので、その方法を紹介します。
 
 Azure ポータルのデバイス管理画面:
-![](./registerd_device_managemant/registerd_device_managant.md)
+![](./registerd_device_managemant/deviceList.jpg)
 
 ## PowerShell で、条件に合致したデバイスを一括で削除する方法
 
@@ -54,7 +54,7 @@ Get-MsolDevice -RegisteredOwnerUpn <UPN> | ft Displayname, DeviceId,ApproximateL
 次のような結果が返るので、ApproximateLastLogonTimestamp 属性値を基に、長期間 Azure AD へのサインインに利用されていないデバイスを判断します。
 
 ※   ApproximateLastLogonTimestam は、そのデバイスを使用して最後にサインインした日時の情報となります。
-![](./registerd_device_managemant/result.md)
+![](./registerd_device_managemant/result.jpg)
 
 5. 下記のコマンドを実行して、デバイスを指定して削除します。
 
