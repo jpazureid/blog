@@ -91,6 +91,7 @@ Azure AD ドメインにて、オンプレミス AD とフェデレーション�
 ![](./how-to-create-hybridazureadjoin-federated/008.jpg)
 
 Azure AD 信頼の画面にて、「次へ」をクリックします。
+
 ![](./how-to-create-hybridazureadjoin-federated/025.jpg)
 
 下記画面ショットのとおり、Azure AD の証明者利用者の信頼のバックアップ、Azure AD 証明書利用者信頼の更新、カスタム ドメインの Azure AD 信頼の構成が行われます。
@@ -147,6 +148,7 @@ SCP の構成画面について説明します。
 ![](./how-to-create-hybridazureadjoin-federated/015.jpg)
 
 Azure AD 信頼の画面にて、「次へ」をクリックします。
+
 ![](./how-to-create-hybridazureadjoin-federated/032.jpg)
 
 構成の準備完了の画面にて「構成」をクリックします。
@@ -184,6 +186,7 @@ URL:https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azure
 ![](./how-to-create-hybridazureadjoin-federated/037.jpg)
 
 オンプレミスのコンピューター アカウントの objectGUID を発行する
+
 URL:https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-manual#issue-objectguid-of-the-computer-account-on-premises
 
 ②クレーム名：Issue onpremobjectguid for domain-joined computers
