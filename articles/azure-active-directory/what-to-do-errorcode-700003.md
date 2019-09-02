@@ -18,7 +18,7 @@ tags:
 
 最近こんなエラーを見たことはありますか？
 
-![](.\what-to-do-errorcode-70003\fig1-what-todo-errorcode-700003.jpg)
+![](.\what-to-do-errorcode-700003\fig1-what-todo-errorcode-700003.jpg)
 
 上記で表示されているエラー コード 700003 とは、「クライアントが提示したデバイス情報が Azure AD 上に存在しない」場合に発生するエラーです。
 このエラーが多く起きるのは Windows 10 デバイスをご利用されており、かつ Edge や Internet Explorer をご利用されている、もしくは Office アプリケーションご利用のタイミングです。
@@ -34,7 +34,7 @@ Windows 10 を Azure AD に参加させた場合、あるいはデバイスを�
 
 改めて PRT に含まれる情報を図にまとめますと次のようになります。
 
-![](.\what-to-do-errorcode-70003\fig2-what-todo-errorcode-700003.jpg)
+![](.\what-to-do-errorcode-700003\fig2-what-todo-errorcode-700003.jpg)
 
 
 プライマリ更新トークンについては以下の公開情報がございますので、気になった方は参照ください。
@@ -44,7 +44,7 @@ Windows 10 を Azure AD に参加させた場合、あるいはデバイスを�
 
 以下の図は、既に取得済みの PRT を Azure AD に提供した場合のケースで問題が発生したパターンを示しています。
 
-![](.\what-to-do-errorcode-70003\fig3-what-todo-errorcode-700003.png)
+![](.\what-to-do-errorcode-700003\fig3-what-todo-errorcode-700003.png)
 
 
 ## エラーコードが 700003 が発生した時の対処策
@@ -55,7 +55,7 @@ Azure AD へのデバイス登録には 3 種類 (*1) ありますので、そ�
 
 大まかなフローは以下の通りです。
 
-![](.\what-to-do-errorcode-70003\fig4-what-todo-errorcode-700003.png)
+![](.\what-to-do-errorcode-700003\fig4-what-todo-errorcode-700003.png)
 
 
 以下にそれぞれのシナリオごとの対処手順を記載します。
@@ -65,7 +65,7 @@ Azure AD へのデバイス登録には 3 種類 (*1) ありますので、そ�
 Azure AD 登録済み状態 (Azure AD Registered) と認識されています。
 これを解除するには、 Windows 10 の [設定] - [アカウント] - [職場または学校アカウント] より、 Azure AD のバッジを選択し、「切断」を選択する必要があります。
 
-![](.\what-to-do-errorcode-70003\fig5-what-todo-errorcode-700003.png)
+![](.\what-to-do-errorcode-700003\fig5-what-todo-errorcode-700003.png)
 
 切断後、再度「+ 接続」より Azure AD への再登録を実行してください。 *2
 
@@ -75,16 +75,16 @@ Azure AD 参加済み状態 (Azure AD Joined) と認識されています。
 このコマンドは管理者権限で実行する必要があります。
 管理者権限でないユーザーで実行した場合には以下のエラーが表示されます。
 
-![](.\what-to-do-errorcode-70003\fig6-what-todo-errorcode-700003.png)
+![](.\what-to-do-errorcode-700003\fig6-what-todo-errorcode-700003.png)
 
 
 管理者権限で実行すると以下の画面が表示されるので、「サインイン」を選択します。
 
-![](.\what-to-do-errorcode-70003\fig7-what-todo-errorcode-700003.png)
+![](.\what-to-do-errorcode-700003\fig7-what-todo-errorcode-700003.png)
 
 再度サインインを行い、 Azure AD 参加を行い直すと以下の画面が表示されますのでサインアウト・サインインをして作業完了です。
 
-![](.\what-to-do-errorcode-70003\fig8-what-todo-errorcode-700003.png)
+![](.\what-to-do-errorcode-700003\fig8-what-todo-errorcode-700003.png)
 
 
 ### DomainJoined および AzureADJoined の両方が YES の場合
