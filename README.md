@@ -51,6 +51,7 @@
 - [入れ子 (ネスト) グループへの権限付与について](./articles/azure-active-directory/nesting-group.md)
 - [Azure AD サインイン ログ 取得方法まとめ](./articles/azure-active-directory/how-to-get-sign-in-logs.md)
 - [マネージド ドメイン用(AD FS なし) Hybrid Azure AD Join を一から構成する](./articles/azure-active-directory/how-to-create-hybridazureadjoin-managed.md)
+- [エラーコード 700003 の対処策について](./articles/azure-active-directory/what-to-do-errorcode-700003.md)
 
 ## Azure AD Connect
 
