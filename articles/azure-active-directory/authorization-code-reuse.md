@@ -23,7 +23,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/fundamentals/whats-new#c
 
 Authorization Code は、Azure AD にて利用されている OAuth 2.0 の Authorization Code Grant Flow の中でユーザーがリソースへのアクセスを承認したことを示するために、Authorization Server (Azure AD) が発行するものです。以下の図のとおり Authorization Code は Azure AD から発行されます (③)。その後、Web アプリケーションに渡され (④)、Web アプリケーションがこの Authorization Code を利用してアクセス トークンを取得 (⑤ ⑥) し、リソースへのアクセスを行います。
 
-![](./powershell-module/AuthorizationCodeFlow.png)
+![](./authorization-code-reuse/AuthorizationCodeFlow.png)
 
 Azure AD が発行した Authorization Code (③) は、従来は 15 分間 (10 分間の有効期限に加えて時刻ずれを考慮して 5 分の猶予が与えられている) 有効です。つまり、15 分以内であれば同じ Authorization Code を提示することで何度でもトークンを取得することが可能でした。現在、15 分を経過して Authorization Code を提示した場合、以下のエラーが返されます。
 

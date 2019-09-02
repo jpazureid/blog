@@ -2,6 +2,7 @@
 日本マイクロソフト Azure Identity サポート チームのブログです。
 
 チームの担当製品である Azure Active Directory、Azure AD Connect、AD FS の情報を中心にお届けします。その他の Azure 関連サポートチームのブログへのリンクもありますのでぜひご確認ください。
+<!-- textlint-disable -->
 
 ## Azure Active Directory
 
@@ -48,7 +49,7 @@
 - [Azure AD の ExpressRoute サポート変更](./articles/azure-active-directory/expressroute-support.md)
 - [Microsoft 365 を用いたゼロ トラスト ネットワークの実現](./articles/azure-active-directory/zero-trust-network.md)
 - [4/6 RCA - Azure Active Directory - 認証エラー (日本語抄訳)](./articles/azure-active-directory/20180406-rca-azure-ad.md)
-- [Azure AD の OAuth 2.0 における Authorization Code の再利用禁止](./articles/azure-active-directory/do-not-use-authorization-code.md)
+- [Azure AD の OAuth 2.0 における Authorization Code の再利用禁止](./articles/azure-active-directory/authorization-code-reuse.md)
 - [Azure MFA を求められるタイミングについて](./articles/azure-active-directory/azure-mfa-timing.md)
 - [入れ子 (ネスト) グループへの権限付与について](./articles/azure-active-directory/nesting-group.md)
 - [Azure AD サインイン ログ 取得方法まとめ](./articles/azure-active-directory/how-to-get-sign-in-logs.md)
@@ -98,3 +99,4 @@
 ## その他
 - サブスクリプションや請求・課金について (Azure サブスクリプション サポートチーム ブログ)
 - Azure IaaS、PaaS、Azure Backup について (Azure テクニカル サポートチーム ブログ)
+<!-- textlint-enable -->
