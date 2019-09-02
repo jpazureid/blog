@@ -6,7 +6,7 @@ const blogRoot = "/blog"
 
 const sourceFolder = "articles";
 const markdownFiles = path.join(sourceFolder, "**/*.md");
-const imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg)");
+const imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp)");
 const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
