@@ -103,7 +103,7 @@ Azure AD 参加済み状態 (Azure AD Joined) と認識されています。
 
  HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AAD\Storage
 
-上記レジストリ配下に「https\://login.microsoftonline.com」というレジストリが残っているかを確認します。
+上記レジストリ配下に「`https://login.microsoftonline.com`」というレジストリが残っているかを確認します。
 残留している場合には削除し、 Azure AD への再登録を実行ください。
 その後事象が解消したかを確認します。
 上記はハイブリッド Azure AD 参加環境下で事前に Azure AD デバイス登録を行っていたデバイスで残留する場合があります。
