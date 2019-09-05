@@ -157,7 +157,7 @@ C:\Program Files\Microsoft Azure AD Sync\Bin\CSExportAnalyzer.exe C:\temp\AADexp
 
 - **OMODT が update、AMODT が add もしくは delete になっているが、対象の属性値は AAD 側の既存オブジェクトの利用に対して何も影響が無い**
 これは AADC のバージョン変更や、同期元 AD ドメインの構成変更などで良くあるパターンです。
-[こちら](https://github.com/jpazureid/blog/blob/master/azure-active-directory-connect/cantphsback-aadc.md) の Blog の下部でもご紹介していますが、AADC はバージョンによって同期対象の属性に違いがある場合があるので、バージョン アップによって AAD 側に Export される属性が増えていると、csv では [OMODT : update、AMODT : add] として対象の属性が全オブジェクトに対して追加される結果が得られます。
+[こちら](../azure-active-directory-connect/cantphsback-aadc.md) の Blog の下部でもご紹介していますが、AADC はバージョンによって同期対象の属性に違いがある場合があるので、バージョン アップによって AAD 側に Export される属性が増えていると、csv では [OMODT : update、AMODT : add] として対象の属性が全オブジェクトに対して追加される結果が得られます。
 もしくは、同期元 AD ドメインのリプレースなどでは、同じ名前のユーザーであっても新旧 AD ドメインのユーザーそれぞれの持つ SID 値や最後のパスワード変更日時など、当然違ってくる属性値があるため、そのような場合は [OMODT : update、AMODT : update] のように差分が出力されます。
 いずれの場合も、[構成や前提に対して発生するべくして発生している正しい差分] となるので、何らかの変更予定が出力されていてもそれが予定作業内容に沿ったものであれば問題ない、と事前に確認と判断を行うことができます。
 
