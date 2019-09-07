@@ -1,17 +1,23 @@
-const gulp = require("gulp");
+const { src, dest, watch, parallel, series } = require('gulp');
 const replace = require("gulp-string-replace");
 const del = require("del");
 const path = require("path");
-const blogRoot = "/blog"
+const blogRoot = "/blog";
 
 const sourceFolder = "articles";
-const markdownFiles = path.join(sourceFolder, "**/*.md");
-const imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp)");
+let markdownFiles = path.join(sourceFolder, "**/*.md");
+let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp)");
 const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
 
-gulp.task("server", function (cb) {
+var replaceOptions = {
+  logs: {
+    enabled: false
+  }
+};
+
+const server = (done) => {
   hexo
     .init()
     .then(function () {
@@ -21,16 +27,17 @@ gulp.task("server", function (cb) {
       return hexo.exit();
     })
     .then(function () {
-      return cb();
+      done();
     })
     .catch(function (err) {
       console.log(err);
       hexo.exit(err);
-      return cb(err);
+      done(err);
     });
-});
+  done();
+};
 
-gulp.task("deploy", function (cb) {
+const deploy = (done) => {
   hexo
     .init()
     .then(function () {
@@ -43,16 +50,16 @@ gulp.task("deploy", function (cb) {
       return hexo.exit();
     })
     .then(function () {
-      return cb();
+      done();
     })
     .catch(function (err) {
       console.log(err);
       hexo.exit(err);
-      return cb(err);
+      done(err);
     });
-});
+};
 
-gulp.task("generate", function (cb) {
+const generate = (cb) => {
   hexo
     .init()
     .then(function () {
@@ -72,72 +79,49 @@ gulp.task("generate", function (cb) {
       hexo.exit(err);
       return cb(err);
     });
-});
+};
 
-gulp.task("cleanOutputPath", function () {
+const cleanOutputPath = () => {
   return del([
     path.join(outputPath, "/**/*")
   ]);
-});
+  
+};
 
-gulp.task("open", () => {
-  return gulp.src("./").pipe(exec("open http://localhost:4000"));
-});
-
-gulp.task("copyMarkdown", () => {
-  return (
-    gulp
-    .src(markdownFiles, { base: sourceFolder })
+const copyMarkdown = (done) => {
+  console.log("copyMarkdown files...!");
+  src(markdownFiles, { base: sourceFolder })
     //fix absolute path image
     .pipe(
       replace(/!\[.*\]\(.*\/(.*)\)/g, (match, p1, offset, string) => {
         return `{% asset_img ${p1} %}`;
-      })
+      },replaceOptions)
     ).pipe(
       // delete first h1 header
-      replace(/^# .*/m, "")
+      replace(/^# .*/m, "", replaceOptions)
     ).pipe(
       replace(/\]\((.+?).md\)/g, (match, p1, offset, string) => {
         const pathes = p1.split("/")
         const area = pathes[pathes.length - 2]
         const title = pathes[pathes.length - 1].replace(".md", "")
         return `](${blogRoot}/${area}/${title}/)`;
-      })
+      },replaceOptions)
     )
-    .pipe(gulp.dest(outputPath))
-  );
-});
+    .pipe(dest(outputPath));
+  done();
+};
 
-gulp.task("copyImage", () => {
-  return gulp.src(imageFiles, { base: sourceFolder }).pipe(gulp.dest(outputPath));
-});
+const copyImage = (done) => {
+  src(imageFiles, { base: sourceFolder })
+    .pipe(dest(outputPath));
+  done();
+}
 
-gulp.task(
-  "default",
-  gulp.series("cleanOutputPath", gulp.parallel("copyMarkdown", "copyImage"), "server")
-);
+// TODO copy only changed files
+const watchFiles = () => {
+  watch("articles/**/*.*", parallel(copyMarkdown, copyImage));
+};
 
-gulp.task(
-  "publish",
-  gulp.series("cleanOutputPath", gulp.parallel("copyMarkdown", "copyImage"), "deploy")
-);
-
-gulp.task(
-  "build",
-  gulp.series("cleanOutputPath", gulp.parallel("copyMarkdown", "copyImage"), "generate")
-);
-
-
-gulp.task(
-  "hello",
-  (diff) => {
-    console.log(diff)
-    return console.log("hello");
-    }
-)
-
-gulp.task(
-  "watch",
-  ()=>{
-    gulp.watch("active-directory-federation-service/**/*", gulp.series(["hello"]))
-})
+exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
+exports.publish = series(cleanOutputPath, parallel(copyMarkdown, copyImage), deploy);
+exports.build = series(cleanOutputPath, parallel(copyMarkdown, copyImage), generate);
