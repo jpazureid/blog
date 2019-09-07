@@ -88,9 +88,8 @@ const cleanOutputPath = () => {
   
 };
 
-const copyMarkdown = (done) => {
-  console.log("copyMarkdown files...!");
-  src(markdownFiles, { base: sourceFolder })
+const copyMarkdown = () => {
+  return src(markdownFiles, { base: sourceFolder })
     //fix absolute path image
     .pipe(
       replace(/!\[.*\]\(.*\/(.*)\)/g, (match, p1, offset, string) => {
@@ -108,13 +107,11 @@ const copyMarkdown = (done) => {
       },replaceOptions)
     )
     .pipe(dest(outputPath));
-  done();
 };
 
-const copyImage = (done) => {
-  src(imageFiles, { base: sourceFolder })
+const copyImage = () => {
+  return src(imageFiles, { base: sourceFolder })
     .pipe(dest(outputPath));
-  done();
 }
 
 // TODO copy only changed files
