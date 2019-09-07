@@ -1,14 +1,19 @@
 {
     "version": "0.2.0",
     "configurations": [
-  
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "node",
-        "program": "${workspaceFolder}/node_modules/hexo/node_modules/hexo-cli/bin/hexo",
-        "args": ["s"]
-      }
+        {
+            "name": "run gulp task",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "console": "internalConsole",
+        }
     ]
   }
   
