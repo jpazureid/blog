@@ -13,7 +13,6 @@ tags:
 こんにちは、 Azure Identity の平形です。
 今回は最近多くお問い合わせ頂いております 700003 エラーについてのご説明と一般的な対応手順をお伝えします。
 
-
 ## エラーコード 700003 とは何か
 
 最近こんなエラーを見たことはありますか？
@@ -25,9 +24,10 @@ tags:
 本ブログでは、このエラーの対処策と、簡単に「デバイス情報」とは何かをご説明します。
 
 ## デバイス情報とは何か
+
 Windows 10 を Azure AD に参加させた場合、あるいはデバイスを登録することで、Windows 10 側にはデバイスを AAD に登録したという情報、 Azure AD にはデバイス情報が、それぞれ格納されます。
 この状態で Azure AD に所属するユーザーがログオン、あるいはデバイスを登録したユーザーがログオンするタイミングで Primary Refresh Token (プライマリ更新トークン = PRT) と呼ばれるトークンを取得するようになります。
-この PRT は、ブラウザや Office クライアントを利用した Azure AD (Office 365) へのアクセスで利用され、改めてユーザー名、パスワードを入力することなく、シングル サインオンを実現するために利用されます。
+この PRT は、ブラウザーや Office クライアントを利用した Azure AD (Office 365) へのアクセスで利用され、改めてユーザー名、パスワードを入力することなく、シングル サインオンを実現するために利用されます。
 
 他に PRT が利用されるケースとしては、条件付きアクセスのアクセス制御にあります「デバイスは準拠しているとしてマーク済みである必要があります」「ハイブリッド Azure AD 参加済みのデバイスが必要」といったデバイスの状態に依存したコントロールを利用する場合が挙げられます。
 この状態を Azure AD はどのように察知しているか、気になった人もいると思いますが、実は PRT にはデバイス情報が含まれるため、 PRT を Azure AD に提示することでこれらの制御ができるようになっています。
@@ -38,8 +38,8 @@ Windows 10 を Azure AD に参加させた場合、あるいはデバイスを�
 
 ![](./what-to-do-errorcode-700003/fig2-what-todo-errorcode-700003.jpg)
 
-
 プライマリ更新トークンについては以下の公開情報がございますので、気になった方は参照ください。
+
 - [プライマリ更新トークンとは](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token)
 
 さて、今回の問題ですが、クライアントが PRT の取得を試みた場合、あるいは既に取得していた PRT を Azure AD に提示した際に Azure AD が提供されたデバイス情報に紐づく情報を Azure AD 上に確認できなかった場合に、このエラーコード 700003 が発生します。
@@ -60,11 +60,10 @@ Azure AD へのデバイス登録には 3 種類 (*1, 注釈は最下部に記�
 
 ![](./what-to-do-errorcode-700003/fig4-what-todo-errorcode-700003.png)
 
-
 以下にそれぞれのシナリオごとの対処手順を記載します。
 
-
 ### WorkplaceJoined が YES の場合
+
 Azure AD 登録済み状態 (Azure AD Registered) と認識されています。
 これを解除するには、 Windows 10 の [設定] - [アカウント] - [職場または学校アカウント] より、 Azure AD のバッジを選択し、「切断」を選択する必要があります。
 
@@ -73,11 +72,11 @@ Azure AD 登録済み状態 (Azure AD Registered) と認識されています。
 切断後、再度「+ 接続」より Azure AD への再登録を実行してください。 (*2, 注釈は最下部に記載)
 
 ### AzureADJoined のみ YES の場合
+
 Azure AD 参加済み状態 (Azure AD Joined) と認識されています。
 これを解除・再登録を行う場合は dsregcmd /forcerecovery コマンドを実行します。 (*2, 注釈は最下部に記載)
 このコマンドは管理者権限で実行する必要があります。
 管理者権限でないユーザーで実行した場合には以下のエラーが表示されます。
-
 ![](./what-to-do-errorcode-700003/fig6-what-todo-errorcode-700003.png)
 
 
@@ -91,12 +90,13 @@ Azure AD 参加済み状態 (Azure AD Joined) と認識されています。
 
 
 ### DomainJoined および AzureADJoined の両方が YES の場合
+
 ハイブリッド Azure AD 参加済み状態 (Hybrid Azure AD Joined) と認識されています。
 この場合、管理者権限でコマンド プロンプトを起動し、 dsregcmd /leave コマンドを実行します。
 実行後、 OS を再起動してサインインし直すことでデバイスが自動的に再登録されます。 (*2 *3, 注釈は最下部に記載)
 
-
 ### 上記を実行しても解消しない場合
+
 上記手順を実行しても解消しない場合には、一度 Azure AD 参加・登録を一度解除し、「AzureADJoined/WorkplaceJoined」両方が No の状態であることを確認した上で以下のレジストリを確認します。
 
  HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AAD\Storage
@@ -108,7 +108,6 @@ Azure AD 参加済み状態 (Azure AD Joined) と認識されています。
 なお、レジストリ削除は今回のエラーが発生した時のみ実行し、それ以外の時には実行しないようお願い致します。
 
 基本的な対処策は上記の通りですが、これらを行っても事象が解消しない場合はお気軽に弊社までお問い合わせください。
-
 
 *1 3 種類の登録状態は以下の公開情報を参照ください。
 [デバイス ID とは](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/overview#getting-devices-in-azure-ad)
