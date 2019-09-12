@@ -1,3 +1,11 @@
+---
+title: iPad 上の iOS13 の挙動変更により Azure AD 条件付きアクセス ポリシーの動作に影響が生じる
+date: 2019-09-12 14:00
+tags:
+  - Azure AD
+  - Conditional Access
+---
+
 # iPad 上の iOS13 の挙動変更により Azure AD 条件付きアクセス ポリシーの動作に影響が生じる
 
 皆さんこんにちは、Azure AD サポート チームの高田です。
