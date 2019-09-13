@@ -53,3 +53,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/conce
 4. [無料試用版を入手する] をクリックし、次の画面で [無料トライアル] をクリックします。
 
 ![](./azure-active-directory/User-at-risk-detected/step4.png)
+
+
+ご不明な点等ございましたら、是非弊社サポート サービスをご利用ください。
+※本情報の内容 (リンク先などを含む) は、作成日時点でのものであり、予告なく変更される場合があります。
