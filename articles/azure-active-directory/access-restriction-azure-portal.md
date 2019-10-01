@@ -92,7 +92,7 @@ Azure AD のグローバル管理者（グローバル管理者または制限�
 ## 補足 1
 
 外部から追加した Guest ユーザーについては既定で Azure AD へのアクセスが制限されています 
-(Guest と Member の違いについては、こちらのリンクを参照ください)。
+(Guest と Member の違いについては、こちらの<a href="https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/member-and-guest-user.md">リンク</a>を参照ください)。
 
 Azure ポータルへのログインを条件付きアクセスを利用して制限していない場合でも、 Azure AD 以外の項目、例えば仮想マシンなどのリソースに対しては、サブスクリプションの権限を明示的に付与しない限りは、各ユーザーは参照することもできませんのでご安心ください。
 
