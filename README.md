@@ -58,6 +58,7 @@
 
 ## Azure AD Connect
 
+- [Azure AD Connect : ハードマッチによる同期ユーザーの切り替え方法 (AD フォレスト移行 編)](./articles/azure-active-directory-connect/aadc_hardmatch.md)
 - [Azure AD Connect : Azure AD Connect に関する FAQ](./articles/azure-active-directory-connect/azureadconnect_faq.md)
 - [Azure AD Connect : ステージング サーバーのすゝめ](./articles/azure-active-directory-connect/introduction-staging-server.md)
 - [Azure AD Connect : ディレクトリ同期の応用 – オブジェクト間の属性値の移動](./articles/azure-active-directory-connect/move-attribute-values-between-objects.md)
