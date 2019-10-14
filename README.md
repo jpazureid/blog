@@ -58,6 +58,7 @@
 
 ## Azure AD Connect
 
+- [Azure AD Connect : Azure AD Connect に関する FAQ](./articles/azure-active-directory-connect/azureadconnect_faq.md)
 - [Azure AD Connect : ステージング サーバーのすゝめ](./articles/azure-active-directory-connect/introduction-staging-server.md)
 - [Azure AD Connect : ディレクトリ同期の応用 – オブジェクト間の属性値の移動](./articles/azure-active-directory-connect/move-attribute-values-between-objects.md)
 - [Azure AD Connect : 2018/11/7 以降 AADC 1.0.8641.0 以前では Password Writeback が利用できない](./articles/azure-active-directory-connect/cantphsback-aadc.md)
