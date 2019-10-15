@@ -11,14 +11,14 @@ Azure AD Connect (AADC) のお問い合わせが多いご質問について、Q&
 既存のドキュメントではカバーされていない動作や質問について今後も適宜内容を拡充していきますので、ご参照いただければと思います。  
   
   
-### Q. AADC の Active / Stand By (アクティブ / スタンバイ) の構成が行えるか?  
-A. いいえ。AADC はクラスタ構成を実装していません。  
+### Q. AADC の Active / Stand By (アクティブ / スタンバイ) の構成が行えるか？
+A. いいえ。AADC はクラスター構成を実装していません。  
 AADC を同一フォレスト内で 2 台以上構成した場合でも各 AADC で死活監視を行う実装はありません。  
 冗長構成をご検討の場合はステージング モード機能をご利用ください。  
 詳細は[こちら](https://github.com/jpazureid/blog/blob/master/azure-active-directory-connect/introduction-staging-server.md) をご参照ください。  
   
   
-### Q. AADC のバックアップ / リストア方法はありますか?  
+### Q. AADC のバックアップ / リストア方法はありますか？  
 A. いいえ。AADC の構成情報については GUI 画面上から確認し、その情報を保存する方法のみとなります。  
 同期ルールについてのみエクスポート、インポートすることは可能です。  
   
@@ -51,13 +51,13 @@ Title: Azure AD Connect アップグレード手順
 URL: https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/  
   
 ### Q. AADC をインストール時に既定で生成されるグループは？  
-A.下記の 4 グループが生成されます。  
+A. 下記の 4 グループが生成されます。  
  1. **ADSyncAdmins**  
  本グループのメンバーは、Azure AD Connect 同期サービスマネージャーにおけるすべてのアクセス権を持ちます。  
  インストール ウィザードを実行したユーザーは、既定でこのグループに追加されます。  
    
  2. **ADSyncBrowsers**  
- このグループのメンバーは、WMIを使ったパスワードのリセット時にユーザーの情報を集める権限を持ちます。  
+ このグループのメンバーは、WMI を使ったパスワードのリセット時にユーザーの情報を集める権限を持ちます。  
   
  3. **ADSyncOperators**  
  このグループのメンバーは、Azure AD Connect 同期サービス マネージャーを操作する権限を持ちます。  
@@ -77,7 +77,7 @@ A. 下記コマンドにて変更可能です。
 ```PowerShell  
 Set-ADSyncScheduler -CustomizedSyncCycleInterval <任意の時間>  
 ```
-例（60 分に設定する場合）  
+例 (60 分に設定する場合)
 ```PowerShell  
 Set-ADSyncScheduler -CustomizedSyncCycleInterval 00:60:00  
 ```  
