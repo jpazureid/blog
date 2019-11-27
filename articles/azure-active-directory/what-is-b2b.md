@@ -4,6 +4,7 @@ date: 2017-12-12
 tags:
   - Azure AD B2B
   - RBAC
+  - Azure AD
 ---
 
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/12/12/about-azure-ad-b2b/ の内容を移行したものです。
