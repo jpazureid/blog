@@ -14,8 +14,8 @@ tags:
 
 Safari と Apple のネイティブ メール アプリで依然として挙動が異なる場合は、一度ネイティブ メール アプリからサインアウトおよびサインインしなおして動作をご確認ください。また下記資料に記載のとおり、条件付きアクセスの認証セッション管理をご利用いただくことも可能です。その他の詳細については以下の資料をご覧ください。
 
-必要なアクション: iPadOS の起動に備えて条件付きアクセス ポリシーを評価および更新する  
-https://support.microsoft.com/ja-jp/help/4521038/action-required-update-conditional-access-policies-for-ipados
+Action Required: Evaluate and update Conditional Access policies after new iPadOS release
+https://support.microsoft.com/en-us/help/4521038/action-required-update-conditional-access-policies-for-ipados
 
 ## 当初の公開内容
 
