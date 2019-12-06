@@ -12,7 +12,7 @@
             "runtimeArgs": [
                 "--nolazy"
             ],
-            "console": "internalConsole",
+            "console": "integratedTerminal",
         }
     ]
   }
