@@ -101,8 +101,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/develop/app-objects-and-
 「アプリの登録」からアプリケーションを登録することは、特に権限が付与されていない一般ユーザーでも行うことができます。  
 制限を加えることもできますが、既定の状態としておくことを推奨しています。推奨される理由については以下の投稿も併せてご参照ください。
 
-「ユーザーはアプリケーションを登録できる」の設定について  
-https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/users-can-register-applications.md
+[「ユーザーはアプリケーションを登録できる」の設定について](../azure-active-directory/users-can-register-applications.md)  
 
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。
 
