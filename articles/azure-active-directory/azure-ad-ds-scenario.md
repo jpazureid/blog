@@ -60,7 +60,7 @@ Azure AD Domain Services は、基本的に Azure 上に構築したサーバー
 
 このシナリオでは、Azure AD Domain Services からオンプレミスの Active Directory に対してドメインの信頼関係を構築します。これにより、オンプレミス環境に存在するアカウントを用いて、Express Route もしくは VPN を経由して Azure AD Domain Service に認証することが可能となり、Azure AD Domain Services と連携するクラウド上のサーバーに SSO することができます。
 
-![Azure AD DS Resource Forest](./azure-ad-ds-scenario\figure.png)
+![Azure AD DS Resource Forest](./azure-ad-ds-scenario/figure.png)
 
 この Azure AD Domain Services リソース フォレストを利用した方法では、Express Route もしくは VPN の構築が必要となりますが、上述のような特別なセキュリティ要件を持つお客様においてはアプリケーション サーバーをクラウド化する際に活用いただけます。弊社としては、接続の安定性からVPN ではなく、ExpressRoute の利用を推奨します。
 
