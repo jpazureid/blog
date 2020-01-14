@@ -62,7 +62,7 @@ Azure AD Domain Services は、基本的に Azure 上に構築したサーバー
 
 ![Azure AD DS Resource Forest](./azure-ad-ds-scenario/figure.png)
 
-この Azure AD Domain Services リソース フォレストを利用した方法では、Express Route もしくは VPN の構築が必要となりますが、上述のような特別なセキュリティ要件を持つお客様においてはアプリケーション サーバーをクラウド化する際に活用いただけます。弊社としては、接続の安定性からVPN ではなく、ExpressRoute の利用を推奨します。
+この Azure AD Domain Services リソース フォレストを利用した方法では、Express Route もしくは VPN の構築が必要となりますが、上述のような特別なセキュリティ要件を持つお客様においてはアプリケーション サーバーをクラウド化する際に活用いただけます。弊社としては、接続の安定性から VPN ではなく、ExpressRoute の利用を推奨します。
 
 チュートリアル: Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する  
 https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/tutorial-create-forest-trust
