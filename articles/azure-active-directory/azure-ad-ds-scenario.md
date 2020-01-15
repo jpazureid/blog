@@ -1,3 +1,10 @@
+---
+title: Azure AD Domain Services の利用シナリオ
+date: 2020-01-11
+tags:
+  - Azure AD
+---
+
 # Azure AD Domain Services の利用シナリオ
 
 こんにちは、Azure AD サポートチームの高田です。
