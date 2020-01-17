@@ -57,7 +57,7 @@
 - [フェデレーション ドメイン用(AD FS あり) Hybrid Azure AD Join を一から構成する](./articles/azure-active-directory/how-to-create-hybridazureadjoin-federated.md)
 - [条件付きアクセスによる iOS 標準メール アプリの制御](./articles/azure-active-directory/control-ios-nativemailapp-by-conditionalaccess.md)
 - [Azure AD Domain Services の利用シナリオ](./articles/azure-active-directory/azure-ad-ds-scenario.md)
-- [\[ベースライン ポリシー\] から \[セキュリティの既定値\] への移行](./articles/azure-active-directory/azure-ad-security-defaults.md)
+- [[ベースライン ポリシー] から [セキュリティの既定値] への移行](./articles/azure-active-directory/azure-ad-security-defaults.md)
 
 ## Azure AD Connect
 
