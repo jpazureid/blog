@@ -34,7 +34,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/conce
 4. [セキュリティの既定値の管理] をクリックします。
 5. [セキュリティの既定値の有効化] を [はい] に設定します。
 
-![sample enable](./azure-ad-ds-scenario/sample-enable.png)
+![sample enable](./azure-ad-security-defaults/sample-enable.png)
 
 6. [保存] をクリックします。
 
@@ -86,7 +86,7 @@ A. ベースライン ポリシーは、間もなく (2020 年 2 月 29 日) の
 --------------------------------------------------------------------------------------------
 Q. [セキュリティの既定値] を有効にした後に、Azure にサインインをすると、[詳細情報が必要] という画面が表示される。
 
-![sample security info](./azure-ad-ds-scenario/sample-securityinfo.png)
+![sample security info](./azure-ad-security-defaults/sample-securityinfo.png)
 
 A. [セキュリティの既定値] の機能により、グローバル管理者など管理者アカウントは、サインイン時に MFA が要求されるようになります。  
 また、それ以外のユーザーも Azure ポータルや Azure CLI 等の利用を試みる際に MFA が要求されます。  
@@ -111,25 +111,25 @@ https://support.microsoft.com/ja-jp/help/4026727/microsoft-account-how-to-use-th
 3. Azure ポータルにアクセスして、Azure AD 認証でユーザー名/パスワードの認証が完了すると次のような画面が表示されます。
 4. [次へ] をクリックします。
 
-![sample security info](./azure-ad-ds-scenario/sample-securityinfo.png)
+![sample security info](./azure-ad-security-defaults/sample-securityinfo.png)
 
 5. [確認のための通知を受け取る] をオンにして、[セットアップ] をクリックします。
 
-![sample security info](./azure-ad-ds-scenario/sample-register.png)
+![sample security info](./azure-ad-security-defaults/sample-register.png)
 
 6.	次のような画面が表示されるので、画面の指示にしたがって、Microsoft Authenticator アプリで QR コードをスキャンします。
 7.	[次へ] をクリックします。
 
-![sample setup](./azure-ad-ds-scenario/sample-setup.png)
+![sample setup](./azure-ad-security-defaults/sample-setup.png)
 
 8.	[次へ] をクリックします。
 
-![sample setup](./azure-ad-ds-scenario/sample-setupdone.png)
+![sample setup](./azure-ad-security-defaults/sample-setupdone.png)
 
 9. Microsoft Authenticator アプリに 「承認しますか」という画面が表示されるので、[承認] をクリックします。
 10. [完了] をクリックします。
 
-![sample finish](./azure-ad-ds-scenario/sample-setupdone.png)
+![sample finish](./azure-ad-security-defaults/sample-setupdone.png)
 
 --------------------------------------------------------------------------------------------
 
