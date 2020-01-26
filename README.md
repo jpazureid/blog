@@ -58,6 +58,7 @@
 - [条件付きアクセスによる iOS 標準メール アプリの制御](./articles/azure-active-directory/control-ios-nativemailapp-by-conditionalaccess.md)
 - [Azure AD Domain Services の利用シナリオ](./articles/azure-active-directory/azure-ad-ds-scenario.md)
 - [[ベースライン ポリシー] から [セキュリティの既定値] への移行](./articles/azure-active-directory/azure-ad-security-defaults.md)
+- [マネージド ID を利用して Azure AD サインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト](./articles/azure-active-directory/microsoft-graph-api-signin-activity-reports-v2.md)
 
 ## Azure AD Connect
 
