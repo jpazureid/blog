@@ -132,7 +132,8 @@ https://support.microsoft.com/ja-jp/help/4026727/microsoft-account-how-to-use-th
 
 ![sample finish](./azure-ad-security-defaults/sample-setupdone.png)
 
-- 注意事項
+### 注意事項
+
 Microsoft Authenticator アプリや、アプリ内で追加したアカウントを削除しないでください。  
 削除した場合、MFA を完了できず、結果として Azure ポータルなどにサインインができなくなります。
 
