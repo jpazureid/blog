@@ -7,6 +7,8 @@ tags:
   - Zero Trust
 ---
 
+> 本記事は、2020 年 1 月 28 日に Azure Active Directory Identity Blog に公開された記事 (5 identity priorities for 2020—preparing for what’s next) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/5-identity-priorities-for-2020-preparing-for-what-s-next/ba-p/1131492) より参照ください。
+
 # 2020 年 アイデンティティについて取り組むべき 5 つのポイント
 
 Microsoft アイデンティティ グループの慣習として、毎年、顧客との共同イノベーション週間というものを開催しています。次の新しい 10 年で最初のイベントを始めるにあたり、2020 年またさらにその先を見据え、常に念頭にあるのは、私たちの戦略と製品の方向性を形作るお客様の優先事項がどのうのように進化していくのかという点です。
