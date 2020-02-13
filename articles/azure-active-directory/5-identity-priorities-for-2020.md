@@ -7,13 +7,13 @@ tags:
   - Zero Trust
 ---
 
-> 本記事は、2020 年 1 月 28 日に Azure Active Directory Identity Blog に公開された記事 (5 identity priorities for 2020 - preparing for what’s next) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/5-identity-priorities-for-2020-preparing-for-what-s-next/ba-p/1131492) より参照ください。
+> 本記事は、 2020 年 1 月 28 日に Azure Active Directory Identity Blog に公開された記事 (5 identity priorities for 2020 - preparing for what's next) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/5-identity-priorities-for-2020-preparing-for-what-s-next/ba-p/1131492) より参照ください。
 
 # 2020 年 アイデンティティについて取り組むべき 5 つのポイント
 
 Microsoft アイデンティティ グループの慣習として、毎年、顧客との共同イノベーション週間というものを開催しています。次の新しい 10 年で最初のイベントを始めるにあたり、2020 年またさらにその先を見据え、常に念頭にあるのは、私たちの戦略と製品の方向性を形作るお客様の優先事項がどのようのように進化していくのかという点です。
 
-過去の10年間を振り返ってみると、デジタル トランスフォーメーションが人々の働き方や企業のビジネスのあり方を大きく変えてきたのは驚くべきことです。 ユーザーを例に見てみましょう。 かつての "ユーザー" とは従業員を意味していましたが、現在のユーザーにはパートナー、顧客さらにはソフトウェア ボットやデバイスも含まれています。アイデンティティ (ID) は従業員を表すものとして始まりましたが、今やすべての人やモノがアイデンティティで表されています。 企業のネットワーク境界がなくなり、アイデンティティは、すべてのユーザーとデジタル リソースに効果的なアクセス制御を提供するセキュリティの制御インターフェイスになりました。
+過去の 10 年間を振り返ってみると、デジタル トランスフォーメーションが人々の働き方や企業のビジネスのあり方を大きく変えてきたのは驚くべきことです。 ユーザーを例に見てみましょう。 かつての "ユーザー" とは従業員を意味していましたが、現在のユーザーにはパートナー、顧客さらにはソフトウェア ボットやデバイスも含まれています。アイデンティティ (ID) は従業員を表すものとして始まりましたが、今やすべての人やモノがアイデンティティで表されています。 企業のネットワーク境界がなくなり、アイデンティティは、すべてのユーザーとデジタル リソースに効果的なアクセス制御を提供するセキュリティの制御インターフェイスになりました。
 
 ![](./5-identity-priorities-for-2020/figure1.png)
 
@@ -35,7 +35,7 @@ Azure Activity Directory (Azure AD) をすべてのアプリケーションの�
 
 ### 3. セキュリティでユーザーに負担をかけないためにパスワードレスに移行する。
 
-パスワードは [安全ではなく](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)、管理コストが高く、ユーザーを悩ませることは誰もが知っています。そのため、過去 2年間、FIDO アライアンスと提携し、私たちの従業員から率先してパスワードの排除を目標としてきました。パスワードのない世界に備える時が今まさに来ています。
+パスワードは [安全ではなく](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)、管理コストが高く、ユーザーを悩ませることは誰もが知っています。そのため、過去 2 年間、FIDO アライアンスと提携し、私たちの従業員から率先してパスワードの排除を目標としてきました。パスワードのない世界に備える時が今まさに来ています。
 
 [パスワードレス認証](https://www.microsoft.com/en-us/security/technology/identity-access-management/passwordless) には非常に多くの利点があります。 その 1 つは、Microsoft 自身の経験でわかったように、ハード コストとソフト コストが 87% 削減されるという点です。すべての組織がパスワードレスに移行できるように、Windows Hello から Microsoft Authenticator および FIDO2 セキュリティ キーなど、クラウドおよびハイブリッド環境で機能する様々な方法を提供しています。また、導入しやすくするために、お客様と自社 IT チーム状況に応じて展開の計画を開始する [4 つのステップ](https://www.microsoft.com/security/blog/2019/12/11/go-passwordless-strengthen-security-reduce-costs/) を用意しています。
 
@@ -43,7 +43,9 @@ Azure Activity Directory (Azure AD) をすべてのアプリケーションの�
 
 組織の境界の内外でのデジタル コラボレーションが爆発的に増えています。今日のアイデンティティは、例えば、[顧客やパートナー](https://azure.microsoft.com/en-us/resources/azure-ad-customer-and-partner-identity-management) 、または以前はデジタル変革の恩恵を得ていなかった [20 億人を超えるファーストライン ワーカー (現場の最前線で働く従業員)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/empower-firstline-workers-from-day-one-with-enhanced-identity/ba-p/1097771) とのすべてのデジタルなやり取りに対応しています。将来的には、人とソフトウェア ボット、マイクロサービス、スマート デバイス間のコラボレーションも強化されるでしょう。
 
+<!-- textlint-disable -->
 効果的なコラボレーションには、単にすべてのユーザーをつなぐだけでは不十分です。適切なユーザーが適切なリソースに適切なタイミングで適切なアクセスができるようにする必要があります。ユーザーとアプリケーションの数が増加しているため、IT 部門が全員のアクセスのニーズを把握することはできません。アイデンティティ ガバナンスがここで役立ちます。クラウド ベースの [ID ガバナンス](https://aka.ms/identitygovernance) は、[SAP Success Factors](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/ring-in-the-new-year-with-automated-user-provisioning-from-sap/ba-p/1063603) や [Workday](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/say-good-bye-to-custom-scripts-and-simplify-your-workforce/ba-p/320540) などの人事システムとの統合により、アクセス ライフサイクルを自動化し、機械学習と分析の力によりレビュー担当者のアクセス許可/拒否の判断をシンプルにします。また、ビジネス ユーザーがアクセス要求とワークフローを通じてアクセスを管理したり、ファーストライン マネージャー (現場にいるマネージャー) にユーザー管理を委任したりすることもできます。
+<!-- textlint-enable -->
 
 ### 5. ゼロ トラストへの移行を開始し、デジタル トランスフォーメーションを進める組織を攻撃から守る。
 
@@ -78,4 +80,4 @@ Azure Activity Directory (Azure AD) をすべてのアプリケーションの�
 ### 著者について
 Joy Chik は、マイクロソフトのアイデンティティ部門のコーポレート バイス プレジデントです。Joy は、数十億ドル規模のアイデンティティ ビジネスの技術部門を率いており、当該部門では数十億の人々が日々利用するコンシューマーおよびエンタープライズのテクノロジーに対し、より優れたセキュリティとモビリティを提供しています。
 
-Joy のチームは、Active Directory、Azure Active Directory を含む Microsoft のすべての ID テクノロジーとサービスの構築を担当しています。これらのサービスは、あらゆる規模の組織と、世界中でほぼ 10 億人の消費者が利用する Microsoft アカウント(MSA) を保護し、エンドツーエンドの ID およびアクセス管理ソリューションを提供しています。Joy は、Anita Borg Institute の評議員および Sierra Wireless の取締役を務めています。彼女は、女性がテクノロジー キャリアを追求することを奨励する慈善団体でも積極的に活動しています。
+Joy のチームは、Active Directory、Azure Active Directory を含む Microsoft のすべての ID テクノロジーとサービスの構築を担当しています。これらのサービスは、あらゆる規模の組織と、世界中でほぼ 10 億人の消費者が利用する Microsoft アカウント (MSA) を保護し、エンドツーエンドの ID およびアクセス管理ソリューションを提供しています。Joy は、Anita Borg Institute の評議員および Sierra Wireless の取締役を務めています。彼女は、女性がテクノロジー キャリアを追求することを奨励する慈善団体でも積極的に活動しています。
