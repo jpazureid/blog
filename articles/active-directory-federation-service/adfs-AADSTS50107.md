@@ -46,7 +46,7 @@ Get-MsolDomainFederationSettings -DomainName "test.com"
 
 次に、AADSTS50107 のエラーと密接に関わり合う -supportMultipleDomain オプションについて説明します。
 AD FS で Convert-MsolDomainToFederated コマンドレットや、Update-MsolFederatedDomain コマンドレットを使用してフェデレーションの設定を行う時に、-supportMultipleDomain というオプションを指定することがあります。
-これは、1つの AD FS ファームと、複数のカスタム ドメインの間でフェデレーションの設定を行う場合に必要となるオプションです。
+これは、1 つの AD FS ファームと、複数のカスタム ドメインの間でフェデレーションの設定を行う場合に必要となるオプションです。
 この背景には、カスタム ドメインに設定する Issuer URI は、重複が許可されず必ず一意にする必要がある、という Azure AD の要件があります。<br>
 <br>
 AD FS と Azure AD のカスタム ドメインが 1 対 1 の場合には、-supportMultipleDomain オプションは必要ありません。
@@ -55,7 +55,7 @@ AD FS 側では Issuer URI を発行するクレームルールは作成され�
 ルールがない場合、AD FS は既定で Issuer URI として AD FS の識別子 (`http://<フェデレーションサービス名>/services/trust`)  をクレームにセットするため、Issuer URI と合致し、要件を満たすことができます。<br>
 <br>
 -supportMultipleDomain オプションを指定すると、Azure AD のカスタムドメイン側には、`http://<カスタムドメイン>/services/trust/`  という値が Issuer URI にセットされます。
-例えば、a.com と b.com という 2 つのドメインに対して、-supportMultipleDomain オプションを指定して 1つの AD FS ファームとフェデレーションを構成すると、それぞれのドメインには以下の Issuer URI がセットされます。<br>
+例えば、a.com と b.com という 2 つのドメインに対して、-supportMultipleDomain オプションを指定して 1 つの AD FS ファームとフェデレーションを構成すると、それぞれのドメインには以下の Issuer URI がセットされます。<br>
 
 ```
 a.com
