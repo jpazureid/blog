@@ -188,7 +188,7 @@ b.co.jp (トップレベル ドメイン)
 sub1.a.com
 http://sub1.a.com/adfs/services/trust/
 
-a.som および sub2.a.com
+a.com および sub2.a.com
 http://a.com/adfs/services/trust/
 
 b.co.jp および sub1.b.co.jp
