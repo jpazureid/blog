@@ -89,6 +89,7 @@
 
 ## AD FS
 
+- [AADSTS50107 The requested federation realm object 'xxx' does not exist. (Issuer ID / Issuer URI と SupportMultipleDomain)](./articles/active-directory-federation-service/adfs-AADSTS50107.md)
 - [AD FS クレームルール関連のトラブルシューティング](./articles/active-directory-federation-service/adfs-crule-ts.md)
 - [AD FS 証明書認証のトラブルシューティング](./articles/active-directory-federation-service/adfs-cba-ts.md)
 - [Windows Server 2019 AD FS の新機能](./articles/active-directory-federation-service/2019adfs.md)
