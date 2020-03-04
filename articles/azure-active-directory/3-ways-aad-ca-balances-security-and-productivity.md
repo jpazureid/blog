@@ -1,12 +1,14 @@
 ---
 title: Azure AD 条件付きアクセスを利用してセキュリティと生産性のバランスをとる 3 つの方法
-date: 2020-02-26
+date: 2020-03-04
 tags:
   - Azure AD
   - Security
   - Zero Trust
   - Conditional Access
 ---
+
+> 本記事は、 2020 年 2 月 10 日に Azure Active Directory Identity Blog に公開された記事 (Three ways Azure AD Conditional Access balances security and productivity) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/three-ways-azure-ad-conditional-access-balances-security-and/ba-p/1144689) より参照ください。
 
 # Azure AD 条件付きアクセスを利用してセキュリティと生産性のバランスをとる 3 つの方法
 
