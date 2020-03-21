@@ -30,7 +30,7 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
 
 ## 考え方を変える
 
-幸いなことに、これらの変化に気づき、対応したリーダーがいました。2003 年に Jericho 財団は、脱境界化の概念を紹介しました。2010 年に Forrester の John Kindervag 氏は「Build Security Into Your Network’s DNA: The Zero Trust Network Architecture」という記事を執筆し、ゼロ トラストという用語が生まれました。2013 年にマイクロソフトは「アイデンティティ駆動型セキュリティ」という考えを生み出し、Enterpise Mobility Suite (EMS) をリリースして、企業のコア セキュリティとコンプライアンスのニーズ (セキュア アクセス、セキュア デバイス、セキュア データ) に対応しました。 同年、Google は「BeyondCorp」というネットワークに依存しない信頼モデルを実装し、動作するデモを提供したことで、大きな関心を呼びました。
+幸いなことに、これらの変化に気づき、対応したリーダーがいました。2003 年に Jericho 財団は、脱境界化の概念を紹介しました。2010 年に Forrester の John Kindervag 氏は「Build Security Into Your Network's DNA: The Zero Trust Network Architecture」という記事を執筆し、ゼロ トラストという用語が生まれました。2013 年にマイクロソフトは「アイデンティティ駆動型セキュリティ」という考えを生み出し、Enterpise Mobility Suite (EMS) をリリースして、企業のコア セキュリティとコンプライアンスのニーズ (セキュア アクセス、セキュア デバイス、セキュア データ) に対応しました。 同年、Google は「BeyondCorp」というネットワークに依存しない信頼モデルを実装し、動作するデモを提供したことで、大きな関心を呼びました。
 
 ![alt text](./zero-hype/ZH2_JP.PNG)
 
