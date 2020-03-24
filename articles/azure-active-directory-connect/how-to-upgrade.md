@@ -60,13 +60,13 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 
 弊社環境にて 1.1.819.0 から 1.1.880.0 にアップグレードを行った際の手順を纏めさせていただいています。
 
-[aadc-upgrade (PDF)](./how-to-upgrade/aadc-upgrade.pdf)
+[aadc-upgrade (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/how-to-upgrade/aadc-upgrade.pdf)
 
 ### ステージング モード設定手順
 
 弊社環境にて 1.1.819.0 にて実施した手順を纏めさせていただいています。
 
-[staging-mode (PDF)](./how-to-upgrade/staging-mode.pdf)
+[staging-mode (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/how-to-upgrade/staging-mode.pdf)
 
 ### 健全性確認
 
