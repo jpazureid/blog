@@ -24,6 +24,14 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 
 (トラブルシューティングなどの中で古いバージョンをご利用されている場合に切り分けのためのバージョンアップをお願いする、より詳細な調査をするためにも、まずアップグレードをお願いするという可能性があることについては予めご承知おきください)
 
+---
+
+<2020 年 3 月 17 日追記>
+2020 年 11 月 1 日以降に非推奨プロセスの運用が開始されます。**18 カ月以上前にリリースされたバージョンは非推奨となります。**
+詳細につきましては、上述のリリース履歴の “重要” 事項を参照してください。
+
+---
+
 ## アップグレードの流れ
 
 ### AADC 1 台構成の場合
@@ -52,13 +60,13 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 
 弊社環境にて 1.1.819.0 から 1.1.880.0 にアップグレードを行った際の手順を纏めさせていただいています。
 
-[aadc-upgrade (PDF)](./how-to-upgrade/aadc-upgrade.pdf)
+[aadc-upgrade (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/how-to-upgrade/aadc-upgrade.pdf)
 
 ### ステージング モード設定手順
 
 弊社環境にて 1.1.819.0 にて実施した手順を纏めさせていただいています。
 
-[staging-mode (PDF)](./how-to-upgrade/staging-mode.pdf)
+[staging-mode (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/how-to-upgrade/staging-mode.pdf)
 
 ### 健全性確認
 
