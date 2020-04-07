@@ -74,7 +74,7 @@ MFA を再度強制したい場合は、次の優先順位で対処を行うと�
 
 セッショントークン、アクセストークン、リフレッシュトークンの有効期限については下記記事をご参照ください。
 
-[Azure AD が発行するトークンの有効期間について](./aad-token-lifetime.md)
+[Azure AD が発行するトークンの有効期間について](https://jpazureid.github.io/blog/azure-active-directory/aad-token-lifetime/)
 
 また Windows 10 の場合には、Primary Refresh Token (PRT) を保持することができます。  
 PRT は Azure AD に参加している場合に Windows 10 が保持するトークンで、Azure AD に参加あるいはハイブリッド Azure AD 参加が構成されている場合に関係してきます。
