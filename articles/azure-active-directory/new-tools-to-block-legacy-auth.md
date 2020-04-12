@@ -10,7 +10,7 @@ tags:
 
 > 本記事は、 2020 年 3 月 12 日に Azure Active Directory Identity Blog に公開された記事 (New tools to block legacy authentication in your organization) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302) より参照ください。
 
-> 新型コロナ ウィルス (COVID-19) の影響により、下記記事にあるレガシー認証の廃止は、2021 年下半期まで延期されました。詳しくは [Exchange チームのブログ記事](https://techcommunity.microsoft.com/t5/exchange-team-blog/basic-authentication-and-exchange-online-april-2020-update/ba-p/1275508) を参照ください。
+> 新型コロナ ウィルス (COVID-19) の影響により、下記記事にある **レガシー認証の廃止は、2021 年下半期まで延期** されました。詳しくは [Exchange チームのブログ記事](https://techcommunity.microsoft.com/t5/exchange-team-blog/basic-authentication-and-exchange-online-april-2020-update/ba-p/1275508) を参照ください。
 
 # レガシー認証をブロックするための新しいツール
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) のトラフィックを分析した結果、�
 
 ユーザーのレガシー認証を無効にすることは、アイデンティティのセキュリティを考えるうえで必ずチェックするべき必須の項目です。このブログでは、Identity Protection チームの PM である Daniel Wood より、組織のセキュリティを確保するために必要な全ステップを解説してもらうとともに、Azure AD に実装した 3 つの変更点を紹介してもらいます。
 
-いつものように、皆様のご意見をお待ちしております。Twitter ([@alex_t_weinert](http://twitter.com/alex_t_weinert) で私までお声かけください。
+いつものように、皆様のご意見をお待ちしております。Twitter ([@alex_t_weinert](http://twitter.com/alex_t_weinert)) で私までお声かけください。
 
 ----
 
@@ -83,7 +83,7 @@ Identity Protection チームの PM のメンバーとして、組織内のレ�
 
 25 万件以上のサインイン レコードをダウンロードする必要がある場合は、[Microsoft Graph の監査ログ API](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0) をご利用いただけます。
 
-## ステップ 2: レポート専用モードで条件付きアクセスポリシーを作成する
+## ステップ 2: レポート専用モードで条件付きアクセス ポリシーを作成する
 
 組織内でのレガシー認証の使用パターンを特定したら、レガシー認証をブロックしてみましょう。ほとんどの組織では、すべてのユーザーに対して直ちにレガシー認証をブロックすることは困難です。まずは、レガシー認証を使用していないユーザーのグループのみをブロックすることをお勧めします。最新の認証へのアップグレードを進めるとともにレガシー認証を無効にして行き、徐々にブロック対象のユーザーを広げていきます。
 
@@ -99,10 +99,10 @@ Identity Protection チームの PM のメンバーとして、組織内のレ�
 
 ### Azure AD の条件付きアクセスを使用したレガシー認証のブロック
 
-数日間レポート オンリー モードでポリシーを監視し、ポリシーの影響を理解できたら、レガシー認証のブロックを開始する準備が整ったと言えるでしょう。最も簡単な方法は、ポリシーの状態をレポートのみからオンに変更することです。または、まだ準備ができていないユーザーがおり、それらに対してレポート オンリー モードでレガシー認証をブロックした場合の影響を監視し続けたい場合は、レガシー認証をブロックする条件付きアクセスポリシーを別個に作成します。
+数日間レポート専用モードでポリシーを監視し、ポリシーの影響を理解できたら、レガシー認証のブロックを開始する準備が整ったと言えるでしょう。最も簡単な方法は、ポリシーの状態を **レポート専用** から **オン** に変更することです。または、まだ準備ができていないユーザーがおり、それらに対してレポート専用モードでレガシー認証をブロックした場合の影響を監視し続けたい場合は、レガシー認証をブロックする条件付きアクセス ポリシーを別個に作成します。
 
 ### サービス サイドでのレガシー認証のブロック
 
 条件付きアクセスに加えて、従来の認証をサービス側またはリソース側 (認証プラットフォーム側ではなく) でブロックすることも可能です。たとえば、Exchange Online では、ユーザーに対して POP3 または IMAP4 を無効にすることができます。ここで問題となるのは、レガシー認証と最新の認証が両方可能なプロトコル (EWS、MAPI など) を完全にブロックできないということです。この問題を解決するために、Exchange Online は認証ポリシーと呼ばれる機能をリリースしました。プロトコルの接続は、Azure AD または AD FS に対して資格情報をチェックする前に拒否されるため、認証前にポリシーが強制されます。
 
-このブログ記事が、組織内のレガシー認証をブロックするために必要なすべての情報を提供できていれば幸いです。ご質問がある場合は、以下のコメント欄でこのブログ記事に返信するか、弊社チーム (intelligentaccesspm@microsoft.com) にメールを送る、もしくは Twitter で Alex (@alex_t_weinert) と私 (@daniel_e_wood) まで連絡ください。
+このブログ記事が、組織内のレガシー認証をブロックするために必要なすべての情報を提供できていれば幸いです。ご質問がある場合は、以下のコメント欄でこのブログ記事に返信するか、弊社チーム (intelligentaccesspm@microsoft.com) にメールを送る、もしくは Twitter で Alex ([@alex_t_weinert](http://twitter.com/alex_t_weinert)) と私 ([@daniel_e_wood](http://twitter.com/daniel_e_wood)) まで連絡ください。
