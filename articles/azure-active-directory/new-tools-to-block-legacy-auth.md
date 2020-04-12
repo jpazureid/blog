@@ -1,12 +1,16 @@
 ---
 title: レガシー認証をブロックするための新しいツール
-date: 2020-03-27
+date: 2020-04-11
 tags:
   - Azure AD
   - Security
   - Legacy Authentication
   - Conditional Access
 ---
+
+> 本記事は、 2020 年 3 月 12 日に Azure Active Directory Identity Blog に公開された記事 (New tools to block legacy authentication in your organization) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302) より参照ください。
+
+> 新型コロナ ウィルス (COVID-19) の影響により、下記記事にあるレガシー認証の廃止は、2021 年下半期まで延期されました。詳しくは [Exchange チームのブログ記事](https://techcommunity.microsoft.com/t5/exchange-team-blog/basic-authentication-and-exchange-online-april-2020-update/ba-p/1275508) を参照ください。
 
 # レガシー認証をブロックするための新しいツール
 
