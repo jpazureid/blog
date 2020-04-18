@@ -32,7 +32,7 @@ HAADJ が正常にできているかの最初の確認としては、 Azure ポ�
 
 ![](./troubleshoot-hybrid-azure-ad-join-managed/device-list-azure-portal.png)
 
-対象のデバイスが [Azure Active Directory] ブレードの [デバイス] 欄に存在しない場合、デバイスが Azure AD Conndevice-list-azure-portal.pngect によって同期されていない可能性が高く、真っ先に確認いただきたいのはオンプレミス Active Directory にある
+対象のデバイスが [Azure Active Directory] ブレードの [デバイス] 欄に存在しない場合、デバイスが Azure AD Connect によって同期されていない可能性が高く、真っ先に確認いただきたいのはオンプレミス Active Directory にある
 当該コンピューター オブジェクトに userCertificate に何らかの値が書き込まれていないかどうかです。
 Azure AD Connect はコンピューター オブジェクトの userCertificate 属性に何らかの値が書き込まれている場合に、コンピューター オブジェクトを Azure AD に同期します。
 
