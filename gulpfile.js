@@ -2,6 +2,7 @@ const fs = require("fs");
 const del = require("del");
 const path = require("path");
 const glob = require("glob")
+const mime = require('mime');
 const replace = require("gulp-string-replace");
 const { src, dest, watch, parallel, series } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
@@ -149,7 +150,6 @@ async function deleteBlobFolderIfExist(done){
   const branchName = process.env.CIRCLE_BRANCH
   console.log(`delete ${branchName}`);
   for await (const item of containerClient.listBlobsFlat({prefix: branchName})) {
-    console.log(item.name);
     if (item.kind === "prefix") {
       continue;
     }
@@ -166,8 +166,14 @@ async function uploadFilesToBlobFolder(containerClient,files, folderName){
     const blobName = path.join(folderName, fileName);
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     const data = fs.readFileSync(file);
-    const uploadBlobResponse = await blockBlobClient.upload(data, data.length); 
-    console.log(`upload ${blobName} with requestId: ${uploadBlobResponse.requestId}`);
+    const contentType = mime.getType(fileName);
+    const options = {
+      blobHTTPHeaders: {
+        blobContentType: contentType
+      }
+    }
+    const uploadBlobResponse = await blockBlobClient.upload(data, data.length, options); 
+    console.log(`upload ${blobName} with requestId: ${uploadBlobResponse.requestId} ${options.blobHTTPHeaders.blobContentType}`);
   })) 
 }
 
