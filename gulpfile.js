@@ -1,9 +1,12 @@
-const { src, dest, watch, parallel, series } = require('gulp');
-const replace = require("gulp-string-replace");
+const fs = require("fs");
 const del = require("del");
 const path = require("path");
-const blogRoot = "/blog";
+const glob = require("glob")
+const replace = require("gulp-string-replace");
+const { src, dest, watch, parallel, series } = require("gulp");
+const { BlobServiceClient } = require("@azure/storage-blob");
 
+const blogRoot = "/blog";
 const sourceFolder = "articles";
 let markdownFiles = path.join(sourceFolder, "**/*.md");
 let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp)");
@@ -115,6 +118,61 @@ const watchFiles = () => {
   watch("articles/**/*.*", parallel(copyMarkdown, copyImage));
 };
 
+// global container client
+let containerClient = null;
+
+// load container client if not exists
+const getContainerClient = async () => {
+  if(containerClient && containerClient.exists()){
+    return containerClient;
+  } 
+  const containerName = "$web";
+  const blobServiceClient = await BlobServiceClient.fromConnectionString(process.env.AZURE_STORAGE_CONNECTION_STRING);
+  containerClient = await blobServiceClient.getContainerClient(containerName); 
+  return containerClient;
+}
+
+//use glob directly to work async
+//can i use async 'src' and 'pipe'???
+async function uploadToBlob(done){
+  const containerClient = await getContainerClient();
+  const branchName = process.env.CIRCLE_BRANCH;
+  glob("./public/**/*",{nodir: true}, async (err, files) => {
+    if (err) done(err);
+    await uploadFilesToBlobFolder(containerClient,files, branchName);
+    done();
+  });
+}
+
+async function deleteBlobFolderIfExist(done){
+  const containerClient = await getContainerClient();
+  const branchName = process.env.CIRCLE_BRANCH
+  console.log(`delete ${branchName}`);
+  for await (const item of containerClient.listBlobsFlat({prefix: branchName})) {
+    console.log(item.name);
+    if (item.kind === "prefix") {
+      continue;
+    }
+    console.log(`delete ${item.name}`);
+    containerClient.deleteBlob(item.name);
+  }
+}
+
+async function uploadFilesToBlobFolder(containerClient,files, folderName){
+    // List the blob(s) in the container.
+    return Promise.all(files.map(async file => {
+    //remove public
+    fileName = file.replace("public/","");
+    const blobName = path.join(folderName, fileName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    const data = fs.readFileSync(file);
+    const uploadBlobResponse = await blockBlobClient.upload(data, data.length); 
+    console.log(`upload ${blobName} with requestId: ${uploadBlobResponse.requestId}`);
+  })) 
+}
+
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
 exports.publish = series(cleanOutputPath, parallel(copyMarkdown, copyImage), deploy);
 exports.build = series(cleanOutputPath, parallel(copyMarkdown, copyImage), generate);
+exports.uploadPreview = series(cleanOutputPath, deleteBlobFolderIfExist, uploadToBlob);
+exports.deletePreview = series(deleteBlobFolderIfExist);
