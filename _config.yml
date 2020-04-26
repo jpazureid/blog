@@ -60,6 +60,8 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
+# pagination
+archive: 2
 
 new_post_name: :title.md # File name of new posts
 default_layout: post
