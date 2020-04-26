@@ -92,10 +92,6 @@ const copyMarkdown = () => {
   return src(markdownFiles, { base: sourceFolder })
     //fix absolute path image
     .pipe(
-      replace(/!\[.*\]\(.*\/(.*)\)/g, (match, p1, offset, string) => {
-        return `{% asset_img ${p1} %}`;
-      },replaceOptions)
-    ).pipe(
       // delete first h1 header
       replace(/^# .*/m, "", replaceOptions)
     ).pipe(
