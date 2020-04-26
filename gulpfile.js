@@ -180,5 +180,5 @@ async function uploadFilesToBlobFolder(containerClient,files, folderName){
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
 exports.publish = series(cleanOutputPath, parallel(copyMarkdown, copyImage), deploy);
 exports.build = series(cleanOutputPath, parallel(copyMarkdown, copyImage), generate);
-exports.uploadPreview = series(cleanOutputPath, deleteBlobFolderIfExist, uploadToBlob);
+exports.uploadPreview = series(deleteBlobFolderIfExist, uploadToBlob);
 exports.deletePreview = series(deleteBlobFolderIfExist);
