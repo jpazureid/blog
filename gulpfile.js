@@ -90,7 +90,7 @@ const generate = (cb) => {
 
 const generateForPreview = (cb) => {
   if (!(branchName && previewBaseUrl)){
-    cb(new Error("environment variables are not defined. Please set CIRCLE_BRANCH and PREVIEW_BASE_URL.".red))
+    cb(new Error("environment variables are not defined. Please set CIRCLE_BRANCH and PREVIEW_BASE_URL."))
   }
   hexo
     .init()
@@ -207,5 +207,11 @@ async function uploadFilesToBlobFolder(containerClient,files, folderName){
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
 exports.publish = series(cleanOutputPath, parallel(copyMarkdown, copyImage), deploy);
 exports.build = series(cleanOutputPath, parallel(copyMarkdown, copyImage), generate);
-exports.uploadPreview = series(parallel(deleteBlobFolderIfExist, series(cleanOutputPath, generateForPreview)), uploadToBlob);
+exports.uploadPreview = series(
+  parallel(
+    deleteBlobFolderIfExist,
+    series(cleanOutputPath,parallel(copyMarkdown, copyImage), generateForPreview)
+  ),
+  uploadToBlob
+  );
 exports.deletePreview = series(deleteBlobFolderIfExist);
