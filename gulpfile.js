@@ -15,6 +15,9 @@ const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
 
+const previewBaseUrl = process.env.PREVIEW_BASE_URL;
+const branchName = process.env.CIRCLE_BRANCH;
+
 var replaceOptions = {
   logs: {
     enabled: false
@@ -85,6 +88,33 @@ const generate = (cb) => {
     });
 };
 
+const generateForPreview = (cb) => {
+  if (!(branchName && previewBaseUrl)){
+    cb(new Error("environment variables are not defined. Please set CIRCLE_BRANCH and PREVIEW_BASE_URL.".red))
+  }
+  hexo
+    .init()
+    .then(function () {
+      return hexo.call("clean", {});
+    })
+    .then(function () {
+      hexo.config.root = branchName;
+      hexo.config.url =  new URL(branchName, previewBaseUrl).toString();
+      return hexo.call("generate", {});
+    })
+    .then(function () {
+      return hexo.exit();
+    })
+    .then(function () {
+      return cb();
+    })
+    .catch(function (err) {
+      console.log(err);
+      hexo.exit(err);
+      return cb(err);
+    });
+};
+
 const cleanOutputPath = () => {
   return del([
     path.join(outputPath, "/**/*")
@@ -133,11 +163,9 @@ const getContainerClient = async () => {
   return containerClient;
 }
 
-//use glob directly to work async
-//can i use async 'src' and 'pipe'???
+//it may be better to use gulp src instead of glob...
 async function uploadToBlob(done){
   const containerClient = await getContainerClient();
-  const branchName = process.env.CIRCLE_BRANCH;
   glob("./public/**/*",{nodir: true}, async (err, files) => {
     if (err) done(err);
     await uploadFilesToBlobFolder(containerClient,files, branchName);
@@ -147,7 +175,6 @@ async function uploadToBlob(done){
 
 async function deleteBlobFolderIfExist(done){
   const containerClient = await getContainerClient();
-  const branchName = process.env.CIRCLE_BRANCH
   console.log(`delete ${branchName}`);
   for await (const item of containerClient.listBlobsFlat({prefix: branchName})) {
     if (item.kind === "prefix") {
@@ -180,5 +207,5 @@ async function uploadFilesToBlobFolder(containerClient,files, folderName){
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
 exports.publish = series(cleanOutputPath, parallel(copyMarkdown, copyImage), deploy);
 exports.build = series(cleanOutputPath, parallel(copyMarkdown, copyImage), generate);
-exports.uploadPreview = series(deleteBlobFolderIfExist, uploadToBlob);
+exports.uploadPreview = series(parallel(deleteBlobFolderIfExist, series(cleanOutputPath, generateForPreview)), uploadToBlob);
 exports.deletePreview = series(deleteBlobFolderIfExist);
