@@ -8,6 +8,7 @@
   "dependencies": {},
   "devDependencies": {
     "@azure/storage-blob": "^12.1.1",
+    "@octokit/rest": "^17.6.0",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-copy": "^4.0.1",

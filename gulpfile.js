@@ -3,6 +3,7 @@ const del = require("del");
 const path = require("path");
 const glob = require("glob")
 const mime = require('mime');
+const logger = require('gulplog');
 const replace = require("gulp-string-replace");
 const { src, dest, watch, parallel, series } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
@@ -17,6 +18,10 @@ const hexo = new Hexo(process.cwd(), {});
 
 const previewBaseUrl = process.env.PREVIEW_BASE_URL;
 const branchName = process.env.CIRCLE_BRANCH;
+let previewUrl = "";
+if(branchName && previewBaseUrl){
+  previewUrl =  new URL(branchName.replace("/","") + "/", previewBaseUrl).toString();
+}
 
 var replaceOptions = {
   logs: {
@@ -37,7 +42,7 @@ const server = (done) => {
       done();
     })
     .catch(function (err) {
-      console.log(err);
+      logger.error(err);
       hexo.exit(err);
       done(err);
     });
@@ -60,7 +65,7 @@ const deploy = (done) => {
       done();
     })
     .catch(function (err) {
-      console.log(err);
+      logger.error(err);
       hexo.exit(err);
       done(err);
     });
@@ -82,14 +87,14 @@ const generate = (cb) => {
       return cb();
     })
     .catch(function (err) {
-      console.log(err);
+      logger.error(err);
       hexo.exit(err);
       return cb(err);
     });
 };
 
 const generateForPreview = (cb) => {
-  if (!(branchName && previewBaseUrl)){
+  if (!previewUrl){
     cb(new Error("environment variables are not defined. Please set CIRCLE_BRANCH and PREVIEW_BASE_URL."))
   }
   hexo
@@ -99,7 +104,7 @@ const generateForPreview = (cb) => {
     })
     .then(function () {
       hexo.config.root = branchName;
-      hexo.config.url =  new URL(branchName, previewBaseUrl).toString();
+      hexo.config.url = previewUrl;
       return hexo.call("generate", {});
     })
     .then(function () {
@@ -109,7 +114,7 @@ const generateForPreview = (cb) => {
       return cb();
     })
     .catch(function (err) {
-      console.log(err);
+      logger.error(err);
       hexo.exit(err);
       return cb(err);
     });
@@ -175,12 +180,12 @@ async function uploadToBlob(done){
 
 async function deleteBlobFolderIfExist(done){
   const containerClient = await getContainerClient();
-  console.log(`delete ${branchName}`);
+  logger.info(`delete ${branchName}`);
   for await (const item of containerClient.listBlobsFlat({prefix: branchName})) {
     if (item.kind === "prefix") {
       continue;
     }
-    console.log(`delete ${item.name}`);
+    logger.info(`delete ${item.name}`);
     containerClient.deleteBlob(item.name);
   }
 }
@@ -200,8 +205,55 @@ async function uploadFilesToBlobFolder(containerClient,files, folderName){
       }
     }
     const uploadBlobResponse = await blockBlobClient.upload(data, data.length, options); 
-    console.log(`upload ${blobName} with requestId: ${uploadBlobResponse.requestId} ${options.blobHTTPHeaders.blobContentType}`);
+    logger.info(`upload ${blobName} with requestId: ${uploadBlobResponse.requestId} ${options.blobHTTPHeaders.blobContentType}`);
   })) 
+}
+
+const commentToGithub = async (done) => {
+  const { Octokit } = require("@octokit/rest");
+  
+  const secret = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+  if(!secret){
+    logger.warn("GitHub Access Token is not defined. skipped comment task.");
+    done();
+  }
+
+  const octokit = new Octokit({
+      auth: secret
+  })
+  //CIRCLE_PR_NUMBER, CIRCLE_PR_REPONAME can be only used for forked PR.
+  //'https://github.com/jpazureid/blog/pull/112'
+  const prUrl = process.env.CIRCLE_PULL_REQUEST;
+  const repoOwner = prUrl.split("/")[3]
+  const repoName = prUrl.split("/")[4]
+  const issueNumber = prUrl.split("/")[6]
+
+  logger.info(`fetch PR comments: ${prUrl}`);
+  const { data: prComments } = await octokit.issues.listComments({
+    owner: repoOwner,
+    repo: repoName,
+    issue_number: issueNumber,
+  });
+
+  const regex = /🎉🐧/
+  if(prComments.find(comment => regex.test(comment.body))){
+    logger.info("There is already bot comment");
+    done();
+  };
+
+  logger.info("add comment to PR");
+  const result = await octokit.issues.createComment({
+    owner: repoOwner,
+    repo: repoName,
+    issue_number: issueNumber,
+    body: `🎉🐧Thank you for your contribute!\n We are now launch [preview environment!](${previewUrl})`  
+  })
+  if(result.status != 201){
+    logger.error("failed creating comment");
+    done(new Error(result))
+  }
+  logger.info("succeeded comment to PR");
+  done();
 }
 
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
@@ -212,6 +264,6 @@ exports.uploadPreview = series(
     deleteBlobFolderIfExist,
     series(cleanOutputPath,parallel(copyMarkdown, copyImage), generateForPreview)
   ),
-  uploadToBlob
+  uploadToBlob, commentToGithub
   );
 exports.deletePreview = series(deleteBlobFolderIfExist);
