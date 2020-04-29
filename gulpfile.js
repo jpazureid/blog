@@ -7,6 +7,7 @@ const logger = require('gulplog');
 const replace = require("gulp-string-replace");
 const { src, dest, watch, parallel, series } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
+const { Octokit } = require("@octokit/rest");
 
 const blogRoot = "/blog";
 const sourceFolder = "articles";
@@ -206,11 +207,8 @@ async function uploadFilesToBlobFolder(containerClient,files, folderName){
   })) 
 }
 
-const commentToGithub = async (done) => {
-  const { Octokit } = require("@octokit/rest");
-  
+const commentToGithub = async (done) => {  
   const secret = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
-  console.log(secret)
   if(!secret){
     logger.warn("GitHub Access Token is not defined. skipped comment task.");
     return done();
@@ -254,6 +252,37 @@ const commentToGithub = async (done) => {
   return done();
 }
 
+const deleteMergedPreview = async () => {
+  const secret = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+  if(!secret){
+    logger.warn("GitHub Access Token is not defined. skipped delete task.");
+    return done();
+  }
+
+  const octokit = new Octokit({
+      auth: secret
+  })
+
+  //list pull requests
+  const result = await octokit.paginate("GET /repos/:owner/:repo/pulls",{
+    owner: process.env.CIRCLE_PROJECT_USERNAME,
+    repo: process.env.CIRCLE_PROJECT_REPONAME
+  })
+
+  const openedPRs = result.map((pr) => pr.head.ref);
+  const containerClient = await getContainerClient();
+  for await (const item of containerClient.listBlobsFlat()) {
+    if (item.kind === "prefix") {
+      continue;
+    }
+    if(openedPRs.includes(item.name.split('/')[0])){
+      continue;
+    }
+    logger.info(`delete ${item.name}`);
+    containerClient.deleteBlob(item.name);
+  }
+}
+
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
 exports.publish = series(cleanOutputPath, parallel(copyMarkdown, copyImage), deploy);
 exports.build = series(cleanOutputPath, parallel(copyMarkdown, copyImage), generate);
@@ -264,4 +293,4 @@ exports.uploadPreview = series(
   ),
   uploadToBlob, commentToGithub
   );
-exports.deletePreview = series(deleteBlobFolderIfExist);
+exports.deleteMergedPreview = series(deleteMergedPreview);
