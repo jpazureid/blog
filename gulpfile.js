@@ -1,7 +1,7 @@
 const fs = require("fs");
 const del = require("del");
 const path = require("path");
-const glob = require("glob")
+const glob = require("glob");
 const mime = require('mime');
 const logger = require('gulplog');
 const replace = require("gulp-string-replace");
@@ -171,11 +171,9 @@ const getContainerClient = async () => {
 //it may be better to use gulp src instead of glob...
 async function uploadToBlob(done){
   const containerClient = await getContainerClient();
-  glob("./public/**/*",{nodir: true}, async (err, files) => {
-    if (err) done(err);
-    await uploadFilesToBlobFolder(containerClient,files, branchName);
-    done();
-  });
+  const files = glob("./public/**/*",{ nodir: true, sync: true });
+  await uploadFilesToBlobFolder(containerClient,files, branchName);
+  done();
 }
 
 async function deleteBlobFolderIfExist(done){
@@ -191,7 +189,6 @@ async function deleteBlobFolderIfExist(done){
 }
 
 async function uploadFilesToBlobFolder(containerClient,files, folderName){
-    // List the blob(s) in the container.
     return Promise.all(files.map(async file => {
     //remove public
     fileName = file.replace("public/","");
@@ -213,9 +210,10 @@ const commentToGithub = async (done) => {
   const { Octokit } = require("@octokit/rest");
   
   const secret = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+  console.log(secret)
   if(!secret){
     logger.warn("GitHub Access Token is not defined. skipped comment task.");
-    done();
+    return done();
   }
 
   const octokit = new Octokit({
@@ -238,7 +236,7 @@ const commentToGithub = async (done) => {
   const regex = /🎉🐧/
   if(prComments.find(comment => regex.test(comment.body))){
     logger.info("There is already bot comment");
-    done();
+    return done();
   };
 
   logger.info("add comment to PR");
@@ -246,14 +244,14 @@ const commentToGithub = async (done) => {
     owner: repoOwner,
     repo: repoName,
     issue_number: issueNumber,
-    body: `🎉🐧Thank you for your contribute!\n We are now launch [preview environment!](${previewUrl})`  
+    body: `🎉🐧Thank you for your contribute!\n We have launched [preview environment!](${previewUrl})`  
   })
   if(result.status != 201){
     logger.error("failed creating comment");
-    done(new Error(result))
+    return done(new Error(result))
   }
   logger.info("succeeded comment to PR");
-  done();
+  return done();
 }
 
 exports.default = series(cleanOutputPath, parallel(copyMarkdown, copyImage), server, watchFiles);
