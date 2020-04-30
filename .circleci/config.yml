@@ -46,6 +46,8 @@ jobs:
             git config --global user.email "jpazidbot@microsoft.com"
             git config --global user.name "jpazidbot"
             npm run deploy
+      - run: npm run deleteMergedPreview
+          
 
 
 workflows:
