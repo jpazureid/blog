@@ -22,6 +22,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run build
       - run: npm run test
+      - run: npm run uploadPreview
 
   deploy:
     docker:
@@ -45,6 +46,8 @@ jobs:
             git config --global user.email "jpazidbot@microsoft.com"
             git config --global user.name "jpazidbot"
             npm run deploy
+      - run: npm run deleteMergedPreview
+          
 
 
 workflows:

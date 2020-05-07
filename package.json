@@ -7,6 +7,8 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@azure/storage-blob": "^12.1.1",
+    "@octokit/rest": "^17.6.0",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-copy": "^4.0.1",
@@ -35,6 +37,8 @@
     "start": "npx gulp",
     "deploy": "npx gulp publish",
     "build": "npx gulp build",
+    "uploadPreview": "npx gulp uploadPreview",
+    "deleteMergedPreview": "npx gulp deleteMergedPreview",
     "test": "npx textlint ./articles/**/*.md"
   }
 }
