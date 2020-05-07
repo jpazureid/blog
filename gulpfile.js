@@ -364,4 +364,3 @@ exports.uploadPreview = series(
   commentToGithub
 );
 exports.deleteMergedPreview = series(deleteMergedPreview);
-exports.cleanTask = series(cleanTask);
