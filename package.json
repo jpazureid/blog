@@ -38,6 +38,7 @@
     "deploy": "npx gulp publish",
     "build": "npx gulp build",
     "uploadPreview": "npx gulp uploadPreview",
+    "deleteMergedPreview": "npx gulp deleteMergedPreview",
     "test": "npx textlint ./articles/**/*.md"
   }
 }
