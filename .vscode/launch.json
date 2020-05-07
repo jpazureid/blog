@@ -2,12 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "run gulp task",
+            "name": "run local server",
             "type": "node",
             "request": "launch",
             "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
             "stopOnEntry": false,
             "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "console": "integratedTerminal",
+        },
+        {
+            "name": "uploadPreview",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+            "stopOnEntry": false,
+            "args": ["uploadPreview"],
             "cwd": "${workspaceRoot}",
             "runtimeArgs": [
                 "--nolazy"
