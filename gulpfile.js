@@ -204,29 +204,50 @@ async function deleteBlobFolderIfExist(done) {
 }
 
 async function uploadFilesToBlobFolder(containerClient, files, folderName) {
+  const uploadPublicFolderTasks = files.map(async (file) => {
+    //remove public
+    fileName = file.replace("public/", "");
+    const blobName = path.join(folderName, fileName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    const data = fs.readFileSync(file);
+    const contentType = mime.getType(fileName);
+    const options = {
+      blobHTTPHeaders: {
+        blobContentType: contentType,
+      },
+    };
+    const uploadBlobResponse = await blockBlobClient.upload(
+      data,
+      data.length,
+      options
+    );
+    logger.info(
+      `upload ${blobName} with requestId: ${uploadBlobResponse.requestId} ${options.blobHTTPHeaders.blobContentType}`
+    );
+  });
+
+  const uploadRobotsTask = async () => {
+    const blobName = "robots.txt";
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    const contentType = mime.getType(fileName);
+    const options = {
+      blobHTTPHeaders: {
+        blobContentType: contentType,
+      },
+    };
+    const data = "User-agent: *\nDisallow: /"
+    const uploadBlobResponse = await blockBlobClient.upload(
+      data,
+      data.length,
+      options
+    );
+    logger.info(
+      `upload ${blobName} with requestId: ${uploadBlobResponse.requestId} ${options.blobHTTPHeaders.blobContentType}`
+    );
+  }
+
   return Promise.all(
-    files.map(async (file) => {
-      //remove public
-      fileName = file.replace("public/", "");
-      const blobName = path.join(folderName, fileName);
-      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-      const data = fs.readFileSync(file);
-      const contentType = mime.getType(fileName);
-      const options = {
-        blobHTTPHeaders: {
-          blobContentType: contentType,
-        },
-      };
-      const uploadBlobResponse = await blockBlobClient.upload(
-        data,
-        data.length,
-        options
-      );
-      logger.info(
-        `upload ${blobName} with requestId: ${uploadBlobResponse.requestId} ${options.blobHTTPHeaders.blobContentType}`
-      );
-    })
-  );
+    [...uploadPublicFolderTasks, uploadRobotsTask()]);
 }
 
 const commentToGithub = async (done) => {
@@ -295,6 +316,9 @@ const deleteMergedPreview = async () => {
   const containerClient = await getContainerClient();
   for await (const item of containerClient.listBlobsFlat()) {
     if (item.kind === "prefix") {
+      continue;
+    }
+    if(item.name === "robots.txt"){
       continue;
     }
     if (openedPRs.includes(item.name.split("/")[0])) {
