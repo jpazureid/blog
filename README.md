@@ -5,7 +5,7 @@
 
 ## Azure Active Directory
 
-- [ポリシーとセキュリティのリアル タイムな適用に向けて](articles/azure-active-directory/moving-towards-real-time-policy-and-security-enforcement.md)
+- [ポリシーとセキュリティのリアル タイムな適用に向けて](./articles/azure-active-directory/moving-towards-real-time-policy-and-security-enforcement.md)
 - [2020 年 アイデンティティについて取り組むべき 5 つのポイント](./articles/azure-active-directory/5-identity-priorities-for-2020.md)
 - [Azure AD 条件付きアクセスを利用してセキュリティと生産性のバランスをとる 3 つの方法](./articles/azure-active-directory/3-ways-aad-ca-balances-security-and-productivity.md)
 - [パスワードで攻撃は防げない - Your Pa$$word doesn't matter](./articles/azure-active-directory/your-password-doesnt-matter.md)
