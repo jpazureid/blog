@@ -57,9 +57,11 @@ const deploy = (done) => {
   hexo
     .init()
     .then(function () {
+      logger.info("run: hexo clean")
       return hexo.call("clean", {});
     })
     .then(function () {
+      logger.info("run: hexo deploy")
       return hexo.call("deploy", {});
     })
     .then(function () {
@@ -79,9 +81,11 @@ const generate = (cb) => {
   hexo
     .init()
     .then(function () {
+      logger.info("run: hexo clean")
       return hexo.call("clean", {});
     })
     .then(function () {
+      logger.info("run: hexo generate")
       return hexo.call("generate", {});
     })
     .then(function () {
@@ -108,11 +112,13 @@ const generateForPreview = (cb) => {
   hexo
     .init()
     .then(function () {
+      logger.info("run: hexo clean")
       return hexo.call("clean", {});
     })
     .then(function () {
       hexo.config.root = branchName;
       hexo.config.url = previewUrl;
+      logger.info(`run: hexo generate with { root: "${branchName}", url: "${previewUrl}" }`)
       return hexo.call("generate", {});
     })
     .then(function () {
@@ -358,3 +364,4 @@ exports.uploadPreview = series(
   commentToGithub
 );
 exports.deleteMergedPreview = series(deleteMergedPreview);
+exports.cleanTask = series(cleanTask);
