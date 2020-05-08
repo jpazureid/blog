@@ -6,6 +6,7 @@ tags:
   - Staged Rollout
   - Federation
 ---
+# Staged Rollout について
 
 こんにちは、Azure Identity サポート チームの田中です。
 
