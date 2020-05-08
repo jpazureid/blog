@@ -1,6 +1,6 @@
 ---
 title: Staged Rollout について
-date: 2020-05-07
+date: 2020-05-08
 tags:
   - Azure AD
   - Staged Rollout
@@ -18,10 +18,10 @@ tags:
 例えば、以下のようなシナリオが挙げられます。
 
 - シナリオ
-ユーザー A および ユーザー B は、共に同じ `yutanak04.mydns.jp` というフェデレーション ドメインを持つユーザーである。
+ユーザー A および ユーザー B は、共に同じ `contoso.com` というフェデレーション ドメインを持つユーザーである。
 
-ユーザー A の UPN : `test.user0001@yutanak04.mydns.jp`  
-ユーザー B の UPN : `adfstestuser01@yutanak04.mydns.jp`
+ユーザー A の UPN : `test.user0001@contoso.com`  
+ユーザー B の UPN : `adfstestuser01@contoso.com`
 
 Staged Rollout 機能が割り当てられているユーザー A : マネージド認証 (パスワード ハッシュ同期 / パススルー認証)  
 Staged Rollout 機能が割り当てられていないユーザー B : フェデレーションによる認証
@@ -38,32 +38,32 @@ URL : <https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-con
 以下では、上述のシナリオに基づいて、実際の構成手順を一部抜粋して、ご案内します。
 
 \[ドメイン状態\]
-- `yutanak04.mydns.jp` : Federated
+- `contoso.com` : Federated
 
 \[グループおよびグループに含まれるユーザーの構成情報\]
 
 |                                              | グループ名<br>TESTPHS01 |
 |----------------------------------------------|----------------------|
-| ユーザー A <br>`test.user0001@yutanak04.mydns.jp`  | <font color="Red">〇</font> (含まれる)|
-| ユーザー B <br>`adfstestuser01@yutanak04.mydns.jp` | x  (含まれていない)   |
+| ユーザー A <br>`test.user0001@contoso.com`  | <font color="Red">〇</font> (含まれる)|
+| ユーザー B <br>`adfstestuser01@contoso.com` | x  (含まれていない)   |
 
 TESTPHS01 のグループに対して、以下のように、Staged Rollout 機能におけるパスワード ハッシュ同期を割り当てます。
 
 ![](./about-staged-rollout/apply-phs.png)
 
 \[認証方式\]
-- `test.user0001@yutanak04.mydns.jp` のユーザーで認証を試みます。(グループに含まれるユーザー)  
+- `test.user0001@contoso.com` のユーザーで認証を試みます。(グループに含まれるユーザー)  
 ⇒ フェデレーション認証の場合だとリダイレクトされますが、リダイレクトされておらず、パスワード ハッシュ同期による認証方式が適用されていることが、以下の画面キャプチャからもご確認いただけます。  
 ※なお、[グループおよびグループに含まれるユーザーの構成情報] において、Staged Rollout 機能におけるパススルー認証を割り当てても、以下の画面キャプチャと同様のサインイン画面が表示されます。
 
 ![](./about-staged-rollout/input-password.png)
 
-- `adfstestuser01@yutanak04.mydns.jp` のユーザーで認証を試みます。 (グループに含まれていないユーザー)  
+- `adfstestuser01@contoso.com` のユーザーで認証を試みます。 (グループに含まれていないユーザー)  
 ⇒ AD FS による認証方式が適用されていることが、以下の画面キャプチャからもご確認いただけます。
 
 ![](./about-staged-rollout/adfs-signinpage.png)
 
-このように、上記の 2 ユーザー共に、同じフェデレーション ドメイン (例 : `yutanak04.mydns.jp`) を使用しているにも関わらず、Staged Rollout 機能を割り当てたグループに含まれるユーザーは、マネージド 認証が適用されます。
+このように、上記の 2 ユーザー共に、同じフェデレーション ドメイン (例 : `contoso.com`) を使用しているにも関わらず、Staged Rollout 機能を割り当てたグループに含まれるユーザーは、マネージド 認証が適用されます。
 
 # Staged Rollout に関してよくある Q&A 集
 **Q. 認証方式の切替を行う際、ユーザー単位での認証方式の変更は必要なく (全ユーザーに対する認証方式を行う想定)、認証方式の変更に要する時間として、ドメイン単位でフェデレーション解除するよりも Staged Rollout 機能を用いた方が、反映時間は短く済むのでしょうか？**
