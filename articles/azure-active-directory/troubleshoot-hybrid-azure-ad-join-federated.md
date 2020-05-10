@@ -198,8 +198,7 @@ PRT は HAADJ に通常利用する同期ユーザーがクライアント端末
 
 PRT の詳細については、以下の弊社技術情報をご参照ください。
 
-プライマリ更新トークンとは
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token
+[プライマリ更新トークンとは](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token)
 
 この PRT を正常に取得できない場合、以下のような事象が発生します。
 
