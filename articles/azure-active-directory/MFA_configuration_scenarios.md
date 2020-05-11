@@ -15,7 +15,7 @@ tags:
 
 [ゼロ ハイプ](https://jpazureid.github.io/blog/azure-active-directory/zero-hype/)
 
-[レガシー認証をブロックするための新しいツール](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/new-tools-to-block-legacy-auth.md)
+[レガシー認証をブロックするための新しいツール](https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/)
 
 また、リモート ワークを安全に実現したい！というご要望が高まっている昨今の状況に呼応した以下のような Blog も公開しておりますので、ぜひこちらもご参照ください。
 
@@ -51,7 +51,7 @@ Azure MFA サービスを利用するために、MFA を利用するユーザー
 |ライセンスの種類|利用可能な MFA 機能|カスタマイズ性|
 |:-----------|:------------|:------------|
 |Azure AD Free (MFA 用のライセンス不要)|Security Defaults|×|
-|Office 365 E3 or E5|Azure MFA ポータル|△|
+|Office 365 E3 or E5|[Azure MFA ポータル](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx)|△|
 |Azure AD Premium P1 (EMS E3 or Microsoft 365 E3 含む)|条件付きアクセス、他 (*)|○|
 |Azure AD Premium P2 (EMS E5 or Microsoft 365 E5 含む)|リスクベースの条件付きアクセス	|○|
     (*) 他に NPS 拡張や Always on VPN、ADFS サーバーとの連携、MFA Server との連携もご利用シナリオがあります。
@@ -68,7 +68,7 @@ Azure MFA サービスを利用するために、MFA を利用するユーザー
 |:-----------|:------------|:------------|
 |Security Defaults|<Li>テナントに対する機能の有効/無効のみが設定できる<BR><Li>機能の有効/無効以外の設定はできない (ユーザー毎、アクセス先などで条件を変える等)<BR><Li>すべての AAD ユーザーが MFA の方法をセットアップする必要がある<BR><Li>MFA の方法として Authenticator アプリでの通知のみが利用できる (SMS や音声電話は利用不可)<BR><Li>特定の特権ユーザー (管理者ロールを保持) には、サインイン時に MFA が求められる<BR><Li>一般ユーザーに対しても "必要に応じて" サインイン時に MFA が求められる<BR>　(一般ユーザーがサインイン時に MFA を求められる条件 (どんなサインインが危険とみなされるか) は非公開)<BR><Li>レガシ認証 (Outlook 2010 や POP/IMAP/SMTP など) はブロックされる<BR><Li>Azure の管理用での接続である Azure PowerShell, Azure CLI, Azure ポータルへのサインインは MFA が求められる<BR>※ 条件付きアクセス ポリシーと本機能は共存不可。条件付きアクセス ポリシーを作成すると本機能は利用できなくなる|<Li>カスタマイズ性はなくても無料で MFA を使いたい！とお考えの方 (ただし、一般ユーザーについては必ずしも MFA が求められるわけではないことはご注意を)<BR><Li>ある程度のセキュリティが実現できれば良い、とお考えの方|
 |[Azure MFA ポータル](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx)|<Li>AAD ユーザー毎に MFA の有効/無効の設定ができる<BR><Li>最終的にアクセスしたいサービスは問わず、AAD へのサインインすべてが評価対象となる<BR><Li>MFA が必要 (有効) とされたユーザーのみが MFA の方法をセットアップする必要がある<BR><Li>MFA の方法として、Authenticator だけではなく電話 (SMS/音声) や OATH トークンも利用可能<BR><Li>[どの MFA の認証方法をセットアップ可能とするか] という制限もテナント全体で可能<BR><Li>[信頼できる IP] を登録し、その IP からの認証時には MFA をスキップさせる設定が可能<BR><Li>[MFA の記憶] 機能で、一度 MFA をすると指定した日数は MFA を求めないようにすることが可能<BR><Li>アプリケーション パスワード (レガシ認証で MFA 要求をスキップするための専用パスワード) を利用可能|<Li>Office 365 のライセンスをお持ちの方<BR><Li>ユーザーによって MFA の有効/無効を制御したいとお考えの方<BR><Li>グループ単位やアクセスしたいサービス毎に MFA の有効/無効は制御しなくても良いとお考えの方|
-|条件付きアクセス|<Li>AAD ユーザー毎だけではなく、グループ毎でも MFA の有効/無効の設定ができる<BR><Li>最終的にアクセスしたいサービス毎に MFA の有効/無効の設定ができる<BR><Li>接続元クライアントの OS の種類、IP (場所) なども条件として指定することができる<BR><Li>MFA を求める以外の制御 (ブロックやデバイス認証が必要、など) を指定することができる<BR><Li>Azure MFA ポータルのオプション機能を利用することができる<BR><Li>アプリケーション パスワードは利用できない (レガシはスルーで認証する、という設定は可能だが非推奨)|<Li>グループ単位で MFA の有効/無効を制御したいとお考えの方<BR><Li>アクセスしたいサービス毎に MFA の有効/無効を制御したいとお考えの方<BR><Li>MFA が必要、という制御以外にブロックなど他の制御も条件に応じて実現されたい方<BR><Li>接続元デバイス (*) の条件毎に MFA の有効/無効を制御したいとお考えの方<BR>　\(\*) Hybrid Azure AD Join 済みデバイス、Intune ポリシー準拠済みデバイス|
+|条件付きアクセス|<Li>AAD ユーザー毎だけではなく、グループ毎でも MFA の有効/無効の設定ができる<BR><Li>最終的にアクセスしたいサービス毎に MFA の有効/無効の設定ができる<BR><Li>接続元クライアントの OS の種類、IP (場所) なども条件として指定することができる<BR><Li>MFA を求める以外の制御 (ブロックやデバイス認証が必要、など) を指定することができる<BR><Li>Azure MFA ポータルのオプション機能を利用することができる<BR><Li>アプリケーション パスワードは利用できない (レガシはスルーで認証する、という設定は可能だが非推奨)|<Li>グループ単位で MFA の有効/無効を制御したいとお考えの方<BR><Li>アクセスしたいサービス毎に MFA の有効/無効を制御したいとお考えの方<BR><Li>MFA が必要、という制御以外にブロックなど他の制御も条件に応じて実現されたい方<BR><Li>接続元デバイス (\*) の条件毎に MFA の有効/無効を制御したいとお考えの方<BR>　(\*) Hybrid Azure AD Join 済みデバイス、Intune ポリシー準拠済みデバイス|
 |リスクベースの条件付きアクセス|<Li>すべてのユーザーに MFA の方法のセットアップを求めることができる<BR>　(MFA 認証ではなく "MFA が求められた場合の方法" のセットアップを求めることができる)<BR><Li>サインインのリスクが中以上と判定されたユーザーに対して MFA を求めることができる|<BR><Li>危険なサインインが疑わしい場合に動的に MFA を求めたいとお考えの方|
 
 Security Defaults の詳細は [セキュリティの既定値群とは](https://docs.microsoft.com/ja-jp/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) をご参照ください。
@@ -122,12 +122,12 @@ How (MFA の実行方法) は、各機能ではなく [AAD ユーザー] 自身�
 
 [統合されたセキュリティ情報の登録 (プレビュー)](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
 
-[Azure MFA の多要素認証設定の統合](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/mfasetupinteg.md)
+[Azure MFA の多要素認証設定の統合](https://jpazureid.github.io/blog/azure-active-directory/mfasetupinteg/)
 
 MFA 方法のセットアップ サイトの URL は以下の通りですが、統合 (Converged MFA) 対象の AAD ユーザーであれば旧来のサイト URL にアクセスしても統合後のサイトにリダイレクトされますのでご安心ください。
 
 * 旧来のサイト : https://aka.ms/mfasetup
-* 統合後のサイト : https://aka.ms/mysecurityinfo 
+* 統合後のサイト : https://aka.ms/mysecurityinfo
 
 なお、無料版もしくは試用版の AAD テナントをご利用の方は、MFA の方法として音声電話 (Voice) はご利用いただけません。<BR>
 SMS はご利用いただけますが、試そうとしたら [選択肢に音声電話が無い！] という状況になった際には、無料/試用版の AAD テナントではご利用いただけないのが適切な状態ですのでご留意ください。
@@ -141,7 +141,7 @@ SMS はご利用いただけますが、試そうとしたら [選択肢に音�
 つまり [Azure MFA サービスに話しかけているのが、クライアント端末ではなく何らかのサーバー] になるようなパターンです。
 
 それではざっくりとご利用いただける Azure MFA サービスの利用パターンを見てみましょう。
-![MFA構成パターン図](./MFA_configuration_scenarios/image01.JPG)
+![MFA構成パターン図](./MFA_configuration_scenarios/image01.jpg)
 
 それぞれのパターンごとに以下にご紹介いたします。<BR>
 たくさんあって大変。。。という印象もあるかもしれませんが、[どんな認証システムをご利用になっているか/なりたいか] が先にあるかと思いますので、そのご要件に沿って Azure MFA と連携できるかご検討ください。
