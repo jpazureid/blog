@@ -9,7 +9,13 @@ const { src, dest, watch, parallel, series } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { Octokit } = require("@octokit/rest");
 
-const blogRoot = "/blog";
+const previewBaseUrl = process.env.PREVIEW_BASE_URL;
+const branchName = process.env.CIRCLE_BRANCH;
+
+let blogRoot = "/blog";
+if(branchName !== "master") {
+  blogRoot = "/" + branchName;
+}
 const sourceFolder = "articles";
 let markdownFiles = path.join(sourceFolder, "**/*.md");
 let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp)");
@@ -17,8 +23,6 @@ const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
 
-const previewBaseUrl = process.env.PREVIEW_BASE_URL;
-const branchName = process.env.CIRCLE_BRANCH;
 let previewUrl = "";
 if (branchName && previewBaseUrl) {
   previewUrl = new URL(
