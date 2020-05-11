@@ -22,7 +22,7 @@ tags:
 [安全なリモート アクセスを実現するための条件付きアクセスに関するよくある質問](https://jpazureid.github.io/blog/azure-active-directory/faq-using-ca-to-secure-remote-access/)
 
 セキュリティを高める方法は様々ですが、おそらく持っていない人を探す方が大変と思われる携帯電話/スマホを使って実現できる MFA / 多要素認証の導入が最もご検討いただきやすいのではないでしょうか。
-今回は、Azure MFA サービスを利用した MFA の実現方法について、2020年5月時点の情報を元に以下の観点でご紹介いたします！
+今回は、Azure MFA サービスを利用した MFA の実現方法について、2020 年 5 月時点の情報を元に以下の観点でご紹介いたします！
 
 1. **Azure MFA サービスを利用するためのライセンス**
 2. **Azure MFA サービスを利用する際の構成要素の考え方**
@@ -99,7 +99,7 @@ Azure MFA サービスをご利用いただくにあたって、MFA を実現す
 |When|MFA を必要とさせるきっかけ|いつ MFA を求めさせるか|
 |How|SMS やモバイル アプリ等 MFA の実行方法|どのような方法で MFA を実行するか|
 
-上記3つの要素が揃って、初めてあるユーザーのサインイン時に MFA が求められるようになります。
+上記 3 つの要素が揃って、初めてあるユーザーのサインイン時に MFA が求められるようになります。
 各機能毎のそれぞれの要素に対する考え方をまずは以下におまとめします。
 
 |対象機能|Who|When|How|
@@ -169,7 +169,7 @@ SMS はご利用いただけますが、試そうとしたら [選択肢に音�
 * Windows Server 2016 では、プライマリ認証方法として Azure MFA を使用すると Authenticator のみが利用可能
 
 [AD FS を使用して Azure MFA を認証プロバイダーとして構成する](https://docs.microsoft.com/ja-jp/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa)<BR>
-->構成手順はこちらの情報をご参照ください。
+-> 構成手順はこちらの情報をご参照ください。
 
 ## ④ NPS Server への RADIUS 認証時
 こちらは、NPS Server に [NPS 拡張] 機能をインストールし、RADIUS 認証要求を NPS Server にて受け付けた際に MFA 認証を求めるシナリオになります。<BR>
@@ -182,7 +182,7 @@ SMS はご利用いただけますが、試そうとしたら [選択肢に音�
 　(PAP の場合はすべての MFA 方法が利用可能、CHAPv2 と EAP の場合は音声電話と Authenticator アプリの通知の2種類が利用可能)
 
 [Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-nps-extension)<BR>
-->構成手順はこちらの情報をご参照ください。
+-> 構成手順はこちらの情報をご参照ください。
 
 ## ⑤ (リタイア予定) オンプレミスに MFA Server を導入
 こちらは、Windows Server に [MFA Server] の機能をインストールし、複数のオンプレミスの認証システムと連携して Azure MFA サービスへのプロキシを行い、MFA 認証を求めるシナリオになります。<BR>
