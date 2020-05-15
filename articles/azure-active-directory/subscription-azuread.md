@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect で実現するシングル サインオン
+title: サブスクリプションが見えない
 date: 2017-11-21
 tags:
   - Azure AD

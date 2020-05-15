@@ -1,5 +1,5 @@
 ---
-title: テナント制限
+title: テナント制限について
 date: 2018-09-13
 tags:
   - Azure AD

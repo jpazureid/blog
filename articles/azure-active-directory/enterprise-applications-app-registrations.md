@@ -9,6 +9,8 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/12/28/enterprise-applications-app-registrations/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+# 「エンタープライズアプリケーション」と「アプリの登録」の違いについて
+
 こんにちは、Azure Identity チームの宮林です。
 
 今回は Azure Active Directory の管理項目にある、「エンタープライズアプリケーション」と「アプリの登録」のそれぞれの違いについて紹介します。  
