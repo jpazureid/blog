@@ -5,6 +5,7 @@
 
 ## Azure Active Directory
 
+- [Azure MFA 導入パターンを網羅的にご紹介！](./articles/azure-active-directory/MFA_configuration_scenarios.md)
 - [ポリシーとセキュリティのリアル タイムな適用に向けて](./articles/azure-active-directory/moving-towards-real-time-policy-and-security-enforcement.md)
 - [2020 年 アイデンティティについて取り組むべき 5 つのポイント](./articles/azure-active-directory/5-identity-priorities-for-2020.md)
 - [Azure AD 条件付きアクセスを利用してセキュリティと生産性のバランスをとる 3 つの方法](./articles/azure-active-directory/3-ways-aad-ca-balances-security-and-productivity.md)
@@ -64,6 +65,8 @@
 - [Azure AD Domain Services の利用シナリオ](./articles/azure-active-directory/azure-ad-ds-scenario.md)
 - [[ベースライン ポリシー] から [セキュリティの既定値] への移行](./articles/azure-active-directory/azure-ad-security-defaults.md)
 - [マネージド ID を利用して Azure AD サインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト](./articles/azure-active-directory/microsoft-graph-api-signin-activity-reports-v2.md)
+- [Hybrid Azure AD Join 失敗時の初動調査方法について (マネージド編)](./articles/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed.md)
+- [Hybrid Azure AD Join 失敗の初動調査方法について (フェデレーション編)](./articles/azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated.md)
 
 ## Azure AD Connect
 
