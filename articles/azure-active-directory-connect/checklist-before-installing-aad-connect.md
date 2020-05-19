@@ -28,7 +28,7 @@ Azure AD Connect 自体の要件としては下記技術情報のとおりとな
 ### [Q&A]
 
 ---
-- Q. Azure AD Connect をドメイン コントローラー上にインストールして問題ないか?
+- Q. Azure AD Connect をドメイン コントローラー上にインストールして問題ないか ?
 - A. 弊社としては推奨していません。
 ---
 
@@ -55,7 +55,7 @@ Azure AD Connect に同梱されている Azure AD Connect Health Agent for Sync
 ### [Q&A]
 
 ---
-- Q. Azure AD Connect Health Agent をインストールし、同期対象となるテナントにて Azure AD Premium ライセンスがないが問題ないか?
+- Q. Azure AD Connect Health Agent をインストールし、同期対象となるテナントにて Azure AD Premium ライセンスがないが問題ないか ?
 A. インストール自体の処理やライセンス規約などに問題は起きません。
    Azure ポータルからの監視機能が使用できないなどの制約が生じます。
 ---
@@ -65,7 +65,7 @@ A. インストール自体の処理やライセンス規約などに問題は�
 
 ---
 
-- Q. Azure AD Connect Health Agent for Sync 単体でアップグレード可能か?
+- Q. Azure AD Connect Health Agent for Sync 単体でアップグレード可能か ?
 - A. Azure AD Connect に同梱となり単体でのアップグレードは行えません。
  
 ---
@@ -103,7 +103,7 @@ PTA をインストールするサーバーでは上述の A. B. とは別にネ
 - A. 構成できません。Azure AD Connect は 1 台でパスワード同期を有効、その他 Azure AD Connect サーバーはステージング サーバーとしての構成となります。
 ---
 
-- Q. PTA の必要数は?
+- Q. PTA の必要数は ?
 - A. 1 台で動作はしますが、下記技術情報のとおり、運用環境では 3 つ以上実行することを推奨しております。
    
   Azure AD Connect 1 台 (PTA 1 台目) + PTA 2 台目 + PTA 3 台目
