@@ -18,7 +18,7 @@ if(branchName !== "master") {
 }
 const sourceFolder = "articles";
 let markdownFiles = path.join(sourceFolder, "**/*.md");
-let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp|PNG|JPG|JPEG|BMP)");
+let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp|JPG|JPEG|PNG|GIF|SVG|BMP)");
 const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
