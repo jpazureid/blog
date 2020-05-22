@@ -1,6 +1,6 @@
 ---
 title: Azure MFA 導入パターンを網羅的にご紹介！
-date: 2020-05-10 09:30:00 GMT //日時 (できれば時刻まで)
+date: 2020-05-10 09:30:00 GMT
 tags:
   - Azure AD
   - MFA
