@@ -5,7 +5,7 @@ const glob = require("glob");
 const mime = require("mime");
 const logger = require("gulplog");
 const replace = require("gulp-string-replace");
-const { src, dest, watch, parallel, series } = require("gulp");
+const { src, dest, watch, parallel, series, lastRun } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { Octokit } = require("@octokit/rest");
 
@@ -148,7 +148,7 @@ const cleanOutputPath = () => {
 
 const copyMarkdown = () => {
   return (
-    src(markdownFiles, { base: sourceFolder })
+    src(markdownFiles, { base: sourceFolder, since: lastRun(copyMarkdown) })
       //fix absolute path image
       .pipe(
         // delete first h1 header
@@ -171,7 +171,7 @@ const copyMarkdown = () => {
 };
 
 const copyImage = () => {
-  return src(imageFiles, { base: sourceFolder }).pipe(dest(outputPath));
+  return src(imageFiles, { base: sourceFolder, since: lastRun(copyImage) }).pipe(dest(outputPath));
 };
 
 // TODO copy only changed files
