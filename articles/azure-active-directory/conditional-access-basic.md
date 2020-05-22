@@ -3,6 +3,7 @@ title: 条件付きアクセスの基本的な考え方
 date: 2018-09-27
 tags:
   - Azure AD
+  - Conditional Access
 ---
 
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/09/27/ca-basic/ の内容を移行したものです。
