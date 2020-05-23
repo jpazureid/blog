@@ -3,8 +3,11 @@
 
 チームの担当製品である Azure Active Directory、Azure AD Connect、AD FS の情報を中心にお届けします。その他の Azure 関連サポートチームのブログへのリンクもありますのでぜひご確認ください。
 
+[全記事一覧](https://jpazureid.github.io/blog/archives/)
+
 ## Azure Active Directory
 
+- [「管理者の承認が必要」のメッセージが表示された場合の対処法](./articles/azure-active-directory/azure-ad-consent-framework.md)
 - [Azure MFA 導入パターンを網羅的にご紹介！](./articles/azure-active-directory/MFA_configuration_scenarios.md)
 - [ポリシーとセキュリティのリアル タイムな適用に向けて](./articles/azure-active-directory/moving-towards-real-time-policy-and-security-enforcement.md)
 - [2020 年 アイデンティティについて取り組むべき 5 つのポイント](./articles/azure-active-directory/5-identity-priorities-for-2020.md)
