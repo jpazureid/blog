@@ -43,10 +43,8 @@ Azure AD に、UPN : user01@contoso.com (オリジナル user01) のユーザー
 
 - "Unable to update this object because the following attributes associated with this object have values that may already be associated with another object in your local directory services: [**UserPrincipalName**user01@contoso.com;]. Correct or remove the duplicate values in your local directory."
 (このオブジェクトに紐づく属性値 [**UserPrincipalName** user01@contoso.com;] は、ローカル ディレクトリ サービスの他のオブジェクトに既に紐付けられているため、このオブジェクトを更新できません。ローカル ディレクトリの重複している属性値を変更または削除してください。)
-<!-- textlint-disable -->
 - Unable to update this object because the following attributes associated with this object have values that may already be associated with another object in your local directory services: [**ProxyAddresses**SMTP:user01@contoso.com;]. Correct or remove the duplicate values in your local directory."
 (このオブジェクトに紐づく属性値 [**ProxyAddresses** SMTP:user01@contoso.com;] は、ローカル ディレクトリ サービスの他のオブジェクトに既に紐付けられているため、このオブジェクトを更新できません。ローカル ディレクトリの重複している属性値を変更または削除してください。)
-<!-- textlint-eable -->
 
 以降、重複した属性値の状態を解消する対処を実施するまでは、定期的な同期処理が行われる毎に失敗し、このメールが通知されます。  
 重複属性の回復性が有効になるまでは！
@@ -102,7 +100,7 @@ UserPrincipalName  : user012457@contoso.onmicrosoft.com
 
 1. Azure AD 上のオリジナル user01 である user01@contoso.com というユーザーが削除され、新 user01 との UPN の重複が解消されます。
 1. Azure 側で約 1 時間に 1 回行われているバックグラウンドのタイマー タスクで重複が解消されことを検知します。
-1. 新 user01 オブジェクトに対する DirSyncProvisioningErrors が消え、Azure AD に存在する UPN が user012457@contoso.onmicrosoft.comのユーザーの UPN が user01@contoso.com に自動変更されます。
+1. 新 user01 オブジェクトに対する DirSyncProvisioningErrors が消え、Azure AD に存在する UPN が user012457@contoso.onm icrosoft.comのユーザーの UPN が user01@contoso.com に自動変更されます。
 
 ## 4. ID 同期と重複属性の回復性が動作しないケース
 
@@ -111,7 +109,7 @@ UserPrincipalName  : user012457@contoso.onmicrosoft.com
 ### シナリオ 1. オンプレミス Active Directory 上の UPN 名に含まれるドメイン名が Azure AD にはカスタムドメインとして登録されていない場合
 
 オンプレミス AD ドメイン上でのあるユーザーの UPN の値が user01@contoso.com だとします。  
-この AD ドメインのディレクトリ同期先である Azure AD のイニシャル ドメインがonmicrosoft.com であり、カスタム ドメインとして contoso.com を登録していない環境であるとします。
+この AD ドメインのディレクトリ同期先である Azure AD のイニシャル ドメインが onmicrosoft.com であり、カスタム ドメインとして contoso.com を登録していない環境であるとします。
 
 この環境でディレクトリ同期を実施した結果 Azure AD に作成されるユーザーの UPN の値は、呼応するカスタム ドメインが存在しないので user01@contoso.onmicrosoft.com というようになります。  
 また、この Azure AD に同期作成されたユーザーに対して属性が重複するユーザーを同期した場合 (前述の 1. 2. のような条件を満たしたケース) が生じた場合には、後から同期されたユーザーはこれまでのご案内と同様に user012547@contoso.onmicrosoft.com というようになります。
@@ -138,7 +136,7 @@ SipProxyAddress とは、下記一例にあるコマンドで確認すること�
 ![](./duplicate-attribute-recoverability-behavior/2-3.png)
 ![](./duplicate-attribute-recoverability-behavior/2-3-2.png)
 
-オンプレミス AD のユーザーの ProxyAddresses に “SIP:“ より始まる Lync 及び Skype で利用するアドレスが値として格納されている場合に、ディレクトリ同期をすると Azure AD に生成されるユーザーの SipProxyAddress にこの値が格納されます。
+オンプレミス AD のユーザーの ProxyAddresses に “ SIP:“ より始まる Lync 及び Skype で利用するアドレスが値として格納されている場合に、ディレクトリ同期をすると Azure AD に生成されるユーザーの SipProxyAddress にこの値が格納されます。
 
 具体的な例は次のとおりです。
 

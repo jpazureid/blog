@@ -31,9 +31,9 @@ tags:
 それぞれの項目で、アプリケーションの登録を行う場合の目的の違いについて説明します。
 
 ## 「エンタープライズアプリケーション」からアプリケーションの登録を行う場合
-<!-- textlint-disable -->
-例えば、GitHub、Salesforce、Slack や G Suite など、[Azure Marketplace](https://azuremarketplace.microsoft.com/ja-jp) もしくは、Azure ポータルより [Azure Active Directory] - [エンタープライズアプリケーション] - [+新しいアプリケーション] を選択した際に表示されるページで公開されている、事前に統合された SaaS アプリケーションをテナントに追加して利用するために使用します。  
-<!-- textlint-enable -->
+
+例えば、GitHub、Salesforce、Slack や G Suite など、[Azure Marketplace](https://azuremarketplace.microsoft.com/ja-jp) もしくは、Azure ポータルより [Azure Active Directory] - [エンタープライズアプリケーション] - [+ 新しいアプリケーション] を選択した際に表示されるページで公開されている、事前に統合された SaaS アプリケーションをテナントに追加して利用するために使用します。  
+
 テナントに追加されたアプリケーションをユーザーに対して割り当てることで、アクセス可能なユーザーを限定することなどの管理も「エンタープライズアプリケーション」の項目から行います。  
 それぞれの SaaS アプリケーションに対する SSO、ユーザーのプロビジョニングの設定方法は以下のチュートリアルを参照ください。
 

@@ -34,12 +34,12 @@ Azure AD へのユーザー招待は、明示的に Azure Active Directory の�
 
 招待メールは下記のようなメールです。
 
-<!-- textlint-disable -->
-アドレス：invites@microsoft.com
-件名　　：<テナント名>組織に招待されました
+
+アドレス： invites@microsoft.com
+件名　　： <テナント名> 組織に招待されました
 
 ![](./azuread-b2b-troubleshooting/sampleEmail.png)
-<!-- textlint-enable -->
+
 
 もし、メールが利用できない場合や、メール ボックス作成前の場合は、「招待の再送信」後に表示される下記、「招待の URL ※」をコピーした後　その URL にブラウザーアクセスすることで招待作業を進めることができます。
 
@@ -65,15 +65,15 @@ Azure AD へのユーザー招待は、明示的に Azure Active Directory の�
 
 なお、その際は下記の情報を事前にご提供いただけると幸いです。
 
-<!-- textlint-disable -->
-- 招待先のディレクトリ (例：xxx.onmicrosoft.com)
-- 招待操作を行ったユーザー名 (例：xxx@contoso.com)
-- 招待したいユーザーのメールアドレス (例：xxx@test.co.jp)
+
+- 招待先のディレクトリ (例： xxx.onmicrosoft.com)
+- 招待操作を行ったユーザー名 (例： xxx@contoso.com)
+- 招待したいユーザーのメールアドレス (例： xxx@test.co.jp)
 - 問題となっている状況の詳細と問題なっている動作の画面ショット
 
 例：招待メールの操作が完了しない
     招待後にディレクトリにアクセスできない
-<!-- textlint-enable -->
+
 
 また、招待メールを使用しないユーザーの追加や CSV を使用した一括招待の方法については、下記の情報を参照ください。
 招待メールを使用しないユーザーの追加方法
