@@ -34,7 +34,7 @@ iOS 標準メール アプリでは iOS 11 から先進認証に対応してい�
 ![](./control-ios-nativemailapp-by-conditionalaccess/modern3.png)
 4. ポップアップが表示されるため [サインイン] を選択します。 ※こちらの手順が Exchange ActiveSync クライアント接続との分岐点になります。 
 ![](./control-ios-nativemailapp-by-conditionalaccess/modern4.png)
-5. ブラウザベースの先進認証クライアントの認証画面が表示されるため、ユーザー認証を実施し、サインインを完了させます。 
+5. ブラウザ ベースの先進認証クライアントの認証画面が表示されるため、ユーザー認証を実施し、サインインを完了させます。 
 ![](./control-ios-nativemailapp-by-conditionalaccess/modern5.png)
  
 
