@@ -31,7 +31,7 @@
     "textlint": "^11.6.3",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-filter-rule-whitelist": "^2.0.0",
-    "textlint-rule-ms-japanese-style-guide-modoki": "0.0.10"
+    "textlint-rule-ms-japanese-style-guide-modoki": "^0.1.1"
   },
   "scripts": {
     "start": "npx gulp",
@@ -39,6 +39,7 @@
     "build": "npx gulp build",
     "uploadPreview": "npx gulp uploadPreview",
     "deleteMergedPreview": "npx gulp deleteMergedPreview",
-    "test": "npx textlint ./articles/**/*.md"
+    "test": "npx textlint ./articles/**/*.md",
+    "autofix": "npx textlint --fix ./articles/**/*.md"
   }
 }
