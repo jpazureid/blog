@@ -100,7 +100,7 @@ UserPrincipalName  : user012457@contoso.onmicrosoft.com
 
 1. Azure AD 上のオリジナル user01 である user01@contoso.com というユーザーが削除され、新 user01 との UPN の重複が解消されます。
 1. Azure 側で約 1 時間に 1 回行われているバックグラウンドのタイマー タスクで重複が解消されことを検知します。
-1. 新 user01 オブジェクトに対する DirSyncProvisioningErrors が消え、Azure AD に存在する UPN が user012457@contoso.onm icrosoft.comのユーザーの UPN が user01@contoso.com に自動変更されます。
+1. 新 user01 オブジェクトに対する DirSyncProvisioningErrors が消え、Azure AD に存在する UPN が user012457@contoso.onmicrosoft.com のユーザーの UPN が user01@contoso.com に自動変更されます。
 
 ## 4. ID 同期と重複属性の回復性が動作しないケース
 
