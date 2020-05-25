@@ -1,5 +1,5 @@
 ---
-title: '調査に有効な採取情報] Azure AD に関する問題全般'
+title: Azure AD に関する問題全般
 date: 2017-10-24
 tags:
   - Azure AD
