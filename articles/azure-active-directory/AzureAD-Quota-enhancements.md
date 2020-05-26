@@ -56,26 +56,29 @@ Azure リソースを操作可能な Microsoft Graph を使用して、現在の
 
 ![](./AzureAD-Quota-enhancements/1-SigninGraphExplorer.png)
 
-3. 上部のアドレスバーに `https://graph.microsoft.com/beta/organization` を指定し、\[Run query\] をクリックします。
+3. 次のリクエストに書き換え、\[Run query\] をクリックします。  
 
-![](./AzureAD-Quota-enhancements/2-Sample.png)
+`https://graph.microsoft.com/beta/organization?$select=directorySizeQuota` 
+
+![](./AzureAD-Quota-enhancements/2-Sample2.png)
 
 4. 下部の実行結果にて ”directorySizeQuota” の項目を確認します。
 
 ``` Json
 {
-    "Value" : [
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#organization(directorySizeQuota)",
+    "value": [
         {
             "directorySizeQuota": {
-                "used": 145,　＜＜＜現在の使用数
-                "total": 50000　＜＜＜オブジェクト数の上限
-            },
+                "used": 515,        // 現在の使用数
+                "total": 300000    // オブジェクト数の上限
+            }
         }
     ]
 }
 ```
 
-![](./AzureAD-Quota-enhancements/3-Response-Value-directorySizeQuota.png)
+![確認例](./AzureAD-Quota-enhancements/3-Response-Value-directorySizeQuota2.png)
 
 上記内容が少しでも参考となりますと幸いです。
 ※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
