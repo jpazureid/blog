@@ -11,11 +11,10 @@ const { Octokit } = require("@octokit/rest");
 
 const previewBaseUrl = process.env.PREVIEW_BASE_URL;
 const branchName = process.env.CIRCLE_BRANCH;
-let envName = `${process.env.CIRCLE_PROJECT_USERNAME}-${branchName}`;
 
 let blogRoot = "/blog";
 if(branchName !== "master") {
-  blogRoot = "/" + envName;
+  blogRoot = "/" + branchName;
 }
 const sourceFolder = "articles";
 let markdownFiles = path.join(sourceFolder, "**/*.md");
@@ -25,9 +24,9 @@ const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
 
 let previewUrl = "";
-if (envName && previewBaseUrl) {
+if (branchName && previewBaseUrl) {
   previewUrl = new URL(
-    envName.replace("/", ""),
+    branchName.replace("/", ""),
     previewBaseUrl
   ).toString();
 }
@@ -125,7 +124,7 @@ const generateForPreview = (cb) => {
       return hexo.call("clean", {});
     })
     .then(function () {
-      hexo.config.root = `/${envName}/`;
+      hexo.config.root = `/${branchName}/`;
       hexo.config.url = previewUrl;
       logger.info(`run: hexo generate with { root: "${hexo.config.root}", url: "${hexo.config.url}" }`);
       return hexo.call("generate", {});
@@ -200,15 +199,15 @@ const getContainerClient = async () => {
 async function uploadToBlob(done) {
   const containerClient = await getContainerClient();
   const files = glob("./public/**/*", { nodir: true, sync: true });
-  await uploadFilesToBlobFolder(containerClient, files, envName);
+  await uploadFilesToBlobFolder(containerClient, files, branchName);
   done();
 }
 
 async function deleteBlobFolderIfExist(done) {
   const containerClient = await getContainerClient();
-  logger.info(`delete ${envName}`);
+  logger.info(`delete ${branchName}`);
   for await (const item of containerClient.listBlobsFlat({
-    prefix: envName,
+    prefix: branchName,
   })) {
     if (item.kind === "prefix") {
       continue;
