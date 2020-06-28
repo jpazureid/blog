@@ -1,5 +1,5 @@
 ---
-title: Azure AD Mailbag: リモート ワークにおいてデバイス ベースの条件付きアクセスを使用する際のよくある質問
+title: Azure AD Mailbag：リモート ワークにおいてデバイス ベースの条件付きアクセスを使用する際のよくある質問
 date: 2020-06-27
 tags:
   - Azure AD
@@ -14,7 +14,7 @@ tags:
 
 # Azure AD Mailbag: リモート ワークにおいてデバイス ベースの条件付きアクセスを使用する際のよくある質問
 
-皆さんこんにちは！今回はデバイス ベースの条件付きアクセスのシナリオに関し、よく頂戴するご質問にお答えしていきたいと思います。ここ数ヶ月間、従業員が安全にリモート ワークを実施できるよう多くの方が新たな課題に取り組まれるとともに、条件付きアクセスが適切な管理を実現するための重要な要素であるということを伺いました。先日の条件付きアクセスに関するベスト プラクティスの [ブログ](https://jpazureid.github.io/blog/azure-active-directory/faq-using-ca-to-secure-remote-access/) に対しても、素晴らしい反響を頂戴しました。もしまだご自身の環境で条件付きアクセス ポリシーを構成中であれば、以下の内容をぜひご覧ください。どのようにしてデバイス アクセスをより安全なものにしていくか、詳細な内容を Teppei から紹介いたします。
+皆さんこんにちは！今回はデバイス ベースの条件付きアクセスのシナリオに関し、よく頂戴するご質問にお答えしていきたいと思います。ここ数ヶ月間、従業員が安全にリモート ワークを実施できるよう多くの方が新たな課題に取り組まれるとともに、条件付きアクセスが適切な管理を実現するための重要な要素であるということを伺いました。先日の条件付きアクセスに関するベスト プラクティスの [ブログ](https://jpazureid.github.io/blog/azure-active-directory/faq-using-ca-to-secure-remote-access/) に対しても、素晴らしい反響を頂戴しました。もし、まだご自身の環境で条件付きアクセス ポリシーを構成中であれば、以下の内容をぜひご覧ください。どのようにしてデバイス アクセスをより安全なものにしていくか、詳細な内容を Teppei から紹介いたします。
 
 ----
 
@@ -42,15 +42,15 @@ Azure Active Directory (Azure AD) の Get-To-Production チームならびに Az
 
 条件付きアクセス ポリシーで、**Hybrid Azure AD Join を使用したデバイスが必要** を選択することで、ハイブリッド Azure AD 参加デバイスからのみ指定したクラウド アプリにアクセスさせることができます。詳細については、[こちらのドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/require-managed-devices) を参照ください。
 
-![dsregcmd /status](./fq-device-based-ca-for-remote-work/Devices1.png)
+![](./fq-device-based-ca-for-remote-work/Devices1.png)
 
 **デバイスは準拠しているとしてマーク済みである必要があります**
 
 さらにセキュリティを高めるために、すべての組織で **デバイスは準拠しているとしてマーク済みである必要があります** の設定の利用を検討いただければと思います。このオプションを利用すると、デバイスがモバイル デバイス管理 (例えば Intune) ポリシーに準拠済みであることが要求されます。詳細については、[こちらのドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) を参照ください。
 
-![dsregcmd /status](./fq-device-based-ca-for-remote-work/Devices1.png)
+![](./fq-device-based-ca-for-remote-work/Devices1.png)
 
-## 質問 4: ハイブリッド Azure AD 参加のデバイス登録処理はどのような流れで行われますか？VPN 経由でも動作しますか？
+## 質問 4: ハイブリッド Azure AD 参加のデバイス登録処理はどのような流れで行われますか？ VPN 経由でも動作しますか？
 
 ハイブリッド Azure AD 参加のデバイス登録処理では、デバイスが企業ネットワークに接続されている必要があります。VPN 経由でも動作しますが、いくつか注意が必要です。リモート ワークの状況下にて、ハイブリッド Azure AD 参加登録処理にトラブルが生じ、問題解決の支援を要望されたお客様もいらっしゃいます。ここでは、登録処理の実行中に行われている内部処理を掘り下げて解説させていただきます。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) の Get-To-Production チームならびに Az
 
     警告: **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** は共にイントラネットからアクセスできるエンドポイントとしてのみ有効にし、エクストラネットからアクセスできるエンドポイントとして公開しないようご注意ください。 
 
-    注意: サードパーティの ID プロバイダを使用している場合は、その製品がハイブリッド Azure AD 参加をサポートしているか製造元までご確認ください。
+    注意: サードパーティの ID プロバイダーを使用している場合は、その製品がハイブリッド Azure AD 参加をサポートしているか製造元までご確認ください。
 
 3. もし #2 が何らかの理由で失敗し、その際にデバイスが Windows 10 1803 以上の場合は、上記の Sync Join のフローの手順 #3-5 に記載されている登録フローにフォールバックします。
 
@@ -142,7 +142,7 @@ Azure Active Directory (Azure AD) の Get-To-Production チームならびに Az
 
     - デバイスの TPM に問題があり、デバイスを認証できない場合: tpm.msc を実行し、TPM の状態が準備完了かどうかを確認ください。もし準備完了となっていない場合は、dsregcmd /leave を実行し、デバイスを Azure AD に再び参加させます。この後改めて状態を確認ください。より詳細については、[こちらのドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/troubleshoot-device-dsregcmd#sso-state) を参照ください。
 
-    - サードパーティの ID プロバイダを使用しているが、WS-Trust プロトコルをサポートしていない場合: ドキュメントに記載されているように、この場合、ハイブリッドAzure AD 参加デバイスは動作しません。サポートについては、ID プロバイダーにお問い合わせください。
+    - サードパーティの ID プロバイダーを使用しているが、WS-Trust プロトコルをサポートしていない場合: ドキュメントに記載されているように、この場合、ハイブリッド Azure AD 参加デバイスは動作しません。サポートについては、ID プロバイダーにお問い合わせください。
 
 2. ユーザーが [Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) もしくは [Chrome 用の Office 拡張](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) なしで Chrome ブラウザーを使用しているか、これらの拡張が AAD 参加もしくはハイブリッド AAD 参加したデバイス上の PRT を使用していない。結果として、デバイス ベースの条件付きアクセス ポリシーが "未登録デバイス "のエラーで失敗している。Chrome ブラウザーを適切に構成するには、ユーザーの Chrome ブラウザーに SCCM や Intune から Windows 10 Accounts もしくは Office 拡張をインストールください。
  
