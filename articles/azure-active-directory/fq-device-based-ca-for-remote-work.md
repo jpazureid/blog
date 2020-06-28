@@ -144,7 +144,7 @@ Azure Active Directory (Azure AD) の Get-To-Production チームならびに Az
 
     - サードパーティの ID プロバイダーを使用しているが、WS-Trust プロトコルをサポートしていない場合: ドキュメントに記載されているように、この場合、ハイブリッド Azure AD 参加デバイスは動作しません。サポートについては、ID プロバイダーにお問い合わせください。
 
-2. ユーザーが [Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) もしくは [Chrome 用の Office 拡張](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) なしで Chrome ブラウザーを使用しているか、これらの拡張が AAD 参加もしくはハイブリッド AAD 参加したデバイス上の PRT を使用していない。結果として、デバイス ベースの条件付きアクセス ポリシーが "未登録デバイス "のエラーで失敗している。Chrome ブラウザーを適切に構成するには、ユーザーの Chrome ブラウザーに SCCM や Intune から Windows 10 Accounts もしくは Office 拡張をインストールください。
+2. ユーザーが [Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) もしくは [Chrome 用の Office 拡張](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) なしで Chrome ブラウザーを使用しているか、これらの拡張が AAD 参加もしくはハイブリッド AAD 参加したデバイス上の PRT を使用していない。結果として、デバイス ベースの条件付きアクセス ポリシーが "未登録デバイス" のエラーで失敗している。Chrome ブラウザーを適切に構成するには、ユーザーの Chrome ブラウザーに SCCM や Intune から Windows 10 Accounts もしくは Office 拡張をインストールください。
  
     拡張機能をリモートでインストールできない場合は、デバイス ベースの条件付きアクセスで保護されたアプリケーションにアクセスできるようにするため、上記のいずれかの拡張機能を手動でインストールするようにユーザーに通知ください。より詳しくは [こちらの資料](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/require-managed-devices#prerequisites) をご参照ください。 
 
