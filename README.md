@@ -18,7 +18,7 @@
 - [PowerShell にて全ユーザーの最終サインイン日時を一括で取得する方法](./articles/azure-active-directory/last-signin-reports.md)
 - [サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」](./articles/azure-active-directory/create-subscription-error.md)
 - [多要素認証 (MFA) のリセット手順](./articles/azure-active-directory/mfa-reset.md)
-- [条件付きアクセスの基本的な考え方](./articles/azure-active-directory/conditional-access-basuc.md)
+- [条件付きアクセスの基本的な考え方](./articles/azure-active-directory/conditional-access-basic.md)
 - [Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい](./articles/azure-active-directory/output-directory-roll-members.md)
 - [テナント制限について](./articles/azure-active-directory/tenant-restriction.md)
 - [Azure Active Directory への接続で使用する IP アドレス範囲の変更](./articles/azure-active-directory/changed_aad_ip_range.md)
