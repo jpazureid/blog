@@ -43,7 +43,7 @@ sSSO 認証方式のユーザーの認証は最終的に [クライアントか�
 
 [![IMAGE ALT TEXT HERE](./seamless-sso/sSSO20180528.png)](./seamless-sso/sSSO20180528.mp4)
 
-また、前述の[よく寄せられる質問](https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-sso-faq)にもあるように、パスワードだけではなくユーザー名の指定もせずにサインインが行えるサービス/URLもあります。以下は outlook.office365.com/customdomain.name にアクセスした時の動作です。 (カスタム ドメイン名はご利用の環境に即したドメイン名を指定します)
+また、前述の[よく寄せられる質問](https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-sso-faq)にもあるように、パスワードだけではなくユーザー名の指定もせずにサインインが行えるサービス/URL もあります。以下は outlook.office365.com/customdomain.name にアクセスした時の動作です。 (カスタム ドメイン名はご利用の環境に即したドメイン名を指定します)
 
 [![IMAGE ALT TEXT HERE](./seamless-sso/sSSO20180528.png)](./seamless-sso/sSSO2-20180528.mp4)
 

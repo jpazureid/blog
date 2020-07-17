@@ -36,10 +36,8 @@ AADC のバージョン情報は以下のとおりですが、本 Blog 執筆時
 Azure AD Connect: Version release history  
 https://docs.microsoft.com/en-us/azure/active-directory/hybrid/reference-connect-version-history
 
-<!-- textlint-disable -->
 AADC はディレクトリ同期ツールとしては 3 代目の製品となります。  
-DirSync, ADSync ツールを経て AADC へと進化し、機能追加と修正は現在までほぼ 1～2 カ月に 1 回のペースで行われ、最新バージョンを提供してきています。
-<!-- textlint-enable -->
+DirSync, ADSync ツールを経て AADC へと進化し、機能追加と修正は現在までほぼ 1 ～ 2 カ月に 1 回のペースで行われ、最新バージョンを提供してきています。
 
 DirSync & ADSync – 2017/12/31 で終了のお知らせ  
 https://blogs.technet.microsoft.com/jpazureid/2017/11/02/dirsync-adsync-20171231-で終了のお知らせ/

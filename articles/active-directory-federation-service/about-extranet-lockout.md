@@ -113,7 +113,6 @@ AD FS の監査ログを有効化することで、 AD FS への認証がどこ�
 
 // AD FS 上で記録されるパスワード間違え時のセキュリティ イベント ログ
 
-<!-- textlint-disable -->
 > ログの名前:         Security
 >
 > ソース:           Microsoft-Windows-Security-Auditing
@@ -245,7 +244,7 @@ AD FS の監査ログを有効化することで、 AD FS への認証がどこ�
 > System.IdentityModel.Tokens.SecurityTokenValidationException: user01@contoso.com
 > 
 > 場所 Microsoft.IdentityServer.Service.Tokens.MSISWindowsUserNameSecurityTokenHandler.ValidateToken(SecurityToken  token)
-<!-- textlint-enable -->
+
 
 上記内容が少しでもお客様の参考となりますと幸いです。
 製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。

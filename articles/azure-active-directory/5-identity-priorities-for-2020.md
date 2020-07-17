@@ -43,9 +43,9 @@ Azure Activity Directory (Azure AD) をすべてのアプリケーションの�
 
 組織の境界の内外でのデジタル コラボレーションが爆発的に増えています。今日のアイデンティティは、例えば、[顧客やパートナー](https://azure.microsoft.com/en-us/resources/azure-ad-customer-and-partner-identity-management) 、または以前はデジタル変革の恩恵を得ていなかった [20 億人を超えるファーストライン ワーカー (現場の最前線で働く従業員)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/empower-firstline-workers-from-day-one-with-enhanced-identity/ba-p/1097771) とのすべてのデジタルなやり取りに対応しています。将来的には、人とソフトウェア ボット、マイクロサービス、スマート デバイス間のコラボレーションも強化されるでしょう。
 
-<!-- textlint-disable -->
-効果的なコラボレーションには、単にすべてのユーザーをつなぐだけでは不十分です。適切なユーザーが適切なリソースに適切なタイミングで適切なアクセスができるようにする必要があります。ユーザーとアプリケーションの数が増加しているため、IT 部門が全員のアクセスのニーズを把握することはできません。アイデンティティ ガバナンスがここで役立ちます。クラウド ベースの [ID ガバナンス](https://aka.ms/identitygovernance) は、[SAP Success Factors](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/ring-in-the-new-year-with-automated-user-provisioning-from-sap/ba-p/1063603) や [Workday](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/say-good-bye-to-custom-scripts-and-simplify-your-workforce/ba-p/320540) などの人事システムとの統合により、アクセス ライフサイクルを自動化し、機械学習と分析の力によりレビュー担当者のアクセス許可/拒否の判断をシンプルにします。また、ビジネス ユーザーがアクセス要求とワークフローを通じてアクセスを管理したり、ファーストライン マネージャー (現場にいるマネージャー) にユーザー管理を委任したりすることもできます。
-<!-- textlint-enable -->
+
+効果的なコラボレーションには、単にすべてのユーザーをつなぐだけでは不十分です。適切なユーザーが適切なリソースに適切なタイミングで適切なアクセスができるようにする必要があります。ユーザーとアプリケーションの数が増加しているため、IT 部門が全員のアクセスのニーズを把握することはできません。アイデンティティ ガバナーンスがここで役立ちます。クラウド ベースの [ID ガバナンス](https://aka.ms/identitygovernance) は、[SAP Success Factors](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/ring-in-the-new-year-with-automated-user-provisioning-from-sap/ba-p/1063603) や [Workday](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/say-good-bye-to-custom-scripts-and-simplify-your-workforce/ba-p/320540) などの人事システムとの統合により、アクセス ライフサイクルを自動化し、機械学習と分析の力によりレビュー担当者のアクセス許可/拒否の判断をシンプルにします。また、ビジネス ユーザーがアクセス要求とワークフローを通じてアクセスを管理したり、ファーストライン マネージャー (現場にいるマネージャー) にユーザー管理を委任したりすることもできます。
+
 
 ### 5. ゼロ トラストへの移行を開始し、デジタル トランスフォーメーションを進める組織を攻撃から守る。
 
