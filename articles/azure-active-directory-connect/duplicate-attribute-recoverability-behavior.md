@@ -136,7 +136,7 @@ SipProxyAddress とは、下記一例にあるコマンドで確認すること�
 ![](./duplicate-attribute-recoverability-behavior/2-3.png)
 ![](./duplicate-attribute-recoverability-behavior/2-3-2.png)
 
-オンプレミス AD のユーザーの ProxyAddresses に “ SIP:“ より始まる Lync 及び Skype で利用するアドレスが値として格納されている場合に、ディレクトリ同期をすると Azure AD に生成されるユーザーの SipProxyAddress にこの値が格納されます。
+オンプレミス AD のユーザーの ProxyAddresses に "SIP:" より始まる Lync 及び Skype で利用するアドレスが値として格納されている場合に、ディレクトリ同期をすると Azure AD に生成されるユーザーの SipProxyAddress にこの値が格納されます。
 
 具体的な例は次のとおりです。
 
