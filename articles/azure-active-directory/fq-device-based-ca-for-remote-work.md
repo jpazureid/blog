@@ -155,3 +155,4 @@ Azure Active Directory (Azure AD) の Get-To-Production チームならびに Az
     注意: お使いのデバイスに Windows 10 1809 アップデートが適用されており、VPN / クラウド プロキシを使用していて、AzureAdPrt の状態やアプリの SSO に問題がある (PRT を使用しているにもかかわらず Outlook がメールボックスに接続しない) 場合は、更新プログラム [KB4554354](https://support.microsoft.com/en-us/help/4554354/windows-10-update-kb4554354) または 4 月の累積アップデート [KB4549949](https://support.microsoft.com/en-us/help/4549949) を使用し、これらのマシンで PRT の問題が起こらないようご対応ください。
 
 皆様の従業員が安全にリモート ワークを実現できるよう、本情報が参考になれば幸いです。他にもご質問やアイデアがありましたら、Twitter ([@AzureAD](http://twitter.com/azuread)) でお知らせいただくか、コメントをお願いします。
+

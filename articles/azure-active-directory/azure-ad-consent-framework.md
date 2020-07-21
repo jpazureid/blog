@@ -261,3 +261,4 @@ Microsoft のサービスを始め、クラウド サービスが普及した現
 #### テナントで同意済みの API の権限とアプリを一覧表示することは出来ますか。
 
 [Get-AzureADPSPermissions](https://docs.microsoft.com/ja-jp/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide#steps-for-doing-this-with-powershell) を実行することで、テナントで同意済みの API の権限とアプリを一覧表示することが可能です。
+

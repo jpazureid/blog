@@ -63,4 +63,3 @@ Azure AD Connect では既定の同期ルールに「Exchange 関連属性は、
 Azure AD Connect の各情報についてはこちら： [Azure AD Connect とは](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/whatis-hybrid-identity)  
 
 現在、DirSync と ADSync に関するお問い合わせはお受けできませんが、Azure AD Connect に関するご質問でしたらもちろん対応させていただきますので、ご不明な点等がありましたら、ぜひ弊社サポート サービスをご利用ください。  
-※本情報の内容（リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。  
