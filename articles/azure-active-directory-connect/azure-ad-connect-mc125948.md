@@ -108,4 +108,3 @@ Microsoft Security Advisory 4056318
 https://docs.microsoft.com/en-us/security-updates/securityadvisories/2017/4056318  
 
 ご不明な点等がありましたら、ぜひ弊社サポート サービスをご利用ください。  
-※本情報の内容（リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。  
