@@ -26,7 +26,7 @@ const hexo = new Hexo(process.cwd(), {});
 let previewUrl = "";
 if (branchName && previewBaseUrl) {
   previewUrl = new URL(
-    branchName.replace("/", ""),
+    branchName.replace(/\//g, ""),
     previewBaseUrl
   ).toString();
 }
