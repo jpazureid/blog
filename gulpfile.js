@@ -10,26 +10,26 @@ const { BlobServiceClient } = require("@azure/storage-blob");
 const { Octokit } = require("@octokit/rest");
 
 const previewBaseUrl = process.env.PREVIEW_BASE_URL;
-const branchName = process.env.CIRCLE_BRANCH;
+let branchName = process.env.CIRCLE_BRANCH;
 
+let previewUrl = "";
 let blogRoot = "/blog";
-if(branchName !== "master") {
+
+if (branchName !== "master" && branchName && previewBaseUrl) {
+  branchName = branchName.replace(/\//g, ""),
   blogRoot = "/" + branchName;
+  previewUrl = new URL(
+    branchName,
+    previewBaseUrl
+  ).toString();
 }
+
 const sourceFolder = "articles";
 let markdownFiles = path.join(sourceFolder, "**/*.md");
 let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp|JPG|JPEG|PNG|GIF|SVG|BMP)");
 const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
-
-let previewUrl = "";
-if (branchName && previewBaseUrl) {
-  previewUrl = new URL(
-    branchName.replace(/\//g, ""),
-    previewBaseUrl
-  ).toString();
-}
 
 var replaceOptions = {
   logs: {
