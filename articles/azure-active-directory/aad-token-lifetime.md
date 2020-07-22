@@ -10,6 +10,8 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/02/28/aad-issure-token-lifetime/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+**注: アクセス トークンを除き、トークンの有効期間の変更は現在廃止されております。サインインの頻度を変更したい場合には、代わりに条件付きアクセスの [認証セッション管理](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime) をご利用ください**
+
 # Azure AD が発行するトークンの有効期間について
 
 こんにちは、Azure & Identity サポート チームの金森です。
@@ -18,8 +20,6 @@ Azure AD (AAD) は Office 365 をはじめ様々なクラウド サービスの�
 ここでのトークンとは Kerberos 認証におけるチケットに近いものです。AAD が発行するトークンの種類や有効期間の制御方法は以下の docs 技術情報として公開しています。
 
 - [Azure Active Directory における構成可能なトークンの有効期間 (パブリック プレビュー)](https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-configurable-token-lifetimes)
-
-**注: アクセス トークンを除き、トークンの有効期間の変更は現在廃止されております。サインインの頻度を変更したい場合には、代わりに条件付きアクセスの [認証セッション管理](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime) をご利用ください**
 
 今回の情報の中で、 AAD が発行するトークンにどのような種類があり、既定の状態ではトークンの有効期間はどうなっているのか、AAD ポリシーでどのような制御ができるのか、もう少しかみ砕いてご紹介いたします。
 以下は説明における略語の一覧です。
