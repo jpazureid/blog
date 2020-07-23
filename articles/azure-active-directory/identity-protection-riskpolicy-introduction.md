@@ -182,7 +182,7 @@ Microsoft では「アクセス許可」＋「多要素認証を要求する」�
 #### ユーザー リスク ポリシー設定方法
 
 Identity Protection の「ユーザー リスク ポリシー」は Azure AD の「グローバル管理者」と「セキュリティ管理者」が設定することができます。
-具体的には、Azure ポータルより [Azure Active Directory] → [セキュリティ]→[Identity Protection]→[ユーザー リスク ポリシー]の順に選択いただいた後に表示される下記画面ショット上で行います。
+具体的には、Azure ポータルより [Azure Active Directory] → [セキュリティ] → [Identity Protection] → [ユーザー リスク ポリシー] の順に選択いただいた後に表示される下記画面ショット上で行います。
 
 ![](./identity-protection-riskpolicy-introduction/018.png)
 
