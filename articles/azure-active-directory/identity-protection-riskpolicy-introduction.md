@@ -180,6 +180,7 @@ Microsoft では「アクセス許可」＋「多要素認証を要求する」�
 [チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/tutorial-enable-sspr-writeback/)
 
 #### ユーザー リスク ポリシー設定方法
+
 Identity Protection の「ユーザー リスク ポリシー」は Azure AD の「グローバル管理者」と「セキュリティ管理者」が設定することができます。
 具体的には、Azure ポータルより [Azure Active Directory] → [セキュリティ]→[Identity Protection]→[ユーザー リスク ポリシー]の順に選択いただいた後に表示される下記画面ショット上で行います。
 
