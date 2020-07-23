@@ -225,6 +225,7 @@ Microsoft では「アクセス許可」＋「パスワードの変更を必須�
 ![](./identity-protection-riskpolicy-introduction/025.png)
 
 #### ユーザー リスク ポリシー有効時の動作 (アクセスのブロック)
+
 一方「アクセス」の項目で「アクセスのブロック」を設定した場合の動作は以下のように文字通りアカウント自体がブロックされる動作になります。
 
 ![](./identity-protection-riskpolicy-introduction/026.png)
