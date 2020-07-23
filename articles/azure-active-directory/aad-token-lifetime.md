@@ -10,6 +10,8 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/02/28/aad-issure-token-lifetime/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+**注: アクセス トークンを除き、トークンの有効期間の変更は現在廃止されております。サインインの頻度を変更したい場合には、代わりに条件付きアクセスの [認証セッション管理](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime) をご利用ください**
+
 # Azure AD が発行するトークンの有効期間について
 
 こんにちは、Azure & Identity サポート チームの金森です。
@@ -99,6 +101,9 @@ AAD 制御ポリシーの `AccessTokenLifetime` パラメーターを変更す�
 MaxAge ～ 名のポリシーは `最終的にいつまで同じトークンを利用し続けられるか` を定義するパラメーターです。
 既定では `失効するまで = 無期限` となり、上述の考え方が合致します。
 以下に、MaxAge ポリシーを用いた場合の有効期間の考え方をご紹介します。
+
+**注: 以下のトークンの有効期間の変更は現在廃止されております。**
+<!-- TODO 条件付きアクセスでの設定例 -->
 
 #### ADAL クライアント : MaxAgeSingle/MultiFactor を 100 日にした場合
 
