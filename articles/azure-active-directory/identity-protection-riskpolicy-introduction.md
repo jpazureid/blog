@@ -16,7 +16,7 @@ tags:
 
 本 Blog の記事は以下のような方を対象としています。
 
-・ Identity Protection の機能を知りたい
+- Identity Protection の機能を知りたい
 
 ・ すでに Azure AD Premium P2 を購入しており、そこに含まれる Identity Protection をこれから活用していきたい
 
