@@ -81,7 +81,7 @@ Identity Protection の導入によらず MFA 設定は強く推奨されるこ�
 MFA 登録ポリシーを有効にすると、MFA の設定をユーザーに促すことが可能となります。
 また、ユーザーは 14 日の間であれば MFA の設定をスキップすることが可能ですが、必ず割り当ての対象となっているユーザーはこの 14 日の期間までに MFA の設定を完了させる必要があります。
 
-具体的には、Azure ポータルより [Azure Active Directory] → [セキュリティ]→[Identity Protection]→[MFA 登録ポリシー]の順に選択した後に表示される下記画面ショット上で行います。
+具体的には、Azure ポータルより [Azure Active Directory] → [セキュリティ] → [Identity Protection] → [MFA 登録ポリシー] の順に選択した後に表示される下記画面ショット上で行います。
 
 ![](./identity-protection-riskpolicy-introduction/005.png)
 
