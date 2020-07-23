@@ -33,6 +33,7 @@ Microsoft は 毎日約 6.5 兆個以上のシグナルを検知分析しお客�
 ![](./identity-protection-riskpolicy-introduction/001.png)
 
 ## Identity Protection とは
+
 Identity Protection は Microsoft が持つ脅威の検出ソリューションの一つで Azure Advanced Threat Protection や Microsoft Cloud App Security と連携し ID に関するリスクを検出 /管理 / 保護することができます。
 
 今回の記事では詳しく触れていませんが、「サインイン リスク」と「ユーザー リスク」という 2 つの異なるタイプのリスクを検出可能で、今回ご紹介する「ユーザー リスク ポリシー」と「サインイン リスク ポリシー」という 2 つのポリシーを組み合わせて利用することでこれらのリスクから ID を自動的に守る運用が実現できます。
