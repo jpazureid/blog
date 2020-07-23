@@ -20,7 +20,7 @@ tags:
 
 - すでに Azure AD Premium P2 を購入しており、そこに含まれる Identity Protection をこれから活用していきたい
 
-・ 現時点では Azure AD Premium P2 ライセンスは持っていないが、セキュリティ管理機能の強化を検討しており、 Azure AD Premium P2 ライセンスの購入を検討 / 提案したい
+- セキュリティ管理の強化を検討しており、 Azure AD Premium P2 ライセンスの購入および利用を検討したい
 
 
 ## Microsoft が持つ脅威の検出について
