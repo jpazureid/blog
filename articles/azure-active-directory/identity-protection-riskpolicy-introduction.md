@@ -101,7 +101,7 @@ MFA 登録ポリシーを有効にすると、MFA の設定をユーザーに促
 
 なお、 Azure AD での MFA をどのように導入するかという点については、次の資料もあわせてご活用ください。
 
-[Azure MFA 導入パターンを網羅的にご紹介！](https://jpazureid.github.io/blog/azure-active-directory/MFA_configuration_scenarios/)
+[Azure MFA 導入パターンを網羅的にご紹介！](../azure-active-directory/MFA_configuration_scenarios.md)
 
 #### サインイン リスク ポリシー設定方法
 Identity Protection の「サインイン リスク ポリシー」は Azure AD の「グローバル管理者」と「セキュリティ管理者」が設定できます。
