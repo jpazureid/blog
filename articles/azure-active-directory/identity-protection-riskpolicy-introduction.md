@@ -24,6 +24,7 @@ tags:
 
 
 ## Microsoft が持つ脅威の検出について
+
 Microsoft は 毎日約 6.5 兆個以上のシグナルを検知分析しお客様の Identity やデータを脅かす脅威を特定し保護をしています。
 下の絵に描かれている「Identities」は Microsoft が外部の脅威から守るべきものとしてありますが、その具体的なソリューションの一つが今回紹介をする Identity Protection です。
 
