@@ -19,8 +19,8 @@ tags:
 1. [「現時点ではこれにはアクセスできません」と表示される原因](#anchor1)
 2. [条件付きアクセスポリシーの確認方法](#anchor2)
 3. [サインインログの見方に関する注意点](#anchor3)
-4. [よくある質問](#anchor3)
-5. [最後に](#anchor4)
+4. [よくある質問](#anchor4)
+5. [最後に](#anchor5)
 
 <a id="anchor1"></a>
 
@@ -30,9 +30,9 @@ tags:
 
 すなわち、サインインはできるが、「条件付きアクセス ポリシー」 が適用され、特定のサービスへのアクセスがブロックされたことを示します。(なお、エラー例 2 の "これに対するアクセス権がありません" も、条件付きアクセス適用によるブロック例です。)
 
-![](./conditional-cannot-access-rightnow/error1.png "エラー例 1")
+![エラー例 1](conditional-cannot-access-rightnow/error1.png "エラー例 1")
 
-![](./conditional-cannot-access-rightnow/error2.png "エラー例 2")
+![エラー例 2](conditional-cannot-access-rightnow/error2.png "エラー例 2")
 
 もしこれらが意図しないブロックだった場合、Azure ポータルにて、<b>条件付きアクセス ポリシーの構成内容を確認する</b>必要があります。 条件付きアクセスポリシーは Azure AD の管理者のみ確認・編集ができるため、もしエラーに遭遇された "あなた" が管理者以外でしたら、管理者の方にお問合せください。
 
@@ -62,19 +62,24 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 今回は "Access has been blocked by Conditional Access policies. The access policy does not allow token issuance" と表示されており、「条件付きアクセスによる予期せぬブロックが原因かな」 と見当をつけることができます。では、[条件付きアクセス] メニューをクリックしてみましょう。ここでは、作成している条件付きアクセスポリシーの一覧が確認できます。<br>
 もし、今回のようなサインイン エラーの事象が発生した場合、いずれかのポリシーの　[結果] が [失敗] と表示されているはずです (図 2)。 そのポリシー名をクリックすれば、直接条件付きアクセス ポリシーの構成画面へと遷移し、行そのものをクリックすれば今回の事象で適用された [ポリシーの詳細] を確認することができます (図 3)。
 
-![](conditional-cannot-access-rightnow/log1.png "図 1")
+![図 1](conditional-cannot-access-rightnow/log1.png "図 1")
 
-![](conditional-cannot-access-rightnow/log2.png "図 2")
+<br>
 
-<img src="conditional-cannot-access-rightnow/details.png" width="50%">
-<!-- <p>図 3</p> -->
+![図 2](conditional-cannot-access-rightnow/log2.png "図 2")
+
+<br>
+
+![図 3](conditional-cannot-access-rightnow/details.png "図 3")
+
+<br>
 
 【条件付きアクセスポリシー構成にてチェックすべきポイント】
 
 - [ユーザーとグループ] は、適切なユーザーが登録されているか？
 - [アプリケーション] は正しいか？
-  -  アクセスを拒否したいクラウド アプリは、個別に選択することを推奨しております。<br>
-		参考 : Azure Active Directory 条件付きアクセスのサービス依存関係の概要
+  -  アクセスを拒否したいクラウド アプリは、個別に選択することを推奨しております。
+  -  参考 : Azure Active Directory 条件付きアクセスのサービス依存関係の概要
 		https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/service-dependencies
 - [場所] は、信頼された場所(会社など) のIPアドレスが正しく設定されているか？
   - サインインログから確認できるアクセス元の IP アドレスと、 ポリシー対象外として設定している [信頼できる場所] の IP アドレスは整合しているか確認しましょう。
@@ -83,12 +88,13 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 
 ## サインインログの見方に関する注意点
 
-ここまで確認した方で気づいている方もいるかもしれません。そう、サインイン ログには条件付きアクセスの適用状況を示す項目が 2 つあります。1つは、サインイン ログに表示される [条件付きアクセス] の項目。 2 つ目は、レポートをクリックし表示される [詳細] - [条件付きアクセス] タブ内の [結果] の項目。この違いを説明します。
+ここまで確認した方で気づいている方もいるかもしれません。そう、サインイン ログには条件付きアクセスの適用状況を示す項目が 2 つあります。1つは、サインイン ログに表示される <font color="orange">[条件付きアクセス]</font> の項目。 2 つ目は、レポートをクリックし表示される [詳細] - [条件付きアクセス] タブ内の <font color="green">[結果]</font> の項目。この違いを説明します。
 
-端的に言うと、ユーザーによるアクセスが条件付きアクセス ポリシーの [ユーザーとグループ] or [クラウド アプリ] に合致しているかどうかが判断されたうえで、その結果が [条件付きアクセス] の値に入ります。もしこの時点で制御対象外のユーザーによるサインイン、あるいは制御対象外のアプリケーションに対するアクセスだった場合、「適用されていません」と表示されます。
-続いて、[条件] の項目に合致しているアクセスかどうかを判断し、その結果が [結果] の値に入ります。もし対象外の場所を設定し、そこからアクセスした場合、「適用されていません」と表示されます。この流れをフローチャートに示すと以下のようになります。
+端的に言うと、ユーザーによるアクセスが条件付きアクセス ポリシーの [ユーザーとグループ] or [クラウド アプリ] に合致しているかどうかが判断されたうえで、その結果が <font color="orange">[条件付きアクセス]</font> の値に入ります。もしこの時点で制御対象外のユーザーによるサインイン、あるいは制御対象外のアプリケーションに対するアクセスだった場合、「適用されていません」と表示されます。
 
-<img src="./conditional-cannot-access-rightnow/flowchart.png">
+続いて、[条件] の項目に合致しているアクセスかどうかを判断し、その結果が <font color="green">[結果]</font> の値に入ります。もし対象外の場所を設定し、そこからアクセスした場合、「適用されていません」と表示されます。この流れをフローチャートに示すと以下のようになります。
+
+![](conditional-cannot-access-rightnow/flowchart.png)
 
 イメージしやすいように簡単なテストケースを考えてみましょう。
 
@@ -96,34 +102,31 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 Azure ポータルへの管理作業を社内からだけに限定することができるか、検証したい。
 
 【流れ】
-
-1. 社内の Global IP アドレスを信頼できる場所として Azure ポータルに登録
-   
+1. 社内の Global IP アドレスを信頼できる場所として Azure ポータルに登録<br>
 	参考：ネームド ロケーションの構成
 	https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/quickstart-configure-named-locations#configure-named-locations
-2. そのアドレスを条件付きアクセスにて設定します。
-   
+2. そのアドレスを条件付きアクセスにて設定します。<br>
    参考：Azure ポータルへのアクセス制限
    https://jpazureid.github.io/blog/azure-active-directory/access-restriction-azure-portal/
    
    検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
 
-   <img src="conditional-cannot-access-rightnow/policy.png">
+    ![](conditional-cannot-access-rightnow/policy.png)  
 
 3. 設定した Global IP アドレスから、テストユーザー (Adele Vannce) によるAzure ポータルへのアクセスが成功し、それ以外の場所 (スマートフォンの 4G ネットワークなど) からのアクセスは拒否されることを確認します。
 
 【テストユーザー以外で社内から Azure Portal にアクセスしたときのログ】
 
-そもそも、テスト ユーザー以外は制御対象とみなしていないため、条件付きアクセス ポリシーは適用されません。したがって、[条件付きアクセス] は「適用されていません」と表示され、[結果] も自動的に「適用されていません」と表示されます。
+そもそも、テスト ユーザー以外は制御対象とみなしていないため、条件付きアクセス ポリシーは適用されません。したがって、<font color="orange">[条件付きアクセス]</font> は「適用されていません」と表示され、<font color="green">[結果]</font> も自動的に「適用されていません」と表示されます。
 
-<img src="conditional-cannot-access-rightnow/preview1.png">
+![](conditional-cannot-access-rightnow/preview1.png)
 
 【テスト ユーザー (Adele Vannce) により、社内から Azure Portal にアクセスしたときのログ】
 
-まず、テスト ユーザーが [割り当ての対象] と合致しているので、[条件付きアクセス] のポリシー適用対象となり、最終的にアクセスに成功したかどうかが値として反映されます。このケースでは信頼できる場所からのアクセスであるため、[条件付きアクセス] は「成功」です。 しかし一方で、信頼できる場所からのアクセスは [条件]  の対象外であるため、詳細の [結果] では [適用されていません] と表示されます。
-（条件付きアクセス ポリシーの適用外、つまり信頼できる場所として 「対象外」 に設定した場所からのアクセスは、『[条件] に合致していない』とみなされ、「満足していない」と表示されます。ここ、非常に分かりにくいですよね…）
+まず、テスト ユーザーが [割り当ての対象] と合致しているので、<font color="orange">[条件付きアクセス]</font> のポリシー適用対象となり、最終的にアクセスに成功したかどうかが値として反映されます。このケースでは信頼できる場所からのアクセスであるため、<font color="orange">[条件付きアクセス]</font> は「成功」です。 しかし一方で、信頼できる場所からのアクセスは [条件]  の対象外であるため、詳細の <font color="green">[結果]</font> では [適用されていません] と表示されます。<br>
+（条件付きアクセス ポリシーの適用外、つまり信頼できる場所として 「対象外」 に設定した場所からのアクセスは、『 [条件] に合致していない』とみなされ、「満足していない」と表示されます。ここ、非常に分かりにくいですよね…）
 
-<img src="conditional-cannot-access-rightnow/preview2.png">
+![](conditional-cannot-access-rightnow/preview2.png)
 
 さて、以下に、よくあるお問い合わせをまとめてみました。
 
@@ -153,7 +156,8 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 <a id="anchor5"></a>
 
 ## 最後に
-みなさん、一度は遭遇したことがあるであろうエラー画面。そこに「詳細」のリンクがあるのはお気づきでしょうか。<br>
+みなさん、一度は遭遇したことがあるであろうエラー画面。そこに「詳細」のリンクがあるのはお気づきでしょうか。
+
 クリックしてみると、「トラブルシューティングの詳細」が展開されます。ここに表示される Request Id や Correlation Id は、事象が起こったケースを特定する識別コードの役割を果たします。実は、「Request　Id」 はサインインログにおける「要求 ID」 に一致しているので、ここから事象のレコードを特定することも可能です。
 つまり、この ID を管理者に連絡することで管理者側もサインイン ログからスムーズに確認が可能になるということです。
 
@@ -161,11 +165,11 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 
 （私たち Azure サポート部門のメンバーも、この ID を含めてお問合せいただくと嬉しくなり思わず笑顔になります。）
 
-<img src="conditional-cannot-access-rightnow/troubleshooting.png" width="70%">
+![](conditional-cannot-access-rightnow/troubleshooting.png)
 
 最後まで読んでくださり、ありがとうございました！ リモートワークが推進されている今日において、Azure AD の条件付きアクセスは社外からの安全なアクセスを実現するためにますます重要な役割を担っています。本記事が、条件付きアクセスを利用される皆様の参考になれれば幸いです。
 
-【参考】
+【参考】<br>
 サインインレポートにおける条件付きアクセスの表示の違い
 https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/reports-faq#conditional-access
 Azure Active Directory ポータルのサインイン アクティビティ レポート
