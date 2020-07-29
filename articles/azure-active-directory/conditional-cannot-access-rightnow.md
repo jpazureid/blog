@@ -94,7 +94,7 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 
 続いて、[条件] の項目に合致しているアクセスかどうかを判断し、その結果が <font color="green">[結果]</font> の値に入ります。もし対象外の場所を設定し、そこからアクセスした場合、「適用されていません」と表示されます。この流れをフローチャートに示すと以下のようになります。
 
-![](conditional-cannot-access-rightnow/flowchart.png)
+![](./conditional-cannot-access-rightnow/flowchart.png)
 
 イメージしやすいように簡単なテストケースを考えてみましょう。
 
@@ -111,7 +111,7 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
    
    検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
 
-    ![](conditional-cannot-access-rightnow/policy.png)  
+    ![](./conditional-cannot-access-rightnow/policy.png)  
 
 3. 設定した Global IP アドレスから、テストユーザー (Adele Vannce) によるAzure ポータルへのアクセスが成功し、それ以外の場所 (スマートフォンの 4G ネットワークなど) からのアクセスは拒否されることを確認します。
 
@@ -119,14 +119,14 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 
 そもそも、テスト ユーザー以外は制御対象とみなしていないため、条件付きアクセス ポリシーは適用されません。したがって、<font color="orange">[条件付きアクセス]</font> は「適用されていません」と表示され、<font color="green">[結果]</font> も自動的に「適用されていません」と表示されます。
 
-![](conditional-cannot-access-rightnow/preview1.png)
+![](./conditional-cannot-access-rightnow/preview1.png)
 
 【テスト ユーザー (Adele Vannce) により、社内から Azure Portal にアクセスしたときのログ】
 
 まず、テスト ユーザーが [割り当ての対象] と合致しているので、<font color="orange">[条件付きアクセス]</font> のポリシー適用対象となり、最終的にアクセスに成功したかどうかが値として反映されます。このケースでは信頼できる場所からのアクセスであるため、<font color="orange">[条件付きアクセス]</font> は「成功」です。 しかし一方で、信頼できる場所からのアクセスは [条件]  の対象外であるため、詳細の <font color="green">[結果]</font> では [適用されていません] と表示されます。<br>
 （条件付きアクセス ポリシーの適用外、つまり信頼できる場所として 「対象外」 に設定した場所からのアクセスは、『 [条件] に合致していない』とみなされ、「満足していない」と表示されます。ここ、非常に分かりにくいですよね…）
 
-![](conditional-cannot-access-rightnow/preview2.png)
+![](./conditional-cannot-access-rightnow/preview2.png)
 
 さて、以下に、よくあるお問い合わせをまとめてみました。
 
@@ -165,7 +165,7 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 
 （私たち Azure サポート部門のメンバーも、この ID を含めてお問合せいただくと嬉しくなり思わず笑顔になります。）
 
-![](conditional-cannot-access-rightnow/troubleshooting.png)
+![](./conditional-cannot-access-rightnow/troubleshooting.png)
 
 最後まで読んでくださり、ありがとうございました！ リモートワークが推進されている今日において、Azure AD の条件付きアクセスは社外からの安全なアクセスを実現するためにますます重要な役割を担っています。本記事が、条件付きアクセスを利用される皆様の参考になれれば幸いです。
 
