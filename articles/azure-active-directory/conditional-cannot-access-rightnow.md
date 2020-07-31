@@ -109,14 +109,14 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
     参考：ネームド ロケーションの構成
     https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/quickstart-configure-named-locations#configure-named-locations
 2. そのアドレスを条件付きアクセスにて設定します。<br>
-   参考：Azure ポータルへのアクセス制限
+   参考: Azure ポータルへのアクセス制限
    https://jpazureid.github.io/blog/azure-active-directory/access-restriction-azure-portal/
    
    検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
 
     ![](./conditional-cannot-access-rightnow/policy.png)  
 
-3. 設定した Global IP アドレスから、テストユーザー (Adele Vannce) によるAzure ポータルへのアクセスが成功し、それ以外の場所 (スマートフォンの 4G ネットワークなど) からのアクセスは拒否されることを確認します。
+3. 設定した Global IP アドレスから、テストユーザー (Adele Vannce) による Azure ポータルへのアクセスが成功し、それ以外の場所 (スマートフォンの 4G ネットワークなど) からのアクセスは拒否されることを確認します。
 
 【テストユーザー以外で社内から Azure Portal にアクセスしたときのログ】
 
