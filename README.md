@@ -71,6 +71,7 @@
 - [Hybrid Azure AD Join 失敗時の初動調査方法について (マネージド編)](./articles/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed.md)
 - [Hybrid Azure AD Join 失敗の初動調査方法について (フェデレーション編)](./articles/azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated.md)
 - [Identity Protection 2 つのリスク ポリシーの導入メリットについて](./articles/azure-active-directory/identity-protection-riskpolicy-introducation.md)
+- [「現時点ではこれにはアクセスできません」 エラーについて](articles/azure-active-directory/conditional-cannot-access-rightnow.md)
 
 ## Azure AD Connect
 
