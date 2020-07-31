@@ -65,23 +65,22 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 
 ![図 1](conditional-cannot-access-rightnow/log1.png "図 1")
 
-<br>
+---
 
 ![図 2](conditional-cannot-access-rightnow/log2.png "図 2")
 
-<br>
+---
 
 ![図 3](conditional-cannot-access-rightnow/details.png "図 3")
 
-<br>
+---
 
 ### 条件付きアクセス ポリシーの構成においてチェックすべきポイント
 
 - [ユーザーとグループ] は、適切なユーザーが登録されているか？
 - [アプリケーション] は正しいか？
   -  アクセスを拒否したいクラウド アプリは、個別に選択することを推奨しております。
-  -  参考 : Azure Active Directory 条件付きアクセスのサービス依存関係の概要
-    https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/service-dependencies
+  -  参考 : [Azure Active Directory 条件付きアクセスのサービス依存関係の概要](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/service-dependencies)
 - [場所] は、信頼された場所 (会社など) の IP アドレスが正しく設定されているか？
 
   - サインインログから確認できるアクセス元の IP アドレスと、 ポリシー対象外として設定している [信頼できる場所] の IP アドレスは整合しているか確認しましょう。
@@ -101,21 +100,19 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 
 イメージしやすいように簡単なテストケースを考えてみましょう。
 
-【テストケース】
+### 【テストケース】
 Azure ポータルへの管理作業を社内からだけに限定することができるか、検証したい。
 
-【流れ】
+### 【流れ】
 1. 以下のリンクを参考に、社内の Global IP アドレスを信頼できる場所として Azure ポータルに登録します。
-   [Azure Active Directory] - [セキュリティ] - [条件付きアクセス] へと進みます。左ペインより [ネームドロケーション] を選択し、「新しい場所」から社内の Global IP を登録します。<br>
-    参考：ネームド ロケーションの構成
-    https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/quickstart-configure-named-locations#configure-named-locations
+   [Azure Active Directory] - [セキュリティ] - [条件付きアクセス] へと進みます。左ペインより [ネームドロケーション] を選択し、「新しい場所」から社内の Global IP を登録します。  
+    参考: [ネームド ロケーションの構成](https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/quickstart-configure-named-locations#configure-named-locations)
 手順 1  で追加した信頼できる場所を、条件付きアクセスの許可された場所に設定します。左ペイン最上部 [ポリシー] を選択してください。
    - 検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
    - [クラウドアプリ] は [Microsoft Azure Management] アプリケーションを検索、選択します。
    - [対象] で [すべての場所] を選択し、[対象外] – [選択された場所] をクリックします。[選択] より、[ネームドロケーション] にて設定した場所をチェックします。
-   - 最後に、[アクセス制御] – [許可] にて、[アクセスのブロック] を選択します。<br>
-   参考: Azure ポータルへのアクセス制限
-   https://jpazureid.github.io/blog/azure-active-directory/access-restriction-azure-portal/
+   - 最後に、[アクセス制御] – [許可] にて、[アクセスのブロック] を選択します。  
+   参考: [Azure ポータルへのアクセス制限](../azure-active-directory/access-restriction-azure-portal.md)
 
     ![](./conditional-cannot-access-rightnow/policy.png)  
 
@@ -127,7 +124,7 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 
 ![](./conditional-cannot-access-rightnow/preview1.png)
 
-【テスト ユーザー (Adele Vannce) により、社内から Azure Portal にアクセスしたときのログ】
+### 【テスト ユーザー (Adele Vannce) により、社内から Azure Portal にアクセスしたときのログ】
 
 まず、テスト ユーザーが [割り当ての対象] と合致しているので、<font color="orange">[条件付きアクセス]</font> のポリシー適用対象となり、最終的にアクセスに成功したかどうかが値として反映されます。このケースでは信頼できる場所からのアクセスであるため、<font color="orange">[条件付きアクセス]</font> は「成功」です。 しかし一方で、信頼できる場所からのアクセスは [条件]  の対象外であるため、詳細の <font color="green">[結果]</font> では [適用されていません] と表示されます。<br>
 （条件付きアクセス ポリシーの適用外、つまり信頼できる場所として 「対象外」 に設定した場所からのアクセスは、『 [条件] に合致していない』とみなされ、「満足していない」と表示されます。ここ、非常に分かりにくいですよね…）
@@ -142,16 +139,16 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 
 <font color="DeepSkyBlue">Q</font>: 管理者ではないですが、ログを確認することは可能でしょうか？
 
-<font color="red">A</font>: はい、Azure ポータルにサインイン可能な状態であれば、自分自身のサインイン ログは下記より確認が可能です。<br>
-[Azure Active Directory] - [ユーザー] - [自身のユーザー] - [サインイン]<br>
+<font color="red">A</font>: はい、Azure ポータルにサインイン可能な状態であれば、自分自身のサインイン ログは下記より確認が可能です  
+[Azure Active Directory] - [ユーザー] - [自身のユーザー] - [サインイン]  
 ただし、他のユーザーのログは参照できません。また、管理者が一般ユーザーによるログの閲覧をブロックしている場合もあります。
  
  
 <font color="DeepSkyBlue">Q</font>: 自分たちの会社では条件付きアクセスの設定は未実施にもかかわらず今回のエラーが出たのはなぜですか？
 
-<font color="red">A</font>: 他社テナントのクラウド サービスにアクセスを試行している可能性が考えられます。
-条件付きアクセスはサインインではなく、リソースへのアクセスを制御しています。<br>
-つまり、他社のテナントのリソースにアクセスした場合に、他社が設定した条件付きアクセスのポリシーに抵触した場合は、アクセス先のテナントで設定されている条件付きアクセス ポリシーにてアクセスがブロックされます。<br>
+<font color="red">A</font>: 他社の Azure AD テナントと連携しているクラウド サービスにアクセスを試行している可能性が考えられます。
+条件付きアクセスはサインインではなく、リソースへのアクセスを制御しています。  
+つまり、他社のテナントのリソースにアクセスした場合に、他社が設定した条件付きアクセスのポリシーに抵触した場合は、アクセス先のテナントで設定されている条件付きアクセス ポリシーにてアクセスがブロックされます。  
 その際の詳細なログの確認は他社のテナントの管理者に依頼する必要があります。つまり他社のテナントの管理者にサインイン ログや条件付きアクセス ポリシーを確認してもらう必要があります。
 
 
@@ -168,7 +165,7 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 クリックしてみると、「トラブルシューティングの詳細」が展開されます。ここに表示される Timestamp や Request Id、Correlation Id は、発生した事象を特定する識別コードの役割を果たします。実は、画面に表示されている「Request Id」 はサインインログにおける「要求 ID」 に一致しており、この ID を使用して事象に対応するサインイン ログを特定することも可能です。
 つまり、この ID を管理者に連絡することで管理者側もサインイン ログからスムーズに確認が可能になるということです。
 
-また、これらの情報も含めて Microsoft のサポート部門にご提供いただければ、事象が発生したログの特定が容易になり、問題解決が迅速に進む可能性があります。今回に限らず、もしエラー画面に遭遇し、Microsoft のサポート部門にお問い合わせしたい場合、エラー画面の「詳細」をクリックし、ぜひその情報をクリップボードにコピーして一緒にお知らせしましょう！
+また、これらの情報も含めて Microsoft のサポート部門にご提供いただければ、事象が発生したログの特定が容易になり、問題解決が迅速に進む可能性があります。今回に限らず、もしエラー画面に遭遇し、Microsoft のサポート部門にお問い合わせしたい場合、エラー画面の「詳細」をクリックし、ぜひその情報をクリップボードにコピーしてお知らせください！_
 
 （私たち Azure サポート部門のメンバーも、この ID を含めてお問合せいただくと嬉しくなり思わず笑顔になります。）
 
@@ -176,8 +173,6 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 
 最後まで読んでくださり、ありがとうございました！リモートワークが推進される今日において、Azure AD の条件付きアクセスは安全なアクセスを実現するためにますます重要な役割を担っています。本記事が、条件付きアクセスを利用される皆様の参考になれれば幸いです。
 
-【参考】<br>
-サインインレポートにおける条件付きアクセスの表示の違い
-https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/reports-faq#conditional-access
-Azure Active Directory ポータルのサインイン アクティビティ レポート
-https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/concept-sign-ins
+### 参考
+- [サインインレポートにおける条件付きアクセスの表示の違い](サインインレポートにおける条件付きアクセスの表示の違い)
+- [Azure Active Directory ポータルのサインイン アクティビティ レポート](https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/concept-sign-ins)
