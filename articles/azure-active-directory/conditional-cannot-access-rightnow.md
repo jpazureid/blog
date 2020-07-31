@@ -105,14 +105,17 @@ Azure ポータル (https://portal.azure.com) に、Azure AD の管理者ロー�
 Azure ポータルへの管理作業を社内からだけに限定することができるか、検証したい。
 
 【流れ】
-1. 社内の Global IP アドレスを信頼できる場所として Azure ポータルに登録<br>
+1. 以下のリンクを参考に、社内の Global IP アドレスを信頼できる場所として Azure ポータルに登録します。
+   [Azure Active Directory] - [セキュリティ] - [条件付きアクセス] へと進みます。左ペインより [ネームドロケーション] を選択し、「新しい場所」から社内の Global IP を登録します。<br>
     参考：ネームド ロケーションの構成
     https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/quickstart-configure-named-locations#configure-named-locations
-2. そのアドレスを条件付きアクセスにて設定します。<br>
+2. そのアドレスを条件付きアクセスにて設定します。左ペイン最上部 [ポリシー] を選択してください。
+   - 検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
+   - [クラウドアプリ] は [Microsoft Azure Management] アプリケーションを検索、選択します。
+   - [対象] で [すべての場所] を選択し、[対象外] – [選択された場所] をクリック – [選択]　より、3 にて設定したロケーションをチェックします。
+   - 最後に、10.	[アクセス制御] – [許可] にて、[アクセスのブロック] を選択します。<br>
    参考: Azure ポータルへのアクセス制限
    https://jpazureid.github.io/blog/azure-active-directory/access-restriction-azure-portal/
-   
-   検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
 
     ![](./conditional-cannot-access-rightnow/policy.png)  
 
