@@ -109,7 +109,7 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
    [Azure Active Directory] - [セキュリティ] - [条件付きアクセス] へと進みます。左ペインより [ネームドロケーション] を選択し、「新しい場所」から社内の Global IP を登録します。<br>
     参考：ネームド ロケーションの構成
     https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/quickstart-configure-named-locations#configure-named-locations
-2. そのアドレスを条件付きアクセスにて設定します。左ペイン最上部 [ポリシー] を選択してください。
+手順 1  で追加した信頼できる場所を、条件付きアクセスの許可された場所に設定します。左ペイン最上部 [ポリシー] を選択してください。
    - 検証用としてテスト ユーザー (Adele Vance) を用意し、[ユーザーとグループ] に割り当てます。
    - [クラウドアプリ] は [Microsoft Azure Management] アプリケーションを検索、選択します。
    - [対象] で [すべての場所] を選択し、[対象外] – [選択された場所] をクリックします。[選択] より、[ネームドロケーション] にて設定した場所をチェックします。
