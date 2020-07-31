@@ -174,5 +174,5 @@ Azure ポータルへの管理作業を社内からだけに限定すること�
 最後まで読んでくださり、ありがとうございました！リモートワークが推進される今日において、Azure AD の条件付きアクセスは安全なアクセスを実現するためにますます重要な役割を担っています。本記事が、条件付きアクセスを利用される皆様の参考になれれば幸いです。
 
 ### 参考
-- [サインインレポートにおける条件付きアクセスの表示の違い](サインインレポートにおける条件付きアクセスの表示の違い)
+- [サインインレポートにおける条件付きアクセスの表示の違い](https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/reports-faq#conditional-access)
 - [Azure Active Directory ポータルのサインイン アクティビティ レポート](https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/concept-sign-ins)
