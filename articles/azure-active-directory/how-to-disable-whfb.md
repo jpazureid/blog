@@ -38,15 +38,12 @@ Windows Hello for Business は、デバイスへのサインインにおいて�
 
 しかし、企業によっては、組織の要件で Windows Hello for Business をユーザーに使用させたくない要望もあるかもしれません。
 
-例えば、Azure AD 参加し、Azure AD ユーザーでサインインすることで Azure AD で管理されたリソース (Office 365 など) へシングル サインオン (SSO) ができます。
-
+例えば、Azure AD 参加し、Azure AD ユーザーでサインインすることで Azure AD で管理されたリソース (Office 365 など) へシングル サインオン (SSO) ができます。  
 ここで Windows Hello for Business を使用してサインインした場合、多要素認証 (MFA) を実施済みと判定されます。  
-
-つまり、Azure AD の条件付きアクセスやユーザー毎の MFA の設定でユーザーに MFA を要求するように構成していたとしても、Windows Hello for Business でのサインインでは MFA が求められません。
-
-この動作が組織の要件にそぐわない場合、Azure AD 参加を構成することで既定で有効になる Windows Hello for Business を無効にする必要があります。  
-
+つまり、Azure AD の条件付きアクセスやユーザー毎の MFA の設定でユーザーに MFA を要求するように構成していたとしても、Windows Hello for Business でのサインインでは MFA が求められません。  
 また、 Azure AD 参加することで自動的に Windows Hello for Business の資格情報登録を求められるのですが、ユーザーへの操作方法の周知ができていないため、ユーザーの混乱を防ぐという目的で Windows Hello for Business を無効にしたいという場合もあると思います。
+
+これらの動作が組織の要件にそぐわない場合、Azure AD 参加を構成することで既定で有効になる Windows Hello for Business を無効にする必要があります。  
 
 ここでは、Windows Hello for Business について簡単に説明しましたが、技術的な詳細については、以下の公開情報をご参照ください。
 
