@@ -8,6 +8,7 @@ tags:
 ---
 
 # Azure AD 参加後に有効になる Windows Hello for Business とその無効化方法について
+
 こんにちは、Azure & Identity サポート チームの中山です。
 
 昨今では、オンプレミス環境からクラウド環境へ随時移行を検討されている企業も多く、デバイスもオンプレミスの Active Directory で管理するのではなく、クラウド サービスである Azure AD と Microsoft Intune などの MDM で管理するといった方法も選択肢となっております。
@@ -19,6 +20,7 @@ Azure AD 参加については、以下の記事で Azure AD 登録の違いと�
 [Azure AD 登録 と Azure AD 参加 の違い](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/azure-ad-join-vs-azure-ad-device-registration.md)
 
 ## Windows Hello for Business とは
+
 Windows Hello for Business は、デバイスへのサインインにおいて、パスワードを PIN や生体認証 (顔認証、指紋認証など) に置き換えてサインインできるようにする機能です。
 
 つまり、Windows Hello for Business を使用することで、ユーザーはパスワードを使用せずとも、PIN や生体認証を使用してセキュアに、そして手軽にデバイスへサインインできます。
@@ -51,6 +53,7 @@ Windows Hello for Business は、デバイスへのサインインにおいて�
 [Windows Hello for Business の概要](https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-overview)
 
 ## Azure AD 参加するデバイスで Windows Hello for Business を無効にする方法
+
 Azure AD 参加を構成したデバイスにて、既定で有効となる Windows Hello for Business は、以下 3 つのいずれかの方法で無効にすることができます。
 
 a. ローカル グループ ポリシーで Windows Hello for Business を無効にする方法  
@@ -70,6 +73,7 @@ c. Microsoft Intune の構成プロファイルで Windows Hello for Business �
 では、それぞれの設定方法を以下に記します。
 
 ### a. ローカル グループ ポリシーでの Windows Hello for Business を無効にする方法
+
 Microsoft Intune を利用していない場合は、ローカル グループ ポリシーで Windows Hello for Business を無効にします。
 手順は以下の通りです。
 
@@ -90,6 +94,7 @@ Microsoft Intune を利用していない場合は、ローカル グループ �
 4. デバイスを再起動します。
 
 ### b. Microsoft Intune のポリシーで Windows Hello for Business を無効にする方法
+
 Azure AD へデバイス登録すると同時に Microsoft Intune へも登録されるように自動登録を構成している場合、 以下の手順で Azure AD 参加する全てのデバイスの Windows Hello for Business を無効にすることが出来ます。
 
 1. Microsoft Endpoint Manager 管理センター (https://endpoint.microsoft.com) へグローバル管理者権限を持つユーザーでサインインします。
@@ -111,6 +116,7 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
 [Windows Hello for Business と Microsoft Intune の統合](https://docs.microsoft.com/ja-jp/mem/intune/protect/windows-hello)
 
 ### c. Microsoft Intune の構成プロファイルで Windows Hello for Business を無効にする方法
+
 Azure AD へデバイス登録すると同時に Microsoft Intune へも登録されるように自動登録を構成している場合、 以下の手順で一部のユーザーや一部のデバイスに対して Windows Hello for Business を無効にすることができます。
 
 1. Microsoft Endpoint Manager 管理センター (https://endpoint.microsoft.com) へグローバル管理者権限を持つユーザーでサインインします。
@@ -149,6 +155,7 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
 [Microsoft Intune がインストールされた Windows 10 デバイス上で Windows Hello for Business を使用する](https://docs.microsoft.com/ja-jp/mem/intune/protect/identity-protection-configure#create-the-device-profile)
 
 ## 既にプロビジョニングされた Windows Hello for Business をリセットする方法
+
 既に Windows Hello for Business の設定を完了 (プロビジョニング) したユーザーは、前述した手順で Windows Hello for Business を無効にしても PIN や生体認証でサインインし続けられます。  
 そのため、既に Windows Hello for Business をプロビジョニングしたユーザーの  PIN や生体認証でのサインインを無効化する場合は、前述した方法で Windows Hello for Business を無効化した上で、以下のリセット手順を実施する必要があります。
 
@@ -158,7 +165,7 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
 
 3. 以下のコマンドを実行し、Windows Hello for Business の設定情報を削除します。   
    ```PowerShell
-   certutil-deletehellocontainer
+   certutil -deletehellocontainer
    ```
 
     ![](./how-to-disable-whfb/whfb12.png)
@@ -172,6 +179,3 @@ Windows Hello for Business は、今後のパスワードレス時代のトレ�
 そういった際に、今回の内容が皆様の参考となりますと幸いです。
 
 ご不明点等がありましたら、是非弊社サポート サービスをご利用ください。
-
-※本情報の内容（リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
-
