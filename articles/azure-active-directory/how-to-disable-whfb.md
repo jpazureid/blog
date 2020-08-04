@@ -117,7 +117,7 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
 
 2. [デバイス] - [構成プロファイル] へ移動し、[プロファイルの作成] を押下します。
 
-    ![](.\how-to-disable-whfb\whfb06.png)
+    ![](./how-to-disable-whfb/whfb06.png)
 
 3. 以下の通り設定し、[作成] を押下します。  
    プラットフォーム : Windows 10 以降  
