@@ -75,17 +75,17 @@ Microsoft Intune を利用していない場合は、ローカル グループ �
 
 1. Ctrl + R の [ファイル名を指定して実行] にて gpedit.msc と入力し、ローカル グループ ポリシー エディターを起動します。
 
-    ![](.\how-to-disable-whfb\whfb01.png)
+    ![](./how-to-disable-whfb/whfb01.png)
 
 2. 以下のパスへ移動します。
 [コンピューターの構成] - [管理テンプレート] - [Windows コンポーネント] - [Windows Hello for Business]
 
-    ![](.\how-to-disable-whfb\whfb02.png)
+    ![](./how-to-disable-whfb/whfb02.png)
 
 3. "Windows Hello for Business の使用" を "無効" にします。  
 ※ "未構成" もしくは "有効" の場合、Windows Hello for Business は有効として機能します。
 
-    ![](.\how-to-disable-whfb\whfb03.png)
+    ![](./how-to-disable-whfb/whfb03.png)
 
 4. デバイスを再起動します。
 
@@ -96,12 +96,12 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
 
 2. [デバイス] - [デバイスの登録] - [Windows の登録] - [Windows Hello for Business] へ移動します。
 
-    ![](.\how-to-disable-whfb\whfb04.png)
+    ![](./how-to-disable-whfb/whfb04.png)
 
 3. [Windows Hello for Business の構成] を "無効" にします。  
 ※ "構成されていません" もしくは "有効" の場合、Windows Hello for Business は有効として機能します。
 
-    ![](.\how-to-disable-whfb\whfb05.png)
+    ![](./how-to-disable-whfb/whfb05.png)
 
 4. [保存] を押下して設定変更を完了させます。
 
@@ -117,30 +117,30 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
 
 2. [デバイス] - [構成プロファイル] へ移動し、[プロファイルの作成] を押下します。
 
-    ![](.\how-to-disable-whfb\whfb06.png)
+    ![](./how-to-disable-whfb/whfb06.png)
 
 3. 以下の通り設定し、[作成] を押下します。  
    プラットフォーム : Windows 10 以降  
    プロファイル : Identity Protection
 
-    ![](.\how-to-disable-whfb\whfb07.png)
+    ![](./how-to-disable-whfb/whfb07.png)
   
 4. [基本] 項目で任意の名前を設定し、[次へ] を押下します。
 
-    ![](.\how-to-disable-whfb\whfb08.png)
+    ![](./how-to-disable-whfb/whfb08.png)
 
 5. [構成設定] 項目で以下の通り設定し、[次へ] を押下します。
    Windows Hello for Business の構成 : 無効にする
 
-    ![](.\how-to-disable-whfb\whfb09.png)
+    ![](./how-to-disable-whfb/whfb09.png)
 
 6. [割り当て] 項目で対象もしくは対象外とするユーザーやデバイスのグループを設定し、[次へ] を押下します。
 
-    ![](.\how-to-disable-whfb\whfb10.png)
+    ![](./how-to-disable-whfb/whfb10.png)
 
 7. [割り当て] 項目でプロファイルを適用するデバイスを OS のエディションや OS のバージョンによって絞りたい場合は、適用性ルールを設定し、[次へ] を押下します。
 
-    ![](.\how-to-disable-whfb\whfb11.png)
+    ![](./how-to-disable-whfb/whfb11.png)
 
 8. [確認および作成] 項目で設定内容を確認し、[作成] を押下します。
 
@@ -161,7 +161,7 @@ Azure AD へデバイス登録すると同時に Microsoft Intune へも登録�
    certutil-deletehellocontainer
    ```
 
-    ![](.\how-to-disable-whfb\whfb12.png)
+    ![](./how-to-disable-whfb/whfb12.png)
 
 4. デバイスを再起動します。
 
