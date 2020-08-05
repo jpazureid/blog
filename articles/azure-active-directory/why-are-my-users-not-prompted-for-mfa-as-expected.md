@@ -1,5 +1,5 @@
 ---
-title: ユーザーに期待どりに MFA が求められない！
+title: ユーザーに期待どおりに MFA が求められない！
 date: 2020-08-05
 tags:
   - Azure AD
@@ -10,7 +10,7 @@ tags:
 
 > 本記事は、 2020 年 6 月 18 日に Core Infrastructure and Security Blog に公開された記事 (“Why are my users not prompted for MFA as expected?”) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/why-are-my-users-not-prompted-for-mfa-as-expected/ba-p/1449032) より参照ください。
 
-# ユーザーに期待どりに MFA が求められない！
+# ユーザーに期待どおりに MFA が求められない！
 
 "MFA" もしくは "多要素認証 (Multi-Factor Authentication)" とは、リソースへのアクセスを許可する前に、ユーザー名とパスワード以上のものが必要とされる認証プロセスのことです。
 
