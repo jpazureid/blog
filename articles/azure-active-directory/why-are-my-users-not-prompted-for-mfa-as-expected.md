@@ -1,6 +1,6 @@
 ---
 title: ユーザーに期待どりに MFA が求められない！
-date: 2020-07-18
+date: 2020-08-05
 tags:
   - Azure AD
   - Hybrid Azure AD Join
