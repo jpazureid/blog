@@ -130,7 +130,7 @@ Name : contoso.local : 同期元オンプレ AD 向けのコネクター名で�
 3. そのままでは見づらいので以下のコマンドを実行して解析しやすく整形して csv ファイルとして保存します。
 
 ```cmd
-& 'C:\Program Files\Microsoft Azure AD Sync\Bin\CSExportAnalyzer.exe' > C:\temp\AADexport.csv
+& 'C:\Program Files\Microsoft Azure AD Sync\Bin\CSExportAnalyzer.exe' C:\temp\AADexport.xml > C:\temp\AADexport.csv
 ```
 
 4. 出力された csv ファイルを開きます。エクセルで開いてカンマ区切りで表示すると見やすいです。
