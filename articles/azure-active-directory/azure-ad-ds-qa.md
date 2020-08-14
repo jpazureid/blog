@@ -127,8 +127,7 @@ Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に�
 
 <span style="color:blue">Q</span>. Azure AD Domain Services を導入するにあたってどのようなドメイン名にすればよいか教えてください。
 
-<span style="color:red">A</span>. 技術的には特に制限事項などはございません。
-ただし、オンプレミスのドメイン名と同一にした場合は DNS 名前解決構成に対する注意を行う必要がございます。
+<span style="color:red">A</span>. 基本的にはルーティング (名前解決) 可能なドメイン名であり、かつ貴社にて管理しているドメイン名をご利用頂くことが望ましいです。もちろん、 .local を含むドメイン名やオンプレミスのドメイン名といった名前をご利用も可能ではございますが、これらのドメイン名を利用する場合には注意が必要です。
 
 また、 Secure LDAP というインターネット経由で Azure AD Domain Services に対して LDAP クエリを発行する場合には証明書が必要です。
 証明書のサブジェクト名は *.contoso.com といった、 Azure AD Domain Services のドメイン名を含むワイルドカード形式である必要がございます。
