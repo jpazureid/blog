@@ -22,13 +22,13 @@ tags:
 1. [Azure AD Domain Services を構築し、 Windows をドメイン参加させようとしたがエラーが発生してサインインできません。](#anchor1)
 2. [Azure AD Domain Services にサインインする際に NetBIOS ドメイン名と UPN どちらでサインインすればよいですか。](#anchor2)
 3. [Azure AD Domain Services への同期スコープをグループに設定しています。入れ子のグループに対応していますか。](#anchor3)
-4. [Azure AD Domain Services のネットワーク要件を教えてください。](#anchor4)
-5. [グループ ポリシーのセントラル ストアの利用ができるか教えてください。](#anchor5)
-6. [Azure AD Domain Services が存在するサブスクリプションを別テナントに移動しようと考えていますが移動できますか。](#anchor6)
-7. [Azure AD Domain Services を複数作成することはできますか。](#anchor7)
-
-8. [Azure AD Domain Services を導入するにあたってどのようなドメイン名にすればよいか教えてください。](#anchor8)
-9. [Azure AD Domain Services 上のイベント ログを閲覧することは可能ですか。](#anchor9)
+4. [Azure AD 上でユーザー オブジェクトの作成・変更を行いました。 Azure AD Domain Services へ変更が反映されるまでにどれくらい時間がかかりますか。](#anchor4)
+5. [Azure AD Domain Services のネットワーク要件を教えてください。](#anchor5)
+6. [グループ ポリシーのセントラル ストアの利用ができるか教えてください。](#anchor6)
+7. [Azure AD Domain Services が存在するサブスクリプションを別テナントに移動しようと考えていますが移動できますか。](#anchor7)
+8. [Azure AD Domain Services を複数作成することはできますか。](#anchor8)
+9. [Azure AD Domain Services を導入するにあたってどのようなドメイン名にすればよいか教えてください。](#anchor9)
+10. [Azure AD Domain Services 上のイベント ログを閲覧することは可能ですか。](#anchor10)
 
 <a id="anchor1"></a>
 
@@ -100,6 +100,16 @@ Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に�
 
 <a id="anchor4"></a>
 
+
+---
+
+<span style="color:blue">Q</span>. Azure AD 上でユーザー オブジェクトの作成・変更を行いました。 Azure AD Domain Services へ変更が反映されるまでにどれくらい時間がかかりますか。
+
+<span style="color:red">A</span>. 変更が完了するまでの時間は現時点では定義しておりません。弊社検証環境では 30 分から 1 時間程度で変更が完了することを確認しておりますので、 1 つの参考となれば幸いです。
+
+
+<a id="anchor5"></a>
+
 ---
 
 <span style="color:blue">Q</span>. Azure AD Domain Services のネットワーク要件を教えてください。
@@ -113,7 +123,7 @@ Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に�
 構成時、運用時にネットワーク構成を変更する際には必ず上記公開情報記載の要件を満たしているかをご確認くださいますようお願い申し上げます。
 
 
-<a id="anchor5"></a>
+<a id="anchor6"></a>
 
 ---
 
@@ -121,7 +131,7 @@ Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に�
 
 <span style="color:red">A</span>. はい、ご利用可能です。設定方法はオンプレミス AD の場合と相違ございません。
 
-<a id="anchor6"></a>
+<a id="anchor7"></a>
 
 ---
 
@@ -138,7 +148,7 @@ Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に�
 
 
 
-<a id="anchor7"></a>
+<a id="anchor8"></a>
 
 ---
 
@@ -152,7 +162,7 @@ Azure AD Domain Services は一度展開するとサブスクリプションや�
 
 
 
-<a id="anchor8"></a>
+<a id="anchor9"></a>
 
 ---
 
@@ -161,7 +171,7 @@ Azure AD Domain Services は一度展開するとサブスクリプションや�
 <span style="color:red">A</span>. いいえ、できません。 1 つのテナントにつき 1 つの Azure AD Domain Services しか展開することはできません。
 
 
-<a id="anchor9"></a>
+<a id="anchor10"></a>
 
 ---
 
