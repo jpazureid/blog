@@ -20,14 +20,15 @@ tags:
 
 ## 目次
 1. [Azure AD Domain Services を構築し、 Windows をドメイン参加させようとしたがエラーが発生してサインインできません。](#anchor1)
-2. [Azure AD Domain Services への同期スコープをグループに設定しています。入れ子のグループに対応していますか。](#anchor2)
-3. [Azure AD Domain Services のネットワーク要件を教えてください。](#anchor3)
-4. [グループ ポリシーのセントラル ストアの利用ができるか教えてください。](#anchor4)
-5. [Azure AD Domain Services が存在するサブスクリプションを別テナントに移動しようと考えていますが移動できますか。](#anchor5)
-6. [Azure AD Domain Services を複数作成することはできますか。](#anchor6)
+2. [Azure AD Domain Services にサインインする際に NetBIOS ドメイン名と UPN どちらでサインインすればよいですか。](#anchor2)
+3. [Azure AD Domain Services への同期スコープをグループに設定しています。入れ子のグループに対応していますか。](#anchor3)
+4. [Azure AD Domain Services のネットワーク要件を教えてください。](#anchor4)
+5. [グループ ポリシーのセントラル ストアの利用ができるか教えてください。](#anchor5)
+6. [Azure AD Domain Services が存在するサブスクリプションを別テナントに移動しようと考えていますが移動できますか。](#anchor6)
+7. [Azure AD Domain Services を複数作成することはできますか。](#anchor7)
 
-7. [Azure AD Domain Services を導入するにあたってどのようなドメイン名にすればよいか教えてください。](#anchor7)
-8. [Azure AD Domain Services 上のイベント ログを閲覧することは可能ですか。](#anchor8)
+8. [Azure AD Domain Services を導入するにあたってどのようなドメイン名にすればよいか教えてください。](#anchor8)
+9. [Azure AD Domain Services 上のイベント ログを閲覧することは可能ですか。](#anchor9)
 
 <a id="anchor1"></a>
 
@@ -72,11 +73,19 @@ Azure AD Domain Services 構築後は Azure AD 上でパスワード更新が発
 
 
 ### アカウント ロックアウトが発生している。
-Azure AD Domain Service は既定で 2 分で 5 回のパスワード入力に失敗すると 30 分間ロックアウトされます。
+Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に失敗すると 30 分間ロックアウトされます。
 連続で間違えた場合にはアカウント ロックアウトが発生している可能性がございますため、 30 分経過をお待ち頂き、サインインをお試しください。
 
 
 <a id="anchor2"></a>
+
+---
+
+<span style="color:blue">Q</span>. Azure AD Domain Services にサインインする際に SAMAccountName と UPN どちらでサインインすればよいですか。
+
+<span style="color:red">A</span>. どちらでもサインイン可能です。注意点として、 Azure AD Domain Services に Azure AD からアカウントが同期された際に SAMAccountName の名前の長さの制限などによってランダムな文字列に変更されて同期される可能性がございます。 UPN であれば Azure AD の UPN と一致した状態で同期されるため、 SAMAccountName でのサインインに失敗するといった場合には、 UPN 形式でのサインインをお試しください。
+
+<a id="anchor3"></a>
 
 ---
 
@@ -89,7 +98,7 @@ Azure AD Domain Service は既定で 2 分で 5 回のパスワード入力に�
 [入れ子 (ネスト) グループへの権限付与について](https://jpazureid.github.io/blog/azure-active-directory/nesting-group/)
 
 
-<a id="anchor3"></a>
+<a id="anchor4"></a>
 
 ---
 
@@ -99,12 +108,12 @@ Azure AD Domain Service は既定で 2 分で 5 回のパスワード入力に�
 
 [Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション](https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/network-considerations)
 
-特に Express Route をご利用頂いており、強制トンネリング構成を行ってデフォルト ルート (0.0.0.0) を書き換えているシナリオ、ネットワーク セキュリティ グループ (NSG) を変更し、 Azure AD Domain Service が必要とするポートが解放されていない環境によるお問い合わせを多々頂いております。
+特に Express Route をご利用頂いており、強制トンネリング構成を行ってデフォルト ルート (0.0.0.0) を書き換えているシナリオ、ネットワーク セキュリティ グループ (NSG) を変更し、 Azure AD Domain Services が必要とするポートが解放されていない環境によるお問い合わせを多々頂いております。
 
 構成時、運用時にネットワーク構成を変更する際には必ず上記公開情報記載の要件を満たしているかをご確認くださいますようお願い申し上げます。
 
 
-<a id="anchor4"></a>
+<a id="anchor5"></a>
 
 ---
 
@@ -112,7 +121,7 @@ Azure AD Domain Service は既定で 2 分で 5 回のパスワード入力に�
 
 <span style="color:red">A</span>. はい、ご利用可能です。設定方法はオンプレミス AD の場合と相違ございません。
 
-<a id="anchor5"></a>
+<a id="anchor6"></a>
 
 ---
 
@@ -121,16 +130,16 @@ Azure AD Domain Service は既定で 2 分で 5 回のパスワード入力に�
 <span style="color:red">A</span>. 技術的には特に制限事項などはございません。
 ただし、オンプレミスのドメイン名と同一にした場合は DNS 名前解決構成に対する注意を行う必要がございます。
 
-また、 Secure LDAP というインターネット経由で Azure AD Domain Service に対して LDAP クエリを発行する場合には証明書が必要です。
-証明書のサブジェクト名は *.contoso.com といった、 Azure AD Domain Service のドメイン名を含むワイルドカード形式である必要がございます。
-そのため、 Secure LDAP のご利用を検討の場合にはワイルドカード証明書を発行できるドメイン名で Azure AD Domain Service を構成する必要がございます。
+また、 Secure LDAP というインターネット経由で Azure AD Domain Services に対して LDAP クエリを発行する場合には証明書が必要です。
+証明書のサブジェクト名は *.contoso.com といった、 Azure AD Domain Services のドメイン名を含むワイルドカード形式である必要がございます。
+そのため、 Secure LDAP のご利用を検討の場合にはワイルドカード証明書を発行できるドメイン名で Azure AD Domain Services を構成する必要がございます。
 ドメイン名検討にあたっての考慮事項の詳細は下記公開情報をご覧ください。
 
 [マネージド ドメインの作成](https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/tutorial-create-instance#create-a-managed-domain)
 
 
 
-<a id="anchor6"></a>
+<a id="anchor7"></a>
 
 ---
 
@@ -144,7 +153,7 @@ Azure AD Domain Services は一度展開するとサブスクリプションや�
 
 
 
-<a id="anchor7"></a>
+<a id="anchor8"></a>
 
 ---
 
@@ -153,7 +162,7 @@ Azure AD Domain Services は一度展開するとサブスクリプションや�
 <span style="color:red">A</span>. いいえ、できません。 1 つのテナントにつき 1 つの Azure AD Domain Services しか展開することはできません。
 
 
-<a id="anchor8"></a>
+<a id="anchor9"></a>
 
 ---
 
@@ -165,5 +174,6 @@ Azure AD Domain Services は一度展開するとサブスクリプションや�
 [Azure Active Directory Domain Services でセキュリティ監査を有効にする](https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/security-audit-events)
 
 
-
+以上の内容でカバーされていない点で何か疑問点などございましたら、ぜひサポートサービスまでお問い合わせください。
+上記内容が参考となりましたら幸いです。
 
