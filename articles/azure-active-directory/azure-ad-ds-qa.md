@@ -44,7 +44,7 @@ tags:
 
 以下にそれぞれご説明いたします。
 
-*** ユーザー名・パスワードが誤っている ***
+***ユーザー名・パスワードが誤っている***
 
 Azure AD Domain Services に Azure AD から同期したユーザーでサインインを試行する場合には、 NetBIOS 形式 (contoso\user) ではなく、 UPN 形式 (user@contoso.onmicrosoft.com 等) でサインインください。
 Azure AD から Azure AD Domain Services に同期したユーザーは Azure AD の UPN と同じ UPN を持ちます。
@@ -55,7 +55,7 @@ Azure AD から Azure AD Domain Services に同期される属性や内容につ
 [属性の同期と Azure AD DS へのマッピング](https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/synchronization#attribute-synchronization-and-mapping-to-azure-ad-ds)
 
 
-*** Azure AD Domain Services を構築前に Azure AD 上に存在するユーザーであり、パスワード ハッシュが Azure AD Domain Services に同期されていない ***
+***Azure AD Domain Services を構築前に Azure AD 上に存在するユーザーであり、パスワード ハッシュが Azure AD Domain Services に同期されていない***
 
 ドメイン参加しようとしたアカウントが Azure AD Domain Services に同期されているアカウントであるか、並びにパスワードが正しいかをご確認ください。
 いずれも問題がない場合には一度 Azure AD 上でパスワードの変更・リセットをご実施ください。
@@ -74,7 +74,7 @@ Azure AD Connect を用いて同期しているアカウントの場合にはオ
 Azure AD Domain Services 構築後は Azure AD 上でパスワード更新が発生すると自動で Kebreros/NTLM 認証で利用可能なパスワード ハッシュが Azure AD 上に格納されるようになります。
 
 
-*** アカウント ロックアウトが発生している。 ***
+***アカウント ロックアウトが発生している。***
 
 Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に失敗すると 30 分間ロックアウトされます。
 連続で間違えた場合にはアカウント ロックアウトが発生している可能性がございますため、 30 分経過をお待ち頂き、サインインをお試しください。
