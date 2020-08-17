@@ -44,7 +44,8 @@ tags:
 
 以下にそれぞれご説明いたします。
 
-### ユーザー名・パスワードが誤っている
+*** ユーザー名・パスワードが誤っている ***
+
 Azure AD Domain Services に Azure AD から同期したユーザーでサインインを試行する場合には、 NetBIOS 形式 (contoso\user) ではなく、 UPN 形式 (user@contoso.onmicrosoft.com 等) でサインインください。
 Azure AD から Azure AD Domain Services に同期したユーザーは Azure AD の UPN と同じ UPN を持ちます。
 NetBIOS 名の場合、名前の長さなどが要因で Azure AD 上のユーザー名と異なる名前が設定されている可能性がございます。
@@ -54,13 +55,14 @@ Azure AD から Azure AD Domain Services に同期される属性や内容につ
 [属性の同期と Azure AD DS へのマッピング](https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/synchronization#attribute-synchronization-and-mapping-to-azure-ad-ds)
 
 
-### Azure AD Domain Services を構築前に Azure AD 上に存在するユーザーであり、パスワード ハッシュが Azure AD Domain Services に同期されていない
+*** Azure AD Domain Services を構築前に Azure AD 上に存在するユーザーであり、パスワード ハッシュが Azure AD Domain Services に同期されていない ***
+
 ドメイン参加しようとしたアカウントが Azure AD Domain Services に同期されているアカウントであるか、並びにパスワードが正しいかをご確認ください。
 いずれも問題がない場合には一度 Azure AD 上でパスワードの変更・リセットをご実施ください。
 
-Azure AD Domain Services 構築直後は Azure AD Domain Services 上のアカウントに Azure AD のパスワード情報が同期されておりません。
-Kerberos/NTLM 認証で利用するためのパスワード ハッシュが必要となりますが、 Azure AD 側には既定でこれらのパスワード ハッシュは格納されておりません。
-Azure AD Domain Services 構築後にパスワードを変更・リセットすることで Azure AD 上に Kerberos/NTLM 認証で利用するパスワード ハッシュが生成・格納されるようになります。
+Azure AD Domain Services 構築直後は Azure AD Domain Services 上のアカウントに Azure AD 上のパスワード情報が同期されておりません。
+
+Azure AD Domain Services 構築後に Azure AD 側でパスワードを変更・リセットすることで Azure AD 上に Kerberos/NTLM 認証で利用するパスワード ハッシュが生成・格納されるようになります。
 Kerberos/NTLM 認証で利用するパスワード ハッシュが Azure AD に格納された後、 Azure AD から Azure AD Domain Services にパスワード ハッシュが同期され、 Azure AD Domain Services 上でサインインが可能となります。
 
 Azure AD Connect を用いて同期しているアカウントの場合にはオンプレミス AD 上でパスワード変更を行い Azure AD 上のパスワード ハッシュを更新ください。
@@ -72,7 +74,8 @@ Azure AD Connect を用いて同期しているアカウントの場合にはオ
 Azure AD Domain Services 構築後は Azure AD 上でパスワード更新が発生すると自動で Kebreros/NTLM 認証で利用可能なパスワード ハッシュが Azure AD 上に格納されるようになります。
 
 
-### アカウント ロックアウトが発生している。
+*** アカウント ロックアウトが発生している。 ***
+
 Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に失敗すると 30 分間ロックアウトされます。
 連続で間違えた場合にはアカウント ロックアウトが発生している可能性がございますため、 30 分経過をお待ち頂き、サインインをお試しください。
 
@@ -105,7 +108,7 @@ Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に�
 
 <span style="color:blue">Q</span>. Azure AD 上でユーザー オブジェクトの作成・変更を行いました。 Azure AD Domain Services へ変更が反映されるまでにどれくらい時間がかかりますか。
 
-<span style="color:red">A</span>. 変更が完了するまでの時間は現時点では定義しておりません。弊社検証環境では 30 分から 1 時間程度で変更が完了することを確認しておりますので、 1 つの参考となれば幸いです。
+<span style="color:red">A</span>. 変更が完了するまでの時間は公開されておりません。弊社検証環境では 30 分から 1 時間程度で変更が完了することを確認しておりますので、 1 つの参考となれば幸いです。(今後予告なく変更される可能性もございます)
 
 
 <a id="anchor5"></a>
