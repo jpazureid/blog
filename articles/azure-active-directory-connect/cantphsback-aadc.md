@@ -99,4 +99,3 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-sy
 上記内容が皆様の参考となりますと幸いです。どちら様も素敵な AAD ライフをお過ごしください。  
 
 ご不明な点等がありましたら、ぜひ弊社サポート サービスをご利用ください。  
-※本情報の内容（リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。

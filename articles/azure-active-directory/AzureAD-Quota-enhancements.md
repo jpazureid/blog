@@ -81,4 +81,4 @@ Azure リソースを操作可能な Microsoft Graph を使用して、現在の
 ![確認例](./AzureAD-Quota-enhancements/3-Response-Value-directorySizeQuota2.png)
 
 上記内容が少しでも参考となりますと幸いです。
-※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
+

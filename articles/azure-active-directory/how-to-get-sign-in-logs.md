@@ -54,3 +54,4 @@ PowerBI には Azure AD のサインイン ログを解析するためのコン�
 ## 5. Log Analytics に統合する
 Azure サブスクリプションをお持ちでしたら是非 Log Analytics と Azure AD のサインインログの統合についても検討してみてください。
 2019/1 の時点でまだ Public Preview ですが、 Azure Security Center や Application Insights の機能も利用可能です。詳細、具体的な手順については、こちらの公開情報を参照してみてください。
+
