@@ -1,6 +1,6 @@
 ---
 title: 君達の資格情報は全ていただいた！
-date: 2020-08-15
+date: 2020-08-19
 tags:
   - Azure AD
   - Security
