@@ -198,3 +198,4 @@ https://www.powershellgallery.com/profiles/AzureADPowerShell/
 - 2018/08/07: Save-Module で別端末でダウンロードしたモジュールを利用する際の手順を更新しました。
 - 2018/10/17: Windows Management Framework (WMF) のサポート対象が 5.1 であることから .NET Framework の前提条件を WMF 5.1 インストールに必要となる 4.5.2 に変更しました。
 - 2019/01/23: Azure AD v2 と Azure AD v2 preview が同時インストールできない注意書きをインストールの項目にも追記しました。
+

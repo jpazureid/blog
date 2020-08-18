@@ -170,4 +170,3 @@ Unable to update this object because the following attributes associated with th
 
 以降、重複した ProxyAddresses の値の状態を解消する対処を実施するまでは、定期的な同期処理が行われる毎に失敗し、このメールが通知されます。
 
-「コミュニティにおけるマイクロソフト社員による発言やコメントは、マイクロソフトの正式な見解またはコメントではありません。」
