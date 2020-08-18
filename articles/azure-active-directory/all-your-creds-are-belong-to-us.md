@@ -8,6 +8,8 @@ tags:
 
 本記事は、 2019 年 10 月 3 日に Azure Active Directory Identity Blog に公開された記事 (All your creds are belong to us!) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) より参照ください。
 
+----
+
 # 君達の資格情報は全ていただいた！
 
 > 先日ですが、お客様がアカウント乗っ取り (ATO) の標的となり、我々のチームが支援したということがありました。SMS と Authenticator アプリを使用して 2 段階認証を必須にしてアカウントを保護していたにも関わらず、攻撃者はアカウントに侵入し、パスワードが変更されていました。
