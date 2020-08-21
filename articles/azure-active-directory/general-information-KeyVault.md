@@ -33,50 +33,54 @@ e. 補足情報
  4  [CSV 形式でダウンロードする] を選択してダウンロードした CSV ファイルを弊社までご提供ください。   
 
 
-# c. Key Vault の診断ログ (もし設定済でございましたら)      
----
-  1 Azure ポータルにて [Key Vault] ->  [対象のキーコンテナー] を選択します。
+## c. Key Vault の診断ログ (もし設定済でございましたら)      
 
-  2 [診断設定] でストレージアカウント、イベントハブ、Log Analytics ワークスペースに連携済の情報がございましたら、これらの情報をご提供いただけますと幸いです。   
+1. Azure ポータルにて [Key Vault] ->  [対象のキーコンテナー] を選択します。
+2. [診断設定] でストレージアカウント、イベントハブ、Log Analytics ワークスペースに連携済の情報がございましたら、これらの情報をご提供いただけますと幸いです。   
    
    
-ご参考 :   
+**ご参考 :   **
+
 Log Analytics ワークスペースにログを連携している場合、 [Key Vault] ->  [対象のキーコンテナー] -> [ログ] で情報を参照することが可能です。   
-この場合、下記クエリを実行した後、[CAV へエクスポート - すべての列] でローカルに CSV ファイルとしてダウンロードした後、弊社までご提供いただけますと幸いです。   
+この場合、下記クエリを実行した後、[CSV へエクスポート - すべての列] でローカルに CSV ファイルとしてダウンロードした後、弊社までご提供いただけますと幸いです。
     
-> AzureDiagnostics   
+```kusto
+AzureDiagnostics   
  | where ResourceProvider == "MICROSOFT.KEYVAULT"   
  | where TimeGenerated >= todatetime('2019-12-28 00:00:13')   
+```
     
 ※todatetime は事象発生日時を含めるように設定ください   
 
-# d. キーコンテナーの設定情報
----
+## d. キーコンテナーの設定情報
+
 キーコンテナーの設定を頂戴したく、下記どちらかのコマンドの実行結果をテキストファイルに保存しご提供いただけますと幸いです。   
  
-Azure CLI   
-> az keyvault show  --name <キーコンテナー名>   
+### Azure CLI  
+
+```sh
+az keyvault show  --name <キーコンテナー名>   
 az keyvault key list --vault-name <キーコンテナー名>   
 az keyvault certificate list --vault-name <キーコンテナー名>   
 az keyvault secret list --vault-name <キーコンテナー名>
+```
 
-Azure PowerShell   
+### Azure PowerShell   
 
-> Get-AzKeyVault -VaultName <キーコンテナー名>   
+```powershell
+Get-AzKeyVault -VaultName <キーコンテナー名>   
 Get-AzKeyVaultKey -VaultName <キーコンテナー名>   
 Get-AzKeyVaultSecret -VaultName <キーコンテナー名>
 Get-AzKeyVaultCertificate -VaultName <キーコンテナー名>    
+```
 
-# e. 補足情報
----
+## e. 補足情報
+
 以下の情報をテキストファイルにお纏めいただき、ご提供いただけますと幸いです。   
-・サブスクリプション ID   
-・キーコンテナー名   
-・アクセスしたユーザー名 (ManagedID の場合はサービスプリンシパル名)   
-・キー取得方法 (PowerShell から取得、プログラムから取得など)   
-・キーにアクセスしたおおよその日時   
 
+- サブスクリプション ID   
+- キーコンテナー名   
+- アクセスしたユーザー名 (ManagedID の場合はサービスプリンシパル名)   
+- キー取得方法 (PowerShell から取得、プログラムから取得など)   
+- キーにアクセスしたおおよその日時   
 
-
-
-※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
