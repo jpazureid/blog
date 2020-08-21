@@ -56,4 +56,3 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/direc
 
 上記内容が少しでも皆様の参考となりますと幸いです。
 
-※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
