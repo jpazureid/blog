@@ -10,6 +10,9 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/01/28/azure-ad-reporting-api/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+> **Azure AD Graph API はサポート終了が予定となっており、したがって下記記事を利用したアクティビティ レポートの収集を新規に構成することは非推奨となっています。**
+> 詳細については、[Update your applications to use Microsoft Authentication Library and Microsoft Graph API - Microsoft Tech Community - 1257363](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) をご確認ください。
+
 # Azure AD Reporting API を利用して PowerShell より Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを CSV ファイルで取得する方法
 
 こんにちは、Azure & Identity サポート チームの 姚 (ヨウ) です。
