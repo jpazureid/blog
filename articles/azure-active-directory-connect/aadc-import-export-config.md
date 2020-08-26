@@ -17,7 +17,6 @@ tags:
  Title : Azure AD Connect:バージョンのリリース履歴
  URL : https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history
 
-
 上記の非推奨プロセスの運用開始に伴い、多くのお客様が、既存の Azure AD Connect のバージョンのアップグレードをご検討いただいているかと思います。
 
 しかし、Azure AD Connect のバージョンのアップグレードを行う際、Azure AD Connect のバージョン 1.5.30.0 までは、下記の弊社技術ブログでもご案内しているとおり、Azure AD Connect の設定情報および同期ルールについては、下記のバックアップ方法を推奨しており、両方の情報をまとめてバックアップすることができませんでした。
@@ -34,7 +33,7 @@ tags:
   Title : Azure AD Connect アップグレード手順
   URL : https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade/
 
-そのため、Azure AD Connect のバージョンのアップグレードにおいて、Azure AD Connect のバージョン 1.5.30.0 までは、Azure AD Connect の設定情報および同期ルールの両方の情報をまとめてバックアップすることができず、お客様側の作業工数が多くなってしまうため、今回の機能のご要望をお客様から多くいただいていました。
+Azure AD Connect のバージョンのアップグレードにおいて、Azure AD Connect のバージョン 1.5.30.0 までは、Azure AD Connect の設定情報および同期ルールの両方の情報をまとめてバックアップすることができず、お客様側の作業工数が多くなってしまうため、今回の機能のご要望をお客様から多くいただいていました。
 
 そこで今回、Public Preview 版として公開されたのが、「Azure AD Connect 設定の Export/Import」です。
 
@@ -45,7 +44,7 @@ tags:
 - Azure AD Connect の設定情報 ※1 : Azure AD Connect 構成ウィザードからの Export
 - Azure AD Connect の同期ルール : Azure AD Connect 構成ウィザードからの Export
 
- ※1 ただし、Azure AD Connect 構成ウィザード上で設定する一部の項目は、Azure AD Connect 構成ウィザードからの Export が行えないため、下記の情報を参照しつつ、注意が必要です。
+※1 ただし、Azure AD Connect 構成ウィザード上で設定する一部の項目は、Azure AD Connect 構成ウィザードからの Export が行えないため、下記の情報を参照しつつ、注意が必要です。
 
 #### 〇 : Export/Import できる情報
 
@@ -66,7 +65,7 @@ tags:
         - デバイス ライトバックの設定
         - AD FS のインストール設定
 
-そのため、Azure AD Connect のバージョンのアップグレードにおいて、「Azure AD Connect 設定の Export/Import」は、お客様側の作業工数を少しでも減らすことができる有効な機能と考えています。
+Azure AD Connect のバージョンのアップグレードにおいて、「Azure AD Connect 設定の Export/Import」は、お客様側の作業工数を少しでも減らすことができる有効な機能と考えています。
 
  Title : Azure AD Connect 構成設定のインポートとエクスポート (パブリック プレビュー)
  URL : https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-import-export-config
