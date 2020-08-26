@@ -46,7 +46,7 @@ Azure AD Connect の同期ルール : Azure AD Connect 構成ウィザードか�
 #### 〇 : Export/Import できる情報
 - Azure AD Connect インストール ウィザード内の設定情報
 	- [ユーザー サインイン] 画面の情報
-	- [Azure AD に接続] 画面で入力するテナント情報(テナントのパスワードは Export した情報には含まれません)
+	- [Azure AD に接続] 画面で入力するテナント情報 (テナントのパスワードは Export した情報には含まれません)
 	- [Azure AD サインインの構成] 画面の情報
 - 同期ルール (カスタム ルール含む)
 
