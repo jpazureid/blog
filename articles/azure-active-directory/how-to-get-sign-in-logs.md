@@ -51,7 +51,8 @@ Azure のポータルからは CSV 形式でサインイン ログをダウン�
 PowerBI には Azure AD のサインイン ログを解析するためのコンテンツ パックが用意されています。
 このコンテンツ パックを利用することで、簡単に視覚化されたサインインのデータの確認が可能です。具体的な手順については、 Azure Active Directory Power BI コンテンツ パックの使用方法 を参照ください。
 
-## 5. Log Analytics に統合する
-Azure サブスクリプションをお持ちでしたら是非 Log Analytics と Azure AD のサインインログの統合についても検討してみてください。
-2019/1 の時点でまだ Public Preview ですが、 Azure Security Center や Application Insights の機能も利用可能です。詳細、具体的な手順については、こちらの公開情報を参照してみてください。
+## 5. Azure Monitor に統合する
+Azure サブスクリプションをお持ちでしたら是非 Azure Monitor と Azure AD のサインインログの統合についても検討してみてください。
+Azure Security Center や Application Insights の機能も利用可能です。詳細、具体的な手順については、こちらの公開情報を参照してみてください。
 
+[Azure AD ログを Azure Monitor ログと統合する] (https://docs.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
