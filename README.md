@@ -75,6 +75,7 @@
 - [「現時点ではこれにはアクセスできません」 エラーについて](articles/azure-active-directory/conditional-cannot-access-rightnow.md)
 - [TPM のエラーについて](./articles/azure-active-directory/what-to-do-error-tpm.md)
 - [Azure AD Domain Services のよくあるご質問と対処策](./articles/azure-active-directory/azure-ad-ds-qa.md)
+- [Windows Hello for Business の構成解説](./articles/azure-active-directory/whfb-configuration-explanation.md)
 
 ## Azure AD Connect
 
