@@ -73,8 +73,9 @@
 - [Hybrid Azure AD Join 失敗の初動調査方法について (フェデレーション編)](./articles/azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated.md)
 - [Identity Protection 2 つのリスク ポリシーの導入メリットについて](./articles/azure-active-directory/identity-protection-riskpolicy-introducation.md)
 - [「現時点ではこれにはアクセスできません」 エラーについて](articles/azure-active-directory/conditional-cannot-access-rightnow.md)
+- [TPM のエラーについて](./articles/azure-active-directory/what-to-do-error-tpm.md)
 - [Azure AD Domain Services のよくあるご質問と対処策](./articles/azure-active-directory/azure-ad-ds-qa.md)
-
+- [Windows Hello for Business の構成解説](./articles/azure-active-directory/whfb-configuration-explanation.md)
 
 ## Azure AD Connect
 
