@@ -1,6 +1,10 @@
 # Conditional Access policies now apply to all client applications by default
 # 条件付きアクセスポリシーがデフォルトですべてのクライアントアプリケーションに適用されるようになりました。
 
+本記事は、 2020 年 8 月 11 日に Azure Active Directory Identity Blog に公開された記事 (Conditional Access policies now apply to all client applications by default) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/conditional-access-policies-now-apply-to-all-client-applications/ba-p/1257371) より参照ください。
+
+---
+
 組織の安全性を確保するためには、ユーザーに対して多要素認証 (MFA) を有効にすることが効果的です。
 
 電話やトークンコードのような従来の方法でも、Authenticator、Windows Hello、FIDO のような最新のパスワードレスの方法でも、MFA を使用することでアカウントの不正アクセスを 99.9% 以上減少させることができます。
