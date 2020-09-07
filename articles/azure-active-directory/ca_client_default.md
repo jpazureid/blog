@@ -40,7 +40,7 @@ Conditional Access チームのプログラムマネージャーである Daniel
 また、Microsoft Graph API を使用してポリシーを管理している方のために、v1.0 の新しい Conditional Access API のリリースに伴い、新しい既定値の変更と UI の変更に合わせてクライアントアプリのスキーマを簡素化しました。以下は、API を使用して新しいポリシーを作成したときのクライアントアプリの条件の新しいデフォルト設定の例です。
 
 
-![gazo2](ca_client_default/2.png)
+![API Schema](./ca_client_default/2.png))
 
 
 ## 既存の条件付きアクセスポリシーはどうなりますか？
