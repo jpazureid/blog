@@ -17,9 +17,10 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 
 
 今回ご紹介する手順のシナリオは下記の 3 パターンとなります。
-## A. Azure AD Connect 2 台構成によるスウィング アップグレード
-## B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード
-## C. Azure AD Connect 1 台構成によるインプレースアップグレード
+
+- A. Azure AD Connect 2 台構成によるスウィング アップグレード
+- B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード
+- C. Azure AD Connect 1 台構成によるインプレースアップグレード
 
 
 それぞれの手順の流れと手順内容を pptx ファイルに纏めさせていただいています。
