@@ -1,3 +1,9 @@
+---
+title: 条件付きアクセスポリシーがデフォルトですべてのクライアントアプリケーションに適用されるようになりました。 
+date: 2020-09-07 
+tags: 
+  - Conditional Access
+---
 # Conditional Access policies now apply to all client applications by default
 # 条件付きアクセスポリシーがデフォルトですべてのクライアントアプリケーションに適用されるようになりました。
 
@@ -40,7 +46,7 @@ Conditional Access チームのプログラムマネージャーである Daniel
 また、Microsoft Graph API を使用してポリシーを管理している方のために、v1.0 の新しい Conditional Access API のリリースに伴い、新しい既定値の変更と UI の変更に合わせてクライアントアプリのスキーマを簡素化しました。以下は、API を使用して新しいポリシーを作成したときのクライアントアプリの条件の新しいデフォルト設定の例です。
 
 
-![API Schema](./ca_client_default/2.png))
+![API Schema](./ca_client_default/2.png)
 
 
 ## 既存の条件付きアクセスポリシーはどうなりますか？
