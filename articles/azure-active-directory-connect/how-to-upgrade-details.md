@@ -44,7 +44,7 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 
 ### <手順詳細>  
 
-[Azure AD Connect アップグレード手順 (スイング移行)](articles\azure-active-directory-connect\how-to-upgrade-details\AADC_Upgrade_A.pptx)
+[Azure AD Connect アップグレード手順 (スイング移行)](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory-connect/how-to-upgrade-details/AADC_Upgrade_A.pptx?raw=true)
 
 
 手順は 1.1.618.0 からの 2020 年 8 月現在最新バージョンの 1.5.45.0 へのアップグレードを実行したものとなります。
@@ -64,7 +64,7 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 9. 既存環境の Azure AD Connect の動作確認
 
 ### <手順詳細>  
-[Azure AD Connect アップグレード手順 (スイング移行)](articles\azure-active-directory-connect\how-to-upgrade-details\AADC_Upgrade_B.pptx)
+[Azure AD Connect アップグレード手順 (スイング移行)](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory-connect/how-to-upgrade-details/AADC_Upgrade_B.pptx?raw=true)
 
 手順は 1.1.618.0 からの 2020 年 8 月現在最新バージョンの 1.5.45.0 へのアップグレードを実行したものとなります。
 アップグレード前のバージョンによって表示項目などが異なりますので、予めご留意ください。
@@ -82,6 +82,6 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 
 ### <手順詳細>  
 
-[Azure AD Connect アップグレード手順 (Azure AD Connect サーバー 1 台構成)](articles\azure-active-directory-connect\how-to-upgrade-details\AADC_Upgrade_C.pptx)
+[Azure AD Connect アップグレード手順 (Azure AD Connect サーバー 1 台構成)](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory-connect/how-to-upgrade-details/AADC_Upgrade_C.pptx?raw=true)
 
 手順は 2020 年 8 月現在最新バージョンの 1.5.45.0 に日本語対応となった 1.0.8667.0 からのアップグレードとなります。
