@@ -54,7 +54,7 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 3. 設定内容の保存
 4. 新規構築サーバーに Azure AD Connect インストール (ステージング モード有効)
 5. 新規構築サーバーにて設定、動作状況の確認
-6. 既存環境のAzure AD Connect のステージング モードを有効化
+6. 既存環境の Azure AD Connect のステージング モードを有効化
 7. 新規構築サーバーにてステージング モード無効化
 8. 既存環境の Azure AD Connect のインプレース アップグレード
 9. 既存環境の Azure AD Connect の動作確認
@@ -78,4 +78,3 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 [Azure AD Connect アップグレード手順 (Azure AD Connect サーバー 1 台構成)](articles\azure-active-directory-connect\how-to-upgrade-details\AADC_Upgrade_C.pptx)
 
 手順は 2020 年 8 月現在最新バージョンの 1.5.45.0 に日本語対応となった 1.0.8667.0 からのアップグレードとなります。
-
