@@ -43,6 +43,7 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 8. ServerA の Azure AD Connect の動作確認
 
 ### <手順詳細>  
+
 [Azure AD Connect アップグレード手順 (スイング移行)](articles\azure-active-directory-connect\how-to-upgrade-details\AADC_Upgrade_A.pptx)
 
 
