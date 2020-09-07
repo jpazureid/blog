@@ -76,6 +76,7 @@ Azure AD Connect の非推奨プロセスに伴い、多くのお客様にて推
 5. アップグレードの動作確認 (手順1. と同じ)
 
 ### <手順詳細>  
+
 [Azure AD Connect アップグレード手順 (Azure AD Connect サーバー 1 台構成)](articles\azure-active-directory-connect\how-to-upgrade-details\AADC_Upgrade_C.pptx)
 
 手順は 2020 年 8 月現在最新バージョンの 1.5.45.0 に日本語対応となった 1.0.8667.0 からのアップグレードとなります。
