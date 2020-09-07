@@ -62,5 +62,6 @@ Conditional Access チームのプログラムマネージャーである Daniel
 ![Sign in activity](ca_client_default/4.jpg)
 
 ## フィードバックを共有してください
+
 今回の変更により、レガシ認証をブロックすることで、管理者が組織のセキュリティを確保しやすくなることを願っています。以下でフィードバックを共有するか、以下の連絡先までご連絡ください。
 daniel.wood@microsoft.com ご質問があれば、お気軽にお問い合わせください。
