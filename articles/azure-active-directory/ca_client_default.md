@@ -4,7 +4,6 @@ date: 2020-09-07
 tags: 
   - Conditional Access
 ---
-# Conditional Access policies now apply to all client applications by default
 # 条件付きアクセスポリシーがデフォルトですべてのクライアントアプリケーションに適用されるようになりました。
 
 本記事は、 2020 年 8 月 11 日に Azure Active Directory Identity Blog に公開された記事 (Conditional Access policies now apply to all client applications by default) を翻訳したものです。原文は [こちら](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/conditional-access-policies-now-apply-to-all-client-applications/ba-p/1257371) より参照ください。
