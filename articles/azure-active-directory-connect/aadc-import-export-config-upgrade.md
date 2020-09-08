@@ -45,8 +45,8 @@ MigrateSettings.ps1 は既定で下記に配置されます。
 
 4. 設定ファイルの読み込み方法は下記記事にて記載の手順と同様となり、コピーしたディレクトリ内の MigratedPolicy.json を選択し、ウィザードを進めます。  
   Azure AD Connect 設定の Export / Import   
-  https://jpazureid.github.io/jpazureid/blog/blob/master/articles/azure-active-directory-connect/aadc-import-export-config   
-
+  https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/
+  
 
 上記で手順は完了となります。
 アップグレードの際に同期ルールなどが多い場合や構成項目が多い場合にご利用いただければ幸いです。
