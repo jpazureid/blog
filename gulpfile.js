@@ -26,7 +26,7 @@ if (branchName !== "master" && branchName && previewBaseUrl) {
 
 const sourceFolder = "articles";
 let markdownFiles = path.join(sourceFolder, "**/*.md");
-let imageFiles = path.join(sourceFolder, "**/*.+(jpg|jpeg|png|gif|svg|bmp|JPG|JPEG|PNG|GIF|SVG|BMP)");
+let attachments = path.join(sourceFolder, "**/*.!(md)");
 const outputPath = "source/_posts/";
 const Hexo = require("hexo");
 const hexo = new Hexo(process.cwd(), {});
@@ -170,13 +170,13 @@ const copyMarkdown = () => {
   );
 };
 
-const copyImage = () => {
-  return src(imageFiles, { base: sourceFolder, since: lastRun(copyImage) }).pipe(dest(outputPath));
+const copyAttachments = () => {
+  return src(attachments, { base: sourceFolder, since: lastRun(copyAttachments) }).pipe(dest(outputPath));
 };
 
 // TODO copy only changed files
 const watchFiles = () => {
-  watch("articles/**/*.*", parallel(copyMarkdown, copyImage));
+  watch("articles/**/*.*", parallel(copyMarkdown, copyAttachments));
 };
 
 // global container client
@@ -346,18 +346,18 @@ const deleteMergedPreview = async () => {
 
 exports.default = series(
   cleanOutputPath,
-  parallel(copyMarkdown, copyImage),
+  parallel(copyMarkdown, copyAttachments),
   server,
   watchFiles
 );
 exports.publish = series(
   cleanOutputPath,
-  parallel(copyMarkdown, copyImage),
+  parallel(copyMarkdown, copyAttachments),
   deploy
 );
 exports.build = series(
   cleanOutputPath,
-  parallel(copyMarkdown, copyImage),
+  parallel(copyMarkdown, copyAttachments),
   generate
 );
 exports.uploadPreview = series(
@@ -365,7 +365,7 @@ exports.uploadPreview = series(
     deleteBlobFolderIfExist,
     series(
       cleanOutputPath,
-      parallel(copyMarkdown, copyImage),
+      parallel(copyMarkdown, copyAttachments),
       generateForPreview
     )
   ),
