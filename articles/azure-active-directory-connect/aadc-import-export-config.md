@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect 設定の Export / Import"
-date: 2020-08-24
+date: 2020-08-26
 tags:
   - AAD Connect
 ---
