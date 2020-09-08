@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect 移行に伴う設定情報の Export / Import"
-date: 2020-09-11
+date: 2020-09-09 00:01
 tags:
   - AAD Connect
 ---
@@ -12,7 +12,7 @@ tags:
 例えば、現在利用している Azure AD Connect のバージョンが 1.1.647.0 で 1.5.45.0 にスイング アップグレードするために、追加で Azure AD Connect 用にサーバーを構成し、Azure AD Connect の各種設定を行う場合が想定される方法となります。
 
 ## 留意事項
-予め Azure AD Connect 1.5.4x.0 以降のバージョンをインストールし、スクリプト ファイル [MigrateSettings.ps1](./aadc-import-export-config-upgrade/MigrateSettings.ps1) を取得し、既存の Azure AD Connect サーバーに配置しておく必要があります。
+予め Azure AD Connect 1.5.4x.0 以降のバージョンをインストールし、スクリプト ファイル [MigrateSettings.ps1](./aadc-import-export-config-upgrade/MigrateSettings.ps1) を取得し、既存の Azure AD Connect サーバーに配置しておく必要があります。  
 バージョン 1.5.45.0 を弊社環境にてインストールし、取得したファイルをサンプルとして本記事にて掲載させていただきますが、今後の更新等にて不具合等が確認された場合には予告等無く変更させていただくこととなりますので、実際に利用する場合には、最新バージョンに同梱されているスクリプトを利用するようにしてください。
 MigrateSettings.ps1 は既定で下記に配置されます。   
  C:\Program Files\Microsoft Azure Active Directory Connect\Tools
