@@ -1,7 +1,7 @@
 
 ---
 title: Azure AD Connect アップグレード手順詳細
-date: 2020-09-10
+date: 2020-09-09 00:00
 tags:
   - AAD Connect
 ---
