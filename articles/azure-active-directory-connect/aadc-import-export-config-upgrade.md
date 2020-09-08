@@ -44,8 +44,8 @@ MigrateSettings.ps1 は既定で下記に配置されます。
 3. 上記メッセージに表示のとおり、C:\ProgramData\AADConnect にディレクトリが生成されますので、同ディレクトリごと新規に構築しているサーバーにコピーします。
 
 4. 設定ファイルの読み込み方法は下記記事にて記載の手順と同様となり、コピーしたディレクトリ内の MigratedPolicy.json を選択し、ウィザードを進めます。  
-  Azure AD Connect 設定の Export / Import
-  https://jpazureid.github.io/jpazureid/blog/blob/master/articles/azure-active-directory-connect/aadc-import-export-config
+  Azure AD Connect 設定の Export / Import   
+  https://jpazureid.github.io/jpazureid/blog/blob/master/articles/azure-active-directory-connect/aadc-import-export-config   
 
 
 上記で手順は完了となります。
@@ -55,3 +55,4 @@ MigrateSettings.ps1 は既定で下記に配置されます。
 
 Migration process  
 https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-import-export-config#migration-process
+      
