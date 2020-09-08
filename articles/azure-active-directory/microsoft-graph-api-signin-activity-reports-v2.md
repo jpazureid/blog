@@ -62,7 +62,7 @@ New-AzureADServiceAppRoleAssignment -ObjectId $msi.ObjectId -PrincipalId $msi.Ob
 
 GitHub 上の以下のスクリプトをダウンロードし、マネージド ID を有効化した Azure Virtual Machine 上の C:\SignInReport 配下に保存します。
 
-[Sample-GetSigninActivity.ps1](https://github.com/jpazureid/blog/blob/microsoft-graph-api-signin-activity-reports-v2/articles/azure-active-directory/Sample-GetSigninActivity.ps1)
+[Sample-GetSigninActivity.ps1](../azure-active-directory/Sample-GetSigninActivity.ps1)
 
 保存後はファイル エクスポート先等適宜編集ください。既定では過去 7 日のログを、スクリプトを実行したカレント ディレクトリ上に outfile.csv という名前で保存します。
 
