@@ -42,7 +42,7 @@ Conditional Access チームのプログラムマネージャーである Daniel
 ![Client Apps](./ca_client_default/1.jpg)
 
 
-また、Microsoft Graph API を使用してポリシーを管理している方のために、クライアント アプリの既定値と UI の変更に併せて、v1.0 の新しい Conditional Access API のスキーマを簡素化いたしました。以下は、API を使用して新しいポリシーを作成したときのクライアントアプリの条件の新しいデフォルト設定の例です。
+また、Microsoft Graph API を使用してポリシーを管理している方のために、クライアント アプリの既定値と UI の変更に併せて、v1.0 の新しい Conditional Access API のスキーマを簡素化しました。以下は、API を使用して新しいポリシーを作成したときのクライアントアプリの条件の新しいデフォルト設定の例です。
 
 
 ![API Schema](./ca_client_default/2.png)
@@ -62,4 +62,4 @@ Conditional Access チームのプログラムマネージャーである Daniel
 
 ## フィードバックを共有してください
 
-今回の変更により、レガシ認証をブロックすることで、管理者が組織のセキュリティを確保しやすくなることを願っています。ご質問やご要望がございましたら、daniel.wood@microsoft.com までお気軽にご連絡ください。
+今回の変更により、レガシ認証をブロックすることで、管理者が組織のセキュリティを確保しやすくなることを願っています。フィードバックや質問がありましたら、daniel.wood@microsoft.com までご連絡ください。
