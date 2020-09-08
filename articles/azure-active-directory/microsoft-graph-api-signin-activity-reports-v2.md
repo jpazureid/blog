@@ -41,7 +41,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/managed-identities-azure
 
 以下のコマンドを実行し、マネージド ID に対して Graph API および Azure Active Directory に対するサインイン ログ読み取りに必要な権限を割り当てます。下記コマンド実行には Azure AD for Graph (Azure AD v2) が必要です。
 
-インストールしていない場合には [Azure Active Directory の PowerShell モジュール](https://jpazureid.github.io/blog/azure-active-directory/powershell-module/) を参照しインストールください。
+インストールしていない場合には [Azure Active Directory の PowerShell モジュール](../azure-active-directory/powershell-module.md) を参照しインストールください。
 
 ```PowerShell
 # グローバル管理者でサインインします。
@@ -60,9 +60,9 @@ New-AzureADServiceAppRoleAssignment -ObjectId $msi.ObjectId -PrincipalId $msi.Ob
 
 ### C. サインイン ログの収集 - スクリプトの編集と実行
 
-GitHub 上の以下のスクリプトをダウンロードし、マネージド ID を有効化した Azure Virtual Machine 上の C:\SignInReport 配下に保存します。
+以下のスクリプトを右クリックして保存し、マネージド ID を有効化した Azure Virtual Machine 上の C:\SignInReport 配下に保存します。
 
-[Sample-GetSigninActivity.ps1](https://github.com/jpazureid/blog/blob/microsoft-graph-api-signin-activity-reports-v2/articles/azure-active-directory/Sample-GetSigninActivity.ps1)
+[Sample-GetSigninActivity.ps1](./microsoft-graph-api-signin-activity-reports-v2/Sample-GetSigninActivity.ps1)
 
 保存後はファイル エクスポート先等適宜編集ください。既定では過去 7 日のログを、スクリプトを実行したカレント ディレクトリ上に outfile.csv という名前で保存します。
 
