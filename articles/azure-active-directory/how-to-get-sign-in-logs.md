@@ -3,7 +3,7 @@ title: Azure AD サインイン ログ取得方法まとめ
 date: 2019-02-04
 tags:
   - Azure AD
-  - sginin log
+  - signin log
 ---
 
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2019/02/04/signin-log-summary/ の内容を移行したものです。
