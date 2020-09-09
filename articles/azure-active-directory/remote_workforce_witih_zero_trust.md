@@ -14,7 +14,7 @@ COVID-19 に対応して在宅で勤務する従業員が増える中、企業�
 
 Concurrency の Chief Technology Officer である Nathan Lasnoski 氏は、顧客と協力して、アイデンティティ保護を中心に据えたゼロ・トラスト・セキュリティ戦略を導入してきました。
 
-以下の “Voice of the Partner” の記事では、彼のアプローチが世界的な海洋メーカーである Brunswick Corporation にどのようなメリットをもたらしたかを紹介しています。
+以下の "Voice of the Partner" の記事では、彼のアプローチが世界的な海洋メーカーである Brunswick Corporation にどのようなメリットをもたらしたかを紹介しています。
 
 ---
  
@@ -57,6 +57,7 @@ Brunswick Corporation のクラウド移行の鍵となったのは、アイデ�
 
 
 Brunswick Corporation は、アイデンティティとアクセスを管理するために Azure Active Directory (Azure AD) を導入しました。Azure AD は、Office 365 や、Workday、SAP、Adobe などの Microsoft 以外の数千もの SaaS (Software-as-a-Service) アプリと統合されています。
+
 Azure AD App Proxy を使用すると、オンプレミスのアプリケーションを Azure AD に接続することもできます。資格情報を 1 つの ID に統一することで、従業員はシングルサインオン (SSO) を使用して一度サインインし、Office 365、Microsoft 以外のアプリケーション、またはオンプレミスのすべてのアプリケーションを使用することができます。
 
 
@@ -65,7 +66,7 @@ Azure AD を使用することで、多要素認証（MFA）のような普遍�
 ![Azure AD によって様々なアプリに SSO できます](./remote_workforce_with_zero_trust/workflow.png)
 
 ## ネットワーク・マイクロセグメンテーション
-ゼロトラストのアプローチは、"全てを信頼しない"ことを前提としています。
+ゼロトラストのアプローチは、"全てを信頼しない" ことを前提としています。
 社内ネットワークからのアクセスであっても、信頼しないことが重要なのです。
 組織がリソース同士のアクセスを容易にすると、同様に悪者が動き回るのも容易になってしまいます。
 
