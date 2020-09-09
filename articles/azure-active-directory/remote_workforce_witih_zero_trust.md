@@ -62,7 +62,7 @@ Azure AD App Proxy を使用すると、オンプレミスのアプリケーシ�
 
 Azure AD を使用することで、多要素認証（MFA）のような普遍的なセキュリティ管理を、接続されているすべてのアプリに適用することができます。MFA は、サインインするたびに少なくとも 2 つの認証要素を必要とするため、アカウント情報が漏洩する可能性が低くなります。
 
-![Azure AD によって様々なアプリに SSO できます](./remote_workforce_with_zero_trust/workflow.jpg)
+![Azure AD によって様々なアプリに SSO できます](./remote_workforce_with_zero_trust/workflow.png)
 
 ## ネットワーク・マイクロセグメンテーション
 ゼロトラストのアプローチは、"全てを信頼しない"ことを前提としています。
@@ -104,7 +104,7 @@ Azure AD、Microsoft Endpoint Manager、Azure Information Protection、および
 これらのポリシーは、リモートワーク移行に特に有用です。ユーザーがサインインしようとすると、Azure AD の条件付きアクセスポリシーは、Microsoft Endpoint Manager を使用して、デバイスの状態、場所、アクセスしようとしているアプリケーション、およびその他のリスク要因をチェックします。
 アクセス要求が Brunswick Corporation のポリシーを満たしていない場合、Azure AD は自動的にアクセスをブロックしたり、パスワードのリセットを強制したりすることができます。
 
-![Workflows](./remote_workforce_with_zero_trust/workflow.jpg)
+![Workflows](./remote_workforce_with_zero_trust/workflow.png)
 
 COVID-19の流行により、安全に業務を継続するために、多くの組織が新技術を迅速に導入することを余儀なくされていますが、このウイルスはすでに多くの企業で推進していたリモートワーク移行の動きを加速させたに過ぎません。
 オフィスがなくなるわけではありませんが、Concurrency では、組織がインフラをクラウドに移行して製品のイノベーションに集中できるようになれば、従業員はどこにいても仕事ができるという柔軟な働き方ができると思っています。ゼロ トラスト セキュリティ戦略は、その両方を可能にするのです。
