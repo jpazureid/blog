@@ -2270,10 +2270,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-"hexo-asset-link@github:watahani/hexo-asset-link":
-  version "2.0.1"
-  uid "107a595c8a683accde4ba5eaa28a0b9e62237f09"
-  resolved "https://codeload.github.com/watahani/hexo-asset-link/tar.gz/107a595c8a683accde4ba5eaa28a0b9e62237f09"
+hexo-asset-link@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/hexo-asset-link/-/hexo-asset-link-2.1.0.tgz#c8e59d72fc381b97fcdb077ec75e90af4fe0fd77"
+  integrity sha512-WhV/woj7NbCdh0AKpgesCpMn7KSC/dL7ul+JEgr0eA6dVSEZJcuzVQ/2A9q6wiRF4tDIMv8PjodFR7G7+x2SSg==
 
 hexo-bunyan@^2.0.0:
   version "2.0.0"
@@ -3475,9 +3475,9 @@ no-case@^3.0.3:
     tslib "^1.10.0"
 
 node-fetch@^2.3.0, node-fetch@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
-  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-pre-gyp@^0.10.0:
   version "0.10.3"
