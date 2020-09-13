@@ -12,7 +12,7 @@ tags:
 
 COVID-19 に対応して在宅で勤務する従業員が増える中、企業のリソースを保護するためには、ユーザー個人のアカウント単位での、セキュリティソリューションが必要とされています。
 
-Concurrency の Chief Technology Officer である Nathan Lasnoski 氏は、顧客と協力して、アイデンティティ保護を中心に据えたゼロ トラスト セキュリティ戦略を導入してきました。
+Concurrency の CTO、Nathan Lasnoski は、顧客と協力して、アイデンティティ保護を中心に据えたゼロ トラスト 戦略を導入してきました。
 
 以下の "Voice of the Partner" の記事では、彼のアプローチが世界的な海洋メーカーである Brunswick Corporation にどのようなメリットをもたらしたかを紹介しています。
 
