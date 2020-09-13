@@ -103,7 +103,7 @@ Brunswick Corporation では、Azure Information Protection と Microsoft Data L
 ## 条件付きアクセスポリシーの適用
 
 Brunswick Corporation が Microsoft 365 のセキュリティソリューションを選択した理由は、製品が統合されて連携しているからです。これにより、インシデントの検出と対応がより効果的になります。また、一貫したアプローチでゼロトラストを適用することも可能になります。
-ここで挙げる Azure AD 条件付きアクセスは非常に重要なツールです。
+ここで挙げる Azure AD の条件付きアクセスは非常に重要なツールです。
 Azure AD、Microsoft Endpoint Manager、Azure Information Protection、およびその他の Microsoft 365 のソリューションを使用することで、Brunswick Corporation は、コンテキストに基づいた粒度の高い条件付きアクセス ポリシーを作成することができます。
 これらのポリシーは、リモートワーク移行に特に有用です。ユーザーがサインインしようとすると、Azure AD の条件付きアクセスポリシーは、Microsoft Endpoint Manager を使用して、デバイスの状態、場所、アクセスしようとしているアプリケーション、およびその他のリスク要因をチェックします。
 アクセス要求が Brunswick Corporation のポリシーを満たしていない場合、Azure AD は自動的にアクセスをブロックしたり、パスワードのリセットを強制したりすることができます。
