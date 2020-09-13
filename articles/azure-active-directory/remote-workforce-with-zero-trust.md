@@ -26,7 +26,7 @@ Concurrency は、技術革新を推進するビジネス管理及び IT コン�
 ゼロ トラスト セキュリティ モデルを採用すれば、より迅速に、かつ安全にリモートワークに移行することができます。
 
 
-Brunswick Corporation は、そのおかげでリモートワークへの移行がよりスムーズになった顧客の好例です。
+Brunswick Corporation は、ゼロ トラストとアイデンティティ保護に投資することで、リモートワークへの移行がよりスムーズになった顧客の例です
 Brunswick Corporation は、船舶と海洋推進システムを製造しています。また、船舶を所有していなくても船舶を使用できる世界最大のソーシャルクラブである Freedom Boat Club も経営しています。
 
 
@@ -128,4 +128,3 @@ https://www.microsoft.com/en-us/security/business/zero-trust
 
 
 https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview
-
