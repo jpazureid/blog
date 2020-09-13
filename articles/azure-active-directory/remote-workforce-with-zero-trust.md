@@ -96,7 +96,7 @@ Brunswick Corporation と Concurrency は、Brunswick のデータセンター�
 ## データの保護
 
 セキュリティがこれほど難しい理由の一つは、攻撃方法が絶えず進化していることが挙げられます。すべての潜在的なエンドポイントを保護することは不可能なので、機密情報が漏洩するリスクを減らすために、データ自体を保護します。
-Brunswick Corporation では、Azure Information Protection と Microsoft Data Loss Prevention を導入し、特権情報を分類して保護しました。Alan Mitchell 氏は以下のように述べています。
+Brunswick Corporation では、Azure Information Protection と Microsoft Data Loss Prevention を導入し、機密情報を分類して保護しました。Alan Mitchell 氏は以下のように述べています。
 「すべての攻撃に対応するのは難しいので、ポリシー、コントロール、データのラベリングを実施し、誰かが機密情報を USB ドライブやクラウドストレージデバイスにコピーするのを防いでいます。」
 
 
