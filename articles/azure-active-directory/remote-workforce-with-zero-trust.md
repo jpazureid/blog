@@ -59,7 +59,7 @@ Brunswick Corporation のクラウド移行の鍵となったのは、従来と�
 Brunswick Corporation は、アイデンティティとアクセスを管理するために Azure Active Directory (Azure AD) を導入しました。Azure AD は、Office 365 や、Workday、SAP、Adobe などの Microsoft 以外の数千もの SaaS (Software-as-a-Service) アプリと統合されています。
 
 
-Azure AD App Proxy を使用すると、オンプレミスのアプリケーションを Azure AD に接続することもできます。資格情報を 1 つの ID に統一することで、従業員はシングルサインオン (SSO) を使用して一度サインインし、Office 365、Microsoft 以外のアプリケーション、またはオンプレミスのすべてのアプリケーションを使用することができます。
+Azure AD Application Proxy を使用すると、オンプレミスのアプリケーションを Azure AD に接続することもできます。資格情報を 1 つの ID に統一することで、従業員は Office 365、Microsoft 以外のアプリケーション、またはオンプレミスのすべてのアプリケーションへ、シングルサインオン (SSO) することができます。
 ``
 
 Azure AD を使用することで、接続されているすべてのアプリへのアクセスに対して多要素認証 (MFA) を要求するなどの、一貫した制御を適用することができます。MFA は、サインインするたびに少なくとも 2 つの認証要素を必要とするため、アカウント情報が漏洩する可能性が低くなります。
