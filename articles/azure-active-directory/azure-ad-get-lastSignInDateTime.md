@@ -78,16 +78,9 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporti
 ![6.png](./azure-ad-get-lastSignInDateTime/6.png)
 
 6. 下記の 2 つのアクセス許可を付与します。
- - Windows Azure Active Directory 	ディレクトリ データの読み取り
  - Microsoft Graph すべての監査ログ データの読み取り
 
-まず Azure Active Directory Graph のアクセス許可を追加します。
-	
-![7.png](./azure-ad-get-lastSignInDateTime/7.png)
-
-![8.png](./azure-ad-get-lastSignInDateTime/8.png)
-
-上記で追加したアクセス許可が表示されたことを確認し、続けて、Microsoft Graph のアクセス許可を追加します。
+Microsoft Graph のアクセス許可を追加します。
 ![9.png](./azure-ad-get-lastSignInDateTime/9.png)
 ![10.png](./azure-ad-get-lastSignInDateTime/10.png)
 ![11.png](./azure-ad-get-lastSignInDateTime/11.png)
