@@ -75,7 +75,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporti
 ![5.png](./azure-ad-get-lastSignInDateTime/5.png)
 
 5. [アクセス許可の追加] をクリックします。
-![6.png](./azure-ad-get-lastSignInDateTime/6.png)
+![21.png](./azure-ad-get-lastSignInDateTime/21.png)
 
 6. 下記の 2 つのアクセス許可を付与します。
  - Microsoft Graph すべての監査ログ データの読み取り
