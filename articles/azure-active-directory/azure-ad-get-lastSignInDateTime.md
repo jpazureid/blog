@@ -5,7 +5,6 @@ tags:
   - Azure AD
   - ログ取得
 ---
-[GetLastLogin.ps1](/.attachments/GetLastLogin-0dc2c0f6-f639-41a6-8d7d-b55eb13d826a.ps1)
 
 # 最終サインイン日時を一括で取得する方法
 
@@ -24,6 +23,7 @@ tags:
 今回は参考手順を一通り、記載しますので、実際の環境で利用する際に参考にしていただければ幸いです。
 
 大きく分けて、実施する手順は下記となります。
+
 ## A. キーまたは証明書の準備 (デバイス側で実施)
 
 ## B. Azure AD にアプリケーションの登録 ([Azure Portal](https://portal.azure.com/) で実施)
@@ -32,10 +32,11 @@ tags:
   
   
 具体的な手順は下記となります。
+
 ## A. キーまたは証明書の準備 (デバイス側で実施) *今回は証明書を利用する手順です
 
 1. まず本ページ上部下記より設定に必要なファイルを ZIP ファイルでダウンロードします。
-![image.png](/.attachments/image-7a7116ec-8a2e-4d4b-a3e5-620c049c1b5d.png)
+![image.png](./azure-ad-get-lastSignInDateTime/1.png)
 2. 作業用のディレクトリをデバイス上の任意のディレクトリに作成します。*今回の例は C:\SignInReport 
 3. ダウンロードしたファイルを展開し、各ファイルを 2. で作成したディレクトリに保存します。
 4. PowerShell で CreateAndExportCert.ps1 スクリプト ファイルを実行します。
@@ -77,7 +78,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporti
 
 6. 下記の 2 つのアクセス許可を付与します。
  - Windows Azure Active Directory 	ディレクトリ データの読み取り
- - Microsoft Graph 	すべての監査ログ データの読み取り
+ - Microsoft Graph すべての監査ログ データの読み取り
 
 まず Azure Active Directory Graph のアクセス許可を追加します。
 	
