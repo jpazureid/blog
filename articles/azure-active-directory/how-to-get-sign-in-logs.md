@@ -16,7 +16,7 @@ tags:
 Azure AD のサインイン ログは Azure ポータルで確認するほかに次のような方法で確認することができます。
 
 1. ポータルから CSV/JSON 形式のファイルをダウンロード
-2. Log Analytics に統合する
+2. Azure Monitor に統合する
 3. API を利用して JSON 形式のファイルを取得する
 4. データをエクスポートし、 PowerBI で解析する
 
