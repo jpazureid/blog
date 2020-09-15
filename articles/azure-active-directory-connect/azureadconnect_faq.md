@@ -12,7 +12,7 @@ Azure AD Connect (AADC) のお問い合わせが多いご質問について、Q&
   
   
 ## **Q. AADC の Active / Stand By (アクティブ / スタンバイ) の構成が行えるか？**  
-## **A.** いいえ。AADC はクラスター構成を実装していません。  
+**A.** いいえ。AADC はクラスター構成を実装していません。  
 AADC を同一フォレスト内で 2 台以上構成した場合でも各 AADC で死活監視を行う実装はありません。  
 冗長構成をご検討の場合はステージング モード機能をご利用ください。  
 詳細は[こちら](https://github.com/jpazureid/blog/blob/master/azure-active-directory-connect/introduction-staging-server.md) をご参照ください。  
