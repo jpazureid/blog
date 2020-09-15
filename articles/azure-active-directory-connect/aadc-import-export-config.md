@@ -85,7 +85,7 @@ URL : https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-conn
 #### 2. 設定変更前の環境に切り戻すための バックアップ / リストア を行いたい時
 
 Azure AD Connect 設定の変更を行い障害が生じた場合に、環境の切り戻しをスムーズに行う際に、Azure AD Connect 設定の Export/Import は有効的な方法です。
-なお、Azure AD Connect のバックアップ取得からリストアまでの詳細手順につきましては、[Azure AD Connect 設定ファイルの復元 (1.5.42.0 以降)](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory-connect/aadc-import-export-config/AADC_Config.pptx?raw=true) にてお纏めしておりますので、必要に応じて該当 ppt ファイルをご参照ください。
+なお、Azure AD Connect のバックアップ取得からリストアまでの詳細手順につきましては、[Azure AD Connect 設定ファイルの復元 (1.5.42.0 以降)](./aadc-import-export-config/AADC_Config.pptx) にてお纏めしておりますので、必要に応じて該当 ppt ファイルをご参照ください。
 
 上記内容が少しでも参考となりますと幸いです。
 
