@@ -26,11 +26,21 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory
 
 ---
 
-<2020 年 3 月 17 日追記>
+<2020 年 3 月 17 日追記>  
 2020 年 11 月 1 日以降に非推奨プロセスの運用が開始されます。**18 カ月以上前にリリースされたバージョンは非推奨となります。**
 詳細につきましては、上述のリリース履歴の “重要” 事項を参照してください。
 
 ---
+---
+
+<2020 年 9 月 9 日追記>  
+Azure AD Connect アップグレード手順を下記にて改めてお纏めしました。  
+インプレース アップグレード以外の手順も纏めてありますので、スウィング アップグレードをご検討いただいている場合には、下記をご参照ください。  
+ Azure AD Connect アップグレード手順詳細  
+ https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/  
+
+---
+
 
 ## アップグレードの流れ
 
