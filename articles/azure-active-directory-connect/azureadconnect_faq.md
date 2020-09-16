@@ -116,7 +116,7 @@ Set-ADSyncScheduler -NextSyncCyclePolicyType Initial
 ## **Q. 完全同期 (Start-ADSyncSyncCycle -PolicyType:Initial) の所要時間は？**  
 **A.** オブジェクト内容、同期ルール内容、サーバースペック、ネットワーク パフォーマンスに依存して正確な値を算出することは出来ません。  
 参考値となりますが、オンプレミス Active Directory で 2 万ユーザーではドメイン コントローラー <=> Azure AD Connect では約 30 MB , Azure AD Connect <=> Azure AD では約 240 MB の通信が生じていることが確認出来、30 分程度の時間を要しました。 (オブジェクト自体は必要最低限の情報となり、そのサイズ自体も所要時間に影響を及ぼすものとなります)  
-弊社過去事例からは、同期対象のオブジェクト数が 2 万程度の場合、完全同期が完了するまでに 1 ~ 3 時間ほどを要し、10 万オブジェクトほどの場合はおおよそ 4 ~ 9 時間を要したことが確認しています。   
+弊社過去事例からは、同期対象のオブジェクト数が 2 万程度の場合、完全同期が完了するまでに 1 ~ 3 時間ほどを要し、10 万オブジェクトほどの場合はおおよそ 4 ~ 9 時間を要したことを確認しています。   
    
 ## **Q. Synchronization Service Manager で Operations タブのみ表示されている (Connectors などが表示されない) 。**  
 **A.** サインインしているユーザーが ADSyncBrowse / ADSyncOperator グループにのみ所属していることが原因となります 。  
