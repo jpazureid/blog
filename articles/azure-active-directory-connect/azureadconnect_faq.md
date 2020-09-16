@@ -38,14 +38,14 @@ AADC を同一フォレスト内で 2 台以上構成した場合でも各 AADC 
   設定項目 : 追加の電子メール受信者  
   https://portal.azure.com/#blade/Microsoft_Azure_ADHybridHealth/AadHealthMenuBlade/SyncErros  
   
-  [AADCH_alert (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/azureadconnect_faq/AADCH_alert.pdf)
+  [AADCH_alert (PDF)](../azure-active-directory-connect/azureadconnect_faq/AADCH_alert.pdf)
   
   - 同期エンジン通知先設定手順  
   設定箇所 : [Azure ポータル] – [Azure Active Directory] –[通知の設定]  
   設定項目 : 連絡先の電子メール  
   https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Notifications  
     
-  [SyncEngine_alert (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/azureadconnect_faq/SyncEngine_alert.pdf)
+  [SyncEngine_alert (PDF)](../azure-active-directory-connect/azureadconnect_faq/SyncEngine_alert.pdf)
   
   
 ## **Q. AADC のサポート対応中のバージョン、サポート有効期間は？**  
@@ -53,8 +53,7 @@ AADC を同一フォレスト内で 2 台以上構成した場合でも各 AADC 
 2020 年 11 月より非推奨プロセスが開始されます。  
 詳細については下記記事をご参照ください。  
   
-Title: Azure AD Connect アップグレード手順  
-URL: https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/  
+[Azure AD Connect アップグレード手順](../azure-active-directory-connect/how-to-upgrade.md)  
   
   
 ## **Q. AADC をインストール時に既定で生成されるグループは？**  
