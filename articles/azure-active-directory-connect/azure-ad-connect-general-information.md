@@ -16,11 +16,9 @@ Azure AD Connect に関わる問題が発生した場合にテクニカル サ�
 Azure AD Connect トラブルシューティングは大区分として、Azure AD Connect サーバー全般に関わる問題か、特定のオブジェクトに関わる問題かにより調査に必要な情報が異なります。
 各シナリオでの取得情報としては、下記の記事にてお纏めさせていただいています。
 
- Azure AD Connect サーバーの全般情報
- https://jpazureid.github.io/blog/azure-active-directory-connect/general-information/
+[Azure AD Connect サーバーの全般情報](../azure-active-directory-connect/general-information.md)
 
- [調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題
- https://jpazureid.github.io/blog/azure-active-directory-connect/problem-user-synchronize/
+[\[調査に有効な採取情報\] Azure AD Connect でユーザー同期ができない問題](../azure-active-directory-connect/problem-user-synchronize.md)
 
 上記内容をスクリプトで一括採取する方法につきましてもご用意させていただいています。
 
