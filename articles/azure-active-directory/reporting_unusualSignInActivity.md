@@ -63,7 +63,7 @@ tags:
 ![](./reporting_unusualSignInActivity/8.png)
 
 
-個人のメールについても興味がある場合は、コンシューマー Microsoft アカウントで [https://account.live.com/activity](https://account.live.com/activity) の [最近のアクティビティ] ページをご覧ください。
+個人用のメールなどで利用されている Microsoft アカウントについても興味がある場合は、Microsoft アカウントで [https://account.live.com/activity](https://account.live.com/activity) の [最近のアクティビティ] ページをご覧ください。
 
 ## フィードバック
 以下のコメント欄または [Azure AD フィードバック フォーラム](http://aka.ms/AzureADFeedback)でご意見をお聞かせください。
