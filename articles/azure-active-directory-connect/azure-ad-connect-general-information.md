@@ -2,6 +2,7 @@
 title: "[情報採取] Azure AD Connect に関わる問題などの際に採取、提供いただきたい情報"
 date: 2020-09-16
 tags:
+  - AAD Connect
   - Azure AD Connect
   - 情報採取
 ---
