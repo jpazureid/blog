@@ -9,6 +9,7 @@ tags:
 
 # 最終サインイン日時を一括で取得する方法
 
+こんにちは、Azure Identity サポート チームの谷です。
 以前の記事 [Get last-sign-in activity reports](https://github.com/jpazureid/get-last-signin-reports) でユーザーの最終サインイン日時の取得をご紹介させていただきましたが、下記の制約がありました。
  - サインイン ログの保存期間により、30 日以上前のサインイン日時は確認できません。
  - サインインのログから一覧を取得しているため、厳密な ”最終アクセス日時” とは異なります。
