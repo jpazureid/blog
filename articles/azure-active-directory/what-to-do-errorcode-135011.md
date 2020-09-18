@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) にデバイスを登録するとそのデバ�
 PRT に関しまして、以下の公開情報についても、ご参照いただけますと幸いです。
  
 
-PRT はどのようにして無効になりますか?
+PRT はどのようにして無効になりますか ?
 
 
 https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token#how-is-a-prt-invalidated
