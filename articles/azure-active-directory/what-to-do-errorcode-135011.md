@@ -54,7 +54,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-
 
 1. Azure ポータル (https://portal.azure.com/) にグローバル管理者権限を保持するアカウントでログオンします。
 2. 左ペインから [Azure Active Directory] - [デバイス] と移動します。
-![Flow](./what-to-do-errorcode-135011/2.png)
+![](./what-to-do-errorcode-135011/2.png)
 3. [デバイス] の一覧から対象のデバイス名をクリックし、遷移した画面内の上部から [有効にする] を押します。
 ![Flow](./what-to-do-errorcode-135011/3.png)
 
