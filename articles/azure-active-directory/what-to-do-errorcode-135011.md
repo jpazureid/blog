@@ -14,7 +14,7 @@ tags:
 
 ## エラーコード 135011 について
 
-![Error](./what-to-do-errorcode-135011/error.png)
+![](./what-to-do-errorcode-135011/error.png)
 
 
 
