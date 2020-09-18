@@ -12,11 +12,14 @@ Azure AD Connect (AADC) のお問い合わせが多いご質問について、Q&
   
   
 ## **Q. AADC の Active / Stand By (アクティブ / スタンバイ) の構成が行えるか？**  
-## **A.** いいえ。AADC はクラスター構成を実装していません。  
+**A.** いいえ。AADC はクラスター構成を実装していません。  
 AADC を同一フォレスト内で 2 台以上構成した場合でも各 AADC で死活監視を行う実装はありません。  
 冗長構成をご検討の場合はステージング モード機能をご利用ください。  
-詳細は[こちら](https://github.com/jpazureid/blog/blob/master/azure-active-directory-connect/introduction-staging-server.md) をご参照ください。  
-  
+詳細は[こちら](../azure-active-directory-connect/introduction-staging-server.md) をご参照ください。  
+  
+## **Q. AADC をインストールする際のネットワーク要件は?**  
+**A.** [Azure AD Connect サーバー - ウィルス対策ソフト除外項目 / 使用する通信ポート](../azure-active-directory-connect/port-used-by-aadc.md) をご参照ください。  
+
   
 ## **Q. AADC のバックアップ / リストア方法はありますか？**  
 **A.** いいえ。AADC の構成情報については GUI 画面上から確認し、その情報を保存する方法のみとなります。1.5.4x.0 以降では異なるため、詳細は下記をご参照ください。
@@ -35,21 +38,23 @@ AADC を同一フォレスト内で 2 台以上構成した場合でも各 AADC 
   設定項目 : 追加の電子メール受信者  
   https://portal.azure.com/#blade/Microsoft_Azure_ADHybridHealth/AadHealthMenuBlade/SyncErros  
   
-  [AADCH_alert (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/azureadconnect_faq/AADCH_alert.pdf)
+  [AADCH_alert (PDF)](../azure-active-directory-connect/azureadconnect_faq/AADCH_alert.pdf)
   
   - 同期エンジン通知先設定手順  
   設定箇所 : [Azure ポータル] – [Azure Active Directory] –[通知の設定]  
   設定項目 : 連絡先の電子メール  
   https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Notifications  
     
-  [SyncEngine_alert (PDF)](https://github.com/jpazureid/blog/raw/master/articles/azure-active-directory-connect/azureadconnect_faq/SyncEngine_alert.pdf)
+  [SyncEngine_alert (PDF)](../azure-active-directory-connect/azureadconnect_faq/SyncEngine_alert.pdf)
+  
   
 ## **Q. AADC のサポート対応中のバージョン、サポート有効期間は？**  
 **A.** 現時点でリリース済みのすべてのバージョンがサポート対象です。  
+2020 年 11 月より非推奨プロセスが開始されます。  
 詳細については下記記事をご参照ください。  
   
-Title: Azure AD Connect アップグレード手順  
-URL: https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/  
+[Azure AD Connect アップグレード手順](../azure-active-directory-connect/how-to-upgrade.md)  
+  
   
 ## **Q. AADC をインストール時に既定で生成されるグループは？**  
 **A.** 下記の 4 グループが生成されます。  
@@ -107,8 +112,14 @@ Start-AdSyncSyncCycle Initial
 Set-ADSyncScheduler -NextSyncCyclePolicyType Initial
 ```  
   
-## **Q. Synchronization Service Manager で Operations タブのみ表示されている (Connectors などが表示されない)。**  
-**A.** サインインしているユーザーが ADSyncBrowse / ADSyncOperator グループにのみ所属していることが原因となります。  
+  
+## **Q. 完全同期 (Start-ADSyncSyncCycle -PolicyType:Initial) の所要時間は？**  
+**A.** オブジェクト内容、同期ルール内容、サーバースペック、ネットワーク パフォーマンスに依存して正確な値を算出することは出来ません。  
+参考値となりますが、オンプレミス Active Directory で 2 万ユーザーではドメイン コントローラー <=> Azure AD Connect では約 30 MB , Azure AD Connect <=> Azure AD では約 240 MB の通信が生じていることが確認出来、30 分程度の時間を要しました。 (オブジェクト自体は必要最低限の情報となり、そのサイズ自体も所要時間に影響を及ぼすものとなります)  
+弊社過去事例からは、同期対象のオブジェクト数が 2 万程度の場合、完全同期が完了するまでに 1 ~ 3 時間ほどを要し、10 万オブジェクトほどの場合はおおよそ 4 ~ 9 時間を要したことを確認しています。   
+   
+## **Q. Synchronization Service Manager で Operations タブのみ表示されている (Connectors などが表示されない) 。**  
+**A.** サインインしているユーザーが ADSyncBrowse / ADSyncOperator グループにのみ所属していることが原因となります 。  
 Synchronization Rules Editor でも操作は制限され、読み取り権限 (Add ボタンは表示されますが、保存不可) のみとなります。  
 
 ![](./azureadconnect_faq/ssm_operations.jpg)
