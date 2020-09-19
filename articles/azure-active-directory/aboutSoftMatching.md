@@ -3,6 +3,10 @@ title: ソフトマッチによるAzure AD (Office 365) 上のユーザーをオ
 date: 2020-09-23
 tags:
   - Soft matching
+  - Azure AD
+  - AAD Connect
+  - UPN
+  - SMTP
 ---
 # ソフトマッチによるAzure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
 
@@ -132,5 +136,5 @@ ImmutableID が Azure AD 側のユーザーにすでに生成されているの�
 
 上記内容が少しでも皆様の参考となりますと幸いです。
 
-※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
+
 
