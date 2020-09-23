@@ -85,7 +85,7 @@ SMTP ソフトマッチは、mail 属性でも行うことが可能です。　
 4. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
 
 ### ・ UPN ソフトマッチ
-UPN ソフトマッチは、 proxyAddresses が一致しておらず、オンプレミス AD 側、Azure AD 側で同じUPN を持つユーザーがいる場合に有効です。
+UPN ソフトマッチは、 proxyAddresses が一致しておらず、オンプレミス AD 側、Azure AD 側で同じ UPN を持つユーザーがいる場合に有効です。
 
 1. オンプレミス AD 側のドメイン コントローラーで Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーの UPN が同じであることを確認する。
 
@@ -105,7 +105,7 @@ Azure AD 上のユーザーの proxyAddresses とオンプレミス AD 上のユ
 ![S7](./aboutSoftMatching/s7.png)
 
 ### パターン 2
-Azure AD 上のユーザーと同じ UPN の値をもつ、ユーザーがオンプレミス AD 上にいる場合 (オンプレミス AD 上のユーザーは proxyAddresses を持っていない)：
+Azure AD 上のユーザーと同じ UPN の値をもつ、ユーザーがオンプレミス AD 上にいる場合 (オンプレミス AD 上のユーザーは proxyAddresses を持っていない) ：
 
 Azure AD 上のユーザーの UPN とオンプレミス AD 上のユーザーの UPN でマッチングされる。
 
