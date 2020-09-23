@@ -23,11 +23,11 @@ Azure AD 上のユーザーをオンプレミス Active Drectory ユーザーと
 
 ハードマッチの例：
 
-![S1](./aboutSoftMatching/s1.png)
+![](./aboutSoftMatching/s1.png)
 
 ソフトマッチする前と後の例：
 
-![S2](./aboutSoftMatching/s2.png)
+![](./aboutSoftMatching/s2.png)
 
 ## マッチングを行うことでできることと注意点
 
@@ -54,21 +54,21 @@ Azure AD Connect では、同期処理を行う際、以下の流れでオンプ
 
 1. オンプレミス AD 側の Domain Controller で Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーのプロパティを開き、[Attribute Editor] にある [proxyAddresses] をダブルクリックする。
 
-![S3](./aboutSoftMatching/s3.png)
+![](./aboutSoftMatching/s3.png)
 
-2. 紐づけたい Azure AD 上のユーザーのメールアドレスと同じ値をプライマリ アドレスとして登録する。
-
-
-![S4](./aboutSoftMatching/s4.png)
-
-3. 同期対象の OU にユーザーを移動する。
+1. 紐づけたい Azure AD 上のユーザーのメールアドレスと同じ値をプライマリ アドレスとして登録する。
 
 
-4. Azure AD Connect で同期する。(start-adsyncsynccycle)
+![](./aboutSoftMatching/s4.png)
 
-![S5](./aboutSoftMatching/s5.png)
+1. 同期対象の OU にユーザーを移動する。
 
-5. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
+
+2. Azure AD Connect で同期する。(start-adsyncsynccycle)
+
+![](./aboutSoftMatching/s5.png)
+
+1. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
 
 #### ・ mail ソフトマッチ
 
@@ -76,13 +76,13 @@ SMTP ソフトマッチは、mail 属性でも行うことが可能です。　
 
 1. オンプレミス AD 側のドメイン コントローラーで Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーの [E-mail] に、Azure AD 上のユーザーのメールアドレスを設定する。
 
-![S6](./aboutSoftMatching/s6.png)
+![](./aboutSoftMatching/s6.png)
 
-2. 同期対象の OU にユーザーを移動する。
+1. 同期対象の OU にユーザーを移動する。
 
-3. Azure AD Connect で同期する。(start-adsyncsynccycle)
+2. Azure AD Connect で同期する。(start-adsyncsynccycle)
 
-4. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
+3. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
 
 ### ・ UPN ソフトマッチ
 UPN ソフトマッチは、 proxyAddresses が一致しておらず、オンプレミス AD 側、Azure AD 側で同じ UPN を持つユーザーがいる場合に有効です。
@@ -102,7 +102,7 @@ Azure AD 上のユーザーの proxyAddresses と同じ UPN、プロキシ ア�
 
 Azure AD 上のユーザーの proxyAddresses とオンプレミス AD 上のユーザーの proxyAddresses でマッチングされる。
 
-![S7](./aboutSoftMatching/s7.png)
+![](./aboutSoftMatching/s7.png)
 
 ### パターン 2
 Azure AD 上のユーザーと同じ UPN の値をもつ、ユーザーがオンプレミス AD 上にいる場合 (オンプレミス AD 上のユーザーは proxyAddresses を持っていない) ：
@@ -110,7 +110,7 @@ Azure AD 上のユーザーと同じ UPN の値をもつ、ユーザーがオン
 Azure AD 上のユーザーの UPN とオンプレミス AD 上のユーザーの UPN でマッチングされる。
 
 
-![S8](./aboutSoftMatching/s8.png)
+![](./aboutSoftMatching/s8.png)
 
 ### パターン 3
 UPN と proxyAddresses の値が同じ Azure AD 上のユーザーと、そのユーザーと同じ proxyAddresses の値を持つが UPN の値は異なるオンプレミス AD 上にいるユーザーをソフトマッチする場合：
@@ -118,7 +118,7 @@ UPN と proxyAddresses の値が同じ Azure AD 上のユーザーと、その�
 Azure AD 上のユーザーの proxyAddresses とオンプレミス AD 上のユーザーの proxyAddresses でマッチングされ、Azure AD 上の UPN の値がオンプレミス AD 上の UPN の値に変化する。
 
 
-![S9](./aboutSoftMatching/s9.png)
+![](./aboutSoftMatching/s9.png)
 
 ### パターン 4
 UPN と proxyAddresses の値が異なる Azure AD 上のユーザーと、そのユーザーの proxyAddresses と同じ UPN と proxyAddresses の値を持つオンプレミス AD 上にいるユーザーをソフトマッチする場合：
@@ -127,7 +127,7 @@ Azure AD 上のユーザーの proxyAddresses とオンプレミス AD 上のユ
 
 
 
-![S10](./aboutSoftMatching/s10.png)
+![](./aboutSoftMatching/s10.png)
 
 ### パターン 5
 Azure AD 上のユーザーの proxyAddresses と同じ UPN、プロキシ アドレスを持つユーザーがオンプレミス AD 上にいるが、Azure AD 上のユーザーは一度すでに別のユーザーと同期済みで ImmutableID が生成されている場合：
@@ -135,7 +135,7 @@ Azure AD 上のユーザーの proxyAddresses と同じ UPN、プロキシ ア�
 ImmutableID が Azure AD 側のユーザーにすでに生成されているのでソフトマッチはされない。マッチングしたい場合は、ハードマッチのみが有効であるため、オンプレミス AD 側のユーザーの sourceAnchor の値を Azure AD 側のユーザーの ImmutableID の値に揃える。
 
 
-![S11](./aboutSoftMatching/s11.png)
+![](./aboutSoftMatching/s11.png)
 
 ## 補足
 ### グループオブジェクト
