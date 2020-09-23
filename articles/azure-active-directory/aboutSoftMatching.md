@@ -51,39 +51,49 @@ Azure AD Connect では、同期処理を行う際、以下の流れでオンプ
 ## ユーザーをソフトマッチする手順
 
 ### ・ SMTP ソフトマッチ
-	1. オンプレミス AD 側の Domain Controller で Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーのプロパティを開き、[Attribute Editor] にある [proxyAddresses] をダブルクリックする。
+
+1. オンプレミス AD 側の Domain Controller で Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーのプロパティを開き、[Attribute Editor] にある [proxyAddresses] をダブルクリックする。
 
 ![S3](./aboutSoftMatching/s3.png)
 
-	2. 紐づけたい Azure AD 上のユーザーのメールアドレスと同じ値をプライマリ アドレスとして登録する。
+2. 紐づけたい Azure AD 上のユーザーのメールアドレスと同じ値をプライマリ アドレスとして登録する。
+
 
 ![S4](./aboutSoftMatching/s4.png)
 
-	3. 同期対象の OU にユーザーを移動する。
-	4. Azure AD Connect で同期する。(start-adsyncsynccycle)
+3. 同期対象の OU にユーザーを移動する。
+
+
+4. Azure AD Connect で同期する。(start-adsyncsynccycle)
 
 ![S5](./aboutSoftMatching/s5.png)
 
-	5. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
+5. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
 
 #### ・ mail ソフトマッチ
+
 SMTP ソフトマッチは、mail 属性でも行うことが可能です。　
 
-	1. オンプレミス AD 側のドメイン コントローラーで Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーの [E-mail] に、Azure AD 上のユーザーのメールアドレスを設定する。
+1. オンプレミス AD 側のドメイン コントローラーで Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーの [E-mail] に、Azure AD 上のユーザーのメールアドレスを設定する。
 
 ![S6](./aboutSoftMatching/s6.png)
 
-	2. 同期対象の OU にユーザーを移動する。
-	3. Azure AD Connect で同期する。(start-adsyncsynccycle)
-	4. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
+2. 同期対象の OU にユーザーを移動する。
+
+3. Azure AD Connect で同期する。(start-adsyncsynccycle)
+
+4. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
 
 ### ・ UPN ソフトマッチ
 UPN ソフトマッチは、 proxyAddresses が一致しておらず、オンプレミス AD 側、Azure AD 側で同じUPN を持つユーザーがいる場合に有効です。
 
-	1. オンプレミス AD 側のドメイン コントローラーで Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーの UPN が同じであることを確認する。
-	2. 紐づけるユーザーを同期対象の OU に移動する。
-	3. Azure AD Connect で同期する。(start-adsyncsynccycle)
-	4. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
+1. オンプレミス AD 側のドメイン コントローラーで Azure AD 上のユーザーと紐づけたいオンプレミス AD のユーザーの UPN が同じであることを確認する。
+
+2. 紐づけるユーザーを同期対象の OU に移動する。
+
+3. Azure AD Connect で同期する。(start-adsyncsynccycle)
+
+4. Azure AD で、変更箇所が確認できる。ソフトマッチされた場合、[同期されたディレクトリ] が "はい" になり、ユーザーのプロファイル画面にある [ソース] が "Windows Server AD" になる。
 
 ## シナリオ例
 
