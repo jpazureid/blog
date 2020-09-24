@@ -3,7 +3,6 @@ title: ソフトマッチによるAzure AD (Office 365) 上のユーザーをオ
 date: 2020-09-23
 tags:
   - Soft matching
-  - Azure AD
   - AAD Connect
   - UPN
   - SMTP
