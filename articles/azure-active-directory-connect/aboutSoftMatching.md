@@ -18,7 +18,7 @@ Azure AD 上のユーザーをオンプレミス Active Drectory ユーザーと
 ## ソフトマッチとは ?
 
 ソフトマッチとは、Azure AD 上のユーザーとオンプレミス AD 上のユーザーを proxyAddresses または UserPrincipalName (UPN) で紐づけて、同期させる手法のことをいいます。基本的にはユーザーを紐づける必要がある場合には、ソフトマッチを利用することを推奨します。
-ソフトマッチができない場合にはハードマッチと呼ばれる方法で直接的に同期時にオブジェクトの一意性を確保するソースアンカーと呼ばれる ID 情報 (ImmutableID) を紐づけます。ハードマッチによる同期をおこなう手順については[ハードマッチによる同期ユーザーの切り替え方法](https://jpazureid.github.io/blog/azure-active-directory-connect/aadc_hardmatch/)をご参照ください。
+ソフトマッチができない場合にはハードマッチと呼ばれる方法で直接的に同期時にオブジェクトの一意性を確保するソースアンカーと呼ばれる ID 情報 (ImmutableID) を紐づけます。ハードマッチによる同期をおこなう手順については [ハードマッチによる Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](../azure-active-directory-connect/upn-hard-match.md) をご参照ください。
 
 ハードマッチの例：
 
@@ -144,6 +144,5 @@ ImmutableID が Azure AD 側のユーザーにすでに生成されているの�
 オンプレミスの AD 上のユーザーと、管理ロールが割り当てられている Azure AD 上のユーザーをソフトマッチさせることはできません。そのため、ソフトマッチを行うためには、管理者ロールを一時的に外し、ソフトマッチを行ってから管理者ロールを割り当てなおします。詳しくは、[既存の管理者ロールの競合](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/tshoot-connect-sync-errors#existing-admin-role-conflict)をご覧ください。
 
 上記内容が少しでも皆様の参考となりますと幸いです。
-
 
 
