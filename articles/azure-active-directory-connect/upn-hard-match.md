@@ -1,5 +1,5 @@
 ---
-title: Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
+title: ハードマッチによる Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
 date: 2017-10-05
 tags:
   - AAD Connect
@@ -10,7 +10,10 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/05/135/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
-# Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
+> 2020/09/26 更新
+> [ソフトマッチによるAzure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](../azure-active-directory-connect/aboutSoftMatching.md) のブログの公開に併せて、タイトルに "ハードマッチ" の記載を追記しました。
+
+# ハードマッチによる Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
 
 こんにちは、Azure & Identity サポート チームです。
 
