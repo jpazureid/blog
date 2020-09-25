@@ -97,7 +97,7 @@ UPN ソフトマッチは、 proxyAddresses が一致しておらず、オンプ
 ## シナリオ例
 
 ### パターン 1
-Azure AD 上のユーザーの proxyAddresses と同じ UPN、プロキシ アドレスを持つユーザーがオンプレミス AD 上にいる場合：
+**Azure AD 上のユーザーの proxyAddresses と同じ UPN、プロキシ アドレスを持つユーザーがオンプレミス AD 上にいる場合：**
 
 Azure AD 上のユーザーの proxyAddresses とオンプレミス AD 上のユーザーの proxyAddresses でマッチングされる。
 
@@ -144,5 +144,4 @@ ImmutableID が Azure AD 側のユーザーにすでに生成されているの�
 オンプレミスの AD 上のユーザーと、管理ロールが割り当てられている Azure AD 上のユーザーをソフトマッチさせることはできません。そのため、ソフトマッチを行うためには、管理者ロールを一時的に外し、ソフトマッチを行ってから管理者ロールを割り当てなおします。詳しくは、[既存の管理者ロールの競合](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/tshoot-connect-sync-errors#existing-admin-role-conflict)をご覧ください。
 
 上記内容が少しでも皆様の参考となりますと幸いです。
-
 
