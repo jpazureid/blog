@@ -123,7 +123,7 @@ azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
 
 クライアント端末の以下の 2 つのレジストリー値に Azure AD テナントの情報が設定しているかどうかを確認します。
 
-- レジストリー キー : KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD
+- レジストリー キー : HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD
   - 値 : TenantId
   - 種類 : REG_SZ
   - 値 : TenantName
