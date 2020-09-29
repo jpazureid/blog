@@ -9,7 +9,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの谷です。  
 Azure AD Connect Sync Configuration Documenter 使用方法をご案内します。  
-[Readme](https://github.com/microsoft/AADConnectConfigDocumenter/blob/master/README.md) の内容を和訳、手順となります。
+[Readme](https://github.com/microsoft/AADConnectConfigDocumenter/blob/master/README.md) に記載の手順となります。
 Azure AD Connect サーバーの移行やアップグレードに際し、設定変更内容や差分内容を確認する場合に参考にしてください。  
   
   
