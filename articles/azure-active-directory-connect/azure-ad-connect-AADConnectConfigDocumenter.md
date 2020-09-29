@@ -41,12 +41,16 @@ Get-ADSyncServerConfiguration -Path "C:\temp\AADC001"
 7. 下記箇所を手順 3. で作成したフォルダー名に合わせて、保存します。  
    AzureADConnectSyncDocumenterCmd.exe "Contoso\Pilot" "Contoso\Production"  
    例) AzureADConnectSyncDocumenterCmd.exe "AADCServer001" "AADCServer002"  
-8. 下記コマンドを実行します。
+8. AzureADConnectSyncDocumenter-contoso.cmd のファイル名を AzureADConnectSyncDocumenter.cmd に変更します。  
+
+9. 下記コマンドを実行します。
+   
 ```PowerShell 
-.\AzureADConnectSyncDocumenter-Contoso.cmd
+.\AzureADConnectSyncDocumenter.cmd
 ```
-9. コマンド実行後に AzureADConnectSyncDocumenter\Report 配下に HTML ファイルが生成されます。
-10. レポート内の Create / Update / Delete 項目で差分内容を確認します。  
+
+10. コマンド実行後に AzureADConnectSyncDocumenter\Report 配下に HTML ファイルが生成されます。
+11. レポート内の Create / Update / Delete 項目で差分内容を確認します。  
     下記の "Only Show Changes" チェックを有効にすることで差分のみ表示可能となります。  
 ![](./azure-ad-connect-AADConnectConfigDocumenter/AzureADConnectSyncDocumenter01.jpg)
   
