@@ -9,7 +9,8 @@ tags:
 
 こんにちは、Azure Identity サポート チームの谷です。  
 Azure AD Connect Sync Configuration Documenter 使用方法をご案内します。  
-Azure AD Connect サーバーの移行やアップグレードに際し、設定変更内容や差分内容を確認する場合に本手順の方法でご確認ください。  
+[Readme](https://github.com/microsoft/AADConnectConfigDocumenter/blob/master/README.md) の内容を和訳、手順となります。
+Azure AD Connect サーバーの移行やアップグレードに際し、設定変更内容や差分内容を確認する場合に参考にしてください。  
   
   
 ## Azure AD Connect Sync Configuration Documenter とは
@@ -58,6 +59,6 @@ Get-ADSyncServerConfiguration -Path "C:\temp\AADC001"
 ## 差分内容につきまして
 
 Azure AD Connect のアップグレードでは既定の設定項目などが増えており、差分が生じる可能性があります。  
-各バージョンでの更新内容は [こちら](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history) をご参照ください。
+各バージョンでの更新内容は [こちら](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history) をご参照ください。  
 
 
