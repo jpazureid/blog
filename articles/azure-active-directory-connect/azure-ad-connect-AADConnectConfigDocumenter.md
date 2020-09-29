@@ -45,11 +45,12 @@ Get-ADSyncServerConfiguration -Path "C:\temp\AADC001"
 ```PowerShell 
 .\AzureADConnectSyncDocumenter-Contoso.cmd
 ```
-10. コマンド実行後に AzureADConnectSyncDocumenter\Report 配下に HTML ファイルが生成されます。
-11. レポート内の Create / Update / Delete 項目で差分内容を確認します。  
+9. コマンド実行後に AzureADConnectSyncDocumenter\Report 配下に HTML ファイルが生成されます。
+10. レポート内の Create / Update / Delete 項目で差分内容を確認します。  
     下記の "Only Show Changes" チェックを有効にすることで差分のみ表示可能となります。  
 ![](./azure-ad-connect-AADConnectConfigDocumenter/AzureADConnectSyncDocumenter01.jpg)
-
+  
+  
 ## 差分内容につきまして
 
 Azure AD Connect のアップグレードでは既定の設定項目などが増えており、差分が生じる可能性があります。  
