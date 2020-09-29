@@ -39,7 +39,7 @@ tags:
   
 1. まず本ページ上部下記より設定に必要なファイルを ZIP ファイルでダウンロードします。
 ![image.png](./azure-ad-get-lastSignInDateTime/1.png)
-2. 作業用のディレクトリをデバイス上の任意のディレクトリに作成します。*今回の例は C:\SignInReport 
+2. 作業用のディレクトリをデバイス上の任意のディレクトリに作成します。* 今回の例は C:\SignInReport 
 3. ダウンロードしたファイルを展開し、各ファイルを 2. で作成したディレクトリに保存します。
 4. PowerShell で CreateAndExportCert.ps1 スクリプト ファイルを実行します。
 ```PowerShell
@@ -67,7 +67,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporti
 3. [アプリケーションの登録] 画面に下記のように設定し、"登録" をクリックします。
 設定項目 :  
  名前 : Reporting API application
- このアプリケーションを使用したりこの API にアクセスしたりできるのはだれですか? : この組織ディレクトリのみに含まれるアカウント (Contoso のみ - シングル テナント)
+ このアプリケーションを使用したりこの API にアクセスしたりできるのはだれですか ? : この組織ディレクトリのみに含まれるアカウント (Contoso のみ - シングル テナント)
  リダイレクト URI (省略可能) : https://localhost
 ![4.png](./azure-ad-get-lastSignInDateTime/4.png)
 4. 続けて、登録したアプリケーションにアクセス許可を付与します。
@@ -85,7 +85,7 @@ Microsoft Graph のアクセス許可を追加します。
 ![10.png](./azure-ad-get-lastSignInDateTime/10.png)
 ![11.png](./azure-ad-get-lastSignInDateTime/11.png)
 
-7. 下記のボタン[ {ユーザー名} に管理者の同意を付与します] をクリックし、管理者の同意の付与します。
+7. 下記のボタン [{ユーザー名} に管理者の同意を付与します] をクリックし、管理者の同意の付与します。
 ![12.png](./azure-ad-get-lastSignInDateTime/12.png)
 ![13.png](./azure-ad-get-lastSignInDateTime/13.png)
 ![14.png](./azure-ad-get-lastSignInDateTime/14.png)
@@ -94,7 +94,7 @@ Microsoft Graph のアクセス許可を追加します。
  [証明書とシークレット] を選択します。
 ![15.png](./azure-ad-get-lastSignInDateTime/15.png)
 [証明書のアップロード] をクリックします。
-![16.png](./azure-ad-get-lastSignInDateTime/16.png)
+![16.png](./azure-ad-get-las  tSignInDateTime/16.png)
 手順 A. で準備した証明書を選択します。
 ![17.png](./azure-ad-get-lastSignInDateTime/17.png)
 追加が完了すると有効期限、証明書の拇印が表示されます。
