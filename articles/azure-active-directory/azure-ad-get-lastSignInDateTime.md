@@ -88,7 +88,7 @@ Microsoft Graph のアクセス許可を追加します。
 ![10.png](./azure-ad-get-lastSignInDateTime/10.png)
 ![11.png](./azure-ad-get-lastSignInDateTime/11.png)
   
-7. 下記のボタン " {ユーザー名} に管理者の同意を付与します" をクリックし、管理者の同意の付与します。
+7. 下記のボタン " ～ に管理者の同意を付与します" をクリックし、管理者の同意の付与します。
 ![12.png](./azure-ad-get-lastSignInDateTime/12.png)
 ![13.png](./azure-ad-get-lastSignInDateTime/13.png)
 ![14.png](./azure-ad-get-lastSignInDateTime/14.png)
