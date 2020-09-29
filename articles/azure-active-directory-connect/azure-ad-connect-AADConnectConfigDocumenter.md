@@ -19,7 +19,7 @@ Azure AD Connect の設定内容や同期ルールを比較するためのツー
   
 ## 使用方法
 1. 比較情報を確認するサーバーにて [Azure AD Connect Configuration Documenter](https://github.com/Microsoft/AADConnectConfigDocumenter/releases) をダウンロードします。
- * ページ内の AzureADConnectSyncDocumenter.zip をクリックしてダウンロードします。  
+   ページ内の AzureADConnectSyncDocumenter.zip をクリックしてダウンロードします。  
 2. ダウンロードした AzureADConnectSyncDocumenter.zip を任意のディレクトリに展開します。
 3. 展開した AzureADConnectSyncDocumenter フォルダー配下の Data フォルダーに各サーバー用のフォルダーを作成します。
 　 例) C:\temp\AzureADConnectSyncDocumenter\Data\AADCServer001 , C:\temp\AzureADConnectSyncDocumenter\Data\AADCServer002
