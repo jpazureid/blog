@@ -84,7 +84,6 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-reporti
  - Microsoft Graph すべての監査ログ データの読み取り  
   
 Microsoft Graph のアクセス許可を追加します。  
-![9.png](./azure-ad-get-lastSignInDateTime/9.png)
 ![10.png](./azure-ad-get-lastSignInDateTime/10.png)
 ![11.png](./azure-ad-get-lastSignInDateTime/11.png)
   
