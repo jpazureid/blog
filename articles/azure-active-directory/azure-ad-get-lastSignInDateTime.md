@@ -38,7 +38,7 @@ tags:
   
 ## A. キーまたは証明書の準備 (デバイス側で実施) *今回は証明書を利用する手順です
   
-1. まず設定に必要なファイルを[ダウンロード](./azure-ad-get-lastSignInDateTime/\get-lastSignInDateTime.zip)します。
+1. まず設定に必要なファイルを[ダウンロード](./azure-ad-get-lastSignInDateTime/get-lastSignInDateTime.zip)します。
   
 2. 作業用のディレクトリをデバイス上の任意のディレクトリに作成します。* 今回の例は C:\SignInReport 
 3. ダウンロードしたファイルを展開し、各ファイルを 2. で作成したディレクトリに保存します。
