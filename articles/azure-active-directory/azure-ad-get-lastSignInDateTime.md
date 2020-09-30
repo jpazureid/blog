@@ -1,6 +1,6 @@
 ---
 title: "最終サインイン日時を一括で取得する方法"
-date: 2020-09-18 00:00
+date: 2020-09-30 00:00
 tags:
   - Azure AD
   - signin log
