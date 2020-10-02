@@ -9,7 +9,11 @@ tags:
 
 いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。
 
-今回は 9/28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は [状態の履歴および根本原因分析 (RCA)](https://azure.microsoft.com/ja-jp/status/history/) を確認ください。日本語版の抄訳の PDF については、[こちら](./20200928-rca-azure-ad/SM79-F88_JP.pdf)からダウンロード頂けます。
+今回は 9/28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は [状態の履歴および根本原因分析 (RCA)](https://azure.microsoft.com/ja-jp/status/history/) を確認ください。
+
+日本語版の抄訳の PDF については、以下のリンクよりダウンロード頂けます。
+
+[SM79-F88_JP.pdf](./20200928-rca-azure-ad/SM79-F88_JP.pdf)
 
 この障害では Azure / Office 365 ポータルへのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。改めて、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。
 
