@@ -1,6 +1,6 @@
 ---
 title: MFA 認証方法を、変更 / 再登録 / 追加 したい！
-date: 2020-10-02
+date: 2020-10-09 12:00
 tags:
   - Azure AD
   - MFA
