@@ -58,7 +58,7 @@ SSPR と連動させれば、ユーザーがパスワードを忘れてしまっ
 
 まず、ユーザーが Azure AD のアカウントでパスワード変更 (SSPR)  要求をおこないますと、設定したパスワードが暗号化され、テナント固有の Service Bus へ送られます。
 Service Bus に保留中のリセット要求が届くと、パスワード リセット エンドポイントがオープンし、Azure AD Connect サーバーの Password Reset Service が処理を開始 (PasswordResetRequestStart) し Azure AD 側から暗号化されたパスワードを取得します。
-これはオンプレミス側からのクラウド側への Outbound (HTTPS / 443) の通信でおこなわれますので、クラウド側からオンプレミス側への Inbound の通信（ポート）を開放する必要はありません。
+これはオンプレミス側からクラウド側への Outbound (HTTPS / 443) の通信でおこなわれますので、クラウド側からオンプレミス側への Inbound の通信（ポート）を開放する必要はありません。
 
 Password Reset Service がパスワードを取得しますと、秘密鍵で複合化し、Azure AD Connect はリセット要求のあったユーザーをデータべ―ス内から探し出し、AD Sync サービスが適切な AD DS に対してパスワード リセットを要求します。この時、実際のパスワードリセットは Azure AD Connect で設定したオンプレミス AD 上の AD DS コネクタ アカウント (既定では MSOL_xxxxx) がおこないます。
 
