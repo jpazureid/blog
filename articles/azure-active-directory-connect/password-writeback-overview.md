@@ -110,7 +110,7 @@ User successfully reset password
 
 ### ● Azure AD Connect サーバーのアプリケーション イベントログ
 
-***Directory Synchronization***
+**Directory Synchronization**
 Event ID: 657
 Password Change Result
 
