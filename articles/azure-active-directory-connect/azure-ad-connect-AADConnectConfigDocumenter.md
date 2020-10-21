@@ -38,7 +38,7 @@ Get-ADSyncServerConfiguration -Path "C:\temp\AADC001"
      GlobalSettings  
      SynchronizationRules  
 
-6. 手順 2. で展開したフォルダー内の AzureADConnectSyncDocumenterCmd.exe をテキスト エディターで開きます。
+6. 手順 2. で展開したフォルダー内の AzureADConnectSyncDocumenterCmd.exe.cmd をテキスト エディターで開きます。
 7. 下記箇所を手順 3. で作成したフォルダー名に合わせて、保存します。  
    AzureADConnectSyncDocumenterCmd.exe "Contoso\Pilot" "Contoso\Production"  
    例) AzureADConnectSyncDocumenterCmd.exe "AADCServer001" "AADCServer002"  
