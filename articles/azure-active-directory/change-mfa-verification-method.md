@@ -88,11 +88,19 @@ Azure Portal 上で、管理者はユーザーの MFA 認証のための電話�
 
 [Azure ポータル](portal.azure.com) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
 
+![](./change-mfa-verification-method/figure3.png)
+
 [ + 認証方法の追加] から、[電話番号] を選択し、ユーザーのモバイル デバイスの電話番号を追加して下さい。
 
 ※[メール] は、MFA ではなく セルフサービス パスワード リセットの連絡先追加のための項目です。ここでは選択しないでください。
 
+![](./change-mfa-verification-method/figure4.png)
+
+
 次回からは、指定した電話番号に MFA の要求が届くようになります。
+
+※ Azure Portal のプレビュー版の URL はこちらです。 : https://preview.portal.azure.com/
+
 
 ## 例外 : テナント管理者の MFA 認証方法をリセットする必要がある場合
 MFA 認証方法の再登録には、テナントの管理者による、MFA 認証方法のリセットが必要です。
@@ -149,5 +157,6 @@ Azure Portal にログインできない場合は、https://aka.ms/AzurePortalHe
 
 ### サービスの URL
 - Azure ポータル : https://portal.azure.com/
+- Azure ポータル (プレビュー版) : https://preview.portal.azure.com/
 - Azure MFA Portal (管理者専用) : https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx
 - MFA 認証情報確認 / 登録ページ : https://aka.ms/mfasetup
