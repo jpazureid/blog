@@ -95,15 +95,12 @@ Azure Portal 上で、管理者はユーザーの MFA 認証のための電話�
 
 ![](./change-mfa-verification-method/figure3.png)
 
-※[メール] は、MFA ではなく セルフサービス パスワード リセットの連絡先追加のための項目です。ここでは選択しないでください。
+※ [方法の選択] で選択可能な [メール] は、MFA ではなく セルフサービス パスワード リセットの連絡先追加のための項目です。ここでは選択しないでください。
 
 ![](./change-mfa-verification-method/figure4.png)
 
 
 次回からは、指定した電話番号に MFA の要求が届くようになります。
-
-※ Azure Portal のプレビュー版の URL はこちらです。 : https://preview.portal.azure.com/
-
 
 ## 例外 : テナント管理者の MFA 認証方法をリセットする必要がある場合
 MFA 認証方法の再登録には、テナントの管理者による、MFA 認証方法のリセットが必要です。
