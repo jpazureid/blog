@@ -19,7 +19,8 @@ Azure AD を利用してアプリ開発を検討している方や、Azure AD �
 OAuth は「リソース」へのアクセス権を安全に委譲し、API を保護するための「トークン」を発行する仕組みのデファクトスタンダードです。Microsoft では Exchange や SharePoint といった「リソース」に対するアクセスするための「API」を OAuth の仕組みを使って保護しており、ユーザーは必要な権限を必要に応じて「クライアント」であるアプリに払い出すことが可能です。これらの権限管理を行っているのが Azure AD です。
 
 ここでは OAuth の基礎については説明を省きますが、Azure AD にアプリを登録することで、Microsoft が管理する Azure AD で保護された「リソース」へのアクセスを行う「クライアント」を作成したり、自社で開発した API を「リソース」として登録し Azure AD で保護したりすることができます。リソースへのアクセス権は Azure AD では API のアクセス許可とよばれます。
-API のアクセス許可は「トークン」という形で「クライアント」であるアプリに受け渡されます。例えばユーザーが、ユーザー情報を取得できる API のアクセス許可を、クライアントであるアプリに許可すれば、アプリがユーザーの情報を取得することが可能になります。
+API のアクセス許可は「トークン」という形で「クライアント」であるアプリに受け渡されます。例えばユーザーが、ユーザー情報を取得できる API のアクセス許可を、クライアントであるアプリに許可することが可能です。アクセス許可を付与されたアプリケーションは、アクセス トークンという
+トークンを取得し、ユーザーの情報を取得する API を呼び出すことが可能になります。
 
 ![](./oauth2-application-resource-and-api-permissions/oauth-flow.png)
 
@@ -51,7 +52,7 @@ Azure Active Directory > [アプリの登録](https://portal.azure.com/#blade/Mi
 
 ![](./oauth2-application-resource-and-api-permissions/02.png)
 
-設定はデフォルトのまま作成します。そのままクイック スタートをクリックし、シングルページ アプリケーション (SPA) を選択します。
+設定はデフォルトのまま作成します。そのまま`クイック スタート`をクリックし、`シングルページ アプリケーション (SPA)` を選択します。
 
 ![](./oauth2-application-resource-and-api-permissions/03.png)
 
@@ -73,7 +74,7 @@ PowerShell を起動し、コードサンプルを展開したフォルダーに
 
 ![](./oauth2-application-resource-and-api-permissions/08.png)
 
-クイック スタートにある通り npm install; npm start コマンドを実行します。
+クイック スタートにある通り npm install および npm start コマンドを実行します。
 
 ```powershell
 npm install
@@ -88,7 +89,7 @@ npm start
 
 ![](./oauth2-application-resource-and-api-permissions/09.png)
 
-承諾をクリックするとこで、サインインが完了します。この際、Azure AD からアプリに対し ID トークンとアクセス トークンが発行されています。
+`承諾` をクリックするとこで、サインインが完了します。この際、Azure AD からアプリに対し ID トークンとアクセス トークンが発行されています。
 
 ![](./oauth2-application-resource-and-api-permissions/10.png)
 
@@ -100,7 +101,7 @@ npm start
 ![](./oauth2-application-resource-and-api-permissions/14.png)
 
 次に `Read Mails` ボタンをクリックしてみましょう。
-すると、新たに Read your mail の API のアクセス許可を求める同意画面が表示され、同意をクリックすることでメールを読み込むためのトークンが取得されます。
+すると、新たに `Read your mail` の API のアクセス許可を求める同意画面が表示され、`同意` をクリックすることでメールを読み込むためのトークンが取得されます。
 
 ![](./oauth2-application-resource-and-api-permissions/12.png)
 
@@ -109,12 +110,12 @@ npm start
 ## 何がおこったのか
 
 これまでの操作をまとめてみましょう。
-今回は新しいアプリケーションを Azure AD に登録し、ユーザー プロファイルの表示ができる API のアクセス許可と、メールの読み込みの API のアクセス許可を要求しました。
+今回、新しいアプリケーションを Azure AD に登録し、ユーザー プロファイルの表示ができる API のアクセス許可と、メールの読み込みの API のアクセス許可を要求しました。
 
 ![](./oauth2-application-resource-and-api-permissions/oauth-flow-2.png)
 
-要求に対しユーザーの同意画面が現れ、同意を行うことでアプリがトークンを取得できるようになりました。
-トークンを取得したアプリは、アクセス トークンを使って Microsoft Graph API を呼び出し、ユーザー情報やメールの読み込みを行いました。
+要求に対しユーザーの同意画面が現れ、同意を行うことでアプリがアクセス トークンを取得できるようになりました。
+アプリは取得したアクセス トークンを使って Microsoft Graph API を呼び出し、ユーザー情報やメールの読み込みを行いました。
 
 これらの裏でどのようなことが起こっていたのでしょうか。より詳細に見てみましょう。
 
@@ -183,11 +184,12 @@ Install-Module Microsoft.Graph
 Select-MgProfile -Name "v1.0"
 ```
 
-OAuth の権限を取得するため、Directory.Read.All の権限が必要ですので、あらかじめ指定しておきます。この後の Connect-Graph 実行時にはテナントのグローバル管理者でのサインインが必要です。
+OAuth の権限を取得するため、`Directory.Read.All` の権限が必要ですので、あらかじめ指定しておきます。この後の Connect-Graph 実行時にはテナントのグローバル管理者でのサインインが必要です。
 
 ```powershell
 Connect-Graph -Scopes Directory.Read.All
-# To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code HMCYSET2L to authenticate. //URL にアクセスし、code を入力しグローバル管理者権限でサインインと同意を完了させます。
+# To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code HMCYSET2L to authenticate. 
+# 注: URL にアクセスし、code を入力しグローバル管理者権限でサインインと同意を完了させます。
 
 Get-MgServicePrincipal |Select-Object AppDisplayName, Id, AppId
 
@@ -213,20 +215,18 @@ Get-MgServicePrincipal |Select-Object AppDisplayName, Id, AppId
 # IAM Supportability                      e2619bb6-17d5-47e4-93e5-4b8fd5a836dd a57aca87-cbc0-4f3c-8b9e-dc095fdc8978
 # AzureSupportCenter                      e883ba61-437b-4b80-bee2-f3106fcb9221 37182072-3c9c-4f6a-a4b3-b3f91cacffce
 # Azure Portal                            f131b178-6dda-4f79-9247-cc744d946491 c44b4083-3bb0-49c1-b47d-974e53cbdf3c
-
 ```
 
 このテナントはテスト用に作成したテナントなので、これだけしか出力されませんが、実際のテナントでは Microsoft が管理しているアプリや、サードパーティー製のアプリ、自社で開発しているアプリなど、大量に出力されると思います。
 これらの多くのアプリケーションは Azure ポータルの [エンタープライズ アプリケーション](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) にも表示されていますが、Microsoft が管理されている一部のサービス プリンシパルはポータルに表示されないものもあります。
 
-今回作成したアプリは `MS Graph Client Sample` ですので、取得しておきます。
+今回作成したアプリは `MS Graph Client Sample` ですので、当該のサービス プリンシパル取得しておきます。
 
 ```powershell
 $myAppSp = Get-MgServicePrincipal -Filter "displayName eq 'MS Graph Client Sample'"
 ```
 
 次に、先ほど同意を行った API のアクセス許可を取得します。API のアクセス許可は [OAuth2Permissions](https://docs.microsoft.com/ja-jp/graph/api/serviceprincipal-list-oauth2permissiongrants?view=graph-rest-1.0&tabs=http) として保存されているため、以下のコマンドで取得可能です。
-クライアントとして、先ほど作成したサンプルアプリに対して許可された API の権限を確認したいため、Filter オプションで対象のクライアントの権限のみを検索しています。
 
 ```powershell
 $oAuth2Permissions = Get-MgServicePrincipalOauth2PermissionGrant -ServicePrincipalId $myAppSp.Id
@@ -282,7 +282,6 @@ Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16 
 
 実は Azure AD の "サービスプリンシパル" は、OAuth の文脈では "クライアント" を表すこともあれば、"リソース" を表すこともあります。(あるいはその両方を表すこともあります)
 そして ResourceId に表示されている通り、Microsoft Graph はリソースとしてのサービス プリンシパルである、ということです。
-
 
 
 それでは早速 Microsoft Graph API のリソースを表す、"Microsoft Graph" の "サービスプリンシパル" の中身を見てみましょう。
@@ -357,7 +356,7 @@ $msGraph | Format-List *
 
 設定値がいくつか表示されますね。たとえば `PublisherName` は `Microsoft Services` で、`AppOwnerOrganizationId` が `f8cdef31-a31e-4b4a-93e4-5f571e91255a` であるので、Microsoft が管理しているサービス プリンシパルであると判別できます。
 
-ここで今回注目すべきは、です。Oauth2PermissionScopes です。
+ここで今回注目すべきは **Oauth2PermissionScopes** です。
 少し中身を確認してみましょう。
 
 ```powershell
@@ -377,8 +376,8 @@ $msGraph.Oauth2PermissionScopes | Select-Object Value, UserConsentDescription -F
 # ChatMessage.Read                  Allows an app to read one-to-one or group chat messages in Microsoft Teams, on you...
 ```
 
-そうです、Microsoft Graph API の scope 一覧は、この Oauth2PermissionScopes に定義されています。
-`User.Read` 権限は、ユーザーをアプリにサインインさせ、プロファイルを表示させる権限と定義されています。
+そうです、もうお分かりですね。Microsoft Graph API の scope 一覧は、この Oauth2PermissionScopes に定義されています。
+ちなみに `User.Read` 権限は、ユーザーをアプリにサインインさせ、プロファイルを表示させる権限と定義されています。
 
 ```powershell
 $ $msGraph.Oauth2PermissionScopes | ?{ $_.Value -eq "User.Read"}  | Select-Object Value, UserConsentDescription
@@ -401,7 +400,7 @@ Authorization ヘッダーに付与されたアクセス トークンの値を�
 
 今回アプリ内で呼び出した、[ユーザーの取得 API](https://docs.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http) は、最低限 `User.Read` のユーザー委任の権限が必要ですので、`User.Read` のスコープが含まれたアクセス トークンを提示すれば API にアクセスができるようになります。
 
-## ユーザー委任の API のアクセス許可のまとめ
+### ユーザー委任の API のアクセス許可のまとめ
 
 Microsoft Graph API をユーザー委任の権限で呼び出すアプリを実装しました。
 アプリは scope と呼ばれる単位で、ユーザーに API のアクセス許可の同意を要求し、ユーザーが同意することでそれらのアクセス許可を委任されます。
@@ -433,10 +432,9 @@ API の呼び出しに必要な scope を含むアクセス トークンを取�
 先ほどと同様に、クライアントとして登録したアプリのサービス プリンシパルを確認してみましょう。
 アクセス許可を確認すると、種類が Application となっており、クレームの値は User.Read.All となっています。また、付与方法が "管理者の同意" となっていることも確認できます。
 
-
 ![](./oauth2-application-resource-and-api-permissions/app-permissions-2.png)
 
-今回も User.Read.All の scope に同意したということなのでしょうか。
+つまり、今回も User.Read.All の scope に同意したということなのでしょうか。
 
 ![](./oauth2-application-resource-and-api-permissions/app-permissions-3.png)
 
@@ -459,9 +457,14 @@ $oAuth2Permissions | fl *
 # Count                : 0
 ```
 
-残念ながら、デフォルトで許可されている User.Read のユーザー権限のアクセス許可のみが表示されており、`User.Read` や `AuditLog.Read.All` のアクセス許可は見当たりません。
+残念ながら、デフォルトで設定されている `User.Read` ※ のユーザー権限のアクセス許可のみが表示されており、`User.Read.All` や `AuditLog.Read.All` のアクセス許可は見当たりません。
 
-アプリケーション権限のアクセス許可は [AppRoleAssignments](https://docs.microsoft.com/ja-jp/graph/api/serviceprincipal-list-approleassignedto?view=graph-rest-1.0&tabs=http) と呼ばれ PowerShell だと以下のコマンドで取得できます。
+> ※ デフォルトで設定されている `User.Read` のアクセス許可は、サインインログの取得に特に必要ない権限ですが特に削除の必要もないため削除しておりませんでした。ユーザー委任のアクセス許可にもこのように管理者の同意ができます。
+
+### アプリケーション権限の正体
+
+結論を述べると、アプリケーション権限の正体は scope ではありません。
+アプリケーション権限のアクセス許可は AppRole であり、同意済みの権限は [AppRoleAssignments](https://docs.microsoft.com/ja-jp/graph/api/serviceprincipal-list-approleassignedto?view=graph-rest-1.0&tabs=http) と呼ばれ PowerShell だと以下のコマンドで取得できます。
 
 
 ```powershell
@@ -498,7 +501,7 @@ $appRoleAssignments | fl *
 ```
 
 先ほどと同じように、ResourceId `19a9419c-cc6f-47c6-88f3-0f2a964a4f16` の Microsoft Graph の権限が 2 つ現れました。
-おそらくどちらかが `User.Read` で、どちらかが `AuditLog.Read` のはずなのですが、これらの情報からどうやって確認すればよいのでしょうか。
+おそらくどちらかが `User.Read.All` で、どちらかが `AuditLog.Read` のはずなのですが、これらの情報からどうやって確認すればよいのでしょうか。
 
 もちろん、これらの値は Microsoft Graph のサービス プリンシパルに定義されています。
 実ははアプリケーションの権限の API のアクセス許可は [AppRole](https://docs.microsoft.com/en-us/graph/api/resources/approle?view=graph-rest-1.0) として定義されています。
