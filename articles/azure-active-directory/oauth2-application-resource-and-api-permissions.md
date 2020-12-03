@@ -555,7 +555,7 @@ $msGraph.AppRoles| ?{ $appRoleId.Contains($_.Id) } | Select-Object Value, Id, Di
 
 ここまでは、Microsoft Graph API の scope と AppRole について解説をしてきましたが、Microsoft ID プラットフォームでは独自の API を作成し、Azure AD で保護することも可能です。
 
-Azure AD 上にリソースとしてのアプリを登録し、scope や AppRole を定義することにより、自社の API を Azure AD の ID エコシステムを利用し保護することが可能です。つまり、Azure AD 上で特定のユーザーのみがアクセス可能なように制御したり、条件付きアクセスポリシーで不正なアクセスを保護するといったことが可能になります。
+Azure AD 上にリソースとしてのアプリを登録し、scope や AppRole を定義することにより、自社の API を Azure AD の ID エコシステムを利用し保護することが可能です。つまり、Azure AD 上で特定のユーザーのみがアクセス可能なように制御したり、条件付きアクセスポリシーで不正なアクセスから保護するといったことが可能になります。
 
 ### サンプルアプリ
 
