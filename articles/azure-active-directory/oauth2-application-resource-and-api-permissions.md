@@ -31,7 +31,7 @@ API のアクセス許可は「トークン」という形で「クライアン�
 
 ただし、あくまでここで取得できる権限は API のアクセス許可であり、実際のリソースへのアクセス権はリソースオーナー、つまり Exchange Online や SharePoint Online が管理していることに注意点してください。たとえば、あるユーザーがユーザー委任のメールの読み込み権限をアプリに付与したからといって、対象のユーザーがアクセスできないメールボックスの読み込みを行うことはできません。つまり、ユーザーがアクセスできるリソースの範囲は、API のアクセス許可と、リソース側の権限管理の両方で制御されています。
 
-本記事ではこれらの API のアクセス許可の実態、特にユーザー委任の権限について、深堀していきます。
+本記事ではこれらの API のアクセス許可の実体について深堀していきます。
 
 ## サンプルアプリを動作させる
 
@@ -357,7 +357,7 @@ $msGraph | Format-List *
 
 設定値がいくつか表示されますね。たとえば `PublisherName` は `Microsoft Services` で、`AppOwnerOrganizationId` が `f8cdef31-a31e-4b4a-93e4-5f571e91255a` であるので、Microsoft が管理しているサービス プリンシパルであると判別できます。
 
-ここで今回注目すべきは **Oauth2PermissionScopes** です。
+ここで今回注目すべきは **[Oauth2PermissionScopes](https://docs.microsoft.com/ja-jp/graph/api/resources/permissionscope?view=graph-rest-1.0)** です。
 少し中身を確認してみましょう。
 
 ```powershell
@@ -562,12 +562,9 @@ Azure AD 上にリソースとしてのアプリを登録し、scope や AppRole
 Azure AD で API を保護するには、API 用のアプリを登録し、scope や AppRole を定義します。
 API 側では MSAL ライブラリを利用することにより、提示されたアクセス トークンを検証し、正規のトークンを所持するユーザー以外のアクセスをブロックすることが可能です。
 
-具体的なサンプルは [クイックスタート: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/quickstart-v2-dotnet-native-aspnet) をご参照ください。
-
-また [各種言語のサンプル](https://github.com/Azure-Samples?q=webapi&type=&language=) は GitHub に公開されているか探してみてください。
+具体的なサンプルは [クイックスタート: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/quickstart-v2-dotnet-native-aspnet) をご参照ください。また [各種言語のサンプル](https://github.com/Azure-Samples?q=webapi&type=&language=) は GitHub に公開されているか探してみてください。
 
 今回は JavaScript の [API サンプル](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)を動かし、先ほど作った MS Graph Client Sample から独自の API を呼び出してみます。
-
 最終的な構成は以下のようなイメージです。
 
 ![](./oauth2-application-resource-and-api-permissions/api-diagram.png)
@@ -605,19 +602,18 @@ scope を指定する際には、本来このアプリケーション ID の URI
 `アプリのロール (プレビュー) ` にアクセスし、`アプリ ロールの作成`をクリックします。
 
 アプリケーションに付与できる権限を定義する場合には、`許可されたメンバーの種類` を "アプリケーション" か、"両方" を選択します。
-なぜ、アプリケーション権限の実態である Role をユーザーに対しても割り当てられるんだと思われるかもしれませんが、実は AppRole だけでなく、ユーザーのロールを Azure AD に定義することもできます。[アプリ ロールを追加してトークンから取得する](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) により詳細が記載されているので、ロールベースのアクセス許可を Azure AD で実現されたい方はご覧ください。
+なぜ、アプリケーション権限の実態である Role をユーザーに対しても割り当てられるんだと思われるかもしれませんが、実はアプリケーションの AppRole だけでなく、ユーザーの AppRole を Azure AD に定義することもできます。[アプリ ロールを追加してトークンから取得する](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) により詳細が記載されているので、ロールベースのアクセス許可を Azure AD で実現されたい方はご覧ください。
 
 ![](./oauth2-application-resource-and-api-permissions/api-role-create.png)
 
 このように、AppRole についても Azure ポータルから設定が可能となっています。
 
-> 2020/12/3 現在 日本語の表示に不具合があり、ロールが有効でも "無効" と表示されてしまっています。
+> 2020/12/4 現在 日本語の表示に不具合があり、ロールが有効でも "無効" と表示されてしまっています。
 
 ![](./oauth2-application-resource-and-api-permissions/api-role.png)
 
 
 のちの動作確認のために accessTokenAcceptedVersion を 2 に設定し、保存します。
-
 AppRole についてもマニフェストを確認することで、実際に有効になっているか確認できますので、不安な方はこちらをご覧ください。
 
 ![](./oauth2-application-resource-and-api-permissions/api-manifest.png)
@@ -731,11 +727,7 @@ index.html
 #### API の実装
 
 API では提示されたトークンが正規のものか、署名を検証し、必要なクレームの値 (例えば aud など) が含まれているかを検証する必要があります。
-定義した API を保護するためのサンプルとしては、JavaScript の Passport を利用た以下のものを利用します。
-
-> その他の言語のサンプルは、
-
-ここでは、以下の Node.js の Web API のサンプルを利用し、Web API を作成します。
+定義した API を保護するためのサンプルとしては、JavaScript の Passport を利用した以下のものを利用します。
 
 - [Azure-Samples/active-directory-javascript-nodejs-webapi-v2: A small Node.js Web API that is protected with Azure AD v2.0 to validate access tokens and accepts authorized calls.](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
 
@@ -775,10 +767,10 @@ npm start
 
 ## まとめ
 
-今回は Microsoft Graph API を呼び出すサンプルと、独自の API を定義することで、Azure AD の OAuth の実装で scope や AppRole の定義方法や実態を見てみました。チュートリアルをこなすだけでは見えてこない詳細なイメージがつかめたのではないでしょうか。
+今回は Microsoft Graph API を呼び出すサンプルと、独自の API を定義することで、Azure AD の OAuth の実装で scope や AppRole の定義方法やその実体を見てみました。チュートリアルをこなすだけでは見えてこない詳細なイメージがつかめたのではないでしょうか。
 
 スコープや AppRole について理解することは、独自のアプリを実装するときだけでなく Microsoft が提供する API を利用する際にも非常に役に立つと思います。
 
-また、独自のアプリを作成するに当たっては、[Azure AD のシングルテナント アプリとマルチテナント アプリ](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/single-and-multi-tenant-apps) の違いを理解したり、さらには Microsoft が推奨する[ベストプラクティスのチェックリスト](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/identity-platform-integration-checklist)が有用なコンテンツになるかと思います。
+さらに、独自のアプリを実装するに当たっては、[Azure AD のシングルテナント アプリとマルチテナント アプリ](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/single-and-multi-tenant-apps) の違いを理解したり、Microsoft が推奨する[ベストプラクティスのチェックリスト](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/identity-platform-integration-checklist)を確認したりするのがよいと思います。
 
 皆様もぜひ、Azure AD を利用したセキュアなアプリ開発を実践してみてください。
