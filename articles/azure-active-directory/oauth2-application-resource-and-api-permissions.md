@@ -615,7 +615,7 @@ scope を指定する際には、本来このアプリケーション ID の URI
 ![](./oauth2-application-resource-and-api-permissions/api-role.png)
 
 
-のちの動作確認のために accessTokenAcceptedVersion を 2 に設定し、保存します。
+`マニフェスト` に移動し、後の動作確認のために accessTokenAcceptedVersion を 2 に設定し、保存します。
 AppRole についてもマニフェストを確認することで、実際に有効になっているか確認できますので、不安な方はこちらをご覧ください。
 
 ![](./oauth2-application-resource-and-api-permissions/api-manifest.png)
@@ -742,7 +742,7 @@ config.json を以下のように修正します。
         "audience": "5a6e76a2-0790-4ca7-b42e-27b31d70aa92" //My API Sample のアプリケーション ID
     },
     "resource": {
-        "scope": ["Data.Read"]
+        "scope": ["Data.Read"] //My API で作成した scope の値
     },
 ```
 
@@ -769,7 +769,7 @@ npm start
 
 ## まとめ
 
-今回は Microsoft Graph API を呼び出すサンプルと、独自の API を定義することで、Azure AD の OAuth の実装で scope や AppRole の定義方法やその実体を見てみました。チュートリアルをこなすだけでは見えてこない詳細なイメージがつかめたのではないでしょうか。
+今回は Microsoft Graph API を呼び出すサンプルと、独自の API を定義することで、Azure AD 上で OAuth の scope や AppRole の定義方法やその実体を見てみました。チュートリアルをこなすだけでは見えてこない詳細なイメージがつかめたのではないでしょうか。
 
 スコープや AppRole について理解することは、独自のアプリを実装するときだけでなく Microsoft が提供する API を利用する際にも非常に役に立つと思います。
 
