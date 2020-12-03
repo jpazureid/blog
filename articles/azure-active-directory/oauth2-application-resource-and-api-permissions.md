@@ -7,7 +7,7 @@ tags:
 ---
 
 
-本記事は Azure Tech Advent Calendar 4 日目の記事です。
+本記事は [Azure Tech Advent Calendar](https://qiita.com/advent-calendar/2020/microsoft-azure-tech) 4 日目の記事です。
 
 今回はトラブルシューティングの方法ではなく、Azure AD を利用したアプリケーション開発における、"API 権限" について説明します。特に Microsoft Graph API を題材に API エコシステムの中身を見ていきます。
 
@@ -40,7 +40,7 @@ API のアクセス許可は「トークン」という形で「クライアン�
 後程、テナントに同意された権限などを確認するために、テナントのグローバル管理者権限が必要となってきます。そのためサンプルの動作はテストテナントを作成しお試しいただくことをお勧めします。
 また今回紹介するアプリの実際の動作のためには [Node.js](https://nodejs.org/en/) のインストールが必要です。
 
-> Microsoft Graph API を呼び出すちょうどいいサンプルが、なぜか node.js だったので
+> Microsoft Graph API を呼び出すちょうどいいサンプルが、node.js だったので
 
 ### アプリの登録とサンプルのダウンロード
 
@@ -260,7 +260,8 @@ Get-MgUser -UserId  e1bf6875-6eea-47f5-abf9-eee6f5dd6cbe
 つまり、この情報から上記ユーザーが、"User.Read, openid, profile, Mail.Read" の権限を、クライアントであるサービス プリンシパル "439775c2-70a1-4e08-a3e7-cd39c50e918d" (MS Graph Client Sample) に委任した、ということが確認できます。
 そして、それらの情報は [OAuth2Permissions](https://docs.microsoft.com/ja-jp/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) として保存されていることがわかります。
 
-さて、この API 権限ですがサンプルを動作させた皆様なら、"Microsoft Graph API" の権限であることはお分かりかと思いますが、その情報はどこで確認できるのでしょうか。
+さて、この API 権限 (OAuth2Permissions) ですがサンプルを動作させた皆様なら、"Microsoft Graph API" の権限であることはお分かりかと思います。
+では、その情報はどこで確認できるのでしょうか。
 
 OAuth2PermissionGrant の内容を確認すると ResourceId "19a9419c-cc6f-47c6-88f3-0f2a964a4f16" とあります。
 この ResourceId を指定し、サービス プリンシパルを取得してみましょう。
@@ -277,11 +278,11 @@ Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16 
 
 ### リソースの正体
 
-当たり前といえば当たり前ですが、ResourceId が指示していたのは Microsoft Graph API の正体でした。
-そしてその正体は、テナントに登録されている "Microsoft Graph" という名前ののサービス プリンシパルでした。
+当たり前といえば当たり前ですが、ResourceId が指示していたのは Microsoft Graph API でした。
+そしてその正体は、テナントに登録されている "Microsoft Graph" という名前ののサービス プリンシパルなのです。
 
 実は Azure AD の "サービスプリンシパル" は、OAuth の文脈では "クライアント" を表すこともあれば、"リソース" を表すこともあります。(あるいはその両方を表すこともあります)
-そして ResourceId に表示されている通り、Microsoft Graph はリソースとしてのサービス プリンシパルである、ということです。
+そして ResourceId に表示されている通り、Microsoft Graph は Azure AD に登録されたリソースとしてのサービス プリンシパルである、ということです。
 
 
 それでは早速 Microsoft Graph API のリソースを表す、"Microsoft Graph" の "サービスプリンシパル" の中身を見てみましょう。
@@ -391,14 +392,14 @@ Microsoft Graph API のアクセス許可の一覧は、[Microsoft Graph のア�
 ユーザー権限の API のアクセス許可、すなわち scope はこのうち委任されたアクセス許可に該当します。
 
 ![](./oauth2-application-resource-and-api-permissions/oauth-flow-4.png)
-
+<!-- 
 API を呼び出す際の動作をブラウザーの開発者ツール (F12 で起動し、`See Profile` ボタンクリック時の通信を Network タブを確認します) で見てみると、アクセストークンの値を確認できます。あるいは JavaScript のデバッグ ツールで、トークンの値を確認してもよいでしょう。
 
 Authorization ヘッダーに付与されたアクセス トークンの値をコピーし、[https://jwt.ms](https://jwt.ms) に張り付けると、トークンの scp (scope) として `Mail.Read` `openid` `profile` `User.Read` `email` が含まれていることが確認できます。
 
 ![](./oauth2-application-resource-and-api-permissions/user-delegated-access-token.png)
 
-今回アプリ内で呼び出した、[ユーザーの取得 API](https://docs.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http) は、最低限 `User.Read` のユーザー委任の権限が必要ですので、`User.Read` のスコープが含まれたアクセス トークンを提示すれば API にアクセスができるようになります。
+今回アプリ内で呼び出した、[ユーザーの取得 API](https://docs.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http) は、最低限 `User.Read` のユーザー委任の権限が必要ですので、`User.Read` のスコープが含まれたアクセス トークンを提示すれば API にアクセスができるようになります。 -->
 
 ### ユーザー委任の API のアクセス許可のまとめ
 
@@ -536,9 +537,9 @@ $msGraph.AppRoles| ?{ $appRoleId.Contains($_.Id) } | Select-Object Value, Id, Di
 # User.Read.All     df021288-bdef-4463-88db-98f22de89214 Read all users' full profiles
 ```
 
-アクセス ログを取得するスクリプトの中で、アクセス トークンを出力し、[jwt.ms](https://jwt.ms) に張り付けると、roles (AppRoles) として、`User.Read.All` と `AuditLog.Read.All` が含まれていることが確認できます。
+<!-- アクセス ログを取得するスクリプトの中で、アクセス トークンを出力し、[jwt.ms](https://jwt.ms) に張り付けると、roles (AppRoles) として、`User.Read.All` と `AuditLog.Read.All` が含まれていることが確認できます。
 
-![](./oauth2-application-resource-and-api-permissions/app-access-token.png)
+![](./oauth2-application-resource-and-api-permissions/app-access-token.png) -->
 
 ### アプリケーション権限の API のアクセス許可まとめ
 
@@ -554,9 +555,230 @@ $msGraph.AppRoles| ?{ $appRoleId.Contains($_.Id) } | Select-Object Value, Id, Di
 
 ここまでは、Microsoft Graph API の scope と AppRole について解説をしてきましたが、Microsoft ID プラットフォームでは独自の API を作成し、Azure AD で保護することも可能です。
 
-![](./oauth2-application-resource-and-api-permissions/api-scopes.png)
+Azure AD 上にリソースとしてのアプリを登録し、scope や AppRole を定義することにより、自社の API を Azure AD の ID エコシステムを利用し保護することが可能です。つまり、Azure AD 上で特定のユーザーのみがアクセス可能なように制御したり、条件付きアクセスポリシーで不正なアクセスを保護するといったことが可能になります。
 
-![](./oauth2-application-resource-and-api-permissions/api-approles.png)
+### サンプルアプリ
+
+Azure AD で API を保護するには、API 用のアプリを登録し、scope や AppRole を定義します。
+API 側では MSAL ライブラリを利用することにより、提示されたアクセス トークンを検証し、正規のトークンを所持するユーザー以外のアクセスをブロックすることが可能です。
+
+具体的なサンプルは [クイックスタート: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/quickstart-v2-dotnet-native-aspnet) をご参照ください。
+
+また [各種言語のサンプル](https://github.com/Azure-Samples?q=webapi&type=&language=) は GitHub に公開されているか探してみてください。
+
+今回は JavaScript の [API サンプル](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)を動かし、先ほど作った MS Graph Client Sample から独自の API を呼び出してみます。
+
+最終的な構成は以下のようなイメージです。
+
+![](./oauth2-application-resource-and-api-permissions/api-diagram.png)
 
 
+### アプリの登録
 
+まずはクライアント アプリ同様に、アプリの登録画面から API を登録します。
+
+![](./oauth2-application-resource-and-api-permissions/api-registration.png)
+
+#### scope の登録
+
+scope つまり、OAuth2Permissions つまり、ユーザー委任のアクセス許可は API の公開から登録します。
+scope を登録するには、事前にアプリケーション ID の URI (Identifier) を設定します。これは OAuth の audience (aud)、リソースを表す識別子となります。例えば Microsoft Graph API では "https://graph.microsoft.com" です。
+
+この値はグローバルで一意である必要があり、初期設定では "api://<appid>" です。
+
+![](./oauth2-application-resource-and-api-permissions/api-uri.png)
+
+スコープ名は Microsoft Graph API に倣って XXX.Read のように設定しましたがアプリの構成に従い好きな名前をつけて OK です。細かいスコープを切らない場合、Microsoft のサービスでは "user_impersonation" がよく利用されます。
+
+![](./oauth2-application-resource-and-api-permissions/api-scope-create.png)
+
+`スコープの追加` をクリックすると、スコープが追加されます。
+
+![](./oauth2-application-resource-and-api-permissions/api-scope.png)
+
+scope を指定する際には、本来このアプリケーション ID の URI と scope の値を `/` でつなげて指定する必要があります。今回の例では "api://5a6e76a2-0790-4ca7-b42e-27b31d70aa92/Data.Read" が指定すべき scope の値になります。
+
+> scope の指定時にアプリケーション ID の URI を省略すると暗黙的に "https://graph.microsoft.com" が指定されます。
+#### AppRole の追加
+
+実は AppRole の設定は最近 Azure ポータルから行えるようになりました。
+`アプリのロール (プレビュー) ` にアクセスし、`アプリ ロールの作成`をクリックします。
+
+アプリケーションに付与できる権限を定義する場合には、`許可されたメンバーの種類` を "アプリケーション" か、"両方" を選択します。
+なぜ、アプリケーション権限の実態である Role をユーザーに対しても割り当てられるんだと思われるかもしれませんが、実は AppRole だけでなく、ユーザーのロールを Azure AD に定義することもできます。[アプリ ロールを追加してトークンから取得する](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) により詳細が記載されているので、ロールベースのアクセス許可を Azure AD で実現されたい方はご覧ください。
+
+![](./oauth2-application-resource-and-api-permissions/api-role-create.png)
+
+このように、AppRole についても Azure ポータルから設定が可能となっています。
+
+> 2020/12/3 現在 日本語の表示に不具合があり、ロールが有効でも "無効" と表示されてしまっています。
+
+![](./oauth2-application-resource-and-api-permissions/api-role.png)
+
+
+のちの動作確認のために accessTokenAcceptedVersion を 2 に設定し、保存します。
+
+AppRole についてもマニフェストを確認することで、実際に有効になっているか確認できますので、不安な方はこちらをご覧ください。
+
+![](./oauth2-application-resource-and-api-permissions/api-manifest.png)
+
+### 動作の確認
+
+最後に、定義した API のアクセス許可の動作を確認してみます。
+
+#### クライアントの修正
+
+まず自作の API を呼び出すためのアクセス トークンを取得します。アプリケーション権限の付与方法は、Graph API の場合と同じく、API のアクセス許可からアプリケーション権限の API を選択するだけですので省略します。
+
+ユーザー権限のアクセス許可については、クイックスタートのサンプル (MS Graph Client Sample) を改造して呼び出しのイメージをつかんでみましょう。
+いくつか修正点があるので順に説明します。
+
+まずは、`authConfig.json` に `myAPITokenRequest` オブジェクトを作成しましょう。もともとの `tokenRequest` の scopes を "api://5a6e76a2-0790-4ca7-b42e-27b31d70aa92/Data.Read" に変更するだけです。
+
+authConfig.json
+```js
+// my api token request
+const myAPITokenRequest = {
+    scopes: ["api://5a6e76a2-0790-4ca7-b42e-27b31d70aa92/Data.Read"],
+    forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new token
+};
+```
+
+API 呼び出し部分は、callMSGraph メソッドを流用し、`http://localhot:5000/api` を呼び出します。
+
+authPopup.js
+```js
+function callMyAPI() {
+    getTokenPopup(myAPITokenRequest).then(response => {
+        callMSGraph("http://localhost:5000/api", response.accessToken, updateUI);
+    }).catch(error => {
+        console.error(error);
+    });
+}
+```
+
+ui.js と index.html にもコードを追加します。
+
+ui.js
+```js
+    if (endpoint === graphConfig.graphMeEndpoint) {
+        const title = document.createElement('p');
+        title.innerHTML = "<strong>Title: </strong>" + data.jobTitle;
+        const email = document.createElement('p');
+        email.innerHTML = "<strong>Mail: </strong>" + data.mail;
+        const phone = document.createElement('p');
+        phone.innerHTML = "<strong>Phone: </strong>" + data.businessPhones[0];
+        const address = document.createElement('p');
+        address.innerHTML = "<strong>Location: </strong>" + data.officeLocation;
+        profileDiv.appendChild(title);
+        profileDiv.appendChild(email);
+        profileDiv.appendChild(phone);
+        profileDiv.appendChild(address);
+
+    } else if (endpoint === graphConfig.graphMailEndpoint) {
+        if (data.value.length < 1) {
+            alert("Your mailbox is empty!")
+        } else {
+            const tabList = document.getElementById("list-tab");
+            tabList.innerHTML = ''; // clear tabList at each readMail call
+            const tabContent = document.getElementById("nav-tabContent");
+
+            data.value.map((d, i) => {
+                // Keeping it simple
+                if (i < 10) {
+                    const listItem = document.createElement("a");
+                    listItem.setAttribute("class", "list-group-item list-group-item-action")
+                    listItem.setAttribute("id", "list" + i + "list")
+                    listItem.setAttribute("data-toggle", "list")
+                    listItem.setAttribute("href", "#list" + i)
+                    listItem.setAttribute("role", "tab")
+                    listItem.setAttribute("aria-controls", i)
+                    listItem.innerHTML = d.subject;
+                    tabList.appendChild(listItem)
+
+                    const contentItem = document.createElement("div");
+                    contentItem.setAttribute("class", "tab-pane fade")
+                    contentItem.setAttribute("id", "list" + i)
+                    contentItem.setAttribute("role", "tabpanel")
+                    contentItem.setAttribute("aria-labelledby", "list" + i + "list")
+                    contentItem.innerHTML = "<strong> from: " + d.from.emailAddress.address + "</strong><br><br>" + d.bodyPreview + "...";
+                    tabContent.appendChild(contentItem);
+                }
+            });
+        }
+    //追加
+    } else if(endpoint === "http://localhost:5000/api"){
+        const apiResponseDiv = document.getElementById("api-response-div");
+        apiResponseDiv.innerHTML = JSON.stringify(data);
+    }
+```
+
+index.html
+```html
+        <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button>
+        <br>
+        <br>
+        <button class="btn btn-primary" id="readMail" onclick="readMail()">Read Mails</button>
+        <br>
+        <br>
+        <button class="btn btn-primary" id="callMyAPI" onclick="callMyAPI()">Call MyAPI</button>
+        <br>
+        <br>
+        <div id="api-response-div"></div>
+```
+
+これでクライアント部分の実装は終了です。
+#### API の実装
+
+API では提示されたトークンが正規のものか、署名を検証し、必要なクレームの値 (例えば aud など) が含まれているかを検証する必要があります。
+定義した API を保護するためのサンプルとしては、JavaScript の Passport を利用た以下のものを利用します。
+
+> その他の言語のサンプルは、
+
+ここでは、以下の Node.js の Web API のサンプルを利用し、Web API を作成します。
+
+- [Azure-Samples/active-directory-javascript-nodejs-webapi-v2: A small Node.js Web API that is protected with Azure AD v2.0 to validate access tokens and accepts authorized calls.](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
+
+config.json を以下のように修正します。
+
+```json
+    "credentials": {
+        "tenantID": "cae9d4b9-9fba-4add-9257-2bb9473a060f", //テナント ID
+        "clientID": "2d6aced0-40ae-4519-a2e5-8e23944fc046", //MS Graph Client Sample のアプリケーション ID
+        "audience": "5a6e76a2-0790-4ca7-b42e-27b31d70aa92" //My API Sample のアプリケーション ID
+    },
+    "resource": {
+        "scope": ["Data.Read"]
+    },
+```
+
+修正後、以下のコマンドで API を起動します。正常に起動できれば http://localhost:5000 で API サーバーが動き出します。
+
+```sh
+npm install
+npm start
+```
+
+#### 動作確認
+
+最後に http://localhost:3000 にアクセスして、アプリにサインインしましょう。`Call MyAPI` をクリックすると先ほど定義した scope に同意するよう求められます。
+
+![](./oauth2-application-resource-and-api-permissions/api-consent.png)
+
+承諾をクリックすると、`http://localhost:5000/api` の API を呼び出すためのトークンが取得され、無事 API を呼び出すことに成功します。
+
+![](./oauth2-application-resource-and-api-permissions/api-response.png)
+
+最終的な構成はこのようなイメージです。
+
+![](./oauth2-application-resource-and-api-permissions/api-diagram-detail.png)
+
+## まとめ
+
+今回は Microsoft Graph API を呼び出すサンプルと、独自の API を定義することで、Azure AD の OAuth の実装で scope や AppRole の定義方法や実態を見てみました。チュートリアルをこなすだけでは見えてこない詳細なイメージがつかめたのではないでしょうか。
+
+スコープや AppRole について理解することは、独自のアプリを実装するときだけでなく Microsoft が提供する API を利用する際にも非常に役に立つと思います。
+
+また、独自のアプリを作成するに当たっては、[Azure AD のシングルテナント アプリとマルチテナント アプリ](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/single-and-multi-tenant-apps) の違いを理解したり、さらには Microsoft が推奨する[ベストプラクティスのチェックリスト](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/identity-platform-integration-checklist)が有用なコンテンツになるかと思います。
+
+皆様もぜひ、Azure AD を利用したセキュアなアプリ開発を実践してみてください。
