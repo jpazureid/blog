@@ -579,11 +579,13 @@ API 側では MSAL ライブラリを利用することにより、提示され�
 #### scope の登録
 
 scope つまり、OAuth2Permissions つまり、ユーザー委任のアクセス許可は API の公開から登録します。
-scope を登録するには、事前にアプリケーション ID の URI (Identifier) を設定します。これは OAuth の audience (aud)、リソースを表す識別子となります。例えば Microsoft Graph API では "https://graph.microsoft.com" です。
+scope を登録するには、事前にアプリケーション ID の URI (Identifier) を設定します。これは OAuth の audience (aud)、リソースを表す識別子となります※。例えば Microsoft Graph API では "https://graph.microsoft.com" です。
 
-この値はグローバルで一意である必要があり、初期設定では "api://<appid>" です。
+この値はグローバルで一意である必要があり、初期設定では "api://appid" です。
 
 ![](./oauth2-application-resource-and-api-permissions/api-uri.png)
+
+> ※ アクセス トークン (V2) に含まれる aud の値はアプリケーション ID で固定です
 
 スコープ名は Microsoft Graph API に倣って XXX.Read のように設定しましたがアプリの構成に従い好きな名前をつけて OK です。細かいスコープを切らない場合、Microsoft のサービスでは "user_impersonation" がよく利用されます。
 
