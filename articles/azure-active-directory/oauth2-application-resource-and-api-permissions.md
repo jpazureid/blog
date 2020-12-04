@@ -1,10 +1,14 @@
 ---
-title: Azure AD に登録できる 「アプリ」と「リソース」と 「API 権限」を理解する
+title: Azure AD に登録できる 「アプリ」と「リソース」、「API 権限」を理解する
 date: 2020-12-04
 tags:
   - Azure AD
   - OAuth
 ---
+
+# Azure AD に登録できる 「アプリ」と「リソース」、「API 権限」を理解する
+
+こんにちは、Azure ID チームの埴山です。
 
 
 本記事は [Azure Tech Advent Calendar](https://qiita.com/advent-calendar/2020/microsoft-azure-tech) 4 日目の記事です。
@@ -29,7 +33,7 @@ API のアクセス許可は「トークン」という形で「クライアン�
 ![](./oauth2-application-resource-and-api-permissions/delegated-and-app-permissions.png)
 
 
-ただし、あくまでここで取得できる権限は API のアクセス許可であり、実際のリソースへのアクセス権はリソースオーナー、つまり Exchange Online や SharePoint Online が管理していることに注意点してください。たとえば、あるユーザーがユーザー委任のメールの読み込み権限をアプリに付与したからといって、対象のユーザーがアクセスできないメールボックスの読み込みを行うことはできません。つまり、ユーザーがアクセスできるリソースの範囲は、API のアクセス許可と、リソース側の権限管理の両方で制御されています。
+ただし、あくまでここで取得できる権限は API のアクセス許可であり、実際のリソースへのアクセス権はリソースオーナー、つまり Exchange Online や SharePoint Online が管理していることに注意してください。たとえば、あるユーザーがユーザー委任のメールの読み込み権限をアプリに付与したからといって、対象のユーザーがアクセスできないメールボックスの読み込みを行うことはできません。つまり、ユーザーがアクセスできるリソースの範囲は、API のアクセス許可と、リソース側の権限管理の両方で制御されています。
 
 本記事ではこれらの API のアクセス許可の実体について深堀していきます。
 
@@ -279,7 +283,7 @@ Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16 
 ### リソースの正体
 
 当たり前といえば当たり前ですが、ResourceId が指示していたのは Microsoft Graph API でした。
-そしてその正体は、テナントに登録されている "Microsoft Graph" という名前ののサービス プリンシパルなのです。
+そしてその正体は、テナントに登録されている "Microsoft Graph" という名前のサービス プリンシパルなのです。
 
 実は Azure AD の "サービスプリンシパル" は、OAuth の文脈では "クライアント" を表すこともあれば、"リソース" を表すこともあります。(あるいはその両方を表すこともあります)
 そして ResourceId に表示されている通り、Microsoft Graph は Azure AD に登録されたリソースとしてのサービス プリンシパルである、ということです。
