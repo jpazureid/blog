@@ -25,7 +25,7 @@ tags:
   
 具体的な設定手順も README.md に記載しておりますので、以下のページをご確認くださいませ。
 
-- [Get last-sign-in activity reports (beta API 利用)](https://github.com/jpazureid/get-last-signin-reports/tree/use-signin-activity-beta-api)
+- [Get last-sign-in activity reports (beta API 利用)](https://github.com/jpazureid/get-last-signin-reports/tree/beta)
 
 なお、前述の制限がある従来のサンプルも、新たに設定手順をスクリーンショット付きで記載しておりますので、こちらもぜひご確認くださいませ。
 
