@@ -99,15 +99,15 @@ March 19, 2019—KB4489894 (OS Build 17134.677)
 **A.**　Azure AD 上からデバイスの削除を行うことは可能ですが、対象のデバイスで上述の削除方法を実施しない場合には下記の問題が発生します。  
 そのため、デバイス側で手動で削除を実施するようにしてください。  
 エラーコード 700003 の対処策について  
-https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/
+https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/  
   
 ## **Q. Azure AD にデバイスが登録されたまま放置しても問題ないか？**  
 **A.**　デバイスの管理方法の変更が組織で行われない限り、特別問題が生じることはありません。
 組織にてデバイスの管理を Hybrid Azure AD Join 構成に変更を行った場合に、Azure AD Registerd と Hybrid Azure AD Join の状態の 2 つのデバイスが Azure AD に重複登録されてしまう可能性があります。
 構成変更をする場合には、予め下記をご参照ください。
 
-Azure AD 登録状態のデバイスの処理
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-plan#handling-devices-with-azure-ad-registered-state
+Azure AD 登録状態のデバイスの処理  
+https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-plan#handling-devices-with-azure-ad-registered-state  
 
 
 ## **Q. "このデバイスではどこでもこのアカウントを使用する" のメッセージはどのタイミングで表示されるのか？**  
