@@ -51,7 +51,7 @@ Windows 10 1803 では上述のレジストリ設定に加え、下記の更新�
   
 <対象の更新プログラム>  
 ********************************  
-March 19, 2019—KB4489894 (OS Build 17134.677)  
+March 19, 2019 - KB4489894 (OS Build 17134.677)  
 <https://support.microsoft.com/en-us/help/4489894/windows-10-update-kb4489894>  
 ********************************
  
@@ -124,4 +124,4 @@ https://github.com/yusukekodama/PMActivities/blob/master/Webinar/Schedule.md#%E9
 関連する回としては下記となります。
 - COVID-19 でリモート対応に成功した企業と失敗した企業の違いとは？
 - Azure AD の新しいデバイス管理パターンを理解しよう
-- Intuneによるモバイルデバイスとアプリのセキュアな管理とは
+- Intune によるモバイルデバイスとアプリのセキュアな管理とは
