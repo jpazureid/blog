@@ -74,7 +74,7 @@ relative_link: true
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
   
@@ -114,7 +114,7 @@ feed:
   path: atom.xml
   limit: 20
 
-  # show disclaimer in all article by default. disableDisclaimer of article's option set true hide.
+# show disclaimer in all article by default. disableDisclaimer of article's option set true hide.
 # ex) 
 # ---
 # title: Article Title
