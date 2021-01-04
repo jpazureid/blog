@@ -26,7 +26,7 @@ PRT を正常に取得するために、どのようにユーザーの UPN を�
 
 - Windows 10 1803 以降のバージョンを対象です。
 - ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは同じである前提です。
-ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは異なる場合、Hybrid Azure AD Join として構成できません。
+- ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは異なる場合、Hybrid Azure AD Join として構成できません。
 
 以下の表にオンプレミス AD と AAD のユーザーの UPN のパターンごとに PRT を正常に取得できるかどうかをまとめいたしました。
 
@@ -45,7 +45,7 @@ PRT を正常に取得するために、どのようにユーザーの UPN を�
 
 - Windows 10 1803 以降のバージョンを対象です。
 - ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは同じである前提です。
-ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは異なる場合、Hybrid Azure AD Join として構成できません。
+- ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは異なる場合、Hybrid Azure AD Join として構成できません。
 
 フェデレーション ユーザーの場合は比較的わかりやすいです。
 
