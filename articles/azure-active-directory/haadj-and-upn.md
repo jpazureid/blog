@@ -9,7 +9,7 @@ tags:
 
 # Hybrid Azure AD Join とユーザーの UPN
 
-こんにちは、Azure & Identity サポート チームの 姚 (ヨウ)です。
+こんにちは、Azure & Identity サポート チームの 姚 (ヨウ) です。
 
 今回は Hybrid Azure AD Join を構成した際の、デバイスにログオンするユーザーの UPN とドメイン名の関係について説明します。
 この内容は以下の公開情報で説明されておりますが、今回はより分かりやすい解説を目指します。
