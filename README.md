@@ -77,6 +77,7 @@
 - [Azure AD Domain Services のよくあるご質問と対処策](./articles/azure-active-directory/azure-ad-ds-qa.md)
 - [Windows Hello for Business の構成解説](./articles/azure-active-directory/whfb-configuration-explanation.md)
 - [MFA 認証方法を、変更 / 再登録 / 追加 したい！](./articles/azure-active-directory/change-mfa-verification-method.md)
+- [Hybrid Azure AD Join とユーザーの UPN](./articles/azure-active-directory/haadj-and-upn.md)
 
 ## Azure AD Connect
 
