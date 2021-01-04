@@ -14,8 +14,7 @@ tags:
 今回は Hybrid Azure AD Join を構成した際の、デバイスにログオンするユーザーの UPN とドメイン名の関係について説明します。
 この内容は以下の公開情報で説明されておりますが、今回はより分かりやすい解説を目指します。
 
-ハイブリッド Azure AD 参加でのオンプレミス AD ユーザー UPN サポートを確認する
-ハイブリッド Azure Active Directory 参加を計画する - Azure Active Directory | Microsoft Docs
+[ハイブリッド Azure AD 参加でのオンプレミス AD ユーザー UPN サポートを確認する](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-plan#review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join)
 
 ご存じの通り、Hybrid Azure AD Join した端末へユーザーがログオンすると、SSO や条件付きアクセスに利用される PRT を取得します。
 
@@ -25,8 +24,8 @@ PRT を正常に取得するために、どのようにユーザーの UPN を�
 
 
 ## クラウド認証のユーザーの場合
-＊Windows 10 1803 以降のバージョンを対象です。
-＊ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは同じである前提です。
+- Windows 10 1803 以降のバージョンを対象です。
+- ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは同じである前提です。
 ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは異なる場合、Hybrid Azure AD Join として構成できません。
 
 以下の表にオンプレミス AD と AAD のユーザーの UPN のパターンごとに PRT を正常に取得できるかどうかをまとめいたしました。
@@ -44,8 +43,8 @@ PRT を正常に取得するために、どのようにユーザーの UPN を�
 
 
 ## フェデレーション認証のユーザーの場合
-＊Windows 10 1803 以降のバージョンを対象です。
-＊ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは同じである前提です。
+- Windows 10 1803 以降のバージョンを対象です。
+- ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは同じである前提です。
 ユーザーがいる Azure AD テナントとデバイスが Hybrid Azure AD Join として登録する Azure AD テナントは異なる場合、Hybrid Azure AD Join として構成できません。
 
 フェデレーション ユーザーの場合は比較的わかりやすいです。
@@ -68,10 +67,8 @@ AD FS のフェデレーション環境での代替ログイン ID の構成は�
 ・ユーザーのオンプレミス AD の UPN のドメインは Azure AD のカスタムドメインとして登録していない
 ・ユーザーのオンプレミス AD の UPN とメールドレスが異なり、Office 365 などのクラウド アプリケーションへのサインイン時にメールアドレスを利用する
 
-代替ログイン ID の詳細については、以下の公開情報をご参照ください。
+代替ログイン ID の詳細については、[代替ログイン ID を構成する](https://docs.microsoft.com/ja-jp/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) をご参照ください。
 
-代替ログイン ID を構成する
-代替ログイン ID を構成する | Microsoft Docs
 
 
 製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。
