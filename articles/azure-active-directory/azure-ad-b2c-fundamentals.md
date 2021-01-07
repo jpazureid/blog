@@ -9,7 +9,7 @@ tags:
 こんにちは。Azure Identity サポートの埴山です。
 
 Azure AD B2C は非常に多機能な ID 基盤ですが、誤った利用方法を検討いただいていたり、本来利用方法として想定されない構成についてご質問いただくことがございます。
-本記事では Azure AD B2C をご利用いただくにあたり、抑えていただきたい Azure AD B2C の基本的な考え方と、よくあるご質問について回答します。
+本記事では Azure AD B2C をご利用いただくにあたり、抑えていただきたい Azure AD B2C の基本的な考え方をご案内し、併せてよくあるご質問について回答します。
 
 ## Azure AD B2C のキホン
 
@@ -171,7 +171,7 @@ Microsoft Graph API を利用して、お客様独自のアプリを作成し同
 - azure-ad-b2c/samples: Azure AD B2C Identity Experience Framework sample User Journeys.
   <https://github.com/azure-ad-b2c/samples>
 
-カスタム ポリシーは非常に柔軟な連携や構成が可能なため、ある意味イチからプログラミングをしてアプリケーションを作成するぐらいの自由度があります。そのため、Microsoft サポートとしては Azure AD B2C の機能自体についてのご質問については回答可能ですが、特定の要件に合わせた詳細なカスタマイズ手順については、別途コミュニティー (Stack overflow) サポートの利用もご検討ください。
+カスタム ポリシーは非常に柔軟な連携や構成が可能なため、ある意味イチからプログラミングをしてアプリケーションを作成するぐらいの自由度があります。弊社サポートとしては Azure AD B2C の機能自体についてのご質問については回答可能ですが、特定の要件に合わせた詳細なカスタマイズ手順のご案内については、別途コンサルティング サービス、あるいはコミュニティー (Stack overflow) サポートの利用をご検討ください。
 
 - Newest 'azure-ad-b2c' Questions - Stack Overflow
   <https://stackoverflow.com/questions/tagged/azure-ad-b2c>
