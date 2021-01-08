@@ -29,10 +29,10 @@ WoodGrove 社はあるスーパーマーケット WoodGrove Groceries を経営�
 WoodGrove Groceries のオンライン会員管理システムに Azure AD B2C を利用しています。
 ユーザーはサインアップページより、ソーシャルアカウントまたはメールアドレスでサインアップを行い、ショッピングを楽しめます。
 
-### Azure AD と Azure AD B2C の違い
-
 同時に、WoodGrove 社では従業員のユーザー管理に Azure AD を利用しています。
 Azure AD B2C と Azure AD を使い分ける理由とは何でしょうか。
+
+### Azure AD と Azure AD B2C の違い
 
 それぞれのサービスを利用するユーザーはこのようになっています。
 
@@ -62,7 +62,7 @@ Azure AD B2C と Azure AD を使い分ける理由とは何でしょうか。
 
 #### Azure AD B2C に求められる特徴
 
-対して、WoodGrove Groceries の会員管理サービスに必要な機能は何でしょうか。
+対して、WoodGrove Groceries (ショッピング サイト) の会員管理サービスに必要な機能は何でしょうか。
 まずサービスを利用するにあたって、サインイン画面やサインアップ画面のカスタマイズが必要です。
 また、ユーザー自身が属性情報を変更できるプロフィール編集画面やパスワードリセット機能、ユーザー属性を外部の身分証明サービスと連携する API 連携といった機能が必要となる場合もあるでしょう。
 
@@ -84,8 +84,10 @@ Azure AD B2C では上述の通り、コンシューマー ユーザーを管理
 
 たとえば、自組織内の Office 365 のリソースを外部ユーザーにも参照させたいときには、Azure AD B2B、Azure AD を利用する他社組織へのサービス提供 (SaaS アプリの開発) を考えている場合には、マルチテナント アプリケーションの構成が適切でしょう。
 
-詳しくは、[外部 ID の比較 - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/compare-with-b2c) をご確認ください。
+以下に、外部のユーザーをアプリにサインアップ、サインインさせる際のソリューションについて簡単な比較表を作成しましたので参考にしてください。
+![](./azure-ad-b2c-fundamentals/compare-external-identities.png)
 
+詳しくは、[外部 ID の比較 - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/compare-with-b2c) をご確認ください。
 
 ### Azure AD B2C の機能
 
