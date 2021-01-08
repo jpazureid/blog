@@ -90,44 +90,68 @@ Azure AD B2C では上述の通り、コンシューマー ユーザーを管理
 ### Azure AD B2C の機能
 
 ここからは、もう少し詳しく Azure AD B2C の動作について確認していきましょう。
-Azure AD B2C は上述の通り、インターネット上での会員証のような機能を実現するための ID 基盤です。
 
-WoodGrove Groceries ではユーザーの登録時に、氏名、メールアドレスなどを収集します。
-現実世界のネットショップでは、生年月日、電話番号、住所などの属性も収集が必要でしょう。
-Azure AD B2C が標準で対応している本人確認はメールアドレスの確認のみですが、必要に応じて API 連携などを行い本人確認を行います。
+[WoodGrove Groceries](https://woodgrovedemo.com/Account/LogIn) では新規ユーザーの登録時に、Google, Facebook などのソーシャルアカウントまたは、既存のメールアドレスを指定してセルフサインアップを行えます。
 
-こうして発行された Azure AD B2C テナントのアカウントは、WoodGrove Groceries ショップの中での身分証となり、WoodGrove 社が提供する様々なサービスへサインインすることが可能となります。
+![](./azure-ad-b2c-fundamentals/woodgrove-signup.png)
 
-このように作成されたユーザーは "コンシューマー ユーザー" とよばれ、Azure AD B2C に登録されたアプリにのみサインインすることが可能です。当然 Azure AD B2C のコンシューマー ユーザーは、その管理基盤である Azure AD テナントにサインインすることは想定されていませんし、ユーザー同士が他のユーザー情報を見れたり、管理することは Azure AD B2C 既定の動作ではできません。
+この際、ユーザー フローに設定された属性値をもとに、サインアップと同時に氏名、メールアドレス、規約への同意情報などを収集します。
 
-大まかな Azure AD B2C を構成するコンポーネントの関係について、図にまとめましたので参考にしてください。
+![](./azure-ad-b2c-fundamentals/woodgrove-signup-local-account.png)
+
+現実世界のネットショップでは、生年月日、電話番号、住所などの属性も収集が必要でしょう。また Azure AD B2C が標準で対応している本人確認はメールアドレスの確認のみですが、必要に応じて API 連携などを行い本人確認を行います。
+
+サインアップが完了すると、Azure AD B2C テナント上にユーザーが作成され、サインアップ時に利用したアカウント情報 (ソーシャルアカウントの情報、あるいはメールアドレス情報) と属性値が Azure AD 上に記録されます。大まかな Azure AD B2C を構成するコンポーネントの関係について、図にまとめましたので参考にしてください。
 
 ![](./azure-ad-b2c-fundamentals/azure-ad-b2c-tenant-overview.png)
+
+このように作成されたユーザーは "コンシューマー ユーザー" とよばれ、赤枠のフローを通してサインアップ・サインインを行いアプリに対し、トークンを発行することが可能です。Azure AD B2C ではトークンに含まれる属性情報などを細かくカスタマイズする、条件付きアクセス ポリシーを構成し必要に応じて多要素認証を求める、API コネクターやカスタム ポリシーを利用して API 連携を行うなど、アプリに合わせた認証・認可フローを構成することが可能です。
+
+![](./azure-ad-b2c-fundamentals/azure-ad-b2c-customize-flow.png)
+
 
 ## よくあるご質問
 
 ここからは、上記の前提事項を踏まえ、よくある質問について回答いたします。
 
+
+### Azure AD B2C テナントにアクセスするにはどうすればよいですか
+
+Azure AD B2C はサブスクリプションに紐づくリソースではありますが、サブスクリプションが紐づくテナントとは別の Azure AD テナント上に機能が提供されています。そのため、Azure AD B2C テナントへアクセスするには、以下の手順でアクセス先のテナントを切り替える必要があります。
+
+1. Azure ポータルにアクセスします。
+2. 右上のユーザーアイコンをクリックし、`ディレクトリの切り替え` をクリックします。
+3. 作成した Azure AD B2C テナントを選択します。
+
+あるいは Azure AD B2C テナントのテナント ID を、`https://portal.azure.com/<tenant id>` のように指定することでも、B2C テナントに切り替えいただけます。
+
+なお、Azure AD B2C テナントにユーザー (上記例では admin@contosob2c.onmicrosoft.com など) を作成いただき、グローバル管理者権限を付与することで、管理ユーザーとしてご利用いただくことも可能です。その場合、直接 Azure AD B2C テナントにアクセスするため、テナントの切り替えが不要なほか、[Graph Explorer](https://developer.microsoft.com/ja-jp/graph/graph-explorer) などで API 呼び出しを試していただくことも可能です。そのため、検証用に Azure AD B2C テナントのメンバー ユーザーである管理ユーザーを作成いただくことをお勧めします。
+
 ### Azure AD B2C のコンシューマー ユーザー アカウントとはなんですか
 
 Azure AD B2C のサインアップ フローで作成されたアカウントは、コンシューマー ユーザー アカウントと呼ばれます。
-コンシューマー ユーザーは Azure AD B2C のユーザーとしてサインイン フロー等を利用し Azure AD B2C の世界のトークンを発行することができます。一方で Azure ポータルにサインインをしたり、Microsoft Graph API を呼び出すといった、Azure AD の世界を直接利用することはできません。
+コンシューマー ユーザー アカウントは、サインアップ フロー以外に Azure ポータル、あるいは Microsoft Graph API を利用して作成することが可能です。
 
-これに対し、管理用の Azure AD ユーザー (B2B ゲストユーザーを含む) は、Azure AD を直接利用することができ、Azure ポータルにサインインをし、ユーザーを操作を行う、Microsoft Graph API を呼び出すといったことが可能です。
 
-### Azure AD B2C の管理ユーザーとは何ですか
 
-Azure AD B2C テナントは、通常の Azure AD テナントを拡張して作成されております。そのため多くの Azure AD 機能を利用いただけますが、Azure AD B2C の管理領域とそれらは分けて考えることが重要です。たとえば Azure AD B2C テナントでは、管理用ユーザーとして B2B ゲスト ユーザーが作成できますが、これらのユーザーを Azure AD B2C のサインイン フローで利用することはできません。
+### Azure AD B2C の職場アカウント (管理ユーザー) とは何ですか
 
-上記図の、赤枠で囲われた部分が Azure AD B2C の機能ですが、これらの機能は通常の Azure AD テナント上に拡張機能として実装されています。
-そのため、ユーザーストア等は従来の Azure AD と共用の部分もあり、管理ユーザーは Azure AD ユーザー管理機能 (Microsoft Graph API や Azure ポータル上での操作) を実施することが可能です。
+Azure AD B2C テナントにはコンシューマー ユーザー以外にも、管理用の Azure AD ユーザーを登録することが可能です。これらの職場アカウント (B2B ゲストユーザーを含む) は管理ユーザーとして Azure AD を直接利用することができ、Azure ポータルにサインインをしユーザーを操作を行う、Microsoft Graph API を呼び出すといったことが可能です。
 
+- Azure Active Directory B2C のユーザー アカウントの概要 | Microsoft Docs
+  https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/user-overview
+
+Azure AD B2C テナントは、通常の Azure AD テナントを拡張して作成されております。そのため多くの Azure AD 機能を利用いただけますが、Azure AD B2C の管理領域とそれらは分けて考えることが重要です。管理ユーザーは従来の Azure AD テナントのユーザーと同等であり、グローバル管理者のディレクトリ ロールを割り当てることで、ユーザー フローを含めたテナントの設定を行うことが可能です。
+
+上手の通り、ユーザーストア等は従来の Azure AD と Azure AD B2C のコンシューマー アカウントで共用であり、管理ユーザーは Azure AD ユーザー管理機能 (Microsoft Graph API や Azure ポータル上での操作) を利用し、コンシューマー ユーザー アカウントを含めたユーザー管理を実施することが可能です。
+
+なお、職場アカウントはあくまで Azure AD の管理ユーザーであり、Azure AD B2C のユーザー フローで利用することはできません。上記図の、赤枠で囲われた部分が Azure AD B2C の機能ですが、これらの機能は通常の Azure AD テナント上に拡張機能として実装されており、コンシューマー ユーザー アカウントのみが利用することを想定しております。
 
 ### Azure AD B2C のユーザー フローで取得したトークンで Microsoft Graph API を呼び出せますか？
 
 いいえ、Azure AD B2C のユーザー フローは、お客様のアプリ用のトークンのみを発行します。
 
-Azure AD B2C のサインイン アップ フローや、サインイン フロー、b2clogin.com の認証エンドポイントと発行されるトークンは、ある意味 Azure AD の領域とは切り離されており、お客様独自のアプリケーション内で利用できるものとなっています。
+Azure AD B2C のサインイン アップ フローや、サインイン フロー、b2clogin.com の認証エンドポイントと発行されるトークンは、ある意味 Azure AD の領域とは切り離されており、お客様独自のアプリケーション内でのみ利用できるものとなっています。
 
 もう少し、技術的な説明を付け加えると、[Microsoft Graph API を呼び出すために必要なトークン](https://docs.microsoft.com/ja-jp/graph/auth/auth-concepts) は、issuer が `https://login.microsoftonline.com/<tenantid>/v2.0` などである必要がありますが、[Azure AD B2C のユーザー フローで発行されるトークン](https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/tokens-overview) の issuer は `https://<tenantname>.b2clogin.com/<tenantid>/v2.0/` であり、B2C アプリの閉じた世界でのみ利用できるトークンとなっています。
 
@@ -137,9 +161,9 @@ Microsoft Graph API を呼び出すユースケースがある場合、アプリ
 
 Azure AD B2C のユーザー フローを利用する B2C アプリを登録できます。それに加え、通常の Azure AD テナント同様に、シングルテナント アプリケーション、マルチテナント アプリケーションの登録も可能です。
 
-前述の通り、前者が `<tenantname>.b2clogin.com ` のエンドポイントで認証し、Azure AD B2C の世界のトークンを発行するのに対し、後者は管理用アプリとして `login.microsoftonline.com` のエンドポイントで認証し、Microsoft Graph API の呼び出し用などに利用します。
+前者が `<tenantname>.b2clogin.com ` のエンドポイントで認証し、Azure AD B2C の世界のトークンを発行するのに対し、後者は管理用アプリとして `login.microsoftonline.com` のエンドポイントで認証し、Microsoft Graph API の呼び出し用などに利用します。
 
-管理ユーザーで Microsoft Graph API を呼び出すには、テナントにシングルテナント (またはマルチテナント) アプリを登録します。Microsoft Graph Explorer などのアプリを利用して Microsoft Graph API を呼び出すためには、Azure AD B2C テナントに管理ユーザー (上記例では admin@contosob2c.onmicrosoft.com といったユーザー) を作成いただく必要がありますので、ご注意ください。
+テナントの管理ユーザーで Microsoft Graph API を呼び出すには、テナントにシングルテナント (またはマルチテナント) アプリを登録します。
 
 ユーザー管理のためのサンプルはこちらをご覧ください。
 
@@ -163,6 +187,44 @@ Microsoft Graph API を利用して、お客様独自のアプリを作成し同
 
 2021/1 現在、Azure AD B2C のコンシューマー アカウント向けに、条件付きアクセス ポリシーの利用 (P1)、リスクベースの条件付きアクセス ポリシーの利用 (P2) が可能です。
 現時点では Azure AD Premium の機能、つまり B2C テナント管理ユーザー向けの、アプリやロールへのグループ ベースの割り当て機能、Azure AD の組織アカウント向けの Identity Protection などのは利用できません。
+
+### コンシューマー ユーザー アカウントのパスワードリセットを行うにはどうすればよいですか
+
+コンシューマー ユーザー (ローカル アカウント) のパスワード リセットを Azure ポータルから実施すると、パスワード プロファイルの `forceChangePasswordNextSignIn` が `true` となり、一部のユーザー フローでサインインの失敗が発生します。
+
+そのためパスワード リセットは Microsoft Graph API や Azure AD PowerShell モジュールを利用し、`forceChangePasswordNextSignIn` を `false` に設定したうえで更新ください。
+
+▽ Graph API の例
+
+```http
+PATCH https://graph.microsoft.com/v1.0/users/<対象ユーザーのオブジェクト ID>
+ 
+{
+    "passwordProfile": {
+        "password": "password-value",
+        "forceChangePasswordNextSignIn": false
+    },
+    "passwordPolicies": "DisablePasswordExpiration"
+}
+```
+
+▽ Azure AD PowerShell モジュールでの例
+
+```powershell
+Connect-AzureAD -TenantId <B2C tenant 名>
+$password = ConvertTo-SecureString -String <パスワードの値> -AsPlainText -Force
+Set-AzureADUserPassword -ObjectId <対象ユーザーのオブジェクト ID> -Password $password -ForceChangePasswordNextLogin $false 
+```
+
+### コンシューマー ユーザー アカウントのパスワードに有効期限を定めることは可能ですか
+
+お客様が設定可能なパスワードのポリシーとして NIST SP 800-63 をベースに機能を実装しております。頻繁なパスワード変更や、複雑なパスワード ポリシーはエンドユーザーの利便性を下げるだけではなく、セキュリティの向上に寄与しない場合があります。
+
+そのため標準機能としてのパスワード有効期限の有効かは標準機能としては提供しておりません。
+必要に応じてカスタム ポリシーでの実装をご検討ください。
+
+- samples/policies/force-password-reset-after-90-days at master · azure-ad-b2c/samples
+  <https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-after-90-days>
 
 ### XXXX の機能について、カスタム ポリシーを利用すればを実現可能ですか
 
