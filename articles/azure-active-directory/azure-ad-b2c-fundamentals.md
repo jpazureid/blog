@@ -140,6 +140,15 @@ Azure AD B2C はサブスクリプションに紐づくリソースではあり�
 Azure AD B2C のサインアップ フローで作成されたアカウントは、コンシューマー ユーザー アカウントと呼ばれます。
 コンシューマー ユーザー アカウントは、サインアップ フロー以外に Azure ポータル、あるいは Microsoft Graph API を利用して作成することが可能です。
 
+技術的にはコンシューマー アカウントは、連携している IdP のアカウント情報、またはローカル アカウントのメールアドレスを "ID プロパティ" として保持しています。
+
+ID プロパティ (identities 属性) のほか、表示名 (DisplayName) や拡張属性 (extension) を Microsoft Graph API を利用することで編集、またはユーザーの新規作成を行うことが可能です。
+
+詳細については、以下の公開情報をご確認ください。
+
+- Microsoft Graph API を使用してユーザーを管理する - Azure AD B2C | Microsoft Docs
+  <https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/manage-user-accounts-graph-api>
+
 
 ### Azure AD B2C の職場アカウント (管理ユーザー) とは何ですか
 
