@@ -1,6 +1,6 @@
 ---
 title: Azure AD B2C のキホンとよくある質問
-date: 2021-1-09 10:00
+date: 2021-1-14 10:00
 tags:
   - Azure AD
   - Azure AD B2C
