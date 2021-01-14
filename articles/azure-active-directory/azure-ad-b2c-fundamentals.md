@@ -148,6 +148,12 @@ Azure AD B2C テナントは、通常の Azure AD テナントを拡張して作
 
 なお、職場アカウントはあくまで管理用のユーザーであり、Azure AD B2C のユーザー フローで利用することはできません。上記図の赤枠で囲われた部分が Azure AD B2C の機能ですが、これらの機能は通常の Azure AD テナント上に拡張機能として実装されており、コンシューマー ユーザー アカウントのみが利用することを想定しております。
 
+### 他テナントの Azure AD ユーザーをコンシューマー アカウントとして利用することは可能ですか
+
+他テナントのユーザーを B2B 招待 (管理ユーザーとして招待) ではなく、コンシューマー ユーザーとして作成したい場合には、[特定の Azure Active Directory 組織用のサインインを設定](https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/identity-provider-azure-ad-single-tenant?pivots=b2c-user-flow) しサインアップとサインインのフローを構成ください。
+
+連携先のテナントに作成いただく Azure AD アプリにてサインイン可能なユーザーを設定することで、Azure AD B2C テナントにサインアップできるユーザーを制限することも可能です。アクセスできるユーザーを制限するには、エンタープライズ アプリケーションの[ユーザーの割り当てを有効](https://docs.microsoft.com/ja-jp/azure/active-directory/manage-apps/assign-user-or-group-access-portal)に設定し、アプリにアクセスを許可するユーザーを割り当てます。
+
 ### Azure AD B2C のユーザー フローで取得したトークンで Microsoft Graph API を呼び出せますか？
 
 いいえ、Azure AD B2C のユーザー フローはお客様のアプリ用のトークンのみを発行し、Microsoft Graph API を呼び出すためのトークンを発行することはできません。
