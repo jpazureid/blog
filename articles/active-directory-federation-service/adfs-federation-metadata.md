@@ -58,7 +58,6 @@ A. フェデレーション メタデータの更新方法は、手動と自動 
 
 ![](./adfs-federation-metadata/adfs-federation-metadata-002.jpg)
 
-
 下記画面がポップアップ表示されますので「更新」をクリックします。
 
 ![](./adfs-federation-metadata/adfs-federation-metadata-003.jpg)
@@ -70,7 +69,6 @@ A. フェデレーション メタデータの更新方法は、手動と自動 
 自動で更新を行いたい場合には、下記画面ショットにあります「証明書利用者を自動的に更新する」にチェックを入れ「適用」をクリックすることで、AD FS サーバーが 24 時間に 1 回の頻度で Azure AD フェデレーション メタデータの構成を確認し、構成の内容が変更されている場合に、自動的にフェデレーション メタデータの内容に沿って更新を行います。
 
 ![](./adfs-federation-metadata/adfs-federation-metadata-005.jpg)
-
 
 ## Q. 更新しなくても問題はないのか
 
@@ -85,7 +83,6 @@ A.  今回ご案内している警告は、AD FS と連携している証明書�
 以下の「トークン署名証明書」、「トークン暗号化解除証明書」は、AD FS 側のフェデレーションメタデータに含まれるものであり、Office 365 (Azure AD) などのサービス側でインポート、更新が必要となるものです。
 
 ![](./adfs-federation-metadata/adfs-federation-metadata-006.jpg)
-
 
 ## Q. 今後も Azure AD  フェデレーション メタデータが更新される可能性はあるのか。
 
