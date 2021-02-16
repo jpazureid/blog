@@ -19,7 +19,7 @@ tags:
 **読者のターゲット** : テナントのグローバル管理者。条件付きアクセスおよび Azure AD Connect を操作できることが前提となります。
  
 
-Azure AD Connect は、オンプレミス AD から Azure AD に情報を同期するため、Azure AD 側に Azure AD コネクタ アカウントと呼ばれる(既定では UPN が "Sync_" から始まるアカウント)、Azure AD Connect が同期に使用するための専用アカウントがあります。  
+Azure AD Connect は、オンプレミス AD から Azure AD に情報を同期するため、Azure AD 側に Azure AD コネクタ アカウントと呼ばれる (既定では UPN が "Sync_" から始まるアカウント)、Azure AD Connect が同期に使用するための専用アカウントがあります。  
  
 
 この Azure AD コネクタ アカウントが条件付きアクセスでブロックされると、Azure AD Connect によるディレクトリ同期が行われなくなります。
@@ -32,7 +32,7 @@ Azure AD Connect は、オンプレミス AD から Azure AD に情報を同期�
 
 ## 条件付きアクセスの適用「対象外」に Azure AD コネクタ アカウントのディレクトリ ロールを指定する方法
 ▼手順
-1. Azure ポータル (https://portal.azure.com) に、全体管理者(グローバル管理者)でサインインをします。
+1. Azure ポータル (https://portal.azure.com) に、全体管理者 (グローバル管理者) でサインインをします。
  
 
 2. [Azure Active Directory] > [セキュリティ] > [条件付きアクセス] の順にクリックします。
@@ -82,7 +82,7 @@ Azure AD コネクタ アカウントのサインインは、Azure AD Connect �
 
 **▼ Azure AD 対話型サインイン ログ**
 
-例えば、ユーザー名が "Sync_" から始まる値で検索フィルターをかけると(通常は Azure AD コネクタ アカウントが検索対象として表示されるのが想定されます)、下記のように Azure AD コネクタ アカウントに対して MFA が要求されているために、当該アカウントによるサインインに失敗していることが確認できます。
+例えば、ユーザー名が "Sync_" から始まる値で検索フィルターをかけると (通常は Azure AD コネクタ アカウントが検索対象として表示されるのが想定されます)、下記のように Azure AD コネクタ アカウントに対して MFA が要求されているために、当該アカウントによるサインインに失敗していることが確認できます。
 
 
 ![](./directory-synchronization-accounts/image03.png)
