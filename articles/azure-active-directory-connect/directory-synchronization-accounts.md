@@ -32,7 +32,7 @@ Azure AD Connect は、オンプレミス AD から Azure AD に情報を同期�
 
 ## 条件付きアクセスの適用「対象外」に Azure AD コネクタ アカウントのディレクトリ ロールを指定する方法
 ▼手順
-1. Azure ポータル (https://portal.azure.com) に、全体管理者 (グローバル管理者) でサインインをします。
+1. Azure ポータル (https://portal.azure.com) に、グローバル管理者 (全体管理者) でサインインをします。
  
 
 2. [Azure Active Directory] > [セキュリティ] > [条件付きアクセス] の順にクリックします。
