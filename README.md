@@ -103,6 +103,7 @@
 - [自動アップグレード機能の問題](./articles/azure-active-directory-connect/auto-upgrade-issue.md)
 - [[調査に有効な採取情報] Azure AD Connect サーバーの全般情報](./articles/azure-active-directory-connect/general-information.md)
 - [[調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題](./articles/azure-active-directory-connect/problem-user-synchronize.md)
+- [条件付きアクセスによりディレクトリ同期が失敗する場合の対処方法について](./articles/azure-active-directory-connect/directory-synchronization-accounts.md)
 
 ## AD FS
 
