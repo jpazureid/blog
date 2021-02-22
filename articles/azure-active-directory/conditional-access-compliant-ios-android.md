@@ -12,12 +12,8 @@ tags:
 
 こんにちは。Azure & Identity サポート チームの関口です。
 
-<br>
-
 今回は、ご利用の端末が 「準拠済み」にもかかわらず、条件付きアクセスの「準拠済み」の設定でブロックされてしまった場合の原因と対処方法をご紹介します。
 
-
-<br>
 <br>
 
 ## <なぜブロックされるのか？>
@@ -41,13 +37,10 @@ tags:
 
 ご利用の端末の状況に応じて、以下の二つの観点で確認を行うのがスムーズです。
 
-<br>
-
 **”デバイス情報を提示できているかどうか”**
 
 **”デバイス情報を提示できていない場合は、なぜ提示できていないのか”**
 
-<br>
 <br>
 
 ## <対処方法>
@@ -92,8 +85,6 @@ Azure Portal のデバイス一覧で、対象の端末の「準拠している�
 
 OS によってサポートされるブラウザーは異なるため、ご利用の端末の OS でサポートされているブラウザーを利用されているかご確認をお願いします。
 
-<br>
-
 [サポートされているブラウザー - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#supported-browsers))
 
 <br>
@@ -103,13 +94,9 @@ OS によってサポートされるブラウザーは異なるため、ご利�
 
 Microsoft Edge Chromium を利用してデバイス情報を提示するためには、ブラウザーにサインインしている必要があります。
 
-<br>
-
 [Microsoft Edge と条件付きアクセス - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/deployedge/ms-edge-security-conditional-access))
 
 >エンタープライズ Azure AD 資格情報を使用して Microsoft Edge プロファイルにサインインすると、条件付きアクセスを使用して保護されたエンタープライズ クラウド リソースへのシームレスなアクセスが、Microsoft Edge によって許可されます。
-
-<br>
 
 なお、旧 Edge (Microsoft Edge HTML) の場合は、プロファイルにサインインを行う機能はありません。
 あくまで Microsoft Edge Chromium をご利用の場合の確認となります。
@@ -130,8 +117,6 @@ Microsoft Edge Chromium を利用してデバイス情報を提示するため�
 
 iOS / Android がデバイス情報を提示する仕組みは、ブラウザー アクセスの場合と、クライアント アプリの場合で異なります。
 
-<br>
-
 ブラウザー アクセスの場合は、iOS も Android も Azure AD に証明書を提示することでデバイス情報を渡します。
 
 <br>
@@ -146,8 +131,6 @@ Android の場合、以下のように端末内に保持している証明書一
 
 以下の公開情報をご参照の上、記載された画面と同様のメッセージが表示されている状況であれば、本公開情報の「ブラウザー アクセスを有効にする」手順をお試しください。
 
-<br>
- 
 [不足している必要な証明書をインストールする | Microsoft Docs]((https://docs.microsoft.com/ja-jp/mem/intune/user-help/your-device-is-missing-an-it-required-certificate-android))
 
 <br>
@@ -219,19 +202,11 @@ Microsoft Teams のモバイル アプリにサインインするために資格
 
 上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。
 
-<br>
-
 [ブローカーを使用するようにアプリケーションを構成する - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/develop/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker))
-
-<br>
 
 こちらは iOS / Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。
 
-<br>
-
 Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。
-
-<br>
 
 Microsoft のアプリケーションは基本的に WAM に対応しているため問題ありませんが、3rd Party 製のアプリケーションは WAM に対応した実装となっていないことが考えられ、PRT を提示できないことが想定されます。こちらも正確な実装はアプリケーション ベンダーに確認いただく必要がありますが、このような動作処理が行われるために、Azure AD 側でデバイスを判断できない結果になることがあります。
 
@@ -241,8 +216,6 @@ Microsoft のアプリケーションは基本的に WAM に対応している�
 ## H. その他
 
 その他サポート チームで確認できている事象や仕様についてです。
-
-<br>
 
 ・ 3rd Party 製品によってデバイス情報が提示できない
 
@@ -255,7 +228,5 @@ Microsoft のアプリケーションは基本的に WAM に対応している�
 ## 関連ブログ
 
 [Japan Azure Identity Support Blog: 条件付きアクセスで 「準拠済み」 や 「Hybrid Azure AD 参加が必要」 でブロックされる場合の対処法 (Windows 編)]((../azure-active-directory/conditional-access-compliant-windows.md))
-
-<br>
 
 上記内容が少しでも参考となれば幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひサポートサービスまでお問い合わせください。
