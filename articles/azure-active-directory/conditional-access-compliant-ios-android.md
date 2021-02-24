@@ -14,26 +14,19 @@ tags:
 
 今回は、ご利用の端末が 「準拠済み」にもかかわらず、条件付きアクセスの「準拠済み」の設定でブロックされてしまった場合の原因と対処方法をご紹介します。
 
-エラー コード例
-"errorCode": 53000, "failureReason": "Device is not in required device state: {state}. Conditional Access policy requires a compliant device, and the device is not compliant. The user must enroll their device with an approved MDM provider like Intune.", "additionalDetails": "Your administrator might have configured a conditional access policy that allows access to your organization's resources only from compliant devices. To be compliant, your device must be either joined to your on-premises Active Directory or joined to your Azure Active Directory.            More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation"
+<エラー コード例>
+>"errorCode": 53000, "failureReason": "Device is not in required device state: {state}. Conditional Access policy requires a compliant device, and the device is not compliant. The user must enroll their device with an approved MDM provider like Intune.", "additionalDetails": "Your administrator might have configured a conditional access policy that allows access to your organization's resources only from compliant devices. To be compliant, your device must be either joined to your on-premises Active Directory or joined to your Azure Active Directory.            More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation"
 
-"errorCode": 530003, "failureReason": "Your device is required to be managed to access this resource."
+>"errorCode": 530003, "failureReason": "Your device is required to be managed to access this resource."
 "additionalDetails": "The requested resource can only be accessed using a compliant device. The user is either using a device not managed by a Mobile-Device-Management (MDM) agent like Intune, or it's using an application that doesn't support device authentication. The user could enroll their devices with an approved MDM provider, or use a different app to sign in, or find the app vendor and ask them to update their app. More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation"
 
 <br>
 
 ## <なぜブロックされるのか？>
 
-条件付きアクセスの「準拠済み」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。
+条件付きアクセスの「準拠済み」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。
 
-この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。
-
-ご利用の端末がデバイス情報を Azure AD に提示できない場合、Azure AD は ”どの端末からのアクセスか？” を判断することができません。
-つまり「準拠済み」であるかも判断することができず、ブロックされてしまいます。
-
-ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。
-
-<br>
+ご利用の端末がデバイス情報を Azure AD に提示できない場合、Azure AD は ”どの端末からのアクセスか？” を判断することができません。つまり「準拠済み」であるかも判断することができず、ブロックされてしまいます。
 
 ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。
 
@@ -54,8 +47,6 @@ tags:
 iOS / Android でデバイス情報が提示できない原因としては、以下が挙げられます。
 
 それぞれの項目ごとに解説します。
-
-<br>
 
 
 | No.                      | 確認ポイント                                                                                                                                      |
@@ -104,17 +95,14 @@ Microsoft Edge Chromium を利用してデバイス情報を提示するため�
 
 >エンタープライズ Azure AD 資格情報を使用して Microsoft Edge プロファイルにサインインすると、条件付きアクセスを使用して保護されたエンタープライズ クラウド リソースへのシームレスなアクセスが、Microsoft Edge によって許可されます。
 
-なお、旧 Edge (Microsoft Edge HTML) の場合は、プロファイルにサインインを行う機能はありません。
-あくまで Microsoft Edge Chromium をご利用の場合の確認となります。
+なお、旧 Edge (Microsoft Edge HTML) の場合は、プロファイルにサインインを行う機能はありません。あくまで Microsoft Edge Chromium をご利用の場合の確認となります。
 
 <br>
 <br>
 
 ## D. 旧 Edge を利用している場合
 
-旧 Edge (Microsoft Edge HTML) を使用している場合、デバイス情報を Azure AD に適切に提示できない場合があることを確認しています。
-
-残念ながら、Microsoft Edge HTML は既に開発が終了しており、2021 年 3 月 9 日 にサポートが終了することが予定されているため、Microsoft Edge Chromium を利用いただくことを推奨しています。
+旧 Edge (Microsoft Edge HTML) を使用している場合、デバイス情報を Azure AD に適切に提示できない場合があることを確認しています。残念ながら、Microsoft Edge HTML は既に開発が終了しており、2021 年 3 月 9 日 にサポートが終了することが予定されているため、Microsoft Edge Chromium を利用いただくことを推奨しています。
 
 <br>
 <br>
@@ -133,9 +121,7 @@ Android の場合、以下のように端末内に保持している証明書一
 
 ![](./conditional-access-compliant-ios-android/device-cert.png)
 
-なお、ここで使用する証明書 (上記画面の証明書) は、Microsoft Endpoint Manager (Intune) ポータル サイトからインストール可能です。
-
-以下の公開情報をご参照の上、記載された画面と同様のメッセージが表示されている状況であれば、本公開情報の「ブラウザー アクセスを有効にする」手順をお試しください。
+なお、ここで使用する証明書 (上記画面の証明書) は、Microsoft Endpoint Manager (Intune) ポータル サイトからインストール可能です。以下の公開情報をご参照の上、記載された画面と同様のメッセージが表示されている状況であれば、本公開情報の「ブラウザー アクセスを有効にする」手順をお試しください。
 
 [不足している必要な証明書をインストールする | Microsoft Docs]((https://docs.microsoft.com/ja-jp/mem/intune/user-help/your-device-is-missing-an-it-required-certificate-android))
 
@@ -151,32 +137,18 @@ iOS の [プロファイルとデバイス管理] から、Intune 用のプロ�
 
 iOS / Android を使用したブラウザー アクセスは、上記のように証明書を使用したデバイス情報の提示が可能となります。
 
-<br>
-
-一方で、モバイル アプリ (クライアント アプリ) の場合は、Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。
-
-詳細は 「F. Microsoft Authenticator をインストールしていない」で説明します。
+一方で、モバイル アプリ (クライアント アプリ) の場合は、Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。詳細は 「F. Microsoft Authenticator をインストールしていない」で説明します。
 
 <br>
 <br>
 
 ## F. Microsoft Authenticator をインストールしていない
 
-iOS / Android を使用してモバイル アプリ (ネイティブ アプリ) にアクセスする際は、基本的に Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。
-
-アプリの実装によっては、ブラウザーを経由してデバイス情報を提示する場合もあるため、その場合は Microsoft Authenticator  を用いずにデバイス情報を提示可能です。
-
-<br>
-
+iOS / Android を使用してモバイル アプリ (ネイティブ アプリ) にアクセスする際は、基本的に Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。アプリの実装によっては、ブラウザーを経由してデバイス情報を提示する場合もあるため、その場合は Microsoft Authenticator  を用いずにデバイス情報を提示可能です。
 
 以下は iPad を使用した動作サンプルとなりますが、こちらを見ていただくと Microsoft Authenticator を使用してデバイス情報を提示するシナリオのイメージが湧くかと思います。
 
-<br>
-
-Microsoft Teams のモバイル アプリにサインインするために資格情報を入力すると、パスワード入力画面に遷移しています。
-
-画面左上に Teams の表示がありますが、これは Microsoft Teams が呼び出した画面ではないことがわかります。
-なぜなら、このパスワード入力画面が Microsoft Teams が呼び出した画面であれば、画面左側に Teams への切り替えを促す表示は出ないからです。
+Microsoft Teams のモバイル アプリにサインインするために資格情報を入力すると、パスワード入力画面に遷移しています。画面左上に Teams の表示がありますが、これは Microsoft Teams が呼び出した画面ではないことがわかります。なぜなら、このパスワード入力画面が Microsoft Teams が呼び出した画面であれば、画面左側に Teams への切り替えを促す表示は出ないからです。
 
 ![](./conditional-access-compliant-ios-android/authenticator-screen1.png)
 
@@ -193,26 +165,15 @@ Microsoft Teams のモバイル アプリにサインインするために資格
 
 ## G. アプリの実装によりデバイス情報を提示できないこともある
 
-3rd Party 製のアプリケーションの場合、デバイス情報を直接 Azure AD に提示できるような実装か、Microsoft Authenticator 経由で提示できるように実装されている必要があります。
+3rd Party 製のアプリケーションの場合、デバイス情報を直接 Azure AD に提示できるような実装か、Microsoft Authenticator 経由で提示できるように実装されている必要があります。3rd Party 製のアプリケーションでこのような実装が行われているかどうかは、アプリケーション ベンダーに直接ご確認いただく必要があります。
 
-<br>
+基本的に、Microsoft 製のアプリケーションは Microsoft Authenticator を使用してデバイス情報を提示するとお考え下さい。(Outlook などは Microsoft Authenticator を使用しなくてもデバイス情報を提示できるシナリオがあることを確認していますが、基本的には Microsoft Authenticator が使用されるとお考えください)
 
-3rd Party 製のアプリケーションでこのような実装が行われているかどうかは、アプリケーション ベンダーに直接ご確認いただく必要があります。
-
-基本的に、Microsoft 製のアプリケーションは Microsoft Authenticator を使用してデバイス情報を提示するとお考え下さい。
-(Outlook などは Microsoft Authenticator を使用しなくてもデバイス情報を提示できるシナリオがあることを確認していますが、基本的には Microsoft Authenticator が使用されるとお考えください)
-
-<br>
-
-なお、モバイル デバイスに Microsoft Authenticator をインストールするだけでは不十分で、アプリケーション側が Microsoft Authenticator を使用するように実装がされている必要があります。
-
-上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。
+なお、モバイル デバイスに Microsoft Authenticator をインストールするだけでは不十分で、アプリケーション側が Microsoft Authenticator を使用するように実装がされている必要があります。上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。
 
 [ブローカーを使用するようにアプリケーションを構成する - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/develop/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker))
 
-こちらは iOS / Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。
-
-Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。
+こちらは iOS / Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。
 
 Microsoft のアプリケーションは基本的に WAM に対応しているため問題ありませんが、3rd Party 製のアプリケーションは WAM に対応した実装となっていないことが考えられ、PRT を提示できないことが想定されます。こちらも正確な実装はアプリケーション ベンダーに確認いただく必要がありますが、このような動作処理が行われるために、Azure AD 側でデバイスを判断できない結果になることがあります。
 
