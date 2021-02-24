@@ -121,9 +121,7 @@ PRT が取得できない場合の対処方法としては、以下の記事を�
 
 ## D. サポートされたブラウザーを使用している？
 
-以下の表は OS に対応したサポート ブラウザーの一覧です。(情報がアップデートされる可能性があるため、正確な情報は公開情報をご確認ください)
-
-OS によってサポートされるブラウザーは異なるため、ご利用の端末の OS でサポートされているブラウザーを利用されているかご確認をお願いします。
+OS によってサポートされるブラウザーは異なるため、以下の公開情報を元にご利用のブラウザーがサポートされているかご確認をお願いします。
 
 [サポートされているブラウザー - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#supported-browsers))
 
