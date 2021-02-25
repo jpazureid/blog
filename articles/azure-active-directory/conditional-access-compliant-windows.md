@@ -16,10 +16,10 @@ tags:
 今回は、ご利用の端末が 「準拠済み」もしくは「Hybrid Azure AD 参加を構成済み」にもかかわらず、条件付きアクセスの「準拠済み」や「Hybrid Azure AD 参加が必要」の設定でブロックされてしまった場合の原因と対処方法をご紹介します。
 
 <エラー コード例>
->"errorCode": 53000, "failureReason": "Device is not in required device state: {state}. Conditional Access policy requires a compliant device, and the device is not compliant. The user must enroll their device with an approved MDM provider like Intune.", "additionalDetails": "Your administrator might have configured a conditional access policy that allows access to your organization's resources only from compliant devices. To be compliant, your device must be either joined to your on-premises Active Directory or joined to your Azure Active Directory.            More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation"
+>"errorCode": 53000, "failureReason": "Device is not in required device state: {state}. Conditional Access policy requires a compliant device, and the device is not compliant. The user must enroll their device with an approved MDM provider like Intune.", "additionalDetails": "Your administrator might have configured a conditional access policy that allows access to your organization's resources only from compliant devices. To be compliant, your device must be either joined to your on-premises Active Directory or joined to your Azure Active Directory.            More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation
 
 >"errorCode": 530003, "failureReason": "Your device is required to be managed to access this resource."
-"additionalDetails": "The requested resource can only be accessed using a compliant device. The user is either using a device not managed by a Mobile-Device-Management (MDM) agent like Intune, or it's using an application that doesn't support device authentication. The user could enroll their devices with an approved MDM provider, or use a different app to sign in, or find the app vendor and ask them to update their app. More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation"
+"additionalDetails": "The requested resource can only be accessed using a compliant device. The user is either using a device not managed by a Mobile-Device-Management (MDM) agent like Intune, or it's using an application that doesn't support device authentication. The user could enroll their devices with an approved MDM provider, or use a different app to sign in, or find the app vendor and ask them to update their app. More details available at https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation
 
 <br>
 
@@ -123,7 +123,7 @@ PRT が取得できない場合の対処方法としては、以下の記事を�
 
 OS によってサポートされるブラウザーは異なるため、以下の公開情報を元にご利用のブラウザーがサポートされているかご確認をお願いします。
 
-[サポートされているブラウザー - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#supported-browsers))
+[サポートされているブラウザー - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#supported-browsers)
 
 <br>
 <br>
@@ -132,7 +132,7 @@ OS によってサポートされるブラウザーは異なるため、以下�
 
 Windows 10 バージョン 1703 以降で Chrome を利用してデバイス情報を提示するためには、Windows 10 Accounts 拡張機能をインストールする必要があります。Chrome をご利用の場合は、以下の公開情報の案内に沿ってインストールが可能です。
 
-[Chrome のサポート - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#chrome-support))
+[Chrome のサポート - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#chrome-support)
 
 >Windows 10 Creators Update (バージョン 1703) 以降で Chrome をサポートするには、Windows 10 Accounts 拡張機能をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
 
@@ -143,7 +143,7 @@ Windows 10 バージョン 1703 以降で Chrome を利用してデバイス情�
 
 Microsoft Edge Chromium を利用してデバイス情報を提示するためには、ブラウザーにサインインしている必要があります。
 
-[Microsoft Edge と条件付きアクセス - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/deployedge/ms-edge-security-conditional-access))
+[Microsoft Edge と条件付きアクセス - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/deployedge/ms-edge-security-conditional-access)
 
 >エンタープライズ Azure AD 資格情報を使用して Microsoft Edge プロファイルにサインインすると、条件付きアクセスを使用して保護されたエンタープライズ クラウド リソースへのシームレスなアクセスが、Microsoft Edge によって許可されます。
 
@@ -167,7 +167,7 @@ Microsoft Edge Chromium を利用してデバイス情報を提示するため�
 
 なお、モバイル デバイスに Microsoft Authenticator をインストールするだけでは不十分で、アプリケーション側が Microsoft Authenticator を使用するように実装がされている必要があります。上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。
 
-[ブローカーを使用するようにアプリケーションを構成する - Azure Active Directory | Microsoft Docs]((https://docs.microsoft.com/ja-jp/azure/active-directory/develop/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker))
+[ブローカーを使用するようにアプリケーションを構成する - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker)
 
 こちらは iOS / Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。
 
@@ -190,6 +190,6 @@ Microsoft のアプリケーションは基本的に WAM に対応している�
 
 ## 関連ブログ
 
-[Japan Azure Identity Support Blog: 条件付きアクセスで「準拠済み」でブロックされる場合の対処法 (iOS / Android 編)]((../azure-active-directory/conditional-access-compliant-ios-android.md))
+[Japan Azure Identity Support Blog: 条件付きアクセスで「準拠済み」でブロックされる場合の対処法 (iOS / Android 編)](https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android)
 
 上記内容が少しでも参考となれば幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひサポートサービスまでお問い合わせください。
