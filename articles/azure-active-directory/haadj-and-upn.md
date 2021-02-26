@@ -1,8 +1,8 @@
 ---
 title: Hybrid Azure AD Join とユーザーの UPN 
-date: 2021-01-05 //日時 (できれば時刻まで)
+date: 2021-01-05
 tags:
-  - Azure AD //タグ
+  - Azure AD
   - HAADJ
   - UPN
 ---
