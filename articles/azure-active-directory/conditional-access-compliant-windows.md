@@ -28,7 +28,6 @@ tags:
 条件付きアクセスの「準拠済み」と「Hybrid Azure AD 参加が必要」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。
 
 ご利用の端末がデバイス情報を Azure AD に提示できない場合、Azure AD は ”どの端末からのアクセスか？” を判断することができません。つまり「準拠済み」であるかも「Hybrid Azure AD 参加を構成済み」であるかも判断することができず、ブロックされてしまいます。
-
 ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。
 
 ![](./conditional-access-compliant-windows/deviceid-not-displayed.png)
@@ -39,7 +38,6 @@ tags:
 
 
 **”デバイス情報を提示できているかどうか”**
-
 **”デバイス情報を提示できていない場合は、なぜ提示できていないのか”**
 
 <br>
@@ -47,7 +45,6 @@ tags:
 ## <対処方法>
 
 Windows でデバイス情報が提示できない原因としては、以下が挙げられます。
-
 それぞれの項目ごとに解説します。
 
 
@@ -64,7 +61,6 @@ Windows でデバイス情報が提示できない原因としては、以下が
 | I       | その他                             |
 
 <br>
-<br>
 
 ## A. Hybrid Azure AD 参加が構成済み？
 
@@ -74,10 +70,8 @@ Azure Portal のデバイス一覧で、対象の端末の「登録済み」の�
 ![](./conditional-access-compliant-windows/registered-set.png)
 
 構成が完了していない場合は、「登録済み」の列に「保留中」と表示がされることになります。この場合は、まずは Hybrid Azure AD 参加の構成を完了させることから始めてください。
-
 (ここでは、Hybrid Azure AD 参加の構成方法は割愛します)
 
-<br>
 <br>
 
 ## B. 準拠済み？
@@ -89,7 +83,6 @@ Azure Portal のデバイス一覧で、対象の端末の「準拠している�
 
 対象の端末が準拠していない場合は、Microsoft Endpoint Manager (Intune) の観点で、なぜ準拠済みとならないのかを調査する必要があります。
 
-<br>
 <br>
 
 ## C. PRT 取得済み？
@@ -109,14 +102,11 @@ dsregcmd /status
 
 
 この場合は、なぜ PRT が取得できていないのか？という観点で調査を行う必要があります。
-
 PRT が取得できない場合の対処方法としては、以下の記事をご参考ください。また、サポートによる支援も可能ですので、ご希望の場合はお問い合わせください。
 
 [Hybrid Azure AD Join 失敗時の初動調査方法について (マネージド編) | Japan Azure Identity Support Blog]((../azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed.md))
-
 [Hybrid Azure AD Join 失敗の初動調査方法について (フェデレーション編) | Japan Azure Identity Support Blog]((../azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated.md))
 
-<br>
 <br>
 
 ## D. サポートされたブラウザーを使用している？
@@ -125,7 +115,6 @@ OS によってサポートされるブラウザーは異なるため、以下�
 
 [サポートされているブラウザー - Azure Active Directory | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-conditional-access-conditions#supported-browsers)
 
-<br>
 <br>
 
 ## E. Chrome を使用している場合、Windows 10 Accounts 拡張機能をインストールしている？
@@ -136,7 +125,6 @@ Windows 10 バージョン 1703 以降で Chrome を利用してデバイス情�
 
 >Windows 10 Creators Update (バージョン 1703) 以降で Chrome をサポートするには、Windows 10 Accounts 拡張機能をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
 
-<br>
 <br>
 
 ## F. Edge Chromium を使用している場合、ブラウザーにサインインしている？
@@ -150,13 +138,11 @@ Microsoft Edge Chromium を利用してデバイス情報を提示するため�
 なお、旧 Edge (Microsoft Edge HTML) の場合は、プロファイルにサインインを行う機能はありません。あくまで Microsoft Edge Chromium をご利用の場合の確認となります。
 
 <br>
-<br>
 
 ## G. 旧 Edge を利用している場合
 
 旧 Edge (Microsoft Edge HTML) を使用している場合、デバイス情報を Azure AD に適切に提示できない場合があることを確認しています。残念ながら、Microsoft Edge HTML は既に開発が終了しており、2021 年 3 月 9 日 にサポートが終了することが予定されているため、Microsoft Edge Chromium を利用いただくことを推奨しています。
 
-<br>
 <br>
 
 ## H. アプリの実装によりデバイス情報を提示できないこともある
@@ -174,7 +160,6 @@ Microsoft Edge Chromium を利用してデバイス情報を提示するため�
 Microsoft のアプリケーションは基本的に WAM に対応しているため問題ありませんが、3rd Party 製のアプリケーションは WAM に対応した実装となっていないことが考えられ、PRT を提示できないことが想定されます。こちらも正確な実装はアプリケーション ベンダーに確認いただく必要がありますが、このような動作処理が行われるために、Azure AD 側でデバイスを判断できない結果になることがあります。
 
 <br>
-<br>
 
 ## I. その他
 
@@ -185,7 +170,6 @@ Microsoft のアプリケーションは基本的に WAM に対応している�
 クライアント端末から Azure AD にデバイス情報を提示する経路上に、プロキシなど一部 3rd Party 製品の動作 (仕様) によって、デバイス情報が提示できない場合があることを確認しております。
 もし切り分けの結果、ご利用の 3rd Party 製品を経由する場合のみ事象が発生するということであれば、該当のベンダーに確認のお問い合わせをいただければと思います。
 
-<br>
 <br>
 
 ## 関連ブログ
