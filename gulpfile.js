@@ -8,7 +8,7 @@ const replace = require("gulp-string-replace");
 const { src, dest, watch, parallel, series, lastRun } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { Octokit } = require("@octokit/rest");
-const encodeBlobSafe = (name) => encodeURIComponent(name.replace(/\//g, "_").replace(/\-/g, "+"));
+const encodeBlobSafe = (name) => name.replace(/\//g, "_").replace(/\-/g, "+");
 
 const PREVIEW_BASE_URL = process.env.PREVIEW_BASE_URL;
 const BRANCH_NAME = process.env.CIRCLE_BRANCH;
