@@ -156,6 +156,14 @@ Microsoft のサービスを始め、クラウド サービスが普及した現
 
 同意の要求を行っているアプリが、過度に多くの権限を要求しているなど、組織のデータを不正に取得しようとしている悪質なアプリの可能性があると Azure AD が判断した場合、ユーザーによる同意付与を無効化し、管理者の同意を要求する場合があります。[risk-based step-up consent](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/configure-user-consent#configure-risk-based-step-up-consent) 機能と呼ばれ、既定で ON になっています。
 
+また、2020 年 11 月以降に新しく登録された発行元が確認済みでないほとんどのマルチテナント アプリからの API の同意要求が、Azure AD にリスクが高いと判断されるようになりました。
+同意画面には、以下のようにこれらのアプリにはリスクが伴い、未確認の発行元からのものであることをユーザーに通知する警告が表示されます。
+
+![発行元が未確認であるアプリからの同意の要求](./azure-ad-consent-framework/blocked-user-consent-unverified.png)
+
+組織の管理者様においては、後述の手順で[管理者による同意を行う](#5-管理者による同意の付与手順)ことをご検討ください。
+またマルチテナント アプリケーションの開発者様においては、アプリケーションを安心してご利用いただくためにも[発行者の確認](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/publisher-verification-overview)をご検討ください。
+
 ## 5. 管理者による同意の付与手順
 
 管理者による同意が必要ないくつかのパターンをご紹介しましたが、実際にアプリを利用するために行う、管理者の同意付与手順は、どのパターンでも同様です。
