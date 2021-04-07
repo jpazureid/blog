@@ -11,7 +11,7 @@ const { Octokit } = require("@octokit/rest");
 
 const PREVIEW_BASE_URL = process.env.PREVIEW_BASE_URL;
 const BRANCH_NAME = process.env.CIRCLE_BRANCH;
-const BLOB_SAFE_BRANCH_NAME = BRANCH_NAME.replace(/\//g, "__");
+const BLOB_SAFE_BRANCH_NAME = encodeURIComponent(BRANCH_NAME.replace(/\//g, "_").replace(/\-/g, "+"));
 const PR_URL = process.env.CIRCLE_PULL_REQUEST;
 const REPO_OWNER = process.env.CIRCLE_PROJECT_USERNAME;
 const REPO_NAME = process.env.CIRCLE_PROJECT_REPONAME;
