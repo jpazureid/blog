@@ -3,6 +3,7 @@ title: 多要素認証 (MFA) のリセット手順
 date: 2018-10-15
 tags:
   - Azure AD
+  - MFA
 ---
 
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。
