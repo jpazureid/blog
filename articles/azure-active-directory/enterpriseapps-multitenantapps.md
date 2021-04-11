@@ -44,7 +44,7 @@ Azure ポータル上で確認いただける [エンタープライズ アプ�
     <img src="./enterpriseapps-multitenantapps/fig1.png" width="300px">
 
 
-3. パスワード認証後、userA さんには下記の画面が表示されます。この例では、basic_profile / offline_access へのアクセス許可が要求されているので、userA さんは "承諾" を押下します。
+3. パスワード認証後、userA さんには下記の画面が表示されます。この例では、profile / offline_access へのアクセス許可が要求されているので、userA さんは "承諾" を押下します。
 
     <img src="./enterpriseapps-multitenantapps/fig2.png" width="400px">
 
@@ -52,7 +52,7 @@ Azure ポータル上で確認いただける [エンタープライズ アプ�
 
     <img src="./enterpriseapps-multitenantapps/fig3.png" width="300px">
 
-5. 次回以降 userA が Graph Explorer にアクセスする際は、basic_profile / offline_access のアクセス許可が要求されることはありません。
+5. 次回以降 userA が Graph Explorer にアクセスする際は、profile / offline_access のアクセス許可が要求されることはありません。
 
 userA が上記の操作を行った後、管理者によって contoso.com テナントの [エンタープライズ アプリケーション] を開くと、下記のように "Graph explorer (official site)" という名前のサービス プリンシパル が追加されています。
 
@@ -75,15 +75,15 @@ userA が上記の操作を行った後、管理者によって contoso.com テ�
 - 「管理者の承認が必要」のメッセージが表示された場合の対処法(https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework/)
 
 ここでお伝えしたいのは下記の通りです。
-- **管理者が知らないところで、一般ユーザーによって追加されたマルチテナント アプリのサービス プリンシパルが、Azure AD のリソース全体にアクセスできる ! ということは起こりえません**ので、ご安心ください。
-- なぜなら、Azure AD のリソース全体にアクセスするための許可を、サービス プリンシパルに与えられるのは、管理者ユーザーのみだからです。
+- **管理者が知らないところで一般ユーザーによって追加されたマルチテナント アプリのサービス プリンシパルが、Azure AD のリソース全体にアクセスできる ! ということは起こりえません**ので、ご安心ください。
+- なぜなら、Azure AD のリソース全体にアクセスするための許可をサービス プリンシパルに与えられるのは、管理者ユーザーのみだからです。
 - 一般ユーザーは、部分的なアクセス許可を与えることができます。
 先述の例だと、userA は Graph Explorer に対して、下記のアクセスを許可しています。
-    - userA 自身の基本情報 (basic_profile) へのアクセス
-    - userA 自身がオフラインの際にも、許可済みのアクセスができる権利 (offline_access)
-
+    - userA 自身の基本情報 (profile) へのアクセス
+    - userA が許可済みのアクセスに対する、継続的なアクセス権 (offline_access)
+    - [profile と offline_access についての詳細はこちら](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes)
 ## よくある質問 (2) エンタープライズ アプリケーションが勝手に追加されるのは不本意です。一般ユーザーによるこの操作を禁止することは可能でしょうか?
-結論から申し上げますと可能です。
+結論から言うと可能です。
 
 前述の通り、マルチテナント アプリケーションのサービス プリンシパルが追加されるタイミングは、「ユーザーが認証後、アクセス許可を承諾した時」です。
 なので、ユーザーによるアクセス許可の承諾を禁止することで、マルチテナント アプリケーションの追加もできなくなります。
