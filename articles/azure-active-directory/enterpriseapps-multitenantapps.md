@@ -43,7 +43,6 @@ Azure ポータル上で確認いただける [エンタープライズ アプ�
 
     <img src="./enterpriseapps-multitenantapps/fig1.png" width="300px">
 
-
 3. パスワード認証後、userA さんには下記の画面が表示されます。この例では、profile / offline_access へのアクセス許可が要求されているので、userA さんは "承諾" を押下します。
 
     <img src="./enterpriseapps-multitenantapps/fig2.png" width="400px">
@@ -64,7 +63,6 @@ userA が上記の操作を行った後、管理者によって contoso.com テ�
 ## よくある質問 (1) 管理者の知らないところで登録された マルチテナント アプリケーションは、Azure AD 上のリソースにアクセスが可能なのですか？セキュリティ的に心配です。
 これは「はい」であり「いいえ」です。まず、下記の大原則がございます。
 1. アプリケーションが Azure AD のリソースにアクセスするためには、テナントのユーザー」が明示的に "アクセス許可" を付与する操作が必要です。その操作が行われるのは (先ほども出てきた) この画面です。
-
 
     <img src="./enterpriseapps-multitenantapps/fig2.png" width="400px">
 
@@ -90,9 +88,7 @@ userA が上記の操作を行った後、管理者によって contoso.com テ�
 
 これによって、ユーザーの認証後に表示される "アクセス許可" の画面が、下記の画面に置きかわります。
 
-
 <img src="./enterpriseapps-multitenantapps/fig4.png" width="400px">
-
 
 ユーザーは管理者によってアクセス許可が承諾されない限り、このアプリケーションへアクセスすることができません。
 
