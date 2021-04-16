@@ -5,6 +5,7 @@ tags:
     - AD FS
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/13/%e8%a8%bc%e6%98%8e%e6%9b%b8%e5%88%a9%e7%94%a8%e8%80%85%e4%bf%a1%e9%a0%bc%e3%81%ae%e3%82%bb%e3%82%ad%e3%83%a5%e3%82%a2-%e3%83%8f%e3%83%83%e3%82%b7%e3%83%a5-%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
