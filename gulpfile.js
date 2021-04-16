@@ -12,7 +12,7 @@ const encodeBlobSafe = (name) => name.replace(/\//g, "_").replace(/\-/g, "+");
 
 const PREVIEW_BASE_URL = process.env.PREVIEW_BASE_URL;
 const BRANCH_NAME = process.env.CIRCLE_BRANCH;
-const BLOB_SAFE_BRANCH_NAME = encodeBlobSafe(BRANCH_NAME);
+const BLOB_SAFE_BRANCH_NAME = BRANCH_NAME ? encodeBlobSafe(BRANCH_NAME) : "";
 const PR_URL = process.env.CIRCLE_PULL_REQUEST;
 const REPO_OWNER = process.env.CIRCLE_PROJECT_USERNAME;
 const REPO_NAME = process.env.CIRCLE_PROJECT_REPONAME;
