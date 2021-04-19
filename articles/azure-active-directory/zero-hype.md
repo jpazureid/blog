@@ -99,8 +99,8 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
 2. 多要素認証とリスク検出により、アイデンティティを保護します。
 3. 侵害を封じ込めるために、ポリシー ベースのアクセスと最小特権のアクセスを強制します。
 4. 次のセッションを参照します。
-    - [BRK2132](https://myignite.techcommunity.microsoft.com/sessions/81733?source=sessions): How Microsoft uses Azure Active Directory Identity Protection and Conditional Access to protect its assets
-    - [BRK4017](https://myignite.techcommunity.microsoft.com/sessions/81723?source=sessions): The science behind Azure Active Directory Identity Protection
+    - [BRK2132](https://myignite.microsoft.com/archives/IG19-BRK2132): How Microsoft uses Azure Active Directory Identity Protection and Conditional Access to protect its assets
+    - [BRK4017](https://myignite.microsoft.com/archives/IG19-BRK4017): The science behind Azure Active Directory Identity Protection
 
 ### デバイス管理チーム:
 
@@ -108,7 +108,7 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
 2. MDM セキュリティ ベースラインとコンプライアンス レポートを実装します。
 3. 影響評価のため読み取りアクセスを許可する役割ベースのアクセス制御を実装します。
 4. 次のセッションを参照します。
-    - [DEP50](https://myignite.techcommunity.microsoft.com/sessions/81675?source=sessions): Why Microsoft 365 device management is essential to your Zero Trust strategy
+    - [DEP50](https://myignite.microsoft.com/archives/IG19-DEP50): Why Microsoft 365 device management is essential to your Zero Trust strategy
 
 ### ネットワークおよびインフラ チーム:
 
@@ -116,8 +116,8 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
 2. クラウドサービスに元々備わっている制御機能を使用して、サービスをできる限り細かくセグメント化します。
 3. アプリケーションとネットワークに Just-in-time のセグメント化を実装して、攻撃対象の範囲を減らします。
 4. 次のセッションを参照します。
-    - [BRK3188](https://myignite.techcommunity.microsoft.com/sessions/81972?source=sessions): Protect your cloud workload from threats using Azure Security Center
-    - [BRK3185](https://myignite.techcommunity.microsoft.com/sessions/81969?source=sessions): Securing your cloud perimeter with Azure Network Security
+    - [BRK3188](https://myignite.microsoft.com/archives/IG19-BRK3188): Protect your cloud workload from threats using Azure Security Center
+    - [BRK3185](https://myignite.microsoft.com/archives/IG19-BRK3185): Securing your cloud perimeter with Azure Network Security
 
 ### アプリケーションおよびデータ チーム:
 
@@ -125,8 +125,8 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
 2. 分類項目を決めて、ドキュメントとメールの分類を始めましょう。初めて分類するときは決められた分類項目を使用するのがよいです。
 3. 機密データやアプリ内の監視対象になっていないアクセスなど、リスクの高いシナリオに保護を適用します。
 4. 次のセッションを参照します。
-    - [BRK2108](https://myignite.techcommunity.microsoft.com/sessions/79747?source=sessions): Top CASB use cases to boost your cloud security strategy
-    - [BRK2119](https://myignite.techcommunity.microsoft.com/sessions/81172?source=sessions): Secure your sensitive data! Understanding the latest Microsoft Information Protection capabilities
+    - [BRK2108](https://myignite.microsoft.com/archives/IG19-BRK2108): Top CASB use cases to boost your cloud security strategy
+    - [BRK2119](https://myignite.microsoft.com/archives/IG19-BRK2119): Secure your sensitive data! Understanding the latest Microsoft Information Protection capabilities
 
 最後に、マイクロソフトの [Zero-Trust センター](https://aka.ms/zero-trust) をご覧いただき、今後検討いただくにあたって、参考となるであろう [成熟度モデル](https://aka.ms/ztmodel) についてもご参照いただければと思います。
 
