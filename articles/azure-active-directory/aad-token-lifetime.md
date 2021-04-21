@@ -7,10 +7,12 @@ tags:
   - OAuth
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/02/28/aad-issure-token-lifetime/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
-**注: アクセス トークンを除き、トークンの有効期間の変更は現在廃止されております。サインインの頻度を変更したい場合には、代わりに条件付きアクセスの [認証セッション管理](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime) をご利用ください**
+> [!WARNING]
+> アクセス トークンを除き、トークンの有効期間の変更は現在廃止されております。サインインの頻度を変更したい場合には、代わりに条件付きアクセスの [認証セッション管理](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime) をご利用ください
 
 # Azure AD が発行するトークンの有効期間について
 

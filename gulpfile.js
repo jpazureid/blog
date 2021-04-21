@@ -8,19 +8,25 @@ const replace = require("gulp-string-replace");
 const { src, dest, watch, parallel, series, lastRun } = require("gulp");
 const { BlobServiceClient } = require("@azure/storage-blob");
 const { Octokit } = require("@octokit/rest");
+const encodeBlobSafe = (name) => name.replace(/\//g, "_").replace(/\-/g, "+").replace(/\./g, "_");
 
-const previewBaseUrl = process.env.PREVIEW_BASE_URL;
-let branchName = process.env.CIRCLE_BRANCH;
+const PREVIEW_BASE_URL = process.env.PREVIEW_BASE_URL;
+const BRANCH_NAME = process.env.CIRCLE_BRANCH;
+const BLOB_SAFE_BRANCH_NAME = BRANCH_NAME ? encodeBlobSafe(BRANCH_NAME) : "";
+const PR_URL = process.env.CIRCLE_PULL_REQUEST;
+const REPO_OWNER = process.env.CIRCLE_PROJECT_USERNAME;
+const REPO_NAME = process.env.CIRCLE_PROJECT_REPONAME;
+const GITHUB_PERSONAL_ACCESS_TOKEN = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 
 let previewUrl = "";
 let blogRoot = "/blog";
 
-if (branchName !== "master" && branchName && previewBaseUrl) {
-  branchName = branchName.replace(/\//g, ""),
-  blogRoot = "/" + branchName;
+if (BRANCH_NAME !== "master" && BRANCH_NAME && PREVIEW_BASE_URL) {
+  blogRoot = "/" + BLOB_SAFE_BRANCH_NAME;
   previewUrl = new URL(
-    branchName,
-    previewBaseUrl
+    BLOB_SAFE_BRANCH_NAME,
+    PREVIEW_BASE_URL
   ).toString();
 }
 
@@ -113,7 +119,7 @@ const generateForPreview = (cb) => {
   if (!previewUrl) {
     cb(
       new Error(
-        "environment variables are not defined. Please set CIRCLE_BRANCH and PREVIEW_BASE_URL."
+        "environment variables are not defined. Please set branchName and PREVIEW_BASE_URL."
       )
     );
   }
@@ -124,7 +130,7 @@ const generateForPreview = (cb) => {
       return hexo.call("clean", {});
     })
     .then(function () {
-      hexo.config.root = `/${branchName}/`;
+      hexo.config.root = `/${BLOB_SAFE_BRANCH_NAME}/`;
       hexo.config.url = previewUrl;
       logger.info(`run: hexo generate with { root: "${hexo.config.root}", url: "${hexo.config.url}" }`);
       return hexo.call("generate", {});
@@ -189,7 +195,7 @@ const getContainerClient = async () => {
   }
   const containerName = "$web";
   const blobServiceClient = await BlobServiceClient.fromConnectionString(
-    process.env.AZURE_STORAGE_CONNECTION_STRING
+    AZURE_STORAGE_CONNECTION_STRING
   );
   containerClient = await blobServiceClient.getContainerClient(containerName);
   return containerClient;
@@ -199,15 +205,15 @@ const getContainerClient = async () => {
 async function uploadToBlob(done) {
   const containerClient = await getContainerClient();
   const files = glob("./public/**/*", { nodir: true, sync: true });
-  await uploadFilesToBlobFolder(containerClient, files, branchName);
+  await uploadFilesToBlobFolder(containerClient, files, BLOB_SAFE_BRANCH_NAME);
   done();
 }
 
 async function deleteBlobFolderIfExist(done) {
   const containerClient = await getContainerClient();
-  logger.info(`delete ${branchName}`);
+  logger.info(`delete ${BRANCH_NAME}`);
   for await (const item of containerClient.listBlobsFlat({
-    prefix: branchName,
+    prefix: BLOB_SAFE_BRANCH_NAME,
   })) {
     if (item.kind === "prefix") {
       continue;
@@ -215,6 +221,7 @@ async function deleteBlobFolderIfExist(done) {
     logger.info(`delete ${item.name}`);
     containerClient.deleteBlob(item.name);
   }
+  done();
 }
 
 async function uploadFilesToBlobFolder(containerClient, files, folderName) {
@@ -265,7 +272,7 @@ async function uploadFilesToBlobFolder(containerClient, files, folderName) {
 }
 
 const commentToGithub = async (done) => {
-  const secret = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+  const secret = GITHUB_PERSONAL_ACCESS_TOKEN;
   if (!secret) {
     logger.warn("GitHub Access Token is not defined. skipped comment task.");
     return done();
@@ -276,12 +283,11 @@ const commentToGithub = async (done) => {
   });
   //CIRCLE_PR_NUMBER, CIRCLE_PR_REPONAME can be only used for forked PR.
   //'https://github.com/jpazureid/blog/pull/112'
-  const prUrl = process.env.CIRCLE_PULL_REQUEST;
-  const repoOwner = prUrl.split("/")[3];
-  const repoName = prUrl.split("/")[4];
-  const issueNumber = prUrl.split("/")[6];
+  const repoOwner = PR_URL.split("/")[3];
+  const repoName = PR_URL.split("/")[4];
+  const issueNumber = PR_URL.split("/")[6];
 
-  logger.info(`fetch PR comments: ${prUrl}`);
+  logger.info(`fetch PR comments: ${PR_URL}`);
   const { data: prComments } = await octokit.issues.listComments({
     owner: repoOwner,
     repo: repoName,
@@ -300,7 +306,7 @@ const commentToGithub = async (done) => {
     repo: repoName,
     issue_number: issueNumber,
     // add slash to end of url.
-    body: `🎉🐧Thank you for your contribute!\n We have launched [preview environment!](${previewUrl}/)`,
+    body: `🎉🐧Thank you for your contribution!\n We have launched [preview environment!](${previewUrl}/)`,
   });
   if (result.status != 201) {
     logger.error("failed creating comment");
@@ -311,7 +317,7 @@ const commentToGithub = async (done) => {
 };
 
 const deleteMergedPreview = async () => {
-  const secret = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+  const secret = GITHUB_PERSONAL_ACCESS_TOKEN;
   if (!secret) {
     logger.warn("GitHub Access Token is not defined. skipped delete task.");
     return done();
@@ -323,11 +329,11 @@ const deleteMergedPreview = async () => {
 
   //list pull requests
   const result = await octokit.paginate("GET /repos/:owner/:repo/pulls", {
-    owner: process.env.CIRCLE_PROJECT_USERNAME,
-    repo: process.env.CIRCLE_PROJECT_REPONAME,
+    owner: REPO_OWNER,
+    repo: REPO_NAME
   });
 
-  const openedPRs = result.map((pr) => pr.head.ref);
+  const openedPRs = result.map((pr) => encodeBlobSafe(pr.head.ref));
   const containerClient = await getContainerClient();
   for await (const item of containerClient.listBlobsFlat()) {
     if (item.kind === "prefix") {

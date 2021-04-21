@@ -77,6 +77,7 @@
 - [Azure AD Domain Services のよくあるご質問と対処策](./articles/azure-active-directory/azure-ad-ds-qa.md)
 - [Windows Hello for Business の構成解説](./articles/azure-active-directory/whfb-configuration-explanation.md)
 - [MFA 認証方法を、変更 / 再登録 / 追加 したい！](./articles/azure-active-directory/change-mfa-verification-method.md)
+- [Hybrid Azure AD Join とユーザーの UPN](./articles/azure-active-directory/haadj-and-upn.md)
 
 ## Azure AD Connect
 
@@ -102,6 +103,7 @@
 - [自動アップグレード機能の問題](./articles/azure-active-directory-connect/auto-upgrade-issue.md)
 - [[調査に有効な採取情報] Azure AD Connect サーバーの全般情報](./articles/azure-active-directory-connect/general-information.md)
 - [[調査に有効な採取情報] Azure AD Connect でユーザー同期ができない問題](./articles/azure-active-directory-connect/problem-user-synchronize.md)
+- [条件付きアクセスによりディレクトリ同期が失敗する場合の対処方法について](./articles/azure-active-directory-connect/directory-synchronization-accounts.md)
 
 ## AD FS
 

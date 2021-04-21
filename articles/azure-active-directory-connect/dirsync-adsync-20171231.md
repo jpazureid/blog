@@ -7,6 +7,7 @@ tags:
   - DirSync
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/11/02/dirsync-adsync-20171231-%e3%81%a7%e7%b5%82%e4%ba%86%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 

@@ -7,6 +7,7 @@ tags:
   - signin log
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/01/28/azure-ad-reporting-api/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 

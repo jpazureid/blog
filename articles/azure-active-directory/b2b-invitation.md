@@ -5,6 +5,7 @@ tags:
   - Azure AD B2B
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/05/23/azure-ad-b2b-new/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
