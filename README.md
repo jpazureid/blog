@@ -78,6 +78,7 @@
 - [Windows Hello for Business の構成解説](./articles/azure-active-directory/whfb-configuration-explanation.md)
 - [MFA 認証方法を、変更 / 再登録 / 追加 したい！](./articles/azure-active-directory/change-mfa-verification-method.md)
 - [Hybrid Azure AD Join とユーザーの UPN](./articles/azure-active-directory/haadj-and-upn.md)
+- [クライアント シークレット作成画面の変更について](./articles/azure-active-directory/azuread-clientsecrets-202104.md)
 
 ## Azure AD Connect
 
