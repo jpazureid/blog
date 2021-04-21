@@ -5,6 +5,7 @@ tags:
   - AD FS
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/extranetlockout%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 

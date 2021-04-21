@@ -5,6 +5,7 @@ tags:
   - Azure AD
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/24/%e8%aa%bf%e6%9f%bb%e3%81%ab%e6%9c%89%e5%8a%b9%e3%81%aa%e6%8e%a1%e5%8f%96%e6%83%85%e5%a0%b1-%e3%83%96%e3%83%a9%e3%82%a6%e3%82%b6%e7%b5%8c%e7%94%b1%e3%81%a7%e3%81%ae-azure-ad-%e8%aa%8d%e8%a8%bc/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 

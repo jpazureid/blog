@@ -14,6 +14,7 @@
     "gulp-copy": "^4.0.1",
     "gulp-string-replace": "^1.1.2",
     "hexo": "4.2.0",
+    "hexo-alert": "github:jpazureid/hexo-alert",
     "hexo-asset-link": "^2.1.0",
     "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",

@@ -5,6 +5,7 @@ tags:
   - Azure AD
 ---
 
+> [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/04/17/upcoming-improvements-to-the-azure-ad-sign-in-experience/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 

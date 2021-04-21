@@ -7,7 +7,7 @@ tags:
 ---
 
 # MFA 認証方法を、変更 / 再登録 / 追加 したい！
-こんにちは、Azure Identity サポート チームの栗井です。
+こんにちは。Azure Identity サポート チームの栗井です。
 
 弊社サポートチームでは、 Azure Active Directory に関して、以下のようなご要望に関するお問い合わせをよくいただきます。
 - スマートフォンを買い替えたので、MFA 認証方法を変更したい。
@@ -52,28 +52,55 @@ Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設�
 ※ 複数端末を MFA 認証方法として登録する場合 : 認証方法としては、SMS / 電話は 1 つの電話番号のみ、Microsoft Authenticator は複数の端末が登録可能です。複数モバイル デバイスによる MFA 認証を行いたい場合は、Microsoft Authenticator をご利用ください。
 
 ## 現在登録されているモバイル デバイスで、MFA 認証ができない場合
-この場合、現在の MFA 認証方法をリセットした上で、ユーザーは再登録を行う必要があります。 現在の MFA 認証方法をリセットすることができるのは、テナント管理者 (グローバル管理者ロール) です。<br>
-リセットする対象が管理者ユーザー以外であれば、ユーザー管理者、特権認証管理者、認証管理者のロールを持つアカウントでも MFA 認証方法をリセットすることができます。
+この場合、以下のいずれかの方法によって、管理者がユーザーの MFA 認証方法をリセット / 変更ください。
 
-### 管理者によるMFA 認証方法のリセット方法
+【 1 】管理者による MFA 認証方法のリセット
+
+【 2 】管理者が直接 MFA 認証用電話番号を指定 (プレビュー機能)
+
+### 【 1 】管理者によるMFA 認証方法のリセット
+管理者によって現在の MFA 認証方法をリセットした上で、ユーザーが再登録を行う方法です。 <br>
+現在の MFA 認証方法をリセットすることができるのは、テナント管理者 (グローバル管理者ロール) です。リセットする対象が管理者ユーザー以外であれば、ユーザー管理者、特権認証管理者、認証管理者のロールを持つアカウントでも行うことができます。
+
 (A) [Azure Portal](https://portal.azure.com/) からリセット
 
 (B) [Azure MFA Portal](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx) からリセット※ この方法は、テナント管理者 (グローバル管理者ロール) のみ実行可能です。
 
-(C) PowerShell からリセット 
+(C) PowerShell からリセット
 
-(A) の方法は、以下の公開情報にてご紹介しております。
+- (A) の方法は、以下の公開情報にてご紹介しております。
 
-[Azure Multi-factor Authentication のユーザー設定の管理 - ユーザー認証オプションを管理する](
+  [Azure Multi-factor Authentication のユーザー設定の管理 - ユーザー認証オプションを管理する](
 https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-userdevicesettings#manage-user-authentication-options)
 
-(B) と (C) の方法は、以下のブログにてご紹介しております。 
+- (B) と (C) の方法は、以下のブログにてご紹介しております。 
 
-[多要素認証 (MFA) のリセット手順](
+  [多要素認証 (MFA) のリセット手順](
 https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/) 
 
 管理者によって、ユーザーの MFA 認証方法がリセットされたら、ユーザーは MFA 認証方法を再登録する必要があります。
 前述の、現在登録されているモバイル デバイスで、MFA 認証ができる場合の手順に従って、新しいデバイスを MFA 認証方法として登録して下さい。
+
+### 【 2 】管理者が直接 MFA 認証用電話番号を指定 (プレビュー機能)
+こちらは現在、プレビュー機能として公開されている方法です。
+
+Azure Portal 上で、管理者はユーザーの MFA 認証のための電話番号を、直接指定することができます。
+
+[Azure ポータル](portal.azure.com) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
+
+「新しいユーザー認証方法エクスペリエンスをお試しください。こちらをクリックすると、プレビューを使用できます。」というメッセージを選択すると、以下のプレビュー版の機能が、ご利用可能になります。
+
+
+[ + 認証方法の追加] から、[電話番号] を選択し、ユーザーのモバイル デバイスの電話番号を追加して下さい。
+
+![](./change-mfa-verification-method/figure3.png)
+
+※ [方法の選択] で選択可能な [メール] は、MFA ではなく セルフサービス パスワード リセットの連絡先追加のための項目です。ここでは選択しないでください。
+
+![](./change-mfa-verification-method/figure4.png)
+
+
+次回からは、指定した電話番号に MFA の要求が届くようになります。
 
 ## 例外 : テナント管理者の MFA 認証方法をリセットする必要がある場合
 MFA 認証方法の再登録には、テナントの管理者による、MFA 認証方法のリセットが必要です。
@@ -130,5 +157,6 @@ Azure Portal にログインできない場合は、https://aka.ms/AzurePortalHe
 
 ### サービスの URL
 - Azure ポータル : https://portal.azure.com/
+- Azure ポータル (プレビュー版) : https://preview.portal.azure.com/
 - Azure MFA Portal (管理者専用) : https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx
 - MFA 認証情報確認 / 登録ページ : https://aka.ms/mfasetup
