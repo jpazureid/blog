@@ -3,9 +3,10 @@ services:
   blog:
     image: ghcr.io/cssjpn/blog-build-tools:latest
     working_dir: /blog
-    command: ["npm", "start"]
+    command: ["npx", "gulp", "--node-arg=--inspect-brk"]
     ports:
       - "4000:4000"
+      - "9229:9229"
     volumes:
       - "./articles:/blog/articles"
       - "./scaffolds:/blog/scaffolds"
