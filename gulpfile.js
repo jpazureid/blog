@@ -25,7 +25,7 @@ let blogRoot = "/blog";
 if (BRANCH_NAME !== "master" && BRANCH_NAME && PREVIEW_BASE_URL) {
   blogRoot = "/" + BLOB_SAFE_BRANCH_NAME;
   previewUrl = new URL(
-    BLOB_SAFE_BRANCH_NAME,
+    blogRoot,
     PREVIEW_BASE_URL
   ).toString();
 }
