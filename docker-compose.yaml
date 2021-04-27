@@ -1,0 +1,16 @@
+version: '3'
+services:
+  blog:
+    image: ghcr.io/cssjpn/blog-build-tools:latest
+    working_dir: /blog
+    command: ["npm", "start"]
+    ports:
+      - "4000:4000"
+    volumes:
+      - "./articles:/blog/articles"
+      - "./scaffolds:/blog/scaffolds"
+      - "./source:/blog/source"
+      - "./themes:/blog/themes"
+      - "./_config.yml:/blog/_config.yml"
+      - "./github-issue-template.md:/blog/github-issue-template.md"
+      - "./.textlintrc:/blog/.textlintrc"
