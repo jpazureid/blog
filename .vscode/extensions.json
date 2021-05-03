@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "DavidAnson.vscode-markdownlint",
-        "taichi.vscode-textlint"
+        "taichi.vscode-textlint",
+        "ms-azuretools.vscode-docker"
     ]
 }

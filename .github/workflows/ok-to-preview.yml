@@ -1,0 +1,30 @@
+name: ok-to-preview
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  ok-to-preview:
+    runs-on: ubuntu-latest
+    if:
+      github.event.issue.pull_request && github.event.issue.state == 'open'
+
+    steps:
+    - name: Generate token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+
+    - name: Slash Command Dispatch
+      uses: peter-evans/slash-command-dispatch@v2
+      env:
+        TOKEN: ${{ steps.generate_token.outputs.token }}
+      with:
+        token: ${{ env.TOKEN }}
+        reaction-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-type: pull-request
+        commands: ok-to-preview
+        permission: write
