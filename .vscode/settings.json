@@ -57,5 +57,7 @@
         "systemprofile",
         "textlint",
         "winhttp"
-    ]
+    ],
+    "pasteImage.path": "${currentFileDir}/${currentFileNameWithoutExt}",
+    "pasteImage.insertPattern": "${imageSyntaxPrefix}./${imageFilePath}${imageSyntaxSuffix}"
 }
