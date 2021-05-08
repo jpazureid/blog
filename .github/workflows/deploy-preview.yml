@@ -23,4 +23,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         azure-storage-connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        preview-base-url: "https://wahaniyastorageaccount.z11.web.core.windows.net/"
+        preview-base-url: "https://jpazureidblogstorage.z5.web.core.windows.net/"
