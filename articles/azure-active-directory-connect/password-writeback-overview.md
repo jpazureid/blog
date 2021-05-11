@@ -1,6 +1,6 @@
 ---
 title: "パスワード ライトバックのしくみと一般的なトラブルシューティング"
-date: 2020-10-15
+date: 2021-05-11
 tags:
   - Azure AD Connect
   - Password Writeback
