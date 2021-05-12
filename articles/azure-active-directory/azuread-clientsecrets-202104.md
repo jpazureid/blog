@@ -1,6 +1,6 @@
 ---
 title: クライアント シークレット作成画面の変更について
-date: 2021-04-2o
+date: 2021-04-20
 tags:
   - Azure AD
   - Application
