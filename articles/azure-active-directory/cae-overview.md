@@ -70,7 +70,7 @@ CAE とは、上記のように [クライアント/ユーザーの変化に応�
 
 <BR>
 
-### CAE が有効になるとどんな影響があるの？
+## CAE が有効になるとどんな影響があるの？
 先に記載した通り、今までよりもほぼリアルタイムに、クライアント/ユーザーの状態変化に応じてアクセス トークンの有効期間内であってもユーザーのアクセスの失効がおこなわれた場合に反映させることができたり、 CA ポリシーの評価を受けられるようになります。つまり有効になることで困ることは基本的には無いのですが、注意が必要な点として CAE が有効になりますとアクセス トークンの有効期限が最大 28 時間になります。<BR>
 前述の技術情報 [継続的アクセス評価](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation) の [トークンの有効期間](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation#token-lifetime) をご覧ください。
 
