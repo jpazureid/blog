@@ -13,7 +13,7 @@ tags:
 2021 年 5 月現在、以下のようなお知らせがあり、目にされた方も多いのではないかと思います。
 
 * Microsoft 365 管理ポータルのメッセージ センターに MC25540 (Continuous access evaluation on by default) として情報が公開
-* 送信元 : Microsoft Azure <azure-noreply@microsoft.com> から TRACKING ID: 5T93-LTG として以下の件名のメールでお知らせ
+* 送信元 : Microsoft Azure <azure-noreply@microsoft.com> から TRACKING ID: 5T93-LTG として以下の件名のメールでお知らせ<BR>
   ->Continuous access evaluation will be enabled in premium Azure AD tenants beginning on 15 June 2021
 
 CAE とは、簡単に言いますと **あるサービスを利用しているクライアントの状態が変わった際、ほぼリアルタイムでその変化を検知してアクセス制御を行う** ことができる機能、です！
@@ -92,10 +92,10 @@ CAE に対応していないリソース、クライアント アプリの場合
 はい、CAE を無効にすることは、Azure ポータル上の操作にて可能です。
 前述の技術情報 [継続的アクセス評価](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation) [CAE を有効または無効にする (プレビュー)](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation#enable-or-disable-cae-preview) をご覧ください。
 
-技術情報にも記載がありますが、既定の設定画面が多少分かりづらいので補足しますと、既定の設定画面は以下のように [*プレビューを無効にする*] が選択された状態が初期値になっています。
+技術情報にも記載がありますが、既定の設定画面が多少分かりづらいので補足しますと、既定の設定画面は以下のように [**プレビューを無効にする**] が選択された状態が初期値になっています。
 ![](./cae-overview/cae-gui.png)
 
-[*なんだ、無効じゃないか*] と思ってしまいそうですが、このままの状態で 6 月 15 日以降になると、CAE は有効になってしまいます。
+[**なんだ、無効じゃないか**] と思ってしまいそうですが、このままの状態で 6 月 15 日以降になると、CAE は有効になってしまいます。
 とても紛らわしい話で申し訳ないのですが、 CAE を無効にして、6 月 15 日以降に自動的に有効になることを防ぎたい方は、上記の画面で一度 Enable を選択してから、再度 Disable を選択して [保存] をクリックしてください。
 
 <BR>
