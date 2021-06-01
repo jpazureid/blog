@@ -62,7 +62,7 @@ A. メールを受信できないユーザーであっても招待すること�
 https://portal.azure.com/<招待先ディレクトリのテナントID>
 ```
 
-メールを利用しない招待については、[Azure Active Directory B2B コラボレーションの招待の利用](B2B コラボレーションの招待の利用 - Azure AD | Microsoft Docs) を参照ください。(直接リンクによる利用 の項 に記載があります)
+メールを利用しない招待については、[B2B コラボレーションの招待の利用 - Azure AD | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/redemption-experience#redemption-through-a-direct-link) を参照ください。(直接リンクによる利用 の項 に記載があります)
 
 ### Q. 招待するユーザーのUPN とMail 属性の値が違います。どちらを利用するべきですか?
 
