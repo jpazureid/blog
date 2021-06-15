@@ -80,6 +80,7 @@
 - [MFA 認証方法を、変更 / 再登録 / 追加 したい！](./articles/azure-active-directory/change-mfa-verification-method.md)
 - [Hybrid Azure AD Join とユーザーの UPN](./articles/azure-active-directory/haadj-and-upn.md)
 - [クライアント シークレット作成画面の変更について](./articles/azure-active-directory/azuread-clientsecrets-202104.md)
+- [PIM の活用方法](./articles/azure-active-directory/pim-overview.md)
 
 ## Azure AD Connect
 
