@@ -73,7 +73,12 @@ TLS 1.2 が無効化されていないことは 以下のレジストリで確�
 一方、以下のように TLS 1.2 のキーが存在し、かつ Enabled の値が 0 (無効) である場合には、OS レベルで TLS 1.2 が無効化されています。
 キーを削除するか Enabled を 1 (有効) にする必要があります。
 
+レジストリ:HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
 ![](./azure-ad-connect-tls/image04.png)
+
+もしくは
+レジストリ:HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
+![](./azure-ad-connect-tls/image06.png)
 
 ### 3. パススルー認証エージェントが 1.5.389.0 以上であることを確認する。
 

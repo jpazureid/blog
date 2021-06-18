@@ -150,6 +150,12 @@ A.
 
 ![](./b2bfaq/image10.png)
 
+> 補足 : 
+>サインインログには以下が記録されます。
+>530032
+>Failure reason : User blocked due to risk on home tenant.
+ 
+
 A.
 原因: ゲスト ユーザーのアカウントにてリスクが検知されています。
 対処: <https://passwordreset.microsoftonline.com> にアクセスし、パスワード リセットを行い リスクをクリアします。
