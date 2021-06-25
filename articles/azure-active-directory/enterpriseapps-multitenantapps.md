@@ -58,7 +58,7 @@ Azure ポータル上で確認いただける [エンタープライズ アプ�
 
     ![fig3](./enterpriseapps-multitenantapps/fig3.png)
 
-5. 次回以降 userA が Graph Explorer にアクセスする際は、profile / offline_access のアクセス許可が要求されることはありません。
+5. 次回以降 userA が Graph Explorer にアクセスする際は、openid, profile, User.Read, offline_access のアクセス許可への同意が要求されることはありません。
 
 userA が上記の操作を行った後、管理者によって contoso.com テナントの [エンタープライズ アプリケーション] を開くと、下記のように "Graph explorer (official site)" という名前のサービス プリンシパル が追加されています。
 
