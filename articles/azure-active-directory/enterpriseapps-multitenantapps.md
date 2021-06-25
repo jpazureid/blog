@@ -5,6 +5,7 @@ tags:
   - Azure AD
   - Application
 ---
+
 # エンタープライズ アプリケーションに、管理者の知らないアプリケーションが追加されている!
 
 こんにちは。Azure Identity チームの栗井です。
