@@ -49,7 +49,7 @@ Azure ポータル上で確認いただける [エンタープライズ アプ�
 
     ![fig1](./enterpriseapps-multitenantapps/fig1.png)
 
-3. パスワード認証後、userA さんには下記の画面が表示されます。この例では、profile / offline_access へのアクセス許可が要求されているので、userA さんは "承諾" を押下します。
+3. パスワード認証後、userA さんには下記の画面が表示されます。この例では、openid, profile, User.Read, offline_access へのアクセス許可が要求されているので、userA さんは "承諾" を押下します。
 
     ![fig2](./enterpriseapps-multitenantapps/fig2.png)
 
