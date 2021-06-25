@@ -90,7 +90,7 @@ userA が上記の操作を行った後、管理者によって contoso.com テ�
 - 一般ユーザーは、自身がアクセス可能な範囲でアプリにアクセス許可を与えることができます。(ユーザー委任の権限)
 
 先述の例だと、userA は Graph Explorer に対して、下記のアクセスを許可しています。
-    - userA 自身の基本情報 (profile) へのアクセス
+    - userA 自身の基本情報 (openid, profile, User.Read) へのアクセス
     - userA が許可済みのアクセスに対する、継続的なアクセス権 (offline_access)
     - [profile と offline_access についての詳細はこちら](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes)
 
