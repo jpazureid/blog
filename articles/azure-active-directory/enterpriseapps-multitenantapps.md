@@ -89,6 +89,7 @@ userA が上記の操作を行った後、管理者によって contoso.com テ�
     - userA 自身の基本情報 (profile) へのアクセス
     - userA が許可済みのアクセスに対する、継続的なアクセス権 (offline_access)
     - [profile と offline_access についての詳細はこちら](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes)
+
 ## よくある質問 (2) エンタープライズ アプリケーションが勝手に追加されるのは不本意です。一般ユーザーによるこの操作を禁止することは可能でしょうか?
 
 結論から言うと可能です。
