@@ -44,6 +44,7 @@ Azure ポータル上で確認いただける [エンタープライズ アプ�
 
 - 仮定 1 : userA さん (userA@contoso.com) は、contoso.com の Azure AD に所属するユーザーです。
 - 仮定 2 : contoso.com の Azure AD の [エンタープライズ アプリケーション] 上には、まだ "Microsoft Graph Explorer" のサービス プリンシパルは存在しません。
+
 ### userA さんによってマルチテナント アプリ「Graph Explorer」が追加される時の操作
 
 1. userA さんは、 ["Microsoft Graph Explorer"](https://developer.microsoft.com/ja-jp/graph/graph-explorer) にアクセスします。
