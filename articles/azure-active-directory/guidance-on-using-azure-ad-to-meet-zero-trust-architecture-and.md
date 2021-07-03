@@ -29,15 +29,14 @@ tags:
 
 **新しい標準およびコンプライアンス分野に関し、まず 2 つのコンテンツを以下のとおり発表いたします:**
 
- [NIST Authenticator Assurance Levels を満たすように Azure Active Directory を構成する](https://docs.microsoft.com/ja-jp/azure/active-directory/standards/nist-overview) 
+[NIST Authenticator Assurance Levels を満たすように Azure Active Directory を構成する](https://docs.microsoft.com/ja-jp/azure/active-directory/standards/nist-overview) 
 
-	まず、NIST 800-63 - Digital Identity Guidelines より取り掛かりました。NIST 800-63 は、他の多くの規格や規制が前提としているガイドラインで、デジタル アイデンティティのフレームワークとして認知されています。 
-	
-	このガイダンスでは、Azure Active Directory を使用して NIST 認証保証レベル (AAL) を満たす方法を詳細に説明し、これらの AAL を利用可能なすべての認証方法に対応付けます。
+* まず、NIST 800-63 - Digital Identity Guidelines より取り掛かりました。NIST 800-63 は、他の多くの規格や規制が前提としているガイドラインで、デジタル アイデンティティのフレームワークとして認知されています。 
+* このガイダンスでは、Azure Active Directory を使用して NIST 認証保証レベル (AAL) を満たす方法を詳細に説明し、これらの AAL を利用可能なすべての認証方法に対応付けます。
  
 [FedRAMP High Impact Level を満たすための Azure Active Directory の構成](https://docs.microsoft.com/ja-jp/azure/active-directory/standards/configure-azure-active-directory-for-fedramp-high-impact) 
 
-	米国の多くの連邦政府機関およびこれらの機関にクラウド サービスを提供するクラウド ソリューション プロバイダー (CSP) は、FedRAMP プログラムの要件を満たす必要があります。私たちは、FedRAMP High のベースラインに沿ってガイダンスを作成し、最も厳格な ID 管理もカバーできるようにしました。このアプローチにより、より低い FedRAMP ベースラインを遵守する必要のあるお客様にも、このガイダンスをご利用いただけます。
+* 米国の多くの連邦政府機関およびこれらの機関にクラウド サービスを提供するクラウド ソリューション プロバイダー (CSP) は、FedRAMP プログラムの要件を満たす必要があります。私たちは、FedRAMP High のベースラインに沿ってガイダンスを作成し、最も厳格な ID 管理もカバーできるようにしました。このアプローチにより、より低い FedRAMP ベースラインを遵守する必要のあるお客様にも、このガイダンスをご利用いただけます。
  
 近々、米国政府機関では、多要素認証の完全導入が求められます。ゼロ トラスト アプローチの一環として明示的に認証情報を検証する必要が生じますので、貴社においても [MFA を有効にする](https://www.microsoft.com/en-us/security/business/identity-access-management/mfa-multi-factor-authentication) ためのリソースをご確認ください。
  
