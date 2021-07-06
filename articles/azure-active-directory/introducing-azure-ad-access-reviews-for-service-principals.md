@@ -1,6 +1,6 @@
 ---
 title: サービス プリンシパルに対する Azure AD アクセス レビューの紹介
-date: 2021-07-06 9:00
+date: 2021-07-07 9:00
 tags:
   - Azure AD
   - Access review
