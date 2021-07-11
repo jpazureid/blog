@@ -32,7 +32,7 @@ Azure AD は、オンプレミス アプリケーションへのプロビジョ�
 
 Azure AD サービスは、200 以上のプロビジョニング コネクタをサポートするようになりました！続々と増えるアプリケーションの一覧は [こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) でご確認ください。 お探しのアプリケーションがない場合は、アプリケーション ベンダーに対して [SCIM](https://aka.ms/scimoverview) 標準をサポートし、Azure AD アプリケーション ギャラリーに [登録](https://docs.microsoft.com/azure/active-directory/develop/v2-howto-app-gallery-listing#step-6---submit-your-app) するよう依頼してください。私たちは ISV と協力して、迅速にオンボード化します。
 
-![](./provision-users-into-apps-using-sql-as-a-user-store-more-easily/apps.jpg)
+![](./provision-users-into-apps-using-sql-as-a-user-store-more-easily/apps.JPG)
 
 ## Microsoft 365 管理センターの新しいアプリ統合ウィザード
 
