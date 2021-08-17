@@ -12,8 +12,8 @@ tags:
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
 > [!IMPORTANT]
-> 本手順は、廃止予定の ADAL ライブラリを利用した手順となっております。
-> MSAL ライブラリを利用する手順については [GitHub にてサンプル スクリプト](https://github.com/jpazureid/get-signin-activity-reports-with-certificate) として紹介しております。
+> **本手順は、廃止予定の ADAL ライブラリを利用した手順となっております。** 新規にスクリプトを構成いただく場合には、MSAL ライブラリを利用いただくことを推奨いたします。
+> MSAL ライブラリを利用する手順については [GitHub にてサンプル スクリプト](https://github.com/jpazureid/get-signin-activity-reports-with-certificate) として紹介しておりますので参照ください。
 
 # Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートをファイルに出力する PowerShell スクリプト
 
