@@ -11,6 +11,10 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/08/09/microsoft-graph-api-signin-activity-reports/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+> [!IMPORTANT]
+> **本手順は、廃止予定の ADAL ライブラリを利用した手順となっております。** 新規にスクリプトを構成いただく場合には、MSAL ライブラリを利用いただくことを推奨いたします。
+> MSAL ライブラリを利用する手順については [GitHub にてサンプル スクリプト](https://github.com/jpazureid/get-signin-activity-reports-with-certificate) として紹介しておりますので参照ください。
+
 # Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートをファイルに出力する PowerShell スクリプト
 
 > 2019/05/22: サインインアクティビティレポートを取得するための Graph API エンドポイントが beta から v1.0 に移動したため、サンプルコードの一部を変更しました。また、アプリ登録の手順も変更されたため併せて記載内容を変更しています。
