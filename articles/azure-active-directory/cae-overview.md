@@ -14,7 +14,8 @@ tags:
 
 * Microsoft 365 管理ポータルのメッセージ センターに MC255540 (Continuous access evaluation on by default) として情報が公開
 * 送信元 : Microsoft Azure <azure-noreply@microsoft.com> から TRACKING ID: 5T93-LTG として以下の件名のメールでお知らせ
-  ->Continuous access evaluation will be enabled in premium Azure AD tenants beginning on 15 June 2021
+  -> Continuous access evaluation will be enabled in premium Azure AD tenants beginning on 15 June 2021
+* Microsoft 365 管理ポータルのメッセージ センターに MC273937 (Update: CAE On By Default) として展開時期が変更となる情報が公開
 
 CAE とは、簡単に言いますと **あるサービスを利用しているクライアントの状態が変わった際、ほぼリアルタイムでその変化を検知してアクセス制御を行う** ことができる機能、です！
 実は以下のような技術情報、Blog にてお伝えしてきた通り、2020 年から機能自体は実装が進んでいました。
@@ -25,8 +26,10 @@ CAE とは、簡単に言いますと **あるサービスを利用している�
  
 [継続的アクセス評価](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation)
 
-この CAE 機能が、Azure AD Premium を有効にしているテナントについても 2021 年　6 月 15 日から 9 月 30 日にかけて順次有効になります、というお知らせが MC255540 であり 5T93-LTG の通知となります。
+この CAE 機能が、Azure AD Premium を有効にしているテナントについても2021 年 9 月 30 日から 2021 年 11 月の終わりにかけて順次有効になります、というお知らせが MC255540 であり 5T93-LTG の通知となります。
 
+> [!NOTE]
+> 当初 2021 年 6 月 15 日から 9 月 30 日での展開を予定しておりましたが MC273937 にて、2021 年 9 月 30 日から 2021 年 11 月の終わりの間に展開予定に変更されたとアナウンスされました。
 
 ## CAE とは具体的にどんな機能なの？
 
@@ -68,10 +71,7 @@ AAD は、ある AAD ユーザーの更新トークンが失効されると、Ev
 CA ポリシーで許可されていない送信元 IP アドレスからクライアントがアクセスしてきていると判断したリソース側は、クライアントがまだ期限内のアクセス トークンを保持していても、クライアントからのアクセスを拒否して 401+ 認証チャレンジをクライアントに返します。
 ここでクライアントは AAD に向かい、改めて認証が行われて、CA によるアクセス制御の評価を受けることになります。
 
-
 CAE とは、上記のように [クライアント/ユーザーの変化に応じて、”改めて AAD でのアクセス制御の評価を受けてほしい” 状態になったタイミング] で、今までよりも速やかにアクセス制御 (=AAD への認証に伴う CA ポリシーの評価) を受けることが可能になる機能です。
-
-
 
 ## CAE が有効になるとどんな影響があるの？
 
@@ -86,8 +86,6 @@ CAE とは、上記のように [クライアント/ユーザーの変化に応�
 
 なお、条件付きアクセスのサインインの頻度の設定は CAE よりも優先されます。仮に CAE が有効になってもサインインの頻度で設定したタイミングで再認証を求めるようにすることができますのでご安心ください。
 
-
-
 ## CAE はどのリソースおよびクライアントでも実現できるの？
 
 現時点では、リソースとしては Exchange Online と SharePoint Online、アクセス元のクライアントとしてはブラウザと Office アプリが対象になります。
@@ -95,20 +93,16 @@ CAE とは、上記のように [クライアント/ユーザーの変化に応�
 
 CAE に対応していないリソース、クライアント アプリの場合は、アクセス トークンの考え方はこれまで通りです。
 
-
-
 ## CAE は無効にできるの？
 
 はい、CAE を無効にすることは、Azure ポータル上の操作にて可能です。
 前述の技術情報 [継続的アクセス評価](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation) [CAE を有効または無効にする (プレビュー)](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation#enable-or-disable-cae-preview) をご覧ください。
 
-技術情報にも記載がありますが、既定の設定画面が多少分かりづらいので補足しますと、既定の設定画面は以下のように [**プレビューを無効にする**] が選択された状態が初期値になっています。
+既定では `一般提供の後に自動で有効にする` が選択されており、2021 年 9 月 30 日から 2021 年 11 月の終わりの間に CAE が有効化される予定になります。
+
 ![](./cae-overview/cae-gui.png)
 
-[**なんだ、無効じゃないか**] と思ってしまいそうですが、このままの状態で 6 月 15 日以降になると、CAE は有効になってしまいます。<BR>
-とても紛らわしい話で申し訳ないのですが、 CAE を無効にして、6 月 15 日以降に自動的に有効になることを防ぎたい方は、上記の画面で一度 Enable を選択してから、再度 Disable を選択して [保存] をクリックしてください。
-
-
+もし CAE を自動で有効化させたくない場合には、2021 年 9 月 30 日までに `プレビューを無効にする` に変更ください。
 
 上記内容が CAE の理解に向けて、皆様の参考となりますと幸いです。
 どちら様も素敵な AAD ライフをお過ごしください！
