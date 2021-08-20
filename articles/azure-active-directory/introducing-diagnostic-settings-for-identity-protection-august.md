@@ -33,7 +33,7 @@ Azure AD Identity Protection の診断設定がパブリック プレビュー�
 - 危険なユーザーのデータは **[RiskyUsers]** を、ユーザーのリスク検出データは **[UserRiskEvents]** を選択します  
 (送信先の  [宛先] を選択し、[保存] をクリックします)
 
-![](./introducing-diagnostic-settings-for-identity-protection-august/AssignRolesToGroups.png)
+![](./introducing-diagnostic-settings-for-identity-protection-august/AssignRolesToGroups.PNG)
 
 ## グループへのロールの割り当てをより簡単に管理する
 
