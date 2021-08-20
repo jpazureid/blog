@@ -1,5 +1,5 @@
 ---
-title: 8 月のアップデート: Identity Protection 診断設定のご紹介
+title: 8 月のアップデート - Identity Protection 診断設定のご紹介
 date: 2021-08-20 9:00
 tags:
   - Azure AD
