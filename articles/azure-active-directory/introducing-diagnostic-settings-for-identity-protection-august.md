@@ -1,12 +1,12 @@
 ---
-title: 8 月のアップデート : Identity Protection 診断設定のご紹介
+title: 8 月のアップデート: Identity Protection 診断設定のご紹介
 date: 2021-08-20 9:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# 8 月のアップデート : Identity Protection 診断設定のご紹介
+# 8 月のアップデート: Identity Protection 診断設定のご紹介
 
 こんにちは、Azure Identity サポート チームの 村上 です。本記事は、2021 年 8 月 18 日に米国の Azure Active Directory Identity Blog で公開された [Introducing diagnostic settings for Identity Protection — August identity updates](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-diagnostic-settings-for-identity-protection-august/ba-p/2464365) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
