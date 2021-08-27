@@ -122,8 +122,8 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-
 - [よくあるご質問の Q4 関連]
 電子メール ワンタイム パスコードを無効にする
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-time-passcode#disable-email-one-time-passcode
- > [!NOTE]
- > お使いのテナントで電子メール ワンタイム パスコード機能が有効になっているときに、それを無効にした場合、ワンタイム パスコードを利用していたゲスト ユーザーは全員サインインできなくなります。 別の認証方法を使用してもう一度サインインできるように、利用状態をリセットすることができます。
+> [!NOTE]
+> お使いのテナントで電子メール ワンタイム パスコード機能が有効になっているときに、それを無効にした場合、ワンタイム パスコードを利用していたゲスト ユーザーは全員サインインできなくなります。 別の認証方法を使用してもう一度サインインできるように、利用状態をリセットすることができます。
 
 - [よくあるご質問の Q5 関連]
 ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
