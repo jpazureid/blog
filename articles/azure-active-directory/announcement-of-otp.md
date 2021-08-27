@@ -14,6 +14,7 @@ tags:
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/redemption-experience
 
 
+
 > [!IMPORTANT]
 > 2021 年 10 月 以降、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、電子メール ワンタイム パスコード認証をオプトインすることをお勧めします。
 
