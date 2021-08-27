@@ -117,7 +117,7 @@ B2B ゲスト ユーザーのワンタイム パスコード認証
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-time-passcode
 
 > [!NOTE]
-> ワンタイム パスコードのユーザーは、テナントのコンテキストを含むリンクを使用してサインインする必要があります (たとえば、https://myapps.microsoft.com/?tenantid=<tenant id> や https://portal.azure.com/<tenant id>、または検証済みのドメインの場合は https://myapps.microsoft.com/<verified domain>.onmicrosoft.com)。
+> ワンタイム パスコードのユーザーは、テナントのコンテキストを含むリンクを使用してサインインする必要があります (たとえば、`https://myapps.microsoft.com/?tenantid=<tenant id>` や `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>`)。
 
 - [よくあるご質問の Q4 関連]
 電子メール ワンタイム パスコードを無効にする
