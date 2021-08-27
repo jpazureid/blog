@@ -128,6 +128,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-
 - [よくあるご質問の Q5 関連]
 ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-time-passcode#user-experience-for-one-time-passcode-guest-users
+
 > [!NOTE]
 > ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
 > セッションの有効期限により、ゲスト ユーザーが自分の会社を退職したりアクセスを必要としなくなったときに特に、セキュリティが強化されます。
