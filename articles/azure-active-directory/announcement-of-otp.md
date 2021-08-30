@@ -13,11 +13,6 @@ tags:
 まず、今回の動作変更の詳細については、以下の公開情報でご確認いただけます。
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/redemption-experience
 
-
-
-
-
-
 > [!IMPORTANT]
 > 2021 年 10 月 以降、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、電子メール ワンタイム パスコード認証をオプトインすることをお勧めします。
 
@@ -35,6 +30,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/rede
 
 影響の詳細について、ゲストユーザーの招待フローをベースにご紹介します。
 以下が現在のゲストユーザーの招待フローです。
+
 ![](./announcement-of-otp/image01.png)
 
 今回の影響は、フローの 9 において セルフサービスサインアップアカウントが作成される場合においてユーザーのホーム テナントが存在しない場合、あるいは検証済みのテナントではない場合に生じます。
@@ -70,6 +66,7 @@ user1@contoso.com は Azure AD のアカウントとして Azure AD のどのテ
 アナウンスの後半部分に記載の 電子メール ワンタイム パスコード認証については、Azure AD にアカウンがない、Microsoft アカウントがないなどの状況で、アカウントを作成することなく、招待元 Azure AD (リソーステナント) にアクセスできる機能となります。
 これまでは、ゲスト招待されたユーザーが Azure AD に所属しないユーザーの場合、上図のフローの通り、フロー 9 で もしくは フロー 10 で パスワードをもつアカウントを作成する必要がありました。
 電子メール ワンタイム パスコード認証を利用した場合には、リソーステナントにユーザーのソースが OTP として作成されます。
+
 ![](./announcement-of-otp/image02.png)
 
 ## よくあるご質問
@@ -124,6 +121,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-
 - [よくあるご質問の Q4 関連]
 電子メール ワンタイム パスコードを無効にする
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-time-passcode#disable-email-one-time-passcode
+
 > [!NOTE]
 > お使いのテナントで電子メール ワンタイム パスコード機能が有効になっているときに、それを無効にした場合、ワンタイム パスコードを利用していたゲスト ユーザーは全員サインインできなくなります。 別の認証方法を使用してもう一度サインインできるように、利用状態をリセットすることができます。
 
@@ -131,13 +129,9 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-
 ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
 https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/one-time-passcode#user-experience-for-one-time-passcode-guest-users
 
-
-
-
 > [!NOTE]
 > ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
 > セッションの有効期限により、ゲスト ユーザーが自分の会社を退職したりアクセスを必要としなくなったときに特に、セキュリティが強化されます。
-
 
 以上の情報がご参考になれば幸いです。
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください !
