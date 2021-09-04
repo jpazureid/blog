@@ -1,6 +1,6 @@
 ---
 title: Azure AD から Amazon Managed Grafana へのアクセス保護について
-date: 2021-09-05 12:00
+date: 2021-09-05 09:00
 tags:
   - Azure AD
   - US Identity Blog
