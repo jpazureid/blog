@@ -1,6 +1,6 @@
 ---
 title: HashiCorp 社の Azure AD プロバイダーが Microsoft Graph に移行しパフォーマンスとユーザー体験が向上
-date: 2021-07-30 9:00
+date: 2021-09-11 9:00
 tags:
   - Azure AD
   - US Identity Blog
