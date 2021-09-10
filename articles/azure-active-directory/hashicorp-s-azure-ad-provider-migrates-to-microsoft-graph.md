@@ -1,5 +1,5 @@
 ---
-title: HashiCorp 社の Azure AD プロバイダーがMicrosoft Graphに移行し、パフォーマンスとユーザーエクスペリエンスが向上
+title: HashiCorp 社の Azure AD プロバイダーが Microsoft Graph に移行しパフォーマンスとユーザー体験が向上
 date: 2021-09-11 9:00
 tags:
   - Azure AD
@@ -7,7 +7,7 @@ tags:
 　- Microsoft Graph
 ---
 
-# HashiCorp 社の Azure AD プロバイダーが Microsoft Graph に移行してパフォーマンスとユーザー エクスペリエンスが向上
+# HashiCorp 社の Azure AD プロバイダーが Microsoft Graph に移行しパフォーマンスとユーザー体験が向上
 
 こんにちは、Azure Identity サポート チームの中井です。
 
@@ -15,7 +15,7 @@ tags:
 
 ------
 
-こんにちは。Identity ＆ Access Management プログラム マネジメント担当 パートナー ディレクターの Sue Bohn です。今回の Voice of the ISV ブログ記事では、HashiCorp 社のシニア エンジニアである Tom Bamford 氏をお招きし、同社の Terraform Azure AD プロバイダーの新しい Microsoft Graph API への移行についてご紹介します。HashiCorp 社は、[2022 年 6 月 30 日のサポート終了日](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) よりも大幅に前倒しで、Azure AD Graph と Azure Active Directory Authentication Library (ADAL) からの移行を表明しました。トム氏によると、この決断はすでに成果を上げているといいます。
+こんにちは。Identity ＆ Access Management プログラム マネジメント担当 パートナー ディレクターの Sue Bohn です。今回の Voice of the ISV ブログ記事では、**HashiCorp 社のシニア エンジニアである Tom Bamford 氏** をお招きし、同社の Terraform Azure AD プロバイダーの新しい Microsoft Graph API への移行についてご紹介します。HashiCorp 社は、[2022 年 6 月 30 日のサポート終了日](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) よりも大幅に前倒しで、Azure AD Graph と Azure Active Directory Authentication Library (ADAL) からの移行を表明しました。トム氏によると、この決断はすでに成果を上げているといいます。
 
 ## ソリューション型ソフトウェアの構築
 
@@ -23,13 +23,13 @@ tags:
 
 ## Terraform の Azure AD との連携
 
-[HashiCorp Terraform](https://www.hashicorp.com/products/terraform) は、インフラの構築、変更、バージョン管理を安全かつ効率的に行うことができる Infrastructure as Code (IaC）ツールです。Terraform を使用することで、アカウンタビリティを維持しながら、企業の構造や目標に合わせて構成の設計、チーム間の委任、セルフサービスでの基盤構築を実現することができます。[Terraform Azure AD プロバイダー](https://www.hashicorp.com/blog/terraform-azuread-provider-now-supports-microsoft-graph) は、[Azure Active Directory（Azure AD)](https://azure.microsoft.com/en-us/services/active-directory/) のリソースを Terraform で管理できるようにします。私たちの目標は、Azure AD をより親しみやすく、利用しやすくし、お客様に素晴らしいワークフローを提供することです。また、[HashiCorp Vault](https://www.hashicorp.com/products/vault) はユーザーに代わって認証プリンシパルを管理し、Azure AD と密接に連携します。
+[HashiCorp Terraform](https://www.hashicorp.com/products/terraform) は、インフラの構築、変更、バージョン管理を安全かつ効率的に行うことができる Infrastructure as Code (IaC) ツールです。Terraform を使用することで、アカウンタビリティを維持しながら、企業の構造や目標に合わせて構成の設計、チーム間の委任、セルフサービスでの基盤構築を実現することができます。[Terraform Azure AD プロバイダー](https://www.hashicorp.com/blog/terraform-azuread-provider-now-supports-microsoft-graph) は、[Azure Active Directory (Azure AD)](https://azure.microsoft.com/en-us/services/active-directory/) のリソースを Terraform で管理できるようにします。私たちの目標は、Azure AD をより親しみやすく、利用しやすくし、お客様に素晴らしいワークフローを提供することです。また、[HashiCorp Vault](https://www.hashicorp.com/products/vault) はユーザーに代わって認証プリンシパルを管理し、Azure AD と密接に連携します。
 
-![](hashicorp-s-azure-ad-provider-migrates-to-microsoft-graph\Hashicorp.png)
+![](hashicorp-s-azure-ad-provider-migrates-to-microsoft-graph/Hashicorp.png)
 
 ## 変化への対応
 
-オープンソースのソフトウェア企業として、私たちはお客様に最大限の価値を提供するために、製品をオープンに構築しています。私たちは、マイクロソフトが、今後すべての新しい ID 管理機能が、[Microsoft Authentication Library（MSAL）](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-migration) と Microsoft Graph でのみ提供されると発表した 2019 年から、[Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) の開発を注視してきました。私たちは、Azure AD Graph APIとActive Directory Authentication Library（ADAL）の [サポート終了日である 2022 年 6 月 30 日](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) よりも十分に前に、お客様により良いサービスを提供できるよう、早急に新しい API を採用したいと考えていました。Azure AD は常に更新されているため、古い API に頼ることは時間の経過とともに難しくなります。
+オープンソースのソフトウェア企業として、私たちはお客様に最大限の価値を提供するために、製品をオープンに構築しています。私たちは、マイクロソフトが、今後すべての新しい ID 管理機能が、[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-migration) と Microsoft Graph でのみ提供されると発表した 2019 年から、[Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) の開発を注視してきました。私たちは、Azure AD Graph APIとActive Directory Authentication Library (ADAL) の [サポート終了日である 2022 年 6 月 30 日](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) よりも十分に前に、お客様により良いサービスを提供できるよう、早急に新しい API を採用したいと考えていました。Azure AD は常に更新されているため、古い API に頼ることは時間の経過とともに難しくなります。
 
 ## Microsoft Graphへの移行
 
@@ -37,7 +37,7 @@ tags:
 
 ## お客様の成功のために
 
-私たちは [包括的な移行ガイド](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/microsoft-graph) を作成し、Terraform が Graph API を認証するために必要なプリンシパルから、リソースの設定更新まで、お客様の構成の更新を支援しました。このガイドには、既存のリソースやデータ ソースに加えられた変更も含まれています。Microsoft Graph API へのプロバイダの移行は、メジャー バージョンのリリース（v2.0.0）に対応しているため、お客様に変更内容を認識してもらうことができました。また、移行ガイドには、Microsoft Graph のアクセス許可の変更について説明するセクションを設けました。移行作業中のお客様には、新機能のご紹介は控えさせていただきました。また、Azure AD Graph のサポートを終了する一方で、Microsoft Graph には最高クラスのサポートを開始しています。
+私たちは [包括的な移行ガイド](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/microsoft-graph) を作成し、Terraform が Graph API を認証するために必要なプリンシパルから、リソースの設定更新まで、お客様の構成の更新を支援しました。このガイドには、既存のリソースやデータ ソースに加えられた変更も含まれています。Microsoft Graph API へのプロバイダの移行は、メジャー バージョンのリリース (v2.0.0) に対応しているため、お客様に変更内容を認識してもらうことができました。また、移行ガイドには、Microsoft Graph のアクセス許可の変更について説明するセクションを設けました。移行作業中のお客様には、新機能のご紹介は控えさせていただきました。また、Azure AD Graph のサポートを終了する一方で、Microsoft Graph には最高クラスのサポートを開始しています。
 
 さらに、Terraform と Azure AD v2.0.0 プロバイダの使用方法を説明したチュートリアル [Manage Azure Active Directory Users and Groups Learn](https://learn.hashicorp.com/tutorials/terraform/azure-ad) を作成しました。本チュートリアルにて、Terraform の設定言語、Terraform Azure AD プロバイダー、およびワークフローの簡素化と自動化のために両者の活用方法を学ぶことができます。
 
