@@ -73,7 +73,7 @@ Azure AD に登録されたアプリケーションについて、利用され�
 の場合 New-AzureADApplicationPasswordCredential コマンドレットや New-AzADAppCredential によるシークレットの追加は行えません。
 
 ```powershell
-New-AzureADApplicationPasswordCredential -ObjectId <アプリの Object Id を指定> -CustomKeyIdentifier "キーの説明" -StartDate "2021/04/20 00:00:00" -EndDate "2299/12/31 23:59:59"
+New-AzureADApplicationPasswordCredential -ObjectId <マルチテナント & 個人アカウントがアクセス可能なアプリ> -CustomKeyIdentifier "キーの説明" -StartDate "2021/04/20 00:00:00" -EndDate "2299/12/31 23:59:59"
 
 # New-AzureADApplicationPasswordCredential : Error occurred while executing SetApplication
 # Code: Request_BadRequest
@@ -113,7 +113,7 @@ POST https://graph.microsoft.com/v1.0/applications/【アプリケーション�
 }
 ```
 
-> ![NOTE]
+> [!NOTE]
 > 上記 Graph API の実行には Application.ReadWrite.All のアクセス許可が必要です。
 
 secretText を控え、クライアント シークレットとして利用します。
