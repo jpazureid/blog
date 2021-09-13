@@ -70,7 +70,7 @@ Azure AD に登録されたアプリケーションについて、利用され�
 ## "Updates to converged applications are not allowed in this version." が発生する場合
 
 アプリの [サポートされているアカウントの種類](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation) が `任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)`
-の場合 New-AzureADApplicationPasswordCredential コマンドレットによるシークレットの追加は行えません。
+の場合 New-AzureADApplicationPasswordCredential コマンドレットや New-AzADAppCredential によるシークレットの追加は行えません。
 
 ```powershell
 New-AzureADApplicationPasswordCredential -ObjectId <アプリの Object Id を指定> -CustomKeyIdentifier "キーの説明" -StartDate "2021/04/20 00:00:00" -EndDate "2299/12/31 23:59:59"
