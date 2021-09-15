@@ -46,10 +46,10 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
  
 ### **手順（アクセス レビューを作成する）**
 1. Azure ポータルにサインインし、 [Azure Active Directory] - [Identity Governance] を開きます。もしくは、ポータル上の検索ボックスより、[Identity Governance] を開きます。
-![](.\GuestUser-Inventory\1_access_IdentityGovernance.png)
+![](./GuestUser-Inventory\1_access_IdentityGovernance.png)
 
 2. 左ペインにて [アクセス レビュー] をクリックし、 [+ 新しいアクセス レビュー] を選択します。
-![](.\GuestUser-Inventory\2_select_AccessReview.png)
+![](./GuestUser-Inventory\2_select_AccessReview.png)
 
 
 3. レビュー対象を指定します。たとえば、 特定のグループを対象にゲスト ユーザーのレビューを行いたい場合は、以下のように指定します。
