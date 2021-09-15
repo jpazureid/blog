@@ -4,7 +4,7 @@ date: 2021-9-10
 tags:
     - Azure AD
     - B2B Guest User
-    - 
+    - Access Review
 ---
 
 
@@ -46,10 +46,10 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
  
 ### **手順（アクセス レビューを作成する）**
 1. Azure ポータルにサインインし、 [Azure Active Directory] - [Identity Governance] を開きます。もしくは、ポータル上の検索ボックスより、[Identity Governance] を開きます。
-![](./GuestUser-Inventory\1_access_IdentityGovernance.png)
+![](./GuestUser-Inventory/1_access_IdentityGovernance.png)
 
 2. 左ペインにて [アクセス レビュー] をクリックし、 [+ 新しいアクセス レビュー] を選択します。
-![](./GuestUser-Inventory\2_select_AccessReview.png)
+![](./GuestUser-Inventory/2_select_AccessReview.png)
 
 
 3. レビュー対象を指定します。たとえば、 特定のグループを対象にゲスト ユーザーのレビューを行いたい場合は、以下のように指定します。
@@ -58,7 +58,7 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
     手順2: [チームとグループの選択] を選択し、ゲスト ユーザーが所属しているグループを選択します。  
     手順3: [ゲスト ユーザーのみ] を選択します。  
  
-    ![](.\GuestUser-Inventory\3_create_review1.png)
+    ![](./GuestUser-Inventory/3_create_review1.png)
 
 
 手順 2 ではレビュー対象のグループを指定します。  
@@ -77,12 +77,12 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 動的グループの作成方法の詳細は、本記事では省略しております。以下の公開情報をご確認ください。  
 [グループ メンバーシップ ルールを作成するには](https://docs.microsoft.com/ja-jp/azure/active-directory/enterprise-users/groups-create-rule#to-create-a-group-membership-rule)
 
-![](.\GuestUser-Inventory\4_DynamicGroup_forGuest.png)
+![](./GuestUser-Inventory/4_DynamicGroup_forGuest.png)
 
   
 4. 必要に応じて、レビュー担当者と繰り返しの設定を行います。以下の画面では、半年ごとに、ゲスト ユーザー自身がレビューを行うよう設定しています。
 
-    ![](.\GuestUser-Inventory\5_create_review2.png)
+    ![](./GuestUser-Inventory/5_create_review2.png)
 
 
 - 管理者のレビューへの負担を最小限にしたい場合は、本手順のように [レビュー担当者を選択する] にて [ユーザーによる自分のアクセスのレビュー] を選択し、 ゲスト自身がセルフ レビューを行うよう構成します。
@@ -91,7 +91,7 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
  
 5. アクセス レビューの設定を行います。
  
-    ![](.\GuestUser-Inventory\6_create_review3.png)
+    ![](./GuestUser-Inventory/6_create_review3.png)
 
 
 自動的に棚卸を行うために、 [リソースへの結果の自動適用] を [有効] にするほか、
@@ -130,20 +130,20 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 
 6. レビュー名と説明を記入し、アクセスレビューを作成します。
  
-    ![](.\GuestUser-Inventory\7_create_review4.png)
+    ![](./GuestUser-Inventory/7_create_review4.png)
 
  
 
 ### **手順（アクセス レビューを実施する）-セルフ レビュー編-**
 1. アクセス レビューが開始されると、レビュー対象者の元に azure-noreply@microsoft.com からメールが届くので、[レビューを開始する（Review Access）] をクリックします。  
-![](.\GuestUser-Inventory\8_selfReview1.png)
+![](./GuestUser-Inventory/8_selfReview1.png)
 
  
 2. 以下のような画面が表示されるので、セルフ レビューを実施します。  
-![](.\GuestUser-Inventory\9_selfReview2.png)
+![](./GuestUser-Inventory/9_selfReview2.png)
  
 3. 画面が以下のように遷移します。 Progress の項目が 1/1 と表示されていることを確認します。  
-![](.\GuestUser-Inventory\10_selfReview3.png)
+![](./GuestUser-Inventory/10_selfReview3.png)
 
 4. 指定した日付が経過するなどしてレビューが完了すると、[自動適用]が有効な場合は、自動的に [拒否されたゲスト ユーザーに対するアクション] が実行されます。
  
@@ -157,11 +157,11 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 上記まではゲストユーザー自身にレビューを実施してもらう手順となりますが、もしゲストユーザー数が少ない場合などは管理者が代表してレビューを行うことも可能です。この場合の手順を後述します。
 
 1. アクセス レビューが開始されると、レビュー対象者の元に azure-noreply@microsoft.com からメールが届くので、[レビューを開始する] をクリックします。
-![](.\GuestUser-Inventory\11_adminreview1.png)
+![](./GuestUser-Inventory/11_adminreview1.png)
  
 2. ユーザーの状況を確認します。各ユーザーを選択すると、 [承認する] と [拒否] がクリックできるようになるので、承認もしくは拒否を指定します。
 3. [決定] の項目に、レビューを行った際の承認・拒否の値が表示されることを確認します。
-![](.\GuestUser-Inventory\12_adminreview2.png)
+![](./GuestUser-Inventory/12_adminreview2.png)
  
 4. 指定した日付が経過するなどしてレビューが完了すると、[自動適用] が有効な場合は、自動的に [拒否されたゲスト ユーザーに対するアクション] が実行されます。
 
@@ -185,7 +185,7 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 スクリプトを実行すると CSV ファイルが出力され、以下のように、ユーザーの ID、UPN、最終サインイン日時、アプリケーション情報を順に確認できます。
  
 実行結果
-![](.\GuestUser-Inventory\13_lastsignin1.png)
+![](./GuestUser-Inventory/13_lastsignin1.png)
  
  
 なお、上記にてダウンロードしたスクリプトでは、ゲスト ユーザーのみならず、テナントに登録されているすべてのユーザーの情報が取得されます。  
@@ -193,7 +193,7 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 Get-LastSignIn.ps1 のスクリプトの48 行目を、以下のように修正してから実行します。  
  
 修正箇所
-![](.\GuestUser-Inventory\14_lastsignin2.png)
+![](./GuestUser-Inventory/14_lastsignin2.png)
  
  
 修正前
