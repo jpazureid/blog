@@ -169,6 +169,7 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 [Azure AD アクセス レビューを使用して外部 ID の無効化および削除を行う](https://docs.microsoft.com/ja-jp/azure/active-directory/governance/access-reviews-external-users#disable-and-delete-external-identities-with-azure-ad-access-reviews)  
 [アクセスレビュー作成手順](https://docs.microsoft.com/ja-jp/azure/active-directory/governance/create-access-review)
  
+ 
 
 ## **B. ゲスト ユーザーの最終サインイン日時を取得する方法**
 アクセス レビューを使用した棚卸についてご案内しましたが、この機能を利用するためには、 Azure AD Premium P2 ライセンスが必要です。  
