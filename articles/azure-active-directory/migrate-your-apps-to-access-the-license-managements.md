@@ -33,22 +33,22 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
   <tbody>
     <tr>
       <td><a href ="https://docs.microsoft.com/ja-jp/powershell/module/msonline/?view=azureadps-1.0" target="_blank">MSOnline Powershell</a>
-      <br>・Set-MsolUserLicense
-      <br>・New-MsolUser (-LicenseAssignment もしくは -LicenseOptions オプションを使用した場合)</td>
+      <br/>・Set-MsolUserLicense
+      <br/>・New-MsolUser (-LicenseAssignment か -LicenseOptions を指定)</td>
       <td rowspan="2">Microsoft Graph PowerShell
-      <br>・<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0" target="_blank">Set-MgUserLicense</a>
+      <br/>・<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0" target="_blank">Set-MgUserLicense</a>
       </td>
     </tr>
     <tr>
       <td><a href="https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-2.0">Azure AD Powershell</a>
-      <br>・Set-AzureADUserLicense
+      <br/>・Set-AzureADUserLicense
       </td>
     </tr>
     <tr>
       <td>Azure AD Graph API (graph.windows.net)
-      <br>・assignLicense</td>
+      <br/>・assignLicense</td>
       <td>Microsoft Graph API
-      <br>・<a href="https://docs.microsoft.com/ja-jp/graph/api/user-assignlicense?view=graph-rest-1.0&tabs=http">assignLicense</a></td>
+      <br/>・<a href="https://docs.microsoft.com/ja-jp/graph/api/user-assignlicense?view=graph-rest-1.0&tabs=http">assignLicense</a></td>
     </tr>	
   </tbody>
 </table>
@@ -78,36 +78,36 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
 
 1. 準備として Microsoft Graph PowerShell モジュールをインストールします。
    
-    ```powershell
-    Install-Module -Name Microsoft.Graph
-    ```
+```powershell
+Install-Module -Name Microsoft.Graph
+```
 
 参考情報：[Microsoft Graph PowerShell SDK をインストールする](https://docs.microsoft.com/ja-jp/graph/powershell/installation)
 
 2. 下記のコマンドを実行し、サインインとライセンス管理に必要なアクセス許可への同意を行います。認証画面がポップアップしますので、グローバル管理者アカウントでサインインします。アクセス許可の同意が求められますので、[承諾] をクリックします。
    
-    ```powershell
-    Connect-MgGraph -Scopes "User.ReadWrite.All"
-    ```
+```powershell
+Connect-MgGraph -Scopes "User.ReadWrite.All"
+```
 
 3. ライセンスを割り当てるためには、割り当てるライセンスの SkuId が必要となるので、Get-MgUserLicenseDetail コマンドを利用し、Skuld プロパティを取得します。
 
-    ```powershell
-    $LicenseDetail = Get-MgUserLicenseDetail -UserId templateuser@contoso.com
-    $SkuId = $LicenseDetail.SkuId
-    ```
+```powershell
+$LicenseDetail = Get-MgUserLicenseDetail -UserId templateuser@contoso.com
+$SkuId = $LicenseDetail.SkuId
+```
 
 4. SkuId を指定した MicrosoftGraphAssignedLicense オブジェクトを作成します。
    
-    ```powershell
-    $License = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @{SkuId = $SkuId}
-    ```
+```powershell
+$License = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @{SkuId = $SkuId}
+```
 
 5. AddLicenses パラメーターに手順  4 にて作成した $Licenses オブジェクトを指定し、 ユーザーに割り当てます。なお、RemoveLicenses パラメータは必須なので、空の配列を指定します。
    
-    ```powershell
-    Set-MgUserLicense -UserId User@contoso.com -AddLicenses @($License) -RemoveLicenses @()
-    ```
+```powershell
+Set-MgUserLicense -UserId User@contoso.com -AddLicenses @($License) -RemoveLicenses @()
+```
 
 以上で、ライセンス割り当ては完了となります。
 
