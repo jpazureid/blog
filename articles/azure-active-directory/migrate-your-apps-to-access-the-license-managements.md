@@ -1,6 +1,6 @@
 ---
-title: Azure AD Graph および  MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります
-date: 2021-09-13 9:00
+title: Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります
+date: 2021-09-17 9:00
 tags:
  - Azure AD
  - US Identity Blog
@@ -17,7 +17,7 @@ tags:
 
 ## ライセンス割り当て API の廃止
 
-[Azure Active Directory (Azure AD) Graphのサポートが 2022 年 6 月 30 日に終了する](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) ため、Microsoft Graph を使用するようアプリケーションをアップデートするよう [6 月にご案内いたしました](https://jpazureid.github.io/blog/azure-active-directory/have-you-updated-your-applications-to-use-the-microsoft/)。これ以降、Azure AD Graphを使用するアプリは、Azure AD Graph エンドポイントからの応答を受け取れなくなります。 
+[Azure Active Directory (Azure AD) Graphのサポートが 2022 年 6 月 30 日に終了する](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) ため、Microsoft Graph を使用するようアプリケーションをアップデートするよう [6 月にご案内いたしました](https://jpazureid.github.io/blog/azure-active-directory/have-you-updated-your-applications-to-use-the-microsoft/)。これ以降、Azure AD Graph を使用するアプリは、Azure AD Graph エンドポイントからの応答を受け取れなくなります。 
 
 Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell モジュールでのライセンス割り当て操作も利用できなくなります。運用への影響を軽減するために、Microsoft Graph エンドポイントのライセンス割り当て API を使用するよう既存のアプリケーションを更新するとともに、Microsoft Graph PowerShell モジュールを使用できるようにスクリプトを更新することをお勧めいたします。MSOnline および Azure AD PowerShell モジュールにおけるその他の操作には影響はありません。
 
@@ -26,14 +26,14 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
 <table>
   <thead>
     <tr>
-      <th>既存のコマンド（2022 年 6 月 30 日以降、利用できなくなる操作）</th>
+      <th>既存のコマンド (2022 年 6 月 30 日以降、利用できなくなる操作)</th>
       <th>今後使用が推奨される Microsoft Graph PowerShell および API</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><a href ="https://docs.microsoft.com/ja-jp/powershell/module/msonline/?view=azureadps-1.0" target="_blank">MSOnline Powershell</a>
-      <br>·Set-MsolUserLicense
+      <br>・Set-MsolUserLicense
       <br>・New-MsolUser (-LicenseAssignment もしくは -LicenseOptions オプションを使用した場合)</td>
       <td rowspan="2">Microsoft Graph PowerShell
       <br>・<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0" target="_blank">Set-MgUserLicense</a>
@@ -55,16 +55,16 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
 
 ## 次のステップ: 新しいライセンス管理プラットフォーム
 
-現在のライセンス管理機能は、グループベースのライセンスなど新機能の登場など、お客様のニーズに対応して成長してきました。しかし、お客様のニーズの変化に伴い、私たちはオンライン サービスのライセンス割り当てプラットフォームを再構成することを決定しました。将来のプラットフォームの変更は以下 4 つの主要な目標を念頭に置き設計されています。
+現在のライセンス管理機能は、グループベースのライセンスなど新機能の登場によりお客様のニーズに対応して成長してきました。しかし、お客様のニーズの変化に伴い、私たちはオンライン サービスのライセンス割り当てプラットフォームを再構成することを決定しました。将来のプラットフォームの変更は以下 4 つの主要な目標を念頭に置き設計されています。
 
 - 柔軟性: 単一の管理構造や一つの巨大なユーザー グループ、単一のテナントを超えた拡張性を提供する。
 - 簡潔性: 不必要な複雑さを減らし、エンド ユーザーへのライセンス割り当てをシンプルにする。
 - 迅速性: 購入したライセンスに迅速にアクセスできるようにする。
-- 正確性: 購入したライセンスと割り当て可能なライセンスをわかりやすく表示すること。
+- 正確性: 購入したライセンスと割り当て可能なライセンスをわかりやすく表示する。
 
-このビジョン全体を実現するには時間を要しますが、本日、ビジョンの実現に向けた最初のマイルストーンをご紹介します。2022年の第 1 四半期から、お客様は新しいライセンス管理プラットフォームの使用を選択できるようになります。このマイルストーンの一環として以下の機能が提供されます。
+このビジョン全体を実現するには時間を要しますが、本日、ビジョンの実現に向けた最初のマイルストーンをご紹介します。2022 年の第 1 四半期から、お客様は新しいライセンス管理プラットフォームの使用を選択できるようになります。このマイルストーンの一環として以下の機能が提供されます。
 
-- ライセンスの分配機能により、ライセンスを小さな単位に分けて、使用するライセンス数に制限を設けたり、所有権を委任して管理できるようになります。
+- ライセンスの分配機能により、ライセンスを小さな単位に分けて使用するライセンス数に制限を設けたり、所有権を委任して管理できるようになります。
 - グループベースのライセンス割り当て機能が拡張されます。新しいライセンス割り当てプラットフォームでは、グループ ベースのライセンス割り当てに Azure AD Premium または Office 365 E3 ライセンスは必要なくなります。加えて、ライセンス割り当て対象として入れ子 (ネスト) グループが利用可能となります。
 - 新しいライセンスの種類として、[デバイスベースのライセンス](https://docs.microsoft.com/ja-jp/deployoffice/device-based-licensing) や [ISV アプリのライセンス](https://powerapps.microsoft.com/en-us/blog/partners-introducing-a-new-way-to-manage-and-enforce-licenses-for-your-products/) などが新プラットフォームにてネイティブに動作します。
   
@@ -72,42 +72,42 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
 
 ## Microsoft Graph PowerShell を用いたライセンス割り当て手順
 
-[PowerShell を用いた従来のライセンス割り当て操作](https://docs.microsoft.com/ja-jp/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell?view=o365-worldwide)の代替として、Microsoft Graph PowerShell を用いた手順をお纏めしましたので、皆様のご参考となれば幸いです。参考情報としては [Set-MgUserLicense](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0) をご覧ください。
+[PowerShell を用いた従来のライセンス割り当て操作](https://docs.microsoft.com/ja-jp/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell?view=o365-worldwide) の代替として、Microsoft Graph PowerShell を用いた手順をお纏めしましたので皆様のご参考となれば幸いです。参考情報としては [Set-MgUserLicense](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0) をご覧ください。
 
-以下では、テンプレートユーザー（templateuser@contoso.com）に割り当てられたライセンス情報に基づいて、ユーザー（user@contoso.com）に新たにライセンスを追加する例を説明します。
+以下では、テンプレート ユーザー（templateuser@contoso.com）に割り当てられたライセンス情報に基づいて、ユーザー (user@contoso.com) に新たにライセンスを追加する例を説明します。
 
 1. 準備として Microsoft Graph PowerShell モジュールをインストールします。
    
-```bash 
-Install-Module -Name Microsoft.Graph
-```
+    ```powershell
+    Install-Module -Name Microsoft.Graph
+    ```
 
 参考情報：[Microsoft Graph PowerShell SDK をインストールする](https://docs.microsoft.com/ja-jp/graph/powershell/installation)
 
 2. 下記のコマンドを実行し、サインインとライセンス管理に必要なアクセス許可への同意を行います。認証画面がポップアップしますので、グローバル管理者アカウントでサインインします。アクセス許可の同意が求められますので、[承諾] をクリックします。
    
-```bash
-Connect-MgGraph -Scopes "User.ReadWrite.All"
-```
+    ```powershell
+    Connect-MgGraph -Scopes "User.ReadWrite.All"
+    ```
 
 3. ライセンスを割り当てるためには、割り当てるライセンスの SkuId が必要となるので、Get-MgUserLicenseDetail コマンドを利用し、Skuld プロパティを取得します。
 
-```bash
-$LicenseDetail = Get-MgUserLicenseDetail -UserId templateuser@contoso.com
-$SkuId = $LicenseDetail.SkuId
-```
+    ```powershell
+    $LicenseDetail = Get-MgUserLicenseDetail -UserId templateuser@contoso.com
+    $SkuId = $LicenseDetail.SkuId
+    ```
 
 4. SkuId を指定した MicrosoftGraphAssignedLicense オブジェクトを作成します。
    
-```bash
-$License = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @{SkuId = $SkuId}
-```
+    ```powershell
+    $License = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @{SkuId = $SkuId}
+    ```
 
 5. AddLicenses パラメーターに手順  4 にて作成した $Licenses オブジェクトを指定し、 ユーザーに割り当てます。なお、RemoveLicenses パラメータは必須なので、空の配列を指定します。
    
-```bash
-Set-MgUserLicense -UserId User@contoso.com -AddLicenses @($License) -RemoveLicenses @()
-```
+    ```powershell
+    Set-MgUserLicense -UserId User@contoso.com -AddLicenses @($License) -RemoveLicenses @()
+    ```
 
 以上で、ライセンス割り当ては完了となります。
 
