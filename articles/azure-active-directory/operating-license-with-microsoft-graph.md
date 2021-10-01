@@ -3,7 +3,6 @@ title: Microsoft Graph PowerShell  を使用したライセンス管理操作の
 date: 2021-10-01 9:00
 tags:
   - Azure AD
-  - US Identity Blog
 　- Microsoft Graph
 ---
 
