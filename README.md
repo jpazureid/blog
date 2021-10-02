@@ -102,7 +102,7 @@
 - [Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります](./articles/azure-active-directory/migrate-your-apps-to-access-the-license-managements.md)
 - [Microsoft アカウントにおけるパスワード削除機能のご紹介](./articles/azure-active-directory/introducing-password-removal-for-microsoft-accounts.md)
 - [Identity Protection のシグナル品質と表示の向上](./articles/azure-active-directory/announcing-improved-identity-protection-signal-quality-and.md)
-
+- [CloudKnox 社の買収について - 現在利用可能なものと近日公開予定のもの](./articles/azure-active-directory/CloudKnox-acquisition-whats-available-now-and-whats-coming-soon/CloudKnox-acquisition-whats-available-now-and-whats-coming-soon.md)
 
 ## Azure AD Connect
 
