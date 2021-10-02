@@ -39,9 +39,11 @@ tags:
 短いアップデートとなりますが、本内容が皆様にとって有益で役に立つものであれば幸いです。皆様のご意見、ご感想をお待ちしております。
 
 Alex
+
 Thanks,
 Alex
-Microsoft のアイデンティティについて詳しく知るには：
-米国 [Azure Active Directory Identity blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity) を読む
-[Twitter](https://twitter.com/azuread) や [LinkedIn](https://www.linkedin.com/showcase/microsoft-security/) で会話に参加する
+
+Microsoft のアイデンティティについて詳しく知るには：\
+米国 [Azure Active Directory Identity blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity) を読む\
+[Twitter](https://twitter.com/azuread) や [LinkedIn](https://www.linkedin.com/showcase/microsoft-security/) で会話に参加する\
 [Azure Feedback Forum](https://azure.microsoft.com/ja-jp/feedback/) で製品に関する提案を共有する
