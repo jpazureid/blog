@@ -82,6 +82,27 @@
 - [クライアント シークレット作成画面の変更について](./articles/azure-active-directory/azuread-clientsecrets-202104.md)
 - [PIM の活用方法](./articles/azure-active-directory/pim-overview.md)
 - [ゲスト ユーザーの棚卸をする方法](./articles/azure-active-directory/GuestUser-Inventory.md)
+- [パスワード ライトバックのしくみと一般的なトラブルシューティング](./articles/azure-active-directory-connect/password-writeback-overview.md)
+- [CAE (Continuous Access Evaluation: 継続的アクセス評価)](./articles/azure-active-directory/cae-overview.md)
+- [Azure における ゲスト ユーザー招待 (B2B) のよくある質問](./articles/azure-active-directory/b2bfaq.md)
+- [App Service 認証を利用して複数のテナントの Azure AD ユーザーをサインインさせる方法](./articles/azure-active-directory/app-service-auth-multi-tenant.md)
+- [エンタープライズ アプリケーションに、管理者の知らないアプリケーションが追加されている!](./articles/azure-active-directory/enterpriseapps-multitenantapps.md)
+- [Microsoft Authentication Library と Microsoft Graph への移行は完了済みでしょうか？](./articles/azure-active-directory/have-you-updated-your-applications-to-use-the-microsoft.md)
+- [Azure AD を使用して Zero Trust アーキテクチャと MFA の要件を満たすためのガイダンス](./articles/azure-active-directory/guidance-on-using-azure-ad-to-meet-zero-trust-architecture-and.md)
+- [Azure AD ゲスト アクセス レビューを活用したゲスト ユーザーとの安全なコラボレーション](./articles/azure-active-directory/secure-collaboration-with-AAD-guest-access-reviews.md)
+- [サービス プリンシパルに対する Azure AD アクセス レビューの紹介](./articles/azure-active-directory/introducing-azure-ad-access-reviews-for-service-principals.md)
+- [ユーザー ストアとして SQL を使用したアプリへのユーザー プロビジョニング、複雑な変換式の簡単な構築、などなど](./articles/azure-active-directory/provision-users-into-apps-using-sql-as-a-user-store-more-easily.md)
+- [ID とエンドポイント管理から始まる強固なゼロトラスト基盤の構築](./articles/azure-active-directory/build-a-strong-zero-trust-foundation-starting-with-identity-and-endpoint-management.md)
+- [外部 ID ユーザー フローをより簡単に設定](./articles/azure-active-directory/do-more-with-external-identities-user-flows-in-just-a-few-clicks.md)
+- [アクセス レビューにおける職務の分離チェックによるコンプライアンスの確保](./articles/azure-active-directory/ensure-compliance-using-separation-of-duties-checks-in-access-jp.md)
+- [8 月のアップデート - Identity Protection 診断設定のご紹介](./articles/azure-active-directory/introducing-diagnostic-settings-for-identity-protection-august.md)
+- [2021 年 10 月に予定されるゲスト ユーザー招待時の動作変更について](./articles/azure-active-directory/announcement-of-otp.md)
+- [HashiCorp 社の Azure AD プロバイダーが Microsoft Graph に移行しパフォーマンスとユーザー体験が向上](./articles/azure-active-directory/hashicorp-s-azure-ad-provider-migrates-to-microsoft-graph.md)
+- [新しい Azure AD エンタイトルメント管理機能でパートナー (外部ユーザー) との連携をより簡単に](./articles/azure-active-directory/onboard-partners-more-easily-with-new-azure-ad-entitlement.md)
+- [Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります](./articles/azure-active-directory/migrate-your-apps-to-access-the-license-managements.md)
+- [Microsoft アカウントにおけるパスワード削除機能のご紹介](./articles/azure-active-directory/introducing-password-removal-for-microsoft-accounts.md)
+- [Identity Protection のシグナル品質と表示の向上](./articles/azure-active-directory/announcing-improved-identity-protection-signal-quality-and.md)
+
 
 ## Azure AD Connect
 
