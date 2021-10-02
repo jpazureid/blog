@@ -1,6 +1,5 @@
-
 ---
-title: CloudKnox 社の買収について: 現在利用可能なものと近日公開予定のもの
+title: CloudKnox 社の買収について - 現在利用可能なものと近日公開予定のもの
 date: 2021-10-03 09:00
 tags:
   - Azure AD
@@ -18,7 +17,7 @@ tags:
 
 皆さん、こんにちは。
 
-[CloudKnox Security 社の買収](https://blogs.microsoft.com/blog/2021/07/21/microsoft-acquires-cloudknox-security-to-offer-unified-privileged-access-and-cloud-entitlement-management/)を発表してから 2 ヶ月が経ち、我々のチームは CloudKnox 社の技術を統合するべく取り組んでいる状況です。この発表に多くの方が関心を持ち、様々な質問が寄せられていますので、進捗状況をお伝えするとともに、いくつかの質問にお答えしたいと思います。
+[CloudKnox Security 社の買収](https://blogs.microsoft.com/blog/2021/07/21/microsoft-acquires-cloudknox-security-to-offer-unified-privileged-access-and-cloud-entitlement-management/)を発表してから 2 ヶ月が経ち、我々のチームは CloudKnox 社の技術を統合するべく取り組んでいる状況です。この発表に多くの方が関心を持ち、様々な質問が寄せられていますので、進捗状況をお伝えするとともにいくつかの質問にお答えしたいと思います。
 
 **現在 CloudKnox を利用していますが、今後も製品を使い続けることはできますか？**
 
@@ -39,11 +38,3 @@ tags:
 短いアップデートとなりますが、本内容が皆様にとって有益で役に立つものであれば幸いです。皆様のご意見、ご感想をお待ちしております。
 
 Alex
-
-Thanks,
-Alex
-
-Microsoft のアイデンティティについて詳しく知るには：\
-米国 [Azure Active Directory Identity blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity) を読む\
-[Twitter](https://twitter.com/azuread) や [LinkedIn](https://www.linkedin.com/showcase/microsoft-security/) で会話に参加する\
-[Azure Feedback Forum](https://azure.microsoft.com/ja-jp/feedback/) で製品に関する提案を共有する
