@@ -3,7 +3,7 @@ title: Microsoft Graph PowerShell  を使用したライセンス管理操作の
 date: 2021-10-01 9:00
 tags:
   - Azure AD
-　- Microsoft Graph
+  - Microsoft Graph
 ---
 
 # Microsoft Graph PowerShell  を使用したライセンス管理操作の紹介
@@ -145,7 +145,7 @@ Connect-MgGraph -Clientid "<登録したアプリのアプリケーション (�
 ▼ 実行例
 
 ```bash
-Connect-MgGraph -Clientid "89a531e4-38a8-41b3-9a5f-xxxxxxx" -TenantId "a818a9d9-4bf7-4316-b8bb-xxxxxx" -CertificateThumbprint "F683EBBE56184C197699930xxxxxxxxxx"　
+Connect-MgGraph -Clientid "89a531e4-38a8-41b3-9a5f-xxxxxxx" -TenantId "a818a9d9-4bf7-4316-b8bb-xxxxxx" -CertificateThumbprint "F683EBBE56184C197699930xxxxxxxxxx"
 ```
 
 <h1 id="idx3">3. ライセンス情報の取得</h1>
