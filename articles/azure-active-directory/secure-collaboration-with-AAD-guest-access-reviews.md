@@ -4,7 +4,7 @@ date: 2021-07-06 09:00
 tags:
   - Azure AD
   - Azure AD B2B
-  - Governance
+  - Access review
   - US Identity Blog
 ---
 

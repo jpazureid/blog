@@ -27,7 +27,7 @@ tags:
 Azure AD テナントにおける情報取得は、これまで[MSOnline および Azure AD PowerShell モジュール](https://jpazureid.github.io/blog/azure-active-directory/powershell-module/)を用いてきました。
 Azure AD PowerShell では、2022 年 7 月以降にサポート終了予定の Azure AD Graph API を呼び出しており、上述の翻訳記事では、Set-AzureADUserLicense を中心とするライセンス管理のコマンドが廃止となる予定であることをアナウンスいたしました。
 
-ライセンス管理操作以外のコマンドは従来通りレスポンスを受け取れる予定であり、現時点では今後も利用可能ですが、利用するコマンドの移行をご検討いただくようお願いします。
+**ライセンス管理操作以外のコマンドは従来通りレスポンスを受け取れる予定であり、現時点では今後も利用可能ですが、利用するコマンドの移行をご検討いただくようお願いします。**
 
 (Azure AD Graph API を呼び出すアプリケーションを作成されている場合、[公開情報](https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview)を参考に、Microsoft Graph API への移行をお願いいたします。)
 
@@ -99,6 +99,12 @@ Connect-MgGraph -Scopes "Organization.Read.All","User.ReadWrite.All"
 
 テナントに紐づくライセンスの情報を確認するために Organization.Read.All のアクセス許可が必要です。またライセンスの付与などのために User.ReadWrite.All のアクセス許可が必要です。
 
+その後、シナリオ1以降の操作を行うために必要なモジュールをインポートしておきます。
+
+```bash
+Import-Module -Name Microsoft.Graph.Users
+```
+
 <h2 id="idx2-2">サービス プリンシパル（アプリケーション）を使用する方法</h2>
 
 基本的な内容は以下の公開情報となります。
@@ -136,16 +142,18 @@ Connect-MgGraph -Scopes "Organization.Read.All","User.ReadWrite.All"
 
 以上で、準備は完了となります。
 
-以下コマンドにて、サービス プリンシパルを使用して Azure AD に接続することができます。
+以下コマンドにて、サービス プリンシパルを使用して Azure AD に接続することができます。また、管理者の資格情報を使用する場合と同様、シナリオ1以降の操作を行うために必要なモジュールをインポートします。
 
 ```bash
 Connect-MgGraph -Clientid "<登録したアプリのアプリケーション (クライアント) ID>" -TenantId "<アプリを登録したテナントのディレクトリ (テナント) ID>" -CertificateThumbprint "<証明書の拇印>"
+Import-Module -Name Microsoft.Graph.Users
 ```
 
 ▼ 実行例
 
 ```bash
 Connect-MgGraph -Clientid "89a531e4-38a8-41b3-9a5f-xxxxxxx" -TenantId "a818a9d9-4bf7-4316-b8bb-xxxxxx" -CertificateThumbprint "F683EBBE56184C197699930xxxxxxxxxx"
+Import-Module -Name Microsoft.Graph.Users
 ```
 
 <h1 id="idx3">3. ライセンス情報の取得</h1>
