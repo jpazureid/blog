@@ -11,9 +11,9 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 馮 です。
 
-本日は、2021 年 8 月 26 日に米国の Azure Active Directory Identity Blog で公開された [Migrate your apps to access the license managements APIs from Microsoft Graph](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366) を元に、今後推奨されるライセンス割り当て方法について紹介いたします。英語記事の翻訳内容に加え、Microsoft Graph PowerShell を用いた今後の推奨手順をお纏めしましたので、ぜひご参照ください。
+本日は、2021 年 8 月 26 日に米国の Azure Active Directory Identity Blog で公開された [Migrate your apps to access the license managements APIs from Microsoft Graph](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366) を意訳したものになります。
 
-> 2021/10/07: Microsoft Graph PowerShell を使用したライセンス管理操作の詳細手順を紹介したブログも公開いたしましたので、より詳細な手順につきましてはこちらをぜひ参照ください。<br>
+> 2021/10/07: Microsoft Graph PowerShell を使用したライセンス管理操作のより詳細な手順につきましては、以下の技術ブログにて紹介しておりますので、こちらもぜひ参照ください。<br>
 > [Microsoft Graph PowerShell を使用したライセンス管理操作の紹介](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/)
 
 ご不明点等ございましたらサポート チームまで遠慮なくお問い合わせください。
@@ -73,47 +73,3 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
   
 今後は、新しいライセンス管理プラットフォームの利用方法や、新機能を活用するための新しい API や PowerShell オプションの詳細などをご紹介していく予定です。
 
-## Microsoft Graph PowerShell を用いたライセンス割り当て手順
-
-[PowerShell を用いた従来のライセンス割り当て操作](https://docs.microsoft.com/ja-jp/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell?view=o365-worldwide) の代替として、Microsoft Graph PowerShell を用いた手順をお纏めしましたので皆様のご参考となれば幸いです。参考情報としては [Set-MgUserLicense](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0) をご覧ください。
-
-以下では、テンプレート ユーザー（templateuser@contoso.com）に割り当てられたライセンス情報に基づいて、ユーザー (user@contoso.com) に新たにライセンスを追加する例を説明します。
-
-1. 準備として Microsoft Graph PowerShell モジュールをインストールします。
-   
-```powershell
-Install-Module -Name Microsoft.Graph
-```
-
-参考情報：[Microsoft Graph PowerShell SDK をインストールする](https://docs.microsoft.com/ja-jp/graph/powershell/installation)
-
-2. 下記のコマンドを実行し、サインインとライセンス管理に必要なアクセス許可への同意を行います。認証画面がポップアップしますので、グローバル管理者アカウントでサインインします。アクセス許可の同意が求められますので、[承諾] をクリックします。
-   
-```powershell
-Connect-MgGraph -Scopes "User.ReadWrite.All"
-```
-
-3. ライセンスを割り当てるためには、割り当てるライセンスの SkuId が必要となるので、Get-MgUserLicenseDetail コマンドを利用し、Skuld プロパティを取得します。
-
-```powershell
-$LicenseDetail = Get-MgUserLicenseDetail -UserId templateuser@contoso.com
-$SkuId = $LicenseDetail.SkuId
-```
-
-4. SkuId を指定した MicrosoftGraphAssignedLicense オブジェクトを作成します。
-   
-```powershell
-$License = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @{SkuId = $SkuId}
-```
-
-5. AddLicenses パラメーターに手順  4 にて作成した $Licenses オブジェクトを指定し、 ユーザーに割り当てます。なお、RemoveLicenses パラメータは必須なので、空の配列を指定します。
-   
-```powershell
-Set-MgUserLicense -UserId User@contoso.com -AddLicenses @($License) -RemoveLicenses @()
-```
-
-以上で、ライセンス割り当ては完了となります。
-
-なお、Microsof Graph PowerShell では、手順５にて [Set-MgGroupLicense](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.groups/set-mggrouplicense?view=graph-powershell-1.0) を実行することで、グループに対するライセンス割り当てを行うことも可能です。
-
-上記手順が皆様の参考となれば幸いです。
