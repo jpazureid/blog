@@ -13,6 +13,9 @@ tags:
 
 本日は、2021 年 8 月 26 日に米国の Azure Active Directory Identity Blog で公開された [Migrate your apps to access the license managements APIs from Microsoft Graph](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366) を元に、今後推奨されるライセンス割り当て方法について紹介いたします。英語記事の翻訳内容に加え、Microsoft Graph PowerShell を用いた今後の推奨手順をお纏めしましたので、ぜひご参照ください。
 
+> 2021/10/07: Microsoft Graph PowerShell を使用したライセンス管理操作の詳細手順を紹介したブログも公開いたしましたので、より詳細な手順につきましてはこちらをぜひ参照ください。<br>
+> [Microsoft Graph PowerShell を使用したライセンス管理操作の紹介](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/)
+
 ご不明点等ございましたらサポート チームまで遠慮なくお問い合わせください。
 
 ## ライセンス割り当て API の廃止
