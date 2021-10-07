@@ -4,6 +4,7 @@ date: 2021-07-30 9:00
 tags:
   - Azure AD
   - US Identity Blog
+  - Access review
 ---
 
 # アクセス レビューにおける職務の分離チェック機能を用いたコンプライアンスの確保
