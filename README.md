@@ -82,6 +82,7 @@
 - [クライアント シークレット作成画面の変更について](./articles/azure-active-directory/azuread-clientsecrets-202104.md)
 - [PIM の活用方法](./articles/azure-active-directory/pim-overview.md)
 - [ゲスト ユーザーの棚卸をする方法](./articles/azure-active-directory/GuestUser-Inventory.md)
+- [HashiCorp 社の Azure AD プロバイダーが Microsoft Graph に移行しパフォーマンスとユーザー体験が向上](./articles/azure-active-directory/hashicorp-s-azure-ad-provider-migrates-to-microsoft-graph.md)
 - [パスワード ライトバックのしくみと一般的なトラブルシューティング](./articles/azure-active-directory-connect/password-writeback-overview.md)
 - [CAE (Continuous Access Evaluation: 継続的アクセス評価)](./articles/azure-active-directory/cae-overview.md)
 - [Azure における ゲスト ユーザー招待 (B2B) のよくある質問](./articles/azure-active-directory/b2bfaq.md)
@@ -103,6 +104,7 @@
 - [Microsoft アカウントにおけるパスワード削除機能のご紹介](./articles/azure-active-directory/introducing-password-removal-for-microsoft-accounts.md)
 - [Identity Protection のシグナル品質と表示の向上](./articles/azure-active-directory/announcing-improved-identity-protection-signal-quality-and.md)
 - [CloudKnox 社の買収について - 現在利用可能なものと近日公開予定のもの](./articles/azure-active-directory/CloudKnox-acquisition-whats-available-now-and-whats-coming-soon/CloudKnox-acquisition-whats-available-now-and-whats-coming-soon.md)
+- [Microsoft Graph PowerShell を使用したライセンス管理操作の紹介](./articles/azure-active-directory/operating-license-with-microsoft-graph.md)
 
 ## Azure AD Connect
 
