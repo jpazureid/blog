@@ -105,6 +105,7 @@
 - [Identity Protection のシグナル品質と表示の向上](./articles/azure-active-directory/announcing-improved-identity-protection-signal-quality-and.md)
 - [CloudKnox 社の買収について - 現在利用可能なものと近日公開予定のもの](./articles/azure-active-directory/CloudKnox-acquisition-whats-available-now-and-whats-coming-soon/CloudKnox-acquisition-whats-available-now-and-whats-coming-soon.md)
 - [Microsoft Graph PowerShell を使用したライセンス管理操作の紹介](./articles/azure-active-directory/operating-license-with-microsoft-graph.md)
+- [ゼロ トラスト ソリューション提供パートナーを支援する統合ガイダンスのご紹介](./articles/azure-active-directory/integration-guidance-helps-partners-deliver-zero-trust-solutions/integration-guidance-helps-partners-deliver-zero-trust-solutions.md)
 
 ## Azure AD Connect
 
