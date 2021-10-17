@@ -22,7 +22,9 @@ tags:
 
 上記の変更の影響により、Azure CLI または Azure PowerShell を最新のバージョンにアップグレードしていない場合、サービス プリンシパルの作成時に次のようなエラーメッセージが表示されることが想定されます。
 
-> Values of identifierUris property must use a verified domain of the organization or its subdomain
+```
+Values of identifierUris property must use a verified domain of the organization or its subdomain
+```
 
 例 : "az ad sp create-for-rbac" コマンド実行時
 
