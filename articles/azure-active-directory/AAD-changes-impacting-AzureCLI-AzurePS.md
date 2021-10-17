@@ -1,6 +1,6 @@
 ---
 title: Azure CLI ならびに Azure PowerShell の互換性に影響する、Azure AD の変更について
-date: 2020-10-17
+date: 2020-10-18
 tags:
   - Azure AD
 ---
@@ -8,13 +8,13 @@ tags:
 
 こんにちは、Azure Identity サポート チームの栗井です。
 
-本記事は、2021 年 10 月 1 日に米国の Azure Tools Blog で公開された [Azure Active Directory breaking change impacting Azure CLI and Azure PowerShell](https://techcommunity.microsoft.com/t5/azure-tools/azure-active-directory-breaking-change-impacting-azure-cli-and/ba-p/2848388) を意訳したものになります。
+本記事は、2021 年 10 月 14 日に米国の Azure Tools Blog で公開された [Azure Active Directory breaking change impacting Azure CLI and Azure PowerShell](https://techcommunity.microsoft.com/t5/azure-tools/azure-active-directory-breaking-change-impacting-azure-cli-and/ba-p/2848388) を意訳したものになります。
 
 ---
 
 ## 背景
 
-2021年10月15日より、Azure AD に登録されるシングルテナントアプリケーションの AppId URI (identifierUris) には、デフォルトのスキーム (api://{appId}) または検証済みドメインのいずれかが要求されるようになります。
+2021 年 10 月 15 日より、Azure AD に登録されるシングルテナントアプリケーションの AppId URI (identifierUris) には、デフォルトのスキーム (api://{appId}) または検証済みドメインのいずれかが要求されるようになります。
 
 - 参考情報 (英語) : [Upcoming changes - October 2021 - AppId Uri in single tenant applications will require use of default scheme or verified domains](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains)
   ※ 日本語版の公開情報 (ja-jp) では、本変更に関する記述が未記載です (2021/10/17 時点)。英語の原文 (en-us) をご確認いただけますと幸いです。
@@ -35,7 +35,7 @@ Values of identifierUris property must use a verified domain of the organization
 各種ツールを以下のバージョンにアップグレードください。
 
 - Azure CLI : 2.25.0 以降
-- Azure PowerShell : 6.0.0以降
+- Azure PowerShell : 6.0.0 以降
 
 この変更による影響については、各ツールの GitHub ページからご確認いただけますと幸いです。
 - Azure CLI: https://github.com/Azure/azure-cli/issues/19892
