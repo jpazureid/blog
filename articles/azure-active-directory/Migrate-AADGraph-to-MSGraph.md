@@ -23,7 +23,7 @@ tags:
 ## 既存のスクリプトへの影響
 既存のスクリプトへの影響を最小限とするため、可能な限り Azure AD Graph と同じ使い方ができることが望ましいという方針のもと、各コマンドライン ツールの切り替え対応を進行中です。
 
-しかし一部のコマンドについては、Microsoft Graph API とAzureAD Graph API の動作の違いによって、互換性への影響が懸念される変更の発生が想定されます。
+しかし一部のコマンドについては、Microsoft Graph API と Azure AD Graph API の動作の違いによって、互換性への影響が懸念される変更の発生が想定されます。
 
 例 : 従来とは異なり、Azure AD にアプリケーションを登録する際、クライアント シークレットは同時に自動作成されない動作となります。シークレット値を利用する場合、アプリケーションの登録完了後、別途作成することが必要になります。
 
@@ -58,18 +58,13 @@ Terraformについては、HashiCorp 社が Azure AD プロバイダ v2 で Micr
 - [AzureAD v2.0 and Microsoft Graph (terraform.io) ※外部リンク](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/microsoft-graph)
 
 
-
 ## 参考情報など
 Azure 各種製品のの公式ドキュメントが更新されるまで、Microsoft Graph への移行に関する追加ガイダンスとして、以下のリソースをご参照いただけますと幸いです。
 
-### MSAL への移行に関する追加情報と、Microsoft Graph への移行における重要性について。
-
+### MSAL への移行に関する追加情報と、Microsoft Graph への移行における重要性について
 - [Update your applications to use Microsoft Authentication Library and Microsoft Graph API (英語記事)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
 - [Have you updated your applications to use the Microsoft Authentication Library and Microsoft Graph? (英語記事)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/have-you-updated-your-applications-to-use-the-microsoft/ba-p/1144698)
-
-
 - [MSAL への移行に関する概要](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/msal-migration)
-
 - [アプリの移行計画チェックリスト (機械翻訳)](https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-planning-checklist?view=graph-rest-1.0)
 
 
