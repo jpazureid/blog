@@ -8,7 +8,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの栗井です。
 
-本記事は、2021 年 10 月 12 日に米国の Azure Tools Blog で公開された [Azure Active Directory breaking change impacting Azure CLI and Azure PowerShell](https://techcommunity.microsoft.com/t5/azure-tools/azure-active-directory-breaking-change-impacting-azure-cli-and/ba-p/2848388) を意訳したものになります。
+本記事は、2021 年 10 月 1 日に米国の Azure Tools Blog で公開された [Azure Active Directory breaking change impacting Azure CLI and Azure PowerShell](https://techcommunity.microsoft.com/t5/azure-tools/azure-active-directory-breaking-change-impacting-azure-cli-and/ba-p/2848388) を意訳したものになります。
 
 ---
 
