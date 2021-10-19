@@ -58,7 +58,7 @@ Values of identifierUris property must use a verified domain of the organization
 3. 登録したアプリケーションを参照するサービスプリンシパルを作成します。
 
     例 ([az ad sp create](https://docs.microsoft.com/ja-jp/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_create) コマンド):
-    ```
+    ```sh
     az ad sp create --id <2.で登録したアプリの App Id>
     ```
 
