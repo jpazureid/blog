@@ -19,8 +19,20 @@ tags:
 
 - 参考情報 (英語) : [Upcoming changes - October 2021 - AppId Uri in single tenant applications will require use of default scheme or verified domains](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains)
   ※ 日本語版の公開情報 (ja-jp) では、本変更に関する記述が未記載です (2021/10/17 時点)。英語の原文 (en-us) をご確認いただけますと幸いです。
+実際にサポートされるアプリケーション ID の URI を、公開情報より抜粋します。
 
+> 以下の例にある API と HTTP スキーマー ベースのアプリケーション ID の URI がサポートされます。`<appid>` などのプレース ホルダーの値を、公開情報に記載の説明を元に置き換えてください。
 
+> サポートされるアプリケーション ID の URI フォーマット | アプリケーション ID の URI の例
+> -- | --
+> `api://<appId>` | `api://fc4d2d73-d05a-4a9b-85a8-4f2b3a5f38ed`
+> `api://<tenantId>/<appId>` | `api://a8573488-ff46-450a-b09a-6eca0c6a02dc/fc4d2d73-d05a-4a9b-85a8-4f2b3a5f38ed`
+> `api://<tenantId>/<string>` | `api://a8573488-ff46-450a-b09a-6eca0c6a02dc/api`
+> `api://<string>/<appId>` | `api://productapi/fc4d2d73-d05a-4a9b-85a8-4f2b3a5f38ed`
+> `https://<tenantIdDomain>.onmicrosoft.com/<string>` | `https://contoso.onmicrosoft.com/productsapi`
+> `https://<verifiedCustomDomain>/<string>` | `https://contoso.onmicrosoft.com/productsapi`
+> `https://<string>.<verifiedCustomDomain>` | `https://product.contoso.onmicrosoft.com`
+> `https://<string>.<verifiedCustomDomain>/<string>` | `https://product.onmicrosoft.com/productsapi`
 上記の変更の影響により、Azure CLI または Azure PowerShell を最新のバージョンにアップグレードしていない場合、サービス プリンシパルの作成時に次のようなエラーメッセージが表示されることが想定されます。
 
 ```
