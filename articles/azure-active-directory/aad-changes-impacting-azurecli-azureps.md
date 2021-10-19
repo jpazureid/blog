@@ -43,7 +43,7 @@ Values of identifierUris property must use a verified domain of the organization
 
 例 : "az ad sp create-for-rbac" コマンド実行時
 
-![該当画面](./AAD-changes-impacting-AzureCLI-AzurePS/PS.png)
+![該当画面](./aad-changes-impacting-azurecli-azureps/ps.png)
 
 ### 解決方法
 各種ツールを以下のバージョンにアップグレードください。
