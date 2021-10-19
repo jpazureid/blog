@@ -168,7 +168,7 @@ Import-Module -Name Microsoft.Graph.Users
 Get-MgSubscribedSku | ft Id, SkuId, SkuPartNumber -Wrap
 ```
 出力例
-![](./operating-license-with-microsoft-graph/licenseDetail1)
+![](./operating-license-with-microsoft-graph/licenseDetail1.png)
 
 ライセンスの付与の際には SkuId の値を使用します。そのため、どの SkuId がこれから管理したいライセンスなのかを判別する必要があります。
 
@@ -188,7 +188,7 @@ Get-MgSubscribedSku -SubscribedSkuId "<Get-MgSubscribedSku コマンドで確認
 Get-MgSubscribedSku -SubscribedSkuId "a818a9d9-4bf7-4316-b8bb-e0f1a52ce5ea_184efa21-98c3-4e5d-95ab-d07053a96e67" | Select-Object -ExpandProperty ServicePlans | ft ServicePlanId, ServicePlanName
 ```
 出力例
-![](./operating-license-with-microsoft-graph/licenseDetail2)
+![](./operating-license-with-microsoft-graph/licenseDetail2.png)
 
 <h2 id="idx3-2"> ユーザーに割り当て済みのライセンスを確認する</h2>
 
@@ -210,7 +210,7 @@ Get-MgUserLicenseDetail コマンドを使用することで、ユーザーに�
 Get-MgUserLicenseDetail -UserId <対象ユーザーの UPN>
 ```
 出力例
-![](./operating-license-with-microsoft-graph/licenseDetail3)
+![](./operating-license-with-microsoft-graph/licenseDetail3.png)
 
 サービス プランの情報を確認するには以下のようにコマンドを実行します。
 
@@ -218,7 +218,7 @@ Get-MgUserLicenseDetail -UserId <対象ユーザーの UPN>
 Get-MgUserLicenseDetail -UserId <対象ユーザーの UPN> | Select-Object -ExpandProperty ServicePlans
 ```
 出力例
-![](./operating-license-with-microsoft-graph/licenseDetail4)
+![](./operating-license-with-microsoft-graph/licenseDetail4.png)
 
 <h1 id="idx4">シナリオ1：ユーザーにライセンスを割り当てる</h1>
 
