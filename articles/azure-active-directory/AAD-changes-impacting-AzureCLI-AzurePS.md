@@ -52,6 +52,7 @@ Values of identifierUris property must use a verified domain of the organization
 - Azure PowerShell : 6.0.0 以降
 
 この変更による影響については、各ツールの GitHub ページからご確認いただけますと幸いです。
+
 - Azure CLI: https://github.com/Azure/azure-cli/issues/19892
 - Azure PowerShell: https://github.com/Azure/azure-powershell/issues/16097
 
