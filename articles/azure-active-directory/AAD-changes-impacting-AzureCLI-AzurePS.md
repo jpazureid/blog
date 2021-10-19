@@ -4,6 +4,7 @@ date: 2020-10-18
 tags:
   - Azure AD
 ---
+
 # Azure CLI ならびに Azure PowerShell の互換性に影響する、Azure AD の変更について
 
 こんにちは、Azure Identity サポート チームの栗井です。
