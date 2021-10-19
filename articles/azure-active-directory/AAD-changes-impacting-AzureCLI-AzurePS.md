@@ -50,7 +50,7 @@ Values of identifierUris property must use a verified domain of the organization
 2. 承認された形式の IdentifierUri で、アプリケーションを登録します。
 
     例 ([az ad app create](https://docs.microsoft.com/ja-jp/cli/azure/ad/app?view=azure-cli-latest#az_ad_app_create) コマンド):
-    ```
+    ```sh
     az ad app create --display-name "myApp" --identifier-uris "https://test.contoso.com"
     ```
 
