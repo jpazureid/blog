@@ -1,6 +1,6 @@
 ---
 title: Azure CLI ならびに Azure PowerShell の互換性に影響する、Azure AD の変更について
-date: 2020-10-18
+date: 2021-10-18 10:00
 tags:
   - Azure AD
 ---
