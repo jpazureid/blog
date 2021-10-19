@@ -45,8 +45,6 @@ Values of identifierUris property must use a verified domain of the organization
 
 ![該当画面](./AAD-changes-impacting-AzureCLI-AzurePS/PS.png)
 
-
-
 ### 解決方法
 各種ツールを以下のバージョンにアップグレードください。
 
