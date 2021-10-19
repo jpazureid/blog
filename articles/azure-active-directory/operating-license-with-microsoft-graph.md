@@ -167,6 +167,8 @@ Import-Module -Name Microsoft.Graph.Users
 ```bash
 Get-MgSubscribedSku | ft Id, SkuId, SkuPartNumber -Wrap
 ```
+出力例
+![](./operating-license-with-microsoft-graph/licenseDetail1)
 
 ライセンスの付与の際には SkuId の値を使用します。そのため、どの SkuId がこれから管理したいライセンスなのかを判別する必要があります。
 
@@ -185,6 +187,8 @@ Get-MgSubscribedSku -SubscribedSkuId "<Get-MgSubscribedSku コマンドで確認
 ```bash
 Get-MgSubscribedSku -SubscribedSkuId "a818a9d9-4bf7-4316-b8bb-e0f1a52ce5ea_184efa21-98c3-4e5d-95ab-d07053a96e67" | Select-Object -ExpandProperty ServicePlans | ft ServicePlanId, ServicePlanName
 ```
+出力例
+![](./operating-license-with-microsoft-graph/licenseDetail2)
 
 <h2 id="idx3-2"> ユーザーに割り当て済みのライセンスを確認する</h2>
 
@@ -192,7 +196,7 @@ Get-MgSubscribedSku -SubscribedSkuId "a818a9d9-4bf7-4316-b8bb-e0f1a52ce5ea_184ef
 
 - `Get-MgUser` コマンド
 
-Get-MgUser コマンドを使用することで、Set-MgUserLicense コマンドでも使用する MicrosoftGraphAssignedLicense の内容を確認することができます。
+Get-MgUser コマンドを使用することで、Set-MgUserLicense コマンドでも使用する MicrosoftGraphAssignedLicense の内容を確認することができます。（出力例は次のコマンド例と一緒に掲載します）
 
 ```bash
 Get-MgUser -UserId <対象ユーザーの UPN> -Property AssignedLicenses | Select-Object -ExpandProperty AssignedLicenses
@@ -205,12 +209,16 @@ Get-MgUserLicenseDetail コマンドを使用することで、ユーザーに�
 ```bash
 Get-MgUserLicenseDetail -UserId <対象ユーザーの UPN>
 ```
+出力例
+![](./operating-license-with-microsoft-graph/licenseDetail3)
 
 サービス プランの情報を確認するには以下のようにコマンドを実行します。
 
 ```bash
 Get-MgUserLicenseDetail -UserId <対象ユーザーの UPN> | Select-Object -ExpandProperty ServicePlans
 ```
+出力例
+![](./operating-license-with-microsoft-graph/licenseDetail4)
 
 <h1 id="idx4">シナリオ1：ユーザーにライセンスを割り当てる</h1>
 
