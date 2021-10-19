@@ -1,11 +1,12 @@
 ---
-title: Azure CLI ならびに Azure PowerShell の互換性に影響する、Azure AD の変更について
-date: 2021-10-18 10:00
+title: Values of identifierUris property must use a verified domain of the organization or its subdomain エラーの対処法
+date: 2021-10-19 10:00
 tags:
   - Azure AD
+  - Service Principal
 ---
 
-# Azure CLI ならびに Azure PowerShell の互換性に影響する、Azure AD の変更について
+# Values of identifierUris property must use a verified domain of the organization or its subdomain エラーの対処法
 
 こんにちは、Azure Identity サポート チームの栗井です。
 
