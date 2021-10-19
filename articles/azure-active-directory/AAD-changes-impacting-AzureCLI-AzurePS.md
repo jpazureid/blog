@@ -57,6 +57,7 @@ Values of identifierUris property must use a verified domain of the organization
 - Azure PowerShell: https://github.com/Azure/azure-powershell/issues/16097
 
 
+
 ### 回避策
 自動化ツールの新バージョンへのアップグレードが実施いただけない場合は、以下の手順によってエラーを回避し、サービス プリンシパルを作成ください。
 
