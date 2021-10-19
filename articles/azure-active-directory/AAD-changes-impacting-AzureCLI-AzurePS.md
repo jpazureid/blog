@@ -34,6 +34,7 @@ tags:
 > `https://<verifiedCustomDomain>/<string>` | `https://contoso.onmicrosoft.com/productsapi`
 > `https://<string>.<verifiedCustomDomain>` | `https://product.contoso.onmicrosoft.com`
 > `https://<string>.<verifiedCustomDomain>/<string>` | `https://product.onmicrosoft.com/productsapi`
+
 上記の変更の影響により、Azure CLI または Azure PowerShell を最新のバージョンにアップグレードしていない場合、サービス プリンシパルの作成時に次のようなエラーメッセージが表示されることが想定されます。
 
 ```
