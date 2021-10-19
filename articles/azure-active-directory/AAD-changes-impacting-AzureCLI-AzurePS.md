@@ -60,7 +60,11 @@ Values of identifierUris property must use a verified domain of the organization
     az ad sp create --id <2.で登録したアプリの App Id>
     ```
 
-
+> [!NOTE]
+> 訳注: az ad sp create-for-rbac コマンド実行時に、適切なアプリケーション ID の URI を指定することでも回避可能です。
+> ```sh
+> az ad sp create-for-rbac --name "https://test.<verified-domain>.com"
+> ```
 ---
 
 以上の内容がご参考になりましたら幸いです。ご不明点等ございましたらサポート チームまでお問い合わせください。
