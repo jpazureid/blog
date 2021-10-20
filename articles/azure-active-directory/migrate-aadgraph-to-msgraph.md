@@ -1,11 +1,11 @@
 ---
-title: Azure コマンドラインツールにおける、Azure AD Graph から Microsoft Graph への移行について
+title: Azure コマンド ライン ツールにおける Azure AD Graph から Microsoft Graph への移行について
 date: 2020-10-20
 tags:
   - Azure AD
 ---
 
-# Azure コマンドラインツールにおける、Azure AD Graph から Microsoft Graph への移行について
+# Azure コマンド ライン ツールにおける Azure AD Graph から Microsoft Graph への移行について
 
 こんにちは、Azure Identity サポート チームの栗井です。
 
@@ -14,82 +14,64 @@ tags:
 
 ---
 
-先日アナウンスされた Azure AD Graph の廃止に伴い、現在 Azure AD Graph を利用しているすべてのアプリケーションは、Microsoft Graph (Azure AD Graph の既存の機能と、新しい機能を含みます) への切り替え対応が必要となります。
-
-この変更は各種 Azure コマンドライン ツール（Azure CLI、Azure PowerShell、Terraform）にも適用されます。
-
-現在弊社では、各種ツールが Microsoft Graph を利用するように、切り替えの作業を進行中です。
+先日アナウンスされた [Azure AD Graph の廃止](https://azure.microsoft.com/en-us/updates/update-your-apps-to-use-microsoft-graph-before-30-june-2022/) に伴い、現在 Azure AD Graph を利用しているすべてのアプリケーションは、Microsoft Graph (Azure AD Graph の既存の機能と新しい機能を含みます) への切り替え対応が必要となります。この変更は各種 Azure コマンド ライン ツール (Azure CLI、Azure PowerShell、Terraform) にも当てはまります。現在弊社では、各種ツールが Microsoft Graph を利用するように切り替えの作業を進行中であり、皆様がお手持ちのコードを更新できるようなるべく早く公開するよう取り組んでいます。
 
 > [!NOTE]
-> 本記事内に登場する "Azure PowerShell" は、類似呼称の "Azure AD PowerShell" とは異なる PowerShell モジュールです。
+> 本記事内に登場する "Azure PowerShell" は、類似呼称の "Azure AD PowerShell" とは異なる、Azure リソース管理用の PowerShell モジュールです。
 > 
 > - [Azure PowerShell 公開情報](https://docs.microsoft.com/ja-jp/powershell/azure/)
 > - [Azure AD PowerShell 関連記事](https://jpazureid.github.io/blog/azure-active-directory/powershell-module/)
 
-
-
 ## 既存のスクリプトへの影響
 
-原則として既存のスクリプトへの影響を最小限とすることを目標としています。そのため、可能な限りアップグレードを実施しても同じコマンドとなるようにして利用者の追加作業が必要無いように進めます。
+原則として**既存のスクリプトへの影響を最小限とする**ことを目標としています。そのため、アップグレードを実施しても可能な限り同じコマンド実行結果となるようにして、利用者の追加作業が必要無いように進めています。
 
-しかし一部のコマンドについては、Microsoft Graph API とAzure AD Graph API の動作の違いによって、一部のコマンドについては、Microsoft Graph API とAzure AD Graph API の動作の違いによって、変更の発生が想定されます。 
+しかし、一部のコマンドについては Microsoft Graph API と Azure AD Graph API の動作の違いによって、変更の発生が想定されます。例えば、Microsoft Graph API を利用した場合、従来とは異なり、[Azure AD にアプリケーションを登録](https://docs.microsoft.com/en-us/graph/api/application-post-applications?view=graph-rest-1.0&tabs=http) した際にクライアント シークレットは同時に自動作成されない動作となります。シークレット値を利用する場合は、アプリケーションの登録完了後、別途作成することが必要になります。上記例のような互換性への影響が懸念される変更点の一覧とお客様側で必要な対応については、ツールのプレビュー版と併せて情報を公開予定です。 
 
+## Azure コマンド ライン ツールと Microsoft Graph のコマンドラインツールの比較
 
-> 例 : Graph API を利用した場合、従来とは異なり、Azure AD にアプリケーションを登録する際、クライアント シークレットは同時に自動作成されない動作となります。シークレット値を利用する場合、アプリケーションの登録完了後、別途作成することが必要になります。 
+Azure AD に対する操作には Azure AD PowerShell や Microsoft Graph SDK PowrShell が用意されています。このため、Azure コマンド ライン ツールでの Azure AD 関連機能は、スクリプト開発者の利便性のためよく利用される一部の機能のみが提供されており、機能は限定的となっています。
 
-上記例のような、互換性への影響が懸念される変更点の一覧と、お客様側で必要な対応については、各種ツールのプレビュー版と併せて公開予定です。 
-
- 
-
-## Azure コマンドラインツールと Microsoft Graph のコマンドラインツールの比較
-
-Azure AD に対するコマンドは別途 Azure AD PowerShell や Graph SDK PowrShell が用意されており、Azure コマンドライン ツールでの Azure AD 関連機能は、利用者の利便性のために、よく利用される一部の機能のみを提供しています。
-
-今後の Azure コマンド ツールでも、Azure AD リソースに対する機能については、部分的なサポートとなり、そこで提供されない機能は、Microsoft Graph ツール（Microsoft Graph SDK PowerShell モジュール、もしくは Microsoft Graph CLI）をご利用ください。 
-
+今後の Azure コマンド ツールでも、Azure AD リソースに対する機能については、部分的に継続してサポートしてまいりますが、認証など基本的な部分については新しい Graph の機能を実装する予定もございます。そこで提供されない機能は、Microsoft Graph ツール (Microsoft Graph SDK PowerShell モジュール、もしくは Microsoft Graph CLI) をご利用ください。 
 
 ## 今後のタイムライン
 
-### 2021年10月
+### 2021 年 10 月
 
-- MSAL を使用した Azure CLI のパブリック プレビュー (※ MS Graphへの移行にあたって必要です)。
-- Microsoft Graph API を使用した Azure PowerShell のパブリックプレビュー
+- MSAL を使用した Azure CLI のパブリック プレビュー (※ MS Graph への移行にあたって必要なため)。
+- Microsoft Graph API を使用した Azure PowerShell のパブリック プレビュー
 
-※ 各ツールのドキュメントには、プレビューをインストールしてテストする方法についてのガイダンスが記載される予定です。
+※ 各ツールのドキュメントが公開された際には、プレビューをインストールしてテストする方法についてのガイダンスが記載される予定です。
 
-### 2021年12月
+### 2021 年 12 月
 
 - Microsoft Graph API を使用した Azure PowerShell の一般提供 (GA) 開始
-- Azure サービスの関連ドキュメント、古いコマンドを使用したスクリプトの更新対応
+- 古いコマンドを使用した Azure サービスの関連ドキュメントおよびスクリプトの更新対応
 
-### 2022年1月
+### 2022 年 1 月
 
 - Microsoft Graph API を使用した Azure CLI のプレビュー
 
 ### 2022 年 Q1 (1 月 - 3 月) 中
 
-- Microsoft Graph API を使用したAzure CLI の 一般提供 (GA) 開始
+- Microsoft Graph API を使用した Azure CLI の 一般提供 (GA) 開始
 
-
-Terraformについては、HashiCorp 社が Azure AD プロバイダ v2 で Microsoft Graph への移行をすでに完了しています。
-- [AzureAD v2.0 and Microsoft Graph (terraform.io) ※外部リンク](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/microsoft-graph)
-
+Terraform については、HashiCorp 社が Azure AD プロバイダ v2 で Microsoft Graph への移行をすでに完了しています。詳細については [AzureAD v2.0 and Microsoft Graph (terraform.io) ※外部リンク](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/microsoft-graph) をご覧ください。ご質問がある場合は、Azure CLI ([@azurecli](https://twitter.com/azurecli)) もしくは Azure PowerShell ([@azureposh](https://twitter.com/azureposh)) までご連絡ください。
 
 ## 参考情報など
 
-Azure 各種製品のの公式ドキュメントが更新されるまで、Microsoft Graph への移行に関する追加ガイダンスとして、以下のリソースをご参照いただけますと幸いです。
+Azure 各種製品の公式ドキュメントが更新されるまで、Microsoft Graph への移行に関する追加ガイダンスとして、以下のリソースをご参照いただけますと幸いです。
 
-### MSAL への移行に関する追加情報と、Microsoft Graph への移行における重要性について
+MSAL への移行に関する追加情報と Microsoft Graph への移行における重要性:
 
 - [Update your applications to use Microsoft Authentication Library and Microsoft Graph API (英語記事)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
 - [Have you updated your applications to use the Microsoft Authentication Library and Microsoft Graph? (英語記事)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/have-you-updated-your-applications-to-use-the-microsoft/ba-p/1144698)
 - [MSAL への移行に関する概要](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/msal-migration)
 - [アプリの移行計画チェックリスト (機械翻訳)](https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-planning-checklist?view=graph-rest-1.0)
 
+Terraform における本変更への対応についての詳細情報 (※外部リンク):
 
-Terraform における本変更への対応についての詳細情報 (※外部リンク)
 - [Terraform AzureAD provider v2 is now using Microsoft Graph](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/microsoft-graph)
-
 
 問題を発見した際には、各製品の Github リポジトリにて Issue をオープンいただけますと幸いです。
 
@@ -97,6 +79,7 @@ Terraform における本変更への対応についての詳細情報 (※外�
 - Azure PowerShell: https://github.com/Azure/azure-powershell/issues
 - Terraform: https://github.com/hashicorp/terraform-provider-azuread/issues 
 
----
+不明点がありましたら、サポート チームまでお知らせいただければ幸いです。
 
-以上の内容がご参考になりましたら幸いです。ご不明点等ございましたらサポート チームまでお問い合わせください。
+Damien  
+on behalf of the Azure CLIs tools team
