@@ -174,7 +174,7 @@ Get-MgSubscribedSku | ft Id, SkuId, SkuPartNumber -Wrap
 
 SkuPartNumber の値から推測できるものもありますが、詳細は以下の公開情報に記載されていますのでそちらをご参照ください。例えば Microsoft 365 E5 の SkuPartNumber は SPE_E5 で SkuId は 06ebc4ee-1bb5-47dd-8120-11324bc54e06 です。
 
-公開情報：[Product names and service plan identifiers for licensing](https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/licensing-service-plan-reference)
+公開情報：[ライセンスのための製品名とサービス プラン 識別子](https://docs.microsoft.com/ja-jp/azure/active-directory/enterprise-users/licensing-service-plan-reference)
 
 さらにライセンスの中の一部のサービス プランを無効にしたいというシナリオの場合、サービス プランの情報も確認しておく必要があります。その場合は以下のようにコマンドを実行します。
 
