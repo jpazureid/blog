@@ -24,7 +24,18 @@ tags:
 
 Azure AD テナントにおける情報取得は、これまで[MSOnline および Azure AD PowerShell モジュール](https://jpazureid.github.io/blog/azure-active-directory/powershell-module/) を用いてきました。Azure AD PowerShell では、2022 年 7 月以降にサポート終了予定の Azure AD Graph API を呼び出しており、上述の翻訳記事では、Set-AzureADUserLicense を中心とするライセンス管理のコマンドが廃止となる予定であることをアナウンスいたしました。
 
-**ライセンス管理操作以外のコマンドは従来通りレスポンスを受け取れる予定であり、現時点では今後も利用可能ですが、利用するコマンドの移行をご検討いただくようお願いします。**
+**ライセンス管理操作以外のコマンドは従来通りレスポンスを受け取れる予定です。**
+
+それ以外のコマンドについて Azure AD や MSOnline の PowerShell で提供されていたコマンドで MS Graph PowerShell コマンドで利用できる対照表としては次の公開情報があります。
+
+[Find Azure AD and MSOnline cmdlets in Microsoft Graph PowerShell](https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0)
+
+
+対照表にしたがって、 MS Graph コマンドが利用できるものについての移行も併せてお願いしたいところではあるのですが、  
+実際のところ、対応表に記載があるコマンドであっても、従来のパラメーターやプロパティが Microsoft Graph PowerShell コマンドでは一部利用できないものもあります。  
+ライセンス管理以外のコマンドは現時点 (2021 年 10 月段階) では今後も利用可能な見込みであり、それ以外のコマンドについて無理に急いで移行を進める必要が無いということも付記させていただきます。
+
+状況に変化がありましたら、改めてサポート チームでのブログでもお知らせを予定しています。
 
 (Azure AD Graph API を呼び出すアプリケーションを作成されている場合、[公開情報](https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview) を参考に、Microsoft Graph API への移行をお願いいたします。)
 
