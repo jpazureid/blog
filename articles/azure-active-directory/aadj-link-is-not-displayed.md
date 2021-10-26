@@ -31,12 +31,12 @@ Azure AD 参加を手動で構成する場合は、Windows 10 にて [スター�
 これらの条件を満たしているか確認してください。
  
 
-**1. Windows に対して、管理者権限を保持していないユーザーとしてログオンしている**
+### 1. Windows に対して、管理者権限を保持していないユーザーとしてログオンしている
    - ローカルの Administrators グループに所属しておらず、端末に対して管理者権限を保持していないユーザーとして Windows にログオンしている場合、[このデバイスを Azure Active Directory に参加させる] が表示されません。
    - 操作時に Windows にログオンしているユーザーが、ローカルの管理者権限を保持しているかご確認ください。
 
 
-**2. Azure AD への通信が行えない**
+### 2. Azure AD への通信が行えない
    - Azure AD への通信が行えない状態の場合、[このデバイスを Azure Active Directory に参加させる] が表示されません。
    - 「Azure AD への通信が行えない状態」とは、Azure AD の認証時に利用されるエンドポイントにインターネット経由でアクセスができない状態です。
    - 次の公開情報  [Office 365 URL および IP アドレス範囲 - Microsoft 365 Common および Office Online](https://docs.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) の項番 56, 59, 125 の宛先が Azure AD の認証に利用されるエンドポイントです。
@@ -44,18 +44,18 @@ Azure AD 参加を手動で構成する場合は、Windows 10 にて [スター�
    - インターネットへのアクセスにプロキシを利用しているネットワーク環境の場合、クライアント端末が適切にプロキシ参照設定を行っているか、参照しているプロキシにて必要なエンドポイントへの通信をブロックしていないかに関してもご確認ください。
 
 
-**3. Windows が Home エディションである**
+### 3. Windows が Home エディションである
    - もしご利用の端末が Windows Home エディションの場合、[このデバイスを Azure Active Directory に参加させる] が表示されません。
    - Professional もしくは Enterprise エディションをご利用ください。
 
 
-**4. Windows に built-in administrator ユーザーとしてログオンしている**
+### 4. Windows に built-in administrator ユーザーとしてログオンしている
    - もし端末のローカル ユーザーである Administrator (built-in administrator) として Windows にログオンしている場合、[このデバイスを Azure Active Directory に参加させる] は表示されません。(既定ではこのユーザーは無効状態です)
    - 運用上の都合で built-in administrator ユーザーとして Windows にログオンしている場合、別の "ローカルの管理者権限を持つ ローカル ユーザー” として Windows にログオンしてください。
    - 次の公開情報 [エラー情報が表示されなかったにもかかわらず、PC を Azure AD に参加させることができなかったのはなぜですか?](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/faq#----------------------pc---azure-ad-----------------------) にも案内があります。
 
 
-**5. Windows 端末がすでにオンプレミスの AD に参加している**
+### 5. Windows 端末がすでにオンプレミスの AD に参加している
    - もし該当の Windows 端末が、すでにオンプレミスの AD に参加している場合、[このデバイスを Azure Active Directory に参加させる]  は表示されません。
    - Azure AD 参加 は Azure AD に対してのみ直接参加する機能となるため、Azure AD 参加をする際はオンプレミス AD から離脱し、ワークグループの状態で実施ください。
    - もし、オンプレミス AD と Azure AD の両方に対して参加されたい場合は、Hybrid Azure AD 参加の構成をご検討ください。
