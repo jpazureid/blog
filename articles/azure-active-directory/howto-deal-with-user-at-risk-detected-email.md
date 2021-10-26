@@ -140,7 +140,6 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/conc
 2. [Azure AD Identity Protection] - [危険なユーザー] にアクセスし、リスクをクローズしたいユーザーを確認します。  
 ![](./howto-deal-with-user-at-risk-detected-email/UserRisk9.png)  
 
-
 3. [Azure Active Directory] – [ユーザー] をクリックし、ユーザー一覧を開きます。  
 4. リスクを解消させたいユーザーを選択します。  
 5. 画面上部の [パスワードのリセット] をクリックします。  
