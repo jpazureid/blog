@@ -107,6 +107,7 @@
 - [Microsoft Graph PowerShell を使用したライセンス管理操作の紹介](./articles/azure-active-directory/operating-license-with-microsoft-graph.md)
 - [ゼロ トラスト ソリューション提供パートナーを支援する統合ガイダンスのご紹介](./articles/azure-active-directory/integration-guidance-helps-partners-deliver-zero-trust-solutions/integration-guidance-helps-partners-deliver-zero-trust-solutions.md)
 - [Microsoft が IDC MarketScape により世界的かつ先進的な認証のリーダーとして認められました](./articles/azure-active-directory/recognized-by-idc-marketscape-as-a-leader.md)
+- [User at risk detected のメールを受け取ったときの対応について](./articles/azure-active-directory/howto-deal-with-user-at-risk-detected-email.md)
 
 ## Azure AD Connect
 
