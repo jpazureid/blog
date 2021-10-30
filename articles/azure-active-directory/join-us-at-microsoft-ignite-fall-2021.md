@@ -2,8 +2,8 @@
 title: Microsoft Ignite Fall 2021 開催のご案内
 date: 2021-10-31 07:00
 tags:
-  - Azure AD
-  - US Identity Blog
+  - Azure AD
+  - US Identity Blog
 ---
 
 # Microsoft Ignite Fall 2021 開催のご案内 
