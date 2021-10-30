@@ -1,10 +1,10 @@
---- 
-title: Microsoft Authenticator による住所や支払い情報の自動入力 
-date: 2021-10-31 06:00 
-tags: 
-  - Azure AD 
-  - US Identity Blog 
---- 
+---
+title: Microsoft Authenticator による住所や支払い情報の自動入力
+date: 2021-10-31 06:00
+tags:
+  - Azure AD
+  - US Identity Blog
+---
 
 # Microsoft Authenticator による住所や支払い情報の自動入力 
 
