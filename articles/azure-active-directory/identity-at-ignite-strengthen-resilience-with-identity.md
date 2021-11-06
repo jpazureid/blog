@@ -10,7 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
-本記事は、2021 年 10 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Identity at Ignite: Strengthen resilience with identity innovations in Azure AD](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/identity-at-ignite-strengthen-resilience-with-identity/ba-p/2747271) を意訳したものになります。
+本記事は、2021 年 11 月 2 日に米国の Azure Active Directory Identity Blog で公開された [Identity at Ignite: Strengthen resilience with identity innovations in Azure AD](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/identity-at-ignite-strengthen-resilience-with-identity/ba-p/2747271) を意訳したものになります。
 
 ---
 
