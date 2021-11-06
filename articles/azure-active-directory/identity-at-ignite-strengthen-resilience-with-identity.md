@@ -1,5 +1,5 @@
 ---
-title: Ignite における ID 関連の発表まとめ: Azure AD の技術革新による障害耐性の強化
+title: Ignite における ID 関連の発表まとめ - Azure AD の技術革新による障害耐性の強化
 date: 2021-11-07 09:00
 tags:
   - Azure AD
@@ -22,7 +22,7 @@ tags:
 
 マイクロソフトは Azure AD がお客様の組織にとっていかに重要であるかを理解しております。結局のところ、ユーザーがサインインできなければ、何のサービスも利用できなくなってしまいます。お客様の信頼を継続して得ていく必要があると考え、8 つの基本原則に基づいてサービスの信頼性を高める投資を継続しています。
 
-![](./identity-at-ignite-strengthen-resilience-with-identity/Reliability principles.png)
+![](./identity-at-ignite-strengthen-resilience-with-identity/ReliabilityPrinciples.png)
 
 [99.99% の SLA コミットメント](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/99-99-uptime-for-azure-active-directory/ba-p/1999628) を確実に実現するため、独自の技術革新を進めています。例えば、Azure AD サービス全体に **セル ベースのアーキテクチャ** を採用しました。これは、サービスの一部で予期せぬ障害が発生した場合、その障害を一部にとどめ、サービスの他の部分に影響を与えないようにするためです。現在、Azure AD は 107 のセルに分割されています。最大規模のセルであっても、ユーザー全体の最大 1.7% しか利用していないため、障害が発生しても大多数のお客様には影響がないようにしています。
 
@@ -43,14 +43,14 @@ ID に対する攻撃は激化しています。実際、ID は新たなサイ�
 - 人間以外の ID (アプリやサービスのワークロード ID) も、アクセス権限の付与が進むにつれ、悪意のある攻撃者から注目されるようになってきています。今月末にパブリックプレビューが開始される **ワークロード ID 用の条件付きアクセス** を使用して、これらの種類の ID を対象としたポリシーを設計することが可能となります。
 - **継続的なアクセス評価** は、条件付きアクセスを個々のセッションに拡張し、新たなリスクが発生した場合に、ほぼリアルタイムでポリシーを適用する仕組みです。[この機能](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation) は年内に一般公開される予定です。
 
-![](./identity-at-ignite-strengthen-resilience-with-identity/Conditional access.png)
+![](./identity-at-ignite-strengthen-resilience-with-identity/ConditionalAccess.png)
 
 強力な攻撃防止機能があっても、ゼロ トラストのアプローチでは常に侵害が起こることを想定します。Azure AD では、[Identity Protection](https://www.microsoft.com/ja-jp/security/business/identity-access-management/identity-compromise) がリアルタイムでインテリジェントなリスク評価を行い、脅威や攻撃を検知して修復します。今回、Identity Protection を強化し、新機能を追加しました。これらの機能は一般提供済みとなっています。
 
 - [新しいプロアクティブな検知機能](https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk) を追加することで、**異常なトークンやセッション クッキーに対する見慣れないサインイン プロパティの検知** など、一般的な攻撃手法と新たな攻撃手法の両方に対応します。
 - Identity Protection は、環境全体のユーザーおよびアクセス アクティビティを継続的に分析することで、リスクの特定や弱点の強化に利用できるデータを生成します。**Identity Protection の診断設定** では、選択した SIEM にワンクリックでリスク データをエクスポートしたり、データ保持期間を簡単にカスタマイズすることができます。Azure Monitor 上に構築された **新しい Identity Protection リスク分析ワークブック** は、リスク データと対応策の有効性を可視化するのに役立ちます。
 
- ![](./identity-at-ignite-strengthen-resilience-with-identity/Heatmap of risk detections.png)
+ ![](./identity-at-ignite-strengthen-resilience-with-identity/HeatmapOfRiskDetections.png)
 
 耐障害性を維持するということは、破壊的な状況に直面したときも、従業員や社外のチーム メンバーと連携できる対応力を維持することでもあります。Azure AD は、Microsoft Teams での安全なコラボレーション体験をサポートします。
 
