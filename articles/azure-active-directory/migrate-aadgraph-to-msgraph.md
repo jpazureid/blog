@@ -1,6 +1,6 @@
 ---
 title: Azure コマンド ライン ツールにおける Azure AD Graph から Microsoft Graph への移行について
-date: 2021-10-21 3:00
+date: 2021-10-21 4:00
 tags:
   - Azure AD
 ---
