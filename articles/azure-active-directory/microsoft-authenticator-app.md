@@ -8,14 +8,15 @@ tags:
 
 # Microsoft Authenticator アプリ - アイコンを刷新し企業アカウントをより簡単に追加および管理できるようになりました。
 
-こんにちは、Azure Identity サポート チームの中井です。  
+こんにちは、Azure Identity サポート チームの中井です。
+
 本記事は、2021 年 11 月 4 日に米国の Azure Active Directory Identity Blog で公開された [Microsoft Authenticator app – easier ways to add or manage enterprise accounts, and a cool new icon](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/microsoft-authenticator-app-easier-ways-to-add-or-manage/ba-p/2464408) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
 
 皆さん、こんにちは。
 
-本日は、[Microsoft Authenticator アプリ](https://www.microsoft.com/ja-jp/security/mobile-authenticator-app?cmp=zgcv4w_jfocsi) にいくつかの素晴らしいアップデートを行い、企業（会社または学校のアカウント）アカウントにおけるユーザー体験が向上されたことをお伝えします。内容は以下の通りです。
+本日は、[Microsoft Authenticator アプリ](https://www.microsoft.com/ja-jp/security/mobile-authenticator-app?cmp=zgcv4w_jfocsi) にいくつかの素晴らしいアップデートを行い、企業 (会社または学校のアカウント) アカウントにおけるユーザー体験が向上されたことをお伝えします。内容は以下の通りです。
 
 - アプリ内でのアカウント管理
 - 企業アカウントのためのアカウント追加機能の改善
@@ -23,7 +24,7 @@ tags:
 
 ## アプリ内でのアカウント管理
 
-今年の初めに、Microsoft Authenticator で個人の Microsoft アカウントを直接管理できる機能を [発表](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-to-the-microsoft-authenticator-app-now-rolling-out/ba-p/1169863) しました。それ以来、企業のお客様から、会社や学校のアカウントでも Authenticator で同じ機能を利用したいというご意見をいただいていました。本日、Azure AD アカウントでも同じ機能を利用できるようになりました。ここでは、設定を管理する3つの方法をご紹介します。
+今年の初めに、Microsoft Authenticator で個人の Microsoft アカウントを直接管理できる機能を [発表](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-to-the-microsoft-authenticator-app-now-rolling-out/ba-p/1169863) しました。それ以来、企業のお客様から、会社や学校のアカウントでも Authenticator で同じ機能を利用したいというご意見をいただいていました。本日、Azure AD アカウントでも同じ機能を利用できるようになりました。ここでは、設定を管理する 3 つの方法をご紹介します。
 
 **(1) パスワードの変更**  
 
@@ -56,9 +57,9 @@ Microsoft Authenticator で会社や学校のアカウントを追加する際�
 
 Microsoft Authenticator にサインインすることで、セットアップを実施する流れは以下の通りです。
 
-1. アカウントの追加ボタン（iOSでは右上の「＋」、Androidでは「＋アカウントの追加」）をタップします。
+1. アカウントの追加ボタン（iOS では右上の「＋」、Android では「＋アカウントの追加」）をタップします。
 2. 「職場または学校のアカウント」をタップします。
-3. 「サインイン」 をタップし、認証情報を入力しサインインします。
+3. 「サインイン」をタップし、認証情報を入力しサインインします。
 
 必要な手順を経ることで、Authenticator が管理者のポリシーに従って設定されます。
 
