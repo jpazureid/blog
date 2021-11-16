@@ -96,7 +96,7 @@ CAE に対応していないリソース、クライアント アプリの場合
 
 ## CAE は無効にできるの？
 
-はい、CAE は規定で有効となっておりますが、条件付きアクセスポリシーを利用することで CAE を無効化いただけます。なお、プレビュー中に [プレビューを無効化]、または一部ユーザーのみを有効化の対象として選択いただいている場合、[条件付きアクセスポリシーへの移行](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation#enable-or-disable-cae-preview) が必要となります。
+はい、CAE は規定で有効となっておりますが、条件付きアクセスポリシーを利用することで CAE を無効化いただけます。なお、プレビュー中に [プレビューを無効化]、または一部ユーザーのみを有効化の対象として選択いただいている場合、[条件付きアクセスポリシーへの移行](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation#migration) が必要となります。
 
 > [!NOTE]
 > 条件付きアクセスポリシーの設定には、ポリシーの対象ユーザーに Azure AD Premium P1 以上のライセンスを割り当てる必要がございます。
@@ -142,7 +142,7 @@ CAE を無効化するためには、以下のような条件付きアクセス�
 | プレビューを有効にする (特定のユーザーを選択) |  あり | 一部のユーザー **以外** で CAE が無効のポリシーが作成 | 
 | プレビューを無効にする | あり | すべてのユーザーで CAE が無効のポリシーが作成 |
 
-一方で、プレビュー期間中に、一部のユーザーのみにプレビューを有効化していた、あるいはプレビューを無効していた場合には、条件付きアクセスポリシーへの移行が必要となります。
+一方で、プレビュー期間中に、一部のユーザーのみにプレビューを有効化していた、あるいはプレビューを無効していた場合には、[条件付きアクセスポリシーへの移行](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-continuous-access-evaluation#migration)が必要となります。
 
 条件付きアクセスポリシーに移行するには、[Azure Active Directory] > [セキュリティ] > [継続的アクセス評価 (プレビュー)] ブレードの [移行] ボタンをクリックいただくことで、CAE を無効にする条件付きアクセス ポリシー "CA policy created from CAE settings" が作成されます。
 このポリシーは、プレビュー期間中と同一の設定となるよう、対象のユーザーに対し CAE を無効化するポリシーです。
