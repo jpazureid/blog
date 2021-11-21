@@ -42,10 +42,13 @@ Identity Protection では、機械学習機能を用いて、テナント上に
 
 
 ## B. メールが届いたら、どのように対応したらよいか  
-Microsoft では、ユーザーのリスクが高になった場合に管理者が対処を行うことを推奨しています。  
+Microsoft では、ユーザーのリスクがしきい値以上になった場合に、ユーザー リスク ポリシーなどを活用して、自動的にリスクを修復することを推奨しています。  
 
 > https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies#choosing-acceptable-risk-levels  
 Microsoft で推奨しているのは、ユーザー リスク ポリシーのしきい値を [高] に設定し、サインイン リスク ポリシーを [中以上] に設定して、自己修復オプションを許可することです。 
+
+そのため、ユーザー リスク ポリシーやサインイン リスク ポリシーをすでに利用されている場合は、本フローを実施する必要は通常ございません。  
+しかしながら、リスク ポリシーをまだ利用されていない環境や、長期にわたりリスクが修復されていないユーザーがいる環境などでは、管理者がリスクを修復・無視することで対処を行うことが可能です。  
 
 以下はユーザーのリスクが高として検出され、管理者に User at risk detected メールが送付された時の管理者の対応フローです。こちらを参考に、管理者は検知されたリスクへの対処を速やかに実施ください。
 ![](./howto-deal-with-user-at-risk-detected-email/UserRisk4.png)  
