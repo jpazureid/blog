@@ -10,6 +10,8 @@ tags:
 
 本記事は、 2021 年 11 月15 日に米国の Azure Active Directory Identity Blog で公開された [Achieving Zero Trust readiness in your apps #1: Why it matters](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/achieving-zero-trust-readiness-in-your-apps-1-why-it-matters/ba-p/2959972) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
 
+---
+
 # アプリでゼロ トラスト対応を実現する #1: なぜ重要なのか
 
 こんにちは、Jeff Sakowiczです。私は Microsoft Identity チームで、Application Platform Security の Principal Program Management Lead をしています。私たちのチームの目標は、安全で信頼性が高く、発展的なアプリのエコシステムを作っていくことです。この目標を達成する一環として、アプリがゼロ トラストのセキュリティ モデルをサポートできるようにすることがあげられます。
