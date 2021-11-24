@@ -109,6 +109,7 @@
 - [Microsoft が IDC MarketScape により世界的かつ先進的な認証のリーダーとして認められました](./articles/azure-active-directory/recognized-by-idc-marketscape-as-a-leader.md)
 - [User at risk detected のメールを受け取ったときの対応について](./articles/azure-active-directory/howto-deal-with-user-at-risk-detected-email.md)
 - [Microsoft Authenticator アプリ - アイコンを刷新し企業アカウントをより簡単に追加および管理できるようになりました。](./articles/azure-active-directory/microsoft-authenticator-app.md)
+- [アプリでゼロ トラスト対応を実現する #1: なぜ重要なのか](./articles/azure-active-directory/Achieving-ZeroTrust-readiness-in-your-apps1-Why-it-matters.md)
 
 ## Azure AD Connect
 
