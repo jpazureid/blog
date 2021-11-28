@@ -102,16 +102,13 @@ Azure AD の条件付きアクセス ポリシーは、サインインの場所�
 
 ![](./introducing-authentication-context/apply-authentication-context-to-apps.png)
 
-今回は SharePoint Online の特定サイトにアクセスする際に、認証コンテキストが必要なよう設定し、追加の認証が要求されるか確かめます。
+今回は認証コンテキストを呼び出すアプリとして SharePoint Online の特定サイトを利用します。つまり、SharePoint Online の特定サイトにアクセスする際に、認証コンテキストが呼び出されるよう構成し、条件付きアクセス ポリシーにて追加の認証が要求されるか確かめます。
 
-SharePoint Online への認証コンテキストの適用方法は、現時点では 2 つあります。
+SharePoint Online への認証コンテキストの適用方法は、現時点では 2 つあります。一つは特定の機密度ラベルに認証コンテキストを割り当てる方法です。[公開ドキュメントの手順](https://docs.microsoft.com/ja-jp/sharepoint/authentication-context-example) では機密度ラベルに認証コンテキストを割り当てる方法が紹介されています。
 
-一つは特定の機密度ラベルに認証コンテキストを割り当てる方法です。[公開ドキュメントの手順](https://docs.microsoft.com/ja-jp/sharepoint/authentication-context-example) では機密度ラベルに認証コンテキストを割り当てる方法が紹介されています。
-機密度ラベルを利用したほうが運用環境で、ファイルの暗号化などと組み合わせてより高度な設定が可能となるようですが、機密度ラベルを利用していない場合手順が複雑になること、また、今回は条件付きアクセス ポリシーの動作を確認することが目的ですので、もう一つの手順であるサイトに直接認証コンテキストを割り当てる手順にて検証します。
+機密度ラベルを利用したほうがファイルの暗号化などと組み合わせてより高度な設定が可能ですが、今回は条件付きアクセス ポリシーの動作を確認することが目的ですので、もう一つの、簡易な手順であるサイトに直接認証コンテキストを割り当てる手順にて検証します。
 
 特定のサイトに認証コンテキストを適用するには、[SharePoint Online PowerShell の Set-SPOSite コマンド](https://docs.microsoft.com/ja-jp/powershell/module/sharepoint-online/set-sposite?view=sharepoint-ps) を利用します。
-
-特定のサイトに認証コンテキストを割り当てるには、グローバル管理者にて以下の手順を実行します。
 
 ```ps1
 # SharePoint Online にグローバル管理者権限でサインインします。
@@ -121,7 +118,7 @@ Connect-SPOService -Uri https://<yourdomain>-admin.sharepoint.com/
 Set-SPOSite -Identity https://<yourdomain>.sharepoint.com/sites/confidential -ConditionalAccessPolicy AuthenticationContext -AuthenticationContextName "Require_CompliantDevice"
 ```
 
-上記手順では、準拠済みデバイスが必要な認証コンテキストをサイトに割り当てました。
+上記手順では、準拠済みデバイスが必要と設定した認証コンテキストをサイトに割り当てました。
 その後、認証コンテキストを割り当てたサイトに非準拠デバイスでアクセスを実施すると、以下のように準拠済みデバイスが必要な旨が表示され、アクセスがブロックされます。もちろん、認証コンテキストを設定していないサイトには今まで通りアクセスが可能です。
 
 ![](./introducing-authentication-context/authentication-context05.png)
