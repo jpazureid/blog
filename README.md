@@ -111,7 +111,7 @@
 - [Microsoft Authenticator アプリ - アイコンを刷新し企業アカウントをより簡単に追加および管理できるようになりました。](./articles/azure-active-directory/microsoft-authenticator-app.md)
 - [アプリでゼロ トラスト対応を実現する #1: なぜ重要なのか](./articles/azure-active-directory/Achieving-ZeroTrust-readiness-in-your-apps1-Why-it-matters.md)
 - [お客様のセキュリティを強化する新しい ID パートナーシップと統合](./articles/azure-active-directory/new-identity-partnerships-and-integrations-to-strengthen-your.md)
-
+- [Microsoft Authenticator の新たなセキュリティ機能が利用可能となりました！](./articles/azure-active-directory/new-authenticator-security-features.md)
 
 ## Azure AD Connect
 
