@@ -112,6 +112,7 @@
 - [アプリでゼロ トラスト対応を実現する #1: なぜ重要なのか](./articles/azure-active-directory/Achieving-ZeroTrust-readiness-in-your-apps1-Why-it-matters.md)
 - [お客様のセキュリティを強化する新しい ID パートナーシップと統合](./articles/azure-active-directory/new-identity-partnerships-and-integrations-to-strengthen-your.md)
 - [Microsoft Authenticator の新たなセキュリティ機能が利用可能となりました！](./articles/azure-active-directory/new-authenticator-security-features.md)
+- [TLS 1.2 へ移行して基盤環境のセキュリティ確保を](./articles/azure-active-directory/act-fast-by-moving-to-tls-1-2.md)
 
 ## Azure AD Connect
 
