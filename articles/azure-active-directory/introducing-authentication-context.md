@@ -180,8 +180,7 @@ SharePoint Online 側では、acrs クレームをチェックして、本当に
 1. Azure AD の条件付きアクセス ポリシーによる認証コンテキストに応じた追加の認証要件
 1. 認証コンテキスト突破済みのトークン
 
-
-![](./introducing-authentication-context/authentication-context-flow.png)
+![認証コンテキストの大まかなフロー](./introducing-authentication-context/authentication-context-flow.png)
 
 ここまでは、認証コンテキストを要求するアプリは SharePoint Online でしたが、上記のプロトコルをきちんと実装すれば、自社の OpenID Connect で実装されたアプリにも組み込むことが可能です。
 MSAL ライブラリを利用し、認証コンテキストを呼び出す具体的なサンプルは、[GitHub](https://github.com/Azure-Samples/ms-identity-ca-auth-context) にあります。
