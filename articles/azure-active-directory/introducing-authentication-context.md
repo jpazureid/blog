@@ -67,11 +67,11 @@ Azure AD の条件付きアクセス ポリシーは、サインインの場所�
 
 今回は、Require_MFA, Require_CompliantDevice, Require_TOU の 3 つの認証コンテキストを作成しました。
 
-![](./introducing-authentication-context/authentication-context02.png)
+![作成した認証コンテキスト](./introducing-authentication-context/authentication-context02.png)
 
 認証コンテキストは作成順に c1 ~ c25 までの ID が割り振られます。
 
-![](./introducing-authentication-context/authentication-context-id.png)
+![認証コンテキストの ID](./introducing-authentication-context/authentication-context-id.png)
 
 > ![IMPORTANT]
 > 認証コンテキスト機能は、現在 Public Preview での提供であり、プレビュー期間中認証コンテキストの上限は 25 個で、作成した認証コンテキストを削除できません。
@@ -81,15 +81,15 @@ Azure AD の条件付きアクセス ポリシーは、サインインの場所�
 作成した認証コンテキストは、それのみでは何も機能しません。そのため、認証コンテキストに条件付きアクセス ポリシーを割り当てます。
 認証コンテキストは「コンテキスト」の定義で合って、実際の動作は条件付きアクセス ポリシーで制御します。
 
-![](./introducing-authentication-context/apply-policy-to-authentication-context.png)
+![認証コンテキストとポリシーの関係](./introducing-authentication-context/apply-policy-to-authentication-context.png)
 
 通常の条件付きアクセス ポリシー同様にユーザーや適用の条件などを設定でき、緊急用の管理アカウントなどを除外することも可能です。
 
 今回は、それぞれ C001_Require_MFA, C002_Require_CompliantDevice, C003_Require_TOU の名前でポリシー作成し、認証コンテキストに合った制御を設定しました。
 
-![](./introducing-authentication-context/authentication-context03.png)
+![条件付きアクセス ポリシーの対象](./introducing-authentication-context/authentication-context03.png)
 
-![](./introducing-authentication-context/authentication-context04.png)
+![作成した条件付きアクセス ポリシー](./introducing-authentication-context/authentication-context04.png)
 
 複数の条件付きアクセス ポリシーを一つの認証コンテキストに割り当てたり、逆に複数の認証コンテキストに 1 つの条件付きアクセス ポリシーを割り当てることも可能です。
 たとえば、機密情報アクセス用の認証コンテキストに、社内 IP からのアクセス時のポリシーと、社外 IP からのアクセス時のポリシーをそれぞれ適用する、といった利用法が考えられます。
@@ -100,7 +100,7 @@ Azure AD の条件付きアクセス ポリシーは、サインインの場所�
 
 作成した認証コンテキストと、そのコンテキストに対する条件付きアクセスは呼び出されない限りは機能しません。つまり、アプリが認証コンテキストを明示的に呼び出し、追加の認証を要求する必要があります。
 
-![](./introducing-authentication-context/apply-authentication-context-to-apps.png)
+![認証コンテキストとポリシー、アプリの関係](./introducing-authentication-context/apply-authentication-context-to-apps.png)
 
 今回は認証コンテキストを呼び出すアプリとして SharePoint Online の特定サイトを利用します。つまり、SharePoint Online の特定サイトにアクセスする際に、認証コンテキストが呼び出されるよう構成し、条件付きアクセス ポリシーにて追加の認証が要求されるか確かめます。
 
@@ -121,11 +121,11 @@ Set-SPOSite -Identity https://<yourdomain>.sharepoint.com/sites/confidential -Co
 上記手順では、準拠済みデバイスが必要と設定した認証コンテキストをサイトに割り当てました。
 その後、認証コンテキストを割り当てたサイトに非準拠デバイスでアクセスを実施すると、以下のように準拠済みデバイスが必要な旨が表示され、アクセスがブロックされます。もちろん、認証コンテキストを設定していないサイトには今まで通りアクセスが可能です。
 
-![](./introducing-authentication-context/authentication-context05.png)
+![条件付きアクセス ポリシーによるブロック](./introducing-authentication-context/authentication-context05.png)
 
 サインイン ログの条件付きアクセス ポリシーの項目を確認すると、期待通り認証コンテキストに割り当てたポリシーが適用されていることが確認できます。
 
-![](./introducing-authentication-context/authentication-context06.png)
+![適用された条件付きアクセス](./introducing-authentication-context/authentication-context06.png)
 
 > ![NOTE]
 > サインインログから条件付きアクセス ポリシーの適用状況を確認する方法は、[「現時点ではこれにはアクセスできません」 エラーについて](../azure-active-directory/conditional-cannot-access-rightnow.md) を参照下さい。
@@ -150,7 +150,7 @@ acrs クレームは、OpenID Connect の [acr (Authentication Context Class Ref
       "value":"c2" //認証コンテキストの ID
       },
     "xms_cc":{
-      "values":["CP1"]
+      "values":["CP1"] //クレーム チャレンジ対応クライアントを要求
     }
   }
 }
@@ -158,13 +158,17 @@ acrs クレームは、OpenID Connect の [acr (Authentication Context Class Ref
 
 上記の例では、c2 つまり、Require_CompliantDevice の認証コンテキストを指定して、ID トークンの発行を要求していることがわかります。
 
-![](./introducing-authentication-context/authentication-context08.png)
+![c2 の認証コンテキスト](./introducing-authentication-context/authentication-context08.png)
 
 認証コンテキストに割り当てられた条件付きアクセス ポリシーを突破したかどうかは、発行される ID トークンの acrs クレームを確認することで判定が可能です。実際に条件付きアクセス ポリシーを突破した状態でアクセスを行った際には、以下のように acrs クレームが含まれる ID トークンが発行されます
 
-![](./introducing-authentication-context/authentication-context09.png)
+![ID トークン](./introducing-authentication-context/authentication-context09.png)
 
 SharePoint Online 側では、acrs クレームをチェックして、本当にユーザーが認証コンテキストを満たす認証を実施したかを判定できます。
+
+> ![NOTE]
+> xms_cc オプションはアプリケーションがクレーム チャレンジに対応しており、API が返却するクレーム チャレンジ ヘッダーを適切に処理できることを示しています。
+> 話の本筋からそれますのでここでは紹介しませんが、詳しくは [クレーム チャレンジ、クレーム要求、およびクライアントの機能 - Microsoft identity platform | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/claims-challenge) や、[該当の](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/71b9d8a07de995d47b030e8449202016a9f76c41/TodoListClient/Controllers/TodoListController.cs#L44) [ソース](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/74146a201bf28b04145d1743d4d8d52919bd5896/TodoListClient/Infrastructure/ExtractAuthenticationHeader.cs) [コード](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/74146a201bf28b04145d1743d4d8d52919bd5896/TodoListService/Controllers/TodoListController.cs#L98) を参照ください。
 
 ## Appendix: 公式サンプルを触ってみる
 
