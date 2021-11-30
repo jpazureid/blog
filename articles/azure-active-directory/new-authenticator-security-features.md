@@ -16,21 +16,21 @@ tags:
 
 皆さん、こんにちは。
 
-昨年、私たちは 「[認証のための SMS や音声通話を使うのはそろそろやめよう](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) 」　(原題："It's Time to Hang Up on Phone Transports for Authentication") という記事を公開しました。今日、弊社は Microsoft Authenticator をユーザーにとってより安全に、管理者にとってはより簡便に展開できるようにしました。
+昨年、私たちは「[認証のための SMS や音声通話を使うのはそろそろやめよう](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)」(原題: "It's Time to Hang Up on Phone Transports for Authentication") という記事を公開しました。今日、弊社は Microsoft Authenticator をユーザーにとってより安全に、管理者にとってはより簡便に展開できるようにしました。
 
-1. 管理者は、Microsoft Authenticator において、番号照合や追加情報の提示により、誤った承認を防ぐことができるようになりました (パブリック プレビュー)。
+1. 管理者は Microsoft Authenticator において、番号照合や追加情報の提示により、誤った承認を防ぐことができるようになりました (パブリック プレビュー)。
 2. 管理者は Microsoft Authenticator を使用して、GPS 位置情報に基づく条件付きアクセス ポリシーを設定することができるようになりました (一般提供)。
-3. 管理者は、「登録キャンペーン」機能を使用して、サインイン時に Microsoft Authenticator を設定するようユーザーに促すことができるようになりました (一般提供)。
+3. 管理者は「登録キャンペーン」機能を使用して、サインイン時に Microsoft Authenticator を設定するようユーザーに促すことができるようになりました (一般提供)。
 
-これらの Microsoft Authenticator のセキュリティ アップグレードを是非お試しいただき、ご意見をお聞かせください。これら新機能の詳細については、以下をご覧ください。
+これらの Microsoft Authenticator のセキュリティ アップグレードを是非お試しいただき、ご意見をお聞かせください。これら新機能の詳細については以下をご覧ください。
 
 ## Microsoft Authenticator で MFA を利用する際の番号照合 (パブリック プレビュー)
 
-セキュリティを高め、誤った承認を減らすために、管理者は Authenticator で MFA リクエストを承認する際に、サインイン画面に表示されている番号の入力をユーザーに要求することができます。
+セキュリティを高め誤った承認を減らすために、管理者は Authenticator で MFA リクエストを承認する際に、サインイン画面に表示されている番号の入力をユーザーに要求することができます。
 
 ![図1 - 番号の照合](./new-authenticator-security-features/fig1.png)
 
-ユーザーに番号照合を利用させる方法については、[こちら](https://aka.ms/numbermatchdoc)をご覧ください。
+ユーザーに番号照合を利用させる方法については、[こちら](https://aka.ms/numbermatchdoc) をご覧ください。
 
 ## Microsoft Authenticator の承認リクエストにおける追加情報の提示 (パブリック プレビュー)
 
@@ -48,7 +48,7 @@ tags:
 
 ![図 3 – GPO 座標を利用してネームドロケーションを追加](./new-authenticator-security-features/fig3.png)
 
-詳細については、[管理者向けドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition) 、[Graph API ドキュメント](https://docs.microsoft.com/ja-jp/graph/api/resources/countrynamedlocation?view=graph-rest-1.0)、[FAQページ](https://support.microsoft.com/en-us/account-billing/common-problems-with-the-microsoft-authenticator-app-12d283d1-bcef-4875-9ae5-ac360e2945dd) をご覧ください。
+詳細については、[管理者向けドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition)、[Graph API ドキュメント](https://docs.microsoft.com/ja-jp/graph/api/resources/countrynamedlocation?view=graph-rest-1.0)、[FAQページ](https://support.microsoft.com/en-us/account-billing/common-problems-with-the-microsoft-authenticator-app-12d283d1-bcef-4875-9ae5-ac360e2945dd) をご覧ください。
 
 ## Microsoft Authenticator 登録キャンペーン (一般提供)
 
