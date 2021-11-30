@@ -1,6 +1,6 @@
 ---
 title: TLS 1.2 へ移行して基盤環境のセキュリティ確保を
-date: 2021-12-01 09:00
+date: 2021-11-31 09:00
 tags:
   - Azure AD
   - US Identity Blog
