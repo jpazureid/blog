@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセスの認証コンテキストを触ってみた
-date: 2021-12-01 10:00
+date: 2021-12-01 17:00
 tags:
   - Azure AD
   - Conditional Access Policy
