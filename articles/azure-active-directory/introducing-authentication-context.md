@@ -13,7 +13,7 @@ Japan Azure Identity Support Blog では、お問合せの多い事象へのト�
 
 認証コンテキスト自体は 2021 年 3 月に [Microsoft Ignite で 発表された](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/granular-conditional-access-for-sensitive-data-and-actions/ba-p/1751775)条件付きアクセス ポリシーの新しい機能ですが、日本語での解説記事が全然出ておらず、個人的にもっと広まってほしいと思い、この機会にご紹介します。
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > 認証コンテキスト機能は、現在 Public Preview での提供であり、プレビュー期間中は作成した認証コンテキストを削除できません。
 > そのため以下の手順をお試しいただく際には、検証用テナントなどで動作を確認いただくことを推奨します。
 > 本記事でご紹介する機能は 2021/12/01 現在の動作であり、最新の動作については公開ドキュメントをご参照ください。
@@ -56,7 +56,7 @@ Azure AD の条件付きアクセス ポリシーは、サインインの場所�
 構認証コンテキストは単体で動作するわけではなく、アプリ、認証コンテキスト、条件付きアクセスが連動して動作します。
 もう少し具体的に言うと、アプリが認証コンテキストを利用するという認証要求を Azure AD に送信し、Azure AD は指定された認証コンテキストに紐づく条件付きアクセス ポリシーを適用、結果としてポリシーに基づいた追加のアクセス制御が可能となります。
 
-> ![NOTE]
+> [!NOTE]
 > 認証コンテキスト機能を利用するには Azure AD Premium P1 以上のライセンスが必要です。
 
 ### 認証コンテキストの作成
@@ -73,7 +73,7 @@ Azure AD の条件付きアクセス ポリシーは、サインインの場所�
 
 ![認証コンテキストの ID](./introducing-authentication-context/authentication-context-id.png)
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > 認証コンテキスト機能は、現在 Public Preview での提供であり、プレビュー期間中認証コンテキストの上限は 25 個で、作成した認証コンテキストを削除できません。
 
 ### 認証コンテキストへ条件付きアクセスの適用
@@ -127,7 +127,7 @@ Set-SPOSite -Identity https://<yourdomain>.sharepoint.com/sites/confidential -Co
 
 ![適用された条件付きアクセス](./introducing-authentication-context/authentication-context06.png)
 
-> ![NOTE]
+> [!NOTE]
 > サインインログから条件付きアクセス ポリシーの適用状況を確認する方法は、[「現時点ではこれにはアクセスできません」 エラーについて](../azure-active-directory/conditional-cannot-access-rightnow.md) を参照下さい。
 
 ## プロトコルの詳細を見てみる
@@ -166,7 +166,7 @@ acrs クレームは、OpenID Connect の [acr (Authentication Context Class Ref
 
 SharePoint Online 側では、acrs クレームをチェックして、本当にユーザーが認証コンテキストを満たす認証を実施したかを判定できます。
 
-> ![NOTE]
+> [!NOTE]
 > xms_cc オプションはクライアント アプリケーションがクレーム チャレンジに対応しており、API が返却するクレーム チャレンジ ヘッダーを適切に処理できることを示しています。
 > 話の本筋からそれますのでここでは紹介しませんが、詳しくは [クレーム チャレンジ、クレーム要求、およびクライアントの機能 - Microsoft identity platform | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/claims-challenge) や、[該当の](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/71b9d8a07de995d47b030e8449202016a9f76c41/TodoListClient/Controllers/TodoListController.cs#L44) [ソース](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/74146a201bf28b04145d1743d4d8d52919bd5896/TodoListClient/Infrastructure/ExtractAuthenticationHeader.cs) [コード](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/74146a201bf28b04145d1743d4d8d52919bd5896/TodoListService/Controllers/TodoListController.cs#L98) を参照ください。
 
@@ -208,7 +208,7 @@ MSAL ライブラリを利用し、認証コンテキストを呼び出す具体
 
 ![TODO リストの削除時に多要素認証が求められる](./introducing-authentication-context/authentication-context-sample-delete.png)
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > 認証コンテキストに限りませんが、条件付きアクセス ポリシーは適用時に必ず認証を求めるものではなく、要求された条件を満たした認証を完了しているかを判定します。
 > 上記のサンプルでも一度多要素認証を実施したのちは、Azure AD 側あるいはアプリの認証キャッシュが有効な間は TODO リストの削除が可能です。
 
