@@ -25,7 +25,7 @@ At Microsoft, we want to ensure that we're providing our customers with frequent
 
 Azure AD では OpenID Connect などの標準技術を利用し、公開鍵基盤を利用したアプリケーション間の信頼を構成しています。具体的には Azure AD が保持する秘密鍵を利用しトークンに署名を行い、連携先のアプリケーションはメタデータとして公開されている公開鍵を利用し、署名の検証を行いトークンの有効性を確認します。
 
-メタデータとして公開されている公開鍵は、これまでもセキュリティ上の理由から定期的にロールオーバーされていました。一方でそのロールオーバーがより頻繁に行われるようになる旨を今回の通知ではご案内しております。具体的には、12 月から順次更新間隔を短くし、数ヶ月かけて 1 週間の頻度に達するようにします。
+メタデータとして公開されている公開鍵は、これまでもセキュリティ上の理由から定期的にロールオーバーされていました。一方でそのロールオーバーがより頻繁に行われるようになる旨を今回の通知ではご案内しております。具体的には、これまで約 6 週おきにロールオーバーされていたものが 12 月から順次更新間隔を短くし、数ヶ月かけて 1 週間の頻度に達するようにします。
 
 - [Microsoft ID プラットフォームでの署名キーのロールオーバー | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/active-directory-signing-key-rollover?WT.mc_id=Portal-Microsoft_Azure_Health#overview-of-signing-keys-in-the-microsoft-identity-platform)
 
@@ -33,7 +33,7 @@ Azure AD では OpenID Connect などの標準技術を利用し、公開鍵基�
 
 ## 私のアプリは影響を受けますか？
 
-本影響は貴社アプリ内にて、トークンの署名検証を行うアプリのみに影響があります。たとえば、 Web API や OpenID Connect で連携するアプリを開発している場合に影響を受ける可能性がございます。トークンの署名検証を行うアプリであっても、弊社の標準ライブラリなどでメタデータを定期的に更新するよう実装されている場合には影響を受けません。
+本影響は貴社アプリ内にて、トークンの署名検証を行うアプリのみに影響があります。たとえば、 Web API や OpenID Connect で連携するアプリを開発している場合に影響を受ける可能性がございます。トークンの署名検証を行うアプリであっても、弊社の標準ライブラリなどでメタデータを定期的に更新するよう実装されている場合には影響を受けません。またこれまでもメタデータの公開鍵は、約 6 週間おきにロールオーバーされておりましたので、すでに 6 週間以上動作しているアプリは問題ないと判断いただけるものと存じます。
 
 メタデータを利用した署名の検証をしているかは、Azure ポータル上で確認することはできず、アプリの実装観点での確認が必要です。上記公開情報に[一般的な実装パターンごとに確認方法と対処方法](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/active-directory-signing-key-rollover?WT.mc_id=Portal-Microsoft_Azure_Health#how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it)をおまとめしておりますので、こちらをご確認ください。
 
