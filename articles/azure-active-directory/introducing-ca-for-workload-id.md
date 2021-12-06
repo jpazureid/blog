@@ -113,7 +113,7 @@ A.  ワークロード ID に分類されるオブジェクトは、少なくと
 Microsoft Graph PowerShell SDK を利用するため、事前に以下のコマンドでモジュールをインストールします。
 
 `Install-Module Microsoft.Graph`
-参考) [Microsoft Graph PowerShell SDK](https://github.com/microsoftgraph/msgraph-sdk-powershell)
+参考 : [Microsoft Graph PowerShell SDK](https://github.com/microsoftgraph/msgraph-sdk-powershell)
 
 次のコマンドを順に実行します。
 グローバル管理者でのサインイン時に、Microsoft Graph PowerShell SDK に対する Application.Read.All の権限を許可するように表示された場合は、承諾する必要があります。
