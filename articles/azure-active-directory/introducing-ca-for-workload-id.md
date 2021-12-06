@@ -62,18 +62,6 @@ Azure Portal から登録する際に、`Azure Active Directory` > `アプリの
 - マルチテナント アプリケーション (サードパーティー の SaaS アプリ)
 - マイクロソフトが提供するサービスが動作するためのアプリケーション
 
-上記の内、マネージド ID を利用したサインインは、Azure VM 上であれば以下のようなコマンドで実行されます。
-
-`az login --identity`
-`Add-AzAccount -identity`
-参考) [Azure VM 上でマネージド ID を使用してサインインする](https://docs.microsoft.com/ja-jp/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in)
-
-例にあるコマンドでシークレットもしくは証明書を指定してないように、マネージド ID はアプリケーションに資格情報を埋め込むことなく安全にリソースアクセスが可能な方法であり、制御の対象になりません。
-ご利用の Azure サービスがマネージド ID をサポートされており、置き換えることが可能でしたらマネージド ID を利用するように変更いただくことを推奨します。
-
-[マネージド ID をサポートする Azure サービス](https://docs.microsoft.com/ja-jp/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
-
-このプレビューは、マネージド ID などを除いたワークロード ID のサインインに対して IP アドレスベースの制御を構成する機能です。
 
 ## 制御対象となったときの動作
 
