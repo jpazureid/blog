@@ -83,7 +83,7 @@ private static string authority = aadInstance + tenantId + "/v2.0";
 
 > [!NOTE]
 > 変更前でも実際の通信時には scope パラメーターが含まれていますが、v1 エンドポイントでは scope パラメーターは無視されます。
-> このときの scope パラメーターには "openid" および "profile" が指定されています。このため、本オプションは必須ではありませんが、"openid" および "profile" 以外のアクセス許可を要求する必要がある場合、もしくは、要求するアクセス許可を明確にしておきたい場合、には Scope プロパティの利用をご検討ください。
+> このときの scope パラメーターには "openid" および "profile" が指定されています。このため、本オプションは必須ではありませんが、"openid" および "profile" 以外のアクセス許可を要求する必要がある場合、もしくは、要求するアクセス許可を明確にしておきたい場合、には Scope プロパティの利用をご検討ください。例えば、Graph API の利用のためにこれまで resource を指定していた場合は、Scope プロパティに &lt;reource名&gt;/.default を指定することで、現在利用している resource に対するトークンを取得できます。
 
 この指定は、Startup.ConfigureAuth メソッド内で実装されている OpenIdConnectAuthenticationOptions オブジェクトの初期化において Scope プロパティを利用することで可能です。
 
@@ -136,6 +136,7 @@ http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ 名前空間の name ク�
 - SecurityTokenValidated プロパティに設定したメソッドで "preferred_username" をもとに http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ 名前空間の name クレームを追加する処理を追加
 
 具体的な内容は実装を見たほうが早いと思いますため、以下に実装例を記載します。
+なお、Startup クラスは partial 宣言により複数のファイルに分割され定義されています。以下の実装は ConfigureAuth メソッドの実装が定義されている Startup.Auth.cs に行います。
 
 ```CSharp
 using System.Threading.Tasks;
@@ -155,7 +156,7 @@ public partial class Startup
                 ClientId = clientId,
                 Authority = authority,
                 PostLogoutRedirectUri = postLogoutRedirectUri,
-                Scope = "openid profile",
+                Scope = "openid profile", // オプション : ほかに必要なアクセス許可があれば併せて指定します
                 Notifications = new OpenIdConnectAuthenticationNotifications()
                 {
                     SecurityTokenValidated = OnSecurityTokenValidated,
