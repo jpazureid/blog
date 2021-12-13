@@ -113,6 +113,7 @@
 - [お客様のセキュリティを強化する新しい ID パートナーシップと統合](./articles/azure-active-directory/new-identity-partnerships-and-integrations-to-strengthen-your.md)
 - [Microsoft Authenticator の新たなセキュリティ機能が利用可能となりました！](./articles/azure-active-directory/new-authenticator-security-features.md)
 - [TLS 1.2 へ移行して基盤環境のセキュリティ確保を](./articles/azure-active-directory/act-fast-by-moving-to-tls-1-2.md)
+- [ゼロ トラスト展開のためのよりよいコントロールとインサイト](./articles/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments.md)
 
 ## Azure AD Connect
 
