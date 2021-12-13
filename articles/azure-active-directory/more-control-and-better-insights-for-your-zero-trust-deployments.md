@@ -55,7 +55,8 @@ Identity Protecion の豊富な検知機能とシグナルを元に、2 つの�
 
 1 つ目の改善点は、**診断設定** の拡張です。リスク データをエクスポートするための新しい方法を追加しました。ワンクリックでリスクのあるユーザーやリスクの検出データを Log Analytics やサードパーティの SIEM に送信することができます。また、既定の保存期間を超えてデータを保持する必要がある場合には、数ヶ月分のデータをワンクリックでストレージ アカウントに送信できるようになりました。  
 
-![](./more-control-and-better-insights-for-your-Zero-Trust-deployments/5_diagnostic_setting.png)  
+
+![](./more-control-and-better-insights-for-your-Zero-Trust-deployments/5_setting.png)  
 図 4: Identity Protection 診断設定の管理画面  
 
 
