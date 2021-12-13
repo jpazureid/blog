@@ -31,10 +31,10 @@ Visual Studio のウィザードで作成されたアプリケーションの認
 
 ## 認証エンドポイントの変更
 
-Visual Stdio のウィザードで作成されたアプリケーションを変更するには、以下の二つのポイントを変更する必要があります。
+Visual Stdio のウィザードで作成されたアプリケーションを変更するには、以下の二つのポイントの変更が必要です。
 
-- 認証エンドポイントを v2 に変更する
-- アクセス許可 (scope) を明示する
+- 認証エンドポイントを v2 に変更する (必須)
+- アクセス許可 (scope) を明示する (オプション)
 
 この二点を変更するだけで以下のように v2 エンドポイントが利用されるよう変更されます。
 
@@ -77,12 +77,13 @@ private static string authority = aadInstance + tenantId;
 private static string authority = aadInstance + tenantId + "/v2.0";
 ```
 
-### アクセス許可 (scope) を明示する
+### オプション : アクセス許可 (scope) を明示する
 
 冒頭の [Microsoft ID プラットフォーム (v2.0) に更新する理由](https://docs.microsoft.com/ja-jp/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison) の資料に記載のとおり、v2 エンドポイントにおいては "resource" パラメーターの代わりに "scope" パラメーターを指定する必要があります。
 
 > [!NOTE]
 > 変更前でも実際の通信時には scope パラメーターが含まれていますが、v1 エンドポイントでは scope パラメーターは無視されます。
+> このときの scope パラメーターには "openid" および "profile" が指定されています。このため、本オプションは必須ではありませんが、"openid" および "profile" 以外のアクセス許可を要求する必要がある場合、もしくは、要求するアクセス許可を明確にしておきたい場合、には Scope プロパティの利用をご検討ください。
 
 この指定は、Startup.ConfigureAuth メソッド内で実装されている OpenIdConnectAuthenticationOptions オブジェクトの初期化において Scope プロパティを利用することで可能です。
 
@@ -182,10 +183,12 @@ public partial class Startup
 }
 ```
 
-このように構成することにより、http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ 名前空間の name クレームに "preferred_username" 属性の内容を反映させることが可能です。
+このように構成することにより、http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ 名前空間の name クレームに "preferred_username" 属性の内容を反映させることが可能です。 
+
 ![](./aspdotnet-from-v1-to-v2/05-user-identity-claims.png)
 
-もちろん、User.Identity.Name も取得できます！
+もちろん、User.Identity.Name も取得できます！ 
+
 ![](./aspdotnet-from-v1-to-v2/04-user-identity-name.png)
 
 ほかにも必要な属性がありましたら、上記の資料を基にアクセス許可 (scope) を要求する、もしくは、[Azure ポータル] &gt; [Azure Active Directory] &gt; [アプリの登録] &gt; 対象のアプリ &gt; [トークン構成] にて "オプションの要求の追加" から登録することをご検討ください。
