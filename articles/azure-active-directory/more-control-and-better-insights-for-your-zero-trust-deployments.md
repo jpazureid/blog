@@ -1,4 +1,17 @@
-# ゼロ トラスト展開のためのよりよいコントロールとインサイト
+---
+title: ゼロ トラスト展開のためのよりよいコントロールとインサイト
+date: 2021-12-15
+tags:
+    - Azure AD
+    - US Identity Blog
+---
+
+こんにちは、 Azure Identity サポート チームの小出です。
+
+本記事は、 2021 年 11 月 30 日に米国の Azure Active Directory Identity Blog で公開された [More control and better insights for your Zero Trust deployments](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/more-control-and-better-insights-for-your-zero-trust-deployments/ba-p/2365684) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
+
+---
+
 
 Ignite 2021 はお楽しみいただけましたか？ ユーザーやアプリケーションを脅威から保護するために、ゼロ トラストを展開するうえで、どのように Azure Active Directory を使っているか、皆様からのご意見を伺うことができました。多くの方から、ID 環境の保護と調査のために、より強力で使いやすいツールを求める声をいただいています。そこで本日は、Azure AD の条件付きアクセスと Identity Protection の新機能について詳しくご紹介します。新しい機能を使うと、ID の保護を強化するとともに、業務をより簡単に進めることができるようになります。
  
