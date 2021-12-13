@@ -31,12 +31,8 @@ Visual Studio のウィザードで作成されたアプリケーションの認
 
 ## 認証エンドポイントの変更
 
-Visual Stdio のウィザードで作成されたアプリケーションを変更するには、以下の二つのポイントの変更が必要です。
-
-- 認証エンドポイントを v2 に変更する (必須)
-- アクセス許可 (scope) を明示する (オプション)
-
-この二点を変更するだけで以下のように v2 エンドポイントが利用されるよう変更されます。
+Visual Stdio のウィザードで作成されたアプリケーションを変更するには、以下の変更が必要です。
+なお、この点を変更するだけで以下のように v2 エンドポイントが利用されるよう変更されます。
 
 変更前 
 ```
@@ -77,31 +73,32 @@ private static string authority = aadInstance + tenantId;
 private static string authority = aadInstance + tenantId + "/v2.0";
 ```
 
-### オプション : アクセス許可 (scope) を明示する
+## ご参考 : アクセス許可 (scope) を明示する
 
-冒頭の [Microsoft ID プラットフォーム (v2.0) に更新する理由](https://docs.microsoft.com/ja-jp/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison) の資料に記載のとおり、v2 エンドポイントにおいては "resource" パラメーターの代わりに "scope" パラメーターを指定する必要があります。
-
-> [!NOTE]
-> 変更前でも実際の通信時には scope パラメーターが含まれていますが、v1 エンドポイントでは scope パラメーターは無視されます。
-> このときの scope パラメーターには "openid" および "profile" が指定されています。このため、本オプションは必須ではありませんが、"openid" および "profile" 以外のアクセス許可を要求する必要がある場合、もしくは、要求するアクセス許可を明確にしておきたい場合、には Scope プロパティの利用をご検討ください。例えば、Graph API の利用のためにこれまで resource を指定していた場合は、Scope プロパティに &lt;reource名&gt;/.default を指定することで、現在利用している resource に対するトークンを取得できます。
-
-この指定は、Startup.ConfigureAuth メソッド内で実装されている OpenIdConnectAuthenticationOptions オブジェクトの初期化において Scope プロパティを利用することで可能です。
+もしプログラム側で Graph API などの利用を想定されている場合は、必要に応じて Scope プロパティに必要なアクセス許可をご指定ください。
+実装としては、Startup.ConfigureAuth メソッド内で実装されている OpenIdConnectAuthenticationOptions オブジェクトの初期化において Scope プロパティを利用することで可能です。
 
 ```CSharp
 public void ConfigureAuth(IAppBuilder app)
 {
-    ・・・ 省略 ・・・
+    // ・・・ 省略 ・・・
     app.UseOpenIdConnectAuthentication(
         new OpenIdConnectAuthenticationOptions
         {
             ClientId = clientId,
             Authority = authority,
             PostLogoutRedirectUri = postLogoutRedirectUri,
-            Scope = "openid profile email"
+            Scope = "openid profile User.Read" // Microsoft Graph の User.Read を必要とする場合
         });
 }
 
 ```
+
+なお、OWIN は OpenID Connect ベースの認証を実現するためのミドルウェアです。 
+Microsoft Graph API などの呼び出しで利用するアクセス トークンは OWIN では取得することができないため、Microsoft Authentication Library (MSAL) を組み合わせて利用いただく必要があります。
+MSAL を利用した具体的な実装につきましては以下のサンプルをご参照ください。
+
+[Microsoft Graph .NET SDK で ASP.NET MVC Web アプリケーションをビルドする](https://docs.microsoft.com/ja-jp/learn/modules/msgraph-build-aspnetmvc-apps/)
 
 ## 参考: ID トークンに含まれている内容
 
