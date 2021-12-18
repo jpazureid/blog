@@ -72,8 +72,8 @@ Identity Protecion の豊富な検知機能とシグナルを元に、2 つの�
 
 新しいワークブックを使用するには
 
-    1. Azure ポータルにサインインします。  
-    2. [Azure Active Directory」→ [監視] タブ →「Workbooks」に移動します。  
-    3. [Identity Protection リスク分析] をクリックします。  
- 
+1. Azure ポータルにサインインします。  
+2. [Azure Active Directory」→ [監視] タブ →「Workbooks」に移動します。  
+3. [Identity Protection リスク分析] をクリックします。
+
 条件付きアクセスのこれらの新機能により、ゼロ トラストの導入がさらに容易になり、お客様にとって新しいシナリオが利用可能となれば幸いです。また、2 つの Identity Protection の機能は、シンプルでありながら強力なインサイトを備えており、お客様の環境をより把握するのに活用いただけると考えています。皆様からのフィードバックをお待ちしております。Microsoft Tech Community での会話に参加して、ご意見やご提案をお聞かせください。
