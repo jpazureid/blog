@@ -22,7 +22,7 @@ Ignite では、複数の強力な機能を発表しました。より使いや�
 
 まず、**条件付きアクセスの概要ダッシュボード** を見てみましょう。ポリシーの数が増えてくると、管理者はそのポリシーが本当に組織全体を保護しているかどうか把握する必要があります。条件付きアクセスの新しい概要ダッシュボードでは、ポリシーの適用範囲内にあるユーザ、アプリ、デバイスをまとめ、ポリシーの適用範囲にあるギャップを明らかにすることで、包括的なポリシーの展開がこれまで以上に容易になります。
 
-![](./more-control-and-better-insights-for-your-Zero-Trust-deployments/1_CAdashboard.png)  
+![](./more-control-and-better-insights-for-your-Zero-Trust-deployments/1_CAdashboard.png)
 
 ダッシュボードは 4 つのメインタブで構成されています。
 
@@ -38,7 +38,7 @@ Ignite では、複数の強力な機能を発表しました。より使いや�
 
 14 種類の組み込みテンプレートから、新しいポリシーをすばやく作成できます (今後、お客様のご意見や新しい機能、新しい攻撃タイプへの対応に基づいてテンプレートを追加していきます)。テンプレートからポリシーを展開するのは簡単です。テンプレートを使用するだけでもよいかもしれませんが、テンプレートから始めて、ビジネス ニーズに合わせてカスタマイズしていくこともできます。  
 
-![図 1: 条件付きアクセス テンプレートの管理画面](./more-control-and-better-insights-for-your-Zero-Trust-deployments/2_CAtemplate.png)  
+![図 1: 条件付きアクセス テンプレートの管理画面](./more-control-and-better-insights-for-your-Zero-Trust-deployments/2_CAtemplate.png)
 
 ### デバイス用の条件付きアクセス フィルター
 
@@ -46,7 +46,7 @@ Ignite では、複数の強力な機能を発表しました。より使いや�
 
 デバイス ID、表示名、モデル、モバイル デバイス管理 (MDM) のアプリ ID など、組み込みで用意されているデバイスのプロパティに加えて、最大 15 個の [追加拡張属性](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-condition-filters-for-devices) をサポートしています。ルール ビルダーを使えば、ブール論理を使ったデバイスのマッチング ルールを簡単に構築することができます。また、ルールの構文を直接編集して、より高度なマッチング ルールを実現することもできます。この新しい条件を用いることで、お客様の環境にてどのようなシナリオを実現できるのかとても楽しみです。
 
-![図 2: デバイス用フィルターの管理画面](./more-control-and-better-insights-for-your-Zero-Trust-deployments/3_devicefilter.png)  
+![図 2: デバイス用フィルターの管理画面](./more-control-and-better-insights-for-your-Zero-Trust-deployments/3_devicefilter.png)
 
 ### アプリケーション用フィルター
 
@@ -54,7 +54,7 @@ Ignite では、複数の強力な機能を発表しました。より使いや�
 
 アプリ用のフィルターは、新しい Azure AD カスタム セキュリティ属性を使用します。カスタム セキュリティ属性は、組織ごとに作成および管理されるため、自社に適した属性を定義して、条件付きアクセスポリシーで使用することができます。また、カスタム セキュリティ属性は、豊富な委任モデルをサポートしています。アプリに特定の属性を追加できるユーザーを選択したり、アプリの所有者がこれらの属性を変更できないようにしたりすることも可能です。これにより、管理者がポリシーを変更したり、誤って変更したりすることなく、一連の管理者がアプリに条件付きアクセス ポリシーを簡単に導入し管理できるようになります。アプリ用の条件付きアクセス フィルターは、近日中にパブリック プレビュー版が公開される予定です。  
 
-![図 3: アプリ フィルター](./more-control-and-better-insights-for-your-Zero-Trust-deployments/4_appfilter.png)   
+![図 3: アプリ フィルター](./more-control-and-better-insights-for-your-Zero-Trust-deployments/4_appfilter.png)
 
 ### 診断設定での新しいエクスポート オプション
 
@@ -62,13 +62,13 @@ Identity Protecion の豊富な検知機能とシグナルを元に、2 つの�
 
 1 つ目の改善点は、**診断設定** の拡張です。リスク データをエクスポートするための新しい方法を追加しました。ワンクリックでリスクのあるユーザーやリスクの検出データを Log Analytics やサードパーティの SIEM に送信することができます。また、既定の保存期間を超えてデータを保持する必要がある場合には、数ヶ月分のデータをワンクリックでストレージ アカウントに送信できるようになりました。  
 
-![図 4: Identity Protection 診断設定の管理画面](./more-control-and-better-insights-for-your-Zero-Trust-deployments/5_setting.png)  
+![図 4: Identity Protection 診断設定の管理画面](./more-control-and-better-insights-for-your-Zero-Trust-deployments/5_setting.png)
 
 ### リスク分析ワークブック
 
 また、組織内のリスクの傾向についてより深いインサイトを、簡単な設定で得たいというご要望もいただきました。そこで、Log Analytics と拡張された診断設定をベースに、Identity Protection のための新しい「リスク分析ワークブック」をリリースしました。このワークブックには、最も多く発生しているリスクの種類と、それらが発生している場所が示されています。さらに、お客様の環境で検出されたリスクにどれだけ効果的に対応しているかを可視化し、ポリシー設定を改善できるよう着目点を示すように支援します。  
 
-![図 5: ヒート マップ](./more-control-and-better-insights-for-your-Zero-Trust-deployments/6_heatmap.png)  
+![図 5: ヒート マップ](./more-control-and-better-insights-for-your-Zero-Trust-deployments/6_heatmap.png)
 
 新しいワークブックを使用するには
 
