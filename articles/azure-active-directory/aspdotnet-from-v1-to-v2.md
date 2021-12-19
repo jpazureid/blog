@@ -31,7 +31,7 @@ Visual Studio のウィザードで作成されたアプリケーションの認
 
 ## 認証エンドポイントの変更
 
-Visual Stdio のウィザードで作成されたアプリケーションを変更するには、以下の変更が必要です。
+Visual Studio のウィザードで作成されたアプリケーションを変更するには、以下の変更が必要です。
 なお、この点を変更するだけで以下のように v2 エンドポイントが利用されるよう変更されます。
 
 変更前 
@@ -46,7 +46,7 @@ https://login.microsoftonline.com/8778e49f-0123-0123-0123-f7c0aafd9f7b/oauth2/v2
 
 ### 認証エンドポイントを v2 に変更する
 
-Visual Studo のウィザードで作成されたアプリケーションでは、Web.config と Startup.Auth.cs で以下のように既定で実装されています。
+Visual Studio のウィザードで作成されたアプリケーションでは、Web.config と Startup.Auth.cs で以下のように既定で実装されています。
 
 Web.config
 ```xml
