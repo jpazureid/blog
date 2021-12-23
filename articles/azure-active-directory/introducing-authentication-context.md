@@ -112,7 +112,7 @@ SharePoint Online への認証コンテキストの適用方法は、現時点�
 
 ```ps1
 # SharePoint Online にグローバル管理者権限でサインインします。
-Connect-SPOService -Uri https://<yourdomain>-admin.sharepoint.com/
+Connect-SPOService -Url https://<yourdomain>-admin.sharepoint.com/
 
 # 認証コンテキストを特定のサイトを指定して割り当てます。
 Set-SPOSite -Identity https://<yourdomain>.sharepoint.com/sites/confidential -ConditionalAccessPolicy AuthenticationContext -AuthenticationContextName "Require_CompliantDevice"
