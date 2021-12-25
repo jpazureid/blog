@@ -1,5 +1,5 @@
 --- 
-title: Azure ポータル UX における Azure AD Graph 権限のサインアップのサポート終了について 
+title: Azure ポータル UX における Azure AD Graph 権限のサインアップのサポート終了
 date: 2021-12-26 09:00 
 tags: 
   - Azure AD 
