@@ -115,6 +115,7 @@
 - [TLS 1.2 へ移行して基盤環境のセキュリティ確保を](./articles/azure-active-directory/act-fast-by-moving-to-tls-1-2.md)
 - [ゼロ トラスト展開のためのよりよいコントロールとインサイト](./articles/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments.md)
 - [ASP.NET アプリケーションの AAD 認証を v1 から v2 に変更する](./articles/azure-active-directory/aspdotnet-from-v1-to-v2.md)
+- [Azure AD カスタム セキュリティ属性の紹介](./articles/azure-active-directory/introducing-azuread-custom-security-attributes.md)
 
 ## Azure AD Connect
 
