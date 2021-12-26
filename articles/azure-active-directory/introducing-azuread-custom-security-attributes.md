@@ -1,6 +1,6 @@
 ---
 title: Azure AD カスタム セキュリティ属性の紹介
-date: 2021-12-27
+date: 2021-12-26 09:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -28,17 +28,17 @@ tags:
 
 最初のステップは、関連する属性の集まりである "属性セット" を作成することです。たとえば、マーケティング部門に関連する属性を参照したい場合は、「marketing」という名前の属性セットを作成することができます。次に、属性セット内の属性と、属性セットの特徴を定義します。たとえば、属性にはあらかじめ定義された値しか使用できないことや、属性に割り当てられる値は 1 つか、もしくは複数かなどを指定します。この例では、プロジェクト属性に3つの値 (Cascade、Baker、Skagit) があり、ユーザーには 3 つの値のうち 1 つしか割り当てられません。下の図は、上記の例を示しています。
 
-![](./introducing-azuread-custom-security-attibutes/1_addattribute.png)
+![](./introducing-azuread-custom-security-attributes/1_addattribute.png)
 
 ## ステップ 2: ユーザーまたはエンタープライズ アプリケーションへの属性の割り当て
 
 属性が定義されると、ユーザー、エンタープライズ アプリケーション、およびマネージド ID に割り当てることができます。
 
-![](./introducing-azuread-custom-security-attibutes/2_assignment.png)
+![](./introducing-azuread-custom-security-attributes/2_assignment.png)
 
 属性を割り当てると、属性を使ってユーザーやアプリケーションをフィルタリングできます。たとえば、秘密度レベルが「高」のすべてのエンタープライズ アプリケーションを確認することができます。
 
-![](./introducing-azuread-custom-security-attibutes/3_filtering.png)
+![](./introducing-azuread-custom-security-attributes/3_filtering.png)
 
 ## ステップ 3: 属性管理の委任
 
@@ -55,7 +55,7 @@ tags:
 
 既定ではグローバル管理者とグローバル閲覧者は、属性を作成、読み取り、または更新することができません。グローバル管理者または特権ロール管理者は、属性を管理するために、属性管理ロールを他のユーザーまたは自身に割り当てる必要があります。これら 4 つのロールは、テナントまたは属性セットのスコープで割り当てることができます。テナント スコープで役割を割り当てると、すべての属性セットの管理を委任することができます。属性セットのスコープで役割を割り当てると、特定の属性セットの管理を委任することができます。例を挙げて説明します。
 
-![](./introducing-azuread-custom-security-attibutes/4_xia.png)
+![](./introducing-azuread-custom-security-attributes/4_xia.png)
 
 1. Xia は特権ロール管理者です。そのため、Xia はテナント レベルで属性定義管理者ロールを自身に割り当てます。これにより、彼女は属性セットを作成することができます。
 2. エンジニアリング部門では、Alice が属性の定義を担当し、Chandra が属性の割り当てを担当しています。Xia はエンジニアリング属性セットを作成し、Alice には属性定義管理者ロールを、Chandra にはエンジニアリング属性セット スコープの属性割り当て管理者ロールを割り当て、Alice と Chandra が必要最小限の権限を持つようにします。
@@ -67,11 +67,11 @@ tags:
  
 リソース属性（例えば、blob インデックス タグ）だけでは、Bob は Charlie のロール割り当てを 1 つ作成し、blob インデックス タグが「category = lighting」となっている blob への読み取りアクセスを制限する条件を追加する必要があります。Bob は Charlie のようなユーザーの数だけ、多くのロール割り当てを作成する必要があります。リソース属性と併用してユーザー属性を使用すると、Bob は Azure AD グループ内のすべてのユーザーを対象とした 1 つのロール割り当てを作成し、"ユーザーの category 属性値が blob の category タグ値と一致する" ように要求する ABAC 条件を追加することができます。Azure AD 管理者の Xia は、「contosocentralfinance」という属性セットを作成し、Bob に属性セットの Azure AD 属性定義管理者と属性割り当て管理者のロールを割り当て、Bob が自分の仕事をするのに最低限必要な権限を与えます。以下の図は、このシナリオを示しています。
 
-![](./introducing-azuread-custom-security-attibutes/5_abac.png)
+![](./introducing-azuread-custom-security-attributes/5_abac.png)
 
 Bob は、ユーザー属性とリソース属性を使って、ABAC 条件ビルダーで次のような条件を書きます。
 
-![](./introducing-azuread-custom-security-attibutes/6_roleassignmentcondition.png)
+![](./introducing-azuread-custom-security-attributes/6_roleassignmentcondition.png)
 
 まとめると、ユーザー属性、リソース属性、ABAC 条件を使えば、わずか 1 つのロール割り当てで、何百万もの Azure ストレージ Blob へのアクセスを管理することができるのです。  
 
