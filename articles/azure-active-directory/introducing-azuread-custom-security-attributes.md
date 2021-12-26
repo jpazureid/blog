@@ -1,6 +1,6 @@
 ---
 title: Azure AD カスタム セキュリティ属性の紹介
-date: 2021-12-27
+date: 2021-12-26 09:00
 tags:
     - Azure AD
     - US Identity Blog
