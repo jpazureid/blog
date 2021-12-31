@@ -1,5 +1,5 @@
 ---
-title: Azure AD の新機能により、ID プロビジョニングを簡略化
+title: Azure AD の新機能により ID プロビジョニングをよりシンプルに
 date: 2022-01-01 09:00
 tags:
   - Azure AD
@@ -41,7 +41,6 @@ SCIM 検証ツールが限定でプレビュー開始となりました。これ
 Azure AD Connect 同期のレガシー バージョン (v1.x) は、SQL Server 2012 や ADAL などのコンポーネントに依存していますが、これらは来年に廃止される予定です。そのため、すべてのお客様は同期処理のサポートが中断されないよう、[Azure AD Connect sync v2.0](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history) へアップグレードいただくか、[Azure AD Connect クラウド同期](https://docs.microsoft.com/ja-jp/azure/active-directory/cloud-sync/what-is-cloud-sync) への切り替えをご検討いただく必要がございます。Azure AD Connect 同期 v1.x のバージョンは、2022 年 8 月 30 日をもちまして廃止されます。
 
 IT に関する計画の予測が容易となるよう、弊社では Azure AD Connect 同期のバージョンについて一貫した廃止サイクルを確立しています。今後は、新バージョンがリリースされてから 18 カ月後に各バージョンを廃止する予定です。
-![scim-results](https://user-images.githubusercontent.com/36251880/147834547-ba56854e-eef5-4ed8-baa9-ff2573746b6e.png)
 
 ## プロビジョニング ロジックに日付の比較を使用する
 
