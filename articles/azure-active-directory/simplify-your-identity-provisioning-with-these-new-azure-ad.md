@@ -1,6 +1,6 @@
 ---
 title: Azure AD の新機能により、ID プロビジョニングを簡略化
-date: 2021-01-01 09:00
+date: 2022-01-01 09:00
 tags:
   - Azure AD
   - US Identity Blog
