@@ -1,4 +1,4 @@
-name: deploy-preview
+name: auto-deploy-preview
 
 on:
   workflow_run:
