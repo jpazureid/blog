@@ -14,10 +14,10 @@ jobs:
       run: |
         federated_token=`curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value'`
         username="${{ github.event.pull_request.head.repo.owner.login }}"
-        aad_username=`curl -H "Authorization: Bearer $federated_token" -H "Workflow run-on-main-branch" https://jpcssblogdev.azurewebsites.net/api/githublinks/$username | jq -r '.alias'`
+        aad_username=`curl -H "Authorization: Bearer $federated_token" -H "Workflow run-on-main-branch" https://jpcssblogdev.azurewebsites.net/api/githublinks/$username | jq -r '.alias|select(.!=null)'`
         if [ -z "$aad_username" ]; then
-          echo "${username} is not Microsoft linked account. username: ${aad_username}"
+          echo "${username} is not Microsoft linked account."
           exit 1
         else
-          echo "${username} is Microsoft linked account. username: ${aad_username}"
+          echo "${username} is Microsoft linked account."
         fi
