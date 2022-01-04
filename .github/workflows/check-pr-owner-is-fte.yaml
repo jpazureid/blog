@@ -16,7 +16,7 @@ jobs:
         username="${{ github.event.pull_request.head.repo.owner.login }}"
         aad_username=`curl -H "Authorization: Bearer $federated_token" -H "Workflow run-on-main-branch" https://jpcssblogdev.azurewebsites.net/api/githublinks/$username | jq -r '.alias'`
         if [ -z "$aad_username" ]; then
-          echo "${username} is not Microsoft linked account"
+          echo "${username} is not Microsoft linked account. username: ${aad_username}"
           exit 1
         else
           echo "${username} is Microsoft linked account"
