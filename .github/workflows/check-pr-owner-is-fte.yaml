@@ -14,7 +14,7 @@ jobs:
       run: |
         federated_token=`curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value'`
         username="${{ github.event.pull_request.head.repo.owner.login }}"
-        if [ "$username" == "${{ pull_request.repository.owner.login }}" ]; then
+        if [ "$username" == "${{ github.event.pull_request.repository.owner.login }}" ]; then
           echo "PR opened by user who have write permission to this repository"
           exit 0
         fi
