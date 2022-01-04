@@ -23,8 +23,7 @@ Azure AD を利用してアプリ開発を検討している方や、Azure AD �
 OAuth は「リソース」へのアクセス権を安全に委譲し、API を保護するための「トークン」を発行する仕組みのデファクトスタンダードです。Microsoft では Exchange Online や SharePoint Online といった「リソース」に対するアクセスするための「API」を OAuth の仕組みを使って保護しており、ユーザーは必要な権限を必要に応じて「クライアント」であるアプリに払い出すことが可能です。これらの権限管理を行っているのが Azure AD です。
 
 ここでは OAuth の基礎については説明を省きますが、Azure AD にアプリを登録することで、Microsoft が管理する Azure AD で保護された「リソース」へのアクセスを行う「クライアント」を作成したり、自社で開発した API を「リソース」として登録し Azure AD で保護したりすることができます。リソースへのアクセス権は Azure AD では API のアクセス許可とよばれます。
-API のアクセス許可は「トークン」という形で「クライアント」であるアプリに受け渡されます。例えばユーザーが、ユーザー情報を取得できる API のアクセス許可を、クライアントであるアプリに許可することが可能です。アクセス許可を付与されたアプリケーションは、アクセス トークンという
-トークンを取得し、ユーザーの情報を取得する API を呼び出すことが可能になります。
+API のアクセス許可は「トークン」という形で「クライアント」であるアプリに受け渡されます。例えばユーザーが、ユーザー情報を取得できる API のアクセス許可を、クライアントであるアプリに許可することが可能です。アクセス許可を付与されたアプリケーションは、アクセス トークンというトークンを取得し、ユーザーの情報を取得する API を呼び出すことが可能になります。
 
 ![](./oauth2-application-resource-and-api-permissions/oauth-flow.png)
 
@@ -509,7 +508,7 @@ $appRoleAssignments | fl *
 おそらくどちらかが `User.Read.All` で、どちらかが `AuditLog.Read` のはずなのですが、これらの情報からどうやって確認すればよいのでしょうか。
 
 もちろん、これらの値は Microsoft Graph のサービス プリンシパルに定義されています。
-実ははアプリケーションの権限の API のアクセス許可は [AppRole](https://docs.microsoft.com/en-us/graph/api/resources/approle?view=graph-rest-1.0) として定義されています。
+実はアプリケーションの権限の API のアクセス許可は [AppRole](https://docs.microsoft.com/en-us/graph/api/resources/approle?view=graph-rest-1.0) として定義されています。
 
 ```powershell
 $msGraph = Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16
