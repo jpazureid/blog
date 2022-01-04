@@ -21,4 +21,3 @@ jobs:
         else
           echo "${username} is Microsoft linked account"
         fi
-diff --git a/.github/workflows/auto-deploy-preview.yml b/.github/workflows/auto-deploy-preview.yml
