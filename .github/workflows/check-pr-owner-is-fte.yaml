@@ -19,5 +19,5 @@ jobs:
           echo "${username} is not Microsoft linked account. username: ${aad_username}"
           exit 1
         else
-          echo "${username} is Microsoft linked account"
+          echo "${username} is Microsoft linked account. username: ${aad_username}"
         fi
