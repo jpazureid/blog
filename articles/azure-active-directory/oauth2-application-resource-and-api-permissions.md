@@ -554,7 +554,7 @@ $msGraph.AppRoles| ?{ $appRoleId.Contains($_.Id) } | Select-Object Value, Id, Di
 ![](./oauth2-application-resource-and-api-permissions/app-oauth-flow-2.png)
 
 
-## Nest Step
+## Next Step
 
 ここまでは、Microsoft Graph API の scope と AppRole について解説をしてきましたが、Microsoft ID プラットフォームでは独自の API を作成し、Azure AD で保護することも可能です。
 
