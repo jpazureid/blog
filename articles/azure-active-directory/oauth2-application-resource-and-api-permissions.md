@@ -440,8 +440,6 @@ API の呼び出しに必要な scope を含むアクセス トークンを取�
 
 つまり、今回も User.Read.All の scope に同意したということなのでしょうか。
 
-![](./oauth2-application-resource-and-api-permissions/app-permissions-3.png)
-
 先ほどと同じように、同意済みの scope を Get-MgOauth2PermissionGrant コマンドで確認してみましょう。
 
 ```powershell
