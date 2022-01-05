@@ -4,9 +4,6 @@ on: [pull_request]
 jobs:
   ok-to-preview-fte:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-
     steps:
     - name: Check PR owner is FTE
       env:
