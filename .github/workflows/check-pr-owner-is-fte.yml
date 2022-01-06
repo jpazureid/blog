@@ -28,4 +28,3 @@ jobs:
         else
           echo "${username} is Microsoft linked account."
         fi
-
