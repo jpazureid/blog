@@ -76,8 +76,7 @@ Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設�
 
 - (B) と (C) の方法は、以下のブログにてご紹介しております。 
 
-  [多要素認証 (MFA) のリセット手順](
-https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/) 
+  [多要素認証 (MFA) のリセット手順](https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/) 
 
 管理者によって、ユーザーの MFA 認証方法がリセットされたら、ユーザーは MFA 認証方法を再登録する必要があります。
 ユーザーは https://aka.ms/mfasetup にアクセスし、新しいデバイスを MFA 認証方法として登録して下さい。手順の詳細は [現在登録されているモバイル デバイスで、MFA 認証ができる場合](https://jpazureid.github.io/blog/azure-active-directory/change-mfa-verification-method/#%E7%8F%BE%E5%9C%A8%E7%99%BB%E9%8C%B2%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB-%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%A7%E3%80%81MFA-%E8%AA%8D%E8%A8%BC%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E5%90%88) と同じです。
