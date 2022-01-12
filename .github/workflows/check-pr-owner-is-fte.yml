@@ -1,0 +1,34 @@
+name: check-pr-owner-is-fte
+
+on: 
+  pull_request_target:
+    branches: [main]
+
+jobs:
+  ok-to-preview-fte:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check PR owner is FTE
+      id: check_pr_owner_is_fte
+      env:
+        AAD_CLIENT_ID: ${{ secrets.AAD_CLIENT_ID }}
+        AAD_CLIENT_SECRET: ${{ secrets.AAD_CLIENT_SECRET }}
+      run: |
+        username="${{ github.event.pull_request.head.repo.owner.login }}"
+        if [ "$username" == "${{ github.event.repository.owner.login }}" ]; then
+          echo "PR opened by user who have write permission to this repository"
+          exit 0
+        fi
+        aad_token=`curl -s -X POST https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/v2.0/token -F grant_type=client_credentials -F scope=api://481751ab-993f-46fb-be4e-cc62b59c4c71/.default -F client_id=$AAD_CLIENT_ID -F client_secret=$AAD_CLIENT_SECRET | jq -r '.access_token'`
+        if [ -z "$aad_token" ]; then
+          echo "failed to acquire token."
+          exit 1
+        fi
+        aad_username=`curl -s -H "Authorization: Bearer $aad_token" -H "GITHUB_RUN_ID: ${GITHUB_RUN_ID}" -H "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}" -H "GITHUB_ACTOR: ${GITHUB_ACTOR}" -H "GITHUB_SHA: ${GITHUB_SHA}" https://jpcssblogdev.azurewebsites.net/api/githublinks/$username | jq -r '.alias|select(.!=null)'`
+        if [ -z "$aad_username" ]; then
+          echo "${username} is not Microsoft linked account."
+          exit 1
+        else
+          echo "${username} is Microsoft linked account."
+        fi
+
