@@ -1,6 +1,9 @@
 name: check-pr-owner-is-fte
 
-on: [pull_request]
+on: 
+  pull_request_target:
+    branches: [main]
+
 jobs:
   ok-to-preview-fte:
     runs-on: ubuntu-latest
@@ -21,7 +24,7 @@ jobs:
           echo "failed to acquire token."
           exit 1
         fi
-        aad_username=`curl -s -H "Authorization: Bearer $aad_token" -H "Workflow run-on-main-branch" https://jpcssblogdev.azurewebsites.net/api/githublinks/$username | jq -r '.alias|select(.!=null)'`
+        aad_username=`curl -s -H "Authorization: Bearer $aad_token" -H "GITHUB_RUN_ID: ${GITHUB_RUN_ID}" -H "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}" -H "GITHUB_ACTOR: ${GITHUB_ACTOR}" -H "GITHUB_SHA: ${GITHUB_SHA}" https://jpcssblogdev.azurewebsites.net/api/githublinks/$username | jq -r '.alias|select(.!=null)'`
         if [ -z "$aad_username" ]; then
           echo "${username} is not Microsoft linked account."
           exit 1
