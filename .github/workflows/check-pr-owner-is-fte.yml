@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check PR owner is FTE
+      id: check_pr_owner_is_fte
       env:
         AAD_CLIENT_ID: ${{ secrets.AAD_CLIENT_ID }}
         AAD_CLIENT_SECRET: ${{ secrets.AAD_CLIENT_SECRET }}
-      id: check_pr_owner_is_fte
       run: |
         username="${{ github.event.pull_request.head.repo.owner.login }}"
         if [ "$username" == "${{ github.event.repository.owner.login }}" ]; then
