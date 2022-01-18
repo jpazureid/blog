@@ -45,15 +45,6 @@ Values of identifierUris property must use a verified domain of the organization
 
 ![該当画面](./aad-changes-impacting-azurecli-azureps/ps.png)
 
-Azure ポータルより Application ID の URI を登録する際も、同様にエラーメッセージが表示されます。
-
-```
-アプリケーション ID の URI アプリケーションのプロパティを更新できませんでした。エラーの詳細: IdentifierUris プロパティの値には、組織またはそのサブドメインの確認済みドメインを使用する必要があります:
-```
-
-![Azure ポータルの
- API の公開](./aad-changes-impacting-azurecli-azureps/portal.png)
-
 ### 解決方法
 
 各種ツールを以下のバージョンにアップグレードください。
@@ -92,6 +83,18 @@ Azure ポータルより Application ID の URI を登録する際も、同様�
 > az ad sp create-for-rbac --name "https://test.<verified-domain>.com"
 > ```
 
+### 補足
+
+サービス プリンシパルの作成の観点では最新モジュールを利用し、アプリケーション ID の URI を登録しないことが推奨される対処策です。
+一方で、登録したアプリを API として公開する際などアプリケーション ID の URI を登録する際には、前述のサポートされる URI のフォーマットを指定する必要があります。
+
+許可されない URI 形式をしてすると以下のエラーメッセージが表示されます。エラーメッセージが表示された場合、入力した値が許可された URI 形式かどうかをご確認ください。
+
+> アプリケーション ID の URI アプリケーションのプロパティを更新できませんでした。エラーの詳細: IdentifierUris プロパティの値には、組織またはそのサブドメインの確認済みドメインを使用する必要があります:
+
+![Azure ポータルの
+ API の公開](./aad-changes-impacting-azurecli-azureps/portal.png)
+  
 ---
 
 以上の内容がご参考になりましたら幸いです。ご不明点等ございましたらサポート チームまでお問い合わせください。
