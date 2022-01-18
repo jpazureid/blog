@@ -18,8 +18,8 @@ tags:
 
 2021 年 10 月 15 日より、Azure AD に登録されるシングルテナントアプリケーションの AppId URI (identifierUris) には、デフォルトのスキーム (api://{appId}) または検証済みドメインのいずれかが要求されるようになります。
 
-- 参考情報 (英語) : [Upcoming changes - October 2021 - AppId Uri in single tenant applications will require use of default scheme or verified domains](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains)
-  ※ 日本語版の公開情報 (ja-jp) では、本変更に関する記述が未記載です (2021/10/20 時点)。英語の原文 (en-us) をご確認いただけますと幸いです。
+- 参考情報: [シングル テナント アプリケーションの AppId URI には、既定のスキームまたは検証済みドメインを使用する必要があります](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/reference-breaking-changes#appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains)
+
 実際にサポートされるアプリケーション ID の URI を、公開情報より抜粋します。
 
 > 以下の例にある API と HTTP スキーマー ベースのアプリケーション ID の URI がサポートされます。`<appid>` などのプレース ホルダーの値を、公開情報に記載の説明を元に置き換えてください。
@@ -45,7 +45,17 @@ Values of identifierUris property must use a verified domain of the organization
 
 ![該当画面](./aad-changes-impacting-azurecli-azureps/ps.png)
 
+Azure ポータルより Application ID の URI を登録する際も、同様にエラーメッセージが表示されます。
+
+```
+アプリケーション ID の URI アプリケーションのプロパティを更新できませんでした。エラーの詳細: IdentifierUris プロパティの値には、組織またはそのサブドメインの確認済みドメインを使用する必要があります:
+```
+
+![Azure ポータルの
+ API の公開](./aad-changes-impacting-azurecli-azureps/portal.png)
+
 ### 解決方法
+
 各種ツールを以下のバージョンにアップグレードください。
 
 - Azure CLI : 2.25.0 以降
@@ -56,9 +66,8 @@ Values of identifierUris property must use a verified domain of the organization
 - Azure CLI: https://github.com/Azure/azure-cli/issues/19892
 - Azure PowerShell: https://github.com/Azure/azure-powershell/issues/16097
 
-
-
 ### 回避策
+
 自動化ツールの新バージョンへのアップグレードが実施いただけない場合は、以下の手順によってエラーを回避し、サービス プリンシパルを作成ください。
 
 1. Azure Active Directory にカスタム ドメインを登録します (未実施の場合)。
