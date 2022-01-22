@@ -279,13 +279,7 @@ AD FS サービスの再起動を要求されるので、「OK」を押して画
 
 ![](./how-to-create-hybridazureadjoin-federated/048.jpg)
 
-再度同じエンドポイントを選択し右クリックより「プロキシに対して有効にする」をクリックします。
-
-![](./how-to-create-hybridazureadjoin-federated/049.jpg)
-
-同じように AD FS サービスの再起動を要求されるので、「OK」を押して画面を閉じます。
-
-![](./how-to-create-hybridazureadjoin-federated/050.jpg)
+※ 上記エンドポイントはイントラネット環境向けにのみ有効化します。プロキシ向けに手動で有効化する必要はありません。
 
 サービス画面より Active Directory フェデレーション サービス (AD FS) を右クリックし、「再起動」をクリックします。
 
