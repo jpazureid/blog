@@ -1,12 +1,12 @@
 ---
-title: External Identities (B2C) が Authenticator アプリに対応するとともにデータ保存場所の新しい価格が発表されました
+title: External Identities (B2C) が Authenticator アプリに対応するとともにデータ保存場所の価格更新が発表されました
 date: 2022-01-23 08:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# External Identities (B2C) が Authenticator アプリに対応するとともにデータ保存場所の新しい価格が発表されました
+# External Identities (B2C) が Authenticator アプリに対応するとともにデータ保存場所の価格更新が発表されました
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
