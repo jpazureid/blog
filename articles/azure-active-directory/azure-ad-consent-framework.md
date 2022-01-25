@@ -142,7 +142,7 @@ Microsoft のサービスを始め、クラウド サービスが普及した現
 
 ![推奨の同意設定](./azure-ad-consent-framework/user-consennt-microsoft-user-default-low.png)
 
-この推奨設定では、一般ユーザーは[発行者確認](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/publisher-verification-overview)が行われたアプリ、または自テナントに登録されたアプリのみに同意が可能となります。それに加え管理者が事前に `低影響` として分類したアクセス許可にのみユーザーが同意可能となります。例えば一般的なアプリのサインインに必要な `openid`, `profile`, `email`, `offline_access` は許可し `Mail.Read` のように組織のデータにアクセスする権限は禁止するといった設定が可能です。
+この推奨設定では、一般ユーザーは[発行者確認](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/publisher-verification-overview)が行われたアプリ、または自テナントに登録されたアプリのみに同意が可能となります。それに加え管理者が事前に [低影響 として分類したアクセス許可](https://docs.microsoft.com/ja-jp/azure/active-directory/manage-apps/configure-permission-classifications?tabs=azure-portal) にのみユーザーが同意可能となります。例えば一般的なアプリのサインインに必要な `openid`, `profile`, `email`, `offline_access` は許可し `Mail.Read` のように組織のデータにアクセスする権限は禁止するといった設定が可能です。
 
 推奨設定では発行者確認が行われていないサード パーティ製アプリや、発行者確認は行われているものの低影響として分類された権限以上のアクセス許可を求めるアプリに対しては、ユーザー同意が制限されます。
 
