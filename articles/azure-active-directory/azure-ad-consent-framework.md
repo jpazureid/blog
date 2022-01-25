@@ -128,17 +128,25 @@ Microsoft のサービスを始め、クラウド サービスが普及した現
 ### ①テナントでユーザー同意が制限されている場合
 
 テナントでユーザー同意が制限されている場合、一般ユーザーによるアプリの同意を行うことは出来ません。この場合、アプリが管理者による同意が必要のないユーザー委任の権限のみを要求している場合でも、管理者による同意が必要となります。
-ユーザーの同意が制限されている環境かどうかは、Azure ポータルの [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) より確認できます。
+ユーザーの同意が制限されている環境かどうかは、Azure ポータルの [エンタープライズ アプリケーションの同意とアクセス許可](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConsentPoliciesMenuBlade/UserSettings) より確認できます。
 
-![ユーザー同意が有効かどうか](./azure-ad-consent-framework/user-consent-enable.png)
+![ユーザー同意が有効かどうか](./azure-ad-consent-framework/user-consent-disabled.png)
 
-[ユーザーは、アプリが自身の代わりに会社のデータにアクセスすることを許可できます] の設定が [はい] の場合、ユーザー同意が可能です。設定が [いいえ] の場合、ユーザーによる同意が制限されているため、アプリへの権限を付与するためには管理者の同意が必要です。
+[アプリケーションに対するユーザーの同意] の設定が [アプリに対するユーザーの同意を許可する] の場合、ユーザー同意が可能です。設定が [ユーザーの同意を許可しない] の場合、ユーザーによる同意が制限されているため、アプリへの権限を付与するためには管理者の同意が必要です。
 
-上記設定は、以下の Microsoft 365 管理ポータルの、[統合アプリの設定](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/Settings/Services/:/Settings/L1/IntegratedApps) と同等です。
+上記 [アプリに対するユーザーの同意を許可する] と [ユーザーの同意を許可しない] の設定は、以下の Microsoft 365 管理ポータルの、[統合アプリの設定](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/Settings/Services/:/Settings/L1/IntegratedApps) のチェックの有無と同等です。
 
 ![Microsoft 365 の統合アプリの設定](./azure-ad-consent-framework/m365-integration-app.png)
 
-これらの設定が、[いいえ] または、チェックがオフの場合、一般ユーザーはアプリを利用するための同意画面を表示できません。アプリを利用するためには、後述の手順で[管理者による同意を行う](#5-管理者による同意の付与手順)ことをご検討ください。
+一方、同意とアクセス許可で設定可能な [確認済みの発行元からのアプリに対して選択されたアクセス許可を与えることへのユーザーの同意を許可する (推奨)] はこれらの中間の選択肢です。
+
+![推奨の同意設定](./azure-ad-consent-framework/user-consennt-microsoft-user-default-low.png)
+
+この推奨設定では、一般ユーザーは[発行者確認](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/publisher-verification-overview)が行われたアプリ、または自テナントに登録されたアプリのみに同意が可能となります。それに加え管理者が事前に [低影響 として分類したアクセス許可](https://docs.microsoft.com/ja-jp/azure/active-directory/manage-apps/configure-permission-classifications?tabs=azure-portal) にのみユーザーが同意可能となります。例えば一般的なアプリのサインインに必要な `openid`, `profile`, `email`, `offline_access` は許可し `Mail.Read` のように組織のデータにアクセスする権限は禁止するといった設定が可能です。
+
+推奨設定では発行者確認が行われていないサード パーティ製アプリや、発行者確認は行われているものの低影響として分類された権限以上のアクセス許可を求めるアプリに対しては、ユーザー同意が制限されます。
+
+[同意とアクセス許可] の設定によりユーザー同意が制限された場合、アプリを利用するためには、後述の手順で[管理者による同意を行う](#5-管理者による同意の付与手順)ことをご検討ください。
 
 ### ②アプリが管理者の同意が必要な権限を要求している場合
 
