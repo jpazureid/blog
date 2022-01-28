@@ -39,6 +39,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           azure-storage-connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           preview-base-url: "https://jpazureidblogstorage.z5.web.core.windows.net/"
+          branch-name: ${{ github.event.pull_request.head.label }}
+          pr-url: ${{ github.event.pull_request.html_url }}
+          repo-owner: ${{ github.event.repository.owner.login }}
+          repo-name: ${{ github.event.repository.name }}
 
   delete-preview:
     runs-on: ubuntu-latest
