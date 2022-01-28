@@ -16,6 +16,30 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
+  deploy-if-pr-owner-is-linked-account:
+    runs-on: ubuntu-latest
+    if:
+      github.event_name == 'pull_request_target' &&
+      (github.event.action == 'opened' || github.event.action == 'reopened')
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: check linked account
+        id: check_linked_account
+        uses: cssjpn/blog-gh-actions/check-linked-account@6a4d9070f51258dc1da9dd616fd521bd9587f5dc
+        with:
+          token: ${{ secrets.JPCSSBLOG_DEV_TOKEN }}
+          allowExternalUser: 'allow'
+      
+      - name: Deploy preview site
+        if: steps.check_linked_account.outputs.isLinked == 'true'
+        uses: cssjpn/blog-gh-actions/deploy-preview@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          azure-storage-connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          preview-base-url: "https://jpazureidblogstorage.z5.web.core.windows.net/"
+
   delete-preview:
     runs-on: ubuntu-latest
     if:
