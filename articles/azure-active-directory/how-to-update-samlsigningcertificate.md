@@ -1,6 +1,6 @@
 ---
 title: Azure AD における SAML 署名証明書を更新する
-date: 2021-1-14 10:00
+date: 2022-2-2 17:00
 tags:
   - Azure AD
   - Application
@@ -141,7 +141,7 @@ SAML 証明書の有効期限が切れる 60 日前、30 日前、7 日前に、
 該当のメールアドレスを登録して “保存” をクリック  
 ![](./how-to-update-samlsigningcertificate/CertificateDetail-Notification.png)
 
-送信されるメールのサンプルはこちらになります。 
+送信されるメールのサンプルはこちらになります。  
 ![](./how-to-update-samlsigningcertificate/NotificationSample.png)
 
 - [証明書の有効期限のメール通知アドレスの追加 | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
