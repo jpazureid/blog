@@ -113,7 +113,7 @@ Azure AD のパスワード有効期限は、Microsoft 365 管理センターも
 
 **Q. パスワード ハッシュ同期の環境で、オンプレミス側の有効期限が切れたときに、 Azure AD 側に引き続き古いパスワードでアクセスできてしまいます。同期ユーザーのパスワードの有効期限を無期限から変更することはできますか。**   
 
-A. はい、テナント側のEnforceCloudPasswordPolicyForPasswordSyncedUsers オプションを適用することで可能です。  
+A. はい、テナント側のEnforceCloudPasswordPolicyForPasswordSyncedUsers オプションを適用することで可能です。 Azure AD 側からパスワードを変更するためには、パスワード ライトバックを有効にする必要があります。
 以下のコマンドを実行すると、Azure AD 側のユーザーにもパスワード有効期限を設定することができます。
 
 実行コマンド：
@@ -133,7 +133,7 @@ Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 **Q.  [次回ログオン時にパスワードの変更が必要] をオンプレミス側で設定すると、Azue AD 側にサインインした時に "パスワードが間違っている" 旨のエラーが表示されてしまいます。Azure AD 側で一時パスワードから新しいものに変更させることはできますか?**    
 
-A. はい、テナント側の ForcePasswordChangeOnLogOn オプションを有効化することで可能です。
+A. はい、テナント側の ForcePasswordChangeOnLogOn オプションを有効化することで可能です。 Azure AD 側からパスワードを変更するために、パスワード ライトバックの機能を有効にしてください。
 
 実行コマンド：
 ```{PowerShell}
