@@ -68,7 +68,7 @@ AD FS 2019 以降の Windows Server OS より、AD FS は所定のエンドポ�
 Get-AdfsSyncProperties
 ```
 
-画面ショット例
+画面ショット例  
 ![](./adfs-wap-federation-renew/adfs-wap-federation-renew-005.jpg)
 
 3. 以下の PowerShell コマンドレットを実行し、「PrimaryComputerName」をプライマリ AD FS サーバーの FQDN に変更します。
@@ -86,7 +86,7 @@ Set-AdfsSyncProperties -Role SecondaryComputer -PrimaryComputerName ADFS-008.shy
 Get-AdfsSyncProperties
 ```
 
-画面ショット例
+画面ショット例  
 ![](./adfs-wap-federation-renew/adfs-wap-federation-renew-006.jpg)
 
 WAP サーバーを新規に構成ができない、もしくは信頼関係が切れている場合 (WAP 経由の認証ができない場合) は、上記の作業実施後に WAP を再構築します。また、信頼関係が切れていない場合 (WAP 経由の認証ができている場合) は、作業実施後に WAP サーバー上の AD FS サービス (Active Directory フェデレーション サービス) を再起動することで正常に WAP と AD FS 間の信頼環境を更新できるようになります。
