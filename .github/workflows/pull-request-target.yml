@@ -27,7 +27,7 @@ jobs:
         # skip checking if pr is created by repository owner
         if: github.event.pull_request.head.repo.owner.login != github.event.repository.owner.login
         id: check_linked_account
-        uses: cssjpn/blog-gh-actions/check-linked-account@6a4d9070f51258dc1da9dd616fd521bd9587f5dc
+        uses: cssjpn/blog-gh-actions/check-linked-account@v1
         with:
           token: ${{ secrets.JPCSSBLOG_DEV_TOKEN }}
           allowExternalUser: 'allow'
