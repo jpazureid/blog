@@ -6,6 +6,7 @@ tags:
     - US Identity Blog
 ---
 
+
 こんにちは、 Azure Identity サポート チームの小出です。
 
 本記事は、 2022 年 1 月 25 日に米国の ITOps Talk Blog で公開された [Deep dive: How Azure AD Kerberos works](https://techcommunity.microsoft.com/t5/itops-talk-blog/deep-dive-how-azure-ad-kerberos-works/ba-p/3070889) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
