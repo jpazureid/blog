@@ -1,11 +1,10 @@
 ---
 title: Deep dive - Azure AD Kerberos の仕組み
-date: 2022-2-18 09:00
+date: 2022-2-24 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
-
 
 こんにちは、 Azure Identity サポート チームの小出です。
 
@@ -15,9 +14,9 @@ tags:
 
 # Deep dive: Azure AD Kerberos の仕組み
 
-Active Directory (AD DS) と Azure Active Directory (Azure AD) の違いを調べたことがあれば、Active Directory は  Kerberos 認証プロトコルをサポートしている一方、 Azure Active Directory ではサポートしていないことに気がつくはずです。
+Active Directory (AD DS) と Azure Active Directory (Azure AD) の違いを調べたことがあれば、Active Directory は Kerberos 認証プロトコルをサポートしている一方、Azure Active Directory ではサポートしていないことに気がつくはずです。
  
-Kerberos は、Active Directory ドメイン コントローラーでアカウントを認証するために使用されていました。このおかげで、SMB プロトコルにて Windows Server 上のファイル共有にアクセスすることができます。これはほんの一例で、あなたの組織が昔作成したものも含め、多くのアプリケーションが Kerberos 認証に依存しています。ローカル Windows へのログオン プロセスがどのように動作しているかや、いつ、どのように Kerberos が動作するかなどの詳細については、[Deep dive: Logging on to Windows](https://techcommunity.microsoft.com/t5/itops-talk-blog/deep-dive-logging-on-to-windows/ba-p/2420705?WT.mc_id=modinfra-54539-socuff) をご覧ください。
+Kerberos は、Active Directory ドメイン コントローラーでアカウントを認証するために使用されています。このおかげで、SMB プロトコルにて Windows Server 上のファイル共有にアクセスすることができます。これはほんの一例で、あなたの組織が昔作成したものも含め、多くのアプリケーションが Kerberos 認証に依存しています。ローカル Windows へのログオン プロセスがどのように動作しているかや、いつ、どのように Kerberos が動作するかなどの詳細については、[Deep dive: Logging on to Windows](https://techcommunity.microsoft.com/t5/itops-talk-blog/deep-dive-logging-on-to-windows/ba-p/2420705?WT.mc_id=modinfra-54539-socuff) をご覧ください。
  
 Kerberos 認証や、古いアプリケーション用に Windows Server を Azure 上でホストする場合、Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインを作成することになります。このディレクトリは、Azure AD からアカウントを同期しますが、同時に Azure AD 上のアカウントはオンプレミスの Active Directory ドメインから同期されているものの可能性もあります。これにより、Azure 上に Active Directory ドメイン コントローラーを導入することなく、Azure 仮想マシンをドメイン参加させ、グループ ポリシーを適用できるようになります。Azure AD DS にはいくつかの制限がありますが、これが Azure で Kerberos をサポートするための標準的な方法になります。
 
@@ -27,7 +26,7 @@ Kerberos 認証や、古いアプリケーション用に Windows Server を Azu
  
 アプリケーションを刷新するために他の選択肢がない場合や、そのための時間を確保できない場合にのみ、この方法を取ることをお勧めします。[Why We Built Azure AD Kerberos](https://syfuhs.net/why-we-built-azure-ad-kerberos) の中で、Steve Syfuhs 氏は、「Active Directory で使われている Kerberos はパスワードに依存しており、FIDO や多要素認証、条件付きアクセスのような機能をサポートしていない」と述べています。オンプレミスでこれらの機能の一部をサポートするソリューションもありますが、Azure AD のチェックボックスを選択して構成するのに比べると複雑な方法になります。
  
-## 具体的な使用例として、Azure Virtual Desktop 用の FSLogix を使用したプロファイル コンテナについて見てみる
+## 具体的な使用例として Azure Virtual Desktop 用の FSLogix を使用したプロファイル コンテナについて見てみる
  
 仮想デスクトップやリモート デスクトップの世界では、複数の人が 1 つのサーバーにログオンして、自分だけの一時的なリモート セッションを利用できるサービスが存在します。既定のデスクトップ設定やアイコンを設定でき、PC 上で実行しているのと同じようにアプリケーションを実行できます。これは、すべてのコンピューターのローカルにインストールして実行させたくないような、ブラウザー以外の業務用アプリケーションへのアクセスを集中管理するのに非常に便利なものです。マイクロソフトは、1996 年に Windows NT 4.0 Terminal Server Edition で "リモート デスクトップ サービス" をリリースして以来、このような仮想化を提供してきました。
 
@@ -35,7 +34,7 @@ Kerberos 認証や、古いアプリケーション用に Windows Server を Azu
 
 FSLogix は、特に非永続的な仮想環境 (仮想デスクトップ) のユーザー プロファイルをネットワーク共有の場所に保持し、同時にプロファイルがネットワーク共有にあることをアプリから見てわからなくするように設計されています。このように透過的なプロファイル構成を実現することは、ユーザー プロファイルをローカルに保存する必要がある一部のアプリケーションにとって重要です。
 
-つまり、仮想デスクトップ環境が Azure Virtual Desktop で、ユーザー プロファイルをファイル共有に置きたい場合、Azure Files のようなものを使えばよいということになります。Azure Files は SMB ファイル共有プロトコルをサポートしているので、Windows PC から Azure Files に接続することができます。少し設定するだけで、Windows クライアントが Active Directory で認証したときに受け取ったチケットを Azure Files が解読し、受け入れてくれるからです。
+つまり、仮想デスクトップ環境が Azure Virtual Desktop で、ユーザー プロファイルをファイル共有に置きたい場合、Azure Files のようなものを使えばよいということになります。Azure Files は SMB ファイル共有プロトコルをサポートしているので、Windows PC から Azure Files に接続することができます。少し設定するだけで、Windows クライアントが Active Directory で認証したときに受け取ったチケットを Azure Files が解読し、受けつけてくれるからです。
 
 Azure Virtual Desktop がドメイン参加もしくは Azure AD 参加している場合、VPN 経由で Active Directory ドメイン コントローラーにアクセスできるよう構成されているか、Azure の仮想マシンとして動作している Active Directory ドメイン コントローラに接続できるかしない限り、Azure Virtual Desktop はユーザーを認証することができません。こういった様々な基盤への依存や管理を減らそうとしているのに、反対に依存関係が増えることになってしまいます。これを解決するために、ID チームは FIDO とのハイブリッド認証に使用される Ticket-Granting Ticket (TGT) について着目しました。
  
@@ -56,7 +55,7 @@ Azure Virtual Desktop がドメイン参加もしくは Azure AD 参加してい
 
 Kerberos は PRT を使用せず、TGT (Ticket Granting Tickets - 特に krbtgt) を使用します。  
 
-Microsoft は、[FIDO セキュリティ キーの認証プロセスに、クラウドが発行した特別な Kerberos TGT](https://techcommunity.microsoft.com/t5/itops-talk-blog/deep-dive-windows-hybrid-join-single-sign-on-to-azure-active/ba-p/2602107) を使用する機能を追加しました。しかし、この機能では以前としてオンプレミスのサーバーを参照して、クラウドから発行された kerberos TGT を完全なオンプレミス TGT と交換する必要があります。必要とするすべてのコンポーネントが用意されているわけではないため、チームはクラウド TGT を開発したというわけです。
+Microsoft は、[FIDO セキュリティ キーの認証プロセスに、クラウドが発行した特別な Kerberos TGT](https://techcommunity.microsoft.com/t5/itops-talk-blog/deep-dive-windows-hybrid-join-single-sign-on-to-azure-active/ba-p/2602107) を使用する機能を追加しました。しかし、この機能では依然としてオンプレミスのサーバーを参照して、クラウドから発行された kerberos TGT を完全なオンプレミス TGT と交換する必要があります。必要とするすべてのコンポーネントが用意されているわけではないため、チームはクラウド TGT を開発したというわけです。
  
 ## Azure AD の Kerberos 認証プロセス
 
@@ -74,7 +73,7 @@ Azure AD 認証プロセスで、Windows にマッピング情報を与えてい
 
 これにより、チケット要求に対して、Kerberos は cifs/mystuff.file.core.windows.net を参照し、\*.windows.net は KERBEROS.MICROSOFTONLINE.COM にマッピングされ、その realm から https://login.microsoftonline.com/tenantid/kerberos にマッピングする KDC Proxy が出来上がることになります。
   
-[KDC Proxy protocol](https://docs.microsoft.com/ja-jp/openspecs/windows_protocols/ms-kkdcp/5bcebb8d-b747-4ee5-9453-428aec1c5c38?WT.mc_id=modinfra-54539-socuff) は、インターネット上で Kerberos をやり取りする仕組みです。  そして、Azure AD は Ticket Granting Service-Request (TGS-REQ) を受け取ることになります。  
+[KDC Proxy protocol](https://docs.microsoft.com/ja-jp/openspecs/windows_protocols/ms-kkdcp/5bcebb8d-b747-4ee5-9453-428aec1c5c38?WT.mc_id=modinfra-54539-socuff) は、インターネット上で Kerberos をやり取りする仕組みです。そして、Azure AD は Ticket Granting Service-Request (TGS-REQ) を受け取ることになります。  
 
 ![Ticket Granting Service - 要求](./how-azuread-kerberos-works/how-azuread-kerberos-works5.png)  
 
@@ -85,7 +84,7 @@ Azure AD 認証プロセスで、Windows にマッピング情報を与えてい
 3. 要求されたサービス プリンシパル名 (Azure AD にアプリケーションとして登録された Azure Files リソース) を検索します。  
 4. チケットを生成します。  
 5. チケットを、そのサービス プリンシパル名に格納されている Azure Files ストレージ キーで暗号化します。  
-6. そして、それをすべて TGS-REP にまとめて返します。 
+6. そしてそれをすべて TGS-REP にまとめて返します。 
 
 ![TGT 要求の送信と受信を行う際の Kerberos の動作](./how-azuread-kerberos-works/how-azuread-kerberos-works6.png)  
 
@@ -93,7 +92,7 @@ Kerberos スタックが TGT 応答 (TGS-REP) を取り戻すと、Kerberos ス�
 
 1. チケットを開封します。
 2. アプリケーション リクエスト (AP-REQ) を生成し、SMB にそれを渡します。  
-3. そして、SMB プロトコルは AP-REQ をヘッダーに詰め込み、SMB Hello を Azure Files に送信します。  
+3. SMB プロトコルは AP-REQ をヘッダーに詰め込み、SMB Hello を Azure Files に送信します。  
  
 ![AP-REQ と暗号化されたチケットを受信する際の SMB の動作](./how-azuread-kerberos-works/how-azuread-kerberos-works7.png)  
 
@@ -103,7 +102,7 @@ Azure Files は hello を受け取り、チケットを復号化 (ストレー�
 
 SMB、Azure Files、AVD からすると、Kerberos チケットが実際に Active Directory を参照していないということは全くわかりません。
 
-注: このサービスの現在のパブリック プレビューでは、オンプレミスの Active Directory にユーザーが存在し、Azure AD connectを使用して Azure AD に同期されていることが必要です。Azure AD で個別に作成されたクラウド ユーザーの利用は、まだサポートされていませんが、今後サポートされる予定です。
+注: このサービスの現在のパブリック プレビューでは、オンプレミスの Active Directory にユーザーが存在し、Azure AD Connect を使用して Azure AD に同期されていることが必要です。Azure AD 上でのみ作成されたクラウド ユーザーの利用はまだサポートされていませんが、今後サポートされる予定です。
 
 ## Azure Files for FSLogix と Azure Virtual Desktop を導入する方法
 
