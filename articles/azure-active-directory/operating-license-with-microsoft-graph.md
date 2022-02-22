@@ -382,7 +382,7 @@ At line:1 char:1
 その後、ライセンスの割り当てなどのコマンドを再実行ください。
 
 ```bash
-Update-MgUser <対象ユーザーの UPN> -UsageLocation "JP"
+Update-MgUser -UserId <対象ユーザーの UPN> -UsageLocation "JP"
 ```
 
 また、UsageLocation 属性が設定されているかどうかは、[Azure Active Directory] > [すべてのユーザー] > [<ライセンス付与対象のユーザー>] より、プロファイルの「利用場所」項目から確認可能です。
