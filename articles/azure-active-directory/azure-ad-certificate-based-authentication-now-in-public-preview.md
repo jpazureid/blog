@@ -1,6 +1,6 @@
 ---
 title: Azure AD 証明書ベース認証 パブリック プレビューのご案内
-date: 2022-02-21 09:00
+date: 2022-02-23 06:00
 tags:
   - Azure AD
   - US Identity Blog
