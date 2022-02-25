@@ -1,6 +1,6 @@
 ---
 title: Deep dive - Azure AD Kerberos の仕組み
-date: 2022-2-24 09:00
+date: 2022-2-26 00:00
 tags:
     - Azure AD
     - US Identity Blog
