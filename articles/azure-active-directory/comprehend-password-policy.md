@@ -38,7 +38,7 @@ D. 補足情報 (FAQ)
 
 パスワード ポリシーの詳細に入る前に、まずはパスワード ポリシー早見表をユーザー種類別に案内します。
 
-![](./comprehend-password-policy/comprehend-password-policy1a.png)
+![](./comprehend-password-policy/comprehend-password-policy1b.png)
 
 ## B. パスワード変更およびリセット時に評価されるポリシー (文字数と複雑性)
 
