@@ -1,6 +1,6 @@
 ---
-title: CloudKnox のアクセス許可管理機能がパブリック プレビューに
-date: 2022-02-27 09:00 
+title: CloudKnox Permissions Management がパブリック プレビューに
+date: 2022-02-27 03:00 
 tags:
     - Azure AD
     - US Identity Blog
