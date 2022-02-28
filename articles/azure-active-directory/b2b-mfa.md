@@ -1,6 +1,6 @@
 ---
 title: Azure AD B2B の多要素認証について
-date: 2022-02-18 10:00
+date: 2022-02-28 10:00
 tags:
   - Azure AD
   - Azure AD B2B
