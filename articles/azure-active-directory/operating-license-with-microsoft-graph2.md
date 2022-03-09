@@ -1,12 +1,12 @@
 ---
-title: Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介
-date: 2022-03-11 9:00
+title: Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 (一括設定編)
+date: 2022-03-10 9:00
 tags:
   - Azure AD
   - Microsoft Graph
 ---
 
-# Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 ~ 一括設定編 ~ 
+# Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 (一括設定編)
 
 こんにちは、Azure Identity サポート チームの中井です。
 
