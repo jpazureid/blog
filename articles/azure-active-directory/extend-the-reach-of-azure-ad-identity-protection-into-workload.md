@@ -1,6 +1,6 @@
 ---
 title: Azure AD Identity Protection をワークロード ID へも拡張
-date: 2022-03-14 09:00
+date: 2022-03-12 09:00
 tags:
   - Azure AD
   - US Identity Blog
@@ -16,7 +16,7 @@ tags:
 
 本日は、[ワークロード ID 向け Azure AD Identity Protection のパブリック プレビュー](https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk) をご紹介できることを嬉しく思います。弊社では、特に現在の攻撃者の振る舞いを考慮し、ユーザー アカウントの保護から得たすべての知見を [ワークロード ID](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/workload-identities-overview) に適用すべく、お客様とともに取り組んできました。ワークロード ID 用に開発された異常検知機能により、ユーザー用の検知機能と併せ、お客様の資産全体を保護可能です。
 
-企業のクラウド コンピューティングへの移行に伴い、企業はクラウド リソースにアクセスするソフトウェア ワークロード (アプリケーション、サービス、スクリプトなど) を展開しています。これらのワークロードでは、Azure AD の [ワークロード ID](https://www.microsoft.com/en-us/security/business/identity-access-management/workload-identity-management)（アプリケーション、マネージド ID、およびサービス プリンシパル）利用されます。
+企業のクラウド コンピューティングへの移行に伴い、企業はクラウド リソースにアクセスするソフトウェア ワークロード (アプリケーション、サービス、スクリプトなど) を展開しています。これらのワークロードでは、Azure AD の [ワークロード ID](https://www.microsoft.com/en-us/security/business/identity-access-management/workload-identity-management)（アプリケーション、マネージド ID、およびサービス プリンシパル）が利用されます。
 
 当社の社内調査によると、通常、組織にはユーザーの **5 倍以上** のソフトウェア ワークロードが存在すると言われています。ワークロード ID が侵害されると、それらは攻撃者が攻撃先をさらに横展開して広げていく足がかりとなります。このような攻撃は増加の一途をたどっており、お客様においても喫緊でこれら ID のセキュリティに、人間のユーザーのセキュリティと同じように目を向けつつある状況です。
 
@@ -24,7 +24,7 @@ tags:
 
 ## 侵害されたワークロード ID の検出と対応
 
-組織は貴重なリソースとデータを保護するために、侵害のリスクを減らす機能を必要としています。Azure AD Identity Protection ではすでに、認証情報が漏洩したユーザーやリスクの高いセッションを検出することでお客様を保護しています。今回の発表では、この保護をワークロード ID に拡張し、疑わしいログイン パターンやディレクトリの変更を含むアプリケーションの異常な動作のレポート機能を提供することで、より迅速に攻撃を検出して修正できるように支援します。
+組織は貴重なリソースとデータを保護するために、侵害のリスクを減らす機能を必要としています。Azure AD Identity Protection ではすでに、認証情報が漏洩したユーザーやリスクの高いセッションを検出することでお客様を保護しています。今回の発表では、この保護をワークロード ID に拡張し、疑わしいログイン パターンやディレクトリの変更を含む、アプリケーションの異常な動作のレポート機能を提供することで、より迅速に攻撃を検出して修正できるように支援します。
 
 ![危険なワークロード ID レポート](./extend-the-reach-of-azure-ad-identity-protection-into-workload/Image01.png)
 
@@ -40,4 +40,4 @@ tags:
 
 ![危険なサービス プリンシパルとサービス プリンシパル イベントのエクスポート](./extend-the-reach-of-azure-ad-identity-protection-into-workload/Image03.png)
 
-弊社では、ワークロード ID を含むすべての ID の保護に取り組んでおり、この分野のさらなる新機能を近々お届けする予定です。わたしたちは、いつもながら、皆様の貴重なフィードバックをお待ちしています。ワークロード ID 向けに関する詳細は、[アイデンティティ保護に関するドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk) をご覧ください。
+弊社では、ワークロード ID を含むすべての ID の保護に取り組んでおり、この分野のさらなる新機能を近々お届けする予定です。わたしたちは、いつもながら、皆様の貴重なフィードバックをお待ちしています。ワークロード ID に関する詳細は、[ID 保護に関するドキュメント](https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk) をご覧ください。
