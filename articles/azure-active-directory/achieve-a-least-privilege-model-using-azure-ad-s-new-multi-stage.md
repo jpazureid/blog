@@ -1,6 +1,6 @@
 ---
 title: Azure AD の新しい多段階アクセス レビューによる最小権限モデルの実現
-date: 2022-03-14 09:00
+date: 2022-03-1 09:00
 tags:
   - Azure AD
   - US Identity Blog
