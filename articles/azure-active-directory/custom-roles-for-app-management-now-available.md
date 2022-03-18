@@ -1,6 +1,6 @@
 ---
 title: Azure AD RBAC でアプリ管理用のカスタム ロールが利用可能になりました
-date: 2022-3-22 09:00
+date: 2022-3-19 09:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -12,7 +12,7 @@ tags:
 
 ---
 
-# Azure AD RBACで、アプリ管理用のカスタムロールが利用可能になりました
+# Azure AD RBACでアプリ管理用のカスタム ロールが利用可能になりました
 
 皆さん、こんにちは。
   
@@ -46,7 +46,6 @@ Alice がこのシナリオのために新しいカスタム ロールを作成�
 
 ![](./custom-roles-for-app-management-now-available/custom-roles-for-app-management-now-available2.png)  
 
-
 3. ロールにアクセス許可を割り当てます。**servicePrincipal** と入力して検索し、 **microsoft.directory/servicePrincipals/appRoleAssignedTo/update** 権限を選択します。  
 
 ![](./custom-roles-for-app-management-now-available/custom-roles-for-app-management-now-available3.png)  
@@ -57,7 +56,7 @@ Alice がこのシナリオのために新しいカスタム ロールを作成�
 
 ### カスタム ロールを割り当てる
 
-組み込みロールと同様に、カスタム ロールもディレクトリ レベルで割り当てて、すべてのエンタープライズ アプリケーションに対するアクセスを許可することができます。さらに、この例で示すように、1 つのアプリケーションに対してのみ、カスタム ロールを割り当てることもできます。これにより、2 つ目のカスタム ロールを作成することなく、単一のアプリケーションのユーザとグループの割り当てを管理する権限をユーザーに与えることができます。
+組み込みロールと同様に、カスタム ロールもディレクトリ レベルで割り当てて、すべてのエンタープライズ アプリケーションに対するアクセスを許可することができます。さらに、上の例で示すように、1 つのアプリケーションに対してのみ、カスタム ロールを割り当てることもできます。これにより、2 つ目のカスタム ロールを作成することなく、単一のアプリケーションのユーザとグループの割り当てを管理する権限をユーザーに与えることができます。
 
 1. **エンタープライズ アプリケーション** タブを選択し、ユーザーとグループの割り当てを管理するためのアクセス権を与えたいアプリケーションを選択します。
 
@@ -84,6 +83,6 @@ Alice がこのシナリオのために新しいカスタム ロールを作成�
 
 いつもどおり、皆様のご意見、ご感想、ご提案をお聞かせください。[Azure AD 管理者ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) で共有するか、以下にコメントを残してください。ご連絡をお待ちしております。
 
-Alex Simons (@Alex_A_Simons)  
+Alex Simons ([@Alex_A_Simons](https://twitter.com/Alex_A_Simons))  
 Corporate VP of Program Management  
 Microsoft Identity Division
