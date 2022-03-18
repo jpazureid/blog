@@ -1,6 +1,6 @@
 ---
 title: Azure AD RBAC でアプリ管理用のカスタム ロールが利用可能になりました
-date: 2022-3-15 09:00
+date: 2022-3-22 09:00
 tags:
     - Azure AD
     - US Identity Blog
