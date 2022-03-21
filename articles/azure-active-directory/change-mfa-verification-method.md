@@ -23,33 +23,31 @@ tags:
 - 現在登録されているモバイル デバイスで、MFA 認証ができない場合 (モバイル デバイスの紛失、故障など)
 
 ## 現在登録されているモバイル デバイスで、MFA 認証ができる場合
-この場合、MFA 認証方法の変更 / 追加は、ユーザー自身の操作のみで行うことができます。ユーザーには以下の方法で、MFA 認証方法の変更 / 追加を行ってもらってください。
+この場合、MFA 認証方法の変更・追加は、ユーザー自身の操作のみで行うことができます。ユーザーには以下の方法で、MFA 認証方法の変更 / 追加を行ってもらってください。
 
-### MFA 認証方法の変更 / 追加手順
-ユーザーに、任意のデバイス (※) で https://aka.ms/mfasetup にアクセスしてもらいます。
+### MFA 認証方法の変更・追加手順
+ユーザーは、任意のデバイス (PC、モバイル、タブレット、etc) で https://aka.ms/mfasetup にアクセスします。
 
-(※作業の途中で、新しいモバイル デバイスのカメラで読みこむための QR コードが表示されます。PC やタブレットなど、新しいモバイル デバイス以外の端末にしましょう)
-
-サインインと MFA が要求されます。それぞれ認証を行いましょう。
+サインインと MFA が要求されるので、それぞれ認証を行いましょう。
 
 この先は、2 パターンに分かれます。
 #### パターン 1 : 以下の画面が出てきた場合 (URL : https://mysignins.microsoft.com/security-info)
 
 ![](./change-mfa-verification-method/figure1.png)
 
-[+ 方法の追加] を選択してください。画面の表示に従って、新しいモバイル デバイスを、MFA 認証方法として登録しましょう。
+[+ 方法の追加] を選択してください。画面の指示に従って、新しいモバイル デバイスを MFA 認証方法として登録しましょう。
 
 #### パターン 2 : 以下の画面が出てきた場合 (URL : https://account.activedirectory.windowsazure.com/proofup.aspx)
 
 ![](./change-mfa-verification-method/figure2.png)
 
-SMS もしくは 音声通話認証の場合 : [認証用電話] の番号を変更し、保存してください。
-Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設定] を選択し、画面の指示に従ってください。
+- SMS もしくは 音声通話認証の場合 : [認証用電話] の番号を変更し、保存してください。
+- Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設定] を選択し、画面の指示に従ってください。
 
-いずれの画面も、登録済みの MFA 認証方法を一覧で確認できます。
-もし、「既存のデバイスでは、もう MFA 認証を行わない！」と決まっている場合、一覧から削除してしまいましょう。
+パターン 1・パターン 2 のいずれの画面も、登録済みの MFA 認証方法を一覧で確認できます。
+新しい MFA 登録を完了したあと、「既存のデバイスでは、もう MFA 認証を行わない！」と決まっている場合は、一覧から削除してしまいましょう。
 
-※ 複数端末を MFA 認証方法として登録する場合 : 認証方法としては、SMS / 電話は 1 つの電話番号のみ、Microsoft Authenticator は複数の端末が登録可能です。複数モバイル デバイスによる MFA 認証を行いたい場合は、Microsoft Authenticator をご利用ください。
+※ 複数端末を MFA 認証方法として登録する場合 : SMS / 電話は 1 つの電話番号のみ、Microsoft Authenticator は複数の端末が登録可能です。複数モバイル デバイスによる MFA 認証を行いたい場合は、Microsoft Authenticator をご利用ください。
 
 ## 現在登録されているモバイル デバイスで、MFA 認証ができない場合
 この場合、以下のいずれかの方法によって、管理者がユーザーの MFA 認証方法をリセット / 変更ください。
@@ -62,27 +60,25 @@ Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設�
 管理者によって現在の MFA 認証方法をリセットした上で、ユーザーが再登録を行う方法です。 <br>
 現在の MFA 認証方法をリセットすることができるのは、テナント管理者 (グローバル管理者ロール) です。リセットする対象が管理者ユーザー以外であれば、ユーザー管理者、特権認証管理者、認証管理者のロールを持つアカウントでも行うことができます。
 
-(A) [Azure Portal](https://portal.azure.com/) からリセット
+(A) [Azure ポータル](https://portal.azure.com) からリセット
 
 - (A) の方法は、以下の公開情報にてご紹介しております。
   
   [Azure Multi-factor Authentication のユーザー設定の管理 - ユーザー認証オプションを管理する](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-userdevicesettings#manage-user-authentication-options)
 
 
-(B) [Azure MFA Portal](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx) からリセット※ この方法は、テナント管理者 (グローバル管理者ロール) のみ実行可能です。
+(B) [Azure MFA Portal](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx) もしくは PowerShell からリセット
 
-(C) PowerShell からリセット
-
-
-- (B) と (C) の方法は、以下のブログにてご紹介しております。 
+- (B) の方法は、以下のブログにてご紹介しております。 
 
   [多要素認証 (MFA) のリセット手順](https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/) 
 
-管理者によって、ユーザーの MFA 認証方法がリセットされたら、ユーザーは MFA 認証方法を再登録する必要があります。
-ユーザーは https://aka.ms/mfasetup にアクセスし、新しいデバイスを MFA 認証方法として登録して下さい。手順の詳細は [現在登録されているモバイル デバイスで、MFA 認証ができる場合](https://jpazureid.github.io/blog/azure-active-directory/change-mfa-verification-method/#%E7%8F%BE%E5%9C%A8%E7%99%BB%E9%8C%B2%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB-%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%A7%E3%80%81MFA-%E8%AA%8D%E8%A8%BC%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E5%90%88) と同じです。
+
+管理者によってユーザーの MFA 認証方法がリセットが完了した後、ユーザーは自分自身の操作で MFA 認証方法を再登録する必要があります。
+ユーザーは任意のデバイスで https://aka.ms/mfasetup にアクセスし、新しいデバイスを MFA 認証方法として登録して下さい。手順の詳細は、前述の [「現在登録されているモバイル デバイスで、MFA 認証ができる場合」](#%E7%8F%BE%E5%9C%A8%E7%99%BB%E9%8C%B2%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB-%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%A7%E3%80%81MFA-%E8%AA%8D%E8%A8%BC%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E5%90%88) と同じです。
 
 ### 【 2 】管理者が直接 MFA 認証用電話番号を指定
-管理者は Azure Portal 上で、ユーザーの MFA 認証のための電話番号を設定することができます。
+管理者は Azure Portal 上で、ユーザーの MFA 認証のための電話番号を直接設定することができます。
 
 該当画面 : [Azure ポータル](portal.azure.com) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
 
@@ -121,7 +117,7 @@ CSP パートナーに連絡を取り、お客様のテナントにアクセス�
 これは、これまでご紹介した方法がいずれも実行不可能場合のみに行っていただく、最終手段です。
 
 
-テナントのすべての全体管理者がサインイン不可能になった場合には、弊社データセンター側で、管理者の MFA を、一時的に解除させていただきます。
+テナントのすべての全体管理者がサインイン不可能になった場合には、Microsoft のデータセンター側で、管理者の MFA を、一時的に解除させていただきます。
 
 
 その間に管理者自身の MFA の再セットアップ (前述の [MFA 認証方法の変更 / 追加手順] の手順) を、行っていただく必要があります。
