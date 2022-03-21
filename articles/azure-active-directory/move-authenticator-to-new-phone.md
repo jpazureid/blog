@@ -9,7 +9,7 @@ tags:
 # スマホを買い替える時は、Microsoft Authenticator の移行を忘れないでください！
 
 > [!NOTE]
-> 検索キーワード : Offce 365 / Microsoft 365 / Azure AD / Azure Active Directory / Multi Factor Authentication / MFA / 多要素認証 / 変更 / 買い替え / Microsoft Authenticator / できない / アカウント / ロックアウト / サインイン要求を承認
+> 検索キーワード : Offce 365 / Microsoft 365 / Azure AD / Azure Active Directory / Multi Factor Authentication / MFA / 多要素認証 / 変更 / 買い替え / Microsoft Authenticator / アカウント / ロックアウト / サインインできない /  ログインできない / サインイン要求を承認
 
 こんにちは。Azure Identity チームの栗井です。
 
