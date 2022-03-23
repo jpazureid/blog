@@ -1,6 +1,6 @@
 ---
 title: 認証プロンプト分析ワークブックを使用して、余分なプロンプトを削減する
-date: 2022-3-16 09:00
+date: 2022-3-24 09:00
 tags:
     - Azure AD
     - US Identity Blog
