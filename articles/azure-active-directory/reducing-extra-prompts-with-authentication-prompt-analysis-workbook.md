@@ -29,7 +29,7 @@ Inbar と Corissa より詳細を説明いたします。
 
 驚いたことに、このような予期せぬプロンプトが表示されたことを報告したユーザーは皆無でした。さらに悪いことに、多くのユーザーが、自分が MFA を開始したわけではないのに、それをよく理解せず、MFA プロンプトを盲目的に承認していたのです。あるユーザーは、嫌気がさしたのか Authenticator アプリを完全にアンインストールしてしまいました。
 
-サイバー攻撃のシミュレーション以外に、ユーザーに過剰なプロンプトが表示される場合としては、アプリケーションの設定ミスや過度に多くの認証プロンプトを表示するポリシーが原因と考えられます。過剰にプロンプトを表示するとユーザーの生産性に影響を与えますし、しばしばユーザーが自分では開始しなかった MFA プロンプトを承認してしまうことにつながります。誤解のなきう、MFA は非常に重要なものです！MFA を求めるべきかどうかという話をしているのではなく、どの程度の頻度でユーザーに MFA を求めるべきかという話をしているのです。
+サイバー攻撃のシミュレーション以外に、ユーザーに過剰なプロンプトが表示される場合としては、アプリケーションの設定ミスや過度に多くの認証プロンプトを表示するポリシーが原因と考えられます。過剰にプロンプトを表示するとユーザーの生産性に影響を与えますし、しばしばユーザーが自分では開始しなかった MFA プロンプトを承認してしまうことにつながります。誤解のなきよう、MFA は非常に重要なものです！MFA を求めるべきかどうかという話をしているのではなく、どの程度の頻度でユーザーに MFA を求めるべきかという話をしているのです。
 
 それでは、新しいワークブックとそれを使ってテナント内のプロンプトを分析する方法について説明していきたいと思います。例となるお客様環境を見ながら説明していきます。
  
@@ -58,7 +58,7 @@ MFA プロンプトを減らすもう一つの方法は、[Hello for Business](h
 
 ![](./reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook4.png)
 
-「デバイスの状態ごとの認証プロンプト」の画面では、Azure AD 参加デバイス、ハイブリッド Azure AD Join デバイス、Azure AD 登録デバイス、または Azure AD にとって不明な (管理されていないな) デバイスがそれぞれどれだけのプロンプトに関連しているか表示されます。
+「デバイスの状態ごとの認証プロンプト」の画面では、Azure AD 参加デバイス、ハイブリッド Azure AD Join デバイス、Azure AD 登録デバイス、または Azure AD にとって不明な (管理されていない) デバイスがそれぞれどれだけのプロンプトに関連しているか表示されます。
 
 上のグラフでは、プロンプトの大部分は管理されていないデバイスによるものであることがわかります。[Azure AD Join と Hybrid Azure AD Join](https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-plan) を実装することで、デバイスが Azure AD Primary Refresh Token (PRT) を持つようになるため、お客様は追加の MFA プロンプトを劇的に削減することができます。これは、Authenticator アプリがモバイルでプロンプトを減らすことができるのと同じです。 
 
@@ -66,7 +66,7 @@ MFA プロンプトを減らすもう一つの方法は、[Hello for Business](h
  
 ### ユーザー
 
-他のビューと同様に、このユーザー ビューでは、期間内行われたにプロンプトがユーザーの観点から表示されます。見てわかるように、これらの数字の一部は予想通りです。しかし、予想以上に多くのプロンプトが求められているユーザーが数名いるため、さらに調査を行う必要があります。 
+他のビューと同様に、このユーザー ビューでは、期間内に行われたプロンプトがユーザーの観点から表示されます。見てわかるように、これらの数字の一部は予想どおりです。しかし、予想以上に多くのプロンプトが求められているユーザーが数名いるため、さらに調査を行う必要があります。 
 
 ![](./reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook5.png)
 
@@ -113,4 +113,4 @@ Azure AD には、ユーザーに MFA を要求できる複数のポリシーが
 
 詳しくは、[再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間について理解する](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime) をお読みになることをお勧めします。
  
-このワークブックにより貴重な洞察が得られたり、貴社の組織でプロンプトを削減するのに役立られたりすれば幸いです。このワークブックに関するご意見、ご感想がありましたら、この [簡単なアンケート](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR-Fe8yfx1zBKhEr1JlI5HMlUNUc4M1BEM0I5SThDWVM3QldESVhZU09TWC4u) にお答えください。  
+このワークブックにより貴重な洞察が得られたり、貴社の組織でプロンプトを削減するのに役立てられたりすれば幸いです。このワークブックに関するご意見、ご感想がありましたら、この [簡単なアンケート](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR-Fe8yfx1zBKhEr1JlI5HMlUNUc4M1BEM0I5SThDWVM3QldESVhZU09TWC4u) にお答えください。  
