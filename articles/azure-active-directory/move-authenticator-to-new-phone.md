@@ -37,7 +37,8 @@ Microsoft のクラウド サービスを利用しているすべての人々に
    ![](./move-authenticator-to-new-phone/mysecurityinfo-before.png)
    
 3. [+ 方法の追加] を押下します。画面の指示に従って、新しいスマートフォンの MS Authenticator をセットアップします。
-   ![](./move-authenticator-to-new-phone/mfasetup.png)
+   ![](./move-authenticator-to-new-phone/mfa-setup.png)
+
    
 4. 新しいスマートフォンが一覧に追加されます。
    ![](./move-authenticator-to-new-phone/mysecurityinfo-after.png)
@@ -49,7 +50,8 @@ Microsoft のクラウド サービスを利用しているすべての人々に
 
 移行作業を忘れたまま以前の端末をリセット・破棄してしまった場合、前述の <MS Authenticator の移行方法> が実施できません。なぜなら https://aka.ms/mfasetup にサインインする際に、既存の方法による MFA が要求されるためです。
 
-![](./move-authenticator-to-new-phone/mfa-lockout.png)
+
+![](./move-authenticator-to-new-phone/mfasetup-lockout.png)
 
 このような場合の回避策は下記の通りです。
 
@@ -77,7 +79,8 @@ Microsoft のクラウド サービスを利用しているすべての人々に
 
 上記の内容をふまえて、下記の 3 つの注意事項にご留意ください。
 
-1. 【最重要】 スマートフォンを買い替える時は、MS Authenticator の移行を忘れないでください！
+1. 【最重要】 スマートフォンを替える時は、MS Authenticator の移行を忘れないでください！
+
 
 2. MFA の方法は、あらかじめ複数登録しておくと安心です
    - もし MS Authenticator の移行を忘れてしまった場合でも、SMS 等による MFA が可能であれば、前述の回避策がご利用いただけます。
@@ -93,7 +96,8 @@ Microsoft のクラウド サービスを利用しているすべての人々に
 ## 編集後記
 ありがたいことに、昨今では数多くの組織・学校のお客様によって、多要素認証 (MFA) を導入のうえ、MS Authenticator をご活用いただいております。
 
-一方で、**スマートフォンの買い替えにあたっては、MS Authenticator の移行が必要である**という事実は、まだあまり多くのユーザーの方にご認識いただけていない現状があります。
+一方で、**スマートフォンを替える場合、MS Authenticator の移行が必要である**という事実は、まだあまり多くのユーザーの方にご認識いただけていない現状があります。
+
 
 MS Authenticator の移行を忘れて、各種サービスにアクセスできなくなってしまうことによる業務影響は、お客様によってはかなり深刻です。大事なプレゼンテーションの直前に PowerPoint が開けなくなってしまったら ? 取引先に緊急の連絡が必要なのに、Outlook に入れなくなってしまったら ?
 
@@ -108,4 +112,5 @@ MS Authenticator の移行を忘れて、各種サービスにアクセスでき
 
 本記事の Twitter や facebook 等の SNS へのシェアも大歓迎です。[Microsoft Azure のフィードバックサイト](https://feedback.azure.com/d365community/) へのご意見もお待ちしております。
 
-**スマートフォンの買い替えにあたっては、MS Authenticator の移行が必要である** ということを、もっと多くのご利用者の方にご認識いただけるよう、弊社としても引き続き情報発信を進めて参ります。
+
+**スマートフォンを替える場合、MS Authenticator の移行が必要である** ということを、もっと多くのご利用者の方にご認識いただけるよう、弊社としても引き続き情報発信を進めて参ります。
