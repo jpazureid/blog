@@ -116,6 +116,12 @@
 - [ゼロ トラスト展開のためのよりよいコントロールとインサイト](./articles/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments.md)
 - [ASP.NET アプリケーションの AAD 認証を v1 から v2 に変更する](./articles/azure-active-directory/aspdotnet-from-v1-to-v2.md)
 - [Azure AD カスタム セキュリティ属性の紹介](./articles/azure-active-directory/introducing-azuread-custom-security-attributes.md)
+- [Azure ポータル UX における Azure AD Graph 権限のサインアップのサポート終了](./articles/azure-active-directory/end-of-support-for-azure-ad-graph-permission-sign-up-through.md)
+- [Azure AD の新機能により ID プロビジョニングをよりシンプルに](./articles/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad.md)
+- [Decentralized ID を使用したソリューション開発にご参加ください](./articles/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities.md)
+- [Azure AD における継続的なアクセス評価の一般提供を開始しました](./articles/azure-active-directory/continuous-access-evaluation-in-azure-ad-is-now-generally.md)
+- [External Identities (B2C) が Authenticator アプリに対応するとともにデータ保存場所の価格更新が発表されました](./articles/azure-active-directory/external-identities-b2c-supports-authenticator-apps-and-new-data.md)
+- [アプリでゼロ トラスト対応を実現する 2 - 最小限の特権で設計する](./articles/azure-active-directory/achieving-zero-trust-readiness-in-your-apps-2-designing-for-least-privilege.md)
 
 ## Azure AD Connect
 

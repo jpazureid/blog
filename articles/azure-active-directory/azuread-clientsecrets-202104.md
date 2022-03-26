@@ -49,6 +49,7 @@ Azure AD に登録されたアプリケーションについて、利用され�
 今回の動作変更 (選択できるのは最長 2 年、無期限は選べない) は、これから新たな画面で作成される、新しいクライアント シークレットが対象です。
 
 ## PowerShell からは、有効期限が 2 年以上のクライアント シークレットが作成できるようですが...
+
 はい、現在は PowerShell コマンドでクライアントシークレットを作成する際は、2 年以上の有効期限を指定することが可能です。
 
 1. PowerShell を管理者権限で起動します
@@ -66,6 +67,15 @@ Azure AD に登録されたアプリケーションについて、利用され�
     ```
 
 ただし、いずれは PowerShell コマンドによるクライアントシークレット作成にも、Azure ポータル上と同じ制限がかかるようになる方針です (制限が反映された際には、この項目は削除する予定です)。この制限が実施されるスケジュールについては、現時点では未定です。
+
+## 作成したシークレットの有効期限をメールなどで通知する方法はありますか？
+
+開発部門でもご要望は認識しておりますが、現時点ではシークレットの有効期限をメールなどで通知する機能は実装されておりません。また現時点では具体的な提供予定についての情報もございません。
+
+以下の弊社ブログで Power Automate を使ってシークレットと証明書の期限切れの状態を確認する処理を自動化する方法を案内しておりますので、代替案として検討ください。
+
+- Use Power Automate to Notify of Upcoming Azure AD App Client Secrets and Certificate Expirations - Microsoft Tech Community
+ <https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145>
 
 ## "Updates to converged applications are not allowed in this version." が発生する場合
 
@@ -118,10 +128,19 @@ POST https://graph.microsoft.com/v1.0/applications/【アプリケーション�
 
 secretText を控え、クライアント シークレットとして利用します。
 
+## "You can only add a maximum of 2 encrypted credentials." が発生する場合
+
+アプリの [サポートされているアカウントの種類](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation) が `任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)`
+の場合に、3 つ以上のクライアント シークレットを登録しようとするとこのエラーが発生します。
+
+前項での内容の通り、Microsoft Graph REST API を利用することでクライアント シークレットの追加が可能ですが、登録できるクライアント シークレットの数の上限は 2 つです。
+エラーが発生した場合には、既存のシークレットを削除するなどし上限を超えないよう設定ください。
+
 ## 今後のアップデートについて
 
 本変更についての公開情報やアナウンス等は、現在 (2021/04/21) の時点で公開されておりません。新たな情報が入り次第、本記事内でアップデートさせていただきます。
 
 ## おわりに
+
 上記の内容がご参考になれば幸いです。
 ご不明点などございます場合は、ぜひ弊社サポートサービスをご利用ください。
