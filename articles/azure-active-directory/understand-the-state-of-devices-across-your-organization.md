@@ -10,7 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
-本記事は、2022 年 2 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Understand the state of devices across your organization in seconds](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/understand-the-state-of-devices-across-your-organization-in/ba-p/3118020) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2022 年 4 月 8 日に米国の Azure Active Directory Identity Blog で公開された [Understand the state of devices across your organization in seconds](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/understand-the-state-of-devices-across-your-organization-in/ba-p/3118020) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
