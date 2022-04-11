@@ -22,7 +22,7 @@ Azure AD では、ログイン時の追加認証方式として電話・アプ�
 
 MFA のリセットは、Azure Portal、または PowerShell より行うことが可能です。Azure Portal からの操作では事前準備が不要なため、すぐに操作を実施することができます。
 
-PowerShell からの操作では、CSV 形式で用意した全ユーザーに対してリセットを行うことができるため、多くのユーザーに対し一括でリセットを行いたい場合に有効です。しかし残念ながら、**PowerShell からの操作がサポートされるのは 2022 年 6 月まで**となります (詳細は後述の通りです)。
+PowerShell からの操作では、CSV 形式で用意した全ユーザーに対してリセットを行うことができるため、多くのユーザーに対し一括でリセットを行いたい場合に有効です。しかし残念ながら、**PowerShell からの操作がサポートされるのは 2022 年 12 月まで**となります (詳細は後述の通りです)。
 
 ## Azure Portal での手順
 1. 該当ユーザーの認証方法設定画面へアクセスします。
@@ -49,7 +49,7 @@ PowerShell からの操作では、CSV 形式で用意した全ユーザーに�
 ## PowerShell での手順
 
 > [!NOTE]
-> 下記の方法がサポートされるのは 2022 年 6 月までです。PowrShell からの操作では Azure AD Module (MSOnline) の PowerShell モジュールを利用します。この MSOnline が内部的に利用している Azure AD Graph のサポートが 2022 年 6 月に廃止されるためです。
+> 下記の方法がサポートされるのは 2022 年 6 月までです。PowrShell からの操作では Azure AD Module (MSOnline) の PowerShell モジュールを利用します。この MSOnline が内部的に利用している [Azure AD Graph のサポートが 2022 年 12 月に廃止](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)されるためです。
 >
 > 現状、他の PowerShell モジュールを利用した MFA のリセット方法はご用意がございません。アップデートがあり次第、本記事を更新いたします。
 
