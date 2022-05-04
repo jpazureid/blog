@@ -1,13 +1,12 @@
-
 ---
-title: Azure AD RBAC : ユーザーおよびデバイス用の動的な管理単位がパブリック プレビューとなりました
-date: 2022-05-09 09:00
+title: Azure AD RBAC - ユーザーおよびデバイス用の動的な管理単位がパブリック プレビューとなりました
+date: 2022-05-05 09:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# ユーザーおよびデバイス用の動的な管理単位がパブリック プレビューとなりました
+# Azure AD RBAC - ユーザーおよびデバイス用の動的な管理単位がパブリック プレビューとなりました
 
 こんにちは、Azure Identity サポート チームの 村上 です。
 
@@ -59,4 +58,3 @@ Azure Active Directory (以下 Azure AD) のロールベース アクセス コ�
 Alex Simons (Twitter: [@Alex_A_Simons](https://twitter.com/Alex_A_Simons))  
 Corporate VP of Program Management  
 Microsoft Identity Division
-
