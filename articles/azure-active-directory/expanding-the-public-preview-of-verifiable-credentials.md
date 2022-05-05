@@ -16,7 +16,8 @@ tags:
 
 この数ヶ月の間に、1,000 以上の企業において [職場のリモート オンボーディング](https://go.microsoft.com/fwlink/p/?LinkID=2184957&clcid=0x409&culture=en-us&country=US) や [ビジネスの境界を越えたコラボレーション](https://customers.microsoft.com/en-us/story/1478082375112165122-avanade-partner-professional-services-verifiable-credentials)、[学外での教育](https://customers.microsoft.com/en-us/story/1481006006183422060-rmit-university-higher-education-azure-active-directory?culture=en-us&country=US) など、さまざまなシナリオで使用される何万件もの検証可能な資格情報が発行ならびに検証されました。検証可能な資格情報は新しい W3C 標準で、これによりエンド ユーザーは自身の雇用履歴や学歴、その他の認定状態を表すデジタルな資格情報を、改ざん不可能で安全かつ検証可能な方法で簡単に提示できるようになります。このたび、Azure Active Directory (Azure AD) の Free ライセンスおよび Premium ライセンスのユーザー向けに、検証可能な資格情報のパブリック プレビューを拡大し、機能拡張を発表できることを嬉しく思います。
 
-> **「検証可能な資格情報には、すでに約 60 種類のユースケースがあると言われています。非常に柔軟性が高いため、組織全体で何百もの異なる方法で使用できる可能性があります」。- Avanade 社のカスタマー ストーリー全文は [こちら](https://customers.microsoft.com/en-us/story/1478082375112165122-avanade-partner-professional-services-verifiable-credentials) からご覧ください。**
+> **「検証可能な資格情報には、すでに約 60 種類のユースケースがあると言われています。非常に柔軟性が高いため、組織全体で何百もの異なる方法で使用できる可能性があります」。**  
+> **- Avanade 社のカスタマー ストーリー全文は [こちら](https://customers.microsoft.com/en-us/story/1478082375112165122-avanade-partner-professional-services-verifiable-credentials) からご覧ください。**
 
 エンド ユーザー、管理者、開発者のエクスペリエンスを向上させるために、お客様や Decentralized ID コミュニティから得たフィードバックに感謝しています。このたび、プラットフォームの新機能についてお知らせできることを光栄に思うとともに、より多くのお客様や開発者が自信を持ってより大きな規模で資格情報を発行および検証する中で、新しいシナリオが発掘されることを楽しみにしています。
 
@@ -59,10 +60,9 @@ Azure AD の検証可能な資格情報のデータは、EU 地域に所在す�
 
 さらに詳しく知りたい方は、以下のリソースもご覧ください。 
 
-- 顧客事例と検証可能な資格情報のリソースについては[aka.ms/verifyonce](https://www.microsoft.com/en-us/security/business/identity-access-management/verifiable-credentials) で入手可能です。 
-
-- 全 5 回にわたる [ブログ シリーズ](https://jpazureid.github.io/blog/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities/) で、Decentralized ID の基本を理解いただけます。 
-- Decentralized ID の動向については [aka.ms/ownyouridentity](https://www.microsoft.com/en-us/security/business/identity-access-management/decentralized-identity-solution) で詳しく説明しています。 
-- Decentralized ID (DID) についての業界ワーキング グループである [http://identity.foundation](http://identity.foundation) に参加いただけます。 
-- 簡単な概要: http://aka.ms/didexplained  
-- 開発者向けドキュメント: http://aka.ms/didfordevs  
+- 顧客事例と検証可能な資格情報のリソースについては[aka.ms/verifyonce](https://www.microsoft.com/en-us/security/business/identity-access-management/verifiable-credentials) で入手可能です。
+- 全 5 回にわたる [ブログ シリーズ](https://jpazureid.github.io/blog/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities/) で、Decentralized ID の基本を理解いただけます。
+- Decentralized ID の動向については [aka.ms/ownyouridentity](https://www.microsoft.com/en-us/security/business/identity-access-management/decentralized-identity-solution) で詳しく説明しています。
+- Decentralized ID (DID) についての業界ワーキング グループである [http://identity.foundation](http://identity.foundation) に参加いただけます。
+- 簡単な概要: http://aka.ms/didexplained
+- 開発者向けドキュメント: http://aka.ms/didfordevs
