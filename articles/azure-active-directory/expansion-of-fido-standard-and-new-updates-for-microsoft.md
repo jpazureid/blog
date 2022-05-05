@@ -32,7 +32,7 @@ tags:
 
 マイクロソフトは、Windows Hello の FIDO2 認証など、FIDO 標準の [初期からのサポーター](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-hello-fido2-certification-gets-you-closer-to/ba-p/534592) として取り組んできました。パスキーをサポートするよう FIDO 標準のエコ システムを進化させ、パスワードレス認証の普及が勢いを増しているのはとても喜ばしいことです。
 
-約 5 年前にパスワードレス サインインの導入を開始して以来、毎月パスワードを使わずにサインインするユーザー数は、Microsoft のサービス全体で 2 億 4 千万人以上に達しています。また、この半年間で 33 万人以上の方が、Microsoft アカウントから [パスワードを削除する](https://www.microsoft.com/security/blog/2021/09/15/the-passwordless-future-is-here-for-your-microsoft-account/) という次のステップに進んでいます。結果として、パスワードがなければ、パスワード ベースの攻撃から完全に保護されるのです。
+約 5 年前にパスワードレス サインインの導入を開始して以来、毎月パスワードを使わずにサインインするユーザー数は、Microsoft のサービス全体で 2 億 4 千万人以上に達しています。また、この半年間で 33 万人以上の方が、Microsoft アカウントから [パスワードを削除する](https://www.microsoft.com/security/blog/2021/09/15/the-passwordless-future-is-here-for-your-microsoft-account/) という次のステップに進んでいます。結果として、パスワードがなければパスワード ベースの攻撃から完全に保護されるのです。
 
 本日、併せて企業がより簡単に、そして完全なパスワードレスを実現するための新機能も発表いたします。
 
@@ -42,7 +42,7 @@ tags:
 
 ## Windows Hello for Business クラウド信頼
 
-Windows Hello for Business クラウド信頼は、ハイブリッド環境向けの Windows Hello の展開作業をよりシンプルにします。この新しい展開モデルでは、従来の要件であった公開鍵基盤 (PKI) に加え、Azure AD とオンプレミスの AD 間の公開鍵の同期が不要となります。この改善により、ユーザーが Windows Hello for Business をプロビジョニングしてから認証できるまでの遅延がなくなり、Windows Hello for Business を使用してオンプレミスのリソースやアプリケーションにアクセスすることが、これまで以上に容易になりました。[クラウド トラスト](https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-cloud-trust) は、Windows 10 21H2 および Windows 11 21H2 において、プレビューとして利用可能です。
+Windows Hello for Business クラウド信頼は、ハイブリッド環境向けの Windows Hello の展開作業をよりシンプルにします。この新しい展開モデルでは、従来の要件であった公開鍵基盤 (PKI) に加え、Azure AD とオンプレミスの AD 間の公開鍵の同期が不要となります。この改善により、ユーザーが Windows Hello for Business をプロビジョニングしてから認証できるまでの遅延がなくなり、Windows Hello for Business を使用してオンプレミスのリソースやアプリケーションにアクセスすることがこれまで以上に容易になりました。[クラウド信頼](https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-cloud-trust) は、Windows 10 21H2 および Windows 11 21H2 において、プレビューとして利用可能です。
 
 ## Microsoft Authenticator で複数のパスワードレス アカウントを利用
 
@@ -52,7 +52,7 @@ Azure AD (職場または学校のアカウント) にパスワードレス サ�
 
 ## Azure AD 一時アクセス パス
 
-Azure AD の一時アクセス パスは、[時間制限のあるパスコード](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-authentication-temporary-access-pass) です。パブリック プレビューの時から企業で大きな反響を呼んでおり、今夏の機能リリースに向けて、さらに利用範囲を広げようと取り組んでいます。多くのお客様から、新しい Windows デバイスをセットアップする際に、パスワードの代わりに一時アクセス パスを配布したいとの声をいただいています。一時アクセス パスは、初回サインイン、Windows Hello の設定、Azure AD へのデバイスの参加に使用できるようになります。このアップデートは、来月提供される予定です。
+Azure AD の一時アクセス パスは、[時間制限のあるパスコード](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-authentication-temporary-access-pass) です。パブリック プレビューの時から企業で大きな反響を呼んでおり、今夏の機能リリースに向けて、さらに利用範囲を広げようと取り組んでいます。多くのお客様から、新しい Windows デバイスをセットアップする際にパスワードの代わりに一時アクセス パスを配布したいとの声をいただいています。一時アクセス パスは、初回サインイン、Windows Hello の設定、Azure AD へのデバイスの参加に使用できるようになります。このアップデートは来月提供される予定です。
 
 ![Windows 11 のオンボーディングにおける一時アクセス パスのユーザー体験](./expansion-of-fido-standard-and-new-updates-for-microsoft/sdriggers_1-1651671669096.png)
 
