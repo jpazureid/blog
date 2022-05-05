@@ -1,4 +1,3 @@
-
 ---
 title: 検証可能な資格情報のパブリック プレビューが拡大
 date: 2022-05-06 09:00
@@ -45,7 +44,7 @@ Azure AD の検証可能な資格情報のデータは、EU 地域に所在す�
 
 今後の予定では、ディレクトリ属性やカスタム データ ソースに基づいて資格情報を発行および検証するためのローコードもしくはノーコードの開発体験や、検証可能な資格情報のネットワークにおいて、検証可能な資格情報全体で信頼できる発行者を簡単に発見できるワーク フローなど管理者の体験を統合する API を含めた検討を進めています。
 
-すべての Azure AD の利用者で、資格情報を作成、発行および検証が可能ですので、ぜひ以下のリソースを参照いただければ幸いです。
+すべての Azure AD の利用者で、資格情報の作成、発行、検証が可能ですので、ぜひ以下のリソースを参照ください。
 
 ## 始めてみましょう
 
@@ -56,11 +55,14 @@ Azure AD の検証可能な資格情報のデータは、EU 地域に所在す�
 
 ## 検証可能な資格情報と Decentralized ID についてもっと知る
 
-検証可能な資格情報とは一体何なのか。検証可能な資格情報は、個人またはエンティティ（保有者）が他のエンティティ（検証者）と共有することを選択できる、信頼できるソース（発行者）からのアイデンティティ データの署名されたコンテナです。Azure AD のサービス機能として、雇用、教育、またはその他要求の証明を示す、検証可能な資格情報を簡単に発行および検証できるようにし、そのような資格情報の保有者が、いつ、誰と資格情報を共有するかを決定できるようにします。これにより、プライバシーとセキュリティの保護に優れた新しい種類の身元確認が可能になり、さらに再利用可能であるため、より便利です。
-さらに詳しく知りたい方は、以下のリソースもご覧ください。
-- [aka.ms/verifyonce](https://www.microsoft.com/en-us/security/business/identity-access-management/verifiable-credentials) で顧客事例と検証可能な資格情報のリソースを入手できます。 
-- 全 5 回にわたる [ブログ シリーズ](https://jpazureid.github.io/blog/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities/) で、Decentralized ID の基本を理解しましょう。
-- [aka.ms/ownyouridentity](https://www.microsoft.com/en-us/security/business/identity-access-management/decentralized-identity-solution) では、Decentralized ID  ムーブメントについて詳しく説明しています。
-- Decentralized ID（DID）についての業界ワーキング グループである http://identity.foundation に参加する。
-- 簡単な概要 : http://aka.ms/didexplained 
-- 開発者向けドキュメント : http://aka.ms/didfordevs 
+検証可能な資格情報は、認証機関 (発行者) から発行された ID 情報を含む、署名されたコンテナのようなもので、個人またはエンティティ (保有者) が希望したタイミングで他のエンティティ (検証者) とその情報を共有できるという仕組みです。Azure AD が提供するサービスの一機能として、雇用状態や学歴、またはその他の要求を満たす証明として、検証可能な資格情報を簡単に発行および検証できるようにします。また、そのような資格情報の保有者が、いつ、誰と資格情報を共有するかを選べるようになります。これにより、プライバシーとセキュリティの保護に優れた新しい種類の身元確認が可能になり、さらに資格情報は再利用可能であるため、より利便性が向上します。 
+
+さらに詳しく知りたい方は、以下のリソースもご覧ください。 
+
+- 顧客事例と検証可能な資格情報のリソースについては[aka.ms/verifyonce](https://www.microsoft.com/en-us/security/business/identity-access-management/verifiable-credentials) で入手可能です。 
+
+- 全 5 回にわたる [ブログ シリーズ](https://jpazureid.github.io/blog/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities/) で、Decentralized ID の基本を理解いただけます。 
+- Decentralized ID の動向については [aka.ms/ownyouridentity](https://www.microsoft.com/en-us/security/business/identity-access-management/decentralized-identity-solution) で詳しく説明しています。 
+- Decentralized ID (DID) についての業界ワーキング グループである [http://identity.foundation](http://identity.foundation) に参加いただけます。 
+- 簡単な概要: http://aka.ms/didexplained  
+- 開発者向けドキュメント: http://aka.ms/didfordevs  
