@@ -1,7 +1,6 @@
-
 ---
 title: Microsoft Authenticator による強力なパスワードの生成
-date: 2022-05-05 09:00
+date: 2022-05-05 09:30
 tags:
   - Azure AD
   - US Identity Blog
@@ -26,7 +25,7 @@ Alex Weinert (Teitter: [@Alex_T_Weinert](https://twitter.com/Alex_T_Weinert))
 
 皆さん、こんにちは。Microsoft Authenticator チームのプロダクト マネージャーである Rajat Luthra です。
 
-Microsoft Authenticator は、パスワード不要の認証、プッシュ通知、時間ベースのワンタイム パスワード (TOTPs)、セキュリティ アラートにより、ユーザーの安全を確保します。また、あらゆるアプリケーションやウェブサイトで、[パスワード](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/securely-manage-and-autofill-passwords-across-all-your-mobile/ba-p/1994720) や [その他の個人情報](https://jpazureid.github.io/blog/azure-active-directory/autofill-your-addresses-and-payment-info-with-microsoft/) を記憶し、自動入力することができます。すべての Microsoft アカウントがパスワードレス認証 (最も望ましい認証方法) をサポートしていますが、すべての ID プロバイダーがパスワードレス認証をサポートしているわけではないことを理解しています。ユーザーをさらに保護するために、Microsoft Authenticator は、複雑でユニークなパスワードをアプリ内で直接生成できるようになりました。ソーシャル メディアやネットショッピング、仕事用のアプリ、ゲームなど、全てのオンライン アカウントのパスワードをモバイル デバイス上で生成、同期、保存、そして自動入力することができます。
+Microsoft Authenticator は、パスワードレス認証、プッシュ通知、時間ベースのワンタイム パスワード (TOTPs)、セキュリティ アラートにより、ユーザーの安全を確保します。また、あらゆるアプリケーションやウェブサイトで、[パスワード](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/securely-manage-and-autofill-passwords-across-all-your-mobile/ba-p/1994720) や [その他の個人情報](https://jpazureid.github.io/blog/azure-active-directory/autofill-your-addresses-and-payment-info-with-microsoft/) を記憶し、自動入力することができます。すべての Microsoft アカウントがパスワードレス認証 (最も望ましい認証方法) をサポートしていますが、すべての ID プロバイダーがパスワードレス認証をサポートしているわけではありません。ユーザーをさらに保護するために、Microsoft Authenticator は、複雑でユニークなパスワードをアプリ内で直接生成できるようになりました。ソーシャル メディアやネットショッピング、仕事用のアプリ、ゲームなど、全てのオンライン アカウントのパスワードをモバイル デバイス上で生成、同期、保存、そして自動入力することが可能となります。
 
 Android では、アプリまたはウェブサイト上でパスワードが必要な場合、Authenticator が新しい強力なパスワードを生成するよう提案します。
 
@@ -44,8 +43,8 @@ IOS では、アプリやウェブサイトを利用中に、キーボードを�
 
 すべての新しいパスワードは、エンタープライズ レベルのパスワード生成アルゴリズムを使用してランダムに生成されます。
 
-**注**: 自動入力では、個人の [Microsoft アカウント](https://go.microsoft.com/fwlink/?linkid=2144423) を使用してデータが同期されます。職場や学校のアカウント (Azure Active Directory など) とデータを同期することはできません。Microsoft Authenticator に [パスワード]、[支払い]、または [アドレス] タブが表示されない場合、お客様の組織で、ユーザーの個人用 Microsoft アカウント ベースの自動入力がオフになっている可能性があります。
+**注**: 自動入力では、個人の [Microsoft アカウント](https://go.microsoft.com/fwlink/?linkid=2144423) を使用してデータが同期されます。職場や学校のアカウント (Azure Active Directory など) とデータを同期することはできません。Microsoft Authenticator に [パスワード]、[支払い]、または [アドレス] タブが表示されない場合、お客様の組織の設定で、ユーザーの個人用 Microsoft アカウントを使用した自動入力がオフになっている可能性があります。
 
-詳しくは、[こちら](https://go.microsoft.com/fwlink/?linkid=2172589) をご覧ください。Authenticator の機能をより良くする方法について、皆様のご意見をお聞かせください。製品改善のための [簡単なアンケート](https://forms.office.com/r/KnSdMABzVM) にご協力いた抱ければ幸いです。
+詳しくは、[こちら](https://go.microsoft.com/fwlink/?linkid=2172589) をご覧いただければと思います。Authenticator の機能をより良くする方法について、皆様のご意見をお聞かせください。製品改善のための [簡単なアンケート](https://forms.office.com/r/KnSdMABzVM) にご協力いただければ幸いです。
 
 Rajat Luthra (Twitter: [@_LuthraRajat](https://twitter.com/_luthrarajat))
