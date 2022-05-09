@@ -1,6 +1,6 @@
 ---
 title: 多要素認証 (MFA) のリセット手順 2022 年版
-date: 2022-4-11
+date: 2022-5-9
 tags:
   - Azure AD
   - MFA
