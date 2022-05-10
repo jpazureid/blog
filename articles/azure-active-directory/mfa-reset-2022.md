@@ -50,7 +50,7 @@ PowerShell からの操作では、CSV 形式で用意した全ユーザーに�
 ## PowerShell での手順
 
 > [!NOTE]
-> 下記の方法がサポートされるのは 2022 年 6 月までです。PowrShell からの操作では Azure AD Module (MSOnline) の PowerShell モジュールを利用します。この MSOnline が内部的に利用している [Azure AD Graph のサポートが 2022 年 12 月頃を目安に廃止](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)されるためです。
+> 下記の方法がサポートされるのは 2022 年 12 月までです。PowrShell からの操作では Azure AD Module (MSOnline) の PowerShell モジュールを利用します。この MSOnline が内部的に利用している [Azure AD Graph のサポートが 2022 年 12 月頃を目安に廃止](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)されるためです。
 >
 > 現状、他の PowerShell モジュールを利用した MFA のリセット方法はご用意がございません。アップデートがあり次第、本記事を更新いたします。
 
