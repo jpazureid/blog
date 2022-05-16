@@ -39,23 +39,23 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/managed-identities-azure
 
 ### B. 事前準備 - サインイン ログ取得に必要な権限をマネージド ID に付与して付与します
 
-以下のコマンドを実行し、マネージド ID に対して Graph API および Azure Active Directory に対するサインイン ログ読み取りに必要な権限を割り当てます。下記コマンド実行には Azure AD for Graph (Azure AD v2) が必要です。
+以下のコマンドを実行し、マネージド ID に対して Graph API および Azure Active Directory に対するサインイン ログ読み取りに必要な権限を割り当てます。下記コマンド実行には Microsoft Graph PowerShell モジュールが必要です。
 
-インストールしていない場合には [Azure Active Directory の PowerShell モジュール](../azure-active-directory/powershell-module.md) を参照しインストールください。
+インストールしていない場合には [Microsoft Graph PowerShell SDK をインストールする - Microsoft Graph | Microsoft Docs](https://docs.microsoft.com/ja-jp/graph/powershell/installation) を参照しインストールください。
 
 ```PowerShell
 # グローバル管理者でサインインします。
-Connect-AzureAD
+Connect-MgGraph -Scopes "Application.Read.All","AppRoleAssignment.ReadWrite.All"
 
-$graph = Get-AzureADServicePrincipal -Filter "AppId eq '00000003-0000-0000-c000-000000000000'"
-$auditReadPermission =  $graph.AppRoles | Where-Object Value -Like "AuditLog.Read.All" | Where-Object AllowedMemberTypes -contains 'Application' | Select-Object -First 1
-$directoryReadPermission = $graph.AppRoles | Where-Object Value -Like "Directory.Read.All" | Where-Object AllowedMemberTypes -contains 'Application'  | Select-Object -First 1
+$graph = Get-MgServicePrincipal -Filter "AppId eq '00000003-0000-0000-c000-000000000000'"
+$auditReadPermission =  $graph.AppRoles | Where-Object Value -eq "AuditLog.Read.All" | Where-Object AllowedMemberTypes -contains 'Application' | Select-Object -First 1
+$directoryReadPermission = $graph.AppRoles | Where-Object Value -eq "Directory.Read.All" | Where-Object AllowedMemberTypes -contains 'Application'  | Select-Object -First 1
 
 # A. の手順で確認したマネージド ID の Object ID を以下の <ObjectID> 部分に代入します。
-$msi = Get-AzureADServicePrincipal -ObjectId <ObjectID> 
+$msi = Get-MgServicePrincipal -ServicePrincipalId <ObjectID> 
 
-New-AzureADServiceAppRoleAssignment -ObjectId $msi.ObjectId -PrincipalId $msi.ObjectId -ResourceId $graph.ObjectId -Id $auditReadPermission.Id 
-New-AzureADServiceAppRoleAssignment -ObjectId $msi.ObjectId -PrincipalId $msi.ObjectId -ResourceId $graph.ObjectId -Id $directoryReadPermission.Id 
+New-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId $graph.Id -AppRoleId $auditReadPermission.Id -ResourceId $graph.Id -PrincipalId $msi.Id
+New-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId $graph.Id -AppRoleId $directoryReadPermission.Id -ResourceId $graph.Id -PrincipalId $msi.Id
 ```
 
 ### C. サインイン ログの収集 - スクリプトの編集と実行
