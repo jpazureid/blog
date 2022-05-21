@@ -16,7 +16,7 @@ tags:
 
 こんにちは。
 
-マイクロソフトの ID とネットワーク アクセスのプログラム マネジメント担当副社長のスー ボーンと申します。この Voice of the ISV のブログ記事では、SentinelOne 社のプロダクト マーケティング マネージャーの Jeremy Goldstein とプロダクト マネジメント担当ディレクターの David Baldwin より、SentinelOne が生み出した API ファースト開発モデルによって、[Singularity XDR](https://www.sentinelone.com/platform) と [Azure Active Directory](https://www.microsoft.com/security/business/identity-access-management/azure-active-directory) が如何に連携し、大量のアラートの管理とセキュリティ ツール間のプロセス統合という課題を解決したかを解説します。
+マイクロソフトの ID とネットワーク アクセスのプログラム マネジメント担当副社長の Sue Bohn と申します。この Voice of the ISV のブログ記事では、SentinelOne 社のプロダクト マーケティング マネージャーの Jeremy Goldstein とプロダクト マネジメント担当ディレクターの David Baldwin より、SentinelOne が生み出した API ファースト開発モデルによって、[Singularity XDR](https://www.sentinelone.com/platform) と [Azure Active Directory](https://www.microsoft.com/security/business/identity-access-management/azure-active-directory) が如何に連携し、大量のアラートの管理とセキュリティ ツール間のプロセス統合という課題を解決したかを解説します。
 
 ---
 
@@ -24,13 +24,13 @@ tags:
 
 [Azure Active Directory](https://www.microsoft.com/security/business/identity-access-management/azure-active-directory) (Azure AD) と連携し、AI と自動化でリアルタイムに改善策を実行する SentinelOne [Singularity XDR](https://www.sentinelone.com/platform) などのソリューションを作るため、SentinelOne は API ファーストの開発モデルを採用しています。画面デザインの前に、API として機能を作成するのです。この取り組みにより、顧客やパートナーは弊社とより円滑に連携することが可能となります。Microsoft が当社の Extended Detection Response (XDR) プラットフォームに関連する新しい API をリリースしたときも、同じことが当てはまります。これにより、弊社は有益な新機能を最短期間でお客様に提供することが可能です。Azure AD のすべての危険なユーザーへプログラム的にアクセスできるようにする [riskyUser API](https://docs.microsoft.com/graph/api/resources/riskyuser) は、API ファースト戦略の利点の典型的な例です。
 
-Azure AD Identity Protection は、疑わしいと判別されたアカウント関連の動作を含む多くの要因を考慮して危険なユーザーを検出します。ユーザーとサインインの両方に紐づいたリスク検出を元に、ユーザー全体のリスク スコアが計算され、[Risky Users レポート](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) が生成されます。Azure AD の Identity Protection の詳細はこちらをご覧ください。
+Azure AD Identity Protection は、疑わしいと判別されたアカウント関連の動作を含む多くの要因を考慮して危険なユーザーを検出します。ユーザーとサインインの両方に紐づいたリスク検出を元に、ユーザー全体のリスク スコアが計算され、[Risky Users レポート](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) が生成されます。Azure AD の Identity Protection の詳細は [こちら](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) をご覧ください。
 
 ## 顧客が必要とするサービスを顧客が期待するよりも早く提供する
 
-Microsoft が riskyUser API と、それに付随する confirmCompromised API (Azure AD でユーザーを高リスクとしてマークする) をリリースした際、お客様側での手作業をなくすことが可能ではないかということに気づきました。これらの新しい API を使用すると、ユーザーのリスク スコアと侵害済みの状態を自動的に調整でき、その結果、お客様が選択した条件付きアクセスのパラメータに波及して、そのユーザーのアクセスが制限されます。この後、SentinelOne が、自動的に生成されたインシデント ノートに、そのユーザの新しいリスク状態を追加します。
+Microsoft が riskyUser API と、それに付随する confirmCompromised API (Azure AD でユーザーを高リスクとしてマークする) をリリースした際、お客様側での手作業をなくすことが可能ではないかということに気づきました。これらの新しい API を使用すると、ユーザーのリスク スコアと侵害済みの状態を自動的に調整でき、その結果、お客様が選択した [条件付きアクセス](https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/) のパラメータに波及して、そのユーザーのアクセスが制限されます。この後、SentinelOne が自動的に生成されたインシデント ノートにそのユーザーの新しいリスク状態を追加します。
 
-API がどのように機能するかの例として、ここでは私が自分のノート PC にマルウェアを仕込んだと仮定します。悪意のある攻撃者からすると、すでに私の ID は非常に簡単に侵害できる状態になっています。私のノート PC (エンドポイント) が侵害された場合、私の資格情報および私のノート PC (エンドポイント) を共有するすべての人の資格情報も侵害されていると想定することが必要です。このように ID が侵害されると、悪意のある攻撃者は私の組織とその内部データへより広範囲にアクセス可能となります。そこで、自動化されたリスク管理の出番です。Singularity XDR は、私のマシンからマルウェアが検出され、私のアカウントが危険にさらされていることを riskyUser API を介して Azure AD に瞬時に通知します。そして、私の組織内で定義およびカスタマイズされた修復アクションが自動的に実行されます。
+API がどのように機能するかの例として、ここでは私が自分のノート PC にマルウェアを仕込んだと仮定します。悪意のある攻撃者からすると、すでに私の ID は非常に簡単に侵害できる状態になっています。私のノート PC (エンドポイント) が侵害された場合、私の資格情報および私のノート PC (エンドポイント) を共有するすべての人の資格情報も侵害されていると想定することが必要です。このように ID が侵害されると、悪意のある攻撃者は私の組織とその内部データへより広範囲にアクセス可能となります。そこで、自動化されたリスク管理の出番です。Singularity XDR は、私のマシンからマルウェアが検出され、私のアカウントが危険にさらされていることを riskyUser API を介して Azure AD に瞬時に通知します。そして、私の組織内で定義およびカスタマイズされた [修復アクション](https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/howto-identity-protection-remediate-unblock) が自動的に実行されます。
 
 当社のアジャイル開発手法に加え、この Microsoft の新しい API は非常に利用しやすいことから、riskyUser API の機能を知ってからわずか 3 週間で非常に堅実な POC (Proof of concept) を完了させることができました。この POC では、セキュリティ ツール間のコピー アンド ペーストによる手作業でのデータ入力を、1 件あたり 5 ～ 10 分短縮することができました。大企業では 1 日に何十回も繰り返す作業ですから、これは大きな節約になります。さらに、これらのアクションはリアルタイムで自動化されているため、このシステムを導入している企業は、特に洗練された攻撃者にも対応することが可能です。私たちのお客様は、セキュリティ運用部門の生産性に加えて、普段のセキュリティでも多くの利益を得ています。
 
@@ -43,3 +43,5 @@ API がどのように機能するかの例として、ここでは私が自分�
 Azure AD と Singularity XDR のような最高の組み合わせのソリューションをお客様が利用できるようになれば、それは大変喜ばしいことです。リアルタイムでのゼロ トラスト実装を機能させるためには、API ファーストの開発が生み出す相互運用性に注目する必要があります。だからこそ、Microsoft と足並みを揃えて、ゼロ トラストを採用する際の柔軟性、統合性、選択肢を生み出すことが私たちの理念なのです。
 
 データ セキュリティの業界では、人材が圧倒的に不足しています。自動化、特に複数のプロバイダーのツールにまたがる自動化は、あらゆる規模のセキュリティ組織が人的資源を最大限に活用するために有効です。これにより組織全体のセキュリティも向上させます。SentinelOne では、Microsoft のようなセキュリティ ソリューション プロバイダーと協力して、あらゆる規模の組織がゼロ トラスト セキュリティの取り組みを始められるようにし、すべての人に利益をもたらすという共通の目標に取り組んでいます。
+
+[SentinelOne](https://www.sentinelone.com/) の詳細については、[Twitter](https://twitter.com/SentinelOne)、[Facebook](https://www.facebook.com/SentinelOne)、[YouTube](https://www.youtube.com/c/Sentinelone-inc)、[LinkedIn](https://www.linkedin.com/company/sentinelone) でご確認ください。
