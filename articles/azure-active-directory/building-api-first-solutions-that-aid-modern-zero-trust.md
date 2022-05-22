@@ -10,7 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
-本記事は、2022 年 2 月 7 日に米国の Azure Active Directory Identity Blog で公開された [Building API-first solutions that aid modern Zero Trust infrastructure](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/building-api-first-solutions-that-aid-modern-zero-trust/ba-p/2810641) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2022 年 5 月 17 日に米国の Azure Active Directory Identity Blog で公開された [Building API-first solutions that aid modern Zero Trust infrastructure](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/building-api-first-solutions-that-aid-modern-zero-trust/ba-p/2810641) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
