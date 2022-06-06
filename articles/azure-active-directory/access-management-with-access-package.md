@@ -1,6 +1,6 @@
 ---
 title: アクセスパッケージを利用した一括アクセス権管理
-date: 2022-5-23 09:00
+date: 2022-6-13 09:00
 tags:
     - Azure AD
     - Access Package
