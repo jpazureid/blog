@@ -170,8 +170,9 @@ Microsoft のサービスを始め、クラウド サービスが普及した現
 
 ![発行元が未確認であるアプリからの同意の要求](./azure-ad-consent-framework/blocked-user-consent-unverified.png)
 
-利用するアプリが信頼と確認ができている場合、後述の手順で[管理者による同意を行う](#5-管理者による同意の付与手順)ことを検討ください。
-マルチテナント アプリケーションの公開を検討している場合、アプリケーションを安心して利用いただくためにも[発行者の確認](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/publisher-verification-overview)を検討ください。
+発行元が未確認であるアプリが信頼できる場合、後述の手順で[管理者による同意を行う](#5-管理者による同意の付与手順)ことを検討ください。
+
+一方で、他テナントのユーザーが利用するマルチテナント アプリケーションの公開を検討している場合、アプリケーションを安心して利用いただくためにも[発行者の確認](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/publisher-verification-overview)を検討ください。
 
 ## 5. 管理者による同意の付与手順
 
