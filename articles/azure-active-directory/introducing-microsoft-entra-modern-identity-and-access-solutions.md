@@ -1,12 +1,12 @@
---- 
-title: Microsoft Entra のご紹介 - 先進的な ID とアクセスのソリューション 
-date: 2022-06-09 10:00 
-tags: 
-  - Azure AD 
-  - US Identity Blog 
---- 
- 
-# Microsoft Entra のご紹介 - 先進的な ID とアクセスのソリューション 
+---
+title: Microsoft Entra のご紹介 - 先進的な ID とアクセスのソリューション
+date: 2022-06-09 09:00
+tags:
+  - Azure AD
+  - US Identity Blog
+---
+
+# Microsoft Entra のご紹介 - 先進的な ID とアクセスのソリューション
 
 こんにちは、Azure Identity サポート チームの 村上 です。
 
