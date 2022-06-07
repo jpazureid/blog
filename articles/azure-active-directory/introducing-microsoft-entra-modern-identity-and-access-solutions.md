@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra のご紹介 - 先進的な ID とアクセスのソリューション
-date: 2022-06-09 09:00
+date: 2022-06-08 09:00
 tags:
   - Azure AD
   - US Identity Blog
