@@ -1,7 +1,6 @@
-
 ---
 title: 新たな Azure AD パートナーとの統合でセキュリティ体制を強化
-date: 2022-06-10 10:00
+date: 2022-06-08 10:00
 tags:
   - Azure AD
   - US Identity Blog
@@ -19,15 +18,15 @@ tags:
 
 ## Traced は Azure AD と統合しモバイル脅威の防御を強化
 
-2022 年には、自宅、ジム、空港、ホテル、ライド シェアなど、事実上どのような場所でも仕事ができるようになりました。社内ネットワークとは異なり境目のない環境も保護するために、Azure AD は、プライバシーに特化したモバイル脅威対策 (MTD) のプロバイダーである [Traced](https://traced.app/integration-with-azure-ad/) とシームレスに統合されるようになりました。Azure AD の条件付きアクセスを使ってゼロ トラスト セキュリティを実施することにより、Traced 社のお客様は、危険なデバイスや信頼されていないモバイル デバイスから、Microsoft 365 アプリや何千もの Azure AD ギャラリー アプリへのアクセスを自動的に制限することができるようになりました。
+2022 年には、自宅、ジム、空港、ホテル、ライド シェアなど、事実上どのような場所でも仕事ができるようになりました。社内ネットワークとは異なり境界のない環境も保護するために、Azure AD は、プライバシーに特化したモバイル脅威対策 (MTD) のプロバイダーである [Traced](https://traced.app/integration-with-azure-ad/) とシームレスに統合されるようになりました。Azure AD の条件付きアクセスを使ってゼロ トラスト セキュリティを実施することにより、Traced のお客様は、危険なデバイスや信頼されていないモバイル デバイスから、Microsoft 365 アプリや何千もの Azure AD ギャラリー アプリへのアクセスを自動的に制限することができるようになりました。
 
 ![図 1: Traced - Azure AD と Microsoft 365 アプリとの統合された保護機能](./strengthen-your-security-posture-with-new-azure-ad-partner/01_jtrupp_0-1651594641519.png)
 
-[Trustd MTD の統合](https://traced.app/trustd-mtd/) は、デバイスの状態を確認し、会社のリソースへのアクセスをユーザー レベルで制限します。つまり、デバイスが社内のセキュリティ 運用部門 (Security Operation Center) によって認識または管理されていない場合でも、デバイスは保護された状態となります。このように Traced 社は、信頼できるモバイル デバイスにのみマイクロソフトのクラウド アプリケーションへのアクセスを提供し、ポリシーを強制する場所として機能します。また、Traced のディープ ラーニングのエンジンにより、悪意のあるアプリを発見したり、分析と対応に重要な情報が得られるなどします。この新しい Traced 社との統合により、お客様はコンプライアンスを達成し、ユーザーのモバイル デバイスから発生する脅威を軽減することができます。
+[Trustd MTD の統合](https://traced.app/trustd-mtd/) は、デバイスの状態を確認し、会社のリソースへのアクセスをユーザー レベルで制限します。つまり、デバイスが社内のセキュリティ運用部門 (Security Operation Center) によって認識または管理されていない場合でも、デバイスは保護された状態となります。このように Traced 社は、信頼できるモバイル デバイスにのみマイクロソフトのクラウド アプリケーションへのアクセスを提供し、ポリシーを強制する場所として機能します。また、Traced のディープ ラーニング エンジンにより、悪意のあるアプリを発見したり、分析と対応に重要な情報が得られたりなどします。この新しい Traced との統合により、お客様はコンプライアンスを達成し、ユーザーのモバイル デバイスから発生する脅威を軽減することができます。
 
-## Saviynt は Azure AD と双方向でユーザー リスクの共有を実施  
+## Saviynt は Azure AD と双方向でユーザー リスクを共有  
 
-ID ガバナンスのプロバイダーである [Saviynt 社](https://saviynt.com/) は、[Enterprise Identity Cloud (EIC)](https://saviynt.com/enterprise-identity-cloud/) と Azure AD の統合を拡大し、Azure AD P2 ライセンス利用者向けに双方向のユーザー リスク共有を提供するようになりました。マイクロソフトの顧客およびパートナーは、EIC にて Microsoft Graph API を使用して、サインイン リスクやユーザー リンク検出など、Azure AD Identity Protection から取得したユーザー リスクを検証するガバナンス ワークフローを構築できるようになりました。 
+ID ガバナンスのプロバイダーである [Saviynt ](https://saviynt.com/) は、[Enterprise Identity Cloud (EIC)](https://saviynt.com/enterprise-identity-cloud/) と Azure AD の統合を拡大し、Azure AD P2 ライセンス利用者向けに双方向のユーザー リスク共有を提供するようになりました。マイクロソフトの顧客およびパートナーは、EIC にて Microsoft Graph API を使用して、サインイン リスクやユーザー リンク検出など、Azure AD Identity Protection から取得したユーザー リスクを検証するガバナンス ワークフローを構築できるようになりました。 
 
 Saviynt 社の EIC と Azure AD Identity Protection の統合により、ID 主導の信頼の数値化が自動化に行えるようになり、お客様では以下のことが可能になります。 
  
@@ -43,9 +42,9 @@ Saviynt 社の EIC と Azure AD Identity Protection の統合により、ID 主�
 
 脅威が常に外部からやってくるわけではないことは、システム管理者やセキュリティ専門家の間ではよく知られています。多くの場合、金融詐欺は、財務、ERP (Enterprise Resource Planning)、およびその他のビジネス アプリケーション内で不適切なアクセスを持つ組織内の個人によって実行されます。監査法人や規制機関からも、過剰なアクセスによるリスクはますます厳しく問われるようになっています。
 
-マイクロソフトは、ビジネス アプリにおいて既存のアクセス権を持つユーザーによるリスクなど、こうした内部の脅威から組織を保護するために、[Fastpath](https://www.gofastpath.com/) 社と提携しました。Fastpath は、Microsoft Dynamics 365、Salesforce、SAP、Zuora、Intacct、Acumatica、Peoplesoft など、多くのビジネス アプリケーションにおけるユーザー アクセスと職務分離 ([SOD](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/ensure-compliance-using-separation-of-duties-checks-in-access/ba-p/2466939)) リスクの追跡、レビュー、承認、軽減を支援するクラウド型のリスクおよびコンプライアンス管理プラットフォームです。
+マイクロソフトは、ビジネス アプリにおいて既存のアクセス権を持つユーザーによるリスクなど、こうした内部の脅威から組織を保護するために、[Fastpath](https://www.gofastpath.com/) と提携しました。Fastpath は、Microsoft Dynamics 365、Salesforce、SAP、Zuora、Intacct、Acumatica、Peoplesoft など、多くのビジネス アプリケーションにおけるユーザー アクセスと職務分離 ([SOD](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/ensure-compliance-using-separation-of-duties-checks-in-access/ba-p/2466939)) リスクの追跡、レビュー、承認、軽減を支援するクラウド型のリスクおよびコンプライアンス管理プラットフォームです。
  
-Fastpath は、これらの業務アプリと連携する同社の Access Risk Monitor を、Microsoft Graph API を通じて [Azure AD Identity Governance](https://docs.microsoft.com/ja-jp/azure/active-directory/governance/identity-governance-overview) とも連携させています。これにより、Azure AD の顧客は、[Azure AD と Fastpath を使用して](https://www.gofastpath.com/blog/fastpath-integrates-with-azure-ad-identity-governance-for-improved-security)、ユーザーがプロビジョニングされる前にアクセス上のリスクを特定し解決することができるようになります。Fastpath 社は、Azure AD [エンタイトルメント管理](https://docs.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-overview) のアクセス パッケージに関連するアプリケーションを分析し、それらのアプリケーション内の職務分離やその他のアクセス違反の可能性を特定します。 
+Fastpath は、これらの業務アプリと連携する同社の Access Risk Monitor を、Microsoft Graph API を通じて [Azure AD Identity Governance](https://docs.microsoft.com/ja-jp/azure/active-directory/governance/identity-governance-overview) とも連携させています。これにより、Azure AD の顧客は、[Azure AD と Fastpath を使用して](https://www.gofastpath.com/blog/fastpath-integrates-with-azure-ad-identity-governance-for-improved-security)、ユーザーがプロビジョニングされる前にアクセス上のリスクを特定し解決することができるようになります。Fastpath は、Azure AD [エンタイトルメント管理](https://docs.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-overview) のアクセス パッケージに関連するアプリケーションを分析し、それらのアプリケーション内の職務分離やその他のアクセス違反の可能性を特定します。 
 
 ![図 2: Fastpath Assure のリスク分析を活用した Microsoft Azure AD Identity Governance に関するソリューションのアーキテクチャ](./strengthen-your-security-posture-with-new-azure-ad-partner/02_jtrupp_2-1651594641533.jpeg)
 
@@ -53,11 +52,11 @@ Fastpath は、これらの業務アプリと連携する同社の Access Risk M
 
 ## Squadra Technologies、Thales、HID Global、Yubico との統合により認証を強化 
 
-[Squadra Technologies 社](https://www.squadratechnologies.com/) の新しい [Security Removable Media Manager (secRMM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SquadraTechnologies.SquadrasecRMMOMSsolution?tab=Overview) は、USB メモリなどのリムーバブル ストレージ デバイスの安全な認証を可能にします。誰かが USB メモリなどのリムーバブル ストレージ デバイスを差し込むと、Squandra 社の secRMM は、その人のデジタル ウォレットとして機能する [Microsoft Authenticator](https://www.microsoft.com/ja-jp/security/mobile-authenticator-app) を使用して QR コードをスキャンするよう促します。その後、Squadra 社の secRMM は、デバイスのプロパティ、ユーザー、ファイル、プログラムに基づいて、外部ストレージ メディアへの書き込みの承認、または書き込み権限を有効にします。 
+[Squadra Technologies](https://www.squadratechnologies.com/) の新しい [Security Removable Media Manager (secRMM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SquadraTechnologies.SquadrasecRMMOMSsolution?tab=Overview) は、USB メモリなどのリムーバブル ストレージ デバイスの安全な認証を可能にします。誰かが USB メモリなどのリムーバブル ストレージ デバイスを差し込むと、Squandra の secRMM が、その人のデジタル ウォレットとして機能する [Microsoft Authenticator](https://www.microsoft.com/ja-jp/security/mobile-authenticator-app) を使用して QR コードをスキャンするよう促します。その後、Squadra の secRMM は、デバイスのプロパティ、ユーザー、ファイル、プログラムに基づいて、外部ストレージ メディアへの書き込みの承認、または書き込み権限を有効にします。 
 
 ![図 3: secRMM の認証画面](./strengthen-your-security-posture-with-new-azure-ad-partner/03_jtrupp_3-1651594641536.png)
 
-最近リリースされた [Azure AD の証明書ベース認証 (CBA)](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/concept-certificate-based-authentication) により、組織は認証に [Thales IDPrime スマート カード](https://cpl.thalesgroup.com/access-management/idprime-md-pki-smart-cards) と USB トークン、[SafeNet Authentication Client（SAC）](https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management) を使用できるようになりました。また、スマート カード/トークンや証明書のライフ サイクル管理には、Thales 社の資格情報管理システムである [vSEC](https://cpl.thalesgroup.com/access-management/vsec-cms-secure-device-management) を使用することもできます。
+最近リリースされた [Azure AD の証明書ベース認証 (CBA)](https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/concept-certificate-based-authentication) により、組織は認証に [Thales IDPrime スマート カード](https://cpl.thalesgroup.com/access-management/idprime-md-pki-smart-cards) と USB トークン、[SafeNet Authentication Client（SAC）](https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management) を使用できるようになりました。また、スマート カード/トークンや証明書のライフサイクル管理には、Thales 社の資格情報管理システムである [vSEC](https://cpl.thalesgroup.com/access-management/vsec-cms-secure-device-management) を使用することもできます。
  
 HID Global 社は、[Crescendo® スマート カード](https://www.hidglobal.com/products/cards-and-credentials/crescendo) とセキュリティ キーを使用して、Azure AD の証明書ベースの認証 (CBA) をお客様に提供しています。Azure AD CBA の統合により、HID 社の [WorkforceID™ Digital Credential Manager](https://www.hidglobal.com/solutions/identity-access-management/physical-identity-access-management/workforceid-digital-credential-manager) による資格情報の一元管理が可能となり、ユーザー体験と保護強化のバランスを取りながらセキュリティに対して包括的なアプローチが取れるようになります。
 
@@ -67,13 +66,13 @@ Yubico 社は、連邦政府が従業員、サプライヤー、パートナー�
 
 ![](./strengthen-your-security-posture-with-new-azure-ad-partner/04_jtrupp_4-1651594641538.png)
 
-[UKG Pro ](https://marketplace.ukg.com/en-US/apps/368607/ukg-pro-for-microsoft-azure-active-directory/resources) のお客様は、Azure AD による従業員データのプロビジョニングと管理を自動化することができるようになりました。Microsoft Graph を利用した新しいユーザー プロビジョニング機能により、業務ワークフローと人事ワークフローとの間で、よりスムーズな従業員体験を構築できるようになりました。UKG Pro 社のユーザーは、以下のことが可能になります。
+[UKG Pro](https://marketplace.ukg.com/en-US/apps/368607/ukg-pro-for-microsoft-azure-active-directory/resources) のお客様は、Azure AD による従業員データのプロビジョニングと管理を自動化できるようになりました。Microsoft Graph を利用した新しいユーザー プロビジョニング機能により、業務ワークフローと人事ワークフローとの間で、よりスムーズな従業員体験を構築できるようになりました。UKG Pro のユーザーは、以下のことが可能になります。
 
 - Azure AD で UKG Pro にアクセスできる人を制御
 - ユーザーが Azure AD アカウントで UKG Pro に自動的にサインイン
 - Azure ポータルで一元的にアカウントを管理
 
-UKG Pro 社と Azure AD 統合の詳細については [こちら](https://www.youtube.com/watch?v=cu_HvXts-BQ&feature=youtu.be) をご覧ください。
+UKG Pro と Azure AD 統合の詳細については [こちら](https://www.youtube.com/watch?v=cu_HvXts-BQ&feature=youtu.be) をご覧ください。
 
 ## 新しい Azure AD アプリケーション ギャラリーの統合  
 
