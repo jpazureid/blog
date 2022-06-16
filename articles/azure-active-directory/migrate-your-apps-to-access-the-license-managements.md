@@ -13,6 +13,7 @@ tags:
 
 本日は、2021 年 8 月 26 日に米国の Azure Active Directory Identity Blog で公開された [Migrate your apps to access the license managements APIs from Microsoft Graph](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366) を意訳したものになります。
 
+> [!NOTE]
 > 2021/10/07: Microsoft Graph PowerShell を使用したライセンス管理操作のより詳細な手順につきましては、以下の技術ブログにて紹介しておりますので、こちらもぜひ参照ください。<br>
 > [Microsoft Graph PowerShell を使用したライセンス管理操作の紹介](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/)
 
@@ -24,12 +25,21 @@ tags:
 
 Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell モジュールでのライセンス割り当て操作も利用できなくなります。運用への影響を軽減するために、Microsoft Graph エンドポイントのライセンス割り当て API を使用するよう既存のアプリケーションを更新するとともに、Microsoft Graph PowerShell モジュールを使用できるようにスクリプトを更新することをお勧めいたします。MSOnline および Azure AD PowerShell モジュールにおけるその他の操作には影響はありません。
 
-以下の表は、2022 年 6 月 30 日以降、利用できなくなる操作の一覧です。
+> ![IMPORTANT]
+> MSOnline および Azure AD PowerShell モジュール自体も 2022 年 12 月以降に廃止されることが発表されております。詳細な時期については未定ですが、Microsoft Graph API への移行を検討ください。
+> 詳しくは [Azure AD の変更管理を簡素化します](../azure-active-directory/azure-ad-change-management-simplified.md) の記事を参照ください。
+
+
+以下の表は、2022 年 8 月 26 日以降、利用できなくなる操作の一覧です
+
+> ![NOTE]
+> MSOnline および Azure AD PowerShell におけるライセンス割り当て API の廃止は 2022 年 6 月 30 日から 2022 年 8 月 26 日に延期されました。
+> 詳しくは [Azure AD の変更管理を簡素化します](../azure-active-directory/azure-ad-change-management-simplified.md) の記事を参照ください。
 
 <table>
   <thead>
     <tr>
-      <th>既存のコマンド (2022 年 6 月 30 日以降に利用できなくなる操作)</th>
+      <th>既存のコマンド (2022 年 8 月 26 日以降に利用できなくなる操作)</th>
       <th>今後推奨される Microsoft Graph PowerShell および API</th>
     </tr>
   </thead>
