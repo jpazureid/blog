@@ -10,6 +10,9 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/07/19/azuread-expressroute/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+> [!NOTE]
+> 2022 年 5 月 28 日更新:  当初本記事では Azure AD の ExpressRoute のサポート方法について、“その他の Office 365 Online サービス (12076:5100)” という BGP コミュニティを使えば Azure AD に閉域網で接続できると記載しておりましたが、現在は ”Azure Active Directory (12076:5060)” というタグで充足します。このため、Azure AD に閉域網で接続をご要望の場合は、代わりに AzureActiveDirectory のタグをご利用ください。
+
 # Azure AD の ExpressRoute サポート
 
 こんにちは、 Azure ID チームの三浦です。
