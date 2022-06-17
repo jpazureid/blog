@@ -39,6 +39,10 @@ Azure AD テナントにおける情報取得は、これまで[MSOnline およ�
 
 (Azure AD Graph API を呼び出すアプリケーションを作成されている場合、[公開情報](https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview) を参考に、Microsoft Graph API への移行をお願いいたします。)
 
+> [!IMPORTANT]
+> MSOnline および Azure AD PowerShell モジュール自体も 2022 年 12 月以降に廃止されることが発表されました。詳細な時期については未定ですが MSOnline および Azure AD PowerShell モジュールをご利用の場合、Microsoft Graph API への移行を検討ください。
+> 詳しくは [Azure AD の変更管理を簡素化します](../azure-active-directory/azure-ad-change-management-simplified.md) の記事を参照ください。
+
 --------
 
 さて、前置きが長くなってしまいましたが、以下より、Microsoft Graph PowerShell を用いたライセンス管理操作についてご紹介いたします！
