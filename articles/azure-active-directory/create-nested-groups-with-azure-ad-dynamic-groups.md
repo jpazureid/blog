@@ -1,7 +1,7 @@
 
 ---
 title:  Azure AD 動的Groups で入れ子 (ネスト) グループを作成する
-date: 2022-06-06 12:00
+date: 2022-06-19 12:00
 tags:
   - Azure AD
   - US Identity Blog
@@ -9,7 +9,7 @@ tags:
 #  Azure AD 動的グループで "入れ子 (ネスト)" のグループを作成する
 こんにちは、Azure Identity サポート チームの 竜 です。
 
-本記事は、2022 年 04 月 25 日に米国の Azure Active Directory Identity Blog で公開された [Create "nested" groups with Azure AD Dynamic Groups](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/create-quot-nested-quot-groups-with-azure-ad-dynamic-groups/ba-p/3118024) を意訳したものになります。
+本記事は、2022 年 06 月 06 日に米国の Azure Active Directory Identity Blog で公開された [Create "nested" groups with Azure AD Dynamic Groups](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/create-quot-nested-quot-groups-with-azure-ad-dynamic-groups/ba-p/3118024) を意訳したものになります。
 
 ----
 
