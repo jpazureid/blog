@@ -225,7 +225,7 @@ Azure AD B2C では、お客様が設定可能なパスワードのポリシー�
 
 - [samples/policies/force-password-reset-after-90-days at master · azure-ad-b2c/samples](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-after-90-days)
 
-### XXXX の機能について、カスタム ポリシーを利用すればを実現可能ですか
+### XXXX の機能について、カスタム ポリシーを利用すれば実現可能ですか
 
 弊社ではカスタム ポリシーの利用例として、以下の GitHub リポジトリにてサンプルを公開しています。まずは実現したいことが以下のサンプルにあるかを確認ください。
 
