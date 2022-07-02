@@ -1,12 +1,12 @@
---- 
-title: アプリとサービス向けの ID 管理、ガバナンス、そして保護
-date: 2022-07-04 10:00 
-tags: 
-  - Azure AD 
-  - US Identity Blog 
---- 
+---
+title: アプリとサービス向けの ID の管理、ガバナンス、保護
+date: 2022-07-03 10:00
+tags:
+- Azure AD
+- US Identity Blog
+---
 
-# アプリとサービス向けの ID 管理、ガバナンス、そして保護
+# アプリとサービス向けの ID の管理、ガバナンス、保護
 
 こんにちは、Azure Identity サポート チームの 村上 です。
 
