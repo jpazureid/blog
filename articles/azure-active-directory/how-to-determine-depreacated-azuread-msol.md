@@ -74,12 +74,12 @@ Connect-AzureAD -Credential $cred -TenantId $tenantId
 
 ![サインイン ログの例](./how-to-determine-depreacated-azuread-msol/02_interactive_signin.png)
 
-> [!Note]
+> [!NOTE]
 > 例 2 の場合はユーザーのサインイン (非対話) に記録される場合があります。
 
 ![非対話型ログの例](./how-to-determine-depreacated-azuread-msol/03_noninteractive_signin.png)
 
-> [!Note]
+> [!NOTE]
 > バッチ処理に組み込まれたシステムユーザーの場合、どのマシンで実行しているかの情報は残念ながら確認できないので、IP アドレスや時間などから、利用されているマシンやシステムを特定できないか検討ください。
 
 #### 例3. サービス プリンシパルの資格情報を利用
