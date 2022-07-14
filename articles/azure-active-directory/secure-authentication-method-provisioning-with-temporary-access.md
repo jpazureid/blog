@@ -19,15 +19,14 @@ tags:
 
 本日は、一時アクセス パス (Temporary Access Pass、以下 TAP) が一般提供となりましたことをお知らせします。TAP のパブリック プレビューを [発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/temporary-access-pass-is-now-in-public-preview/ba-p/1994702) して以来、マイクロソフトでは数多くの取り組みを進めていました。
 
-**弊社ではパスワードレスでのサインインに MS Authenticator を使用しています。社員がリソースにアクセスするにはパスワードレスのみを許可しています。
-登録は TAP を用いて行われ、従来のようにパスワードをユーザーに渡す必要がなくなりました..." - EU のグローバル玩具メーカー**
+**_弊社ではパスワードレスでのサインインに MS Authenticator を使用しています。社員がリソースにアクセスするにはパスワードレスのみを許可しています。
+登録は TAP を用いて行われ、従来のようにパスワードをユーザーに渡す必要がなくなりました..." - EU のグローバル玩具メーカー_**
 
 このリリースを担当したプロダクト マネージャーの一人である Tim Larson に、これらのアップデートの概要、TAP を使用したパスワードレスのアカウント登録、そしてリカバリのシナリオについて解説してもらいます。Tim のブログは以下をご覧ください。
 
-Alex Simons（Twitter: [@alex_a_simons](https://twitter.com/Alex_A_Simons)) 
-
+Alex Simons（Twitter: [@alex_a_simons](https://twitter.com/Alex_A_Simons))  
 マイクロソフト アイデンティティ部門  
-コーポレート バイスプレジデント、プロダクト マネジメント  
+コーポレート バイスプレジデント、プロダクト マネジメント
 
 ---
 
@@ -70,4 +69,3 @@ TAP があなたのパスワードレスの導入に役立つことを願って�
 Tim Larson ([@tim_c_larson](https://twitter.com/tim_c_larson))  
 マイクロソフト アイデンティティ部門  
 シニア プロダクト マネージャー
-
