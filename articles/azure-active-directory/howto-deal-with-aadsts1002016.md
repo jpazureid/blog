@@ -1,5 +1,5 @@
 ---
-title: Deep dive: エラー コード AADSTS1002016 が発生した際の対処策について
+title: エラー コード AADSTS1002016 が発生した際の対処策について
 date: 2022-7-28 09:00
 tags:
     - Azure AD
