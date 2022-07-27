@@ -1,5 +1,5 @@
 ---
-title: エラー コード AADSTS1002016 が発生した際の対処策について
+title: Azure AD への認証が失敗する (エラー コード AADSTS1002016) 際の対処策について
 date: 2022-7-28 09:00
 tags:
     - Azure AD
@@ -10,25 +10,13 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの小出です。
 
-今回は、最近多くお問い合わせをいただいております AADSTS1002016 のエラーについてご案内します。
-
-## 事象
-Powershell で Connect-AzureAD や Connect-Msolservice、 Connect-ExchangeOnline などのコマンドを実行した際に、正しくサインインが完了せず、以下のようなエラー メッセージが表示される事象です。
-
-エラーが発生すると、下記のようなメッセージが表示されることがあります。
-
+現在 (2022 年 7 月現在) Azure AD の認証サービスにおける TLS 1.0 /1.1 の無効化の処理を進めています。TLS 1.0/1.1 による接続ができなくなることは、以前より Microsoft 365 のメッセージセンター、 Azure ポータルの Azure Active Directory ブレードでアナウンスをしており、 2022 年 1 月 31 日までに対策を実施するよう通知をしておりました。無効化の処理は段階的におこなわれており、 TLS1.0 /1.1 が利用されているために Azure AD の認証サービスが接続を受け付けない場合には Azure AD は AADSTS1002016 のエラーを返します。
 
 ```
 AADSTS1002016: You are using TLS version 1.0, 1.1 and/or 3DES cipher which are deprecated to improve the security posture of Azure AD. Your TenantID is: XXXXXXXXX. Please refer to https://go.microsoft.com/fwlink/?linkid=2161187 and conduct needed actions to remediate the issue. For further questions, please contact your administrator.
 ```
 
-
-## 原因
-エラー メッセージに記載されております通り、古い TLS バージョンを利用しているために発生しているエラーです。詳細は、下記技術情報も併せてご確認ください。
-
-TLS1.0 / 1.1 につきましては、廃止となる旨情報をご案内しておりますが、 6 月下旬より実際の展開が順次開始されている状況を確認しており、この変更に伴うエラーの発生と考えられます。
-
-そのため、以前は問題なく実行できていた場合であっても、直近では上記エラーが発生しているようなシナリオもございます。
+ここ最近、突然 Azure AD の認証ができなくなった、ただ何度かリトライすると接続できることもあるというケースでは、この措置に伴い生じている可能性があります。特にサポート窓口では PowerShell を利用した自動化処理で問題が発生するようになったというお問い合わせを多く受けていますが、それ以外でも発生する可能性があります。また、処理が複数のシステムを介して行われている場合には、AADSTS1002016 のエラーが見えないものもあります。
 
 ## 技術資料
 [Azure AD TLS 1.1 および 1.0 の非推奨の環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor
@@ -40,18 +28,16 @@ TLS1.0 / 1.1 につきましては、廃止となる旨情報をご案内して�
 [.NET Framework のバージョンおよび依存関係](https://docs.microsoft.com/ja-jp/dotnet/framework/migration-guide/versions-and-dependencies
 )
 
-
-
 ## 対処策
-TLS 1.2 にて通信を行うことで、本エラーの解消が見込めます。
+TLS 1.2 にて通信を行われるように設定します。
 
-お客様のご利用シナリオにもよりますが、まずご確認いただきたい確認ポイントとしては、以下の 2 点となります。
+確認ポイントとしては、以下の 2 点となります。
 
-- Windows (Server) OS が TLS 1.2 が有効 かつ 利用できる状態か
+- OS が TLS 1.2 が有効 かつ 利用できる状態か
 - アプリ側で TLS 1.2 が有効でかつ利用できる状態か
 
 ### OS 上の TLS 1.2 設定を確認・変更する方法
-現在サポートされておりますすべての Windows OS / Windows Server OS で は、既定で TLS 1.2 が有効化されております。
+現在サポートされておりますすべての Windows OS / Windows Server OS では、既定で TLS 1.2 が有効化されております。
 そのため、この場合は OS 観点では問題なく TLS 1.2 を利用できる状態です。
 
 Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利用できますが有効化されていません。
@@ -78,24 +64,32 @@ Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利�
 値 : 1
 
 
-### アプリケーション 上の TLS 1.2 設定を確認・変更する方法
-アプリケーションがどのようなフレーム ワークを使用して利用して作成されているかにもよりますが、主に本エラーが発生しているシナリオとしては、 PowerShell で  Connect-AzureAD や Connect-Msolservice、 Connect-ExchangeOnline など、 Azure AD への接続コマンドを実施しているシナリオが多く見受けられます。
+### PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法
+アプリケーションがどのようなフレーム ワークを使用して利用して作成されているかに依存しますが、主に本エラーが発生しているシナリオとして PowerShell で  Connect-AzureAD や Connect-Msolservice、 Connect-ExchangeOnline など、 Azure AD への接続コマンドを実施しているシナリオが多く見受けられます。PowerShell で TLS 1.2 を利用するためには .NET Framework で TLS 1.2 が利用されるように設定されている必要があります。.NET Framework 4.6 以降であれば特にこのレジストリを設定しなくとも TLS 1.2 に対応していますが、 OS によっては (Windows Server 2016 の場合に発生します)、 4.6 以降のバージョンを利用していても明示的にレジストリを設定しないと TLS 1.2 を利用してくれません。
 
-この場合上記 OS 側の設定を確認後、下記手順を実施いただき、その後再度コマンドが実施できるかご確認ください。
+問題に遭遇しました環境では、OS の設定に加えて、次のレジストリ設定を実施の上、再起動します。
 
-手順
-1.  PowerShell を管理者権限で起動します。
-2. 以下のコマンドを実行します。
+キー : HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
+名前 : SchUseStrongCrypto
+種類 : REG_DWORD
+値 : 1
+
+キー : HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319
+名前 : SchUseStrongCrypto
+種類 : REG_DWORD
+値 : 1
+
+なお、 PowerShell を実行時に事前に以下のコマンドを実行すれば、明示的に TLS 1.2 を利用して接続ができますので、この方法でも構いません。
  
   ```
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
   ```
 
-3. Connect-AzureAD をはじめ Azure AD への接続コマンドを再度実行いただき、正しく接続できるか確認します。
+### TLS 1.0/1.1 による Azure AD への認証要求があるかの確認方法 
+対処策の設定ををしても問題が解消しない場合には、 Azure AD への認証までの経路にあるプロキシ サーバーが TLS1.2 を利用していない、ご利用のシステムのバックエンドで TLS 1.0/1.1 を利用している可能性があります。TLS 1.0/1.1 を利用した認証要求が Azure AD に来ているかはサインインログで判断ができます。
 
-
-
-
-お客様のご利用環境・バージョンなどによって、追加でのご案内が必要となる場合があります。
-
-そのため、もし上記内容をご確認いただいても接続できない場合などは、ご利用の環境情報を記載のうえ、弊社サポートへお問い合わせを起票ください。
+1. Azure portal (https://portal.azure.com) に全体管理者でサインインし、 [Azure Active Directory] を開きます。
+2. [サインイン ログ] を選択します。
+3. 認証に失敗するアカウントのサインイン ログ エントリを選択します。
+4. [追加の詳細情報] タブを選択します (このタブが表示されない場合は、最初に右隅の省略記号 (...) を選択して、タブの完全なリストを表示します)。
+5. Legacy TLS (TLS 1.0, 1.1, or 3DES) という表示が含まれる場合は、TLS 1.0/1.1 を使用してサインインが行われています。 TLS 1.2 を使用している場合には何も表示されません。
