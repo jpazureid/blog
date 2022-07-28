@@ -22,7 +22,7 @@ PowerShell で TLS 1.2 が利用できる状態かは PowerShell を起動し、
   ```
 [System.Net.ServicePointManager]::SecurityProtocol
   ```
-実行した結果、TLS12 が含まれている、あるいは SystemDefault となっている場合には PowerShell としては TLS 1.2 を利用できる状態と判断できます (OS でも利用できるように構成されていることが前提)。結果として Ssl3, Tls などと表示される場合には TLS 1.2 は利用されない状態なので 「PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法」 にしたがってレジストリ設定を実施ください。
+実行した結果、TLS12 が含まれている、あるいは SystemDefault となっている場合には PowerShell としては TLS 1.2 を利用できる状態と判断できます (OS でも利用できるように構成されていることが前提)。結果として Ssl3, Tls のみが表示される場合には TLS 1.2 は利用されない状態なので 「PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法」 にしたがってレジストリ設定を実施ください。
 
 ## 技術資料
 [Azure AD TLS 1.1 および 1.0 の非推奨の環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor
