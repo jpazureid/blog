@@ -43,41 +43,40 @@ TLS 1.2 にて通信を行われるように設定します。
 Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利用できますが有効化されていません。
 以下のレジストリ値を設定し、 Windows OS として既定で利用できるよう設定を変更してください。
 
-キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
-名前 : DisabledByDefault
-種類 : REG_DWORD
-値 : 0
+    キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
+    名前 : DisabledByDefault
+    種類 : REG_DWORD
+    値 : 0
 
-キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
-名前 : Enabled
-種類 : REG_DWORD
-値 : 1
+    キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
+    名前 : Enabled
+    種類 : REG_DWORD
+    値 : 1
 
-キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
-名前 : DisabledByDefault
-種類 : REG_DWORD
-値 : 0
+    キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
+    名前 : DisabledByDefault
+    種類 : REG_DWORD
+    値 : 0
 
-キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
-名前 : Enabled
-種類 : REG_DWORD
-値 : 1
-
+    キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
+    名前 : Enabled
+    種類 : REG_DWORD
+    値 : 1
 
 ### PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法
 アプリケーションがどのようなフレーム ワークを使用して利用して作成されているかに依存しますが、主に本エラーが発生しているシナリオとして PowerShell で  Connect-AzureAD や Connect-Msolservice、 Connect-ExchangeOnline など、 Azure AD への接続コマンドを実施しているシナリオが多く見受けられます。PowerShell で TLS 1.2 を利用するためには .NET Framework で TLS 1.2 が利用されるように設定されている必要があります。.NET Framework 4.6 以降であれば特にこのレジストリを設定しなくとも TLS 1.2 に対応していますが、 OS によっては (Windows Server 2016 の場合に発生します)、 4.6 以降のバージョンを利用していても明示的にレジストリを設定しないと TLS 1.2 を利用してくれません。
 
 問題に遭遇しました環境では、OS の設定に加えて、次のレジストリ設定を実施の上、再起動します。
 
-キー : HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
-名前 : SchUseStrongCrypto
-種類 : REG_DWORD
-値 : 1
-
-キー : HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319
-名前 : SchUseStrongCrypto
-種類 : REG_DWORD
-値 : 1
+    キー : HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
+    名前 : SchUseStrongCrypto
+    種類 : REG_DWORD
+    値 : 1
+    
+    キー : HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319
+    名前 : SchUseStrongCrypto
+    種類 : REG_DWORD
+    値 : 1
 
 なお、 PowerShell を実行時に事前に以下のコマンドを実行すれば、明示的に TLS 1.2 を利用して接続ができますので、この方法でも構いません。
  
