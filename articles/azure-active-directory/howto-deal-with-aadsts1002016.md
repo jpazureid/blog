@@ -18,9 +18,12 @@ AADSTS1002016: You are using TLS version 1.0, 1.1 and/or 3DES cipher which are d
 
 ここ最近、突然 Azure AD の認証ができなくなった、ただ何度かリトライすると接続できることもあるというケースでは、この措置に伴い生じている可能性があります。(段階的に展開しているため、リトライで TLS 1.0 /1.1 無効化の措置が未適用のサーバーに接続した場合、エラーとならず接続できるということが発生します)
 
-特にサポート窓口では PowerShell を利用した自動化処理で問題が発生するようになったというお問い合わせを多く受けていますが、それ以外でも発生する可能性があります。また、処理が複数のシステムを介して行われている場合には、AADSTS1002016 のエラーが見えないものもあります。
+特にサポート窓口では PowerShell を利用した自動化処理で問題が発生するようになったというお問い合わせを多く受けていますが、それ以外でも発生する可能性があります。また、処理が複数のシステムを介して行われている場合には、AADSTS1002016 のエラーが見えないものもありますし、 PowerShell でも実行するコマンドによっては、AADSTS1002016 という情報は含まれずに、例えば Connect-MSolService では次のようなエラーが返されます。
+  ```
+Connect-MsolService : Authentication Error: Unexpected authentication failure.
+  ```
 
-PowerShell で TLS 1.2 が利用できる状態かは PowerShell を起動し、次のコマンドを実行することで確認できます。
+PowerShell で TLS 1.2 が利用できる状態かは PowerShell を起動し、次のコマンドの実行により確認ができます。
   ```
 [System.Net.ServicePointManager]::SecurityProtocol
   ```
