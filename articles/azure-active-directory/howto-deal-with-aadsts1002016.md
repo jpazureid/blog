@@ -27,7 +27,7 @@ PowerShell で TLS 1.2 が利用できる状態かは PowerShell を起動し、
   ```
 [System.Net.ServicePointManager]::SecurityProtocol
   ```
-実行した結果、TLS12 が含まれている、あるいは SystemDefault となっている場合には PowerShell としては TLS 1.2 を利用できる状態と判断できます (OS でも利用できるように構成されていることが前提)。結果として Ssl3, Tls のみが表示される場合には TLS 1.2 は利用されない状態なので 「PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法」 にしたがってレジストリ設定を実施ください。
+実行した結果、TLS12 が含まれている、あるいは SystemDefault となっている場合には PowerShell としては TLS 1.2 を利用できる状態と判断できます (OS でも利用できるように構成されていることが前提です)。実行結果として Ssl3, Tls のみなど TLS12 が含まれない場合には TLS 1.2 は利用されない状態のため、後述します 「PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法」 にしたがってレジストリ設定を実施ください。
 
 ## 技術資料
 [Azure AD TLS 1.1 および 1.0 の非推奨の環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor
@@ -113,6 +113,86 @@ Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利�
 4. [ダウンロード] - "CSV のダウンロード" をクリックします。
 5. InteractiveSignIns_20xx-xx-xx_20xx-xx-xx、NonInteractiveSignIns_20xx-xx-xx_20xx-xx-xx、ApplicationSignIns_20xx-xx-xx_20xx-xx-xx、MSISignIns_20xx-xx-xx_20xx-xx-xx の 4 つをそれぞれダウンロードします。
 6. ダウンロードした CSV ファイルを開き、"サインインのエラー コード" として 1002016 が含まれていないか確認します。
+
+### テナントでこの影響を受けて認証に失敗しているか確認する方法 (PowerShell を利用してサインインログを抽出)
+Azure AD Premium をテナントで利用されていることが前提ですが、 PowerShell コマンドを利用して TLS 1.0/1.1 が利用されたことを示すエントリのみをフィルタして CSV 形式でダウンロードするスクリプトを紹介します。
+
+1. [管理者として実行] オプションを使用して、[スタート] メニューから Windows PowerShell を開きます。
+
+2. 次のコマンドを実行して、Microsoft Graph SDK をインストールし、実行ポリシーを設定します。
+  ```
+Install-Module Microsoft.Graph -Scope AllUsers
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+  ```
+
+3. 次のスクリプトを PowerShell スクリプト (.ps1) ファイルに保存します。最初の 3 行は、取得対象テナントのテナント ID、何日分のログを取得するかの日数 (例では 7 日になっています)、出力先のフォルダ名 (例では c:\temp\) を環境に合わせて編集します。
+  ```
+$tId = "テナント ID"  # テナント ID を入れてください。テナント ID は Azure ポータルの Azure Active Directory の概要から取得できます。 
+$agoDays = 7  # 何日前からのログを取得するか日数を指定します。
+$pathForExport = "c:\temp\"  # CSV ファイルの出力先フォルダ名を入力します。
+$startDate = (Get-Date).AddDays(-($agoDays)).ToString('yyyy-MM-dd')  # $agoDays で指定した日数を元に取得対象の開始日を得ます
+
+Connect-MgGraph -Scopes "AuditLog.Read.All" -TenantId $tId 
+Select-MgProfile "beta"  # ベータのエンドポイントへの接続が必要です
+
+# フィルタ条件を定義しています。サインイン ログに TLS 1.0 / 1.1 が利用されたことを示すエントリのみをフィルタするようにしています
+$procDetailFunction = "x: x/key eq 'legacy tls (tls 1.0, 1.1, 3des)' and x/value eq '1'"
+$clauses = (
+    "createdDateTime ge $startDate",
+    "signInEventTypes/any(t: t eq 'nonInteractiveUser')",
+    "signInEventTypes/any(t: t eq 'servicePrincipal')",
+    "(authenticationProcessingDetails/any($procDetailFunction))"
+)
+
+# フィルタ条件に従って対話型、非対話型、 ServicePrincipal のそれぞれのログを取得します。
+$signInsInteractive = Get-MgAuditLogSignIn -Filter ($clauses[0,3] -Join " and ") -All
+$signInsNonInteractive = Get-MgAuditLogSignIn -Filter ($clauses[0,1,3] -Join " and ") -All
+$signInsWorkloadIdentities = Get-MgAuditLogSignIn -Filter ($clauses[0,2,3] -Join " and ") -All
+
+$columnList = @{  # 対話型、非対話型の出力ファイルに含むカラムを定義しています
+    Property = "CorrelationId", "createdDateTime", "userPrincipalName", "userId",
+              "UserDisplayName", "AppDisplayName", "AppId", "IPAddress", "isInteractive",
+              "ResourceDisplayName", "ResourceId", "UserAgent"
+}
+
+$columnListWorkloadId = @{ # Service Principal の出力ファイルに含むカラムを定義しています
+    Property = "CorrelationId", "createdDateTime", "AppDisplayName", "AppId", "IPAddress",
+              "ResourceDisplayName", "ResourceId", "ServicePrincipalId", "ServicePrincipalName"
+}
+
+$signInsInteractive | ForEach-Object {
+    foreach ($authDetail in $_.AuthenticationProcessingDetails)
+    {
+        if (($authDetail.Key -match "Legacy TLS") -and ($authDetail.Value -eq "True"))
+        {
+            $_ | Select-Object @columnList -ExpandProperty Status
+        }
+    }
+} | Export-Csv -Path ($pathForExport + "Interactive_lowTls_$tId.csv") -NoTypeInformation
+
+$signInsNonInteractive | ForEach-Object {
+    foreach ($authDetail in $_.AuthenticationProcessingDetails)
+    {
+        if (($authDetail.Key -match "Legacy TLS") -and ($authDetail.Value -eq "True"))
+        {
+            $_ | Select-Object @columnList -ExpandProperty Status
+        }
+    }
+} | Export-Csv -Path ($pathForExport + "NonInteractive_lowTls_$tId.csv") -NoTypeInformation
+
+$signInsWorkloadIdentities | ForEach-Object {
+    foreach ($authDetail in $_.AuthenticationProcessingDetails)
+    {
+        if (($authDetail.Key -match "Legacy TLS") -and ($authDetail.Value -eq "True"))
+        {
+            $_ | Select-Object @columnListWorkloadId -ExpandProperty Status
+        }
+    }
+} | Export-Csv -Path ($pathForExport + "WorkloadIdentities_lowTls_$tId.csv") -NoTypeInformation
+  ```
+4. スクリプトを保存して実行します。 スクリプトの実行時にメッセージが表示されたら、グローバル管理者としてサインインします。 次に、Microsoft Graph に監査ログ情報を読み取らせることに同意します。
+
+5. 指定したフォルダに Interactive_lowTls_<テナント ID>.csv、 NonInteractive_lowTls_<テナント ID>.csv、WorkloadIdentities_lowTls_<テナント ID>.csv の 3 ファイルが作成されます。このファイルには TLS 1.0/1.1 を利用したサインイン エントリのみが含まれます。認証が失敗した場合には ErrorCode のカラムに 1002016 が含まれますので、本問題が該当のテナントでいつから生じているかも確認が可能です。
 
 ### TLS 1.0 を利用した Azure AD への認証を試みる方法 
 TLS 1.0/1.1 の無効化は段階的に進められています。接続先のデータセンターによって事象が発生の有無が変わります (そのため事象が突然発生したり、発生しなくなったりもします)。すでに Azure AD PowerShell がインストールされている前提で、 TLS 1.0 での接続を試したい場合には、次のような方法で明示的に TLS 1.0 を利用した接続テストを行うことができます (TLS 1.0 を利用すること自体は推奨されません)。
