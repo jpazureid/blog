@@ -16,11 +16,16 @@ tags:
 AADSTS1002016: You are using TLS version 1.0, 1.1 and/or 3DES cipher which are deprecated to improve the security posture of Azure AD. Your TenantID is: XXXXXXXXX. Please refer to https://go.microsoft.com/fwlink/?linkid=2161187 and conduct needed actions to remediate the issue. For further questions, please contact your administrator.
 ```
 
-ここ最近、突然 Azure AD の認証ができなくなった、ただ何度かリトライすると接続できることもあるというケースでは、この措置に伴い生じている可能性があります。(段階的に展開しているため、リトライで TLS 1.0 /1.1 無効化の措置が未適用のサーバーに接続した場合、エラーとならず接続できるということが発生します)
+ここ最近、突然 Azure AD の認証ができなくなった、ただ何度かリトライすると接続できることもあるというケースでは、この措置に伴い生じている可能性があります (段階的に展開しているため、リトライで TLS 1.0 /1.1 無効化の措置が未適用のサーバーに接続した場合、エラーとならず接続できます)。
 
-特にサポート窓口では PowerShell を利用した自動化処理で問題が発生するようになったというお問い合わせを多く受けていますが、それ以外でも発生する可能性があります。また、処理が複数のシステムを介して行われている場合には、AADSTS1002016 のエラーが見えないものもありますし、 PowerShell でも実行するコマンドによっては、AADSTS1002016 という情報は含まれずに、例えば Connect-MSolService では次のようなエラーが返されます。
+サポート窓口では特に PowerShell を利用した自動化処理で問題が発生するようになったというお問い合わせを多く受けていますが、それ以外でも発生する可能性があります。処理が複数のシステムを介して行われている場合には、AADSTS1002016 のエラーが見えないものもありますし、 PowerShell でも実行するコマンドによっては、AADSTS1002016 という情報は含まれずに、例えば Connect-MSolService では次のようなエラーが返されます。
   ```
 Connect-MsolService : Authentication Error: Unexpected authentication failure.
+  ```
+
+他には Web アプリケーションでこの措置の影響を受けて問題が発生している場合に次のようなエラーの発生が確認できています。
+  ```
+IDX20803: Unable to create to obtain configuration from: 'https://login.microsoftonline.com/{Tenant-ID}/.well-known/openid-configuration'
   ```
 
 PowerShell で TLS 1.2 が利用できる状態かは PowerShell を起動し、次のコマンドの実行により確認ができます。
@@ -28,6 +33,8 @@ PowerShell で TLS 1.2 が利用できる状態かは PowerShell を起動し、
 [System.Net.ServicePointManager]::SecurityProtocol
   ```
 実行した結果、TLS12 が含まれている、あるいは SystemDefault となっている場合には PowerShell としては TLS 1.2 を利用できる状態と判断できます (OS でも利用できるように構成されていることが前提です)。実行結果として Ssl3, Tls のみなど TLS12 が含まれない場合には TLS 1.2 は利用されない状態のため、後述します 「PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法」 にしたがってレジストリ設定を実施ください。
+
+IDX20803 が記録されているパターンなどでは問題が発生している Web アプリケーションが TLS 1.2 を利用するようになっているか確認を実施ください。
 
 ## 技術資料
 [Azure AD TLS 1.1 および 1.0 の非推奨の環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor
