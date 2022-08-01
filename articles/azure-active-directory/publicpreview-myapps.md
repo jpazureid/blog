@@ -1,10 +1,17 @@
 ---
-title: Deep dive: [パブリック プレビュー] My Apps の強化
+title: パブリック プレビュー- My Apps の強化
 date: 2022-8-8 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
+
+
+こんにちは、 Azure Identity サポート チームの小出です。
+
+本記事は、 2021 年 11 月15 日に米国の Azure Active Directory Identity Blog で公開された [Public Preview: Enhanced "My Apps" experience](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/public-preview-enhanced-quot-my-apps-quot-experience/ba-p/3118022)) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
+
+
 
 Microsoft Entra のエンド ツー エンドの機能を拡張し続けている私たちは、強力なアイデンティティとアクセス管理の実装が、組織とそのすべての人々の生産性を向上させるはずだと固く信じています。安全なアクセスは、ユーザーにとって、可能な限り摩擦のないものでなければなりません。
 
