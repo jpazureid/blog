@@ -9,7 +9,7 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの小出です。
 
-本記事は、 2021 年 11 月15 日に米国の Azure Active Directory Identity Blog で公開された [Public Preview: Enhanced "My Apps" experience](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/public-preview-enhanced-quot-my-apps-quot-experience/ba-p/3118022)) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
+本記事は、 2021 年 11 月15 日に米国の Azure Active Directory Identity Blog で公開された [Public Preview: Enhanced "My Apps" experience](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/public-preview-enhanced-quot-my-apps-quot-experience/ba-p/3118022) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
 
 
 
