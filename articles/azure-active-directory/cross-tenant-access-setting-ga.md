@@ -8,7 +8,7 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの小出です。
 
-本記事は、 2022 年 3 月 2 日に米国の Azure Active Directory Identity Blog で公開された [Cross-tenant access settings for secure collaboration now generally available!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/cross-tenant-access-settings-for-secure-collaboration-now/ba-p/3575844) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
+本記事は、 2022 年 7 月 21 日に米国の Azure Active Directory Identity Blog で公開された [Cross-tenant access settings for secure collaboration now generally available!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/cross-tenant-access-settings-for-secure-collaboration-now/ba-p/3575844) を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
 
 ---
 
