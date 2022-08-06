@@ -81,7 +81,7 @@ Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利�
     値 : 1
 
 ### PowerShell (.NET Framework) で TLS 1.2 が利用されるように設定する方法
-アプリケーションがどのようなフレーム ワークを使用して利用して作成されているかに依存しますが、主に本エラーが発生しているシナリオとして PowerShell で  Connect-AzureAD や Connect-Msolservice、 Connect-ExchangeOnline など、 Azure AD への接続コマンドを実施しているシナリオが多く見受けられます。PowerShell で TLS 1.2 を利用するためには .NET Framework で TLS 1.2 が利用されるように設定されている必要があります。.NET Framework 4.6 以降であれば特にこのレジストリを設定しなくとも TLS 1.2 に対応していますが、 OS によっては (Windows Server 2016 の場合に発生します)、 4.6 以降のバージョンを利用していても明示的にレジストリを設定しないと TLS 1.2 を利用してくれません。
+アプリケーションがどのようなフレーム ワークを使用して利用して作成されているかに依存しますが、主に本エラーが発生しているシナリオとして PowerShell で  Connect-AzureAD や Connect-Msolservice、 Connect-ExchangeOnline など、 Azure AD への接続コマンドを実施しているシナリオが多く見受けられます。PowerShell で TLS 1.2 を利用するためには .NET Framework で TLS 1.2 が利用されるように設定されている必要があります。
 
 問題が生じた環境では、OS の設定に加えて、次のレジストリ設定を実施の上、再起動します。
 
@@ -95,10 +95,13 @@ Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利�
     種類 : REG_DWORD
     値 : 1
 
-なお、 PowerShell を実行時に事前に以下のコマンドを実行すれば、明示的に TLS 1.2 を利用して接続ができますので、この方法でも構いません。
+なお、 PowerShell を実行時に事前に以下のコマンドを実行すれば、明示的に TLS 1.2 を指定して接続ができますので、この方法でも構いません。
   ```
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
   ```
+#### 注意事項: 
+.NET Framework 4.6 以降であれば特にこのレジストリを設定しなくとも TLS 1.2 に対応しています。しかし、.Net Framework に依存するアプリケーション (Powershell もその 1 つです) と OS の組み合わせによっては 4.6 以降のバージョンを利用していても明示的にレジストリを設定しないと TLS 1.2 を利用してくれません。
+具体的には Windows Server 2016 (およびそれ以前) 上で PowerShell を利用する場合には、 .Net Framework のバージョンに依らずレジストリ設定 (または PowerShell の場合事前にコマンドで明示的に TLS 1.2 を指定) が必要です。また、 ADAL ライブラリで Microsoft.IdentityModel.Clients.ActiveDirectory を利用している場合にも既定では TLS 1.0/1.1 が利用されるため、そのようなケースでもレジストリ設定を行います。 
 
 ### TLS 1.0/1.1 を利用した Azure AD への認証要求の有無を確認する方法 
 対処策の設定ををしても問題が解消しない場合には、 Azure AD への認証までの経路にあるプロキシ サーバーが TLS1.2 を利用していない、ご利用のシステムのバックエンドで TLS 1.0/1.1 を利用している可能性があります。TLS 1.0/1.1 を利用した認証要求が Azure AD に来ているかはサインインログで判断ができます。
