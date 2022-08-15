@@ -60,6 +60,8 @@ TLS 1.2 にて通信を行われるように設定します。
 Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利用できますが有効化されていません。
 以下のレジストリ値を設定し、 Windows OS として既定で利用できるよう設定を変更してください。
 
+それ以降の OS ではレジストリ キーが存在していない場合も TLS 1.2 は有効化されています。DisabledByDefault = 1 または Enabled = 0 が設定されているときのみ設定変更を実施ください。
+
     キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
     名前 : DisabledByDefault
     種類 : REG_DWORD
