@@ -11,7 +11,7 @@ tags:
 
 -----
 
-# Azure AD Certificate-Based Authentication (CBA)の新しい機能拡張のご紹介
+# Azure AD Certificate-Based Authentication (CBA) の新しい機能拡張のご紹介
 
 2022年2月、私たちはMicrosoftの「[Executive Order 14028,Improving the Nation’s Cybersecurity](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/)」へのコミットメントの一環として、[Azure AD Certificate-Based Authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-ad-certificate-based-authentication-now-in-public-preview/ba-p/2464390) のパブリックプレビューを発表しました。
 
