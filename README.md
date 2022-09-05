@@ -123,6 +123,8 @@
 - [External Identities (B2C) が Authenticator アプリに対応するとともにデータ保存場所の価格更新が発表されました](./articles/azure-active-directory/external-identities-b2c-supports-authenticator-apps-and-new-data.md)
 - [アプリでゼロ トラスト対応を実現する 2 - 最小限の特権で設計する](./articles/azure-active-directory/achieving-zero-trust-readiness-in-your-apps-2-designing-for-least-privilege.md)
 - [パブリッシャー ドメイン (発行元ドメイン) と発行者確認](./articles/azure-active-directory/publisher-domain.md)
+- [Azure MFA Server 移行ツール](./articles/azure-active-directory/the-mfa-server-migration-utility.md)
+
 
 ## Azure AD Connect
 
