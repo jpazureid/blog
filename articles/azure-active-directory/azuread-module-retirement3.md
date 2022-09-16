@@ -10,15 +10,18 @@ tags:
 # MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編
 
 こんにちは、 Azure ID チームの小出です。
-
 この記事は、MSOnline / AzureAD モジュール廃止について、1_概要編、 2_移行導入編の記事の続きとして連載しています。
+
+
 今回は Microsoft Graph PowerShell SDK モジュールのインストール方法や、接続に関するよくある質問にお答えしたいと思います。
+
 
 ## モジュールのインストール
 これまでのモジュールと同様に、 Install-Module コマンドでインストールします。
 Graph PowerShell SDK のモジュールをインストールする場合、Install-Module Microsoft.Graph と実行します。
 
 注意点としては、Install-Module Microsoft.Graph を実行すると、サブ モジュール 38 個をすべて含む形でインストールが行われます。（少し時間もかかります。）
+
 特定のコマンドのみを使用したい場合、サブ モジュール単位でインストールすることもできますが、その場合は Microsoft.Graph.Authentication は必ずインストールしてください。
 
 ![](./azuread-module-retirement3/azuread-module-retirement3-image1.png)
@@ -37,9 +40,11 @@ Graph PowerShell SDK のモジュールをインストールする場合、Insta
 ## 接続手順
 これまでと同様に、 Connect コマンドを使用して接続します。
 Connect-MsolService / Connect-AzureAD に対応する Microsoft Graph PowerShell SDK での接続コマンドは、 Connect-MgGraph / Connect-Graph コマンドです。
+
 一例として、下記のように実行します。
 
 実行例
+
 ``Connect-MgGraph -Scopes User.Read.All``
 
 これまでのコマンドとは異なり、後ろに -Scopes オプションを使用して、権限を付与する必要があります。
@@ -57,16 +62,18 @@ API の公開情報には、組織アカウント、個人用アカウント、�
 ## よくある質問
 Q. Get-MgUser 等を使用した後、 Powershell プロンプトを閉じてから再度開くと、 Connect-Mggraph 実行時にパスワード入力画面にならずにサインインできてしまいます。動作の詳細をもう少し詳しく教えてください。
 
-A. Connect-MSGraph コマンドを実行すると、実行した端末にキャッシュが保持されます。
+A. Connect-MgGraph コマンドを実行すると、実行した端末にキャッシュが保持されます。
 具体的には、実行端末の C:\Users\＜User＞\.graph 内に、以下のように .bin3 ファイルが作成されます。
 ![](./azuread-module-retirement3/azuread-module-retirement3-image3.png)
  
 Connect-MsolService コマンドや、 Connect-AzureAD コマンドでは、一度 PowerShell を終了すれば、次回は再度サインイン画面が表示されますが、
 Connect-MgGraph コマンドでは、PowerShell をいったん終了した場合でも、毎度サインイン画面は表示されません。
+
 この場合、認証済みの資格情報を使用できてしまうため、一連のコマンドを実行した後は、 Disconect-MgGraph コマンドを実行ください。
 なお、Disconect-MgGraph コマンドを実行すると、上記の .bin3 ファイルは表示されなくなります。（再度 Connect-MgGraph を実行してサインインすると、同じ場所にファイルが作成されます。）
  
 また、Disconnect-MgGraph コマンドを実行しない場合、毎回サインイン画面が表示されないため、
 認証済みの資格情報をそのまま使用できてしまうほかにも、たとえば異なるテナントに対し、意図しない操作を行ってしまう可能性も考えられます。
+
 Get-Mgdomain コマンドや Get-MgOrganization コマンドを実行して、現在接続しているテナントを確認したり、 Get-MgContext コマンドを実行し、接続ユーザーの情報を確認したりすることも可能ですので、必要に応じてご利用ください。
 
