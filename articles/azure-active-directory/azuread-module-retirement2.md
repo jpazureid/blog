@@ -14,10 +14,14 @@ tags:
 1_概要編の記事はすでにご覧いただけましたでしょうか。
 最新のアップデートは、この記事にて随時アップデートを行う予定ですので、今後の情報をお待ちください。
 
+
 今回は、 Graph PowerShell SDK モジュールへの移行について、実際に新しいモジュールを使用するにあたり、前提となる新旧モジュールの違いと、新しいコマンドの探し方をご案内します。
+
+
 
 ## 新旧モジュールの主な違い
 以前の MSOnline / Azure AD モジュールと、新しい Microsoft Graph PowerShell SDK モジュールには、下記のような違いがあります。
+
 インストールや接続面の違いについては、次回記事に詳細を記載予定ですので、併せてご確認ください。
 
 
@@ -37,14 +41,16 @@ tags:
 今使用しているスクリプトに、今後廃止予定のコマンドがあることが確認できたら、まずは置き換え先となる新しいモジュールのコマンドを探します。
 最も簡単な方法は、[この公開情報](https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0)を利用することです。
 
-
 表形式でマッピング表があるため、現在使用しているコマンドを検索するだけで、簡単に対応コマンドを見つけることができます。
+
+
 もし公開情報にコマンドがない場合、次に Graph API の公開情報があるか確認します。
 たとえばユーザーの取得の場合、「ユーザー 取得 Graph API」などと検索し、[ユーザーの取得](https://docs.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http) のような公開情報を探します。
+
 公開情報を見つけたら、下記のように、言語ごとの書き方が案内されていることがあるため、 PowerShell 例文があるか確認し、コマンドを見つけます。
 
 ![](./azuread-module-retirement2/azuread-module-retirement2-image1.png)
 
- PowerShell タブはないものの、HTTP タブにクエリの記載がある場合は、 Invoke-MgGraphRequest コマンドの -URL オプションにクエリを入れて実行することで、同様に実行することが可能です。
+PowerShell タブはないものの、HTTP タブにクエリの記載がある場合は、 Invoke-MgGraphRequest コマンドの -URL オプションにクエリを入れて実行することで、同様に実行することが可能です。
 
 以上のような方法でも代替コマンドが確認できないものについては、技術サポートにお気軽にお問い合わせください。
