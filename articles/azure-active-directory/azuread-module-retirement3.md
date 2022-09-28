@@ -13,14 +13,14 @@ tags:
 この記事は、MSOnline / AzureAD モジュール廃止について、1_概要編、 2_移行導入編の記事の続きとして連載しています。
 
 
-今回は Microsoft Graph PowerShell SDK モジュールのインストール方法や、接続に関するよくある質問にお答えしたいと思います。
+今回は Microsoft Graph PowerShell SDK モジュールのインストール方法や、接続に関するよくある質問にお答えします。
 
 
 ## モジュールのインストール
 これまでのモジュールと同様に、 Install-Module コマンドでインストールします。
 Graph PowerShell SDK のモジュールをインストールする場合、Install-Module Microsoft.Graph と実行します。
 
-注意点としては、Install-Module Microsoft.Graph を実行すると、サブ モジュール 38 個をすべて含む形でインストールが行われます。（少し時間もかかります。）
+注意点としては、Install-Module Microsoft.Graph を実行すると、サブ モジュール 38 個をすべて含む形でインストールが行われるため少し時間がかかります。
 
 特定のコマンドのみを使用したい場合、サブ モジュール単位でインストールすることもできますが、その場合は Microsoft.Graph.Authentication は必ずインストールしてください。
 
