@@ -12,7 +12,7 @@ tags:
 こんにちは、 Azure ID チームの小出です。
 
 1_概要編の記事はすでにご覧いただけましたでしょうか。
-最新のアップデートは、この記事にて随時アップデートを行う予定ですので、今後の情報をお待ちください。
+最新のアップデートは、この記事にて随時アップデートを行う予定です。
 
 
 今回は、 Graph PowerShell SDK モジュールへの移行について、実際に新しいモジュールを使用するにあたり、前提となる新旧モジュールの違いと、新しいコマンドの探し方をご案内します。
@@ -28,9 +28,9 @@ tags:
 |      項目                            |  MSOnline / AzureAD モジュール           |   Microsoft Graph PowerShell SDK                             | 
 | ----------------------------------- | ---------------------------------------- | ------------------------------------------------------------ | 
 | コマンドの命名規則                    | V1: xxx-Msolxxx (例： Get-MsolUser) <br> V2: xxx-AzureADxxx (例： Get-AzureADUser) |  xxx-Mgxxx (例: Get-MgUser) | 
-| インストールすると                    | MSOnline / AzureAD モジュールがそれぞれインストールされる                        |  既定では Microsoft.Graph.xxxx のようなサブ モジュールが 38 個インストールされる  | 
+| インストール後のモジュール                    | MSOnline / AzureAD モジュールがそれぞれインストールされる                        |  既定では Microsoft.Graph.xxxx のようなサブ モジュールが 38 個インストールされる  | 
 | 必要な権限                           | ユーザーに割り当てられている AzureAD ロール                              |  User.Read.All などのアクセス許可 および Azure AD ロール（一部のコマンド）                | 
-| Connect コマンド使用時の挙動          |  必ずサインイン画面が表示される                             |   2 回目以降は表示されないことがある                             | 
+| Connect コマンド実行時の認証画面          |  必ずサインイン画面が表示される                             |   2 回目以降は表示されないことがある                             | 
 | サインインが完了した時の表示           |  サインインしたアカウントの情報が表示される | Welcome To Microsoft Graph! のメッセージが表示される（サインインしたユーザーの情報を確認する場合、 Get-Mgcontext のコマンド実行が必要）| 
 | PowerShell プロンプトを閉じた時の挙動  |  セッションが終了し、新しい PowerShell プロンプトを開いた際には再度サインインが必要         |   キャッシュが残るため、事前に Disconnect-MgGraph コマンドで明示的に切断する必要がある。<br> 新しい PowerShell プロンプトを開いた際には、Connect コマンドの実行は必要だが、ユーザー名やパスワードの入力画面が表示されないことがある   | 
 |公開情報                              | コマンドごとに用意（ [Get-AzureADUser](https://docs.microsoft.com/ja-jp/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)）  | コマンドごとに用意 + Graph API の公開情報も利用可能  （ [Get-MgUser](https://docs.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguser?view=graph-powershell-1.0) および [ユーザーの取得](https://docs.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http)）                              | 
@@ -47,7 +47,7 @@ tags:
 もし公開情報にコマンドがない場合、次に Graph API の公開情報があるか確認します。
 たとえばユーザーの取得の場合、「ユーザー 取得 Graph API」などと検索し、[ユーザーの取得](https://docs.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http) のような公開情報を探します。
 
-公開情報を見つけたら、下記のように、言語ごとの書き方が案内されていることがあるため、 PowerShell 例文があるか確認し、コマンドを見つけます。
+公開情報を見つけたら、 PowerShell 例文があるか確認します。
 
 ![](./azuread-module-retirement2/azuread-module-retirement2-image1.png)
 
