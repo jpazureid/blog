@@ -35,15 +35,15 @@ ID とアクセス管理の製品群の拡大に合わせて、Microsoft Entra �
 
 ## Azure MFA Server について
 
-2024 年 9 月 30 日以降、Azure Multi-Factor Authentication (MFA) Server は、多要素認証 (MFA) のサービスを停止するため、MFA Server を利用した認証が失敗する状況となります。認証が中断なく処理され、サポートされた状態を維持するためには、最新の [Azure MFA Server のアップデート](https://www.microsoft.com/en-us/download/details.aspx?id=55849) に含まれる MFA Server 移行ツールを使用して、[ユーザーの認証データをクラウド ベースの Azure MFA サービスに移行する](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-migrate-mfa-server-to-azure-mfa-user-authentication) 必要があります。詳細は「[MFA Server から Azure AD Multi-Factor Authentication に移行す](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-migrate-mfa-server-to-azure-mfa)」をご参照ください。
+2024 年 9 月 30 日以降、Azure Multi-Factor Authentication (MFA) Server は、多要素認証 (MFA) のサービスを停止するため、MFA Server を利用した認証が失敗する状況となります。認証が中断なく処理され、サポートされた状態を維持するためには、最新の [Azure MFA Server のアップデート](https://www.microsoft.com/en-us/download/details.aspx?id=55849) に含まれる MFA Server 移行ツールを使用して、[ユーザーの認証データをクラウド ベースの Azure MFA サービスに移行する](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-migrate-mfa-server-to-azure-mfa-user-authentication) 必要があります。詳細は「[MFA Server から Azure AD Multi-Factor Authentication に移行する](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-migrate-mfa-server-to-azure-mfa)」をご参照ください。
 
 ## Graph サービス エンドポイントでの HTTP/2 の有効化について
 
-2023 年 9 月 15 日より、Microsoft Graph のエンジニアリング チームは、Graph サービスのエンドポイントにおいて HTTP/2 のサポートを開始する予定です。既存の HTTP/1.1 バージョンのサポートに加えて、HTTP/2 のサポートが追加される予定です。Microsoft Graph のエンドポイントで HTTP/2 が有効になると、HTTP/2 をサポートするクライアントは、Microsoft Graph にリクエストを行う際に、このバージョンをネゴシエートするようになります。HTTP/2 の改善はパフォーマンスに焦点を当てたもので、遅延や帯域およびリソース消費 (参考：https://http2.github.io) の低下に加え、多重化や並列化、バイナリ エンコーディングとヘッダー圧縮による効率化も含まれています。これらの利点により、Microsoft Graph クライアントとお客様に大きな価値をもたらすことが期待されます。また、HTTP/2 は HTTP/1.1 と完全に後方互換性があり、クライアント アプリケーションでコード変更は特に必要ないと期待されます。なお、稀な事例として、アプリケーションが Header キーの大文字と小文字を区別せずに比較する HTTP の仕様に準拠していない場合に、一部のクライアント アプリケーションで悪影響が発生する可能性があります。  
+2023 年 9 月 15 日より、Microsoft Graph のエンジニアリング チームは、Graph サービスのエンドポイントにおいて HTTP/2 のサポートを開始する予定です。既存の HTTP/1.1 バージョンのサポートに加えて、HTTP/2 のサポートが追加される予定です。Microsoft Graph のエンドポイントで HTTP/2 が有効になると、HTTP/2 をサポートするクライアントは、Microsoft Graph にリクエストを行う際に、このバージョンをネゴシエートするようになります。HTTP/2 の改善はパフォーマンスに焦点を当てたもので、遅延や帯域およびリソース消費 (参考: https://http2.github.io) の低下に加え、多重化や並列化、バイナリ エンコーディングとヘッダー圧縮による効率化も含まれています。これらの利点により、Microsoft Graph クライアントとお客様に大きな価値をもたらすことが期待されます。また、HTTP/2 は HTTP/1.1 と完全に後方互換性があり、クライアント アプリケーションでコード変更は特に必要ないと期待されます。なお、稀な事例として、アプリケーションが Header キーの大文字と小文字を区別せずに比較する HTTP の仕様に準拠していない場合に、一部のクライアント アプリケーションで悪影響が発生する可能性があります。  
 
 ## Azure AD Graph API について
 
-Azure AD Graph は、2023 年 6 月 30 日まで継続して機能する予定です。これは、当初の Azure AD Graph API の [廃止の発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) から 3 年後となります。Azure サービスにおける廃止の [ガイドライン](https://learn.microsoft.com/ja-jp/lifecycle/) に基づき、2023 年 6 月 30 日以降は、事前通知なく Azure AD Graph の提供を停止する可能性があります。弊社では 2023 年 6 月 30 日以降に Azure AD Graph の提供を停止することとなりますが、すべてのお客様が [Microsoft Graph](https://learn.microsoft.com/ja-jp/graph/overview) に移行し、運用環境のアプリケーションが Azure AD Graph を利用しないようにしたいと考えています。新機能の開発は Microsoft Graph に対してのみ行われます。今後も Azure AD Graph のセキュリティ関連の修正は引き続きサポートしますが、Microsoft Graph への移行を推奨します。詳細は「[Azure AD Graph アプリをMicrosoft Graphに移行する](https://learn.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview)」を参照ください。
+Azure AD Graph は、**2023 年 6 月 30 日** まで **継続して** 機能する予定です。これは、当初の Azure AD Graph API の [廃止の発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) から 3 年後となります。Azure サービスにおける廃止の [ガイドライン](https://learn.microsoft.com/ja-jp/lifecycle/) に基づき、2023 年 6 月 30 日以降は、事前通知なく Azure AD Graph の提供を停止する可能性があります。弊社では 2023 年 6 月 30 日以降に Azure AD Graph の提供を停止することとなりますが、すべてのお客様が移行を完了し、運用環境のアプリケーションが Azure AD Graph を利用しないようにしたいと考えています。新機能の開発は  [Microsoft Graph](https://learn.microsoft.com/ja-jp/graph/overview) に対してのみ行われます。今後も Azure AD Graph のセキュリティ関連の修正は引き続きサポートしますが、Microsoft Graph への移行を推奨します。詳細は「[Azure AD Graph アプリをMicrosoft Graphに移行する](https://learn.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview)」を参照ください。
 
 ## Azure Active Directory Authentication Library (ADAL) のサポート終了 (end-of-life) について
 
@@ -51,7 +51,7 @@ Azure AD Graph は、2023 年 6 月 30 日まで継続して機能する予定�
 
 ## ライセンスの割り当て API/PowerShell の廃止について
 
-既存のテナントにおける、Azure AD Graph および MSOnline PowerShell におけるライセンスの割り当て API および PowerShell コマンドレットの廃止は、2023 年 3 月 31 日に延長されました。2022 年 11 月 1 日以降に作成された新しいテナントでは、これらの API と PowerShell コマンドレットは最初から機能しなくなる予定です。Microsoft Graph からライセンス管理 API にアクセスするためにアプリを移行するためには、["Migrate your apps to access the license managements APIs from Microsoft Graph"](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366) と ["Find Azure AD and MSOnline cmdlets in Microsoft Graph PowerShell"](https://learn.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0) のガイダンスに沿って、MS Graph への移行を優先することを推奨します。
+**既存のテナント** における、Azure AD Graph および MSOnline PowerShell における **ライセンスの割り当て** API および PowerShell コマンドレットの廃止は、2023 年 3 月 31 日に延長されました。2022 年 11 月 1 日以降に作成された **新しいテナント** では、これらの API と PowerShell コマンドレットは最初から機能しなくなる予定です。Microsoft Graph からライセンス管理 API にアクセスするためにアプリを移行するためには、["Migrate your apps to access the license managements APIs from Microsoft Graph"](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366) と ["Find Azure AD and MSOnline cmdlets in Microsoft Graph PowerShell"](https://learn.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0) のガイダンスに沿って、MS Graph への移行を優先することを推奨します。
 
 ## Azure AD、Azure AD Preview、MSOnline PowerShell の廃止について
 
@@ -65,4 +65,4 @@ Azure AD Graph は、2023 年 6 月 30 日まで継続して機能する予定�
 
 いつものように、フィードバックや提案をお待ちしています。以下のコメントまたは [Azure AD feedback forum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) でご意見をお聞かせください。また、Microsoft Q&A で、質問、未解決の問題や機能に関するご要望を #AzureADChangeManagementSept2022Train のタグを使用して送信することも可能です。
  
-[10 月 12 日から 10 月 14 日](https://ignite.microsoft.com/en-US/home) の間に開催される Microsoft Ignite でも、Microsoft Entra のニュースをお届けします。
+[10 月 12 日から 10 月 14 日](https://ignite.microsoft.com/ja-JP/home) の間に開催される Microsoft Ignite でも、Microsoft Entra のニュースをお届けします。
