@@ -30,7 +30,35 @@ tags:
 
 対象となるコマンドの詳細は、[こちらの記事](https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/)の下記該当箇所をご確認ください。
 
-![](./azuread-module-retirement1/azuread-modure-retirement1-image1.png)
+<table>
+  <thead>
+    <tr>
+      <th>既存のコマンド (2023 年 3 月 31 日以降に利用できなくなる操作)</th>
+      <th>今後推奨される Microsoft Graph PowerShell および API</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href ="https://docs.microsoft.com/ja-jp/powershell/module/msonline/?view=azureadps-1.0" target="_blank">MSOnline Powershell</a>
+      <br/>・Set-MsolUserLicense
+      <br/>・New-MsolUser (-LicenseAssignment か -LicenseOptions を指定)</td>
+      <td rowspan="2">Microsoft Graph PowerShell
+      <br/>・<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0" target="_blank">Set-MgUserLicense</a>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-2.0">Azure AD Powershell</a>
+      <br/>・Set-AzureADUserLicense
+      </td>
+    </tr>
+    <tr>
+      <td>Azure AD Graph API (graph.windows.net)
+      <br/>・assignLicense</td>
+      <td>Microsoft Graph API
+      <br/>・<a href="https://docs.microsoft.com/ja-jp/graph/api/user-assignlicense?view=graph-rest-1.0&tabs=http">assignLicense</a></td>
+    </tr>	
+  </tbody>
+</table>
 
 
 ### MSOL / Azure AD PowerShell のライセンス割り当て関連「以外」のコマンドについて
