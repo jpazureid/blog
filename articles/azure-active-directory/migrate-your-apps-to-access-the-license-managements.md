@@ -39,7 +39,7 @@ Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell �
 <table>
   <thead>
     <tr>
-      <th>既存のコマンド (2022 年 8 月 26 日以降に利用できなくなる操作)</th>
+      <th>既存のコマンド (2023 年 3 月 31 日以降に利用できなくなる操作)</th>
       <th>今後推奨される Microsoft Graph PowerShell および API</th>
     </tr>
   </thead>
