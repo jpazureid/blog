@@ -39,7 +39,7 @@ tags:
 
 - 廃止日は 2023 年 6 月 30 日となりました。
 - 廃止日までは、これまでと同様にコマンドをご利用可能です。
-- 廃止後は、動作し続けるコマンド・動作しなくなるコマンドの双方がある見込みです。廃止後の具体的な動作については情報がありませんが、実際に動作しなくなる場合 Azure AD Graph の停止タイミングと依存する可能性があります。
+- 廃止後は、動作し続けるコマンド・動作しなくなるコマンドの双方がある見込みです。廃止後の具体的な動作については情報がありませんが、実際に動作しなくなる場合 Azure AD Graph の停止タイミングに依存する可能性があります。
 
 
 ## いまできること・確認すること
@@ -52,7 +52,8 @@ tags:
 ##  本廃止に関する弊社ブログ記事リンク
 ### アップデート情報（英語記事翻訳）
 [Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります](https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/)
-[Azure AD の変更管理を簡素化します](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/)
+[Azure AD の変更管理を簡素化します](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/)  
+[Microsoft Entra の変更管理のアナウンス (2022 年 9 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train/#Azure-AD%E3%80%81Azure-AD-Preview%E3%80%81MSOnline-PowerShell-%E3%81%AE%E5%BB%83%E6%AD%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 ### 既存モジュール使用状況について
 [Azure AD Graph / MSOnline PowerShell モジュール利用状況の調べ方](https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/)
