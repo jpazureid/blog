@@ -10,7 +10,7 @@ tags:
 # MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編
 
 こんにちは、 Azure ID チームの小出です。
-この記事は、MSOnline / AzureAD モジュール廃止について、1_概要編、 2_移行導入編の記事の続きとして連載しています。
+この記事は、MSOnline / AzureAD モジュール廃止について、[1_概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)、 [2_移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)の記事の続きとして連載しています。
 
 
 今回は Microsoft Graph PowerShell SDK モジュールのインストール方法や、接続に関するよくある質問にお答えします。
