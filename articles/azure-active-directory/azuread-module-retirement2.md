@@ -11,7 +11,7 @@ tags:
 
 こんにちは、 Azure ID チームの小出です。
 
-1_概要編の記事はすでにご覧いただけましたでしょうか。
+[1_概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)の記事はすでにご覧いただけましたでしょうか。
 最新のアップデートは、この記事にて随時アップデートを行う予定です。
 
 
