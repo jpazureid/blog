@@ -1,6 +1,6 @@
 ---
 title: 「現時点ではこれにはアクセスできません」 エラーについて
-date: 2022-10-07
+date: 2020-07-30
 tags:
   - Azure AD
   - Conditional Access
