@@ -1,12 +1,12 @@
 ---
-title:  Azure AD (Microsoft Entra) の新しいリージョンの発表：日本
+title:  Azure AD (Microsoft Entra) の新しいリージョンの発表 - 日本
 date: 2022-10-17 09:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-#  Azure AD (Microsoft Entra) の新しいリージョンの発表：日本
+#  Azure AD (Microsoft Entra) の新しいリージョンの発表 - 日本
 
 こんにちは、Azure Identity サポート チームの 竜 です。
 
