@@ -20,6 +20,7 @@ tags:
 Entra Verified ID が一般公開（GA）されてから 30 日余りが経ちました。この夏、Emilia Borisova が開発した最新のアップデート: Verified Coupons (使用例 : 限定イベントのチケットなど) をご紹介します。  
  
 Ankur Patel 
+
 Head of Product, Microsoft Entra Verified ID 
 
 ---
