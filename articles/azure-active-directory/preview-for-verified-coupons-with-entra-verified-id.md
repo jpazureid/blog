@@ -1,11 +1,10 @@
 ---
 title: Entra Verified ID による Verified Coupons ( 認証クーポン ) のプレビュー
-date: 2022-11-01 09:00
+date: 2022-10-29 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
-
 
 # Entra Verified ID による Verified Coupons ( 認証クーポン ) のプレビュー
 
