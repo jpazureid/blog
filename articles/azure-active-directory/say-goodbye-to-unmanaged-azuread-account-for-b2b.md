@@ -64,14 +64,13 @@ Microsoft アカウントには、パスワードを設定する必要がある�
 確認と棚卸を進めていただく方法として、以下 2 種類の方法を提供しています。
 
 - MSIdentity Tools PowerShell Module  を使用して、 PowerShell コマンドで管理・棚卸を行う
-- 
-[アンマネージド Azure Active Directory アカウントをクリーンアップする](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/clean-up-unmanaged-azure-ad-accounts)
-
 - 下記の[サンプル アプリケーション](https://github.com/Azure-Samples/Remove-Unmanaged-Guests)を利用する
 
 
 
 今回はコマンドやアプリになじみがないお客さまでも実施できるよう、コマンドで簡単に非管理アカウントを抽出・管理する方法について案内します。
+
+詳細は、[アンマネージド Azure Active Directory アカウントをクリーンアップする](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/clean-up-unmanaged-azure-ad-accounts) の公開情報も併せてご覧ください。
 
 ### 事前準備
 下記に記載の手順を利用するためには、MSIdentityTools PowerShell モジュールが必要です。
