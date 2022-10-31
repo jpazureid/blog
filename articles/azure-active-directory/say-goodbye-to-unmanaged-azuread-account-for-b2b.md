@@ -68,7 +68,6 @@ Microsoft アカウントには、パスワードを設定する必要がある�
 
 
 今回はコマンドやアプリになじみがないお客さまでも実施できるよう、コマンドで簡単に非管理アカウントを抽出・管理する方法について案内します。
-
 詳細は、[アンマネージド Azure Active Directory アカウントをクリーンアップする](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/clean-up-unmanaged-azure-ad-accounts) の公開情報も併せてご覧ください。
 
 ### 事前準備
