@@ -81,6 +81,7 @@ Install-Module MSIdentityTools
 Install-Module Microsoft.Graph
 ```
 
+### 実施手順
 モジュールがインストールできたら、 Azure AD に接続します。接続には Connect-MgGraph コマンドを使用します。
 
 ```
