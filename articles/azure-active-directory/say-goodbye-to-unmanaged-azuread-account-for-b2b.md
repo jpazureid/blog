@@ -1,5 +1,5 @@
 ---
-title:B2B コラボレーション用の非管理アカウントが作成されなくなりました
+title: B2B コラボレーション用の非管理アカウントが作成されなくなりました
 date: 2022-11-3 09:00
 tags:
     - Azure AD
@@ -7,7 +7,9 @@ tags:
 ---
 
 こんにちは、 Azure ID チームの小出です。
+
 本記事は、2022/9/2 の [Say goodbye to unmanaged Azure AD accounts for B2B collaboration](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/say-goodbye-to-unmanaged-azure-ad-accounts-for-b2b-collaboration/ba-p/3094111) の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。
+
 
 
 ## 変更内容の概要
@@ -21,6 +23,7 @@ B2B コラボレーション用の非管理（バイラル）アカウントは�
 ## 以前の動作
 
 具体的には、以前の承諾フローにて、⑧ から ⑨ に遷移することがなくなりました。
+
 ![](./say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b1.png)
 
 
@@ -34,27 +37,34 @@ B2B コラボレーション用の非管理（バイラル）アカウントは�
 ## 現在の動作
 現在の新しい承諾フローは、下記のようになります。 ⑥ のフローで OTP が無効な場合、 個人用 Microsoft アカウントを作成するよう求められます。
 承諾フローの数が減り、よりシンプルで分かりやすい形になりました。 
+
 ![](./say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b3.png)
 
 以前のブログにて、 OTP の機能を有効化することをご案内しております。
+
 ⑥ のフローで Yes に遷移した場合、下記のような画面に遷移します。パスワードを入力する画面が一度もない場合は、 OTP のフローに入ったと判断できます。
+
 ![](./say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b4.png)
 
 OTP が無効なシナリオで ⑦ に遷移した場合には、下記のように Microsoft アカウント作成画面が表示されます。
+
 ![](./say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b5.png)
 
 Microsoft アカウントには、パスワードを設定する必要があるため、 [次へ] をクリックしたときにパスワード入力画面が表示されるのが特徴です。
+
 ![](./say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b6.png)
 
 
 
 ## 既存の非管理アカウントのクリーンアップ方法
 上記変更により、今後非管理アカウントは新しく作成されなくなりましたが、テナントにすでに登録されている非管理（バイラル）アカウントは、そのまま残ってしまいます。
+
 そのため、「組織に非管理（バイラル）アカウントがあるか」を確認し、「今後どのような対応をとるか」を検討いただくことをお勧めいたします。
 
 確認と棚卸を進めていただく方法として、以下 2 種類の方法を提供しています。
 
 - MSIdentity Tools PowerShell Module  を使用して、 PowerShell コマンドで管理・棚卸を行う
+- 
 [アンマネージド Azure Active Directory アカウントをクリーンアップする](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/clean-up-unmanaged-azure-ad-accounts)
 
 - 下記の[サンプル アプリケーション](https://github.com/Azure-Samples/Remove-Unmanaged-Guests)を利用する
@@ -66,6 +76,7 @@ Microsoft アカウントには、パスワードを設定する必要がある�
 ### 事前準備
 下記に記載の手順を利用するためには、MSIdentityTools PowerShell モジュールが必要です。
 まずは以下のコマンドを使用して、モジュールをインストールします。
+
 注意点は、 PowerShell を管理者特権で開く必要がある点です。 PowerShell を開いたときに、左上に「管理者」と表示されていれば問題ありません。
 
 ```
@@ -103,11 +114,14 @@ Get-MsIdUnmanagedExternalUser
 
 対応方針が決まったら、下記いずれかのコマンドを実行して、リセットもしくはアカウントを削除します。
 
-```リセットする場合
+- リセットする場合
+```
 Get-MsIdUnmanagedExternalUser | Reset-MsIdExternalUser
 ```
 
-```削除する場合
+
+- 削除する場合
+```
 Get-MsIdUnmanagedExternalUser | Remove-MgUser
 ```
 
