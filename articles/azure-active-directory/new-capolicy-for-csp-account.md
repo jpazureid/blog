@@ -38,7 +38,7 @@ CSP パートナー テナントに所属するアカウントは、代理管理
 ### 新機能 : 外部ユーザーの種類の指定
 現在、条件付きアクセス ポリシーのユーザー割り当て設定画面をご覧いただくと、"ゲストまたは外部ユーザー" 項目の真下に、下記の選択肢が表示されます。
 
-![](new-capolicy-for-csp-account\externalusers.png)  
+![](./new-capolicy-for-csp-account/externalusers.png)  
 
 
 上記はいずれも、ゲスト・外部ユーザーの種類を示します。これまでは "ゲストまたは外部ユーザー" という選択肢によって一括りにされていたのですが、より詳細な種類を指定したポリシーの構成が可能になりました。
@@ -55,7 +55,7 @@ CSP パートナー テナントに所属するアカウントは、代理管理
 3. [対象外] タブを開き、下記のように構成します。
    - "ゲストまたは外部ユーザー" にチェックマークを入れます。
    - "サービス プロバイダー ユーザー" にチェックマークを入れます。
-   ![](new-capolicy-for-csp-account\exclude-serviceproviders.png)  
+   ![](./new-capolicy-for-csp-account/exclude-serviceproviders.png)  
 
 4. ポリシーを保存します。
 
