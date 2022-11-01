@@ -44,15 +44,15 @@ Microsoft Ignite で発表された、内部および外部ユーザーを対象
 
 今回のシナリオでは、アクセスを許可するためには、認証強度として、既定で用意されている「フィッシング耐性のある MFA」を要求します。このポリシーの適用範囲に含まれるユーザーは、リソースにアクセスする前に、テナントで設定したフィッシング耐性のある認証方法を使用するよう要求されます。  
 
-![図 1: 既定で用意されている「認証強度」を使用した条件付きアクセスポリシーの作成](./Authentication-strength-choose-the-right-auth-method-for-your/01.png)
+![図 1: 既定で用意されている「認証強度」を使用した条件付きアクセスポリシーの作成](./authentication-strength-choose-the-right-auth-method-for-your/01.png)
 
 既定で用意されている認証強度を利用することで、必要な認証方法を迅速に強制することができます。本機能のプライベート プレビュー期間中、ある米国の大手政府機関に対し、AD FS (Active Directory Federation Services) からの移行を支援することができました。この機関は、条件付きアクセス ポリシーの **フィッシング耐性のある MFA** を用いることで、認証強度として CBA の使用を強制できたため、AD FS は不要となりました。
 
-![図 2: テナントにおける認証強度の管理](./Authentication-strength-choose-the-right-auth-method-for-your/02.png)
+![図 2: テナントにおける認証強度の管理](./authentication-strength-choose-the-right-auth-method-for-your/02.png)
 
 既定で用意されている認証強度を確認した後、別の認証方法の組み合わせが必要となった場合は、独自のカスタム認証強度を作成し、要件を満たすための認証方法を選択することができます。AAGUIDs (Authenticator Attestation GUIDs) を使用して、特定の FIDO2 キーを要求することで、さらにアクセスを制限することも可能です。
 
-![図 3: FIDO2 の制限を含むカスタム認証強度の作成](./Authentication-strength-choose-the-right-auth-method-for-your/03.png)
+![図 3: FIDO2 の制限を含むカスタム認証強度の作成](./authentication-strength-choose-the-right-auth-method-for-your/03.png)
 
 お客様にパスワードレスの導入を支援する InSpark のプリンシパル コンサルタント Pim Jacobs 氏は、認証強度を利用して **パスワードレス MFA** を要求し、次のようの述べています。  
 
