@@ -146,7 +146,7 @@ A1. 一番下の "番号が表示されません" を選択ください。3 秒�
 Microsoft Authenticator の優れた点の 1 つは、今後もさらなる進化および多様化が懸念されるセキュリティ攻撃に対して、いち早く対応できるよう継続的に開発および投資を行っていることです。 Microsoft Authenticator が企業にとって、最も安全かつ便利で費用対効果の高い認証方法であり続けるために、今後もさらに多くの機能強化を続けて参ります。
 
 各種 MFA 強化の機能の一般公開 (GA) にあたって、利用者の皆様の生のご意見やフィードバックはとても重要です。MFA 疲労攻撃に関する英語記事 (後述)、もしくは [Azure フィードバック サイト](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) まで、ぜひご意見をお寄せいただけますと幸いです。
-v
+
 ## 参考
 
 - [(再掲) Defend your users from MFA fatigue attacks - Microsoft Tech Community | Published Sep 28 2022](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/defend-your-users-from-mfa-fatigue-attacks/ba-p/2365677)
