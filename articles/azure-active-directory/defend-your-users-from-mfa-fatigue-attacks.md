@@ -40,11 +40,15 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 
 ![](./defend-your-users-from-mfa-fatigue-attacks/number-matching.png)  
 
-「プッシュ通知に番号の一致が必要」の機能は 2022 年 10 月現在の時点でプレビュー機能です。数か月以内に予定している一般公開 (GA) の後は、すべてのユーザーに自動で有効化することを予定しています。
+「プッシュ通知に番号の一致が必要」の機能は、当ブログ公開時 (2022/10/19) 時点でプレビュー機能でしたが、現在は一般機能として公開済みです。
+
+[公開情報 : Advanced Microsoft Authenticator security features are now generally available!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673)
+
+本機能は 2023 年の 2 月末までの間に、すべてのユーザーに自動で有効化することを予定しています。
 
 本機能は 2021 年 11 月にリリースされ、すでに 1 万近くの組織に導入されています。また「番号の一致」は、Microsoft Authenticator を利用したパスワードレス サインインの手段としてもご利用いただくことができます。
 
-[公開情報: 多要素認証 (MFA) 通知で数値の一致を使用する方法 (プレビュー) - 認証方法ポリシー](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-number-match)
+[公開情報: 多要素認証 (MFA) 通知で数値の一致を使用する方法 - 認証方法ポリシー](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-number-match)
 
 ## 2. ユーザーが不正アクセスを判断できるように、MFA 要求にサインイン情報を表示
 
@@ -52,9 +56,8 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 
 例えば、ユーザー自身が名古屋にいるのに、サインイン元の位置情報が「ブラジル / リオデジャネイロ」と表示された場合、ユーザーは「この MFA 要求はおかしいかも？」と、一瞬手を止めて不正アクセスを疑うきっかけになることが期待されます。
 
-これらの機能も、2022 年 10 月現在の時点でプレビュー機能です。
 
-[公開情報: Microsoft Authenticator 通知で追加のコンテキストを使用する方法 (プレビュー) - 認証方法ポリシー](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-additional-context)
+[公開情報: Microsoft Authenticator 通知で追加のコンテキストを使用する方法 - 認証方法ポリシー](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-additional-context)
 
 なお、上記の機能がすべて有効化の対象となっているユーザーでは、Authenticator 宛の MFA 要求は、下記画像のようになります。
 	 
@@ -79,7 +82,7 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 
 ## 強化された Microsoft Authenticator の機能を試してみよう
 
-以下では、Azure ポータルで強化された MS Authenticator の機能を有効化 + 検証する手順をご紹介します。
+以下では、Azure ポータルで強化された Microsoft Authenticator の機能を有効化 + 検証する手順をご紹介します。
 
 1. セキュリティ グループを作成
    - 管理者のアカウントで Azure ポータルにアクセスし、[Azure Active Directory] > [グループ] から、新しいグループを作成します。グループの種類は "セキュリティ" を選択ください。
@@ -100,7 +103,7 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
  
     - [構成] タブを開きます。
  
-    - [プッシュ通知に番号の一致が必要 (プレビュー)] と [プッシュ通知とパスワードレス通知にアプリケーション名を表示する (プレビュー)] と [プッシュ通知とパスワードレス通知に地理的な場所を表示する (プレビュー)] それぞれの設定項目で、下記のように構成します。
+    - [プッシュ通知に番号の一致が必要] と [プッシュ通知とパスワードレス通知にアプリケーション名を表示する] と [プッシュ通知とパスワードレス通知に地理的な場所を表示する] それぞれの設定項目で、下記のように構成します。
 	
     	- 状態 : 有効
 		- ターゲット - 含める : "Number matching test" グループを追加
@@ -130,11 +133,20 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 	- [ポリシーの有効化] を [オン] にし、[保存] を押して設定を反映します
 
 	上記を設定後、 "Number matching test" に所属するユーザーによって何らかのアプリケーションにアクセスいただくことで、強化された Microsoft Authenticator の MFA 機能が動作することをご確認ください。設定にあたってのご不明点やご相談事項などございましたら、弊社サポート チームまでお問い合わせください。
+	
+
+## Q & A (随時追記予定)
+***
+Q1. Microsoft Authenticator のアプリ上で発生したサインインで「数字の一致」による MFA を実施する際に、数字の表示画面 / 数字の入力プロンプト が重なってしまい、サインインの完了ができません。
+A1. 一番下の "番号が表示されません" を選択ください。3 秒間のみ数字の入力プロンプトが非表示となり、MFA 認証用の数字が表示されます。
+![](./defend-your-users-from-mfa-fatigue-attacks/cannotseethenumber.png)  
+
+***
 
 Microsoft Authenticator の優れた点の 1 つは、今後もさらなる進化および多様化が懸念されるセキュリティ攻撃に対して、いち早く対応できるよう継続的に開発および投資を行っていることです。 Microsoft Authenticator が企業にとって、最も安全かつ便利で費用対効果の高い認証方法であり続けるために、今後もさらに多くの機能強化を続けて参ります。
 
 各種 MFA 強化の機能の一般公開 (GA) にあたって、利用者の皆様の生のご意見やフィードバックはとても重要です。MFA 疲労攻撃に関する英語記事 (後述)、もしくは [Azure フィードバック サイト](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) まで、ぜひご意見をお寄せいただけますと幸いです。
-
+v
 ## 参考
 
 - [(再掲) Defend your users from MFA fatigue attacks - Microsoft Tech Community | Published Sep 28 2022](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/defend-your-users-from-mfa-fatigue-attacks/ba-p/2365677)
