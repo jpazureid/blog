@@ -20,7 +20,7 @@ Microsoft Identity Security のディレクター Alex Weinert によって、�
 
 昨今は多くのお客様の環境において、パスワード "のみ" による認証は十分にセキュアではないという認識が高まり、多要素認証 (MFA) などの導入による認証の強化が行われています。この動向に伴って、**MFA の疲労攻撃 (別名、MFA スパム)** の報告が増えています。
 
-![](./defend-your-users-from-mfa-fatigue-attacks/Karen_Walker_1-1664319621345.png) 
+![](./defend-your-users-from-mfa-fatigue-attacks/Karen_Walker_1-1664319621345.png)
 
 MFA 疲労攻撃とは、攻撃者が繰り返し何度も MFA 要求を発生させ、その要求を受け取ったユーザーが誤って MFA 要求を承認することを狙った手口です。
 
@@ -138,6 +138,8 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 ## Q & A (随時追記予定)
 ***
 Q1. Microsoft Authenticator のアプリ上で発生したサインインで「数字の一致」による MFA を実施する際に、数字の表示画面 / 数字の入力プロンプト が重なってしまい、サインインの完了ができません。
+
+
 A1. 一番下の "番号が表示されません" を選択ください。3 秒間のみ数字の入力プロンプトが非表示となり、MFA 認証用の数字が表示されます。
 ![](./defend-your-users-from-mfa-fatigue-attacks/cannotseethenumber.png)  
 
