@@ -6,6 +6,12 @@ tags:
     - US Identity Blog
 ---
 
+こんにちは、Azure Identity サポート チームの 高田 です。
+
+本記事は、2022 年 10 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Advances in Azure AD resilience](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advances-in-azure-ad-resilience/ba-p/2147048) を意訳したものになります。
+
+---
+
 # Azure AD の耐障害性を高める取り組み
 
 現在、[Microsoft Entra](https://www.microsoft.com/ja-jp/security/business/microsoft-entra) に含まれる Azure Active Directory (Azure AD) のようなエンタープライズ レベルのソリューションでは、耐障害性とセキュリティが基本の要件となっています。Microsoft では、Azure AD の耐障害性とエンタープライズ レベルのセキュリティを最も重要視しており、お客様の期待に確実に応えるために継続的に開発を進めています。
