@@ -1,6 +1,6 @@
 ---
 title: B2B コラボレーション用の非管理アカウントが作成されなくなりました
-date: 2022-11-3 09:00
+date: 2022-11-04 09:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -10,11 +10,9 @@ tags:
 
 本記事は、2022/9/2 の [Say goodbye to unmanaged Azure AD accounts for B2B collaboration](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/say-goodbye-to-unmanaged-azure-ad-accounts-for-b2b-collaboration/ba-p/3094111) の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。
 
-
-
 ## 変更内容の概要
-Azure Active Directory (Azure AD) において、B2B コラボレーション用の非管理 (バイラル) アカウントが廃止されました。
-B2B コラボレーション用の非管理 (バイラル) アカウントは、「いつのまにか自動で作成されている」、「削除すると、ゲストがリソース テナントにアクセスできなくなる」など、管理や運用が難しいという課題を抱えていました。また、「アカウントを誰が作成したのか分からない」、「消していいのか」など、弊社サポートでもお問い合わせをいただいていました。
+
+Azure Active Directory (Azure AD) において、B2B コラボレーション用の非管理 (バイラル) アカウントが廃止されました。B2B コラボレーション用の非管理 (バイラル) アカウントは、「いつのまにか自動で作成されている」、「削除すると、ゲストがリソース テナントにアクセスできなくなる」など、管理や運用が難しいという課題を抱えていました。また、「アカウントを誰が作成したのか分からない」、「消していいのか」など、弊社サポートでもお問い合わせをいただいていました。
 
 以前 [2021 年 10 月に予定されるゲスト ユーザー招待時の動作変更について](https://jpazureid.github.io/blog/azure-active-directory/announcement-of-otp/) の弊社ブログでは、非管理アカウントがサポートされなくなる旨と、代替案として OTP の仕様についてご案内しておりました。今回の変更では、サポートされなくなった非管理アカウントが、今後の動作としても新しく作成されなくなりました。
 
