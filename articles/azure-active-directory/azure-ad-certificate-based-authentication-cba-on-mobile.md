@@ -34,7 +34,7 @@ Alex Weinert (twitter: [@Alex_t_weinert](https://twitter.com/alex_t_weinert))
 
 Microsoft のモバイルにおける証明書ベースのソリューションは、ハードウェア セキュリティ キーと併せて利用することで、シンプルで便利、なおかつ FIPS (Federal Information Processing Standards) 認定のフィッシング耐性のある MFA 方式です。
 
-すべてのブラウザベースの Web アプリとネイティブ アプリ (最新の [Microsoft Authentication Library](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/msal-overview) (MSAL) を使用する Microsoft 製ファーストパーティ アプリを含む) において、モバイル デバイス上で [YubiKey](https://www.yubico.com/products/) を用いた Azure AD CBA with がサポートされます。また、最新の MSAL を利用していないすべてのアプリにおいても、最新の Microsoft Authenticator ([Android](https://play.google.com/store/apps/details?id=com.azure.authenticator&gl=US) または [iOS/iPadOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)) を利用したブローカー認証フローで Yubikey を用いた Azure AD CBA がサポートされます。
+すべてのブラウザベースの Web アプリとネイティブ アプリ (最新の [Microsoft Authentication Library](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/msal-overview) (MSAL) を使用する Microsoft 製ファーストパーティ アプリを含む) において、モバイル デバイス上で [YubiKey](https://www.yubico.com/products/) を用いた Azure AD CBA がサポートされます。また、最新の MSAL を利用していないすべてのアプリにおいても、最新の Microsoft Authenticator ([Android](https://play.google.com/store/apps/details?id=com.azure.authenticator&gl=US) または [iOS/iPadOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)) を利用したブローカー認証フローで Yubikey を用いた Azure AD CBA がサポートされます。
 
 ## Yubikey を用いた iOS 上での Azure AD CBA の動作
 
