@@ -44,7 +44,7 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 
 [公開情報 : Advanced Microsoft Authenticator security features are now generally available!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673)
 
-本機能は 2023 年の 2 月末までの間に、すべてのユーザーに自動で有効化することを予定しています。
+本機能は 2023 年の 2 月末以降、すべてのユーザーに自動で有効化することを予定しています。
 
 本機能は 2021 年 11 月にリリースされ、すでに 1 万近くの組織に導入されています。また「番号の一致」は、Microsoft Authenticator を利用したパスワードレス サインインの手段としてもご利用いただくことができます。
 
@@ -149,7 +149,11 @@ Microsoft Authenticator の優れた点の 1 つは、今後もさらなる進�
 各種 MFA 強化の機能の一般公開 (GA) にあたって、利用者の皆様の生のご意見やフィードバックはとても重要です。MFA 疲労攻撃に関する英語記事 (後述)、もしくは [Azure フィードバック サイト](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) まで、ぜひご意見をお寄せいただけますと幸いです。
 
 ## 参考
-
+Microsoft Tech Community の記事は、新 -> 古 の順で記載しております。
+- [(再掲) Advanced Microsoft Authenticator security features are now generally available! - Microsoft Tech Community | Published Oct 25 2022](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673)
 - [(再掲) Defend your users from MFA fatigue attacks - Microsoft Tech Community | Published Sep 28 2022](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/defend-your-users-from-mfa-fatigue-attacks/ba-p/2365677)
 - [New Microsoft Authenticator security features are now available! - Microsoft Tech Community | Published Nov 18 2021](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-microsoft-authenticator-security-features-are-now-available/ba-p/2464386)
+
+
+
 - [Microsoft Azure  |  Share your Ideas - Azure Active Directory](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)
