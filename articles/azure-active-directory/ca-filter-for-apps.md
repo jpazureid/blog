@@ -9,6 +9,7 @@ tags:
 
 
 こんにちは、 Azure ID チームの小出です。
+
 本記事は、 2022 年 10 月 26 日に公開された [Public Preview: Conditional Access filters for apps](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/public-preview-conditional-access-filters-for-apps/ba-p/2365680)の意訳をもとに、新しくパブリック プレビューになりました、アプリ用の条件付きアクセス フィルターの機能と、実際の操作方法について紹介します。
 
 
@@ -22,6 +23,7 @@ tags:
 
 
 新しいパブリック プレビューの機能を使うと、上記画面で 1 つずつアプリケーションを選択しなくても、条件に基づいたアプリをポリシーの対象に含めてくれるようになります。
+
 この機能では、[カスタム セキュリティ属性] を使用してアプリケーションにタグ付けを行います。このタグをもとに、特定のカスタム セキュリティ属性の値が含まれているアプリを、自動的にポリシーへ追加します。対象となるアプリケーション数に制限はありません。
 
 ![](./ca-filter-for-apps/ca-filter-for-apps2.png)
@@ -43,6 +45,7 @@ tags:
 カスタム セキュリティ属性は、属性管理者や属性割り当て管理者といった、一部のロールを持つユーザーしか閲覧・編集することができず、グローバル管理者でも操作を行うことはできません。
 このため、一部のユーザーのみにカスタム セキュリティ属性の管理を委任することで、属性の管理者と、ポリシーの管理者を分けることができるようになります。
 役割を分けることで、属性の変更操作を行ったユーザーの特定や監査も容易になります。
+
 また、この属性の変更権限を持つユーザーには条件付きアクセス ポリシーを編集する権限はないため、条件付きアクセスの管理者と、カスタム セキュリティ属性の管理者で職務の分離を確実に行うことが可能です。 
 
 ## 構成方法
@@ -96,9 +99,9 @@ tags:
 2. [クラウド アプリまたは操作] をクリックし、 [アプリを選択] - [フィルターの編集（プレビュー）] を選択します。
 3. 下記のような画面が表示されるので、 [構成] を "はい" に設定し、このポリシーに適用させたいアプリケーションの条件を指定して保存します。
 
-たとえばここでは、 CAPolicyforAppsTag というカスタム セキュリティ属性の値が "Department1" となっているアプリケーションを対象にしています。
+    たとえばここでは、 CAPolicyforAppsTag というカスタム セキュリティ属性の値が "Department1" となっているアプリケーションを対象にしています。
 
-  ![](./ca-filter-for-apps/ca-filter-for-apps9.png)
+    ![](./ca-filter-for-apps/ca-filter-for-apps9.png)
 
 4. ポリシーの名前や条件など、ほかに必要な項目を入力してポリシーを作成すれば完了です。
 
@@ -112,6 +115,9 @@ tags:
 
 ## 参考となる公開情報
 [条件付きアクセス ポリシーでのアプリケーションのフィルター (プレビュー)](https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-filter-for-applications)
+
 [Azure AD のカスタム セキュリティ属性とは (プレビュー)](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/custom-security-attributes-overview)
+
 [条件付きアクセス ポリシーの条件としてのデバイスのフィルター](https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/concept-condition-filters-for-devices)
+
 [ワークロード ID 用の Azure Active Directory の条件付きアクセス (プレビュー)](https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/workload-identity)
