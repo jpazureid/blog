@@ -92,7 +92,7 @@ Azure AD には、テナントに作成できるオブジェクト数に制限�
 | streetAddress                | String            | 1024 文字                                                                                  | 
 | surname                      | String            | 64 文字                                                                                    | 
 | usageLocation                | String            | 2 文字 (ISO 3166-1 alpha-2 (A2) two-letter country or region code)                         | 
-| userPrincipalName            | String            | 64 文字                                                                                    | 
+| userPrincipalName            | String            | 64 文字 (@ の前部分)                                                                        | 
 | userType                     | String            | Member or Guest のいずれかの値                                                             | 
 
 ### <span style="color: blue; ">Q. Azure AD ユーザーのパスワードの文字数制限を教えてください。</span> 
