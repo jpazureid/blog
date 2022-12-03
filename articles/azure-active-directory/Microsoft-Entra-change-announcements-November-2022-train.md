@@ -10,7 +10,7 @@ tags:
 #  Microsoft Entra の変更管理のアナウンス (2022 年 11 月の状況)  
 
 こんにちは、Azure Identity サポート チームの 竜 です。
-本記事は、2022 年 11 月 30 日に米国の Azure Active Directory Identity Blog で公開された [MMicrosoft Entra Change Announcements – November 2022 Train](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-change-announcements-november-2022-train/ba-p/2967452)を意訳したものになります。
+本記事は、2022 年 11 月 30 日に米国の Azure Active Directory Identity Blog で公開された [MMicrosoft Entra Change Announcements – November 2022 Train](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-change-announcements-november-2022-train/ba-p/2967452) を意訳したものになります。
 
 ----
 皆さん、こんにちは。
