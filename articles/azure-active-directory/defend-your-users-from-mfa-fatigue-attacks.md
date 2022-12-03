@@ -44,7 +44,8 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 
 [公開情報 : Advanced Microsoft Authenticator security features are now generally available!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673)
 
-本機能は 2023 年の 2 月末以降、すべてのユーザーに自動で有効化することを予定しています。
+> [!NOTE]
+> 本機能は 2023 年の 2 月 27 日以降、すべてのユーザーに自動で有効化することを予定しています。
 
 本機能は 2021 年 11 月にリリースされ、すでに 1 万近くの組織に導入されています。また「番号の一致」は、Microsoft Authenticator を利用したパスワードレス サインインの手段としてもご利用いただくことができます。
 
