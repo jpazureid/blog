@@ -29,9 +29,9 @@ Microsoft Authenticator で [「番号の一致 (Number Matching)」機能](http
 1. アプリケーションのコンテキスト: ユーザーがどのアプリケーションにサインインしているかを表示します。
 2. 地理的な位置のコンテキスト: サインインしているデバイスの IP アドレスに基づき、ユーザーのサインイン場所を表示します。
 
-[MFA 疲労攻撃が増加している](https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mf) 中、これらの機能は組織を守るために非常に重要です。Azure ポータルの管理者画面と Microsoft Graph API を活用することで、これらの重要なセキュリティ機能を組織でスムーズに導入することができますので、ぜひご検討ください。
+[MFA 疲労攻撃が増加している](https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/) 中、これらの機能は組織を守るために非常に重要です。Azure ポータルの管理者画面と Microsoft Graph API を活用することで、これらの重要なセキュリティ機能を組織でスムーズに導入することができますので、ぜひご検討ください。
  
-Microsoft は、2023 年 2 月 27 日より、Microsoft Authenticator アプリを利用するすべてのユーザーを対象に、番号の一致機能を有効化する予定です。 詳しくは、[Microsoft Authenticator の MFA 疲労攻撃対策](https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mf) をご参照ください。
+Microsoft は、2023 年 2 月 27 日より、Microsoft Authenticator アプリを利用するすべてのユーザーを対象に、番号の一致機能を有効化する予定です。 詳しくは、[Microsoft Authenticator の MFA 疲労攻撃対策](https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/) をご参照ください。
 
 ## Azure AD への IPv6 の導入
 
