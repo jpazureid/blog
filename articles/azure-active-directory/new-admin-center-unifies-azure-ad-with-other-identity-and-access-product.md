@@ -15,7 +15,7 @@ tags:
 ----
 皆Microsoft の ID に関するビジョンは、従来の ID 管理を超えて、マルチクラウドやマルチプラットフォーム環境におけるすべての人、すべてのものへのアクセスを保護するためのツールセット全体をお客様に提供することです。今年初めには、[Microsoft Entra](https://www.microsoft.com/ja-jp/security/business/microsoft-entra) と新しい [Microsoft Entra 管理センター](https://entra.microsoft.com/)を発表し、このビジョンを大幅に前進させました。
 
-Microsoft 365 および Azure Active Directory (Azure AD) のお客様を対象とした Entra 管理センターの段階的なロールアウトをお知らせします。今月から、多くのお客様の手元でも、Azure AD 管理センター ([aad.portal.azure.com](aad.portal.azure.com)) に代わり、Microsoft 365 から [entra.microsoft.com](entra.microsoft.com) に自動的に遷移され始めるようになります。
+Microsoft 365 および Azure Active Directory (Azure AD) のお客様を対象とした Entra 管理センターの段階的なロールアウトをお知らせします。今月から、多くのお客様の手元でも、Azure AD 管理センター ([aad.portal.azure.com](https://aad.portal.azure.com)) に代わり、Microsoft 365 から [entra.microsoft.com](https://entra.microsoft.com) に自動的に遷移され始めるようになります。
 
 ![](./new-admin-center-unifies-azure-ad-with-other-identity-and-access-product/01.png)
 
@@ -47,8 +47,9 @@ Azure AD は、Azure AD アプリケーション ギャラリー、多要素認�
 ## **Microsoft Entra 管理センターへの移行を準備する**
 管理画面に継続してアクセスできるよう、組織は必要に応じて、ファイアウォール ルールを更新する必要があります。
 
-Microsoft Entra の管理センターは、本日より [entra.microsoft.com](entra.microsoft.com) で利用できますので、完全移行に向けてぜひご活用ください。
+Microsoft Entra の管理センターは、本日より [entra.microsoft.com](https://entra.microsoft.com) で利用できますので、完全移行に向けてぜひご活用ください。
 
 [管理センター](https://entra.microsoft.com/)から、ご意見をお寄せいただけるのをお待ちしております。
+
 
 Kristina Hotz, Principal Manager of Product Management 
