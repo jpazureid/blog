@@ -210,7 +210,7 @@ PATCH https://graph.microsoft.com/v1.0/users/<対象ユーザーのオブジェ�
 ▽ Microsoft Graph PowerShell モジュールでの例
 
 ```powershell
-Connect-MgGraph -Scopes "User.ReadWrite.All" -TenantId <B2C tenant 名>
+Connect-MgGraph -Scopes "Directory.AccessAsUser.All" -TenantId <B2C tenant 名>
 $params = @{
   PasswordProfile = @{
       ForceChangePasswordNextSignIn = $false
