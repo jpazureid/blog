@@ -67,9 +67,12 @@ $passwordCred = @{
     displayName = 'キーの説明'
     endDateTime = [System.DateTime]::new(2099,12,31,23,59,59,[System.DateTimeKind]::Utc)
 }
-$secret = Add-MgApplicationPassword -applicationId $apps[0].Id -PasswordCredential $passwordCred
+$secret = Add-MgApplicationPassword -ApplicationId <アプリケーションのオブジェクト ID> -PasswordCredential $passwordCred
 $secret | fl *
 ```
+
+> [!NOTE]
+> ApplicationId にはアプリケーション ID (クライアント ID) ではなくアプリケーションのオブジェクト ID を指定します
 
 ※ 出力される SecretText をシークレットとして保存します。
 
