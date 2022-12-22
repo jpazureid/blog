@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     if:
       github.event_name == 'pull_request_target' &&
-      (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'edited')
+      (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'edited' || github.event.action == 'synchronize')
     steps:
       - name: check linked account
         # skip checking if pr is created by repository owner
