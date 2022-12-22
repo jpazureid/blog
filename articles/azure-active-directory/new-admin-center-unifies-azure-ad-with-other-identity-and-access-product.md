@@ -8,7 +8,7 @@ tags:
 
 #  新しい管理センターにおける Azure AD および他の ID とアクセス製品の統合  
 
-PR1
+PR2
 
 こんにちは、Azure Identity サポート チームの 竜 です。
 
