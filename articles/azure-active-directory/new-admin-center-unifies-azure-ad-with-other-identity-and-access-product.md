@@ -8,6 +8,8 @@ tags:
 
 #  新しい管理センターにおける Azure AD および他の ID とアクセス製品の統合  
 
+PR1
+
 こんにちは、Azure Identity サポート チームの 竜 です。
 
 本記事は、2022 年 12 月 1 日に米国の Azure Active Directory Identity Blog で公開された [New Admin Center Unifies Azure AD with Other Identity and Access Products](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-admin-center-unifies-azure-ad-with-other-identity-and-access/ba-p/2792595) を意訳したものになります。
