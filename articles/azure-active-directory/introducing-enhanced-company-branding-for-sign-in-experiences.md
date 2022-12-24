@@ -10,7 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの高田です。
 
-本記事は、2022 年 11 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Introducing enhanced company branding for sign-in experiences in Azure AD](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/introducing-enhanced-company-branding-for-sign-in-experiences-in/ba-p/3094110) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2022 年 12 月 12 日に米国の Azure Active Directory Identity Blog で公開された [Introducing enhanced company branding for sign-in experiences in Azure AD](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/introducing-enhanced-company-branding-for-sign-in-experiences-in/ba-p/3094110) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
