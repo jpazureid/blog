@@ -189,6 +189,7 @@ B. ゲスト ユーザーの最終サインイン日時を取得する方法
 [アプリケーションの登録手順](https://github.com/jpazureid/get-last-signin-reports/tree/use-signin-activity-beta-api)
  
 スクリプトを実行すると CSV ファイルが出力され、以下のように、ユーザーの ID、UPN、最終サインイン日時、アプリケーション情報を順に確認できます。
+LastSingInDateUTC は、対話型の最終サインイン日時です。LastNonInteractiveSigninDateUTC は、非対話型の最終サインイン日時となります。
  
 実行結果
 ![](./GuestUser-Inventory/13_lastsignin1.png)
