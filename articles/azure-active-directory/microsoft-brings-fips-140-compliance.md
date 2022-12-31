@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator が FIPS 140 に準拠しました 
-date: 2022-12-25 09:00
+date: 2023-01-01 09:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -27,5 +27,5 @@ Authenticator は、Apple のネイティブ暗号機能を活用し、Apple iOS
 
 皆様からのご意見をお待ちしています。コメントをお寄せいただくか、aka.ms/AzureADFeedback までお気軽にご連絡ください。
 
-Alex Weinert ([@Alex_T_Weinert](https://twitter.com/Alex_T_Weinert))
+Alex Weinert ([@Alex_T_Weinert](https://twitter.com/Alex_T_Weinert))  
 VP Director of Identity Security, Microsoft
