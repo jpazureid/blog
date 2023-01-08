@@ -86,7 +86,7 @@ https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/)
 
 Azure Portal 上で、管理者はユーザーの MFA 認証のための電話番号を、直接指定することができます。
 
-[Azure ポータル](portal.azure.com) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
+[Azure Portal](https://portal.azure.com/) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
 
 「新しいユーザー認証方法エクスペリエンスをお試しください。こちらをクリックすると、プレビューを使用できます。」というメッセージを選択すると、以下のプレビュー版の機能が、ご利用可能になります。
 
@@ -156,7 +156,7 @@ Azure Portal にログインできない場合は、https://aka.ms/AzurePortalHe
 - サポート ブログ 「多要素認証 (MFA) のリセット手順」: https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/
 
 ### サービスの URL
-- Azure ポータル : https://portal.azure.com/
-- Azure ポータル (プレビュー版) : https://preview.portal.azure.com/
+- Azure Portal : https://portal.azure.com/
+- Azure Portal (プレビュー版) : https://preview.portal.azure.com/
 - Azure MFA Portal (管理者専用) : https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx
 - MFA 認証情報確認 / 登録ページ : https://aka.ms/mfasetup
