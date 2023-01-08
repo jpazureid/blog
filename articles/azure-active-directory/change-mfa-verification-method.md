@@ -62,7 +62,7 @@ Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設�
 管理者によって現在の MFA 認証方法をリセットした上で、ユーザーが再登録を行う方法です。 <br>
 現在の MFA 認証方法をリセットすることができるのは、テナント管理者 (グローバル管理者ロール) です。リセットする対象が管理者ユーザー以外であれば、ユーザー管理者、特権認証管理者、認証管理者のロールを持つアカウントでも行うことができます。
 
-(A) [Azure ポータル](https://portal.azure.com/) からリセット
+(A) [Azure Portal](https://portal.azure.com/) からリセット
 
 (B) [Azure MFA Portal](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx) からリセット※ この方法は、テナント管理者 (グローバル管理者ロール) のみ実行可能です。
 
@@ -84,9 +84,9 @@ https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/)
 ### 【 2 】管理者が直接 MFA 認証用電話番号を指定 (プレビュー機能)
 こちらは現在、プレビュー機能として公開されている方法です。
 
-Azure ポータル 上で、管理者はユーザーの MFA 認証のための電話番号を、直接指定することができます。
+Azure Portal 上で、管理者はユーザーの MFA 認証のための電話番号を、直接指定することができます。
 
-[Azure ポータル](https://portal.azure.com/) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
+[Azure Portal](https://portal.azure.com/) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
 
 「新しいユーザー認証方法エクスペリエンスをお試しください。こちらをクリックすると、プレビューを使用できます。」というメッセージを選択すると、以下のプレビュー版の機能が、ご利用可能になります。
 
@@ -107,7 +107,7 @@ MFA 認証方法の再登録には、テナントの管理者による、MFA 認
 
 ただし、テナントの管理者自身のモバイル デバイスの紛失 / 故障などにより、MFA 認証方法の再登録したい場合、上記の手順を進めることができない場合がございます。
 
-「Azure ポータル、Azure MFA Portal のいずれにも、MFA が必要な設定をしているので、アクセスすることができない！」といった場合です。
+「Azure Portal、Azure MFA Portal のいずれにも、MFA が必要な設定をしているので、アクセスすることができない！」といった場合です。
 
 このようなときの、対処法をご案内いたします。
 ### I. テナントに管理者が複数存在する場合
@@ -143,7 +143,7 @@ CSP パートナーに連絡を取り、お客様のテナントにアクセス�
 - 全体管理者の UPN
 - 状況 (何かしら操作をした日時、操作内容など)
 
-Azure ポータル にログインできない場合は、https://aka.ms/AzurePortalHelp からリクエストをご起票ください。
+Azure Portal にログインできない場合は、https://aka.ms/AzurePortalHelp からリクエストをご起票ください。
 
 ## 参考文献やリンクなど
 本記事に関連する公開情報、サポート ブログ、サービスの URL をご紹介いたします。ご参考になれば幸いです。
@@ -156,7 +156,7 @@ Azure ポータル にログインできない場合は、https://aka.ms/AzurePo
 - サポート ブログ 「多要素認証 (MFA) のリセット手順」: https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/
 
 ### サービスの URL
-- Azure ポータル : https://portal.azure.com/
-- Azure ポータル (プレビュー版) : https://preview.portal.azure.com/
+- Azure Portal : https://portal.azure.com/
+- Azure Portal (プレビュー版) : https://preview.portal.azure.com/
 - Azure MFA Portal (管理者専用) : https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx
 - MFA 認証情報確認 / 登録ページ : https://aka.ms/mfasetup
