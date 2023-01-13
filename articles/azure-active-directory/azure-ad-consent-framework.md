@@ -241,7 +241,7 @@ Microsoft のサービスを始め、クラウド サービスが普及した現
 
 通常は上述の 2 つの手順にて、アプリケーションに同意を行うことが多いですが、アプリケーションの提供元によっては、同意のエンドポイントを利用し、事前に管理者による同意を行うよう指定されているものがあります。
 
-同意のエンドポイントについて、詳しくは Microsoft ID プラットフォームのスコープ、アクセス許可、および同意ドキュメント内の [管理者の同意エンドポイントを使用する](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) を確認ください。
+同意のエンドポイントについて、詳しくは Microsoft ID プラットフォームのスコープ、アクセス許可、および同意ドキュメント内の [ディレクトリ管理者にアクセス許可を要求する](https://learn.microsoft.com/ja-JP/azure/active-directory/develop/v2-admin-consent) を確認ください。
 
 ### 6. アプリケーションに同意済みの権限を確認する方法
 
