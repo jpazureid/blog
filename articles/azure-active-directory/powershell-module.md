@@ -7,7 +7,7 @@ tags:
 ---
 
 > [!WARNING]
-> 本記事で紹介しております MSOnline および Azure AD for Graph、Azure AD for Graph preview は今後廃止される予定です。このため、すべてのお客様は Microsoft Graph PowerShell SDK への移行をご検討ください。ただし、現状ではまだ Microsoft Graph PowerShell SDK でサポートされていない操作 (MSOnline を用いた AD FS と Azure AD のフェデレーション構成など) もございますので、そのような操作が必要な場合にのみ下記内容をご覧いただければ幸いです。
+> 本記事で紹介しております MSOnline および Azure AD for Graph、Azure AD for Graph preview は 2023 年 6 月 30 日に廃止される予定です。このため、すべてのお客様は Microsoft Graph PowerShell SDK への移行をご検討ください。ただし、現状ではまだ Microsoft Graph PowerShell SDK でサポートされていない操作 (MSOnline を用いた AD FS と Azure AD のフェデレーション構成など) もございますので、そのような操作が必要な場合にのみ下記内容をご覧いただければ幸いです。
 > 
 > Microsoft Graph SDK PowerShell の利用については、[こちらのページ](https://docs.microsoft.com/ja-jp/graph/powershell/installation) をご覧ください。
 
