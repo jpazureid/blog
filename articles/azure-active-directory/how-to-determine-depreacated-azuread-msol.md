@@ -12,7 +12,7 @@ tags:
 
 ## Azure AD Graph / MSOnline PowerShell モジュールの廃止予定
 
-[Azure AD の変更管理を簡素化します](../azure-active-directory/azure-ad-change-management-simplified.md) の記事でお伝えしております通り、 MSOnline および Azure AD for Graph (Preview 含む) は 2022 年 12 月 **以降** に廃止が予定されております。改めて廃止が予定されているモジュールは、以下の通りです。
+[Azure AD の変更管理を簡素化します](../azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train.md) の記事でお伝えしております通り、 MSOnline および Azure AD for Graph (Preview 含む) は 2023 年 6 月 30 日に廃止が予定されております。改めて廃止が予定されているモジュールは、以下の通りです。
 
 | 名前 | モジュール名 | プレフィックス | コマンド例 |
 | :--- | :--- | :--- | :--- |
