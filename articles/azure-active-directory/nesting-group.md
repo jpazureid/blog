@@ -59,10 +59,13 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/licen
 SaaS アプリケーションへのアクセスをグループで管理する  
 https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/groups-saasapps
 
+Azure AD サービスの制限と制約 （表内グループの項目でも、本記事に記載の内容を確認できます。）  
+https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/directory-service-limits-restrictions
+
 #### 備考
 
 グループの入れ子については多くのお客様よりフィードバックをいただいており、弊社開発部門も実装を検討しています。  
-https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15718164-add-support-for-nested-groups-in-azure-ad-app-acc
+https://feedback.azure.com/d365community/idea/fa8991c1-b125-ec11-b6e6-000d3a4f0789
 
 上記のフィードバックサイトは開発部門が閲覧しており、フィードバックが多い機能や要望は今後の Azure 機能拡張の参考にしています。
 
