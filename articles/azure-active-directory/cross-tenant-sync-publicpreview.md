@@ -1,4 +1,3 @@
-
 ---
 title: マルチテナントの Azure AD 組織におけるシームレスなアプリケーション アクセスおよびライフ サイクル管理
 date: 2023-02-06
@@ -84,5 +83,5 @@ Twitter: @joe_dadzie
 Learn more about Microsoft identity: 
 - Related Articles: [Cross-tenant synchronization](https://learn.microsoft.com/ja-jp/azure/active-directory/multi-tenant-organizations/cross-tenant-synchronization-overview)
 - Return to the [Azure Active Directory Identity blog home](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/bg-p/Identity)
-- Join the conversation on [Twitter](https://twitter.com/azuread/status/1278418103903363074){:target="_blank"} and [Linkedin](https://www.linkedin.com/showcase/microsoft-security/)
+- Join the conversation on [Twitter](https://twitter.com/azuread/status/1278418103903363074) and [Linkedin](https://www.linkedin.com/showcase/microsoft-security/)
 - Share product suggestions on the [Azure Feedback Forum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)
