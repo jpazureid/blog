@@ -8,15 +8,13 @@ tags:
 ---
 
 > [!NOTE]
-> 本記事は、2023 年 1 月 31 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Seamless Application Access and Lifecycle Management for Multi-tenant Azure AD Organizations](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/seamless-application-access-and-lifecycle-management-for-multi/ba-p/3728752) を意訳したものになります。
-> ご不明点等ございましたらサポート チームまでお問い合わせください。
-
+> 本記事は、2023 年 1 月 31 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Seamless Application Access and Lifecycle Management for Multi-tenant Azure AD Organizations](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/seamless-application-access-and-lifecycle-management-for-multi/ba-p/3728752) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 # マルチテナントの Azure AD 組織におけるシームレスなアプリケーション アクセスおよびライフ サイクル管理
 
 こんにちは。
 
-今日は、**テナント間同期**が**パブリック プレビュー**になったことをお知らせします。 
+今日は、**テナント間同期** が **パブリック プレビュー** になったことをお知らせします。 
 
 組織によっては、最近、新しい会社を買収したり、他の会社と合併したり、新しく設立された事業単位に基づき再編成されたりということがあるかと思います。組織が発展するにつれて、IT 部門は変化するニーズに対応するために適応が求められます。これには、既存の Azure Active Directory（Azure AD）テナントとの統合や、新しいテナントの作成も含まれるはずです。ID 基盤の管理方法にかかわらず、エンドユーザーがテナント間でリソースへのアクセスやコラボレーションをシームレスに体験できることがいかに重要であるかを弊社では認識しています。テナント間同期の機能により、マルチテナント環境においてシームレスなアクセスおよびコラボレーション体験を提供することができます。
 
@@ -69,12 +67,11 @@ Contoso US の管理者は、[プロビジョニング ログ](https://learn.mic
 
 ![](./cross-tenant-sync-publicpreview/cts4.jpg)  
 
-
 ## お客様の声
 
 DB Systel は、ドイツ国鉄の IT 子会社であり、デジタル パートナーとして、DB AG の全企業のデジタル化を推進しています。同社は、最高の IT 標準と革新的なトピックに基づいて、最適なソリューションとコンサルティング サービスを開発しています。これを実現するために、DB Systel は鉄道と IT に関する豊富な専門知識を活用しています。
 
-**“テナント間同期により、当社のさまざまなテナントを接続し、すべてのマイクロソフト製品で従業員がよりシームレスに対話できるようになりました。また、オンプレミスでの専用アカウントが不要なため、運用コストの削減やテナントのセキュリティの向上にもつながります。弊社は、Azure AD のマルチテナント コラボレーション機能に全面的に信頼を寄せています。”**
+**"テナント間同期により、当社のさまざまなテナントを接続し、すべてのマイクロソフト製品で従業員がよりシームレスに対話できるようになりました。また、オンプレミスでの専用アカウントが不要なため、運用コストの削減やテナントのセキュリティの向上にもつながります。弊社は、Azure AD のマルチテナント コラボレーション機能に全面的に信頼を寄せています。"**
 
 組織内のテナント間でユーザー アカウントの作成を自動化することで、組織を改善するための他の方法の検討に時間を費やせることになります。パブリック プレビュー版では、テナント間の同期をさらに向上させるためのフィードバックをお待ちしています。
 
