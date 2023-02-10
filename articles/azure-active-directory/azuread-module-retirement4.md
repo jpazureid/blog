@@ -64,7 +64,6 @@ Get-MgUser -All
 ![](./azuread-module-retirement4/azuread-module-retirement4-2.png)
 
 
-[!TIP]
 上記で気になった方もいると思いますが、Usertype の中身が空になっていることにお気づきでしょうか。
 Get-MsolUser コマンドや Get-AzureADUser コマンドでは、何も指定しなくても、すべての属性の情報が一括で出力されていました。
 
@@ -113,7 +112,7 @@ Get-MgUser -UserId 2e7c8a97-ab50-4e53-b193-be3ff9ddc6aa -Property Id,Displayname
 
 ![](./azuread-module-retirement4/azuread-module-retirement4-7.png)
 
-<h3 id="idx1-4">ゲスト ユーザーのみを取得したい</h3>
+<h3 id="idx1-4">アカウントが有効なゲスト ユーザーのみを取得したい</h3>
 
 -Filter の条件を 2 つ以上記載したいときは and でつなげると利用できます。
 
@@ -147,8 +146,11 @@ ExtensionAttribute1 などの属性は、ユーザーの onpremisesExtensionAttr
 ![](./azuread-module-retirement4/azuread-module-retirement4-10.png)
 
 利用可能なパラメーターは Filter 以外にもありますが、各属性によってサポートされるオプションが異なります。下記のような公開情報を確認いただき、使用したい属性とオプションがサポートされているか、あらかじめご確認ください。
+
 https://learn.microsoft.com/ja-jp/graph/api/resources/user?view=graph-rest-1.0#properties
+
 https://learn.microsoft.com/ja-jp/graph/api/user-list?view=graph-rest-1.0&tabs=powershell#optional-query-parameters
+
 
 
 <h2 id="idx2">2. ユーザーの作成</h2>
@@ -179,7 +181,9 @@ New-MgUser -DisplayName 'Rene Magi' -PasswordProfile $PasswordProfile -AccountEn
 ```
 
 公開情報も併せてご確認ください。
+
 https://learn.microsoft.com/ja-jp/powershell/module/microsoft.graph.users/new-mguser?view=graph-powershell-1.0
+
 https://learn.microsoft.com/ja-jp/graph/api/user-post-users?view=graph-rest-1.0&tabs=http
 
 
@@ -202,6 +206,7 @@ Restore-MgDirectoryDeletedItem -DirectoryObjectId 282f0fb7-06a6-4a86-b3d5-01569d
 ```
 
 公開情報も併せてご確認ください。
+
 https://learn.microsoft.com/ja-jp/graph/api/directory-deleteditems-restore?view=graph-rest-1.0&tabs=http
 
 
@@ -212,6 +217,7 @@ Remove-MgDirectoryDeletedItem -DirectoryObjectId 282f0fb7-06a6-4a86-b3d5-01569d7
 ```
 
 公開情報も併せてご確認ください。
+
 https://learn.microsoft.com/ja-jp/graph/api/directory-deleteditems-delete?view=graph-rest-1.0&tabs=powershell
 
 
@@ -223,7 +229,9 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
  Update-MgUser -UserId 2e7c8a97-ab50-4e53-b193-be3ff9ddc6aa -DisplayName test1228a -OtherMails @("bob@contoso.com", "admin@m365x219253.onmicrosoft.com")
 ```
 
-一般的には上記のように、変更したい属性を指定して、新しい値を指定すれば更新できます。時折ご質問をいただくものとして、extensionattribute 関連の属性を更新したいといったお問い合わせがよくあるため、以下に手順を例として案内します。 Extensionattribute の値を更新したい場合、事前に beta に切り替えてからコマンドを実行ください。
+一般的には上記のように、変更したい属性を指定して、新しい値を指定すれば更新できます。
+
+時折ご質問をいただくものとして、extensionattribute 関連の属性を更新したいといったお問い合わせがよくあるため、以下に手順を例として案内します。 Extensionattribute の値を更新したい場合、事前に beta に切り替えてからコマンドを実行ください。
 
 1. Connect-mgGraph にて接続します。
 2. beta バージョンへ切り替えます。
