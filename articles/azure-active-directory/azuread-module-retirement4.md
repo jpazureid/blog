@@ -12,9 +12,7 @@ tags:
 
 この記事は、この記事は、MSOnline / AzureAD モジュール廃止について、[1. 概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)、[2. 移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)、[3. インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) の続きとして連載しています。
 
-4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法についてご案内します。以前、[こちらの記事](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/) にて、ライセンス管理についてご案内させていただきましたが、今回はユーザー管理に特化してご紹介します。
-
-まだモジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2 と 3 をご確認ください。
+4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法についてご案内します。以前、[こちらの記事](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/) にて、ライセンス管理についてご案内させていただきましたが、今回はユーザー管理に特化してご紹介します。まだモジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2 と 3 をご確認ください。
 
 ## 目次
 
@@ -244,9 +242,7 @@ Q. Set-MsolUser コマンドで実施できた StrongAuthenticationRequirements 
 
 A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応していません。[公開情報](https://learn.microsoft.com/ja-jp/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) にも記載があります。
 
-```
-この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOLSet-MsolUser コマンドレットを使用してのみサポートされています。
-```
+> この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOLSet-MsolUser コマンドレットを使用してのみサポートされています。
 
 StrongAuthenticationMethod については [公開情報 (英語)](https://learn.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
 
