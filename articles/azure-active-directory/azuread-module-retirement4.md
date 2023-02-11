@@ -242,9 +242,7 @@ Q. Set-MsolUser コマンドで実施できた StrongAuthenticationRequirements 
 
 A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応していません。[公開情報](https://learn.microsoft.com/ja-jp/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) にも記載があります。
 
-```
-この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOLSet-MsolUser コマンドレットを使用してのみサポートされています。
-```
+> この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOLSet-MsolUser コマンドレットを使用してのみサポートされています。
 
 StrongAuthenticationMethod については [公開情報 (英語)](https://learn.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
 
