@@ -1,6 +1,6 @@
 ---
 title: MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 4_ユーザー管理
-date: 2023-02-11 09:00
+date: 2023-02-12 09:00
 tags:
     - PowerShell
     - Microsoft Graph
@@ -27,7 +27,7 @@ tags:
 	- [削除済みユーザーを取得したい](#idx1-6)
 2. [ユーザーの作成](#idx2)
 3. [ユーザーの削除](#idx3)
-4. [削除済みの完全削除と復元](#idx4)
+4. [削除済みユーザーの完全削除と復元](#idx4)
 5. [ユーザーの属性を更新する](#idx5)
 6. [よくある質問](#idx6)
 
@@ -168,7 +168,7 @@ $PasswordProfile = @{
 New-MgUser -DisplayName 'Rene Magi' -PasswordProfile $PasswordProfile -AccountEnabled -MailNickName 'ReneMagi' -UserPrincipalName 'ReneMagi@m365x61971868.onmicrosoft.com'
 ```
 
-公開情報も併せてご確認ください。
+以下の公開情報も併せてご確認ください。
 
 - [New-MgUser](https://learn.microsoft.com/ja-jp/powershell/module/microsoft.graph.users/new-mguser?view=graph-powershell-1.0)
 - [ユーザーを作成する](https://learn.microsoft.com/ja-jp/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)
@@ -181,27 +181,23 @@ Remove-MgUser コマンドにて削除可能です。
 Remove-MgUser -UserId 282f0fb7-06a6-4a86-b3d5-01569d7393a1
 ```
 
-<h2 id="idx4">4. 削除済みの完全削除と復元</h2>
+<h2 id="idx4">4. 削除済みユーザーの完全削除と復元</h2>
 
-削除されたユーザーは、30 日間の間、削除済みユーザーとして一時的に保存されます。30 日以内であれば、誤って削除してしまった場合などの時にこれらのユーザーを復元することが可能です。復元したい場合、 Restore-MgDirectoryDeletedItem コマンドを使用します。
+削除されたユーザーは、30 日間の間、削除済みユーザーとして一時的に保存されます。30 日以内であれば、誤って削除してしまった場合でもこれらのユーザーを復元することが可能です。復元したい場合、 Restore-MgDirectoryDeletedItem コマンドを使用します。
 
 ```
 Restore-MgDirectoryDeletedItem -DirectoryObjectId 282f0fb7-06a6-4a86-b3d5-01569d7393a1
 ```
 
-公開情報も併せてご確認ください。
+[削除済みアイテムを復元する](https://learn.microsoft.com/ja-jp/graph/api/directory-deleteditems-restore?view=graph-rest-1.0&tabs=http) の公開情報も併せてご確認ください。
 
-[削除済みアイテムを復元する])https://learn.microsoft.com/ja-jp/graph/api/directory-deleteditems-restore?view=graph-rest-1.0&tabs=http)
-
-完全に削除したい場合、Remove-MgDirectoryDeletedItem コマンドを使用します。こちらのコマンドを実行すると、オブジェクトは完全に削除されるためご留意ください。
+完全に削除したい場合、Remove-MgDirectoryDeletedItem コマンドを使用します。こちらのコマンドを実行すると、オブジェクトは完全に削除され復元できなくなるためご留意ください。
 
 ```
 Remove-MgDirectoryDeletedItem -DirectoryObjectId 282f0fb7-06a6-4a86-b3d5-01569d7393a1
 ```
 
-公開情報も併せてご確認ください。
-
-[アイテムを完全に削除する](https://learn.microsoft.com/ja-jp/graph/api/directory-deleteditems-delete?view=graph-rest-1.0&tabs=powershell)
+[アイテムを完全に削除する](https://learn.microsoft.com/ja-jp/graph/api/directory-deleteditems-delete?view=graph-rest-1.0&tabs=powershell) の公開情報も併せてご確認ください。
 
 <h2 id="idx5">5. ユーザーの属性を更新する</h2>
 
@@ -218,38 +214,40 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 1. Connect-MgGraph にて接続します。
 2. beta バージョンへ切り替えます。
 
-```
-Select-MgProfile -Name "beta"
-```
+	```
+	Select-MgProfile -Name "beta"
+	```
 
 3. Get-Mguser コマンドを実行して、ユーザーの情報を取得します。
  
-```
-(Get-MgUser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3).onpremisesExtensionAttributes | fl
-```
+	```
+	(Get-MgUser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3).onpremisesExtensionAttributes | fl
+	```
 
-以下の画面では、ユーザーの ExtensionAttribute1 の値に test という文字列が入っていることが確認できます。
+	以下の画面では、ユーザーの ExtensionAttribute1 の値に test という文字列が入っていることが確認できます。
 
-![](./azuread-module-retirement4/azuread-module-retirement4-11.png)
+	![](./azuread-module-retirement4/azuread-module-retirement4-11.png)
  
 4. 以下のコマンドを実行して、たとえば ExtensionAttribute1 の値を test2 に更新します。
  
-```
-Update-MgUser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3 -OnPremisesExtensionAttributes @{"ExtensionAttribute1"='test2'}
-```
+	```
+	Update-MgUser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3 -OnPremisesExtensionAttributes @{"ExtensionAttribute1"='test2'}
+	```
 
 5. 値が test2 に更新されたことを確認します。
 
-![](./azuread-module-retirement4/azuread-module-retirement4-12.png)
+	![](./azuread-module-retirement4/azuread-module-retirement4-12.png)
 
-<h3 id="idx6">よくある質問</h3>
+<h2 id="idx6">6. よくある質問</h3>
 
 Q. Set-MsolUser コマンドで実施できた StrongAuthenticationRequirements の有効化や、StrongAuthenticationMethod を無効化する代替案はありますか？
 
-A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応していません。廃止日までは Get-Msoluser コマンドを利用ください。[公開情報](https://learn.microsoft.com/ja-jp/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0)にも記載があります。
+A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応していません。[公開情報](https://learn.microsoft.com/ja-jp/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) にも記載があります。
 
 ```
 この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOLSet-MsolUser コマンドレットを使用してのみサポートされています。
 ```
+
+StrongAuthenticationMethod については [公開情報 (英語)](https://learn.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
 
 基本的なユーザー管理コマンドについて案内していますが、もし利用方法が不明なコマンドがございましたらお気軽にお問い合わせを起票ください。
