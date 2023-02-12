@@ -39,7 +39,7 @@ Identity Protection が作成するレポートは以下の 4 種類がありま
 
 ![図 3: リスクのあるユーザー レポート](./combatting-risky-sign-ins/figure3.png)
 
-![図 4: ユーザーに関連するリスクのあるサインイン](./combatting-risky-sign-ins/figure4.png)<br><br>
+![図 4: ユーザーに関連するリスクのあるサインイン](./combatting-risky-sign-ins/figure4.png)
 
 Identity Protection がユーザーとサインインに設定するリスク レベルは、自動化されたアクションを実行する際にも活用できます。これを行うには、ユーザーとサインインに設定されたリスク レベル基づく条件付きアクセス ポリシーを作成します。たとえば、サインインしたユーザーのリスクレベルが「高」の場合、パスワードのリセットを強制的に実行するといったポリシーです。リスク レベルに基づく条件付きアクセス ポリシーに関する推奨事項については、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies#microsofts-recommendation) を参照ください。
 
