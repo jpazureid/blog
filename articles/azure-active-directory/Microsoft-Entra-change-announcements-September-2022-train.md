@@ -45,9 +45,9 @@ ID とアクセス管理の製品群の拡大に合わせて、Microsoft Entra �
 
 Azure AD Graph は、**2023 年 6 月 30 日** まで **継続して** 機能する予定です。これは、当初の Azure AD Graph API の [廃止の発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) から 3 年後となります。Azure サービスにおける廃止の [ガイドライン](https://learn.microsoft.com/ja-jp/lifecycle/) に基づき、2023 年 6 月 30 日以降は、事前通知なく Azure AD Graph の提供を停止する可能性があります。弊社では 2023 年 6 月 30 日以降に Azure AD Graph の提供を停止することとなりますが、すべてのお客様が移行を完了し、運用環境のアプリケーションが Azure AD Graph を利用しないようにしたいと考えています。新機能の開発は  [Microsoft Graph](https://learn.microsoft.com/ja-jp/graph/overview) に対してのみ行われます。今後も Azure AD Graph のセキュリティ関連の修正は引き続きサポートしますが、Microsoft Graph への移行を推奨します。詳細は「[Azure AD Graph アプリをMicrosoft Graphに移行する](https://learn.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview)」を参照ください。
 
-## Azure Active Directory Authentication Library (ADAL) のサポート終了 (end-of-life) について (2023/1/6 更新)
+## Azure Active Directory Authentication Library (ADAL) のサポート終了 (end-of-life) について (2023/2/13 更新)
 
-元記事の 2022 年 9 月時点では、[以前の発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-ad-change-management-simplified/ba-p/2967456)のように、ADAL のサポート終了 (end-of-life) として 2022 年 12 月 31 日を予定していました。しかし、2022 年 12 月 [ADAL End of Support Announcement](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/whats-new#adal-end-of-support-announcement) のとおり 2023 年 6 月 1 日にサポート終了日を延期することを発表しました。
+元記事の 2022 年 9 月時点では、[以前の発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-ad-change-management-simplified/ba-p/2967456)のように、ADAL のサポート終了 (end-of-life) として 2022 年 12 月 31 日を予定していました。しかし、2022 年 12 月 [ADAL End of Support Announcement](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/whats-new#adal-end-of-support-announcement) のとおり 2023 年 6 月 30 日にサポート終了日を延期することを発表しました。
 サポート終了後も ADAL を使用したアプリは引き続き動作することが見込まれますが、サポートやセキュリティ修正は end-of-life 以降は提供されません。また、ADAL の end-of-life 前に、ADAL の機能リリースや、新しいプラットフォーム バージョンへの対応予定もありません。このため、Microsoft Authentication Library (MSAL) への移行を優先することを推奨します。詳細は「[Microsoft Authentication Library (MSAL) へのアプリケーションの移行](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/msal-migration)」をご参照ください。
 
 ## ライセンスの割り当て API/PowerShell の廃止について
