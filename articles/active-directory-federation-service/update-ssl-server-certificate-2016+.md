@@ -80,7 +80,7 @@ Windows Server 2012 R2 に関しては、[こちら](https://jpazureid.github.io
     certutil -repairstore my *
     ```
 
-4. NT SERVICE\ADFSSRV を [追加] して、読み取りアクセス許可を付与します。
+4. NT SERVICE\ADFSSRV (場所はローカルを指定します) を [追加] して、読み取りアクセス許可を付与します。
 
 
 ## 4. AD FS のサービス通信証明書へ SSL サーバー証明書を設定
