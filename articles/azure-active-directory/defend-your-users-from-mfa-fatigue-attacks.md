@@ -1,12 +1,12 @@
 ---
-title: Microsoft Authenticator の MFA 疲労攻撃対策
-date: 2022-10-19 00:00
+title: Microsoft Authenticator の MFA 疲労攻撃対策 - 数値の一致による MFA が 有効化されます
+date: 2023-02-16 00:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# Microsoft Authenticator の MFA 疲労攻撃対策
+# Microsoft Authenticator の MFA 疲労攻撃対策 - 数値の一致による MFA が有効化されます
 
 こんにちは。Azure Identity サポート チームの栗井です。
 
@@ -15,6 +15,10 @@ Microsoft Identity Security のディレクター Alex Weinert によって、�
 [Defend your users from MFA fatigue attacks - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/defend-your-users-from-mfa-fatigue-attacks/ba-p/2365677)
 
 上記記事に記載の一部内容と、私共日本側のサポート チーム宛にお客様からお問い合わせいただく内容等をふまえ、本記事を執筆しました。
+
+> [!NOTE]
+> 下記でご紹介する機能のうち「プッシュ通知に番号の一致が必要」の機能は、2023 年の 5 月 8 日以降、すべてのユーザーに自動で有効化することを予定しています。(元々 2023 年 2 月 27 日以降を予定していましたが、2023 年 2 月 16 日段階で延期されました)
+> [公開情報: 多要素認証 (MFA) 通知で数値の一致を使用する方法 - 認証方法ポリシー](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-number-match)
 
 ## 背景
 
@@ -45,7 +49,7 @@ Microsoft Authenticator の「プッシュ通知に番号の一致が必要」�
 [公開情報 : Advanced Microsoft Authenticator security features are now generally available!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673)
 
 > [!NOTE]
-> 本機能は 2023 年の 2 月 27 日以降、すべてのユーザーに自動で有効化することを予定しています。
+> Update: 本機能は 2023 年の 5 月 8 日以降、すべてのユーザーに自動で有効化することを予定しています。
 
 本機能は 2021 年 11 月にリリースされ、すでに 1 万近くの組織に導入されています。また「番号の一致」は、Microsoft Authenticator を利用したパスワードレス サインインの手段としてもご利用いただくことができます。
 
