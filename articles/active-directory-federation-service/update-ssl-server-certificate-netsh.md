@@ -78,7 +78,7 @@ tags:
 
 4. NT SERVICE\ADFSSRV と NT SERVICE\DRS (場所はローカルを指定します) を [追加] して、各アカウントに読み取りアクセス許可を付与します。
 
-    ※ NT SERVICE\DRS アカウントが存在しない場合には、NT SERVICE\ADFSSRV のみにアクセス許可を付与します。
+    ※ NT SERVICE\DRS アカウントが存在しない場合には、NT SERVICE\ADFSSRV のみにアクセス許可を付与します。<br>
     ※ バージョン 2016 以降の場合、NT SERVICE\DRS アカウントは存在しないため、NT SERVICE\ADFSSRV のみにアクセス許可を付与します。
 
 
