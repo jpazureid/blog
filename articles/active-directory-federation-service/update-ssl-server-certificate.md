@@ -17,6 +17,11 @@ tags:
 
 対象リリース: Windows Server 2012 R2 (AD FS 3.0)
 
+> [!NOTE]
+> 2023 年 2 月 20 日更新: 
+Windows Server 2016 以降の AD FS をご利用の方は、[こちら](https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate-2016+/)をご覧ください。
+また、Powershell のコマンドが失敗する場合には、[こちら](https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate-netsh/)の手順でも更新いただけますので、ご確認いただければと思います。
+
 以下の流れで更新作業を行います。
 
 ## 手順の概要
@@ -81,7 +86,7 @@ tags:
     certutil -repairstore my *
     ```
 
-4. NT SERVICE\ADFSSRV と NT SERVICE\DRS (場所はローカル) を [追加] して、各アカウントには、少なくとも読み取りアクセス許可を付与します。
+4. NT SERVICE\ADFSSRV と NT SERVICE\DRS (場所はローカルを指定します) を [追加] して、各アカウントには、少なくとも読み取りアクセス許可を付与します。
 
     ※ NT SERVICE\DRS アカウントが存在しない場合には、NT SERVICE\ADFSSRV にのみアクセス許可を付与します。
 
@@ -104,31 +109,19 @@ AD FS のサービス通信証明書へ SSL サーバー証明書を設定しま
 
 AD FS の SSL サーバー証明書を更新します。全 AD FS サーバーにて以下を実施します。
 
-1. [スタート] - [ファイル名を指定して実行] から certlm.msc と入力し、[OK] をクリックします。
+1. PowerShell を管理者として起動します。
 
-2. 画面左側から以下のストアを展開します。
-
-    [証明書 (ローカル コンピューター)] - [個人] - [証明書]
-
-3. 中央から、手順 2. でインストールした SSL サーバー証明書をダブル クリックします。
-
-4. [詳細] タブをクリックします。
-
-5. [拇印] の値をメモします。
-
-6. PowerShell を管理者として起動します。
-
-7. 起動した PowerShell で以下のコマンドを実行して SSL サーバー証明書を更新します。
+2. 起動した PowerShell で以下のコマンドを実行して SSL サーバー証明書を更新します。
 
     ```powershell
-    Set-AdfsSslCertificate -Thumbprint
+    Set-AdfsSslCertificate -Thumbprint [新しい証明書の拇印]
     ```
 
-    例えば、手順 5-5. でメモした拇印が "aa bb cc dd ee" の場合、スペースを除いて以下のようになります。
-
+    ※ 証明書の拇印 (Thumbprint) は、以下のコマンドでご確認頂けます。
     ```powershell
-    Set-AdfsSslCertificate -Thumbprint aabbccddee
+    dir Cert:\LocalMachine\My\ | FL Thumbprint, Subject, NotBefore, NotAfter
     ```
+    コンピューターの個人ストアにインポートされている証明書が表示されますので、新しい SSL 証明書の Thumbprint に表示されている文字列をコピーしてご利用ください。
 
 ## 6. WAP サーバーを再構成
 
