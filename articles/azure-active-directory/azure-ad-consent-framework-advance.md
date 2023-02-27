@@ -235,7 +235,7 @@ https://jwt.ms
 
 以下にユーザー委任のアクセス許可に関する PowerShell のサンプルを記載します。
 
-#### すべての同意を取得
+#### 特定アプリに実施した同意情報を取得
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
@@ -244,7 +244,7 @@ Connect-MgGraph -Scope "Application.Read.All,DelegatedPermissionGrant.ReadWrite.
 # 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得
 $sp = Get-MgServicePrincipal -Filter "appId eq '<AppId>'"
 
-# 付与された管理者同意を取得
+# 付与された同意情報を取得
 $delegatedPermissions = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.Id)'"
 
 $delegatedPermissions | Format-List Id, ConsentType, PrincipalId, ResourceId, Scope
@@ -257,7 +257,7 @@ $delegatedPermissions | Format-List Id, ConsentType, PrincipalId, ResourceId, Sc
 # Scope                : 同意済みの API のアクセス許可のリスト
 ```
 
-#### すべての同意を削除
+#### 特定アプリに対するすべてのユーザー委任の同意を削除
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
@@ -273,7 +273,7 @@ $delegatedPermissions = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.
 $delegatedPermissions | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id } 
 ```
 
-##### 管理者の同意のみを削除
+##### 特定アプリに対する管理者の同意のみを削除
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
