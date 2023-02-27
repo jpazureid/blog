@@ -126,7 +126,7 @@ Azure ポータルのエンタープライズ アプリケーションから、�
 
 その際の代替方法として、エンタープライズ アプリケーションの [アクセス許可] ブレードから管理者の同意を付与する方法を紹介しました。
 
-![アクセス許可](../azure-active-directory/azure-ad-consent-framework/consent-to-enterprise-application.png)
+![アクセス許可](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework/consent-to-enterprise-application.png)
 
 上記の [Contoso に管理者の同意を与えます] ボタンをクリックすることで、要求された権限が表示され管理者同意を実施できます。
 
