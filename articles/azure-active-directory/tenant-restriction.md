@@ -22,8 +22,7 @@ tags:
 
 詳細については、以下の公開情報をご参照ください。
 
-自社テナント以外へのアクセス制御 – “テナントの制限” 機能 (Tenant Restrictions)  
-https://blogs.technet.microsoft.com/office365-tech-japan/2017/02/06/tenant-restrictions/
+[アクセスをテナントに制限する](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/tenant-restrictions)
 
 テナント制限が機能しており、アクセスを許可しないテナントの  Office 365 や Azure へのサインイン時に 「ここからアクセスすることはできません」 のエラーメッセージが表示されます。
 
