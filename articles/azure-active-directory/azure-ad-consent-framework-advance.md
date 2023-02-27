@@ -233,7 +233,7 @@ https://jwt.ms
 
 ### Microsoft Graph SDK のサンプル
 
-以下にユーザー同意に関する PowerShell のサンプルを記載します。
+以下にユーザー委任のアクセス許可に関する PowerShell のサンプルを記載します。
 
 #### すべての同意を取得
 
