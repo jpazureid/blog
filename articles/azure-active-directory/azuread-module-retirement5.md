@@ -1,6 +1,6 @@
 ---
 title: MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理
-date: 2023-02-21 09:00
+date: 2023-03-06 09:00
 tags:
     - PowerShell
     - Microsoft Graph
