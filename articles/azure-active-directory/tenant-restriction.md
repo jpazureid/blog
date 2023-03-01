@@ -39,7 +39,7 @@ tags:
 
 <font color="DeepSkyBlue">Q</font> : Microsoft アカウント (コンシューマー向けアカウント) によるアクセスを制限することは可能ですか。
 
-<font color = "red">A</font> : はい、可能です。この場合は “Restrict-Access-To-Tenants" とは異なるヘッダーを利用します。
+<font color = "red">A</font> : はい、可能です。この場合は login.live.com 宛への通信に対してヘッダーを設定しますが、 “Restrict-Access-To-Tenants" とは異なるヘッダーを利用します。
 
 Microsoft アカウントによるアクセスを制限する場合は、"sec-Restrict-Tenant-Access-Policy" ヘッダーに "restrict-msa" という値が含まれるように構成ください。
 この設定によって、 Microsoft アカウントの認証エンドポイント (login.live.com) へのアクセスがブロックされます。
@@ -51,7 +51,7 @@ Microsoft アカウントによるアクセスを制限する場合は、"sec-Re
 
 <font color="DeepSkyBlue">Q</font> : 制限されるのは Office 365 だけですか？
 
-<font color = "red">A</font>  : いいえ。以下の認証エンドポイントを使用する、すべてのサービスが制限されます。
+<font color = "red">A</font>  : いいえ。以下の認証エンドポイントを使用する、すべてのサービス、言い換えますと Azure AD と連携するサービスが制限されます。
 
 - login.microsoftonline.com  
 - login.windows.net  
@@ -63,7 +63,7 @@ Microsoft アカウントによるアクセスを制限する場合は、"sec-Re
 
 <font color = "red">A</font> : 接続元のクライアントが利用するプロキシサーバーの設定変更が必要です。プロキシ サーバーを管理している IT 部門へ申請をあげるなどで、テナント制限の許可するリストに該当のテナントを追加してもらってください。
 
-もしくは、プロキシサーバーによる制限を受けないネットワーク環境から接続をお試しいただくことで、テナント制限による制御を回避いただくことができます。
+テナント制限は設定をおこなったプロキシ経由でのアクセスに制限を加えるものですので、プロキシサーバーによる制限を受けないネットワーク環境から接続することでもテナント制限による制御は回避できます。
 
 <font color="DeepSkyBlue">Q</font> : Azure AD 側での設定変更は必要ですか？
 
@@ -71,7 +71,7 @@ Microsoft アカウントによるアクセスを制限する場合は、"sec-Re
 
 <font color="DeepSkyBlue">Q</font> : "Restrict-Access-To-Tenants" に、ワイルドカードは利用できますか？
 
-<font color = "red">A</font> : いいえ。テナント名かテナント ID を不足なく、入力する必要がございます。
+<font color = "red">A</font> : いいえ。テナント名かテナント ID を不足なく、入力する必要があります。
 
 <font color="DeepSkyBlue">Q</font> : テナント制限で許可をすることができるテナント数に上限はありますか？
 
