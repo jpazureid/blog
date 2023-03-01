@@ -20,7 +20,7 @@ tags:
 > [!NOTE]
 > 2023 年 2 月 20 日更新: <br>
 Windows Server 2016 以降の AD FS をご利用の方は、[こちら](https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate-2016+/)をご覧ください。<br>
-また、Powershell のコマンドが失敗する場合には、[こちら](https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate-netsh/)の手順でも更新いただけますので、ご確認いただければと思います。
+また、Powershell のコマンドが失敗する場合には、[こちら](https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate-netsh/)の手順でも更新できますので、必要に応じてご確認ください。
 
 以下の流れで更新作業を行います。
 
