@@ -37,7 +37,7 @@ Contoso Industries は、政府機関や商業組織にミッション クリテ
 Contoso Industries には、Contoso Industries が製造する機器にソフトウェアを提供する Woodgrove のような商業パートナーもいます。
 現在は Microsoft のクラウドを横断してコラボレーションを行うことができるため、Contoso Industries のユーザーは Woodgrove のユーザーを招待してコラボレーションを行い、在庫管理のアプリケーションや SharePoint のドキュメントにアクセスできるようにすることが可能になっています。
 
-![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds1.png)
+![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds/collaborate-securely-across-organizational-boundaries-and-microsoft-clouds1.png)
 
 
 では、実現方法について見ていきましょう。 
@@ -51,7 +51,7 @@ Contoso Industries の管理者である Dean は、Azure ポータルの Extern
 
 External Identities で Microsoft クラウドの設定を有効にします
 
-![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds2.png)
+![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds/collaborate-securely-across-organizational-boundaries-and-microsoft-clouds2.png)
 
 Dean は次に、[クロス テナント アクセス設定](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/cross-tenant-access-settings-for-secure-collaboration-now/ba-p/3575844) で、Woodgrove のテナントをパートナーのリストに追加します。Woodgrove の管理者は、Azure ポータルで同様の変更を行います。
 
@@ -69,7 +69,7 @@ Microsoft クラウド間でのコラボレーションを実現する方法に�
 Contoso Industries では、異なるクラウドからのユーザーを適切に管理し、外部ユーザーが Contoso Industries のリソースに限られた時間だけアクセスできるようにしたいと考えています。
 Dean は、信頼できる組織としてWoodgrove を追加します。
 
-![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds3.png)
+![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds/collaborate-securely-across-organizational-boundaries-and-microsoft-clouds3.png)
 
 他の Microsoft クラウドから接続された組織を追加します。
 
@@ -87,7 +87,7 @@ Dean は Woodgrove のユーザーと共有されるリソースを保護した�
 
 また、Contoso Industries は、[クロス テナント アクセス設定](https://learn.microsoft.com/ja-jp/azure/active-directory/external-identities/cross-tenant-access-settings-b2b-collaboration#to-change-inbound-trust-settings-for-mfa-and-device-claims) を利用して、Woodgrove から MFA や準拠済みの Azure AD の参加デバイスを信頼することができ、Woodgrove ユーザーのセキュリティをそのままに、シームレスなコラボレーション体験を実現することができます。
 
-![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds4.png)
+![](./collaborate-securely-across-organizational-boundaries-and-microsoft-clouds/collaborate-securely-across-organizational-boundaries-and-microsoft-clouds4.png)
 
 他の Azure AD テナントからの多要素認証とデバイス シグナルを信頼する
 
