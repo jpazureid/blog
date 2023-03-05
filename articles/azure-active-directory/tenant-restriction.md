@@ -9,6 +9,7 @@ tags:
 
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/09/13/tenant-restrictions/ の内容を移行したものです。
+> 
 > また本記事は 2018 年に公開したものですが、サポートへのお問い合わせ状況ならびにエラー画面の変更などをふまえ、2023 年 3 月時点での最新の情報にアップデートいたしました。
 
 # テナント制限について
