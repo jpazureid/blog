@@ -1,6 +1,6 @@
 ---
 title: 組織の境界やマイクロソフトのクラウドを越えたセキュアなコラボレーション
-date: 2023-03-0
+date: 2023-03-04 10:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -10,7 +10,7 @@ tags:
 
 本記事は、2023 年 2 月 23 日に米国の Azure Active Directory Identity Blog で公開された [Collaborate securely across organizational boundaries and Microsoft clouds](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/collaborate-securely-across-organizational-boundaries-and/ba-p/3094109) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
--- 
+----
 
 今日、Microsoft のクラウド間でのコラボレーション機能が GA になったことを発表いたします！Azure Active Directory (Azure AD) の B2B コラボレーションが、以下の Microsoft クラウド間でサポートされるようになりました。
 
@@ -69,6 +69,6 @@ Woodgrove 社のユーザーが Contoso Industries のリソースにアクセ�
 
 " マイクロソフト クラウド間のコラボレーションにより、いくつものアプリを AD FS から Azure AD に移行可能となりました。AD FS はこれまで、本社ユーザーと中国ユーザーの両方が必要とするアプリへの SSO を提供するためのソリューションでした。この移行が完了すれば、AD FS を廃止し、コストを大幅に削減するとともに、信頼性を高め、セキュリティの工数を最小化することができます。" - 金融サービス業のお客様
 
-"連携機能の不足でユーザーを政府系テナントに移動させることができなかったのですが、この機能でその移動の障害が解除されます！" -エンジニアリングと建設業界のお客様 
+"連携機能の不足でユーザーを政府系テナントに移動させることができなかったのですが、この機能でスムーズに移動できるようになりました！" -エンジニアリングと建設業界のお客様 
 
 皆様からのフィードバックをお待ちしております。本発表に対するフィードバックは Azure フォーラムか [@AzureAD](https://twitter.com/azuread) のタグをつけて Twitter にお寄せください。
