@@ -1,6 +1,6 @@
 ---
 title: 組織の境界やマイクロソフトのクラウドを越えたセキュアなコラボレーション
-date: 2023-03-07
+date: 2023-03-0
 tags:
     - Azure AD
     - US Identity Blog
