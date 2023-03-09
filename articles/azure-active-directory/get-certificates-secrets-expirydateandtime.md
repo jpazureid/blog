@@ -1,8 +1,9 @@
 ---
 title: Azure AD に連携している各種証明書、クライアント シークレットの有効期限の抽出方法
-date: 2023-01-11
+date: 2023-03-09
 tags:
   - Azure AD
+  - Application
 ---
 
 # Azure AD に連携している各種証明書、クライアント シークレットの有効期限の抽出方法
@@ -11,31 +12,52 @@ tags:
 
 Azure AD の「アプリの登録」から各アプリに連携している証明書・クライアント シークレット、ならびに「エンタープライズ アプリケーション」で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限がございます。
 
-Azure Portal の画面上では、有効期限を一覧で確認することができません。本記事では、PowerShell コマンドを利用して各種証明書・シークレットの有効期限を CSV ファイルに出力する手順をご紹介いたします。
+Azure Portal の画面上では、有効期限を一覧で確認できないため、Microsoft Graph などの API を利用する必要がございます。
 
-有効期限の管理などにご活用いただければ幸いです。
+本記事では、下記公開情報内の Azure AD PowerShell を利用したサンプルをもとに、Microsoft Graph PowerShell を利用して各種証明書・シークレットの有効期限を CSV ファイルに出力する手順を紹介いたします。
 
+- [アプリの登録用にシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-app-registrations-secrets-and-certs)
+- [エンタープライズ アプリのシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-enterprise-apps-secrets-and-certs)
+
+## 免責事項
+
+上記の公開情報内サンプル スクリプトに記載されている免責次項についてのコメントを翻訳したものを以下 NOTE に記載いたします:
+
+> [!NOTE]
+> 免責事項：これは公式の PowerShell スクリプトではありません。あなたが今遭遇している状況のために特別に設計されたものです。    
+> プリセットされたパラメータを修正したり変更したりしないでください。    
+> このスクリプトが何らかの形で変更、修正されたり、他の手段で別の状況で使用された場合、私たちはサポートすることができないことに注意してください。    
+> 本サンプルは、商品性、特定目的への適合性の保証を含むがこれに限定されない、明示または黙示のいかなる保証もない「AS IT IS」で提供されます。    
+> 本サンプルは、マイクロソフトの標準サポートプログラムまたはサービスではサポートされていません。    
+> マイクロソフトはさらに、商品性または特定目的への適合性に関する黙示的な保証を含むがこれに限定されない、すべての黙示的な保証を否認している。    
+> 本サンプルおよびドキュメントの使用または性能から生じるすべてのリスクは、お客様が負うものとします。    
+> マイクロソフト、その著作者、またはスクリプトの作成、制作、配信に関与した者は、いかなる場合においても、サンプルまたはドキュメントの使用または使用不能から生じるいかなる損害（事業利益の損失、事業の中断、事業情報の損失、その他の金銭的損失を含むがこれに限定されない）についても、マイクロソフトがその損害発生の可能性を知らされていたとしても、責任を負いません。
+
+弊社から案内いたしますサンプル スクリプトはあくまでお客様でのスクリプト作成の際に参照いただくためのサンプルであり、動作保証やカスタマイズのご依頼には非対応であることにご了承をいただけますと幸いです。
 
 ## 事前準備: Microsoft Graph PowerShell SDK のインストール
-各種有効期限の出力には、Microsoft Graph PowerShell SDK を利用します。
-
 
 PowerShell をご利用いただく端末で、Microsoft Graph PowerShell SDK が未インストールの場合は、下記の手順を実施ください。
 
 1. Windows 端末上で PowerShell を管理者権限で起動します。
-2. 下記コマンドを実行します。
+1. 下記コマンドを実行します。
+
 ```
 Install-Module Microsoft.Graph
 ```
 
-インストールの前提事項など、詳細情報は下記公開情報に記載がございますので、ご入用に応じて参照ください。
+インストールの前提事項などの詳細情報は下記公開情報に記載がございますので、ご入用に応じて参照ください。
+
 - [Install the Microsoft Graph PowerShell SDK](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/installation?view=graph-powershell-beta#installation)
 
 ## 操作の開始: Azure AD への認証
+
 後述の手順を実施いただく前に、下記コマンドを実行のうえ、Azure AD テナントに接続ください。
+
 ```
-Connect-MgGraph -Scopes “Application.Read.All”
+Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
 ```
+
 テナント接続時のサインイン画面では、以下のいずれかのロールを持つ管理者ユーザーの資格情報で認証を実施ください。
 
 - クラウド アプリケーション管理者
@@ -44,29 +66,38 @@ Connect-MgGraph -Scopes “Application.Read.All”
 - グローバル管理者
 
 認証に成功すると、下記メッセージが表示されます。
+
 ```
 Welcome To Microsoft Graph!
 ```
 
-テナントに接続後、後述のコマンドを実行いただくことで、各種証明書・シークレットの有効期限をCSV ファイル出力いただくことが可能です。
+テナントに接続後に後述のコマンドを実行し、各種証明書・シークレットの有効期限を CSV ファイル出力することができます。
 
 各コマンドの -Path で指定する出力先は一例です。環境に応じてカスタマイズください。
 
+## \[アプリの登録\] から確認できるアプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
 
-## クライアント シークレットの有効期限を一括出力
-```
-Get-MgApplication -All | Where-Object {$_.PasswordCredentials} | Select-Object -Property AppId -ExpandProperty PasswordCredentials | Export-Csv -Encoding Default -NoTypeInformation -Path "C:\Users\tmp\secretlist.csv"
-```
+// TODO
+公開情報のサンプルを Microsoft Graph PowerShell に置き換えたサンプル スクリプトを記載
 
-## 証明書の有効期限を一括出力
-```
-Get-MgApplication -All | Where-Object {$_.KeyCredentials} | Select-Object @{n="appDisplayName"; e={$_.DisplayName}}, AppId -ExpandProperty KeyCredentials | Export-Csv -Encoding Default -NoTypeInformation -Path "C:\Users\tmp\certlist.csv"
-```
+## \[エンタープライズ アプリケーション\] から確認できるアプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
 
-## SAML 署名証明書の有効期限を一括出力
-```
-Get-MgServicePrincipal -All | Where-Object {$_.PreferredSingleSignOnMode -eq 'saml'} | Select-Object AppId,@{n="appDisplayName"; e={$_.DisplayName}} -ExpandProperty PasswordCredentials | Export-Csv -Encoding Default -NoTypeInformation -Path "C:\Users\tmp\samlcertlist.csv"
-```
+// TODO
+公開情報のサンプルを Microsoft Graph PowerShell に置き換えたサンプル スクリプトを記載
 
+### SAML 署名証明書の有効期限を一括出力
+
+SAML 署名証明書の有効期限の一括出力の可否について多くのお問い合わせをいただいております。
+
+サンプル スクリプト 2 の下記箇所のコメントアウトを外すことで SAML 署名証明書の有効期限の一覧出力ができます。
+`#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"`
+
+スクリプト内にも注意事項として記載をしておりますが、2020 年初頭以降に作成されたアプリケーションでは PreferredSingleSignOnMode プロパティに値がセットされますが、それ以前に作成されたアプリケーションでは preferredSingleSignOnMode は null です。    
+お手数をおかけし恐縮ですが、2020 年初頭以前に作成された SAML ベースの SSO を構成済みのアプリケーションの一覧については貴社にて管理をお願いいたします。
+
+エンタープライズ アプリケーションの作成日時をお調べいただく際に参考になればと思い、作成日時を出力するための記述をサンプル スクリプト 2 に追加しております。    
+サンプル スクリプト 2 の中で、エンタープライズ アプリケーションが Azure AD テナントに作成された日時 (Created Date) を出力される場合には、以下箇所のコメントアウトを外してください:    
+`$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate`    
+複数個所ございますのでご注意ください。
 
 上記内容が少しでも皆様の参考となりますと幸いです。ご不明な点がございましたら、弊社サポートまでお気軽にお問い合わせください。
