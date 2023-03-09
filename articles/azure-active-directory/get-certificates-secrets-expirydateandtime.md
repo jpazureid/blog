@@ -24,13 +24,13 @@ Azure Portal の画面上では、有効期限を一覧で確認できないた�
 上記の公開情報内サンプル スクリプトに記載されている免責次項についてのコメントを翻訳したものを以下 NOTE に記載いたします:
 
 > [!NOTE]
-> 免責事項：これは公式の PowerShell スクリプトではありません。あなたが今遭遇している状況のために特別に設計されたものです。    
-> プリセットされたパラメータを修正したり変更したりしないでください。    
-> このスクリプトが何らかの形で変更、修正されたり、他の手段で別の状況で使用された場合、私たちはサポートすることができないことに注意してください。    
-> 本サンプルは、商品性、特定目的への適合性の保証を含むがこれに限定されない、明示または黙示のいかなる保証もない「AS IT IS」で提供されます。    
-> 本サンプルは、マイクロソフトの標準サポートプログラムまたはサービスではサポートされていません。    
-> マイクロソフトはさらに、商品性または特定目的への適合性に関する黙示的な保証を含むがこれに限定されない、すべての黙示的な保証を否認している。    
-> 本サンプルおよびドキュメントの使用または性能から生じるすべてのリスクは、お客様が負うものとします。    
+> 免責事項：これは公式の PowerShell スクリプトではありません。あなたが今遭遇している状況のために特別に設計されたものです。  
+> プリセットされたパラメータを修正したり変更したりしないでください。  
+> このスクリプトが何らかの形で変更、修正されたり、他の手段で別の状況で使用された場合、私たちはサポートすることができないことに注意してください。  
+> 本サンプルは、商品性、特定目的への適合性の保証を含むがこれに限定されない、明示または黙示のいかなる保証もない「AS IT IS」で提供されます。  
+> 本サンプルは、マイクロソフトの標準サポートプログラムまたはサービスではサポートされていません。  
+> マイクロソフトはさらに、商品性または特定目的への適合性に関する黙示的な保証を含むがこれに限定されない、すべての黙示的な保証を否認している。  
+> 本サンプルおよびドキュメントの使用または性能から生じるすべてのリスクは、お客様が負うものとします。  
 > マイクロソフト、その著作者、またはスクリプトの作成、制作、配信に関与した者は、いかなる場合においても、サンプルまたはドキュメントの使用または使用不能から生じるいかなる損害（事業利益の損失、事業の中断、事業情報の損失、その他の金銭的損失を含むがこれに限定されない）についても、マイクロソフトがその損害発生の可能性を知らされていたとしても、責任を負いません。
 
 弊社から案内いたしますサンプル スクリプトはあくまでお客様でのスクリプト作成の際に参照いただくためのサンプルであり、動作保証やカスタマイズのご依頼には非対応であることにご了承をいただけますと幸いです。
@@ -77,13 +77,200 @@ Welcome To Microsoft Graph!
 
 ## \[アプリの登録\] から確認できるアプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
 
-// TODO
-公開情報のサンプルを Microsoft Graph PowerShell に置き換えたサンプル スクリプトを記載
+### サンプル スクリプト 1
+
+```powershell
+# 既に Connect-MgGraph コマンドを実施済みである場合不要です。
+Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
+
+$Applications = Get-MgApplication -ExpandProperty Owners -All
+$Logs = @()
+
+foreach ($app in $Applications)
+{
+  $AppName = $app.DisplayName
+  $ApplID = $app.AppId
+  $AppCreds = $app | Select-Object PasswordCredentials, KeyCredentials
+  $secret = $AppCreds.PasswordCredentials
+  $cert = $AppCreds.KeyCredentials
+
+  $OwnerIDs = $app.Owners.ID
+  $Username = "<<No Owner>>"
+  $OwnerID = ""
+  if ($OwnerIDs.Count)
+  {
+    $Filter = "id in ('$($OwnerIDs -join "','")')"
+    $Owners = Get-MgUser -Filter $Filter
+    $Username = $Owners.UserPrincipalName -join ";"
+    $OwnerID = $OwnerIDs -join ";"
+  }
+
+  ############################################
+  $Log = New-Object System.Object
+
+  $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
+  $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
+  $Log | Add-Member -MemberType NoteProperty -Name "Secret Start Date" -Value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+  $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
+
+  $Logs += $Log
+
+
+  ############################################
+  foreach ($s in $secret)
+  {
+    $StartDate = $s.StartDateTime
+    $EndDate = $s.EndDateTime
+
+    #$operation = $EndDate - $now
+    #$ODays = $operation.Days
+
+    $Log = New-Object System.Object
+
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
+    $Log | Add-Member -MemberType NoteProperty -Name "Secret Start Date" -Value $StartDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $EndDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
+
+    $Logs += $Log
+  }
+
+  foreach ($c in $cert)
+  {
+    $CStartDate = $c.StartDateTime
+    $CEndDate = $c.EndDateTime
+    #$COperation = $CEndDate - $now
+    #$CODays = $COperation.Days
+
+    $Log = New-Object System.Object
+
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $CStartDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $CEndDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
+
+    $Logs += $Log
+  }
+}
+
+Write-host "Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
+$Path = Read-Host
+$Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
+```
 
 ## \[エンタープライズ アプリケーション\] から確認できるアプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
 
-// TODO
-公開情報のサンプルを Microsoft Graph PowerShell に置き換えたサンプル スクリプトを記載
+### サンプル スクリプト 2
+
+```powershell
+# 既に Connect-MgGraph コマンドを実施済みである場合不要です。
+Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
+
+$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -All
+
+# SAML ベースのSSO を構成しているエンタープライズアプリケーションの一覧を取得
+#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"
+#
+# ※注意事項
+# 2020 年初頭 (1 ～ 3 月) 以降に作成されたアプリのみ SAML を構成した際に preferredSingleSignOnMode に 値がセットされる動作になりました。
+# そのため、2020 年初頭以前に作成されたアプリでは、現在、SAML を構成していても preferredSingleSignOnMode が null となっております。
+# 2020 年初頭以前に作成されたアプリの場合、PowerShell や Graph API などで SAML を構成していると判別できる値を取得することができず、SAML を構成しているアプリ一覧として取得することが難しい状況となります。将来的には、古いアプリにおいても新しいアプリと同様に正しい preferredSingleSignOnMode が取得できるようになることが計画されていることを確認しましたが、対応時期などは未定となっております。
+
+$Logs = @()
+
+foreach ($Eapp in $EnterpriseApps)
+{
+  $AppName = $Eapp.DisplayName
+  $ApplID = $Eapp.AppId
+  $CreatedDate = $Eapp.AdditionalProperties.createdDateTime
+
+  $AppCreds = $Eapp | Select-Object PasswordCredentials, KeyCredentials
+
+  $OwnerIDs = $Eapp.Owners.ID
+  $Username = "<<No Owner>>"
+  $OwnerID = ""
+  if ($OwnerIDs.Count)
+  {
+    $Filter = "id in ('$($OwnerIDs -join "','")')"
+    # e.g) id in ('xxxx', 'yyyy')
+    $Owners = Get-MgUser -Filter $Filter
+    $Username = $Owners.UserPrincipalName -join ";"
+    $OwnerID = $OwnerIDs -join ";"
+  }
+
+  $secret = $AppCreds.PasswordCredentials
+  $cert = $AppCreds.KeyCredentials
+
+  ############################################
+  $Log = New-Object System.Object
+
+  $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
+  $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
+  #$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
+  $Log | Add-Member -MemberType NoteProperty -Name "Secret Start Date" -Value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
+  $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+  $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
+
+  $Logs += $Log
+
+  ############################################
+  foreach ($s in $secret)
+  {
+    $StartDate = $s.StartDateTime
+    $EndDate = $s.EndDateTime
+
+    $Log = New-Object System.Object
+
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
+    #$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Secret Start Date" -Value $StartDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $EndDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
+
+    $Logs += $Log
+  }
+
+  foreach ($c in $cert)
+  {
+    $CStartDate = $c.StartDateTime
+    $CEndDate = $c.EndDateTime
+
+    $Log = New-Object System.Object
+
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
+    $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
+    #$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $CStartDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $CEndDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
+
+    $Logs += $Log
+  }
+}
+
+Write-host "Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
+$Path = Read-Host
+$Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
+
+```
 
 ### SAML 署名証明書の有効期限を一括出力
 
@@ -92,12 +279,12 @@ SAML 署名証明書の有効期限の一括出力の可否について多くの
 サンプル スクリプト 2 の下記箇所のコメントアウトを外すことで SAML 署名証明書の有効期限の一覧出力ができます。
 `#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"`
 
-スクリプト内にも注意事項として記載をしておりますが、2020 年初頭以降に作成されたアプリケーションでは PreferredSingleSignOnMode プロパティに値がセットされますが、それ以前に作成されたアプリケーションでは preferredSingleSignOnMode は null です。    
+スクリプト内にも注意事項として記載をしておりますが、2020 年初頭以降に作成されたアプリケーションでは PreferredSingleSignOnMode プロパティに値がセットされますが、それ以前に作成されたアプリケーションでは preferredSingleSignOnMode は null です。
 お手数をおかけし恐縮ですが、2020 年初頭以前に作成された SAML ベースの SSO を構成済みのアプリケーションの一覧については貴社にて管理をお願いいたします。
 
-エンタープライズ アプリケーションの作成日時をお調べいただく際に参考になればと思い、作成日時を出力するための記述をサンプル スクリプト 2 に追加しております。    
-サンプル スクリプト 2 の中で、エンタープライズ アプリケーションが Azure AD テナントに作成された日時 (Created Date) を出力される場合には、以下箇所のコメントアウトを外してください:    
-`$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate`    
+エンタープライズ アプリケーションの作成日時をお調べいただく際に参考になればと思い、作成日時を出力するための記述をサンプル スクリプト 2 に追加しております。
+サンプル スクリプト 2 の中で、エンタープライズ アプリケーションが Azure AD テナントに作成された日時 (Created Date) を出力される場合には、以下箇所のコメントアウトを外してください:  
+`#$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate`
 複数個所ございますのでご注意ください。
 
 上記内容が少しでも皆様の参考となりますと幸いです。ご不明な点がございましたら、弊社サポートまでお気軽にお問い合わせください。
