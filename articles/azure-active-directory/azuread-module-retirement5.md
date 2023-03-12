@@ -19,9 +19,7 @@ tags:
 
 5 回目となる今回は、グループ管理についてご紹介します。
 
-
 まだモジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2 と 3 をご確認ください。
-
 
 ## 目次
 
@@ -37,9 +35,7 @@ tags:
 	- [グループ メンバーの削除](#idx3-2)
 4. [特定のユーザーが所属するグループ一覧の取得](#idx4)
 
-
 ---
-
 
 <h2 id="idx1">1. グループの取得</h2>
 
@@ -55,7 +51,6 @@ Get-MgGroup -All
 
 ![](./azuread-module-retirement5/azuread-module-retirement5-1.png)
 
-
 <h3 id="idx1-2">特定のグループを取得する場合</h3>
 
 ObjectID を指定することで特定のグループの情報を取得が可能です。
@@ -65,7 +60,6 @@ Get-MgGroup -GroupId 027926f5-a926-464b-89b0-8c4cb1eebb5b
 ```
 
 ![](./azuread-module-retirement5/azuread-module-retirement5-2.png)
-
 
 <h3 id="idx1-3">特定の条件に合うグループを取得する場合</h3>
 
