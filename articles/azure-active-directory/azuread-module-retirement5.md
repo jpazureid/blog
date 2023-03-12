@@ -10,7 +10,7 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの三輪です。
 
-この記事は、MSOnline / AzureAD モジュール廃止について、下記シリーズのの続きとして連載しています。
+この記事は、MSOnline / AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。
 
 [1_概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)  
 [2_移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)  
