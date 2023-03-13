@@ -10,11 +10,11 @@ tags:
 
 こんにちは。Azure Identity チームの栗井です。
 
-Azure AD の「アプリの登録」から各アプリに連携している証明書・クライアント シークレット、ならびに「エンタープライズ アプリケーション」で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限がございます。
+Azure AD の \[アプリの登録\] から各アプリに連携している証明書・クライアント シークレット、ならびに \[エンタープライズ アプリケーション\] で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限がございます。
 
 Azure Portal の画面上では、有効期限を一覧で確認できないため、Microsoft Graph などの API を利用する必要がございます。
 
-本記事では、下記公開情報内の Azure AD PowerShell を利用したサンプルをもとに、Microsoft Graph PowerShell を利用して各種証明書・シークレットの有効期限を CSV ファイルに出力する手順を紹介いたします。
+本記事では、下記公開情報内の Azure AD PowerShell を使用したサンプルをもとに、Microsoft Graph PowerShell を使用して各種証明書・シークレットの有効期限を CSV ファイルに出力する手順を紹介いたします。
 
 - [アプリの登録用にシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-app-registrations-secrets-and-certs)
 - [エンタープライズ アプリのシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-enterprise-apps-secrets-and-certs)
@@ -37,7 +37,7 @@ Azure Portal の画面上では、有効期限を一覧で確認できないた�
 
 ## 事前準備: Microsoft Graph PowerShell SDK のインストール
 
-PowerShell をご利用いただく端末で、Microsoft Graph PowerShell SDK が未インストールの場合は、下記の手順を実施ください。
+PowerShell を使用する端末で、Microsoft Graph PowerShell SDK が未インストールの場合は、下記の手順を実施ください。
 
 1. Windows 端末上で PowerShell を管理者権限で起動します。
 1. 下記コマンドを実行します。
@@ -71,13 +71,36 @@ Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
 Welcome To Microsoft Graph!
 ```
 
-テナントに接続後に後述のコマンドを実行し、各種証明書・シークレットの有効期限を CSV ファイル出力することができます。
-
-各コマンドの -Path で指定する出力先は一例です。環境に応じてカスタマイズください。
+テナントに接続後に後述のスクリプトを実行し、各種証明書・シークレットの有効期限を CSV ファイル出力することができます。
 
 ## \[アプリの登録\] から確認できるアプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
 
+以下公開情報をもとに、\[アプリの登録\] から確認できるアプリケーションについての情報をエクスポートするサンプル スクリプトを案内いたします:
+[アプリの登録用にシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-app-registrations-secrets-and-certs)
+
+処理順やエクスポートする項目については上記の公開情報となるべく同じにしております。
+
+案内いたしますサンプルスクリプトでは以下の情報をエクスポートします:
+
+- アプリケーションの表示名
+- アプリケーション ID
+- クライアント シークレットの有効期限の開始日時
+- クライアント シークレットの有効期限の終了日時
+- 所有者
+- 所有者のオブジェクト ID
+
 ### サンプル スクリプト 1
+
+\[アプリの登録\] の画面からはアプリケーション オブジェクトの確認ができます。  
+アプリケーション オブジェクトについての説明は本ブログでは割愛いたしますが、詳細を確認されたい方は下記公開情報をご確認ください:  
+[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/app-objects-and-service-principals)
+
+Get-MgApplication コマンドを使用し、アプリケーション オブジェクトの一覧を取得します。    
+その後、アプリケーション オブジェクト内のプロパティを読み取っています。    
+アプリケーション オブジェクトのプロパティの一覧は下記公開情報にございます:  
+[アプリケーション リソースの種類](https://learn.microsoft.com/ja-jp/graph/api/resources/application?view=graph-rest-1.0#properties)
+
+サンプル スクリプト 1 を実行すると、"Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" と表示されますので、その後に、ファイルをエクスポートするパスを入力ください。
 
 ```powershell
 # 既に Connect-MgGraph コマンドを実施済みである場合不要です。
@@ -126,9 +149,6 @@ foreach ($app in $Applications)
     $StartDate = $s.StartDateTime
     $EndDate = $s.EndDateTime
 
-    #$operation = $EndDate - $now
-    #$ODays = $operation.Days
-
     $Log = New-Object System.Object
 
     $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
@@ -147,8 +167,6 @@ foreach ($app in $Applications)
   {
     $CStartDate = $c.StartDateTime
     $CEndDate = $c.EndDateTime
-    #$COperation = $CEndDate - $now
-    #$CODays = $COperation.Days
 
     $Log = New-Object System.Object
 
@@ -168,18 +186,50 @@ $Path = Read-Host
 $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 ```
 
-## \[エンタープライズ アプリケーション\] から確認できるアプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
+## \[エンタープライズ アプリケーション\] から確認できる SAML アプリケーションのクライアント シークレットおよび証明書の有効期限の一括出力
+
+以下公開情報をもとに、SAML 署名証明書の有効期限の一覧を出力するサンプルスクリプトを案内いたします:    
+[エンタープライズ アプリのシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-enterprise-apps-secrets-and-certs)
+
+処理順やエクスポートする項目については上記の公開情報となるべく同じにしております。
+
+案内いたしますサンプルスクリプトでは以下の情報をエクスポートします:
+
+- アプリケーションの表示名
+- アプリケーション ID
+- アプリケーションの作成日時
+- 証明書の有効期限の開始日時
+- 証明書の有効期限の終了日時
+- 所有者
+- 所有者のオブジェクト ID
 
 ### サンプル スクリプト 2
 
-```powershell
-# 既に Connect-MgGraph コマンドを実施済みである場合不要です。
-Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
+\[エンタープライズ アプリケーション\] の画面からはサービス プリンシパル オブジェクトの確認ができます。
 
-$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -All
+Get-MgServicePrincipal コマンドをフィルターを付けて使用し、サービス プリンシパル オブジェクトの一覧の中から SAML ベースの SSO を構成済みのサービスプリンシパルだけを取得します。    
+サンプル スクリプト 2 内のコメントのとおり、2020 年初頭以降に作成されたアプリケーションでは PreferredSingleSignOnMode プロパティに値がセットされますが、それ以前に作成されたアプリケーションでは preferredSingleSignOnMode は null です。    
+お手数をおかけし恐縮ですが、2020 年初頭以前に作成された SAML ベースの SSO を構成済みのアプリケーションの一覧については貴社にて管理をお願いいたします。
+
+その後、サービス プリンシパル オブジェクト内のプロパティを読み取っています。  
+サービス プリンシパル オブジェクトのプロパティの一覧は下記公開情報にございます:  
+[servicePrincipal リソースの種類](https://learn.microsoft.com/ja-jp/graph/api/resources/serviceprincipal?view=graph-rest-1.0#properties)
+
+サンプル スクリプト 2 を実行すると、"Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" と表示されますので、その後に、ファイルをエクスポートするパスを入力ください。
+
+サンプル スクリプト 2 では、SAML ベースの SSO を構成されているアプリケーションを含め全てのアプリケーションを取得することもできます。    
+その場合にはサンプル スクリプト上部の以下箇所のコメントアウトを外してください:    
+`#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -All`
+
+その後に以下箇所をコメントアウトしてください:    
+`$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"`
+
+```powershell
+# すべてのエンタープライズ アプリケーションを取得する場合は以下のコメントアウトを外してください。
+#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -All
 
 # SAML ベースのSSO を構成しているエンタープライズアプリケーションの一覧を取得
-#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"
+$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"
 #
 # ※注意事項
 # 2020 年初頭 (1 ～ 3 月) 以降に作成されたアプリのみ SAML を構成した際に preferredSingleSignOnMode に 値がセットされる動作になりました。
@@ -236,7 +286,7 @@ foreach ($Eapp in $EnterpriseApps)
 
     $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
     $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
-    #$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
     $Log | Add-Member -MemberType NoteProperty -Name "Secret Start Date" -Value $StartDate
     $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $EndDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
@@ -256,7 +306,7 @@ foreach ($Eapp in $EnterpriseApps)
 
     $Log | Add-Member -MemberType NoteProperty -Name "ApplicationName" -Value $AppName
     $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
-    #$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
+    $Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $CStartDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $CEndDate
     $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
@@ -272,19 +322,5 @@ $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 
 ```
 
-### SAML 署名証明書の有効期限を一括出力
-
-SAML 署名証明書の有効期限の一括出力の可否について多くのお問い合わせをいただいております。
-
-サンプル スクリプト 2 の下記箇所のコメントアウトを外すことで SAML 署名証明書の有効期限の一覧出力ができます。
-`#$EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"`
-
-スクリプト内にも注意事項として記載をしておりますが、2020 年初頭以降に作成されたアプリケーションでは PreferredSingleSignOnMode プロパティに値がセットされますが、それ以前に作成されたアプリケーションでは preferredSingleSignOnMode は null です。
-お手数をおかけし恐縮ですが、2020 年初頭以前に作成された SAML ベースの SSO を構成済みのアプリケーションの一覧については貴社にて管理をお願いいたします。
-
-エンタープライズ アプリケーションの作成日時をお調べいただく際に参考になればと思い、作成日時を出力するための記述をサンプル スクリプト 2 に追加しております。
-サンプル スクリプト 2 の中で、エンタープライズ アプリケーションが Azure AD テナントに作成された日時 (Created Date) を出力される場合には、以下箇所のコメントアウトを外してください:  
-`#$Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate`
-複数個所ございますのでご注意ください。
-
+以上です。  
 上記内容が少しでも皆様の参考となりますと幸いです。ご不明な点がございましたら、弊社サポートまでお気軽にお問い合わせください。
