@@ -8,6 +8,7 @@ tags:
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/11/27/azuread-b2b-troubleshooting/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
+> 
 > なお、本ブログ記事は 2017-11-27 に投稿されたものとなりますが、画面ショットや Azure ポータル上のメニューの変更に伴い、最新の情報にアップデートし更新しております。
 
 # 招待したユーザーが利用できない
@@ -32,22 +33,29 @@ Azure AD へのユーザー招待は、明示的に Azure Active Directory の�
 
 なお、招待メールが届いていない場合、緑枠部分の「B2B コラボレーション」の [管理（招待の再送信/状態のリセット）] から再送も可能です。
 
-![](./azuread-b2b-troubleshooting/resend.png)
+![](./azuread-b2b-troubleshooting/new1.png)
+
+![](./azuread-b2b-troubleshooting/new2.png)
 
 招待メールは下記のようなメールです。
 
 
 アドレス： invites@microsoft.com
+
 件名　　： 組織内のアプリケーションにアクセスするための ＜招待者＞ さんからの招待
 
-![](./azuread-b2b-troubleshooting/sampleEmail.png)
+
+![](./azuread-b2b-troubleshooting/new3.png)
+
+> [!NOTE]
+> 件名に招待者の名前がない場合、ProxyAddresses に値が入っていないユーザーで招待を行ったことが考えられます。この場合、特定のユーザー名の代わりにテナント名が記載されます。
 
 
 もし、メールが利用できない場合や、メール ボックス作成前の場合は、「招待の再送信」後に表示される下記、「招待 URL ※」をコピーした後　その URL にブラウザーアクセスすることで招待作業を進めることができます。
 
 ※招待メールの「招待の承諾」を押す場合と同等の操作になります。
 
-![](./azuread-b2b-troubleshooting/invitationURL.png)
+![](./azuread-b2b-troubleshooting/new4.png)
 
 外部ユーザーの状態が 「保留中の承諾」 ではなく、「承諾済み」となっている場合は、ユーザーの招待は完了しています。
 
@@ -58,7 +66,7 @@ Azure AD へのユーザー招待は、明示的に Azure Active Directory の�
 
 招待メールに含まれるリンクをクリックし、ウィザードを進めた結果、次のような「表示するアプリはありません。 このコレクションを非表示にする」との画面が表示されることがありますが、こちらは問題なく招待が完了していますのでご安心ください。
 
-![](./azuread-b2b-troubleshooting/accesspanel.png)
+![](./azuread-b2b-troubleshooting/new5.png)
 
 これは、特に割り当てられたアプリケーションがないことを意味しており、招待自体は正常に完了したことを示します。
 
@@ -80,9 +88,11 @@ Azure AD へのユーザー招待は、明示的に Azure Active Directory の�
 
 また、招待メールを使用しないユーザーの追加や CSV を使用した一括招待の方法については、下記の情報を参照ください。
 招待メールを使用しないユーザーの追加方法については、下記ブログの「よくある質問」をご確認ください。
+
 https://jpazureid.github.io/blog/azure-active-directory/b2bfaq/#Q-%E3%82%B2%E3%82%B9%E3%83%88-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%8B%9B%E5%BE%85%E6%99%82%E3%81%AB%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%92%E9%80%81%E4%BF%A1%E3%81%97%E3%81%9F%E3%81%8F%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%92%E9%80%81%E3%82%89%E3%81%9A%E3%81%AB%E6%8B%9B%E5%BE%85%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B
 
 Azure AD B2B で活用いただける PowerShell サンプルは下記をご利用ください。
+
 https://learn.microsoft.com/ja-jp/azure/active-directory/external-identities/code-samples?tabs=http
 
 上記内容が少しでも皆様の参考となりますと幸いです。
