@@ -275,7 +275,7 @@ $delegatedPermissions = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.
 $delegatedPermissions | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id } 
 ```
 
-##### 特定アプリに対する管理者の同意のみを削除
+#### 特定アプリに対する管理者の同意のみを削除
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
