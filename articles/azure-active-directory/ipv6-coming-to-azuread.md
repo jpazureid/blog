@@ -12,6 +12,9 @@ tags:
 
 本記事は、2023 年 1 月 10 日に米国の Azure Active Directory Identity Blog で公開された [IPv6 Coming to Azure AD](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/ipv6-coming-to-azure-ad/ba-p/2967451) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
+> [!NOTE]
+> 2023/03/20: Azure AD サービスにおける IPv6 サポートの導入は 2023 年 3 月 31 日から 2023 年 4 月 3 日に延期されました。
+> 詳しくは [Azure AD で IPv6 はいつサポートされますか?](https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/azure-ad-ipv6-support#when-will-ipv6-be-supported-in-azure-ad) の記事を参照ください。
 ---
 
 企業ネットワーク、サービス プロバイダー、デバイスの間で IPv6 の導入とサポートが進む中、多くのお客様が、ユーザーが IPv6 クライアントや IPv6 ネットワークから自社のサービスやアプリケーションに引き続きアクセスできるのかどうか、疑問に思われていることでしょう。
