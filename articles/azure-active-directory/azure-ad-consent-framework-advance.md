@@ -27,8 +27,9 @@ tags:
 サードパーティー製のアプリが、Azure AD で保護されたリソースにアクセスを行う場合、概ね以下のような流れになります。
 
 1. アプリが Azure AD の認可 (authorize) エンドポイントにアクセスし、ユーザーの同意を得る
-1. 同意を得た結果 (authorize code) を元にリソースアクセスに必要なトークン (access token) を取得する
-1. トークンを利用し、保護されたリソース (API) の呼び出しを実施する
+1. 同意を得た結果 (authorization code) が Azure AD からアプリに返却される
+1. 同意を得た結果 (authorization code) を元にアクセス トークンを取得する
+1. アクセス トークンを利用し、保護されたリソース (API) の呼び出しを実施する (図では省略)
  
 ![consent flow](./azure-ad-consent-framework-advance/consent-flow.png)
 
@@ -274,7 +275,7 @@ $delegatedPermissions = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.
 $delegatedPermissions | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id } 
 ```
 
-##### 特定アプリに対する管理者の同意のみを削除
+#### 特定アプリに対する管理者の同意のみを削除
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
