@@ -45,7 +45,7 @@ Azure ポータルでは現在、ユーザーの画面については新しい�
 2. [Azure Active Directory] - [ユーザー] - [すべてのユーザー] - [編集対象のゲストユーザー] をクリックし、[プロパティ] を開きます。
 3. [編集] をクリックし、「連絡先情報」のタブを開きます。"メール" および "その他のメール"を編集します。
 
-![](./update-B2B-user-address/address-update-in-AzurePortal2.png)
+![](./update-B2B-user-address/address-update-in-aad2.png)
 
 4. [保存] をクリックします。
 
