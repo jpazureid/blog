@@ -1,6 +1,6 @@
 ---
 title: より安全な国家を実現するための ID の技術革新
-date: 2023-02-13 09:00
+date: 2023-03-26 09:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -8,7 +8,7 @@ tags:
 
 # より安全な国家を実現するための ID の技術革新
 
-こんにちは、Azure Identity サポート チームの 星野です。
+こんにちは、Azure Identity サポート チームの 星野 です。
 
 本記事は、2023 年 2 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Identity Innovation for a More Secure Nation](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/identity-innovation-for-a-more-secure-nation/ba-p/2365670) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
