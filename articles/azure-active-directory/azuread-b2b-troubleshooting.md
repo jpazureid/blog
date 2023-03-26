@@ -6,11 +6,11 @@ tags:
 ---
 
 > [!NOTE]
-> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/11/27/azuread-b2b-troubleshooting/ の内容を移行したものです。
-> 元の記事の最新の更新情報については、本内容をご参照ください。
-> 
+> 本記事は Technet Blog の更新停止に伴い [TechNet Blog](https://blogs.technet.microsoft.com/jpazureid/2017/11/27/azuread-b2b-troubleshooting/) の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。
+
+> [!NOTE]
 > 2017-11-27: 本記事の初版を投稿  
-> 2023-03-28: 画面ショットや Azure ポータル上のメニューの変更に伴い最新の情報に更新
+> 2023-03-26: 画面ショットや Azure ポータル上のメニューの変更に伴い内容を更新
 
 # 招待したユーザーが利用できない
 
