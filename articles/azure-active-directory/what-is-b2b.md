@@ -1,6 +1,6 @@
 ---
 title: Azure AD B2B とは
-date: 2017-12-12
+date: 2023-04-01
 tags:
   - Azure AD B2B
   - RBAC
@@ -13,7 +13,7 @@ tags:
 
 # Azure AD B2B とは
 
-こんにちは、Azure & Identity サポート チームの坂井です。
+こんにちは、Azure & Identity サポート チームの三輪です。
 
 今回は Azure AD B2B (Business-To-Business) コラボレーション機能 (以下、Azure AD B2B) について紹介します。
 
@@ -50,9 +50,9 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-wha
 
 ### 1. ゲスト ユーザーの追加
 
-明示的に別の Azure AD (または outlook.com や gmail.com などのマイクロソフト アカウント) を追加する操作です。Azure ポータルのメニューより [Azure Active Directory] – [ユーザーとグループ] – [すべてのユーザー] の順に進みます。下記、[新しいゲスト ユーザー] から別の Azure AD のユーザーを追加できます。招待メールが送られ、そのメールよりウィザードを完了する必要があります。
+明示的に別の Azure AD (または outlook.com や gmail.com などのマイクロソフト アカウント) を追加する操作です。Azure ポータルのメニューより [Azure Active Directory] – [ユーザーとグループ] – [すべてのユーザー] – [新しいユーザー] の順に進みます。下記、[外部ユーザーの招待] から別の Azure AD のユーザーを追加できます。招待メールが送られ、そのメールよりウィザードを完了する必要があります。
 
-![](./what-is-b2b/screenshot-new-guest-user.png)
+![](./what-is-b2b/screenshot-new-guest-user-new.png)
 
 ### 2. RBAC (アクセス制御 IAM) によるユーザーの追加
 
@@ -63,7 +63,7 @@ Azure ポータルの [サブスクリプション] – [サブスクリプシ�
 
 下記、[追加] から別の Azure AD のユーザーを追加することができます。招待メールが送られ、そのメールよりウィザードを完了する流れは同様になりますが、同時にサブスクリプションに対するロールを割り当てられます。
 
-![](./what-is-b2b/screenshot-iam.png)
+![](./what-is-b2b/screenshot-iam-new.png)
 
 ## よくあるお問い合わせ
 
