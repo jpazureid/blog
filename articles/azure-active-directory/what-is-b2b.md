@@ -23,8 +23,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-wha
 
 - 会社間 (Azure AD 間) でリソースを共有したい
 - 別の Azure AD に紐づいているリソースを使用したい
-- ひとりの管理者で、複数の Azure AD を管理したい
-- など
+- ひとりの管理者で、複数の Azure AD を管理したい 等
 
 このような連携が必要な時に、利用する機能が、今回ご紹介する Azure AD B2B になります。
 
