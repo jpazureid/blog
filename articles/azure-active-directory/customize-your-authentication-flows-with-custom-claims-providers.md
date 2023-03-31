@@ -90,9 +90,9 @@ Contoso 社の管理者は、カスタム クレーム プロバイダーを構�
 
 カスタム クレーム プロバイダーは、カスタム拡張機能のまだ最初の利用シナリオの一つでしかありません。今後もカスタム拡張機能のイベントを追加でリリースしていきますので、認証フローをさらにカスタマイズすることができるようにます。
 
-カスタム拡張機能については[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-extension-overview)、カスタム クレーム プロバイダーについては[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-claims-provider-overview)で詳しく説明しています。カスタム クレーム プロバイダーのセットアップを開始するには、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-extension-get-started?tabs=azure-portal)をご覧ください。
+カスタム拡張機能については [こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-extension-overview)、カスタム クレーム プロバイダーについては [こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-claims-provider-overview) で詳しく説明しています。カスタム クレーム プロバイダーのセットアップを開始するには、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-extension-get-started?tabs=azure-portal) をご覧ください。
 
-いつものとおり、皆様のご意見、ご感想、ご提案をお聞かせください。[Azure AD フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)で共有するか、以下にコメントください。皆様からのご連絡をお待ちしております。
+いつものとおり、皆様のご意見、ご感想、ご提案をお聞かせください。[Azure AD フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) で共有するか、以下にコメントください。皆様からのご連絡をお待ちしております。
 
 よろしくお願いします、 
 
