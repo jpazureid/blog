@@ -83,7 +83,7 @@ Contoso 社の管理者は、カスタム クレーム プロバイダーを構�
  
 以下はそのフローを示す図です。
 
-![](./customize-your-authentication-flows-with-custom-claims-providers/customize-your-authentication-flows-with-custom-claims-providers11.emf)
+![](./customize-your-authentication-flows-with-custom-claims-providers/customize-your-authentication-flows-with-custom-claims-providers11.png)
 
 
 より詳細なビデオ チュートリアルは以下からご覧いただけます : https://youtu.be/BYOMshjlwbc
