@@ -107,7 +107,7 @@ tags:
 MFA の方法を一切登録していないユーザーに対して、登録が要求されます。具体的には、サインイン時に下記画面が表示され、Microsoft Authenticator のアプリによる MFA の登録が要求されます。
 ![](./security-default-2022/mysignins.png)
 
-- Azure AD Premium (またはそれを含む) ライセンスが割り当てられたテナントでは、SMS や音声通話による MFA も選択できます。Azure AD Premium ライセンスが割り当てられていないテナントで一般ユーザーが利用できる多要素認証は Microsoft Authenticator アプリまたは OATH TOTP を使用です。
+- Azure AD Premium (またはそれを含む) ライセンスが割り当てられたテナントでは、SMS や音声通話による MFA も選択できます。Azure AD Premium ライセンスが割り当てられていないテナントで一般ユーザーが利用できる多要素認証は Microsoft Authenticator アプリまたは OATH TOTP です。
 - 管理者ユーザーは MFA の方法として 2 つの登録が必要です。Microsoft Authenticator に加えて、SMS の番号の登録も要求されます。
 
 ### 2. すべてのユーザー : レガシ認証がブロックされます。
