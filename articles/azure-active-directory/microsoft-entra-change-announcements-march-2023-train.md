@@ -10,9 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
-本記事は、2023 年 3 月 31 日に米国の Azure Active Directory Identity Blog で公開された [Microsoft Entra Change Announcements – March 2023 Train](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-change-announcements-march-2023-train/ba-p/2967448) を意訳したものになります。
-
-ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2023 年 3 月 31 日に米国の Azure Active Directory Identity Blog で公開された [Microsoft Entra Change Announcements – March 2023 Train](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-change-announcements-march-2023-train/ba-p/2967448) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
 
