@@ -31,14 +31,15 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
 
 ## 詳細
 
-既定ではゲスト ユーザーに対しては、 Azure AD のデータへのアクセスを制限しています。そのため、ゲスト ユーザーでサインインした場合、招待された Azure AD のユーザーの一覧を参照することもできませんし、各種設定の参照・変更も制限されています。もちろん、サブスクリプションに対する権限を付与していない場合は、サブスクリプションのリソースを操作することもできません。
+既定ではゲスト ユーザーに対しては、 Azure AD のデータへのアクセスを制限しています。そのため、ゲスト ユーザーでサインインした場合、招待された Azure AD のユーザーの一覧を参照することもできませんし、各種設定の参照・変更も制限されています。もちろん、サブスクリプションに対する権限を付与していない場合は、サブスクリプションのリソースを操作することもできません。  
 (一般ユーザーとゲスト ユーザーがそれぞれできること (アクセス許可の比較) は、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/users-default-permissions#compare-member-and-guest-default-permissions)をご参照ください。)
 
 ![](./member-and-guest-user/access-denied-new.png)
 
 ![](./member-and-guest-user/no-access-permission-new.png)
 
-ゲストに対するアクセス制限は、[すべてのユーザー] - [ユーザー設定] - [ 外部コラボレーションの設定を管理します] と辿り [ゲストのアクセス制限] で変更できます。この設定が “ゲスト ユーザーは、ディレクトリ オブジェクトのプロパティとメンバーシップへのアクセスが制限されます”(既定値) の場合には「ゲスト」の操作は上記のように制限されています。
+ゲストに対するアクセス制限は、[すべてのユーザー] - [ユーザー設定] - [ 外部コラボレーションの設定を管理します] と辿り [ゲストのアクセス制限] で変更できます。この設定が “ゲスト ユーザーは、ディレクトリ オブジェクトのプロパティとメンバーシップへのアクセスが制限されます”(既定値) の場合には「ゲスト」の操作は上記のように制限されています。  
+(外部コラボレーションの設定については、[こちら](https://jpazureid.github.io/blog/azure-active-directory/external-collaboration-setting-b2b-access/) をご参照ください。)
 
 ![](./member-and-guest-user/guest-users-permissions-are-limited1-new.png)
 
@@ -56,7 +57,7 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
 ユーザーの種類のタブを [メンバー] に変更し、[保存] をクリックします。
 
 ### PowerShellを実行して、該当ユーザーを ゲスト から メンバー に変更する手順
-この作業を実施するためには、Azure AD 用の PowerShell  を利用する必要がありますが、、 PowerShell を利用する際には Microsoft アカウントではなく、組織アカウントでのグローバル管理者が必要です (Azure AD の PowerShell については [リンク](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) も参照ください)。そのために対処策は次の手順で実施する必要があります。
+この作業を実施するためには、Azure AD 用の PowerShell  を利用する必要がありますが、 PowerShell を利用する際には Microsoft アカウントではなく、組織アカウントでのグローバル管理者が必要です (Azure AD の PowerShell については [リンク](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) も参照ください)。そのために対処策は次の手順で実施する必要があります。
 
 1. Azure AD のグローバル管理者アカウントを作成する (※すでに組織アカウントのグローバル管理者が存在する場合は、スキップ)
 2. PowerShell を実行し、該当ユーザーを Guest から Member に変更する
