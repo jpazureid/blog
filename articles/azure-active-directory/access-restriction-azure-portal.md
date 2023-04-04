@@ -1,6 +1,6 @@
 ---
 title: Azure ポータルへのアクセス制限
-date: 2017-12-29
+date: 2023-04-10
 tags:
   - Azure AD
 ---
@@ -9,9 +9,14 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/12/29/azuread-portal/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+> [!NOTE]
+> 2017-12-29: 本記事の初版を投稿
+> 2023-04-10: Msol コマンドのリタイアに伴い内容を更新
+
+
 # Azure ポータルへのアクセス制限
 
-こんにちは、Azure & Identity サポート チームの坂井です。
+こんにちは、Azure & Identity サポート チームの三輪です。
 
 今回は、一般ユーザーに対して Azure ポータルへのアクセスを制限する方法について紹介します。
 
@@ -28,15 +33,15 @@ Azure ポータル自体へのアクセスを限られたユーザーのみに�
 <手順>
 
 1. Azure ポータル (https://portal.azure.com) に管理者のアカウントでアクセスします。
-2. セキュリティの [条件付きアクセス] – [ポリシー] の順にクリックします。
+2. [セキュリティ] から [条件付きアクセス] – [ポリシー] の順にクリックします。
 3. 上部 [＋新しいポリシー] をクリックします。
 4. [名前] にポリシーの名前を入力します。
 5. ポリシーを割り当てるユーザーまたはグループを選択します。
 
     この時、全ての管理者に割り当てないようにしてください。全ての管理者がポリシーの制限を受け、Azure にアクセスすることができなくなり、設定解除もできなくなるというお問い合わせを過去に複数いただいております。
 
-6. [クラウド アプリ] では 「アプリを選択」 にチェックを入れます。
-7. [選択] をクリックし、[Microsoft Azure Management] アプリケーションを検索し、選択します。
+6. クラウド アプリ では 「アプリを選択」 にチェックを入れます。
+7. 選択 では、[Microsoft Azure Management] アプリケーションを検索し、選択します。
 
    追加の条件を設定する場合は [条件] にてポリシーが適用される条件を選択します。条件を選択しない場合、すべてのアクセスが対象となります。
 
@@ -57,13 +62,13 @@ Azure AD の管理者（グローバル管理者または制限付き管理者�
 <手順>
 
 1. グローバル管理者として Azure ポータル（http://portal.azure.com）にサインインします。
-2. 左側のメニューから [Azure Active Directory] をクリックします。
+2. [Azure Active Directory] を開きます。
 3. 表示されたメニューから [ユーザー設定] をクリックします。
-4. 右側の下記の項目がございますので、[はい] を選択します。
-5. [管理ポータル] - [Azure AD 管理ポータルへのアクセスを制限する] 
- 上にある [保存] をクリックします。
+4. 右側の下記の項目がございますので、[はい] を選択します。  
+    [管理ポータル] - [Azure AD 管理ポータルへのアクセスを制限する]   
+5. 上にある [保存] をクリックします。
 
-※ 上記 5. で [はい] を選択することで管理者以外の一般ユーザーは、Azure ポータル内での [Azure Active Directory] にアクセスしようとすると、下記の画面が表示されアクセス権がなくなります。
+※ 上記 4. で [はい] を選択することで管理者以外の一般ユーザーは、Azure ポータル内での [Azure Active Directory] にアクセスしようとすると、下記の画面が表示されアクセス権がなくなります。
 
 ![](./access-restriction-azure-portal/no-access.png)
 
@@ -71,30 +76,50 @@ Azure AD の管理者（グローバル管理者または制限付き管理者�
 
 <手順>
 
-この作業を実施するためには、Azure AD 用の PowerShell (Azure AD v1 の PowerShell) を利用する必要がありますが、 PowerShell を利用する際には Microsoft アカウントではなく、組織アカウントでのグローバル管理者が必要です (Azure AD の PowerShell についてはリンクも参照ください)。
+この作業を実施するためには、Azure AD 用の PowerShell を利用する必要がありますが、PowerShell を利用する際には Microsoft アカウントではなく、組織アカウントでのグローバル管理者が必要です (Azure AD の PowerShell については[リンク](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/)も参照ください)。
 
 1. PowerShell を開き、下記のコマンドでグローバル管理者で Azure AD に接続します。
 
     ```powershell
-    Connect-MsolService
+    Connect-MgGraph -Scopes Policy.ReadWrite.Authorization
     ```
+    
+2. 下記コマンドで現在の設定を確認します。    
+    
+     ```powershell 
+    (Get-MgPolicyAuthorizationPolicy).DefaultUserRolePermissions | fl
+    ```
+    
+    AllowedToReadOtherUsers が該当の設定になります。 True になっていることを確認します。
+    
+    ![](./access-restriction-azure-portal/ps-1.png)
 
-2. 下記コマンドで他のユーザーの情報を取得させないように設定します。
+3. 下記コマンドで他のユーザーの情報を取得させないように設定します。
 
     ```powershell 
-    Set-MsolCompanySettings -UsersPermissionToReadOtherUsersEnabled $false
+    $params=@{
+        defaultUserRolePermissions = @{
+        allowedToReadOtherUsers = $false
+      }
+    }
+ 
+    Update-MgPolicyAuthorizationPolicy -BodyParameter $params
     ```
 
-3. 下記コマンドで他のユーザーの情報を取得させないように設定されたか確認します。
+3. 再度、下記コマンドで他のユーザーの情報を取得させないように設定されたか確認します。
 
     ```powershell
-    Get-MsolCompanyInformation | fl UsersPermissionToReadOtherUsersEnabled
+    (Get-MgPolicyAuthorizationPolicy).DefaultUserRolePermissions | fl
     ```
+    
+    AllowedToReadOtherUsers が False に変更されたことを確認します。
+    
+    ![](./access-restriction-azure-portal/ps-2.png)
 
 ## 補足 1
 
-外部から追加した Guest ユーザーについては既定で Azure AD へのアクセスが制限されています 
-(Guest と Member の違いについては、こちらの[リンク](https://github.com/jpazureid/blog/blob/master/articles/azure-active-directory/member-and-guest-user.md)を参照ください)。
+外部から追加した ゲスト ユーザーについては既定で Azure AD へのアクセスが制限されています 
+(ゲスト と メンバー の違いについては、こちらの[リンク](https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/)を参照ください)。
 
 Azure ポータルへのログインを条件付きアクセスを利用して制限していない場合でも、 Azure AD 以外の項目、例えば仮想マシンなどのリソースに対しては、サブスクリプションの権限を明示的に付与しない限りは、各ユーザーは参照することもできませんのでご安心ください。
 
