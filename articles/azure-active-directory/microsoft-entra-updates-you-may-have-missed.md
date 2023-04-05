@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra の最新情報
-date: 2023-04-07 09:00
+date: 2023-04-06 09:00
 tags:
     - Azure AD
     - US Identity Blog
