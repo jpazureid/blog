@@ -59,12 +59,12 @@ tags:
 
 ## 過去に発表されたアップデート 
 
-さらに、マイクロソフトは以前、当社のセキュリティサービスを強化するためのいくつかのアップデートを発表しました。これらのアップデートには、証明書ベースの認証、FIPS 140への準拠、Microsoft Authenticatorアプリの高度な機能などが含まれています。これらのアップデートとその機能の詳細については、以下のリンクをご確認いただくことをお勧めします： 
+さらに、マイクロソフトは以前、当社のセキュリティサービスを強化するためのいくつかのアップデートを発表しました。これらのアップデートには、証明書ベースの認証、FIPS 140への準拠、Microsoft Authenticatorアプリの高度な機能などが含まれています。これらのアップデートとその機能の詳細については、以下のリンクをご確認ください。
   
 
 - [モバイル端末での Azure AD 証明書ベース認証 (CBA)](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/)
 - [Microsoft Authenticator が FIPS 140 に準拠しました](https://jpazureid.github.io/blog/azure-active-directory/microsoft-brings-fips-140-compliance/)
 - [Microsoft Authenticatorの高度なセキュリティ機能が一般公開されました！](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673)
-    日本語の記事は[こちら](https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/)似て解説しています。
+    日本語の記事は[こちら](https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/)にて解説しています。
 - [アプリの条件付きアクセス フィルターがパブリック プレビューになりました](https://jpazureid.github.io/blog/azure-active-directory/ca-filter-for-apps/)
 - [Microsoft Entra ワークロード ID の一般提供](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-workload-id-ga/)
