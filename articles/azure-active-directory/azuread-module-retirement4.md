@@ -244,6 +244,7 @@ A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応して
 
 > この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOLSet-MsolUser コマンドレットを使用してのみサポートされています。
 
-StrongAuthenticationMethod については [公開情報 (英語)](https://learn.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
+StrongAuthenticationMethod については、"ユーザーごとの MFA" の機能で利用される項目ですが、この機能はレガシーとなり、現在は条件付きアクセスでの管理を推奨しております。そのため、ユーザーごとの MFA を利用している場合、今後は条件付きアクセスで MFA を要求する形に移行してください。
+[公開情報 (英語)](https://learn.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
 
 基本的なユーザー管理コマンドについて案内していますが、もし利用方法が不明なコマンドがございましたらお気軽にお問い合わせを起票ください。
