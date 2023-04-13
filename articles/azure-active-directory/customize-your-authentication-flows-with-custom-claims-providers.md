@@ -1,6 +1,6 @@
 ---
 title: カスタム クレーム プロバイダーで認証フローをカスタマイズ！
-date: 2023-04-13 09:00
+date: 2023-04-13 12:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -85,7 +85,7 @@ Contoso 社の管理者は、カスタム クレーム プロバイダーを構�
 
 いつものとおり、皆様のご意見、ご感想、ご提案をお聞かせください。[Azure AD フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) で共有するか、以下にコメントください。皆様からのご連絡をお待ちしております。
 
-よろしくお願いします、 
+よろしくお願いします。
 
 Alex Simons (@Alex_A_Simons)  
 Corporate VP of Program Management  
