@@ -59,5 +59,5 @@ Microsoft Entra 権限管理を通じて、マルチクラウド環境全体で�
 	
 
 Alex Simons (@Alex_A_Simons)
-Corporate Vice President of Program Management?  
+Corporate Vice President of Program Management
 Microsoft Identity Division
