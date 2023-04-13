@@ -22,7 +22,7 @@ tags:
 
 ### MSOL / Azure AD PowerShell のライセンス割り当て関連のコマンド
 
-ライセンス割り当てに関する MSOL / Azure AD PowerShell コマンド（Set-MsolUserLicense や Set-AzureADUserLicense など）は、2023/3/31 にすでに廃止されました。まだこのコマンドを利用しているお客様は、そうきゅに新しいコマンドに移行ください。これらのコマンドは今後予告なく動作しなくなります。
+ライセンス割り当てに関する MSOL / Azure AD PowerShell コマンド（Set-MsolUserLicense や Set-AzureADUserLicense など）は、2023/3/31 にすでに廃止されました。まだこのコマンドを利用しているお客様は、早急に新しいコマンドに移行ください。これらのコマンドは今後予告なく動作しなくなります。
 
 新しいコマンドでのライセンス割り当て方法は、[本ブログ記事](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/) にてサンプルを用意しておりますので、併せてご確認ください。
 
