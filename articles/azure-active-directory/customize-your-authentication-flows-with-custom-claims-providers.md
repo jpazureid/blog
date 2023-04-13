@@ -79,7 +79,7 @@ Contoso 社の管理者は、カスタム クレーム プロバイダーを構�
 
 より詳細なビデオ チュートリアルは以下からご覧いただけます: https://youtu.be/BYOMshjlwbc
 
-カスタム クレーム プロバイダーは、カスタム拡張機能のまだ最初の利用シナリオの一つでしかありません。今後もカスタム拡張機能のイベントを追加でリリースしていきますので、認証フローをさらにカスタマイズすることができるようにます。
+カスタム クレーム プロバイダーは、カスタム拡張機能のまだ最初の利用シナリオの一つでしかありません。今後もカスタム拡張機能のイベントを追加でリリースしていきますので、認証フローをさらにカスタマイズすることができるようになります。
 
 カスタム拡張機能については [こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-extension-overview)、カスタム クレーム プロバイダーについては [こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-claims-provider-overview) で詳しく説明しています。カスタム クレーム プロバイダーのセットアップを開始するには、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/custom-extension-get-started?tabs=azure-portal) をご覧ください。
 
