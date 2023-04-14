@@ -76,8 +76,8 @@ Office 365 の既定のパスワードは、一定のパスワード強度を満
 他に設定したい項目がある場合には、以下より CSV ファイルおよび 後述の コマンドレットの <その他属性> に追記ください。
  
 - ユーザー名: UserPrincipalName
-- 名: Surname
-- 姓: GivenName
+- 姓: Surname
+- 名: GivenName
 - 表示名: DisplayName
 - 役職: JobTitle
 - 部署: Department
@@ -149,6 +149,10 @@ $path = "C:\temp\assignedUser.csv"
 $users = Get-MgUser -Filter "assignedLicenses/any(s:s/skuId eq $skuId)" 
 $users |select @{n="ObjectId"; e={$_.Id}}, @{n="UserPrincipalName"; e={$_.UserPrincipalName}}, @{n="DisplayName"; e={$_.DisplayName}} | Export-Csv -NoTypeInformation -Encoding UTF8 -Path $path
 ```
+
+> [!Note]
+> 全てのユーザーを取得するには、-All オプションを使用します。-All を指定しない場合は、100 ユーザーなど一部の結果のみが返されるためご留意ください。
+> > なお、ユーザー数の非常に多い環境では -All オプションをつけると大量の結果が表示されます。時間がかかる場合もあるためこの点もご留意ください。
 
 ### 特定のライセンスに含まれるサービスが有効になっているユーザーだけを一覧で出力する
 
