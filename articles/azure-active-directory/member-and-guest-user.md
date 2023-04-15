@@ -1,6 +1,6 @@
 ---
 title: Azure AD のメンバー ユーザーとゲスト ユーザー
-date: 2023-04-10
+date: 2023-04-1
 tags:
   - Azure AD B2B
 ---
