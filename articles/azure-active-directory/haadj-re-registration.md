@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド Azure AD 参加を再構成する
-date: 2023-04-1 09:00
+date: 2023-04-16 09:00
 tags:
   - Azure AD
   - Hybrid Azure AD Join 
