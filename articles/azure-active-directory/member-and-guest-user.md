@@ -64,14 +64,14 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
 1. Azure AD のグローバル管理者アカウントを作成する (※すでに組織アカウントのグローバル管理者が存在する場合はスキップ)
 2. PowerShell を実行し、該当ユーザーを Guest から Member に変更する
 
-#### 1. Azure AD のグローバル管理者アカウントを作成する (※すでに組織アカウントのグローバル管理者が存在する場合はスキップ)
+まず、1. の手順として、Azure AD のグローバル管理者アカウントを作成します。すでに組織アカウントのグローバル管理者が存在する場合はスキップください。
 
 1. [ユーザー] - [＋新しいユーザー] と辿り、 [ 新しいユーザーの作成]  をクリックします。
-2. ユーザー名と名前欄に admin1 などの任意の値を入力します。
+2. ユーザー名と名前欄に admin などの任意の値を入力します。
 3. [役割]をクリックし、ディレクトリ ロール欄で "グローバル管理者" を選択し、 [選択] をクリックします。
 4. "パスワードを表示" をクリックし、パスワードを控えて [作成] をクリックします。
 
-#### 2. PowerShell を実行し、該当ユーザーを Guest から Member に変更する
+次に、2. の手順として、PowerShell を実行し、該当ユーザーを Guest から Member に変更します。以下の手順を順に実行ください。
 
 1. PowerShell を起動します。
 
@@ -92,7 +92,7 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
 
     ```powershell
     UserPrincipalName                             UserType
-    User1_live.com#EXT#@contoso.onmicrosoft.com   Guest  -> 「Guest」 であることが確認できます。
+    user_live.com#EXT#@contoso.onmicrosoft.com    Guest  -> 「Guest」 であることが確認できます。
     ```
 
 5. 以下のコマンドを実行して、対象ユーザーの UserType を 「Member」 に変更します。
@@ -104,7 +104,7 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
     実行例:
 
     ```powershell
-    Update-MgUser -UserId User1_live.com#EXT#@contoso.onmicrosoft.com -UserType Member
+    Update-MgUser -UserId user_live.com#EXT#@contoso.onmicrosoft.com -UserType Member
     ```
 
  6. 再度以下のコマンドを実行して、対象ユーザーの UserType を確認します。
@@ -117,16 +117,13 @@ Azure AD に所属しているユーザーの種類として、下記のよう�
 
     ```powershell
     UserPrincipalName                             UserType
-    User1_live.com#EXT#@contoso.onmicrosoft.com   Member  -> 変更されたことを確認します。
+    user_live.com#EXT#@contoso.onmicrosoft.com    Member  -> 変更されたことを確認します。
     ```
 
-なお、「Member」→「Guest」に変更する場合は、UserType に「Guest」を指定します。
+なお、「Member」から「Guest」に変更する場合は、UserType に「Guest」を指定します。
 
 ```powershell
 Update-MgUser -UserId <対象ユーザーの オブジェクトID または UserPrincipalName> -UserType Guest
 ```
 
 上記内容が少しでも皆様の参考となりますと幸いです。
-
-## 変更履歴
-
