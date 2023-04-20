@@ -59,7 +59,7 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
 1. [Microsoft Intune admin center (endpoint.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し、存在する場合は対象デバイスを開いて [削除] ボタンをクリックして削除します (削除完了するまでに少し時間がかかります)。
 2. 対象のデバイス上で、[PowerShell] を **管理者権限** で実行します。
-3. 以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します。(表示されない場合は以下の 4. から 7. の手順は不要です)
+3. 以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します。( **Enrollment ID が表示されない場合は以下の 4. から 7. の手順は絶対に実施しないでください。必要なタスクなどを削除してしまう恐れがあります** )
 
     ```
     Get-ChildItem HKLM:\Software\Microsoft\Enrollments | ForEach-Object {Get-ItemProperty $_.pspath} | where-object {$_.DiscoveryServiceFullURL} | Foreach-Object {$_.PSChildName}
