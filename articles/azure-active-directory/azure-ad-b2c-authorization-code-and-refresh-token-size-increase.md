@@ -14,7 +14,7 @@ tags:
 
 ---
 
-[Microsoft Entra (Azure Active Directory)](https://www.microsoft.com/ja-jp/security/business/identity-access/azure-active-directory-external-identities) では、継続的なセキュリティ改善の取り組みの一環として、Azure AD B2C に対し、アプリケーションに返される OAuth 2.0 (および OpenID Connect) のフォーマットの変更を展開しました。この結果、Azure AD B2C が発行する認可コードと更新トークンのサイズが増加します。これにより、アプリケーションが OAuth 2.0 の認可コードをクエリ文字列パラメーターまたは URL フラグメントとして受け入れるように構成されている場合、ユーザーに影響が生じる可能性があります。具体的には以下のような場合が挙げられます。
+[Microsoft Entra (Azure Active Directory)](https://www.microsoft.com/ja-jp/security/business/identity-access/azure-active-directory-external-identities) では、継続的なセキュリティ改善の取り組みの一環として、Azure AD B2C に対し、アプリケーションに返される OAuth 2.0 (および OpenID Connect) の応答フォーマットの変更を展開しました。この結果、Azure AD B2C が発行する認可コードと更新トークンのサイズが増加します。これにより、アプリケーションが OAuth 2.0 の認可コードをクエリ文字列パラメーターまたは URL フラグメントとして受け入れるように構成されている場合、ユーザーに影響が生じる可能性があります。具体的には以下のような場合が挙げられます。
 
 - Internet Explorer などの古いウェブ ブラウザーを使用しているユーザーは、URL の長さの制限に抵触する可能性がある。
 - アプリケーションを Web サーバー上で実行している場合、特にアプリが長い URL 文字数を許容しないファイアウォールやリバース プロキシの背後にある場合、URL の長さの制限に抵触する可能性がある。
