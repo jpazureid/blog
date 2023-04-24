@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド Azure AD 参加を再構成する
-date: 2023-04-16 09:00
+date: 2023-04-24 09:00
 tags:
   - Azure AD
   - Hybrid Azure AD Join 
@@ -59,7 +59,7 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
 1. [Microsoft Intune admin center (endpoint.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し、存在する場合は対象デバイスを開いて [削除] ボタンをクリックして削除します (削除完了するまでに少し時間がかかります)。
 2. 対象のデバイス上で、[PowerShell] を **管理者権限** で実行します。
-3. 以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します。(表示されない場合は以下の 4. から 7. の手順は不要です)
+3. 以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します。 **<span style="color: red; ">(表示されない場合は以下の 4. から 7. の手順は実施しないでください)</span>******
 
     ```
     Get-ChildItem HKLM:\Software\Microsoft\Enrollments | ForEach-Object {Get-ItemProperty $_.pspath} | where-object {$_.DiscoveryServiceFullURL} | Foreach-Object {$_.PSChildName}
@@ -82,7 +82,7 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
     foreach ($Key in $RegistryKeys) {if (Test-Path -Path $Key) {Get-ChildItem -Path $Key | Where-Object {$_.Name -match $EnrollmentGUID} | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue}}
     ```
 
-7. 以下のコマンドを実行し、デバイス登録のタスクを削除します。
+7. 以下のコマンドを実行し、デバイス登録のタスクを削除します。 **<span style="color: red; ">変数 $EnrollmentGUID がブランクの状態で以下のコマンドを実行すると必要なタスクも削除されるため注意してください。</span>**
     ```
     Get-ScheduledTask | Where-Object {$_.Taskpath -match $EnrollmentGUID} | Unregister-ScheduledTask -Confirm:$false
     ```
