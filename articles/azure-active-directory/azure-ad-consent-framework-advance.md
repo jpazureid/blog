@@ -237,6 +237,10 @@ https://jwt.ms
 
 以下にユーザー委任のアクセス許可に関する PowerShell のサンプルを記載します。
 
+#### 特定アプリに対し 1 人のユーザーに変わって同意を許可
+
+[PowerShell を使用して 1 人のユーザーに代わって同意を許可する](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/grant-consent-single-user?pivots=msgraph-powershell) を参照ください。
+
 #### 特定アプリに実施した同意情報を取得
 
 ```powershell
@@ -259,7 +263,7 @@ $delegatedPermissions | Format-List Id, ConsentType, PrincipalId, ResourceId, Sc
 # Scope                : 同意済みの API のアクセス許可のリスト
 ```
 
-#### 特定アプリに対するすべてのユーザー委任の同意を削除
+#### 特定アプリに対する管理者同意を含むすべてのユーザー委任の同意を削除
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
@@ -270,6 +274,27 @@ $sp = Get-MgServicePrincipal -Filter "appId eq '<AppId>'"
 
 # 付与された同意を取得
 $delegatedPermissions = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.Id)'"
+
+# 付与された同意を削除
+$delegatedPermissions | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id } 
+```
+
+#### 特定アプリに対する 1 人の特定ユーザー委任の同意のみを削除
+
+```powershell
+# クラウド アプリケーション管理者権限でサインイン
+Connect-MgGraph -Scope "User.ReadBasic.All,Application.ReadWrite.All,DelegatedPermissionGrant.ReadWrite.All"
+
+$userUpnOrId = "user@example.com"
+
+# ユーザーのオブジェクト ID を取得
+$user = Get-MgUser -UserId $userUpnOrId
+
+# 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得
+$sp = Get-MgServicePrincipal -Filter "appId eq '<AppId>'"
+
+# 付与された同意を取得
+$delegatedPermissions = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.Id)' and principalId eq '$($user.Id)'"
 
 # 付与された同意を削除
 $delegatedPermissions | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id } 
