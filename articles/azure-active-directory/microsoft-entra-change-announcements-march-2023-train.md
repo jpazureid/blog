@@ -125,9 +125,9 @@ My Groups では、エンド ユーザーが参加するグループの検索、
 
 Azure AD Graph から Microsoft Graph へのスムーズな移行をお客様にお約束することを改めてお伝えしたいと思います。[以前に発表した](https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train/) ように、Azure AD Graph は **2023 年 6 月 30 日** まで利用可能です。弊社はこの日以降にいつでもサービスを停止する権利を有していますが、利用状況を監視し、お客様が API から移行するための十分な時間を提供したうえで、停止措置を行うようにいたします。その間、セキュリティ関連の修正を含めた Azure AD Graph のサポートを提供し続けますが、Azure AD Graph に依存した状態で運用環境を構成することは非推奨とします。すべての新機能と特徴は、[Microsoft Graph ](https://docs.microsoft.com/ja-jp/graph/overview) でのみ提供されます。すべてのお客様が、Microsoft Graph へ移行することを強く推奨します。詳しくは、[Azure AD Graph アプリを Microsoft Graph に移行する](https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview) をご覧ください。
 
-### Azure AD (Preview) と MSOnline PowerShell の廃止
+### Azure AD (Preview) と MSOnline PowerShell の利用非推奨 (今後廃止予定)
 
-Azure AD、Azure AD Preview、MSOnline の 3 つの PowerShell モジュールのサポート期間の終了が近づいており、廃止予定日が **2023 年 6 月 30 日** であることを改めてお知らせしたいと思います。Azure AD API の状況によっては、2023 年 6 月 30 日以降、一部のコマンドレットが動作しなくなる可能性があります。弊社は、使用状況を確認し、お客様が 3 つの PowerShell モジュールから移行するための猶予を提供した上で、これらモジュールの利用を停止させる予定です。Microsoft Graph でこれら API の代替の機能が提供されない限り、API およびコマンドレットを停止させることはありません。
+Azure AD、Azure AD Preview、MSOnline の 3 つの PowerShell モジュールのサポート期間の終了が近づいており、非推奨 (今後廃止) の予定日が **2023 年 6 月 30 日** であることを改めてお知らせしたいと思います。Azure AD API の状況によっては、2023 年 6 月 30 日以降、一部のコマンドレットが動作しなくなる可能性があります。弊社は、使用状況を確認し、お客様が 3 つの PowerShell モジュールから移行するための猶予を提供した上で、これらモジュールの利用を停止させる予定です。Microsoft Graph でこれら API の代替の機能が提供されない限り、API およびコマンドレットを停止させることはありません。
 
 利用停止までは、セキュリティ関連の更新をサポートし続ける予定です。弊社はこれからも Microsoft Graph PowerShell SDK に対して、全ての PowerShell 関連の機能改善を行う予定であり、お客様においても移行を継続することを推奨します。
 
