@@ -18,3 +18,5 @@ do
     ln -sn "$source_dir/$file_name" "$target_dir/$file_name"
   fi
 done
+
+echo "symbolic link created. Please run 'npm start' to run development server."
