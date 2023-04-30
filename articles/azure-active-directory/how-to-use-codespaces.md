@@ -25,3 +25,6 @@ Codespcase を使って更新するブログのサンプルです。
 
 ![Staging changes](./how-to-use-codespaces/staging.png)
 
+## プレビューの確認
+
+デバッグツールを選択し "run local server" を選択します。するとブログのビルドが実行され、右下にブラウザーで開くボタンが表示されます。
