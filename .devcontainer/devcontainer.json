@@ -44,7 +44,15 @@
 				"DavidAnson.vscode-markdownlint",
 				"ms-azuretools.vscode-docker"
 			]
-		}
+		},
+		//comment out when editing theme repository
+		"codespaces": {
+      "repositories": {
+        "jpazureid/hexo-theme-jpazure": {
+          "permissions": "write-all"
+        }
+      }
+    }
 	},
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
