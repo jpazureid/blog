@@ -41,7 +41,8 @@
 				"GitHub.copilot",
 				"taichi.vscode-textlint",
 				"eamodio.gitlens",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	},
