@@ -2,19 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "run local server",
             "type": "node",
-            "request": "attach",
-            "name": "Docker: Attach to Node",
-            "remoteRoot": "/blog/",
-            "port": 9229,
-            "address": "localhost",
-            "localRoot": "${workspaceFolder}",
-            "protocol": "inspector",
-            "preLaunchTask": "docker-compose-up",
-            "postDebugTask": "docker-compose-down"
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--lazy"
+            ],
+            "noDebug": true,
+            "console": "integratedTerminal",
         },
         {
-            "name": "run local server",
+            "name": "run local server (debug)",
             "type": "node",
             "request": "launch",
             "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
@@ -25,6 +27,18 @@
                 "--nolazy"
             ],
             "console": "integratedTerminal",
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Docker: Attach to Node",
+            "remoteRoot": "/blog/",
+            "port": 9229,
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}",
+            "protocol": "inspector",
+            "preLaunchTask": "docker-compose-up",
+            "postDebugTask": "docker-compose-down"
         },
         {
             "name": "uploadPreview",
