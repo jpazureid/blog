@@ -29,6 +29,8 @@
       "max_depth: 4",
       "list_number: false",
       "---",
+      "",
+      "# $1",
       ""
     ],
     "description": "Insert yaml header",
