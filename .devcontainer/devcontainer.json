@@ -46,12 +46,12 @@
 			]
 		},
 		//comment out when editing theme repository
-		"codespaces": {
-      "repositories": {
-        "jpazureid/hexo-theme-jpazure": {
-          "permissions": "write-all"
-        }
-      }
+		// "codespaces": {
+    //   "repositories": {
+    //     "jpazureid/hexo-theme-jpazure": {
+    //       "permissions": "write-all"
+    //     }
+    //   }
     }
 	},
 
