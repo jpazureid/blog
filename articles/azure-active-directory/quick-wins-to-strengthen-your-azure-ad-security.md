@@ -1,12 +1,12 @@
 ---
-title: Azure AD のセキュリティを強化するための Quick Wins
-date: 2023-05-08 09:00
+title: Azure AD のセキュリティを強化するために今すぐできること (Quick Win)
+date: 2023-05-02 08:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
 
-# Azure AD のセキュリティを強化するための Quick Wins
+# Azure AD のセキュリティを強化するために今すぐできること (Quick Win)
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
 
@@ -14,11 +14,11 @@ tags:
 
 ---
 
-どの組織も、インフラの安全性と信頼性を高めるために、攻撃されうる範囲を縮小するべく取り組んでいらっしゃると存じます。
+どの組織も、インフラの安全性と信頼性を高めるために、攻撃の対象範囲を縮小するべく取り組んでいらっしゃると存じます。
 
-[Microsoft Global Compromise Recovery Security Practice (CRSP)](https://www.microsoft.com/en-us/security/blog/2021/06/09/crsp-the-emergency-team-fighting-cyber-attacks-beside-customers/) のチーム メンバーとして、セキュリティの態勢を改善し、侵害を平均よりも難しくすることで、低スキルの攻撃者がすぐに攻撃を諦めて次のターゲットに移る事例をこれまで数多く見てきました。
+[Microsoft Global Compromise Recovery Security Practice (CRSP)](https://www.microsoft.com/en-us/security/blog/2021/06/09/crsp-the-emergency-team-fighting-cyber-attacks-beside-customers/) のチーム メンバーとして、セキュリティの態勢を改善し、侵入を平均よりも難しくすることで、低スキルの攻撃者がすぐに攻撃を諦めて次のターゲットに移る事例をこれまで数多く見てきました。
 
-サイバー セキュリティの環境が変化する中、[ID は新しいセキュリティ境界であり](https://learn.microsoft.com/ja-jp/security/ciso-workshop/ciso-workshop-module-3?view=o365-worldwide#part-6-build-an-identity-perimeter-1357)、侵害されたユーザーが壊滅的なサイバー攻撃のきっかけであったという話をよく聞きます。
+サイバー セキュリティの環境が変化する中、[ID は新しいセキュリティ境界](https://learn.microsoft.com/ja-jp/security/ciso-workshop/ciso-workshop-module-3?view=o365-worldwide#part-6-build-an-identity-perimeter-1357) であり、侵害されたユーザーが壊滅的なサイバー攻撃のきっかけであったという話をよく聞きます。
 
 ID について語るとき、Microsoft Entra 製品群の一部である Azure Active Directory (Azure AD) は、ほとんどの組織で利用されている重要な ID システムであり、アプリケーションやリソースなどに対するユーザーの認証と認可のための中心点として機能します。 これは、組織のゼロ トラスト戦略の中核をなすものです。
 
@@ -30,7 +30,7 @@ ID は、新しいセキュリティの境界線です。もし 1 つの鍵で�
 
 ## 2. 緊急アクセス用アカウントの安全な管理
 
-[緊急アクセス用アカウント](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/security-emergency-access) (**Break-Glass アカウント**) は高度な権限を持ち、他の管理アカウントが使用できないときという緊急のシナリオの時だけ利用されます。[ベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/security-emergency-access#create-emergency-access-accounts) に従って少なくとも 2 つ緊急アクセス用アカウントを作成し、それらのアカウントはどのユーザーとも紐づかないようにしてください。
+[緊急アクセス用アカウント](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/security-emergency-access) (**Break-Glass アカウント**) は高い権限を持ち、他の管理アカウントが使用できないときという緊急のシナリオの時だけ利用されます。[ベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/security-emergency-access#create-emergency-access-accounts) に従って少なくとも 2 つ緊急アクセス用アカウントを作成し、それらのアカウントはどのユーザーとも紐づかないようにしてください。
 
 緊急アクセス用アカウントの認証情報は安全に保存され、有効期限がなく、通常の業務に使用されることはありません。少なくとも 1 つの緊急アクセス用アカウントは、電話ベースの多要素認証 (MFA) を使用しないようにし、条件付きアクセスにおいても管理者/ユーザーによるクラウド アプリへのアクセスを制限/許可するポリシーから除外するよう対応ください。Azure AD の監査ログを使用して、サインインとすべての監査アクティビティを [監視する](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/security-emergency-access#monitor-sign-in-and-audit-logs) 必要もあります。
 
@@ -42,9 +42,9 @@ ID は、新しいセキュリティの境界線です。もし 1 つの鍵で�
 
 ## 4. 条件付きアクセスで SaaS (Software-as-a-Service) アプリケーションを管理するためのゼロ トラスト原則
 
-ゼロ トラストのコンセプトは、全体的なセキュリティを強化するのに役立ちます。リソースを保護し、最新の認証の原則に従うことで、組織はリソースのセキュリティをより確実に確保できます。
+[ゼロ トラストのコンセプト](https://www.microsoft.com/en-us/security/blog/2020/04/30/zero-trust-deployment-guide-azure-active-directory/) は、全体的なセキュリティを強化するのに役立ちます。リソースを保護し、最新の認証の原則に従うことで、組織はリソースのセキュリティをより確実に確保できます。
 
-常に検証を行い、最小限の権限でアクセスし、侵入を想定することが、[ゼロ トラスト](https://www.microsoft.com/ja-jp/security/business/zero-trust) のすべてです。企業ネットワークとカフェの公衆インターネットという単純な例で考えてみましょう。 従来のアプローチでは、企業ネットワークはネットワークの面で多くの投資がなされることで安全な状態にある… とされていました。しかし、新しいゼロ トラストのアプローチでは、ID、場所、デバイス準拠など、利用可能なすべてのデータポイントを明示的に検証することが必要です。
+常に検証を行い、最小限の権限でアクセスし、侵入を想定することが、[ゼロ トラスト](https://www.microsoft.com/ja-jp/security/business/zero-trust) のすべてです。企業ネットワークとカフェの公衆インターネットという単純な例で考えてみましょう。 [従来のアプローチでは、企業ネットワークはネットワークの面で多くの投資がなされることで安全な状態にある](https://www.microsoft.com/en-us/security/blog/2019/10/23/perimeter-based-network-defense-transform-zero-trust-model/) とされていました。しかし、新しいゼロ トラストのアプローチでは、ID、場所、デバイス準拠など、利用可能なすべてのデータポイントを明示的に検証することが必要です。
 
 取り急ぎの対応として、すでに Azure AD と統合されているアプリで試験運用を開始することをお勧めします。条件付きアクセス ポリシーとゼロ トラスト原則に基づく強固なアクセス モデルの構築を開始するためには、[展開ガイダンス](https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/plan-conditional-access) と [ベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/resilience-overview) を確認ください。
 
@@ -62,7 +62,7 @@ SSO (**シングル サインオン**) は、ユーザーに利便性と安全�
 
 ID ガバナンスは、組織のセキュリティのバランスをとる確立された方法であり、ID のライフサイクルを標準化された方法で管理することでそれを実現します。ID ガバナンスを活用すると、「誰が何にアクセスできるのか」を体系的に定義できます。このソリューションを活用しても、組織の生産性に悪影響を及ぼすことはありません。
 
-[エンタイトルメント管理](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-overview) では、アクセス パッケージというものを作成でき、ユーザーが新しいプロジェクト/チームに参加する際に必要となるグループ、アプリ、チーム、SharePoint サイトへのアクセスを、手動で付与するのでなく、ユーザーが自らリクエストできるようになります。エンタイトルメント管理は社外とのコラボレーション シナリオもサポートしておりますので、詳細は [B2B シナリオのためのエンタイトルメント管理](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-external-users) を参照ください。
+[エンタイトルメント管理](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-overview) では、[アクセス パッケージ](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-access-package-create) というものを作成でき、ユーザーが新しいプロジェクト/チームに参加する際に必要となるグループ、アプリ、チーム、SharePoint サイトへのアクセスを、手動で付与するのでなく、ユーザーが自らリクエストできるようになります。エンタイトルメント管理は社外とのコラボレーション シナリオもサポートしておりますので、詳細は [B2B シナリオのためのエンタイトルメント管理](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-external-users) を参照ください。
 
 さらに、過剰な権限は、セキュリティを脆弱にします。組織のリソースへのアクセス権をレビューして維持や剥奪を判断したい場合は、Azure AD の [アクセス レビュー](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/access-reviews-overview) をぜひ活用ください。
 
@@ -99,15 +99,15 @@ PIM は、ロールを有効化する際に、MFA やロールのアクティブ
 
 お客様は管理者として、ユーザーが同意できなくする (同意機能を無効化する)、確認済みの発行元のアプリケーションにのみ同意を許可する、または任意のアプリケーションにユーザーの同意を許可するのいずれかを選択できます。マイクロソフトは、[ユーザーの同意を確認済みの発行元のアプリケーションのみに制限し](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/configure-user-consent?tabs=azure-portal&pivots=portal)、同意できるアクセス許可を管理者が選択したものに制限することを推奨しています。
 
-お客様におかれましては、[同意のフレームワークとアプリケーションの同意エクスペリエンス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/application-consent-experience) について把握するべく、まずは管理者の [同意の要求の評価](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/manage-consent-requests) を開始することをお勧めします。管理者にて同意を安全に行う必要性が理解できたら、ユーザーの啓発に加えて、[管理者の同意](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/configure-admin-consent-workflow) が必要なフローについても確認いただき、[テナント全体の管理者の同意要求を評価する](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/manage-consent-requests#evaluate-a-request-for-tenant-wide-admin-consent) などの取り組みも実施いただければと思います。
+お客様におかれましては、[同意のフレームワークとアプリケーションの同意エクスペリエンス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/application-consent-experience) について把握するべく、まずは管理者の [同意の要求について評価](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/manage-consent-requests) を開始することをお勧めします。管理者にて同意を安全に行う必要性が理解できたら、ユーザーの啓発に加えて、[管理者の同意](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/configure-admin-consent-workflow) が必要なフローについても確認いただき、[テナント全体の管理者の同意要求を評価する](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/manage-consent-requests#evaluate-a-request-for-tenant-wide-admin-consent) などの取り組みも実施いただければと思います。
 
 ## 11. Azure AD と接続されたシステムの継続的なモニタリング
 
 ID システムはインフラのバックボーンであるため、Azure AD とそれに付随する Azure AD Connect や AD Federation Services (AD FS) のようなシステムの監視業務はすべてのリソースにとって最も重要であり、継続的なプロセスです。
 
-ユーザーのサインインを監視するための Identity Protection の使用については前述のとおりです。追加のステップとして、Identity Protection を Defender for Cloud Apps と統合することも可能です。統合はすぐに行え、画面上のボタンを有効にするだけです。これにより、Azure AD Identity Protection は Defender for Cloud Apps にシグナルを送信し、Defender for Cloud Apps は情報を処理して **セキュリティ運用チーム** 向けにアラートを生成するようになります。
+ユーザーのサインインを監視するための Identity Protection の使用については前述のとおりです。追加のステップとして、[Identity Protection を Defender for Cloud Apps と統合する](https://learn.microsoft.com/ja-jp/defender-cloud-apps/tutorial-ueba#enable-identity-protection) ことも可能です。統合はすぐに行え、画面上のボタンを有効にするだけです。これにより、Azure AD Identity Protection は Defender for Cloud Apps にシグナルを送信し、Defender for Cloud Apps は情報を処理して **セキュリティ運用チーム** 向けにアラートを生成するようになります。
 
-[Azure AD Connect Health](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health) は、監視のためのもう一つの重要な機能です。[重大な AD FS システムの問題](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-health-alert-catalog#alerts-for-active-directory-federation-services)、パフォーマンス、接続性など、重要な健全性のアラートを提供することで、ハイブリッド ID 環境におけるオンプレミス ID システムの信頼性を確保できるようにします。さらに、AD FS サーバーからのサインイン失敗やロックアウトの傾向も提示が可能です。 軽量なエージェントで動作するため、[導入](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) は非常に簡単です。
+[Azure AD Connect Health](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health) は、監視のためのもう一つの重要な機能です。[重大な AD FS システムの問題](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-health-alert-catalog#alerts-for-active-directory-federation-services)、[パフォーマンスと接続性](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-health-adfs#performance-monitoring-for-ad-fs) など、重要な健全性のアラートを提供することで、ハイブリッド ID 環境におけるオンプレミス ID システムの信頼性を確保できるようにします。さらに、AD FS サーバーからのサインイン失敗やロックアウトの傾向も提示が可能です。 軽量なエージェントで動作するため、[導入](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) は非常に簡単です。
 
 加えて、[ID セキュリティ スコア](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/identity-secure-score) の推奨事項についても対応ください。ID セキュリティ スコア は、Azure AD の全体的なセキュリティの状態を表示します。片手間で評価しすぐに改善できるような、影響度が低く実装コストが低い項目も中にはあります。定期的に ID セキュリティ スコアをレビューすることで、現在のセキュリティの状態についての見識を得るとともに、その内容を評価して修復するようご計画ください。
 
