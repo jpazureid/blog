@@ -120,7 +120,7 @@ feed:
 # https://hexo.io/docs/helpers#toc
 toc:
   # if true, toc will be auto display in all article which has more than one h2 tag
-  enabled: true
+  enabled: false
   min_depth: 1
   max_depth: 4
   list_number: false
