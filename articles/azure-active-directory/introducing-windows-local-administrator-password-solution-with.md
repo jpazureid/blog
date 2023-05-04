@@ -2,7 +2,6 @@
 title: Microosft Entra (Azure AD) 向け Windows Local Administrator Password Solution のご紹介
 date: 2023-05-05 07:00
 tags:
-    - Azure AD B2C
     - US Identity Blog
 ---
 
