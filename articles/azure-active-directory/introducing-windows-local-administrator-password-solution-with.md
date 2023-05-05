@@ -1,11 +1,11 @@
 ---
-title: Microosft Entra (Azure AD) 向け Windows Local Administrator Password Solution のご紹介
+title: Microsft Entra (Azure AD) 向け Windows Local Administrator Password Solution のご紹介
 date: 2023-05-05 07:00
 tags:
     - US Identity Blog
 ---
 
-# Microosft Entra (Azure AD) 向け Windows Local Administrator Password Solution のご紹介
+# Microsft Entra (Azure AD) 向け Windows Local Administrator Password Solution のご紹介
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
