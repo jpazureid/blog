@@ -1,6 +1,6 @@
 ---
 title: MFA 認証方法を、変更 / 再登録 / 追加 したい！
-date: 2020-10-09 12:00
+date: 2022-05-08 12:00
 tags:
   - Azure AD
   - MFA
@@ -56,44 +56,39 @@ Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設�
 
 【 1 】管理者による MFA 認証方法のリセット
 
-【 2 】管理者が直接 MFA 認証用電話番号を指定 (プレビュー機能)
+【 2 】管理者が直接 MFA 認証用電話番号を指定
 
 ### 【 1 】管理者によるMFA 認証方法のリセット
-管理者によって現在の MFA 認証方法をリセットした上で、ユーザーが再登録を行う方法です。 <br>
-現在の MFA 認証方法をリセットすることができるのは、テナント管理者 (グローバル管理者ロール) です。リセットする対象が管理者ユーザー以外であれば、ユーザー管理者、特権認証管理者、認証管理者のロールを持つアカウントでも行うことができます。
+管理者によって現在の MFA 認証方法をリセットした上で、ユーザーが再登録を行う方法です。
 
-(A) [Azure Portal](https://portal.azure.com/) からリセット
+1. 特権認証管理者、もしくはグローバル管理者のアカウントで Azure Portal (https://portal.azure.com) へアクセスします。
 
-(B) [Azure MFA Portal](https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx) からリセット※ この方法は、テナント管理者 (グローバル管理者ロール) のみ実行可能です。
+2. [すべてのサービス] > [Azure Active Directory] > [ユーザー] に移動します。
+   
+3. ユーザー一覧から、該当ユーザーの行を選択して開きます。 
 
-(C) PowerShell からリセット
+4. 画面左側のメニューから [認証方法] タブを選択します。
 
-- (A) の方法は、以下の公開情報にてご紹介しております。
+    ![](./mfa-reset-2022/auth-method-tab.png)  
 
-  [Azure Multi-factor Authentication のユーザー設定の管理 - ユーザー認証オプションを管理する](
-https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-userdevicesettings#manage-user-authentication-options)
+5. [MFA の再登録が必要] を押下します。
 
-- (B) と (C) の方法は、以下のブログにてご紹介しております。 
-
-  [多要素認証 (MFA) のリセット手順](
-https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/) 
+    ![](./mfa-reset-2022/auth-method-reset.png)  
+  
 
 管理者によって、ユーザーの MFA 認証方法がリセットされたら、ユーザーは MFA 認証方法を再登録する必要があります。
-前述の、現在登録されているモバイル デバイスで、MFA 認証ができる場合の手順に従って、新しいデバイスを MFA 認証方法として登録して下さい。
+前述の「現在登録されているモバイル デバイスで、MFA 認証ができる場合」の手順に従って、新しいデバイスを MFA 認証方法として登録して下さい。
 
-### 【 2 】管理者が直接 MFA 認証用電話番号を指定 (プレビュー機能)
-こちらは現在、プレビュー機能として公開されている方法です。
-
-Azure Portal 上で、管理者はユーザーの MFA 認証のための電話番号を、直接指定することができます。
+### 【 2 】管理者が直接 MFA 認証用電話番号を指定
+管理者は Azure Portal 上で、ユーザーの MFA 認証のための電話番号を、直接指定することができます。
 
 [Azure Portal](https://portal.azure.com/) > [Azure Active Directory] > [ユーザー] > (一覧からユーザーを選択) > [認証方法]
-
-「新しいユーザー認証方法エクスペリエンスをお試しください。こちらをクリックすると、プレビューを使用できます。」というメッセージを選択すると、以下のプレビュー版の機能が、ご利用可能になります。
-
 
 [ + 認証方法の追加] から、[電話番号] を選択し、ユーザーのモバイル デバイスの電話番号を追加して下さい。
 
 ![](./change-mfa-verification-method/figure3.png)
+
+※ 電話番号の入力は "+81 8099999999" のように、「国番号の指定が必須」かつ「ハイフン不要」である点にご留意ください。
 
 ※ [方法の選択] で選択可能な [メール] は、MFA ではなく セルフサービス パスワード リセットの連絡先追加のための項目です。ここでは選択しないでください。
 
@@ -157,6 +152,5 @@ Azure Portal にログインできない場合は、https://aka.ms/AzurePortalHe
 
 ### サービスの URL
 - Azure Portal : https://portal.azure.com/
-- Azure Portal (プレビュー版) : https://preview.portal.azure.com/
 - Azure MFA Portal (管理者専用) : https://account.activedirectory.windowsazure.com/usermanagement/multifactorverification.aspx
 - MFA 認証情報確認 / 登録ページ : https://aka.ms/mfasetup
