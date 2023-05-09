@@ -20,3 +20,4 @@ do
 done
 
 echo "symbolic link created. Please run 'npm start' to run development server."
+git submodule update -i
