@@ -9,7 +9,7 @@ file_list=(
 )
 
 source_dir="/blog"
-target_dir="/workspaces/blog"
+target_dir=`pwd`
 
 for file_name in "${file_list[@]}"
 do
