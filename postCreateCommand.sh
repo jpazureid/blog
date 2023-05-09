@@ -9,7 +9,7 @@ file_list=(
 )
 
 source_dir="/blog"
-target_dir=$CODESPACE_VSCODE_FOLDER
+target_dir="/workspaces/blog"
 
 for file_name in "${file_list[@]}"
 do
