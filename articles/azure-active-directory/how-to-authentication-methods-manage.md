@@ -40,14 +40,13 @@ MFA と SSPR のポリシー設定を Azure AD の認証方法ポリシーに移
 MFA で利用可能な認証方法の設定について確認します。
 
 1. [Azure Portal] > [Azure Active Directory] > [ユーザー] > [ユーザーごとの MFA] に移動します。
+![](./how-to-authentication-methods-manage/legacy-mfa-1.png)
 
-   ![](how-to-authentication-methods-manage/legacy-mfa-01.png)  
-
-2. [サービス設定] に移動します。
+1. [サービス設定] に移動します。
 
    ![](how-to-authentication-methods-manage/legacy-mfa-02.png)
 
-3. [検証オプション] 項目からどの項目にチェックが入っているかを確認します。これがレガシ MFA ポリシーの設定です。
+1. [検証オプション] 項目からどの項目にチェックが入っているかを確認します。これがレガシ MFA ポリシーの設定です。
 
    ![](how-to-authentication-methods-manage/legacy-mfa-03.png)
 
@@ -62,7 +61,7 @@ SSPR で利用可能な認証方法の設定について確認します。
 1. [Azure Active Directory] > [パスワード リセット] > [認証方法] に移動します。
 2. 以下の [ユーザーが使用できる方法] でどの項目にチェックが入っているかを確認します。これがレガシ SSPR ポリシーの設定です。
 
-   ![](how-to-authentication-methods-manage/legacy-sspr-01.png)
+![](./how-to-authentication-methods-manage/legacu-sspr-1.png)
 
 ### 新しい認証方法ポリシーの確認
 
@@ -87,7 +86,7 @@ SSPR で利用可能な認証方法の設定について確認します。
    ![](how-to-authentication-methods-manage/new-02.png)
 1. 画面右に表示される本項目が、[移行の管理] の設定です。
 
-   ![](./how-to-authentication-methods-manage/new-04.png)
+   ![](./how-to-authentication-methods-manage/new-03.png)
 
 移行中にどのポリシーの設定が参照されるかついては、[移行の管理] 項目の設定状況に依存します。
 各オプションで参照されるポリシーについて、ご案内いたします。
@@ -188,9 +187,9 @@ Q4.
 以下の設定の場合、どの認証方法ポリシーを有効にしたらいいでしょうか？
 
 - レガシ MFA ポリシー
-- 電話へのテキスト メッセージ
-- モバイル アプリによる通知
-- モバイル アプリまたはハードウェア トークンからの確認コード
+  - 電話へのテキスト メッセージ
+  - モバイル アプリによる通知
+  - モバイル アプリまたはハードウェア トークンからの確認コード
 - レガシ SSPR ポリシー
   - モバイル アプリ コード
   - 電子メール
