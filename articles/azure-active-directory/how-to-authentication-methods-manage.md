@@ -31,7 +31,6 @@ MFA と SSPR のポリシー設定を Azure AD の認証方法ポリシーに移
 
 なお、移行作業自体は数十分から 1 時間程度で完了することが一般的です。移行中にダウンタイムが生じることはありませんし、適切に構成いただければ、基本的にユーザー影響が生じることもありません。万が一、予期せぬ動作が生じた際には設定を切り戻すことも可能です。
 
-
 ## 1. 開始する前の確認事項
 
 はじめに、お客様のテナントにおける各レガシー ポリシーの設定をご確認いただきたく存じます。
@@ -42,22 +41,15 @@ MFA で利用可能な認証方法の設定について確認します。
 
 1. [Azure Portal] > [Azure Active Directory] > [ユーザー] > [ユーザーごとの MFA] に移動します。
 
-
-
-   ![legacy MFA 1](how-to-authentication-methods-manage/legacy-mfa-01.png)  
+   ![](how-to-authentication-methods-manage/legacy-mfa-01.png)  
 
 2. [サービス設定] に移動します。
 
-
-
-   ![legacy MFA 2](how-to-authentication-methods-manage/legacy-mfa-02.png)
+   ![](how-to-authentication-methods-manage/legacy-mfa-02.png)
 
 3. [検証オプション] 項目からどの項目にチェックが入っているかを確認します。これがレガシ MFA ポリシーの設定です。
 
-
-
-
-   ![legacy MFA 3](how-to-authentication-methods-manage/legacy-mfa-03.png)
+   ![](how-to-authentication-methods-manage/legacy-mfa-03.png)
 
 上記のスクリーンショットでは、ユーザーが利用可能な MFA の方法として、4 つがチェックされていることがわかります。これは、ユーザが MFA を要求された際に、これらいずれかの方法を利用して (登録済みであれば) 認証を行えるということを意味します。
 
@@ -66,22 +58,20 @@ MFA で利用可能な認証方法の設定について確認します。
 ### レガシ SSPR ポリシーの設定の確認
 
 SSPR で利用可能な認証方法の設定について確認します。
+
 1. [Azure Active Directory] > [パスワード リセット] > [認証方法] に移動します。
 2. 以下の [ユーザーが使用できる方法] でどの項目にチェックが入っているかを確認します。これがレガシ SSPR ポリシーの設定です。
 
-
-   ![legacy SSPR](how-to-authentication-methods-manage/legacy-sspr-01.png)
+   ![](how-to-authentication-methods-manage/legacy-sspr-01.png)
 
 ### 新しい認証方法ポリシーの確認
 
 新しい認証方法ポリシーについては、以下の手順にてご確認いただけます。
+
 1. [Azure Active Directory] > [セキュリティ] > [認証方法] > [ポリシー] に移動します。
 2. 本項目が、新しい認証方法ポリシーの設定です。
 
-
-
-
-   ![New 1](how-to-authentication-methods-manage/new-01.png)
+   ![](how-to-authentication-methods-manage/new-01.png)
 
 ## 2. 移行を開始する
 
@@ -94,13 +84,12 @@ SSPR で利用可能な認証方法の設定について確認します。
 1. [Azure Active Directory] > [セキュリティ] > [認証方法] > [ポリシー] に移動します。
 1. [移行の管理] を選択します。
 
-
-   ![New 2](how-to-authentication-methods-manage/new-02.png)
+   ![](how-to-authentication-methods-manage/new-02.png)
 1. 画面右に表示される本項目が、[移行の管理] の設定です。
 
 ↑この画像は初期状態の画像ではないので、初期状態のものに差し替えるのが良いと思います。画面を初めて開いたお客様が、うちと画面が違うってびっくりすると思います。
 
-   ![New 3](how-to-authentication-methods-manage/new-03.png)
+   ![](how-to-authentication-methods-manage/new-03.png)
 
 移行中にどのポリシーの設定が参照されるかついては、[移行の管理] 項目の設定状況に依存します。
 各オプションで参照されるポリシーについて、ご案内いたします。
@@ -116,7 +105,6 @@ SSPR で利用可能な認証方法の設定について確認します。
 |移行が完了済み | MFA | 認証方法ポリシーのみ|
 | ^  | SSPR| 認証方法ポリシーのみ|
 
-
 ### 移行の作業について
 
 認証方法の具体的な移行作業としては、移行の管理にて [移行が進行中] を選択し、レガシ ポリシーの設定内容を認証方法ポリシーにも設定します。
@@ -124,12 +112,12 @@ SSPR で利用可能な認証方法の設定について確認します。
 
 #### レガシ MFA ポリシーに対応する認証方法ポリシー
 
-レガシ MFAポリシー | 認証方法ポリシー
+レガシ MFA ポリシー | 認証方法ポリシー
 ---|---
 電話の呼び出し | 音声通話
 電話へのテキスト | メッセージ SMS
 モバイル アプリでの通知 | Microsoft Authenticator
-モバイル アプリからの確認コードまたはハードウェア トークン | サード パーティ製のソフトウェア OATH トークン <br>ハードウェア OATH トークン (まだ使用できません) <br>Microsoft Authenticator
+モバイル アプリからの確認コードまたはハードウェア トークン | サード パーティ製のソフトウェア OATH トークン <br> ハードウェア OATH トークン (まだ使用できません) <br> Microsoft Authenticator
 
 #### レガシ SSPR ポリシーに対応する認証方法ポリシー
 
@@ -138,9 +126,9 @@ SSPR で利用可能な認証方法の設定について確認します。
 モバイル アプリの通知 | Microsoft Authenticator
 モバイル アプリ コード | Microsoft Authenticator <br> サード パーティ製のソフトウェア OATH トークン
 Email  | 電子メールの OTP
-携帯電話  | 音声通話 <br>SMS
+携帯電話  | 音声通話 <br> SMS
 会社電話  |  音声通話
-秘密の質問 |  まだ使用できません。※
+秘密の質問 |  まだ使用できません (※)
 
 ※秘密の質問については 2023 年 5 月 時点で認証方法ポリシーで管理できないため、レガシ SSPR ポリシーを使い続けてください。
 
@@ -152,22 +140,20 @@ Email  | 電子メールの OTP
 [移行が完了済み] に変更した場合、レガシ ポリシーについては以下のような表示となり、新しい認証方法ポリシーによって管理されていることが明記されます。
 ご参考 : [移行が完了済み] に移行後のレガシ MFA ポリシー ([検証オプション])
 
-
-
-![finish MFA](how-to-authentication-methods-manage/legacy-mfa-finish.png)
+![](how-to-authentication-methods-manage/legacy-mfa-finish.png)
 
 ご参考 : [移行が完了済み] に移行後のレガシ SSPR ポリシー  ([パスワード リセット] > [認証方法])
 
-
-
-![finish SSPR](how-to-authentication-methods-manage/legacy-sspr-finish.png)
+![](how-to-authentication-methods-manage/legacy-sspr-finish.png)
 
 ## 参考情報
+
 認証方法ポリシーについては、以下の公開情報でもご案内しておりますので、ご参照ください。
 Azure AD の認証方法を管理する
 <https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/concept-authentication-methods-manage>
 
 ## FAQ
+
 ***
 Q1.
 もし、2024 年 9 月 30 日 まで何もしなかった場合、どうなりますか。
@@ -180,7 +166,7 @@ A1.
 レガシ MFA ポリシー | SMS による認証方法を有効に設定
 認証方法ポリシー | SMS による認証方法を無効に設定
 
-このため、期日以降もSMS による認証方法をご利用されたい場合は、認証方法ポリシーで SMS を有効に設定いただく必要がございます。
+このため、期日以降も SMS による認証方法をご利用されたい場合は、認証方法ポリシーで SMS を有効に設定いただく必要がございます。
 ***
 Q2.
 レガシ ポリシーへの切り戻しはできないでしょうか。
@@ -202,22 +188,24 @@ A3.
 Q4.
 レガシ ポリシーを確認しました。
 以下の設定の場合、どの認証方法ポリシーを有効にしたらいいでしょうか？
- - レガシ MFA ポリシー
-   - 電話へのテキスト メッセージ
-   - モバイル アプリによる通知
-   - モバイル アプリまたはハードウェア トークンからの確認コード
- - レガシSSPR ポリシー
-   - モバイル アプリ コード
-   - 電子メール
-   - 携帯電話
+
+- レガシ MFA ポリシー
+- 電話へのテキスト メッセージ
+- モバイル アプリによる通知
+- モバイル アプリまたはハードウェア トークンからの確認コード
+- レガシ SSPR ポリシー
+  - モバイル アプリ コード
+  - 電子メール
+  - 携帯電話
 A4.
 レガシ ポリシー と認証方法ポリシーの対応表に従い、認証方法ポリシーにて、以下の認証方法を有効にします。
 - 認証方法 ポリシー
-   - Microsoft Authenticator
-   - SMS 
-   - サード パーティ製のソフトウェア OATH トークン
-   - 音声通話
-   - メール OTP 
+  - Microsoft Authenticator
+  - SMS 
+  - サード パーティ製のソフトウェア OATH トークン
+  - 音声通話
+  - メール OTP 
+
 ***
 
 上記内容が皆様の参考となりますと幸いです。
