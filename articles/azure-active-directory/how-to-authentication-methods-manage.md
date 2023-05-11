@@ -5,6 +5,11 @@ tags:
   - Azure AD
   - MFA
   - SSPR
+toc:
+  enabled: true
+  min_depth: 1
+  max_depth: 3
+  list_number: false
 ---
 
 # MFA と SSPR を新しい認証方法ポリシーに移行する方法
