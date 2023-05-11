@@ -87,9 +87,7 @@ SSPR で利用可能な認証方法の設定について確認します。
    ![](how-to-authentication-methods-manage/new-02.png)
 1. 画面右に表示される本項目が、[移行の管理] の設定です。
 
-↑この画像は初期状態の画像ではないので、初期状態のものに差し替えるのが良いと思います。画面を初めて開いたお客様が、うちと画面が違うってびっくりすると思います。
-
-   ![](how-to-authentication-methods-manage/new-03.png)
+   ![](./how-to-authentication-methods-manage/new-04.png)
 
 移行中にどのポリシーの設定が参照されるかついては、[移行の管理] 項目の設定状況に依存します。
 各オプションで参照されるポリシーについて、ご案内いたします。
