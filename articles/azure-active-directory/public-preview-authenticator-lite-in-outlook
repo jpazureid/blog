@@ -23,21 +23,23 @@ tags:
 パブリック プレビューでは、管理者はユーザーのグループに対してこの機能を有効または無効にするか、Microsoft managed (Microsoft に設定を任せる) の状態のままにするかを選択できます。Authenticator Lite を有効にするグループを設定するには、Entra ポータルの Authenticator 設定ページから行います。 また、[Microsoft Graph を使用して機能を有効にする](https://learn.microsoft.com/en-us/azure/active-directory/authentication/how-to-mfa-authenticator-lite) ことも可能です。
 
 > [!NOTE]
-> サポートチームによる補足: 以下の画面にあるコンパニオン アプリケーションとは Outlook のこと、つまり Authenticator Lite が組み込まれたアプリのことを示しています。
+> サポート チームによる補足: 以下の画面にあるコンパニオン アプリケーションとは Outlook のこと、つまり Authenticator Lite が組み込まれたアプリのことを示しています。
 
-![](./public-preview-authenticator-lite-in-outlook\1.png)
+![](./public-preview-authenticator-lite-in-outlook/1.png)
 
 Authenticator Lite は、その名のとおり、Authenticator の機能の一部を Outlook に拡張するものです。認証時の通知では、番号一致のプロンプトに加え、デバイスで有効な場合は生体認証または PIN の確認が含まれます。Authenticator Lite の通知設定の詳細については、[こちら](https://learn.microsoft.com/en-us/azure/active-directory/authentication/how-to-mfa-authenticator-lite#enable-authenticator-lite) をご覧ください。
  
 Authenticator Liteが有効になると、Authenticator アプリを搭載していない[最新バージョンの Outlook](https://learn.microsoft.com/en-us/azure/active-directory/authentication/how-to-mfa-authenticator-lite#prerequisites) を使用しているユーザーは、デバイスでアプリを起動する際に、MFA の方法として Outlook を登録するよう促されます。
 
-![](./public-preview-authenticator-lite-in-outlook\2.png)
+![](./public-preview-authenticator-lite-in-outlook/2.png)
 
 ユーザーが登録されると、次回の認証時に、Outlook アプリでプッシュ通知を使って認証するよう促されます。
 
-![](./public-preview-authenticator-lite-in-outlook\3.png)
+![](./public-preview-authenticator-lite-in-outlook/3.png)
 
 登録済みのユーザーは、Outlook の設定の「Authenticator」から TOTP コードを取得することもできます。
+
+![](./public-preview-authenticator-lite-in-outlook/4.png)
 
 ユーザーに対してこの機能を有効にするための詳細については、[こちら](https://learn.microsoft.com/en-us/azure/active-directory/authentication/how-to-mfa-authenticator-lite#prerequisites) を参照ください。Outlook でこの機能を利用するための展開処理が現在進行中であり、お客様は順次本機能を利用可能となります。
  
