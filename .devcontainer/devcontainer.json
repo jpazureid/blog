@@ -37,14 +37,14 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"mushan.vscode-paste-image",
 				"GitHub.copilot",
 				"taichi.vscode-textlint",
 				"eamodio.gitlens",
 				"DavidAnson.vscode-markdownlint",
 				"ms-azuretools.vscode-docker",
 				"yzhang.markdown-all-in-one",
-				"GitHub.vscode-pull-request-github"
+				"GitHub.vscode-pull-request-github",
+				"watahani.markdown-image-paste-for-remote"
 			]
 		},
 		//comment out when editing theme repository

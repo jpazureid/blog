@@ -9,7 +9,7 @@ file_list=(
 )
 
 source_dir="/blog"
-target_dir="/workspaces/blog"
+target_dir=`pwd`
 
 for file_name in "${file_list[@]}"
 do
@@ -20,3 +20,4 @@ do
 done
 
 echo "symbolic link created. Please run 'npm start' to run development server."
+git submodule update -i
