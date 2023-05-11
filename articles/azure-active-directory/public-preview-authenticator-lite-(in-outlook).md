@@ -1,5 +1,5 @@
 ---
-title: パブリック プレビュー: Authenticator Lite (Outlook)
+title: パブリック プレビュー Authenticator Lite (Outlook)
 date: 2023-5-15
 tags:
     - Azure AD
