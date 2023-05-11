@@ -207,12 +207,17 @@ PATCH https://graph.microsoft.com/v1.0/users/<対象ユーザーのオブジェ�
 }
 ```
 
-▽ Azure AD PowerShell モジュールでの例
+▽ Microsoft Graph PowerShell モジュールでの例
 
 ```powershell
-Connect-AzureAD -TenantId <B2C tenant 名>
-$password = ConvertTo-SecureString -String <パスワードの値> -AsPlainText -Force
-Set-AzureADUserPassword -ObjectId <対象ユーザーのオブジェクト ID> -Password $password -ForceChangePasswordNextLogin $false 
+Connect-MgGraph -Scopes "Directory.AccessAsUser.All" -TenantId <B2C tenant 名>
+$params = @{
+  PasswordProfile = @{
+      ForceChangePasswordNextSignIn = $false
+      Password = 'password-value'
+  }
+}
+Update-MgUser -UserId <対象ユーザーのオブジェクト ID> -BodyParameter $params
 ```
 
 ### コンシューマー ユーザー アカウントのパスワードに有効期限を定めることは可能ですか
@@ -225,7 +230,7 @@ Azure AD B2C では、お客様が設定可能なパスワードのポリシー�
 
 - [samples/policies/force-password-reset-after-90-days at master · azure-ad-b2c/samples](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-after-90-days)
 
-### XXXX の機能について、カスタム ポリシーを利用すればを実現可能ですか
+### XXXX の機能について、カスタム ポリシーを利用すれば実現可能ですか
 
 弊社ではカスタム ポリシーの利用例として、以下の GitHub リポジトリにてサンプルを公開しています。まずは実現したいことが以下のサンプルにあるかを確認ください。
 

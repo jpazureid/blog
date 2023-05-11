@@ -6,9 +6,10 @@ tags:
   - PowerShell
 ---
 
-> [!NOTE]
-> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/12/04/aad-powershell/ の内容を移行したものです。
-> 元の記事の最新の更新情報については、本内容をご参照ください。
+> [!WARNING]
+> 本記事で紹介しております MSOnline および Azure AD for Graph、Azure AD for Graph preview は 2023 年 6 月 30 日に廃止される予定です。このため、すべてのお客様は Microsoft Graph PowerShell SDK への移行をご検討ください。ただし、現状ではまだ Microsoft Graph PowerShell SDK でサポートされていない操作 (MSOnline を用いた AD FS と Azure AD のフェデレーション構成など) もございますので、そのような操作が必要な場合にのみ下記内容をご覧いただければ幸いです。
+> 
+> Microsoft Graph SDK PowerShell の利用については、[こちらのページ](https://docs.microsoft.com/ja-jp/graph/powershell/installation) をご覧ください。
 
 # Azure Active Directory の PowerShell モジュール
 
@@ -199,4 +200,4 @@ https://www.powershellgallery.com/profiles/AzureADPowerShell/
 - 2018/08/07: Save-Module で別端末でダウンロードしたモジュールを利用する際の手順を更新しました。
 - 2018/10/17: Windows Management Framework (WMF) のサポート対象が 5.1 であることから .NET Framework の前提条件を WMF 5.1 インストールに必要となる 4.5.2 に変更しました。
 - 2019/01/23: Azure AD v2 と Azure AD v2 preview が同時インストールできない注意書きをインストールの項目にも追記しました。
-
+- 2022/03/07: 冒頭に注意事項を記載し、Microsoft Graph PowerShell SDK への移行を勧める旨を記載しました。

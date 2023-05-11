@@ -59,5 +59,8 @@
         "winhttp"
     ],
     "pasteImage.path": "${currentFileDir}/${currentFileNameWithoutExt}",
-    "pasteImage.insertPattern": "${imageSyntaxPrefix}./${imageFilePath}${imageSyntaxSuffix}"
+    "pasteImage.insertPattern": "${imageSyntaxPrefix}./${imageFilePath}${imageSyntaxSuffix}",
+    "editor.tabSize": 2,
+    "editor.stickyTabStops": true,
+    "editor.indentSize": "tabSize"
 }

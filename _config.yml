@@ -32,6 +32,7 @@ github:
   url: https://github.com/jpazureid/blog/
   posts_dir: articles
   default_branch: main
+  show_additional_info: true
 
 skip_render:
   - '_data/*.png'
@@ -67,7 +68,8 @@ archive: 2
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+external_link:
+  enable: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
@@ -114,6 +116,15 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+
+# https://hexo.io/docs/helpers#toc
+toc:
+  # if true, toc will be auto display in all article which has more than one h2 tag
+  enabled: false
+  min_depth: 1
+  max_depth: 4
+  list_number: false
+
 
 # show disclaimer in all article by default. disableDisclaimer of article's option set true hide.
 # ex) 
