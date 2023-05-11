@@ -16,7 +16,7 @@ tags:
 ドメイン コントローラーが各拠点に散らばっている場合などに、ご留意ください。
 
 - 対象リリース
-Windows Server 2012 R2 (AD FS 3.0)
+Windows Server 2012 R2 (AD FS 3.0) 以降
 
 ### (1) AD FS 構成ウィザードの実行時
 
