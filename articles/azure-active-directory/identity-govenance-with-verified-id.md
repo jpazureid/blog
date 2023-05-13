@@ -1,6 +1,6 @@
 ---
 title: Verified ID と Identity Governance の統合 - より正確なアクセス権の付与と迅速なオンボーディング
-date: 2023-5-15 09:00
+date: 2023-05-14 09:00
 tags:
     - Azure AD
     - Identity Governance
