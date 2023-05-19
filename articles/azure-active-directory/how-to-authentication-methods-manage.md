@@ -243,7 +243,7 @@ SSPR で利用可能な認証方法の設定について確認します。
 
 ![ご参考 : [移行が完了済み] に移行後のレガシー MFA ポリシー ([検証オプション])](./how-to-authentication-methods-manage/mfa-finish.png)
 
-![ご参考 : [移行が完了済み] に移行後のレガシー SSPR ポリシー  ([パスワード リセット] > [認証方法])](./how-to-authentication-methods-manage/finishimage.png)
+![ご参考 : [移行が完了済み] に移行後のレガシー SSPR ポリシー  ([パスワード リセット] > [認証方法])](./how-to-authentication-methods-manage/sspr-finish.png)
 
 ## 参考情報
 
