@@ -10,7 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 竜 です。
 
-本記事は、2022 年 12 月 01 日に米国の Azure Active Directory Identity Blog で公開された [GA: System-preferred multifactor authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/ga-system-preferred-multifactor-authentication/ba-p/3773138) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2023 年 5 月 16 日に米国の Azure Active Directory Identity Blog で公開された [GA: System-preferred multifactor authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/ga-system-preferred-multifactor-authentication/ba-p/3773138) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
 
