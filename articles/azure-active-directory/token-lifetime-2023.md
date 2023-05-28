@@ -1,6 +1,6 @@
 ---
 title: Azure AD が発行するトークンの有効期間と考え方 (2023 年版)
-date: 2023-5-12 12:00
+date: 2023-5-29 12:00
 tags:
   - Azure AD
   - Token
@@ -54,6 +54,7 @@ Azure AD が発行するトークンの有効期間をまとめたものが以�
 
 ![](./token-lifetime-2023/token-lifetime.png)
 
+
 各トークンの有効期間については、以下の公開情報もご覧ください。
 
 - [アクセス トークンの有効期間](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/access-tokens#access-token-lifetime)
@@ -64,8 +65,9 @@ Azure AD が発行するトークンの有効期間をまとめたものが以�
 > [!NOTE]
 > 特定のシナリオでは、上記の表に従わず例外的に特別な有効期間のトークンが発行されることもあります。
 > 
-> - シングル ページ アプリ (SPA) に対して発行される更新トークンは、[更新トークンの有効期間](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/refresh-tokens#refresh-token-lifetime) のとおり 24 時間になります。
-> - AAD ユーザーに LastPasswordChangeTimestamp 属性が同期されていないフェデレーション認証のユーザーの場合、更新トークンおよびセッション トークンの有効期間は 12 時間になり、[頻繁にサインインすることを強制されます](https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/federated-users-forced-sign-in)。
+> ・ シングル ページ アプリ (SPA) に対して発行される更新トークンは、[更新トークンの有効期間](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/refresh-tokens#refresh-token-lifetime) のとおり 24 時間になります。
+> ・ AAD ユーザーに LastPasswordChangeTimestamp 属性が同期されていないフェデレーション認証のユーザーの場合、更新トークンおよびセッション トークンの有効期間は 12 時間になり、[頻繁にサインインすることを強制されます](https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/federated-users-forced-sign-in)。
+> 
 
 ## アクセス トークンの有効期間の考え方
 
