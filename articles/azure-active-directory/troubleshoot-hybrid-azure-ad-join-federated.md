@@ -165,8 +165,9 @@ netsh winhttp set proxy proxy-server="<プロキシー サーバー>:<ポート>
 <バイパスする URL> はプロキシ サーバーを介さずにアクセスさせるサーバーの一覧です。必要に応じて指定します。
 なお、AD FS のフェデレーション サービスのエンドポイントへのアクセスにプロキシー サーバーを利用しない場合、当該エンドポイントをバイパスの URL に含めてください。
 
-例えば、ローカルと .test.com へのアクセスにはプロキシを経由させない場合には、 bypass-list=”test.com” というような記載を行います。
-また、AD FS のフェデレーション サービスのエンドポイントは https://sts.contoso.com の場合、bypass-list=”*.sts.contoso..com” というように記載します。
+例えば、test.com ドメインリソースへのアクセスにプロキシを経由させない場合には、 bypass-list=”*.test.com” のように記載します。
+また、AD FS のフェデレーション サービスのエンドポイントが https://sts.contoso.com の場合、bypass-list=”sts.contoso.com” のように記載します。
+bypass-list=”*.test.com;sts.contoso.com” のように記載することで、test.com のドメインリソース、および sts.contoso.com への接続時にプロキシを経由しないようにすることができます。
 
 
 #### SYSTEM アカウントのプロキシ
