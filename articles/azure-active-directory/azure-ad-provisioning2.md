@@ -146,8 +146,10 @@ Azure ADにてアカウントが [削除済みユーザー一覧] に移った�
  
 
 エラーメッセージ例:
+```CMD
 "Bad credentials"
 While attempting to validate our authorization to access your application, we received this unexpected response.
+```
 
 この場合の対処策としましては、上記のトークンを新しく取得するため、Azure AD 側でユーザー プロビジョニングを構成する際に、Azure AD 側で入力する SaaS側の管理者の資格情報の入力について改めて再構成することで、検疫状態が解消されプロビジョニングが動作できる可能性が考えられます。
 
@@ -156,6 +158,7 @@ While attempting to validate our authorization to access your application, we re
 #### <span style="color: #ff0000; ">Q.</span> 上記のFAQ で解決しない。
 #### <span style="color: #3366ff; ">A.</span> Azure サポートの活用を検討ください。一般的に調査の際には次のような情報が必要です。
 詳細はお問い合わせの後でご案内を差し上げていますが、現象の発生タイミング、発生頻度に関する情報と併せまして事前に用意いただければと思います。
+
 	1. テナント ID ([Azure Active Directory] - [プロパティ] - [ディレクトリ ID] より確認可能です)
 	2. プロビジョニングのジョブID もしくはアプリケーションのID 
 
