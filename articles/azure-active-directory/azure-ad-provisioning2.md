@@ -96,7 +96,7 @@ https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEn
 4.  属性リストの下部にあるフィールドに、追加したい属性に関する情報を入力します。
 ![](./azure-ad-provisioning2/azure-ad-provisioning2-04.png)
 
-5. ［保存］を選択し変更を保存します。マッピング設定に戻り、4 で追加した属性を使用してSaaS 側の任意の属性とマッピングを設定します。その後問題なく追加した属性が SaaS 側の設定した属性にて問題なく同期されているかご確認ください。
+5. ［保存］を選択し変更を保存します。マッピング設定に戻り、4 で追加した属性を使用して SaaS 側の任意の属性とマッピングを設定します。その後問題なく追加した属性が SaaS 側の設定した属性にて問題なく同期されているかご確認ください。
 
 
 また、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-in-a-tenant-with-cloud-only-users) の公開情報に記載の通りテナント上のサービスプリンシパルの数が 1,000 を超える場合、プロビジョニング設定のソース属性の一覧にディレクトリ拡張属性 (AADC を使って拡張した拡張属性など) が含まれないことがございます。
