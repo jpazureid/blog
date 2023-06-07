@@ -159,7 +159,7 @@ Azure AD にてアカウントが [削除済みユーザー一覧] に移った�
 While attempting to validate our authorization to access your application, we received this unexpected response.
 ```
 
-この場合の対処策は、上記のトークンを新しく取得するため Azure AD 側でユーザー プロビジョニングを構成する際に、Azure AD 側で入力する SaaS側の管理者の資格情報の入力について改めて再構成することで、検疫状態が解消されプロビジョニングが動作できる可能性が考えられます。
+この場合の対処策は、上記のトークンを新しく取得するため Azure AD 側でユーザー プロビジョニングを構成する際に、Azure AD 側で入力する SaaS 側の管理者の資格情報の入力について改めて再構成することで、検疫状態が解消されプロビジョニングが動作できる可能性が考えられます。
 
 プロビジョニングの検疫に関する詳細は、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/app-provisioning/application-provisioning-quarantine-status)もご確認ください。
 
