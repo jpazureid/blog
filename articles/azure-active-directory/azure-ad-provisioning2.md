@@ -85,7 +85,7 @@ Azure AD にて用意されたエンタープライズアプリケーション�
 
 #### マッピング追加手順
 
-1. 以下のパラメータ付きURL を使用して Azure Active Directory ポータルにサインインします。
+1. 以下のパラメーター付き URL を使用して Azure Active Directory ポータルにサインインします。
 
 https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true
 	
