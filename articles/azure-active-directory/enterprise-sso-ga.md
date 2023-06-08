@@ -34,13 +34,13 @@ Apple デバイス向けの Microsoft Enterprise SSO の素晴らしいところ
 
 ## Office をはじめ、ご愛用のアプリケーションのほとんどがすでにサポートされています！
 
-このメリットは、自社のアプリケーションだけにとどまりません。Apple のエンタープライズ シングル サインオン機能をサポートするあらゆるアプリケーションは、SSO を含む上記のすべてのメリットを得ることができます。これには、すべての macOS、iOS、iPad の Office アプリケーション、macOS の Microsoft Edge、Safari、その他多くのアプリケーションが含まれます。Apple のネットワークライブラリを使用していないアプリケーションは今のところこの機能を利用することはできませんが、将来的にはすべてのアプリケーションが Apple のエンタープライズ SSO 機能をサポートするようになると見込んでいます。
+自社のアプリケーションだけにとどまらず、[Apple のエンタープライズ シングル サインオン](https://developer.apple.com/documentation/authenticationservices)機能をサポートするあらゆるアプリケーションは、SSO を含む上記のすべてのメリットを得ることができます。これには、すべての macOS、iOS、iPad の Office アプリケーション、macOS の Microsoft Edge、Safari、その他多くのアプリケーションが含まれます。Apple のネットワークライブラリを使用していないアプリケーションは今のところこの機能を利用することはできませんが、将来的にはすべてのアプリケーションが Apple のエンタープライズ SSO 機能をサポートするようになると見込んでいます。
 
-従業員に最高の Entra 体験を提供するために必要なことは、アプリを常にアップデートすることです！
+最新のアプリが従業員に最高の Entra エクスペリエンスを提供します。
 
 
 ## さあ、はじめよう
-このプロダクトはマイクロソフトとアップルの間で 5 年以上かけて実現したものであり、お客様に導入していただけることを楽しみにしています。Microsoft Enterprise SSO Extension の詳細については[こちらをご覧ください](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/apple-sso-plugin) 。
+このプロダクトはマイクロソフトとアップルの間で 5 年以上かけて実現したものであり、お客様に導入していただけることを楽しみにしています。Microsoft Enterprise SSO Extension の詳細については[こちらをご覧ください](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/apple-sso-plugin) 。また、導入の準備が整った段階でご利用いただける MDM に特化した導入ガイダンスを[こちら](https://learn.microsoft.com/ja-jp/mem/intune/configuration/use-enterprise-sso-plug-in-ios-ipados-macos?pivots=all)でご案内しています。
 
 Microsoft Enterprise SSO Extension をより深く理解したい方は、[SSO for Azure AD on Apple Platforms](https://www.youtube.com/watch?v=1k2EDEnRgz8) に関するビデオをご覧ください。また、[Apple デバイスを条件付きアクセスと統合する](https://www.youtube.com/watch?v=7_ec_qFbvGw&t=279s)ことをお勧めします。最後に、Microsoft Enterprise SSO Extension のトラブルシューティングが必要な場合は、[トラブルシューティング ガイド](https://learn.microsoft.com/ja-jp/azure/active-directory/devices/troubleshoot-mac-sso-extension-plugin)を参照してください。
 
