@@ -59,8 +59,10 @@ Set-AdfsProperties -AutoCertificateRollover $false
 ## 3. Azure AD のフェデレーションドメインに、新しいセカンダリ証明書をアップデートする
 
 以下の手順で Microsoft Graph PowerShell を利用して、Azure AD のフェデレーションドメインに新しいトークン署名証明書をアップデートします。
+手順 2 でエクスポートした、プライマリとセカンダリの証明書ファイル (.cer) を、作業を行う端末の任意のディレクトリにコピーしておいてください。
+(AD FS サーバー自身で実行する場合、エクスポートしたファイルをそのままご利用ください。)
 
-####3-1. Windows 10 の PC など、任意のインターネットに接続できる PC で、Microsoft Graph PowerShell の必要なモジュールをインストールします。
+#### 3-1. Windows 10 の PC など、任意のインターネットに接続できる端末に、Microsoft Graph PowerShell の必要なモジュールをインストールします。
 
 [Microsoft Graph PowerShell をインストールする](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/installation?view=graph-powershell-1.0) PC には、PowerShell 5.1 以降、および .NET Framework 4.7.2 以降が必要です。
 
@@ -68,20 +70,20 @@ Set-AdfsProperties -AutoCertificateRollover $false
 Install-Module -Name "Microsoft.Graph.Identity.DirectoryManagement" -Force
 ```
 
-####3-2. 対象のテナントに接続し、グローバル管理者アカウントでサインインします。
+#### 3-2. 対象のテナントに接続し、グローバル管理者アカウントでサインインします。
 
 ```powershell
 Connect-MgGraph -Scopes "Directory.AccessAsUser.All"
 ```
 アクセス許可を要求する画面が表示された場合には、承諾します。
 
-####3-3. 接続したテナントに、対象のドメインがあることを確認します。
+#### 3-3. 接続したテナントに、対象のドメインがあることを確認します。
 
 ```powershell
 Get-MgDomain
 ```
 
-####3-4. 対象のドメインの現在の設定を確認します。
+#### 3-4. 対象のドメインの現在の設定を確認します。
 
 ```powershell
 Get-MgDomainFederationConfiguration -DomainId <対象のドメイン> | FL
@@ -106,12 +108,13 @@ AdditionalProperties                  : {}
 ```
 
 SigningCertificate と NextSigningCertificate の値を確認して、「2. 既存のプライマリ証明書と、セカンダリ証明書をエクスポートする」の手順でエクスポートした既存のプライマリ証明書が、どちらに設定されているかを確認します。
-上記の例は、SigningCertificate に既存のプライマリ証明書 (途中省略しています) が設定されていて、NextSigningCertificate には何も設定されていない状態です。
+証明書ファイル (.cer) をテキストエディタで開くと、Base64 エンコードされた文字列を確認することができます。
+上記の例は、SigningCertificate に既存のプライマリ証明書 ( "MIIGFT ... yEzQw==" 途中省略しています) が設定されていて、NextSigningCertificate には何も設定されていない状態です。
 この場合には、次の手順で NextSigningCertificate に新しいセカンダリ証明書を設定します。
 ほとんどの環境では SigningCertificate に既存のプライマリ証明書が設定されているはずですが、もし NextSigningCertificate 側に設定されていた場合には、上書きしないように、次の手順で SigningCertificate 側に新しいセカンダリ証明書を設定します。
 
 
-####3-5. 対象のドメインに新しいセカンダリの証明書をアップデートします。
+#### 3-5. 対象のドメインに新しいセカンダリの証明書をアップデートします。
 上記の手順 3-4 の確認で、SigningCertificate 側に既存のプライマリ証明書が設定されていた場合には、以下のように NextSigningCertificate に新しいセカンダリの証明書を設定します。
 
 ```powershell
@@ -119,15 +122,40 @@ $domainId = "test.com" (対象のドメインを指定します。)
 
 $federationId = "b393ece7-895a-436c-9794-787c6d1ae77f" (上の手順 4 で確認した Id の値を指定します。)
 
-$cert = "MIIC4j ... FOO3A=="  (新しいセカンダリ証明書の Base64 エンコード文字列を、改行せずに一行で指定します。)
+$certObj=New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("C:\secondary.cer") (セカンダリの新しい証明書のパスを指定します。)
+$certData = [system.convert]::tobase64string($certObj.rawdata)
 
-Update-MgDomainFederationConfiguration -DomainId $domainId -InternalDomainFederationId $federationId -NextSigningCertificate $cert
+Update-MgDomainFederationConfiguration -DomainId $domainId -InternalDomainFederationId $federationId -NextSigningCertificate $certData
 ```
 
 もし上記の手順 3-4 の確認で NextSigningCertificate に既存のプライマリ証明書が設定されていた場合には、以下のように SigningCertificate に新しいセカンダリ証明書を設定します。
 
 ```powershell
-Update-MgDomainFederationConfiguration -DomainId $domainId -InternalDomainFederationId $federationId -SigningCertificate $cert
+Update-MgDomainFederationConfiguration -DomainId $domainId -InternalDomainFederationId $federationId -SigningCertificate $certData
+```
+
+念のため、設定後に正しく新しいセカンダリの証明書が追加されていること、および既存のプライマリ証明書が消えていないことをお確かめください。
+
+```powershell
+Get-MgDomainFederationConfiguration -DomainId <対象のドメイン> | FL
+
+(実行結果例)
+ActiveSignInUri                       : https://sts.test.com/adfs/services/trust/2005/usernamemixed
+DisplayName                           : AD FS
+FederatedIdpMfaBehavior               :
+Id                                    : b393ece7-895a-436c-9794-787c6d1ae77f
+IsSignedAuthenticationRequestRequired :
+IssuerUri                             : http://sts.test.com/adfs/services/trust
+MetadataExchangeUri                   : https://sts.sts.test.com/adfs/services/trust/mex
+NextSigningCertificate                : MIIC4j ... FOO3A== ★<-- 追加された新しいセカンダリの証明書
+PassiveSignInUri                      : https://sts.sts.test.com/adfs/ls/
+PreferredAuthenticationProtocol       : wsFed
+PromptLoginBehavior                   : 
+SignOutUri                            : https://sts.test.com/adfs/ls/
+SigningCertificate                    : MIIGFT ... yEzQw== ★<-- 既存のプライマリ証明書
+SigningCertificateUpdateStatus        : 
+AdditionalProperties                  : {}
+
 ```
 
 
