@@ -59,6 +59,7 @@ Set-AdfsProperties -AutoCertificateRollover $false
 ## 3. Azure AD のフェデレーションドメインに、新しいセカンダリ証明書をアップデートする
 
 以下の手順で Microsoft Graph PowerShell を利用して、Azure AD のフェデレーションドメインに新しいトークン署名証明書をアップデートします。
+
 手順 2 でエクスポートした、プライマリとセカンダリの証明書ファイル (.cer) を、作業を行う端末の任意のディレクトリにコピーしておいてください。
 (AD FS サーバー自身で実行する場合、エクスポートしたファイルをそのままご利用ください。)
 
@@ -122,7 +123,7 @@ $domainId = "test.com" (対象のドメインを指定します。)
 
 $federationId = "b393ece7-895a-436c-9794-787c6d1ae77f" (上の手順 4 で確認した Id の値を指定します。)
 
-$certObj=New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("C:\secondary.cer") (セカンダリの新しい証明書のパスを指定します。)
+$certObj = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("C:\secondary.cer") (セカンダリの新しい証明書のパスを指定します。)
 $certData = [system.convert]::tobase64string($certObj.rawdata)
 
 Update-MgDomainFederationConfiguration -DomainId $domainId -InternalDomainFederationId $federationId -NextSigningCertificate $certData
