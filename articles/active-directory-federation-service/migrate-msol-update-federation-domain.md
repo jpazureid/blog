@@ -132,7 +132,8 @@ SigningCertificate と NextSigningCertificate の値を確認して、「2. 既�
 ほとんどの環境では SigningCertificate に既存のプライマリ証明書が設定されているはずですが、もし NextSigningCertificate 側に設定されていた場合には、上書きしないように、次の手順で SigningCertificate 側に新しいセカンダリ証明書を設定します。
 
 
-#### 3-5. 対象のドメインに新しいセカンダリの証明書をアップデートします。
+### 3-5. 対象のドメインに新しいセカンダリの証明書をアップデートします
+
 上記の手順 3-4 の確認で、SigningCertificate 側に既存のプライマリ証明書が設定されていた場合には、以下のように NextSigningCertificate に新しいセカンダリの証明書を設定します。
 
 ```powershell
