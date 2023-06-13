@@ -126,7 +126,7 @@ AdditionalProperties                  : {}
 ```
 
 SigningCertificate と NextSigningCertificate の値を確認して、「2. 既存のプライマリ証明書と、セカンダリ証明書をエクスポートする」の手順でエクスポートした既存のプライマリ証明書が、どちらに設定されているかを確認します。
-証明書ファイル (.cer) をテキストエディタで開くと、Base64 エンコードされた文字列を確認することができます。
+証明書ファイル (.cer) をテキスト エディターで開くと、Base64 エンコードされた文字列を確認することができます。
 上記の例は、SigningCertificate に既存のプライマリ証明書 ( "MIIGFT ... yEzQw==" 途中省略しています) が設定されていて、NextSigningCertificate には何も設定されていない状態です。
 この場合には、次の手順で NextSigningCertificate に新しいセカンダリ証明書を設定します。
 ほとんどの環境では SigningCertificate に既存のプライマリ証明書が設定されているはずですが、もし NextSigningCertificate 側に設定されていた場合には、上書きしないように、次の手順で SigningCertificate 側に新しいセカンダリ証明書を設定します。
