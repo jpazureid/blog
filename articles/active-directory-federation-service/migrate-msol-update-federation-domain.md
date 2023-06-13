@@ -79,7 +79,10 @@ AD FS の管理ツールを起動して、左ペインの [サービス] - [証�
 
 #### 3-1. Windows 10 の PC など、任意のインターネットに接続できる端末に、Microsoft Graph PowerShell の必要なモジュールをインストールします。
 
-[Microsoft Graph PowerShell をインストールする](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/installation?view=graph-powershell-1.0) PC には、PowerShell 5.1 以降、および .NET Framework 4.7.2 以降が必要です。
+[Microsoft Graph PowerShell をインストールする](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/installation?view=graph-powershell-1.0) の手順にあるとおり、動作には以下のいずれかの環境が必要です。
+
+- PowerShell 7 以降 (推奨)
+- PowerShell 5.1 以降、および .NET Framework 4.7.2 以降
 
 ```powershell
 Install-Module -Name "Microsoft.Graph.Identity.DirectoryManagement" -Force
