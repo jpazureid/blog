@@ -101,7 +101,7 @@ Connect-MgGraph -Scopes "Directory.AccessAsUser.All"
 Get-MgDomain
 ```
 
-#### 3-4. 対象のドメインの現在の設定を確認します。
+### 3-4. 対象のドメインの現在の設定を確認します
 
 ```powershell
 Get-MgDomainFederationConfiguration -DomainId <対象のドメイン> | FL
