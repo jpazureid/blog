@@ -77,7 +77,7 @@ AD FS の管理ツールを起動して、左ペインの [サービス] - [証�
 手順 2 でエクスポートした、プライマリとセカンダリの証明書ファイル (.cer) を、作業を行う端末の任意のディレクトリにコピーしておいてください。
 (AD FS サーバー自身で実行する場合、エクスポートしたファイルをそのままご利用ください。)
 
-#### 3-1. Windows 10 の PC など、任意のインターネットに接続できる端末に、Microsoft Graph PowerShell の必要なモジュールをインストールします。
+### 3-1. Windows 10 の PC など、任意のインターネットに接続できる端末に、Microsoft Graph PowerShell の必要なモジュールをインストールします。
 
 [Microsoft Graph PowerShell をインストールする](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/installation?view=graph-powershell-1.0) の手順にあるとおり、動作には以下のいずれかの環境が必要です。
 
@@ -88,14 +88,14 @@ AD FS の管理ツールを起動して、左ペインの [サービス] - [証�
 Install-Module -Name "Microsoft.Graph.Identity.DirectoryManagement" -Force
 ```
 
-#### 3-2. 対象のテナントに接続し、グローバル管理者アカウントでサインインします。
+### 3-2. 対象のテナントに接続し、グローバル管理者アカウントでサインインします。
 
 ```powershell
 Connect-MgGraph -Scopes "Directory.AccessAsUser.All"
 ```
 アクセス許可を要求する画面が表示された場合には、承諾します。
 
-#### 3-3. 接続したテナントに、対象のドメインがあることを確認します。
+### 3-3. 接続したテナントに、対象のドメインがあることを確認します。
 
 ```powershell
 Get-MgDomain
