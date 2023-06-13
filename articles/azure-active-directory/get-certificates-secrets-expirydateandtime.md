@@ -10,7 +10,7 @@ tags:
 
 こんにちは。Azure Identity チームの栗井です。
 
-Azure AD の \[アプリの登録\] から各アプリに連携している証明書・クライアント シークレット、ならびに \[エンタープライズ アプリケーション\] で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限がございます。
+Azure AD の \[アプリの登録\] から各アプリに連携している証明書・クライアント シークレット、ならびに \[エンタープライズ アプリケーション\] で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限があります。
 
 Azure Portal の画面上では、有効期限を一覧で確認できないため、Microsoft Graph などの API を利用する必要がございます。
 
@@ -39,7 +39,7 @@ PowerShell を使用する端末で、Microsoft Graph PowerShell SDK が未イ�
 1. Windows 端末上で PowerShell を管理者権限で起動します。
 1. 下記コマンドを実行します。
 
-```
+```powershell
 Install-Module Microsoft.Graph
 ```
 
@@ -51,7 +51,7 @@ Install-Module Microsoft.Graph
 
 後述の手順を実施いただく前に、下記コマンドを実行のうえ、Azure AD テナントに接続ください。
 
-```
+```powershell
 Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
 ```
 
@@ -81,8 +81,8 @@ Welcome To Microsoft Graph!
 
 - アプリケーションの表示名
 - アプリケーション ID
-- クライアント シークレットの有効期限の開始日時
-- クライアント シークレットの有効期限の終了日時
+- クライアント シークレットの有効期限の開始日時 (UTC)
+- クライアント シークレットの有効期限の終了日時 (UTC)
 - 所有者
 - 所有者のオブジェクト ID
 
@@ -194,9 +194,9 @@ $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 
 - アプリケーションの表示名
 - アプリケーション ID
-- アプリケーションの作成日時
-- 証明書の有効期限の開始日時
-- 証明書の有効期限の終了日時
+- アプリケーションの作成日時 (UTC)
+- 証明書の有効期限の開始日時 (UTC)
+- 証明書の有効期限の終了日時 (UTC)
 - 所有者
 - 所有者のオブジェクト ID
 
@@ -206,7 +206,7 @@ $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 
 Get-MgServicePrincipal コマンドをフィルターを付けて使用し、サービス プリンシパル オブジェクトの一覧の中から SAML ベースの SSO を構成済みのサービスプリンシパルだけを取得します。    
 サンプル スクリプト 2 内のコメントのとおり、2020 年初頭以降に作成されたアプリケーションでは PreferredSingleSignOnMode プロパティに値がセットされますが、それ以前に作成されたアプリケーションでは preferredSingleSignOnMode は null です。    
-お手数をおかけし恐縮ですが、2020 年初頭以前に作成された SAML ベースの SSO を構成済みのアプリケーションの一覧については貴社にて管理をお願いいたします。
+2020 年初頭以前に作成された SAML ベースの SSO を構成済みのアプリケーションの一覧については貴社にて管理をお願いいたします。
 
 その後、サービス プリンシパル オブジェクト内のプロパティを読み取っています。  
 サービス プリンシパル オブジェクトのプロパティの一覧は下記公開情報にございます:  
