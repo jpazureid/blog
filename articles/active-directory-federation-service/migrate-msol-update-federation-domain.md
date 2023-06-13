@@ -32,19 +32,29 @@ PowerShell で以下のように実行します。
 
 ```powershell
 Update-AdfsCertificate
-
-このコマンドを実行するためには、証明書の自動ロールオーバーが有効である必要があります。
-証明書の自動ロールオーバーを有効にするには、以下を実行します。
-
-Set-AdfsProperties -AutoCertificateRollover $true
-
-自動ロールオーバーを無効に戻したい場合には、以下を実行します。
-
-Set-AdfsProperties -AutoCertificateRollover $false
 ```
+
 コマンドを実行すると、新しいトークン署名証明書と、トークン暗号化解除証明書がセカンダリとして作成されます。
 
-Update-AdfsCertificate コマンド実行時に -urgent オプションを付与しないようにご注意ください。付与した場合には、新しい証明書がセカンダリとして作成されるのではなく、プライマリとして作成されて即時に上書きされ、Azure AD 側に新しい証明書がアップデートされるまでの間、認証が失敗するようになります。
+> [!WARNING]
+> Update-AdfsCertificate コマンド実行時に -urgent オプションを付与しないようにご注意ください。付与した場合には、新しい証明書がセカンダリとして作成されるのではなく、プライマリとして作成されて即時に上書きされ、Azure AD 側に新しい証明書がアップデートされるまでの間、認証が失敗するようになります。
+
+> [!NOTE]
+> Update-AdfsCertificate を実行するためには、[証明書の自動ロールオーバー](#補足-自動ロール-オーバーの有効化手順) が有効である必要があります。
+
+### 補足: 自動ロール オーバーの有効化手順
+
+証明書の自動ロールオーバーを有効にするには、以下を実行します。
+
+> ```powershell
+> Set-AdfsProperties -AutoCertificateRollover $true
+> ```
+>
+> 自動ロールオーバーを無効に戻したい場合には、以下を実行します。
+>
+> ```powershell
+> Set-AdfsProperties -AutoCertificateRollover $false
+> ```
 
 
 ## 2. AD FS で既存のプライマリ証明書と、セカンダリ証明書をエクスポートする
