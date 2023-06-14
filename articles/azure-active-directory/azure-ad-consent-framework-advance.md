@@ -315,3 +315,25 @@ $adminConsents = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.Id)' an
 # 付与された管理者同意を削除
 $adminConsents | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id }
 ```
+
+#### 特定アプリに対する特定の管理者の同意のみを削除
+
+```powershell
+# クラウド アプリケーション管理者権限でサインイン
+Connect-MgGraph -Scope "Application.ReadWrite.All,DelegatedPermissionGrant.ReadWrite.All"
+ 
+# 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得
+$sp = Get-MgServicePrincipal -Filter "appId eq '<AppId>'"
+
+# 付与された管理者同意を取得
+$adminConsents = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.Id)' and consentType eq 'AllPrincipals'"
+
+# 削除したい管理者の同意を指定
+$RemovePermissions = @("User.Read","Mail.Read")
+
+# 削除したい管理者の同意を除く新しいスコープを定義
+$scope = ($adminConsents.Scope.Split(" ") | Where-Object { -not ($RemovePermissions -ccontains $_)}) -join " "
+              
+# 新しいスコープで管理者の同意を更新
+Update-MgOauth2PermissionGrant -OAuth2PermissionGrantId $adminConsents.id -Scope $scope
+```
