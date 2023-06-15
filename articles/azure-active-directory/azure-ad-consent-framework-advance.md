@@ -316,7 +316,9 @@ $adminConsents = Get-MgOauth2PermissionGrant -Filter "clientId eq '$($sp.Id)' an
 $adminConsents | ForEach-Object{ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $_.Id }
 ```
 
-#### 特定アプリに対する特定の管理者の同意のみを削除
+#### 特定アプリに付与した管理者の同意のうち、一部の API のアクセス許可のみを削除
+
+例えば "openid profile User.Read Mail.Read" から、 "User.Read Mail.Read" のみを削除する
 
 ```powershell
 # クラウド アプリケーション管理者権限でサインイン
