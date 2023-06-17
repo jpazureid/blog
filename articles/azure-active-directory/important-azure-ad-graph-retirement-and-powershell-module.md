@@ -7,6 +7,12 @@ tags:
 
 # 重要 - Azure AD Graph の廃止と PowerShell モジュールの非推奨
 
+こんにちは、Azure Identity サポート チームの 高田 です。
+
+本記事は、2023 年 6 月 15 日に米国の Azure Active Directory Identity Blog で公開された [Important: Azure AD Graph Retirement and Powershell Module Deprecation](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/important-azure-ad-graph-retirement-and-powershell-module/ba-p/3848270) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+
+----
+
 2019 年に、弊社では Azure AD Graph サービスの [非推奨を発表](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) しました。さらに 1 年前、Azure AD Graph が 2023 年 6 月 30 日以降に廃止され機能しなくなることも [お伝え](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363) しました。また、3 つのレガシーな PowerShell モジュール (Azure AD、Azure AD Preview、MS Online) が 2023 年 6 月 30 日に非推奨になることも以前にお伝えしました。
 
 この度、これら変更のタイムラインに関して最新情報を提供するとともに、今後生じる対応についてさらに明確な情報を提供したいと思います。Azure AD Graph と 3 つの PowerShell モジュールに新たな投資は行われないため、**すべてのお客様** が Microsoft Graph API と Microsoft Graph PowerShell SDK への移行を優先し、サポートと機能の継続を確保することが非常に重要となっています。  
