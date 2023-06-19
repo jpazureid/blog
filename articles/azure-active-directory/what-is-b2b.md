@@ -1,6 +1,6 @@
 ---
 title: Azure AD B2B とは
-date: 2023-04-01
+date: 2023-06-26
 tags:
   - Azure AD B2B
   - RBAC
@@ -12,13 +12,14 @@ tags:
 
 > [!NOTE]
 > 2017-12-12: 本記事の初版を投稿  
-> 2023-04-01: 画面ショットや Azure ポータル上のメニューの変更に伴い内容を更新
+> 2023-04-01: Azure ポータル上のメニューの変更に伴い画面ショットや内容を更新   
+> 2023-06-26: Azure ポータル上のメニューの変更に伴い画面ショットや内容を更新
 
 # Azure AD B2B とは
 
 こんにちは、Azure & Identity サポート チームの三輪です。
 
-今回は Azure AD B2B (Business-To-Business) コラボレーション機能 (以下、Azure AD B2B) について紹介します。この記事はもともと 2017 年 12 月に公開されましたが、その後 Azure ポータルのメニューなどが変更されたため、内容を最新版に更新いたしました
+今回は Azure AD B2B (Business-To-Business) コラボレーション機能 (以下、Azure AD B2B) について紹介します。この記事はもともと 2017 年 12 月に公開されましたが、その後 Azure ポータルのメニューなどが変更されたため、内容を最新版に更新いたしました。
 
 Azure AD B2B の概要については、公開ドキュメントである [B2B コラボレーションの概要](https://docs.microsoft.com/ja-jp/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) をまずご覧ください。
 
@@ -50,9 +51,13 @@ Azure サブスクリプションは必ず 1 つの Azure AD テナントに関�
 
 ### 1. ゲスト ユーザーの直接的な招待
 
-明示的に別の Azure AD テナントのユーザー (または outlook.com や gmail.com など外部アカウント) を招待し追加する操作です。Azure ポータルのメニューより [Azure Active Directory] – [ユーザーとグループ] – [すべてのユーザー] – [新しいユーザー] の順に進みます。下記、[外部ユーザーの招待] からユーザーの E メール アドレス (もしくは Azure AD の UPN) を追加します。指定されたユーザーに招待 E メールが送られますので、E メールを受け取ったユーザーは、その E メールのリンクからウィザードを完了する必要があります。
+明示的に別の Azure AD テナントのユーザー (または outlook.com や gmail.com など外部アカウント) を招待し追加する操作です。Azure ポータルのメニューより [Azure Active Directory] – [ユーザーとグループ] – [すべてのユーザー] – [新しいユーザー] の順に進みます。下記、[外部ユーザーの招待] からユーザーの E メール アドレス (もしくは Azure AD の UPN) を追加します。
 
 ![](./what-is-b2b/screenshot-new-guest-user-new.png)
+
+[招待メッセージの送信] にチェックを入れると、指定されたユーザーに招待 E メールが送られますので、E メールを受け取ったユーザーは、その E メールのリンクからウィザードを完了することができます。
+
+![](./what-is-b2b/screenshot-sendmail.png)
 
 ### 2. RBAC (アクセス制御 IAM) によるユーザーの招待
 
