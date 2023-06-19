@@ -32,7 +32,7 @@ Azure AD へのユーザー招待は、明示的に Azure Active Directory の�
 
 なお、招待 E メールが届いていない場合、赤枠部分の「B2B コラボレーション」の [招待の再送信] - [再送信] から招待 E メールの再送も可能です。
 
-![](./azuread-b2b-troubleshooting/renew2.png)
+![](./azuread-b2b-troubleshooting/renew2-blue.png)
 
 招待 E メールは下記のようなメールです。
 
