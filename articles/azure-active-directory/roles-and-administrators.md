@@ -1,6 +1,6 @@
 ---
 title: Azure AD におけるロール管理の新しい方法
-date: 2018-08-23
+date: 2023-06-26
 tags:
   - Azure AD
 ---
@@ -10,6 +10,11 @@ tags:
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 > 
 > また、PIM の活用法については、[こちら](https://jpazureid.github.io/blog/azure-active-directory/pim-overview/) でご紹介しています。
+
+> [!NOTE]
+> 2018-08-23: 本記事の初版を投稿  
+> 2023-06-26: Azure ポータル上のメニューの変更に伴い画面ショットや内容を更新
+
 
 # Azure AD におけるロール管理の新しい方法
 
@@ -63,6 +68,8 @@ tags:
 ![](./roles-and-administrators/05.png)  
 図: 割り当て可能なロールの一覧
 
+
+
 ## PIM での更新
 
 Privileged Identity Management (PIM) を使用することで、より細やかな権限管理が可能です。   
@@ -80,7 +87,7 @@ PIM 上で Azure AD ロールを管理する際には、左ブレードで「Azu
 
 また、Azure AD Premium P2 ライセンスをお持ちのテナントで、PIM の画面を開くと、以降、Azure AD 上の 「ロールと管理」から Azure AD ロールの管理を行う際にも、各ロールの管理画面では PIM の画面が表示されるようになります。
 
-![](./roles-and-administrators/08.png)
+![](./roles-and-administrators/08.png)   
 図: 各 Azure AD ロールの管理画面の例
 
 上記内容が少しでも参考となりますと幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。
