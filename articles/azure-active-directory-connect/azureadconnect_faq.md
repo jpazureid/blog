@@ -259,10 +259,13 @@ V1.x を利用している場合も、AADC 観点では最新バージョンへ�
 
 ### **Q. AADC からの同期エラーの通知メールを受信しました。受信者はどこで確認できますか？**  
 **A.** 同期処理での問題について、以前通知は 2 種類ありましたが、現在は統一されています。下記手順にてご確認ください。
+
 Azure AD Connect Health Agent : azure-noreply@microsoft.com
 
 Azure AD Connect Health Agent 通知先設定手順
+
 設定箇所 : [Azure ポータル] - [Azure AD Connect] - [Azure AD Connect Health] - [同期エラー] - [通知設定]
+
 設定項目 : 追加の電子メール受信者
 
   
