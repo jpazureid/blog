@@ -76,7 +76,7 @@ Azure AD には、テナントに作成できるオブジェクト数に制限�
 | givenName                    | String            | 64 文字                                                                                    | 
 | id                           | String            | 123e4567-e89b-12d3-a456-426614174000 などの 16 進数の 32 文字 + 4 ハイフン の文字          | 
 | imAddresses                  | String collection | Read-only                                                                                  | 
-| jobTitle                     | String            | 64 文字                                                                                    | 
+| jobTitle                     | String            | 128 文字                                                                                    | 
 | mail                         | String            | メールアドレスの長さが最大 256 文字。メール アドレスのユーザー名部分の長さが最大 64 文字 | 
 | mailNickname                 | String            | 64 文字                                                                                    | 
 | mobilePhone                  | String            | 32 文字                                                                                    | 
