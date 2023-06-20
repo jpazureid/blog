@@ -280,7 +280,7 @@ Set-ADSyncScheduler -CustomizedSyncCycleInterval <任意の時間>
 例 (60 分に設定する場合)
 ```PowerShell  
 Set-ADSyncScheduler -CustomizedSyncCycleInterval 00:60:00  
- ```  
+```  
 
 なお、問題の発生を防ぐため、同期サイクルを変更した場合も、少なくとも 7 日に 1 度は同期が行われるようスケジュールを構成ください。[こちらの公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/how-to-connect-sync-feature-scheduler)も併せて参照ください。
 
@@ -415,9 +415,9 @@ Azure AD Connect には、大量のオブジェクトがオンプレミス Activ
 削除処理が意図したものである場合には、一旦この保護機能を無効にして、同期を許可するという対応を実施します。
 
 1. PowerShell を起動し、以下のコマンドを実行して、保護機能を一時的に無効にします。  
-  ```PowerShell  
-   Disable-ADSyncExportDeletionThreshold
-   ```
+```PowerShell  
+Disable-ADSyncExportDeletionThreshold
+```
 
 2. 手動で同期を実施し、正常に Export 処理が完了したことを確認します。
 ```PowerShell

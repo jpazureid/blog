@@ -114,7 +114,7 @@ Azure AD には、テナントに作成できるオブジェクト数に制限�
 
 ### <span style="color: blue; ">Q. ユーザーに条件付きアクセスを割り当てたいです。いくつまで正しく動作しますか？</span>
 
-<span style="color: red; ">A. </span> ユーザーごとに最初の 195 個のポリシーが適用されます。
+<span style="color: red; ">A. </span> 1つのテナントには最大 195 個のポリシーを作成できます。この数までは割り当てできますが、あまり多くの条件付きアクセスを割り当てると管理が困難になります。[こちらの公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/plan-conditional-access#minimize-the-number-of-conditional-access-policies) を参考に、割り当てるポリシーを最小限にしてください。
 
 ## ゲスト ユーザーに関する各種上限
 
