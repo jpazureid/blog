@@ -134,7 +134,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 設定の実施後の認証方法ポリシーの画面 (本記事での例) は以下のようになります。お客様でも、事前に控えておいたレガシー MFA ポリシーの設定状況を用いて認証方法ポリシーを同じように変更ください。
 
-![](./how-to-authentication-methods-manage/new-mfa.png)
+![](./how-to-authentication-methods-manage/image-after-mfa.png)
 
 ### レガシー SSPR ポリシーの認証方法ポリシーへの移行
 
@@ -153,7 +153,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 設定の実施後の認証方法ポリシーの画面 (本記事での例) は以下のようになります。お客様でも、事前に控えておいたレガシー SSPR ポリシーの設定状況を用いて認証方法ポリシーを同じように変更ください。
 
-![]()
+![](./how-to-authentication-methods-manage/image-after-sspr.png)
 
 ## 3. 移行が進行中での状態の確認
 
