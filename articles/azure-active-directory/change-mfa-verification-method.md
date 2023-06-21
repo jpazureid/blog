@@ -59,11 +59,11 @@ tags:
 
 4. 画面左側のメニューから [認証方法] タブを選択します。
 
-    ![](./mfa-reset-2022/auth-method-tab.png)  
+    ![](./change-mfa-verification-method.md/auth-method-tab.png)  
 
 5. [MFA の再登録が必要] を押下します。
 
-    ![](./mfa-reset-2022/auth-method-reset.png)  
+    ![](./change-mfa-verification-method.md/auth-method-reset.png)  
   
 管理者によって、ユーザーの MFA 認証方法がリセットされたら、ユーザーは MFA 認証方法を再登録する必要があります。前述の「現在登録されているモバイル デバイスで、MFA 認証ができる場合」の手順に従って、新しいデバイスを MFA 認証方法として登録ください。
 
