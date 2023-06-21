@@ -26,30 +26,16 @@ tags:
 この場合、MFA 認証方法の変更 / 追加は、ユーザー自身の操作のみで行うことができます。ユーザーには以下の方法で、MFA 認証方法の変更 / 追加を行ってもらってください。
 
 ### MFA 認証方法の変更 / 追加手順
-ユーザーに、任意のデバイス (※) で https://aka.ms/mfasetup にアクセスしてもらいます。
+ユーザーに、任意のデバイスで https://aka.ms/mfasetup にアクセスします。
 
-(※作業の途中で、新しいモバイル デバイスのカメラで読みこむための、QR コードが表示されます。PC やタブレットなど、新しいモバイル デバイス以外の端末にしましょう。)
+サインインと MFA が要求たら、それぞれ認証を行いましょう。
 
-サインインと MFA が要求されます。それぞれ認証を行いましょう。
-
-この先は、2 パターンに分かれます。
-#### パターン 1 : 以下の画面が出てきた場合 (URL : https://mysignins.microsoft.com/security-info)
-
-![](./change-mfa-verification-method/figure1.png)
+以下の画面 (URL : https://mysignins.microsoft.com/security-info) が表示されます。
 
 [+ 方法の追加] を選択してください。画面の表示に従って、新しいモバイル デバイスを、MFA 認証方法として登録しましょう。
 
-#### パターン 2 : 以下の画面が出てきた場合 (URL : https://account.activedirectory.windowsazure.com/proofup.aspx)
+![](./change-mfa-verification-method/figure1.png)
 
-![](./change-mfa-verification-method/figure2.png)
-
-SMS もしくは 音声通話認証の場合 : [認証用電話] の番号を変更し、保存してください。
-Microsoft Authenticator をご利用の場合 :  [Authenticator アプリの設定] を選択し、画面の指示に従ってください。
-
-いずれの画面も、登録済みの MFA 認証方法を一覧で確認できます。
-もし、「既存のデバイスでは、もう MFA 認証を行わない！」と決まっている場合、一覧から削除してしまいましょう。
-
-※ 複数端末を MFA 認証方法として登録する場合 : 認証方法としては、SMS / 電話は 1 つの電話番号のみ、Microsoft Authenticator は複数の端末が登録可能です。複数モバイル デバイスによる MFA 認証を行いたい場合は、Microsoft Authenticator をご利用ください。
 
 ## 現在登録されているモバイル デバイスで、MFA 認証ができない場合
 この場合、以下のいずれかの方法によって、管理者がユーザーの MFA 認証方法をリセット / 変更ください。
