@@ -15,7 +15,7 @@ tags:
 
 前回に引き続き、本エントリではトークン署名証明書、トークン暗号化解除証明書の更新手順をご紹介いたします。
 
-トークン署名証明書、トークン暗号化解除証明書は AD FS が発行する自己証明書であり、既定では 1 年に 1 回自動的に新しい証明書の作成、更新処理が行われます。これを、[自動ロールオーバー機能](https://blogs.technet.microsoft.com/jpntsblog/2016/10/13/ad-fs-%E3%81%AE%E8%87%AA%E5%8B%95%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%83%AD%E3%83%BC%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%A9%9F%E8%83%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/) と呼びます。
+トークン署名証明書、トークン暗号化解除証明書は AD FS が発行する自己証明書であり、既定では 1 年に 1 回自動的に新しい証明書の作成、更新処理が行われます。これを、[自動ロールオーバー機能](../../active-directory-federation-service/ad-fs-auto-rollover.md) と呼びます。
 
 自動ロールオーバー機能は、具体的には以下のように動作します。
 
@@ -66,7 +66,7 @@ tags:
     Update-ADFSCertificate
     ```
 
-    ※ このコマンドを実行するためには、[自動ロールオーバー機能](https://blogs.technet.microsoft.com/jpntsblog/2016/10/13/ad-fs-%E3%81%AE%E8%87%AA%E5%8B%95%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%83%AD%E3%83%BC%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%A9%9F%E8%83%BD%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/) が有効である必要がございます。無効の場合には、事前に以下のコマンドを実行し、有効にしてください。
+    ※ このコマンドを実行するためには、[自動ロールオーバー機能](../../active-directory-federation-service/ad-fs-auto-rollover.md) が有効である必要がございます。無効の場合には、事前に以下のコマンドを実行し、有効にしてください。
 
     ```powershell
     Set-ADFSProperties -AutoCertificateRollover $true
@@ -82,6 +82,12 @@ tags:
 新しいトークン署名証明書を作成いたしましたら、証明書利用者信頼にその新しい証明書を登録する必要があります。セカンダリのトークン署名/トークン暗号化解除証明書が作成されてから 5 日以内に、証明書利用者信頼に新しい証明書を登録する必要があります。これは、セカンダリのトークン署名/トークン暗号化解除証明書が作成されてから 5 日後にプライマリに昇格されて、実際に使用されるようになるためです。
 
 ここでは、例として Office 365 の場合の手順をご案内します (Office 365 以外の場合には、実際に利用されている証明書利用者信頼ごとに手順をご確認ください)。
+
+> [!NOTE]
+> 2023 年 6 月 23 日更新: <br>
+MS Online モジュールは、現時点で [2024 年 3 月 30 日に廃止予定](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/important-azure-ad-graph-retirement-and-powershell-module/ba-p/3848270)です。
+Microsoft Graph PowerShell を利用する手順は [こちら](../../active-directory-federation-service/migrate-msol-update-federation-domain.md)をご覧ください。
+
 
 1. プライマリ AD FS サーバーでスタート画面などから [Windows PowerShell 用 Windows Azure Active Directory モジュール] を管理者として起動します。
 2. 起動した PowerShell で以下のコマンドを実行し、Office 365 に接続します。
