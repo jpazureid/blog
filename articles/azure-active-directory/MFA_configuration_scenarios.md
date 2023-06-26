@@ -51,7 +51,7 @@ Azure MFA サービスを利用するために、MFA を利用するユーザー
 
 | ライセンスの種類 | 利用可能な MFA 機能 | カスタマイズ性 |
 |:-----------|:------------|:------------|
-| Azure AD Free (MFA 用のライセンス不要) |S ecurity Defaults | × |
+| Azure AD Free (MFA 用のライセンス不要) |Security Defaults | × |
 | すべての Microsoft 365 プラン | ユーザーごとの MFA (Per-user MFA) | △ |
 | Azure AD Premium P1 (EMS E3 or Microsoft 365 E3 含む) | 条件付きアクセス (ヒント参照) | ○ |
 | Azure AD Premium P2 (EMS E5 or Microsoft 365 E5 含む) | リスクベースの条件付きアクセス | ○ |
@@ -64,7 +64,7 @@ Azure MFA サービスを利用するために、MFA を利用するユーザー
 
 例外的な対象は以下のとおりです。
 
-- AAD テナントの全体管理者の権限を持つユーザーは、MFA 用のライセンスが無い場合も Authenticator 以外の MFA 方法 (SMS or 電話) がご利用可能です。
+- AAD テナントの全体管理者の権限を持つユーザーは、MFA 用のライセンスが無い場合も Authenticator 以外の MFA 方法 (SMS) がご利用可能です。
 - Microsoft 365 Business Premium ライセンスは、Azure AD Premium P1 と同等の条件付きアクセスの機能が利用できます: [ビジネス向け Microsoft 365 を使用してデータをセキュリティで保護する](https://learn.microsoft.com/ja-jp/microsoft-365/business-premium/secure-your-business-data?view=o365-worldwide#1-use-multi-factor-authentication)
 
 それぞれの機能ごとのカスタマイズ性や (すべてではありませんが) 機能を利用するうえでのシナリオ例をまとめたものが以下となります。
