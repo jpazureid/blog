@@ -111,6 +111,7 @@ tags:
 ### 新しいモジュールの使用方法 (ライセンスに関する操作について)
 
 [Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/)
+[Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 (一括設定編)](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/)
 
 ### 新しいモジュールの使用方法 (ライセンス以外の操作について)
 
