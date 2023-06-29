@@ -31,7 +31,7 @@ Azure AD Connect の通信要件に関しては、弊社サポートにもよく
 
 ### Azure AD Connect を利用するための要件
 
-最低限絶対に必要なポートは、[本公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/reference-connect-ports#table-1---azure-ad-connect-and-on-premises-ad) に記載の 表 １ と表 2 です。その他、環境に応じて表 3 以降のポートを開ける必要もありますが、ここでは省略します。
+最低限必要なポートは、[本公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/reference-connect-ports#table-1---azure-ad-connect-and-on-premises-ad) に記載の 表 １ と表 2 です。その他、環境に応じて表 3 以降のポートを開ける必要もありますが、ここでは省略します。
 
 ![aadc-port-0626-1](./port-used-by-aadc/aadc-port-0626-1.png)
 
