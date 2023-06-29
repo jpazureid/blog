@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect Sync Configuration Documenter 使用方法
-date: 2020-09-29 19:00
+date: 2023-06-29 09:00
 tags:
   - Azure AD Connect
 ---
