@@ -35,7 +35,7 @@ Microsoft Identity Division
 
 今回は私 Vimala がテナント制限 v2 (TRv2) について説明いたします。
 
-弊社ではは、M365 クラウド サービスに移行するお客様、特に組織の境界を越えてコラボレーションする必要があるお客様にとって、データの流出が大きな懸念事項であると伺っています。TRv2 はこのような懸念に対応するもので、トークンの悪用による侵入や、外部の SharePoint オンラインのデータへの匿名アクセス、外部の Teams 会議への匿名参加などによる情報漏えいを防ぎ、安全な外部コラボレーションを実現します。
+弊社では、M365 クラウド サービスに移行するお客様、特に組織の境界を越えてコラボレーションする必要があるお客様にとって、データの流出が大きな懸念事項であると伺っています。TRv2 はこのような懸念に対応するもので、トークンの悪用による侵入や、外部の SharePoint オンラインのデータへの匿名アクセス、外部の Teams 会議への匿名参加などによる情報漏えいを防ぎ、安全な外部コラボレーションを実現します。
 
 現行のテナント制限はオンプレミスのプロキシ サーバーを使用しており、Azure Active Directory (Azure AD) によるクラウド認証時にのみ強制されていましたが、TRv2 はこれを改良しています。テナント制限 v2 を使用することで、外部組織から発行されたアカウントや未知のテナントで作成されたアカウントなどを含め、外部で発行された ID を使用してユーザーがネットワークやデバイスから外部アプリケーションにアクセスできるかどうかを管理者が制御できるようになります。
 
@@ -65,23 +65,23 @@ TRv2 は以下の機能を提供します:
 
 ## テナント制限ポリシーの設定
 
-1. 既定の TRv2 ポリシーの設定:
+1. 既定の TRv2 ポリシーを設定:
 
 Contoso 社は、ユーザーが Contoso 社のネットワークとデバイスを使用しながら、パートナーと連携する方法を制限したいとします。Contoso 社の管理者 Cathy は、まず、すべての連携先テナントに適用される既定のポリシーを設定します。既定のポリシーでは、管理者はすべての外部テナント、およびすべての外部ユーザーとグループへのアクセスをブロックします。
 
-![既定の TRv2 ポリシーの設定](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview1.png)
+![既定の TRv2 ポリシーの設定画面](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview1.png)
 
 2. テナント固有の TRv2 ポリシーを設定:
 
 Contoso 社の管理者である Cathy は、Fabrikam 社固有のポリシーを設定し、Alice のみが Fabrikam 社の ID を使用して Office 365 などの特定のアプリケーションにアクセスすることを許可します。
 
-![テナント固有の TRv2 ポリシーを設定](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview2.png)
+![テナント固有の TRv2 ポリシーの設定画面](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview2.png)
 
 3. デバイスにてクライアント側の TRv2 を有効化:
 
 テナント管理者、Cathy は Windows GPO のポリシーの詳細画面で、TRv2 クラウド ポリシーのテナント ID とポリシー ID を設定します。これにより、Contoso 社の全デバイスから、Microsoft への送信リクエストに対し、OS が TRv2 ポリシーへの参照を挿入するようになります。
 
-![デバイスにてクライアント側の TRv2 を有効化](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview3.png)
+![Windows GPO のポリシー設定画面](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview3.png)
 
 上記の設定により、Contoso 社の管理者は、Contoso 社のデバイスやネットワークから外部 ID を使用した外部テナントへのアクセスをすべてブロックし、加えて Fabrikam 社に対する固有のポリシーにより、Alice にのみ Alice の Fabrikam 社の ID を使用して Fabrikam 社の Office365 アプリケーションへアクセスすることを許可しました。
 
@@ -89,7 +89,7 @@ Contoso 社の管理者である Cathy は、Fabrikam 社固有のポリシー�
 
 サインイン ログから、Contoso 社の管理者は Contoso 社のユーザーがどの外部テナントを使って外部組織にアクセスし、ブロックされているかを確認することができます。
 
-![サインイン ログ](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview4.png)
+![テナント制限でブロックされた場合のサインイン ログ](./tenant-restriction-v2-is-now-public-preview/tenant-restriction-v2-is-now-public-preview4.png)
 
 クロステナント アクセス設定にあるテナント制限 v2 の詳細については [ドキュメント](https://learn.microsoft.com/ja-jp/azure/active-directory/external-identities/tenant-restrictions-v2#step-3-enable-tenant-restrictions-on-windows-managed-devices) をお読みください。
 
