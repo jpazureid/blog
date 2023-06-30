@@ -1,4 +1,4 @@
-md---
+---
 title: テナント制限 v2 がパブリック プレビューになりました
 date: 2023-06-30 09:00
 tags:
@@ -10,7 +10,6 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
 本記事は、2023 年 5 月 25 日に米国の Azure Active Directory Identity Blog で公開された [Tenant Restriction v2 is now Public Preview!](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/tenant-restriction-v2-is-now-public-preview/ba-p/3094113) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
-
 
 ---
 
