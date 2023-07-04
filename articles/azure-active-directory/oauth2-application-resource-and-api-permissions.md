@@ -43,6 +43,7 @@ API のアクセス許可は「トークン」という形で「クライアン�
 後程、テナントに同意された権限などを確認するために、テナントのグローバル管理者権限が必要となってきます。そのためサンプルの動作はテストテナントを作成しお試しいただくことをお勧めします。
 また今回紹介するアプリの実際の動作のためには [Node.js](https://nodejs.org/en/) のインストールが必要です。
 
+> [!NOTE]
 > Microsoft Graph API を呼び出すちょうどいいサンプルが、node.js だったので
 
 ### アプリの登録とサンプルのダウンロード
@@ -96,6 +97,7 @@ npm start
 
 ![](./oauth2-application-resource-and-api-permissions/10.png)
 
+> [!NOTE]
 > ※ 今回は ID トークンの詳細や使い道については説明しません。
 
 `See Profile` ボタンをクリックすることで、取得したアクセス トークンを使ってユーザーのプロファイル情報を取得できます。
@@ -161,6 +163,7 @@ const tokenRequest = {
 
 コードを確認していただければわかりますが `loginRequest` がサインイン時に、`tokenRequest` がメール読み込み時に要求される scope です。
 
+> [!NOTE]
 > ※ msal.js では loginPopup 呼び出し時、自動で socpe に openid profile を追加するため、最終的に同意した API の権限は、`openid`, `profile`, `User.Read`, `Mail.Read` の 4 つとなります。
 
 つまり、ユーザー委任の API のアクセス許可イコール、scope と呼ばれる単位で管理されていることがわかります。
@@ -276,7 +279,7 @@ Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16 
 # -----------     -----
 # Microsoft Graph 00000003-0000-0000-c000-000000000000
 ```
-
+> [!NOTE]
 > ※ 表示される ResourceId はテナントごとに異なります。
 
 ### リソースの正体
@@ -286,7 +289,6 @@ Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16 
 
 実は Azure AD の "サービスプリンシパル" は、OAuth の文脈では "クライアント" を表すこともあれば、"リソース" を表すこともあります。(あるいはその両方を表すこともあります)
 そして ResourceId に表示されている通り、Microsoft Graph は Azure AD に登録されたリソースとしてのサービス プリンシパルである、ということです。
-
 
 それでは早速 Microsoft Graph API のリソースを表す、"Microsoft Graph" の "サービスプリンシパル" の中身を見てみましょう。
 サービスプリンシパルは先ほどの ResourceId を指定するか、もしくは、Microsoft Graph の AppId は "00000003-0000-0000-c000-000000000000" と決まっているので、以下のようにフィルターしても OK です。
@@ -414,7 +416,7 @@ API の呼び出しに必要な scope を含むアクセス トークンを取�
 
 ## アプリケーションのアクセス許可
 
-ここまではユーザー委任のアクセス許可について説明しましたが、アプリケーションのアクセス許可についても少し説明します。とはいえ、ユーザー委任の権限に比べると少しシンプルです。
+ここまではユーザー委任のアクセス許可について説明しましたが、アプリケーションのアクセス許可についても少し説明します。とはいえ、ユーザー委任の権限に比べるとシンプルです。
 
 ユーザー委任の権限は、scope という単位で、アクセス時にユーザーに同意を求める動作でした。  
 それに対し、アプリケーションのアクセス許可はアプリの作成時に事前に定義を行います。
@@ -461,6 +463,7 @@ $oAuth2Permissions | fl *
 
 残念ながら、デフォルトで設定されている `User.Read` ※ のユーザー権限のアクセス許可のみが表示されており、`User.Read.All` や `AuditLog.Read.All` のアクセス許可は見当たりません。
 
+> [!NOTE]
 > ※ デフォルトで設定されている `User.Read` のアクセス許可は、サインインログの取得に特に必要ない権限ですが特に削除の必要もないため削除しておりませんでした。ユーザー委任のアクセス許可にもこのように管理者の同意ができます。
 
 ### アプリケーション権限の正体
@@ -506,7 +509,7 @@ $appRoleAssignments | fl *
 おそらくどちらかが `User.Read.All` で、どちらかが `AuditLog.Read` のはずなのですが、これらの情報からどうやって確認すればよいのでしょうか。
 
 もちろん、これらの値は Microsoft Graph のサービス プリンシパルに定義されています。
-実はアプリケーションの権限の API のアクセス許可は [AppRole](https://docs.microsoft.com/en-us/graph/api/resources/approle?view=graph-rest-1.0) として定義されています。
+具体的にアプリケーションの権限の API のアクセス許可は [AppRole](https://docs.microsoft.com/en-us/graph/api/resources/approle?view=graph-rest-1.0) として定義されています。
 
 ```powershell
 $msGraph = Get-MgServicePrincipal -ServicePrincipalId 19a9419c-cc6f-47c6-88f3-0f2a964a4f16
@@ -560,8 +563,8 @@ Azure AD 上にリソースとしてのアプリを登録し、scope や AppRole
 
 ### サンプルアプリ
 
-Azure AD で API を保護するには、API 用のアプリを登録し、scope や AppRole を定義します。
-API 側では MSAL ライブラリを利用することにより、提示されたアクセス トークンを検証し、正規のトークンを所持するユーザー以外のアクセスをブロックすることが可能です。
+Azure AD で API を保護するには、クライアント用のアプリに加え API 用のアプリを登録し、scope や AppRole を定義します。
+クライアントでは MSAL ライブラリを利用し独自の API を呼び出すアクセス トークンを取得し、API 側では Microsoft.Identity や OWIN ライブラリなどを利用することにより、提示されたアクセス トークンを検証し、正規のトークンを所持するユーザー以外のアクセスをブロックすることが可能です。
 
 具体的なサンプルは [クイックスタート: Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/quickstart-v2-dotnet-native-aspnet) をご参照ください。また [各種言語のサンプル](https://github.com/Azure-Samples?q=webapi&type=&language=) は GitHub に公開されているか探してみてください。
 
@@ -586,6 +589,7 @@ scope を登録するには、事前にアプリケーション ID の URI (Iden
 
 ![](./oauth2-application-resource-and-api-permissions/api-uri.png)
 
+> [!NOTE]
 > ※ アクセス トークン (V2) に含まれる aud の値はアプリケーション ID で固定です
 
 スコープ名は Microsoft Graph API に倣って XXX.Read のように設定しましたがアプリの構成に従い好きな名前をつけて OK です。細かいスコープを切らない場合、Microsoft のサービスでは "user_impersonation" がよく利用されます。
@@ -598,7 +602,9 @@ scope を登録するには、事前にアプリケーション ID の URI (Iden
 
 scope を指定する際には、本来このアプリケーション ID の URI と scope の値を `/` でつなげて指定する必要があります。今回の例では "api://5a6e76a2-0790-4ca7-b42e-27b31d70aa92/Data.Read" が指定すべき scope の値になります。
 
+> [!IMPORTANT]
 > scope の指定時にアプリケーション ID の URI を省略すると暗黙的に "https://graph.microsoft.com" が指定されます。
+
 #### AppRole の追加
 
 実は AppRole の設定は最近 Azure ポータルから行えるようになりました。
@@ -609,18 +615,15 @@ scope を指定する際には、本来このアプリケーション ID の URI
 
 ![](./oauth2-application-resource-and-api-permissions/api-role-create.png)
 
-このように、AppRole についても Azure ポータルから設定が可能となっています。
-
-> 2020/12/4 現在 日本語の表示に不具合があり、ロールが有効でも "無効" と表示されてしまっています。
-
-![](./oauth2-application-resource-and-api-permissions/api-role.png)
-
+このように、AppRole についても Azure ポータルから設定が可能です。
 
 `マニフェスト` に移動し、後の動作確認のために accessTokenAcceptedVersion を 2 に設定し、保存します。
-AppRole についてもマニフェストを確認することで、実際に有効になっているか確認できますので、不安な方はこちらをご覧ください。
 
 ![](./oauth2-application-resource-and-api-permissions/api-manifest.png)
 
+> [!NOTE]
+> トークンのバージョンについての詳細は [Microsoft ID プラットフォームのアクセス トークン - Microsoft Entra | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/access-tokens#token-formats) をご確認ください
+ 
 ### 動作の確認
 
 最後に、定義した API のアクセス許可の動作を確認してみます。
