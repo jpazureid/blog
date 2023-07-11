@@ -91,7 +91,7 @@ Microsoft はこのほど、Entra 製品群に、組織のセキュリティ改�
 
 継続的なサービス改善の一環として、**2023 年 10 月** に従来のプロフィール ページ (https://account.activedirectory.windowsazure.com/r/#/profile) を新しく先進的な My Account の画面に置き換えます。7 月から 10 月にかけて、プロフィール ページ上のバナーで、置き換え予定についてお知らせします。
 
-10 月になりましたら、プロフィール ページの URL は自動的に My Account にリダイレクトされます。旧 URL を許可リストまたはブックマークに登録していない限り、対応は不要です。許可リストを設定している場合は、My Account を含むように許可リストを更新する必要があります。My Account は本日より[https://myaccount.microsoft.com](https://myaccount.microsoft.com) でアクセスできます。
+10 月になりましたら、プロフィール ページの URL は自動的に My Account にリダイレクトされます。旧 URL を許可リストまたはブックマークに登録していない限り、対応は不要です。許可リストを設定している場合は、My Account を含むように許可リストを更新する必要があります。My Account は本日より [https://myaccount.microsoft.com](https://myaccount.microsoft.com) でアクセスできます。
 
 #### ユーザーごとの多要素認証 (MFA) 設定の最新化
 
