@@ -2,7 +2,7 @@
 title: ハードマッチによる Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
 date: 2017-10-05
 tags:
-  - AAD Connect
+  - Azure AD Connect
   - UPN
   - Hard match
 ---
@@ -13,6 +13,9 @@ tags:
 
 > 2020/09/26 更新
 > [ソフトマッチによるAzure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法](../azure-active-directory-connect/aboutSoftMatching.md) のブログの公開に併せて、タイトルに "ハードマッチ" の記載を追記しました。
+>
+> 2023/7/14 更新
+> MSOL コマンド部分を新しい Microsoft Graph PowerShell SDK コマンドに置き換えました。
 
 # ハードマッチによる Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
 
@@ -28,9 +31,6 @@ Azure AD Connect の既定の構成では、オンプレミス AD の ObjectGUID
 
 以下では Azure AD Connect で ObjectGUID を ImmutableId と紐づける構成とている場合においてハードマッチによる同期をおこなう設定をご紹介します。
 
-ただし、基本的にはユーザーを紐付ける必要がある場合には、ソフトマッチを利用することを推奨します。
-
-理由としましては、ハードマッチによるユーザーの紐づけの変更を複数回行った場合などに Azure 上での情報の伝搬がされ終えないうちに新しい情報が伝搬され、Azure を構成するサーバー上での情報に不整合が生じ、問題が発生することが想定されるためであり、過去の実績という観点からもハードマッチを実施したような事例も少ないため、基本的にはハードマッチでの紐づけはできる限りしないことをお勧めします。
 
 
 ## 手順
@@ -76,13 +76,13 @@ Azure AD の紐づけ対象のアカウントに ImmutableId が設定されて�
 3. 下記のコマンドを実行します。
 
 ```
-Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
+Get-MgUser -UserId  "対象ユーザーの UPN" -Select OnPremisesImmutableId | fl OnPremisesImmutableId
 ```
 
 コマンド例：
 
 ```ps1
-Get-MsolUser -UserPrincipalName "hm_test3@test01.onmicrosoft.com" | fl
+Get-MgUser -UserId test12127@m365x61971868.onmicrosoft.com -Select Userprincipalname,OnPremisesImmutableId | fl OnPremisesImmutableId,userprincipalname
 ```
 
 4. 出力されたファイルを開き、ImmutableId の値を確認します。
@@ -90,8 +90,8 @@ Get-MsolUser -UserPrincipalName "hm_test3@test01.onmicrosoft.com" | fl
 出力結果例：
 
 ```ps1
-ImmutableId                            : （クラウド内ユーザーの場合、空白になります）
-UserPrincipalName                      : hm_test3@test01.onmicrosoft.com
+OnPremisesImmutableId :（クラウド内ユーザーの場合、空白になります）
+UserPrincipalName     : test12127@m365x61971868.onmicrosoft.com
 ```
 
 ### 3. ImmutableId を手動で設定
@@ -107,24 +107,24 @@ UserPrincipalName                      : hm_test3@test01.onmicrosoft.com
 3. 下記のコマンドを実行します。
 
 ```powershell
-Set-MsolUser -UserPrincipalName <対象ユーザーの UPN> -ImmutableId <オンプレ AD ユーザーの  Base64 エンコードされた objectGUID 値>
+Update-MgUser -UserId 対象ユーザーの UPN -OnPremisesImmutableId <オンプレ AD ユーザーの  Base64 エンコードされた objectGUID 値>
 ```
 
 コマンド実行例：
 
 ```powershell
-Set-MsolUser -UserPrincipalName hm_test3@test01.onmicrosoft.com -ImmutableId 2/9JCtHr0EmH+hL07o11vA==
+Update-MgUser -UserId test12127@m365x61971868.onmicrosoft.com -OnPremisesImmutableId 2/9JCtHr0EmH+hL07o11vAaa
 ```
 
 3-4. 下記のコマンドを実行します。
 
 ```powershell
-Get-MsolUser -UserPrincipalName "対象ユーザーの UPN" | fl
+Get-MgUser -UserId 対象ユーザーの UPN -Select Userprincipalname,OnPremisesImmutableId | fl OnPremisesImmutableId,userprincipalname
 ```
 
 コマンド例：
 
-![](./upn-hard-match/hardmatch_3.png)
+![](./upn-hard-match/hardmatch_4.png)
 
 ### 4. 手動で差分ディレクトリ同期を実施
 
