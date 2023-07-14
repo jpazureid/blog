@@ -1,6 +1,6 @@
 ---
 title: Azure AD に連携している各種証明書、クライアント シークレットの有効期限の抽出方法
-date: 2023-07-04 9:00
+date: 2023-07-14 9:00
 tags:
   - Azure AD
   - Application
@@ -18,6 +18,10 @@ Azure Portal の画面上では、有効期限を一覧で確認できないた�
 
 - [アプリの登録用にシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-app-registrations-secrets-and-certs)
 - [エンタープライズ アプリのシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-enterprise-apps-secrets-and-certs)
+
+> [!NOTE]
+> 2023/7/12 に上記の公開情報でも Microsoft Graph PowerShell を使用したサンプル スクリプトに書き換えられました。
+> 公開情報内のサンプル スクリプトについてもサンプルの 1 つとしてご参照ください。
 
 ## 免責事項
 
