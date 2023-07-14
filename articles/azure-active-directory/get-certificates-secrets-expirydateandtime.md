@@ -197,7 +197,8 @@ foreach ($app in $Applications)
   }
 }
 
-Write-host "Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
+Write-host "Add the Path you'd like us to export the CSV file to" -ForegroundColor Green
+Write-host "e.g <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
 $Path = Read-Host
 $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 ```
@@ -356,7 +357,8 @@ foreach ($Eapp in $EnterpriseApps)
   }
 }
 
-Write-host "Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
+Write-host "Add the Path you'd like us to export the CSV file to" -ForegroundColor Green
+Write-host "e.g <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
 $Path = Read-Host
 $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 
