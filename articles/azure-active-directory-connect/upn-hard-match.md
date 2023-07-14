@@ -1,6 +1,6 @@
 ---
 title: ハードマッチによる Azure AD (Office 365) 上のユーザーをオンプレミス Active Directory ユーザーと紐付ける方法
-date: 2017-10-05
+date: 2023-07-14
 tags:
   - Azure AD Connect
   - UPN
