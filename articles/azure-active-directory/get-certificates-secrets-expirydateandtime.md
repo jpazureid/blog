@@ -1,6 +1,6 @@
 ---
 title: Azure AD に連携している各種証明書、クライアント シークレットの有効期限の抽出方法
-date: 2023-07-14 9:00
+date: 2023-07-04 9:00
 tags:
   - Azure AD
   - Application
