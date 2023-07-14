@@ -19,6 +19,10 @@ Azure Portal の画面上では、有効期限を一覧で確認できないた�
 - [アプリの登録用にシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-app-registrations-secrets-and-certs)
 - [エンタープライズ アプリのシークレットと証明書をエクスポートする](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-enterprise-apps-secrets-and-certs)
 
+> [!NOTE]
+> 2023/7/12 に上記の公開情報でも Microsoft Graph PowerShell を使用したサンプル スクリプトに書き換えられました。
+> 公開情報内のサンプル スクリプトについてもサンプルの 1 つとしてご参照ください。
+
 ## 免責事項
 
 > [!IMPORTANT]
@@ -100,9 +104,6 @@ Get-MgApplication コマンドを使用し、アプリケーション オブジ�
 サンプル スクリプト 1 を実行すると、"Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" と表示されますので、その後に、ファイルをエクスポートするパスを入力ください。
 
 ```powershell
-# 既に Connect-MgGraph コマンドを実施済みである場合不要です。
-Connect-MgGraph -Scopes “Application.Read.All, User.Read.All”
-
 $Applications = Get-MgApplication -ExpandProperty Owners -All
 $Logs = @()
 
@@ -114,15 +115,33 @@ foreach ($app in $Applications)
   $secret = $AppCreds.PasswordCredentials
   $cert = $AppCreds.KeyCredentials
 
-  $OwnerIDs = $app.Owners.ID
-  $Username = "<<No Owner>>"
-  $OwnerID = ""
-  if ($OwnerIDs.Count)
+  $UserIDs = @()
+  $Owners = @()
+  foreach ($Owner in $app.Owners)
   {
-    $Filter = "id in ('$($OwnerIDs -join "','")')"
-    $Owners = Get-MgUser -Filter $Filter
-    $Username = $Owners.UserPrincipalName -join ";"
-    $OwnerID = $OwnerIDs -join ";"
+    if ($Owner.AdditionalProperties["@odata.type"] -eq "#microsoft.graph.servicePrincipal")
+    {
+      $Owners += @{ID = $Owner.Id; Name = $Owner.AdditionalProperties["appDisplayName"]}
+    }
+    if ($Owner.AdditionalProperties["@odata.type"] -eq "#microsoft.graph.user")
+    {
+      $UserIDs += $Owner.Id
+    }
+  }
+  $OwnerName = "<<No Owner>>"
+  $OwnerID = "<<No Owner>>"
+  if ($UserIDs.Count -ne 0)
+  {
+    $UserFilter = "id in ('$($UserIDs -join "','")')"
+    # e.g) id in ('xxxx', 'yyyy')
+    Get-MgUser -Filter $UserFilter | ForEach-Object {
+      $Owners += @{
+        ID = $_.Id;
+        Name = $_.UserPrincipalName
+      }
+    }
+    $OwnerName = $Owners.Name -join ";"
+    $OwnerID = $Owners.ID -join ";"
   }
 
   ############################################
@@ -134,7 +153,7 @@ foreach ($app in $Applications)
   $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $Null
   $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
   $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
-  $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+  $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $OwnerName
   $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
 
   $Logs += $Log
@@ -154,7 +173,7 @@ foreach ($app in $Applications)
     $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $EndDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
-    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $OwnerName
     $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
 
     $Logs += $Log
@@ -171,14 +190,15 @@ foreach ($app in $Applications)
     $Log | Add-Member -MemberType NoteProperty -Name "ApplicationID" -Value $ApplID
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $CStartDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $CEndDate
-    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $OwnerName
     $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
 
     $Logs += $Log
   }
 }
 
-Write-host "Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
+Write-host "Add the Path you'd like us to export the CSV file to" -ForegroundColor Green
+Write-host "e.g <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
 $Path = Read-Host
 $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 ```
@@ -229,9 +249,16 @@ Get-MgServicePrincipal コマンドをフィルターを付けて使用し、サ
 $EnterpriseApps = Get-MgServicePrincipal -ExpandProperty Owners -Filter "preferredSingleSignOnMode eq 'saml'"
 #
 # ※注意事項
-# 2020 年初頭 (1 ～ 3 月) 以降に作成されたアプリのみ SAML を構成した際に preferredSingleSignOnMode に 値がセットされる動作になりました。
-# そのため、2020 年初頭以前に作成されたアプリでは、現在、SAML を構成していても preferredSingleSignOnMode が null となっております。
-# 2020 年初頭以前に作成されたアプリの場合、PowerShell や Graph API などで SAML を構成していると判別できる値を取得することができず、SAML を構成しているアプリ一覧として取得することが難しい状況となります。将来的には、古いアプリにおいても新しいアプリと同様に正しい preferredSingleSignOnMode が取得できるようになることが計画されていることを確認しましたが、対応時期などは未定となっております。
+# 2020 年初頭 (1 ～ 3 月) 以降に作成されたアプリのみ
+# SAML を構成した際に preferredSingleSignOnMode に 値がセットされる動作になりました。
+# そのため、2020 年初頭以前に作成されたアプリでは、
+# 現在、SAML を構成していても preferredSingleSignOnMode が null となっております。
+# 2020 年初頭以前に作成されたアプリの場合、
+# PowerShell や Graph API などで SAML を構成していると判別できる値を取得することができず、
+# SAML を構成しているアプリ一覧として取得することが難しい状況となります。
+# 将来的には、古いアプリにおいても新しいアプリと同様に
+# 正しい preferredSingleSignOnMode が取得できるようになることが計画されていることを確認しましたが、
+# 対応時期などは未定です
 
 $Logs = @()
 
@@ -243,16 +270,33 @@ foreach ($Eapp in $EnterpriseApps)
 
   $AppCreds = $Eapp | Select-Object PasswordCredentials, KeyCredentials
 
-  $OwnerIDs = $Eapp.Owners.ID
-  $Username = "<<No Owner>>"
-  $OwnerID = ""
-  if ($OwnerIDs.Count)
+  $UserIDs = @()
+  $Owners = @()
+  foreach ($Owner in $Eapp.Owners)
   {
-    $Filter = "id in ('$($OwnerIDs -join "','")')"
+    if ($Owner.AdditionalProperties["@odata.type"] -eq "#microsoft.graph.servicePrincipal")
+    {
+      $Owners += @{ID = $Owner.Id; Name = $Owner.AdditionalProperties["appDisplayName"]}
+    }
+    if ($Owner.AdditionalProperties["@odata.type"] -eq "#microsoft.graph.user")
+    {
+      $UserIDs += $Owner.Id
+    }
+  }
+  $OwnerName = "<<No Owner>>"
+  $OwnerID = "<<No Owner>>"
+  if ($UserIDs.Count -ne 0)
+  {
+    $UserFilter = "id in ('$($UserIDs -join "','")')"
     # e.g) id in ('xxxx', 'yyyy')
-    $Owners = Get-MgUser -Filter $Filter
-    $Username = $Owners.UserPrincipalName -join ";"
-    $OwnerID = $OwnerIDs -join ";"
+    Get-MgUser -Filter $UserFilter | ForEach-Object {
+      $Owners += @{
+        ID = $_.Id;
+        Name = $_.UserPrincipalName
+      }
+    }
+    $OwnerName = $Owners.Name -join ";"
+    $OwnerID = $Owners.ID -join ";"
   }
 
   $secret = $AppCreds.PasswordCredentials
@@ -268,7 +312,7 @@ foreach ($Eapp in $EnterpriseApps)
   $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $Null
   $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
   $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
-  $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+  $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $OwnerName
   $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
 
   $Logs += $Log
@@ -288,7 +332,7 @@ foreach ($Eapp in $EnterpriseApps)
     $Log | Add-Member -MemberType NoteProperty -Name "Secret End Date" -value $EndDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $Null
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $Null
-    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $OwnerName
     $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
 
     $Logs += $Log
@@ -306,14 +350,15 @@ foreach ($Eapp in $EnterpriseApps)
     $Log | Add-Member -MemberType NoteProperty -Name "Created Date" -Value $CreatedDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate Start Date" -Value $CStartDate
     $Log | Add-Member -MemberType NoteProperty -Name "Certificate End Date" -value $CEndDate
-    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $Username
+    $Log | Add-Member -MemberType NoteProperty -Name "Owner" -Value $OwnerName
     $Log | Add-Member -MemberType NoteProperty -Name "Owner_ObjectID" -value $OwnerID
 
     $Logs += $Log
   }
 }
 
-Write-host "Add the Path you'd like us to export the CSV file to, in the format of <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
+Write-host "Add the Path you'd like us to export the CSV file to" -ForegroundColor Green
+Write-host "e.g <C:\Users\<USER>\Desktop\Users.csv>" -ForegroundColor Green
 $Path = Read-Host
 $Logs | Export-CSV $Path -NoTypeInformation -Encoding UTF8
 
