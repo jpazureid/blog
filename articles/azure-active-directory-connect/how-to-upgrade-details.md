@@ -43,8 +43,7 @@ tags:
 
 
 ### <手順詳細>  
-
-
+[アップグレード手順詳細 A](./how-to-upgrade-details/AADC_Upgrade_A_2023v2.pptx)
 
 
 ## B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード
@@ -62,7 +61,7 @@ tags:
 9. Server A で動作状況を確認します。
 
 ### <手順詳細>  
-
+[アップグレード手順詳細 B](./how-to-upgrade-details/AADC_Upgrade_B_2023v2.pptx)
 
 
 
@@ -77,8 +76,9 @@ tags:
 
 
 ### <手順詳細>  
+[アップグレード手順詳細 C](./how-to-upgrade-details/AADC_Upgrade_C_2023v2.pptx)
 
 
-
-
+## 資料の選び方について
 どの資料が適切な手順が分からない場合には、下記フローも参考にしてください。
+![](./how-to-upgrade-details/which-step-is-best-for-the-upgdrade.png)
