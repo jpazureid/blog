@@ -53,18 +53,28 @@ Azure AD に登録されたアプリケーションについて、利用され�
 はい、現在は PowerShell コマンドでクライアントシークレットを作成する際は、2 年以上の有効期限を指定することが可能です。
 
 1. PowerShell を管理者権限で起動します
-2. 下記コマンドで  Azure Active Directory PowerShell モジュール をインストールします (すでにインストール済みである場合は必要ありません)
+2. 下記コマンドで  Micorosft Graph PowerShell モジュール をインストールします (すでにインストール済みである場合は必要ありません)
    ```powershell
-    Install-Module -Name AzureAD
+    Install-Module -Name Microsoft.Graph
     ```
 3. 下記コマンドでテナントに接続します
     ```powershell
-    Connect-AzureAD 
+    Connect-MgGraph -Scopes 'Application.ReadWrite.All'
     ```
 4. 下記コマンドでシークレットを作成します
-    ```powershell
-    New-AzureADApplicationPasswordCredential -ObjectId <アプリの Object Id を指定> -CustomKeyIdentifier "キーの説明" -StartDate "2021/04/20 00:00:00" -EndDate "2299/12/31 23:59:59"
-    ```
+```powershell
+$passwordCred = @{
+    displayName = 'キーの説明'
+    endDateTime = [System.DateTime]::new(2099,12,31,23,59,59,[System.DateTimeKind]::Utc)
+}
+$secret = Add-MgApplicationPassword -ApplicationId <アプリケーションのオブジェクト ID> -PasswordCredential $passwordCred
+$secret | fl *
+```
+
+> [!NOTE]
+> ApplicationId にはアプリケーション ID (クライアント ID) ではなくアプリケーションのオブジェクト ID を指定します
+
+※ 出力される SecretText をシークレットとして保存します。
 
 ただし、いずれは PowerShell コマンドによるクライアントシークレット作成にも、Azure ポータル上と同じ制限がかかるようになる方針です (制限が反映された際には、この項目は削除する予定です)。この制限が実施されるスケジュールについては、現時点では未定です。
 
@@ -79,58 +89,17 @@ Azure AD に登録されたアプリケーションについて、利用され�
 
 ## "Updates to converged applications are not allowed in this version." が発生する場合
 
-アプリの [サポートされているアカウントの種類](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation) が `任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)`
-の場合 New-AzureADApplicationPasswordCredential コマンドレットや New-AzADAppCredential によるシークレットの追加は行えません。
+アプリの [サポートされているアカウントの種類](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation) が `任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)` または `個人用 Microsoft アカウントのみ` 
+の場合 New-AzureADApplicationPasswordCredential コマンドレットや New-AzADAppCredential (v6.6.0 以前) によるシークレットの追加は行えません。
 
-```powershell
-New-AzureADApplicationPasswordCredential -ObjectId <マルチテナント & 個人アカウントがアクセス可能なアプリ> -CustomKeyIdentifier "キーの説明" -StartDate "2021/04/20 00:00:00" -EndDate "2299/12/31 23:59:59"
-
-# New-AzureADApplicationPasswordCredential : Error occurred while executing SetApplication
-# Code: Request_BadRequest
-# Message: Updates to converged applications are not allowed in this version.
-# RequestId: d1caae9f-37a9-4b20-8040-ce9161a1d1d6
-# DateTimeStamp: Wed, 07 Jul 2021 12:34:59 GMT
-# HttpStatusCode: BadRequest
-# HttpStatusDescription: Bad Request
-# HttpResponseStatus: Completed
-```
-
-この場合シークレットの作成は [Microsoft Graph API](https://docs.microsoft.com/ja-jp/graph/api/application-addpassword?view=graph-rest-1.0&tabs=http) 経由で実施いただく必要がございます。
-
-```http
-POST https://graph.microsoft.com/v1.0/applications/【アプリケーションの Object ID】/addPassword
- 
-{
-    "passwordCredential": {
-        "displayName": "key 1",
-        "startDateTime": "2021-04-20T00:00:00Z",
-        "endDateTime": "2299-12-31T23:59:59Z"
-    }
-}
-```
-
-出力例 :
-```json
-{
-    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#microsoft.graph.passwordCredential",
-    "customKeyIdentifier": null,
-    "displayName": "key 1",
-    "endDateTime": "2299-12-31T23:59:59Z",
-    "hint": "7BZ",
-    "keyId": "9ec834fa-cd16-4a95-aa3c-93ff100c43a0",
-    "secretText": "xxxxxxxxxxxxxxxxxxxxxx",
-    "startDateTime": "2021-04-20T00:00:00Z"
-}
-```
+この場合シークレットの作成は上述の、Microsoft Graph API 経由で実施いただく必要があります。
 
 > [!NOTE]
-> 上記 Graph API の実行には Application.ReadWrite.All のアクセス許可が必要です。
-
-secretText を控え、クライアント シークレットとして利用します。
+> Azure CLI および Az モジュールの最新版では Microsoft Graph API を利用したシークレット更新に対応しております。
 
 ## "You can only add a maximum of 2 encrypted credentials." が発生する場合
 
-アプリの [サポートされているアカウントの種類](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation) が `任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)`
+アプリの [サポートされているアカウントの種類](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation) が `任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)` または `個人用 Microsoft アカウントのみ` 
 の場合に、3 つ以上のクライアント シークレットを登録しようとするとこのエラーが発生します。
 
 前項での内容の通り、Microsoft Graph REST API を利用することでクライアント シークレットの追加が可能ですが、登録できるクライアント シークレットの数の上限は 2 つです。
@@ -138,7 +107,7 @@ secretText を控え、クライアント シークレットとして利用し�
 
 ## 今後のアップデートについて
 
-本変更についての公開情報やアナウンス等は、現在 (2021/04/21) の時点で公開されておりません。新たな情報が入り次第、本記事内でアップデートさせていただきます。
+本変更についての公開情報やアナウンス等は、現在 (2022/12/21) の時点で公開されておりません。新たな情報が入り次第、本記事内でアップデートさせていただきます。
 
 ## おわりに
 

@@ -59,4 +59,4 @@ https://support.office.com/ja-jp/article/Office-365-URL-%e3%81%8a%e3%82%88%e3%81
 各ピアリングについても 2018 年 4 月 1 日以降に考え方が変わり、例えば Public ピアリングについての新規構成が停止されているなどありますので、こちらについての詳細は以下の記事を参照ください。
 
 ExpressRoute の Public Peering と Microsoft Peering に関するアナウンス  
-https://blogs.technet.microsoft.com/jpaztech/2018/03/02/expressroute-announcement-march-2018/
+https://jpaztech.github.io/blog/archive/expressroute-announcement-march-2018/

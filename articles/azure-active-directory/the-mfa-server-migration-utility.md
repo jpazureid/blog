@@ -42,14 +42,14 @@ Azure MFA Server 移行ツールは管理者に簡単な作業でユーザーを
 最新版の Azure MFA Server のインストール後、移行ツールを開きます。
 
 
-![](/articles/azure-active-directory/the-mfa-server-migration-utility/the-mfa-server-migration-utility-01.png)
+![](./the-mfa-server-migration-utility/the-mfa-server-migration-utility-01.png)
 
 ユーザーデータの移行は、移行対象ユーザーが含まれる Azure AD グループ (グループのネストも可能です) を選択し、Azure AD へ移行する対象の MFA 方法を定義し、"Migrate Users" をクリックするだけの簡単な手順です。
 
 手順 3 : Azure MFA を利用するユーザーを定義します。
 ユーザーデータの移行後、移行対象グループを基に Azure MFA 段階的ロールアウトを利用して Azure MFA を利用するユーザーを設定します。
 
-![](/articles/azure-active-directory/the-mfa-server-migration-utility/the-mfa-server-migration-utility-02.png)
+![](./the-mfa-server-migration-utility/the-mfa-server-migration-utility-02.png)
 
 テナントやフェデレーションの設定に対して変更を実施しないため、既存環境へ想定される影響は極めて低いです。また、テスト対象ユーザーについては、最低限のものを指定することができます。
 

@@ -29,9 +29,8 @@ AD FS の自動証明書ロールオーバー機能が動作することで、�
 
 本ご案内の対象となる AD FS は以下になります。
 
-- Windows Server 2008 R2 の AD FS 2.0
-- Windows Server 2012 の AD FS 2.1
-- Windows Server 2012 R2 の AD FS 3.0
+- Windows Server 2012 (AD FS 2.1)
+- Windows Server 2012 R2 (AD FS 3.0) 以降
 
 ## (c) 自動証明書ロールオーバー機能とは
 

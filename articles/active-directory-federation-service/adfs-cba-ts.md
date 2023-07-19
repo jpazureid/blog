@@ -151,7 +151,7 @@ netsh http delete sslcert hostnameport=sts.test.com:49443
 4. 続いて以下のコマンドを実行し、CTL ストアを作成したものに指定し、SSL バインドを設定します。
 
 ```cmd
-netsh http add sslcert hostnameport=sts.testcom:49443 certhash=47b90e1e818ba8cf431d404fff232f1ba17bf078 appid={5d89a20c-beab-4389-9447-324788eb944a} certstorename=MY sslctlstorename=adfsclient
+netsh http add sslcert hostnameport=sts.testcom:49443 certhash=47b90e1e818ba8cf431d404fff232f1ba17bf078 appid={5d89a20c-beab-4389-9447-324788eb944a} certstorename=MY sslctlstorename=adfsclient clientcertnegotiation=Enable
 ```
 
 ※ hostnameport、certhash には、お客様の環境で確認した値を指定します。
@@ -323,7 +323,7 @@ netsh http delete sslcert hostnameport=sts.test.com:49443
 2. 続いて以下のコマンドを実行し、失効確認を無効化して SSL バインドを設定します。
 
 ```cmd
-netsh http add sslcert hostnameport=sts.testcom:49443 certhash=47b90e1e818ba8cf431d404fff232f1ba17bf078 appid={5d89a20c-beab-4389-9447-324788eb944a} certstorename=MY verifyclientcertrevocation=disable
+netsh http add sslcert hostnameport=sts.testcom:49443 certhash=47b90e1e818ba8cf431d404fff232f1ba17bf078 appid={5d89a20c-beab-4389-9447-324788eb944a} certstorename=MY verifyclientcertrevocation=disable clientcertnegotiation=enable
 ```
 
 ※ hostnameport、certhash には、お客様の環境で確認した値を指定します。

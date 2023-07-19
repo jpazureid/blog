@@ -6,3 +6,12 @@ node_modules/
 public/
 .deploy*/
 source/_posts/
+
+# for devcontainers
+package.json
+package-lock.json
+lib
+gulpfile.js
+scaffolds
+# symbolic link
+node_modules

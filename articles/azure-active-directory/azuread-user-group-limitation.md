@@ -76,7 +76,7 @@ Azure AD には、テナントに作成できるオブジェクト数に制限�
 | givenName                    | String            | 64 文字                                                                                    | 
 | id                           | String            | 123e4567-e89b-12d3-a456-426614174000 などの 16 進数の 32 文字 + 4 ハイフン の文字          | 
 | imAddresses                  | String collection | Read-only                                                                                  | 
-| jobTitle                     | String            | 64 文字                                                                                    | 
+| jobTitle                     | String            | 128 文字                                                                                    | 
 | mail                         | String            | メールアドレスの長さが最大 256 文字。メール アドレスのユーザー名部分の長さが最大 64 文字 | 
 | mailNickname                 | String            | 64 文字                                                                                    | 
 | mobilePhone                  | String            | 32 文字                                                                                    | 
@@ -92,7 +92,7 @@ Azure AD には、テナントに作成できるオブジェクト数に制限�
 | streetAddress                | String            | 1024 文字                                                                                  | 
 | surname                      | String            | 64 文字                                                                                    | 
 | usageLocation                | String            | 2 文字 (ISO 3166-1 alpha-2 (A2) two-letter country or region code)                         | 
-| userPrincipalName            | String            | 64 文字                                                                                    | 
+| userPrincipalName            | String            | 64 文字 (@ の前部分)                                                                        | 
 | userType                     | String            | Member or Guest のいずれかの値                                                             | 
 
 ### <span style="color: blue; ">Q. Azure AD ユーザーのパスワードの文字数制限を教えてください。</span> 
@@ -114,7 +114,7 @@ Azure AD には、テナントに作成できるオブジェクト数に制限�
 
 ### <span style="color: blue; ">Q. ユーザーに条件付きアクセスを割り当てたいです。いくつまで正しく動作しますか？</span>
 
-<span style="color: red; ">A. </span> ユーザーごとに最初の 195 個のポリシーが適用されます。
+<span style="color: red; ">A. </span> 1つのテナントには最大 195 個のポリシーを作成できます。この数までは割り当てできますが、あまり多くの条件付きアクセスを割り当てると管理が困難になります。[こちらの公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/plan-conditional-access#minimize-the-number-of-conditional-access-policies) を参考に、割り当てるポリシーを最小限にしてください。
 
 ## ゲスト ユーザーに関する各種上限
 

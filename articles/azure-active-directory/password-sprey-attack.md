@@ -17,7 +17,7 @@ tags:
 
 こんにちは、Azure Identity サポートの宮林と高田です。
 
-本記事は、米国時間 2018 年 3 月 5 日に公開された [Azure AD and ADFS best practices: Defending against password spray attacks](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) の抄訳です。Azure AD と AD FS に関してパスワードスプレー攻撃を取り上げた情報がまとめられており、日本のサポート チームとして皆様にぜひ内容を共有したく日本語化しました。
+本記事は、米国時間 2018 年 3 月 5 日に公開された [Azure AD and ADFS best practices: Defending against password spray attacks](https://www.microsoft.com/en-us/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) の抄訳です。Azure AD と AD FS に関してパスワードスプレー攻撃を取り上げた情報がまとめられており、日本のサポート チームとして皆様にぜひ内容を共有したく日本語化しました。
 
 ----
 

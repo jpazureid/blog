@@ -30,16 +30,15 @@ tags:
 Azure AD Graph API の廃止に伴い、MSOnline および Azure AD PowerShell モジュールでのライセンス割り当て操作も利用できなくなります。運用への影響を軽減するために、Microsoft Graph エンドポイントのライセンス割り当て API を使用するよう既存のアプリケーションを更新するとともに、Microsoft Graph PowerShell モジュールを使用できるようにスクリプトを更新することをお勧めいたします。MSOnline および Azure AD PowerShell モジュールにおけるその他の操作には影響はありません。
 
 > [!IMPORTANT]
-> MSOnline および Azure AD PowerShell モジュール自体も 2022 年 12 月以降に廃止されることが発表されております。詳細な時期については未定ですが、Microsoft Graph API への移行を検討ください。
-> 詳しくは [Azure AD の変更管理を簡素化します](../azure-active-directory/azure-ad-change-management-simplified.md) の記事を参照ください。
-
+> MSOnline および Azure AD PowerShell モジュール自体も 2023 年 6 月 30 日に廃止されることが発表されておりますので Microsoft Graph API への移行を検討ください。
+> 詳しくは [Microsoft Entra の変更管理のアナウンス (2022 年 9 月の状況)](../azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train.md) の記事を参照ください。
 
 以下の表は、2023 年 3 月 31 日以降、利用できなくなる操作の一覧です
 
 <table>
   <thead>
     <tr>
-      <th>既存のコマンド (2022 年 8 月 26 日以降に利用できなくなる操作)</th>
+      <th>既存のコマンド (2023 年 3 月 31 日以降に利用できなくなる操作)</th>
       <th>今後推奨される Microsoft Graph PowerShell および API</th>
     </tr>
   </thead>

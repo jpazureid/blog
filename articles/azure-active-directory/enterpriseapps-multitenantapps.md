@@ -68,7 +68,7 @@ userA が上記の操作を行った後、管理者によって contoso.com テ�
 
 正確には、3. でユーザーが  "承諾" を押下したタイミングで、このサービス プリンシパルが作成されています。
 
-![fig4](./enterpriseapps-multitenantapps/fig4.png)
+![fig4](./enterpriseapps-multitenantapps/GEx.png)
 
 なお、同じアプリケーションのサービス プリンシパルが、テナント上に複数登録されることはありません。userA による上記の操作によって作成されたサービス プリンシパルは、今後他のユーザーが Graph Explorer にアクセスする際にも利用されるようになります。
 

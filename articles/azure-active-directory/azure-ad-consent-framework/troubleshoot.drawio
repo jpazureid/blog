@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="jzdl-6jRqsocLXblkNBT" name="Page-1">
-        <mxGraphModel dx="673" dy="880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1568" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,7 +8,7 @@
                     <mxGeometry x="28" y="50" width="770" height="660" as="geometry"/>
                 </mxCell>
                 <mxCell id="105" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=card;whiteSpace=wrap;size=20;arcSize=12;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="28" y="740" width="770" height="320" as="geometry"/>
+                    <mxGeometry x="28" y="750" width="770" height="397" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" source="74" target="25" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -66,20 +66,17 @@
                 <mxCell id="51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" source="38" target="49" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="アプリケーション管理者ロール&lt;br style=&quot;font-size: 12px&quot;&gt;を持っているユーザーである" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="51" y="800" width="250" height="80" as="geometry"/>
+                <mxCell id="38" value="クラウド アプリケーション&lt;br&gt;管理者ロールを持っているユーザーである" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="51" y="810" width="250" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="37" value="管理者による同意が可能" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="656" y="800" width="120" height="80" as="geometry"/>
+                    <mxGeometry x="656" y="810" width="120" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" source="42" target="37" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" source="42" target="49" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="42" value="アプリが求めている権限に対して&lt;br style=&quot;font-size: 12px;&quot;&gt;管理権限を持っている" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="341" y="920" width="260" height="80" as="geometry"/>
+                <mxCell id="42" value="Microsoft Graph API の&lt;br&gt;アプリケーションのアクセス許可&lt;br&gt;を求めている" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="341" y="930" width="260" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" source="43" target="37" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -88,28 +85,25 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="アプリはユーザー委任の権限&lt;br&gt;を求めている" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="341" y="800" width="260" height="80" as="geometry"/>
+                    <mxGeometry x="341" y="810" width="260" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="49" value="管理ロールを持つユーザーに依頼が必要" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="103" y="920" width="146" height="80" as="geometry"/>
+                    <mxGeometry x="103" y="930" width="146" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="52" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="301" y="820" width="40" height="20" as="geometry"/>
+                    <mxGeometry x="301" y="830" width="40" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="53" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="598.5" y="820" width="40" height="20" as="geometry"/>
+                    <mxGeometry x="598.5" y="830" width="40" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="478.5" y="890" width="40" height="20" as="geometry"/>
+                    <mxGeometry x="478.5" y="900" width="40" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="601" y="940" width="40" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="56" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="273.5" y="940" width="40" height="20" as="geometry"/>
+                <mxCell id="55" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="601" y="950" width="40" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="57" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="178.5" y="890" width="40" height="20" as="geometry"/>
+                    <mxGeometry x="178.5" y="900" width="40" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="58" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
                     <mxGeometry x="311" y="450" width="40" height="20" as="geometry"/>
@@ -163,13 +157,26 @@
                     <mxGeometry x="156" y="360" width="40" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="108" value="あなたが管理者による同意を実施可能か" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="264.5" y="740" width="295" height="50" as="geometry"/>
+                    <mxGeometry x="264.5" y="750" width="295" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="112" value="一般ユーザーがアプリに同意可能か" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" parent="1" vertex="1">
                     <mxGeometry x="266" y="50" width="295" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="113" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" vertex="1" parent="1">
+                <mxCell id="113" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" parent="1" vertex="1">
                     <mxGeometry x="311" y="210" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fontStyle=0;fontSize=12;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="42">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="341" y="970" as="sourcePoint"/>
+                        <mxPoint x="471" y="1050" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="120" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=3;fontStyle=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="488.5" y="1020" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="グローバル管理者に&lt;br&gt;よる同意が必要" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=3;fontStyle=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="408.5" y="1047" width="120" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

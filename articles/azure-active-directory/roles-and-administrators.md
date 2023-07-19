@@ -1,6 +1,6 @@
 ---
 title: Azure AD におけるロール管理の新しい方法
-date: 2018-08-23
+date: 2023-06-26
 tags:
   - Azure AD
 ---
@@ -8,6 +8,13 @@ tags:
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/08/23/roles-and-administrators/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
+> 
+> また、PIM の活用法については、[こちら](https://jpazureid.github.io/blog/azure-active-directory/pim-overview/) でご紹介しています。
+
+> [!NOTE]
+> 2018-08-23: 本記事の初版を投稿  
+> 2023-06-26: Azure ポータル上のメニューの変更に伴い画面ショットや内容を更新
+
 
 # Azure AD におけるロール管理の新しい方法
 
@@ -28,9 +35,9 @@ tags:
 
 言い換えますと 「全体管理者は何人いるのか？」「このユーザーに割り当てられているのは何の役割か？」がすぐ分かるようになりました。
 
-![](./roles-and-administrators/roles-and-administrators.png)
+![](./roles-and-administrators/01.png)
 
-概要画面から、新機能「ロールと管理者」がご利用できます
+概要画面から、新機能「ロールと管理者」がご利用できます。
 
 ## 概要
 
@@ -38,41 +45,50 @@ tags:
 
 現在サインインして操作を実施しているユーザー自身に何かしらのロールが割り当てられている場合、画面上部に表示されます。「ロール」をクリックすると、自身に割り当てられているロールと、それぞれの概要の一覧を確認できます。
 
-![](./roles-and-administrators/list-administrators.png)
+![](./roles-and-administrators/02.png)  
 図: 「ロールと管理者」下の、各ロールと説明の一覧
 
 また、ロールの行をクリックすると、そのロールに割り当てられているユーザーの一覧が確認できます。
 
-![](./roles-and-administrators/role-member.png)  
+![](./roles-and-administrators/03.png)  
 図: ロールに割り当てられているユーザー (メンバー) 一覧
 
-各ロールによりどのようなことができるのかという質問をよく頂きますが、それぞれのロールに何の権限があるのか、その詳細を一覧でみられるようになりました。同じ画面で、関連記事のリンクも見ることができます。ロールを最大限有効に使うためにぜひご活用ください。
+各ロールによりどのようなことができるのかという質問をよく頂きますが、それぞれのロールに何の権限があるのか、その詳細を一覧でみられるようになりました。同じ画面で、関連記事のリンクも見ることができます。ロールを最大限有効に使うためにぜひご活用ください。  
 画像に示すように、ブレードの「説明」をクリックするとこの画面が見られます。もしくはロールの一覧画面から、各行の右側にある「・・・」をクリックをすることでも、同じ画面に辿り着くことができます。
 
 あるロールに割り当てられているユーザの一覧に加えて、その逆引きである「あるユーザーに割り当てられているロールの一覧」を見ることができるようになりました。同じ画面から、ユーザーに新たなロールを追加することができます。
-詳細は [Assigning administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles)をご参照ください (英語ドキュメント)。
+詳細は [Azure AD ロールをユーザーに割り当てる](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/manage-roles-portal) をご参照ください。
 
 
-![](./roles-and-administrators/add-role.png)  
-図: ユーザーに割り当てられているロールの一覧と「ロールの追加」ボタン
+![](./roles-and-administrators/04.png)  
+図: ユーザーに割り当てられているロールの一覧と「割り当ての追加」ボタン
 
 一人のユーザーに複数の特権ロール (privileged roles) を割り当てることも可能です。既に割り当てられているものは表示されません。
 
-![](./roles-and-administrators/user-role.png)  
+![](./roles-and-administrators/05.png)  
 図: 割り当て可能なロールの一覧
 
-## Azure AD PIM での更新
 
-より細やかな権限管理は Azure AD Privileged Identity Management (PIM) で可能です。 Azure AD PIM の管理ブレードにも「ロールと管理者」へのリンクがあります。
 
-![](./roles-and-administrators/pim-link.png)  
-図: Privileged Identity Management 画面から「ロールと管理者」へのリンク
+## PIM での更新
 
-もし組織で PIM を有効にしていなくても、「PIM で管理」をクリックすれば、管理者保護のために PIM をどのように活用できるか確認できます。無料のトライアルもご利用可能です。
+Privileged Identity Management (PIM) を使用することで、より細やかな権限管理が可能です。   
+尚、PIM の使用には、Azure AD Premium P2 ライセンスが必要となります。  
+PIM の管理画面は、検索窓に「PIM」と入力し、検索することで開くことができます。
 
-![](./roles-and-administrators/pim.png)
+![](./roles-and-administrators/06.png)  
+図: Privileged Identity Management 画面の開き方
 
-「PIM」で管理から、Privileged Identity Management の情報が閲覧できます。
+PIM 上で Azure AD ロールを管理する際には、左ブレードで「Azure AD ロール」をクリックします。
+
+![](./roles-and-administrators/07.png)   
+図: PIM 上で Azure AD ロールを管理する
+
+
+また、Azure AD Premium P2 ライセンスをお持ちのテナントで、PIM の画面を開くと、以降、Azure AD 上の 「ロールと管理」から Azure AD ロールの管理を行う際にも、各ロールの管理画面では PIM の画面が表示されるようになります。
+
+![](./roles-and-administrators/08.png)   
+図: 各 Azure AD ロールの管理画面の例
 
 上記内容が少しでも参考となりますと幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。
 
