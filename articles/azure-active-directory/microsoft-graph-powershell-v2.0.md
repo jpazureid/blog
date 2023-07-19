@@ -11,12 +11,12 @@ Microsoft Entra ID 関連の変更点としては、サポートされる認証�
 
 ## Microsoft Graph PowerShell v2.0 のインストール
 
-Microsoft Graph PowerShell は Microsoft Graph Rest API (v1.0/Beta) を呼び出すためのモジュールです。<Br>
-Microsoft Graph PowerShell v1.x では 1 つのモジュール (Microsoft Graph PowerShell) で Microsoft Graph Rest API v1.0 と Microsoft Graph Rest API Beta の両方を呼び出します。<Br>
-一方、Microsoft Graph PowerShell v2.0 では Microsoft Graph PowerShell モジュールは Microsoft Graph Rest API v1.0 の呼び出しに使用され、Microsoft Graph Rest API Beta の呼び出しには Microsoft Graph PowerShell Beta モジュールが必要です。
+Microsoft Graph PowerShell は Microsoft Graph REST API (v1.0/Beta) を呼び出すためのモジュールです。<Br>
+Microsoft Graph PowerShell v1.x では 1 つのモジュール (Microsoft Graph PowerShell) で Microsoft Graph REST API v1.0 と Microsoft Graph REST API Beta の両方を呼び出します。<Br>
+一方、Microsoft Graph PowerShell v2.0 では Microsoft Graph PowerShell モジュールは Microsoft Graph REST API v1.0 の呼び出しに使用され、Microsoft Graph REST API Beta の呼び出しには Microsoft Graph PowerShell Beta モジュールが必要です。
 <img src="./microsoft-graph-powershell-v2.0/module-image.png" width=100%>
 
-そのため、Microsoft Graph Rest API Beta の呼び出しを計画している場合には Microsoft Graph PowerShell Beta のインストールが必要です。
+そのため、Microsoft Graph REST API Beta の呼び出しを計画している場合には Microsoft Graph PowerShell Beta のインストールが必要です。
 Microsoft Graph PowerShell モジュールおよび Microsoft Graph PowerShell Beta モジュールのインストール方法を説明します。
 
 公開情報では既に v2.0 を前提とした説明に更新されていますので詳細は以下をご確認ください: <Br>
