@@ -90,10 +90,11 @@ Microsoft Graph PowerShell を使用し Microsoft Entra ID 関連のデータ操
 Microsoft Graph PowerShell v1.x では Select-MgProfile コマンドにより Microsoft Graph REST API v1.0 と Microsoft Graph REST API Beta との呼び出し先の振り分けをしていました。
 v2.0 からは Select-MgProfile コマンドは廃止され Microsoft Graph PowerShell モジュールからは Microsoft Graph REST API v1.0 を呼び出し、Microsoft Graph PowerShell Beta モジュールからは Microsoft Graph REST API Beta を呼び出すように変更になりました。
 
-### Microsoft Graph REST API Beta を呼び出す際のコマンドの命名規則が <Verb>-Mg**Beta**<Noun> に
+### Microsoft Graph REST API Beta を呼び出す際のコマンドの命名規則が \<Verb\>-Mg**Beta**\<Noun\> に
 
 Micrsosft Graph REST API Beta を呼び出す際には Microsoft Graph PowerShell Beta モジュール内のコマンドを使用します。
-命名規則は <Verb>-Mg**Beta<Noun> です。
+命名規則は \<Verb\>-Mg**Beta**\<Noun\> です。
+
 下表に例を記載します:
 |v1.0|Beta|
 |:---:|:---:|
