@@ -11,6 +11,7 @@ tags:
 
 本記事は、2023 年 7 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Microsoft Entra Expands into Security Service Edge with Two New Offerings - Microsoft Community Hub](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-expands-into-security-service-edge-with-two-new/ba-p/3847829) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
+----
 
 柔軟な仕事環境やデジタル トランスフォーメーションにより、どのようにして情報に安全にアクセスするかという方法も変化してきています。従来のネットワークをベースにしたセキュリティのアプローチは現在の環境には適さなくなってきました。従来の方法は、エンド ユーザーの体験を損なうだけでなく、ユーザーに対して、ネットワーク全体に必要以上のアクセス権を与えることになります。攻撃者が、1 名の情報漏洩ユーザー、1 つの感染デバイスなど、1 つのきっかけを得るだけで、内部ネットワークへ自由に入り込み、重要情報資産が流出することになります。
 
@@ -20,16 +21,16 @@ tags:
 
 本日は [2 つの新しい製品](https://www.microsoft.com/en-us/security/blog/2023/07/11/microsoft-entra-expands-into-security-service-edge-and-azure-ad-becomes-microsoft-entra-id/) を紹介いたします。
 
-Microsoft Entra Internet Access<br>
-Microsoft Entra Private Access
+- Microsoft Entra Internet Access
+- Microsoft Entra Private Access
 
-ID とネットワーク ソリューションを連携させることにより、個々のアプリにどのツールが適切か考えたり、ID 担当チームが作成したポリシーとネットワーク担当チームが作成したポリシーとを連携させる方法を検討したりすることに時間に費やす必要はなくなります。Microsoft Entra の条件付きアクセスを利用してアイデンティティとネットワークを総合的に制御することができるようになります。
+ID とネットワーク ソリューションを連携させることにより、個々のアプリにどのツールが適切か考えたり、ID 担当チームが作成したポリシーとネットワーク担当チームが作成したポリシーとを連携させる方法を検討したりすることに時間に費やす必要はなくなります。Microsoft Entra の条件付きアクセスを利用して ID とネットワークを総合的に制御することができるようになります。
 
 クラウドベースの ID 中心のネットワーク アクセス ソリューションを通して、すべてのエンドユーザー、アプリケーション、外部リソースそして IT システムをつなぐことができるようになります。このクラウド サービスはレガシーのオンプレミス システムと比較すると、変化に柔軟で管理が容易であり、コスト効率がよいため、ユーザーの生産性を損なうことはありません。このモデルはゼロ トラストの原則をベースとしており、ID を検証すると共に、リスクに基づいた検出も行うことで、ユーザーの仕事に必要なアプリケーション、リソースにアクセスできるよう支援します。
 
 ## Microsoft Entra Internet Access
 
-Microsoft Entra Internet Access は、SaaS アプリケーションおよびインターネット通信向けの、ID を軸とした Secure Web Gateway (SWG) であり、悪意がある接続や危険および非準拠なコンテンツ、外部インターネットからの脅威から保護するためのサービスです。例えば、高リスクと判断されたユーザーまたは非準拠デバイスからのアクセスは、セルフサービス パスワード リセットのページを除いて通信をすべてブロックするということが可能になります。これは、条件付きアクセスの条件の設定をネットワークの条件で拡張するようなものとお考えください。これにより、例えばセッション トークンが盗まれたとしても、その再利用を抑止するために、"準拠ネットワーク" からのみリソースへのアクセスを許可するようにも構成できます。
+Microsoft Entra Internet Access は、SaaS アプリケーションおよびインターネット通信向けの、ID を軸とした Secure Web Gateway (SWG) であり、悪意がある接続や危険/非準拠なコンテンツ、外部インターネットからの脅威から保護するためのサービスです。例えば、高リスクと判断されたユーザーまたは非準拠デバイスからのアクセスは、セルフサービス パスワード リセットのページを除いて通信をすべてブロックするということが可能になります。これは、条件付きアクセスの条件の設定をネットワークの条件で拡張するようなものとお考えください。これにより、例えばセッション トークンが盗まれたとしても、その再利用を抑止するために、"準拠ネットワーク" からのみリソースへのアクセスを許可するようにも構成できます。
 
 Universal Tenant Restrictions という Microsoft 365 向けの独自の機能も備えており、匿名アクセスを含め他テナントや個人アカウントへのデータ流出を防止し、リアルタイムに近い脅威の検出、ユーザー、場所およびデバイスに対する高精度のリスク評価、および Microsoft 365 アプリへのよりシームレスなアクセスを実現します。Microsoft Entra Internet Access はメイン ソリューションとしても、ほかの SSE ソリューションと組み合わせても展開でき、新しい Microsoft Graph API による統合も提供されます。また、ネットワーク トラフィックの情報は、エンドユーザーのクロスプラットフォームの OS およびリモート ネットワークの IPSec トンネリングを利用しても取得できます。
 
@@ -51,24 +52,22 @@ Microsoft Entra Private Access により、ユーザーがオフィスまたは�
 
 ## ID 中心の Security Service Edge (SSE) ソリューションでどこからでもアプリケーションやリソースへ安全にアクセス
 
-Microsoft Entra Internet Access と Private Access に加えて、弊社の SaaS - セキュリティに特化した CASB (Cloud Access Security Broker) - である Microsoft Defender for Cloud Apps を組み合わせることによって Microsoft の Security Service Edge ソリューションが構成されます。このソリューションは Microsoft の広範なセキュリティ製品とは深く統合されており、オープンなパートナー エコシステムを形成するため、既存のネットワークとセキュリティ ソリューションとも連携できます。
+Microsoft Entra Internet Access と Private Access に加えて、弊社の SaaS - セキュリティに特化した CASB (Cloud Access Security Broker) - である Microsoft Defender for Cloud Apps を組み合わせることによって Microsoft の Security Service Edge ソリューションが構成されます。このソリューションは Microsoft の広範なセキュリティ製品と深く統合されており、オープンなパートナー エコシステムを形成するため、既存のネットワークとセキュリティ ソリューションとも連携できます。
 
 Microsoft Internet Access と Private Access は、同じエージェントを共有しており、複数の種類の OS で動作し、なおかつ複数の種類のデバイスとネットワークで一貫した接続性を提供いたします。アプリケーションまたはウェブサイトに対して、利用する IdP に関係なく、しかもアプリケーションを変更することなく、ID、デバイス、アプリケーション、そして今後はネットワーク条件を考慮した制御を一つの条件付きアクセス ポリシーで実現できるようになるのです。
 
-![](./microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/sse.png)
-
-ID 中心の Security Service Edge (SSE) ソリューションでどこからでもアプリケーションやリソースへ安全にアクセス可能となります。一つの条件付きアクセスの制御を用いて、ネットワーク アクセスのセキュリティをよりシンプルにし、より良いユーザー体験をお届けします。
+![ID 中心の Security Service Edge (SSE) ソリューションでどこからでもアプリケーションやリソースへ安全にアクセス可能となります。一つの条件付きアクセスの制御を用いて、ネットワーク アクセスのセキュリティをよりシンプルにし、より良いユーザー体験をお届けします。](./microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/sse.png)
 
 Microsoft の SSE ソリューションは世界最大の企業ネットワークの 1 つである [Microsoft Global Network](https://learn.microsoft.com/en-us/azure/networking/microsoft-global-network) によって提供されます。Microsoft Global Network は、[185 以上のグローバルなネットワーク接続拠点](https://azure.microsoft.com/en-us/explore/global-infrastructure/global-network/#features) に加え、世界中に巨大な網目のように配置されたエッジ ノードにより、61 の Azure リージョンの[データセンター](https://azure.microsoft.com/en-us/explore/global-infrastructure/) を結んでいます。これにより、ユーザーとデバイスをパブリックおよびプライベートのリソースにシームレスかつ安全に接続できるようになります。現在、Microsoft の SSE は北米とヨーロッパの一部の地域で提供されていますが、今年中に利用できる地域を追加する予定です。
 
-我々の SSE ソリューションの導入により、Microsoft Internet Access と Private Access がユーザーの ID、デバイス 準拠状態、アプリケーション、そして、今では新しいネットワークの準拠状態を条件として、どのアプリケーションおよびリソースに対しても、ID を中心とした単一のアプローチで安全な接続を実現します。すべてのアクセス ポリシーを統合し、継続的アクセス評価によりさらにポリシーを強化するということが、これまで以上に簡単になりました。<br><br><br>
+我々の SSE ソリューションの導入により、Microsoft Internet Access と Private Access がユーザーの ID、デバイス 準拠状態、アプリケーション、そして今では新しいネットワークの準拠状態を条件として、どのアプリケーションおよびリソースに対しても、ID を中心とした単一のアプローチで安全な接続を実現します。すべてのアクセス ポリシーを統合し、継続的アクセス評価によりさらにポリシーを強化するということが、これまで以上に簡単になりました。
 
-引き続き製品の Deep Dive ブログにもご期待ください。また、7 月 20 日の [Tech Accelerator Product Deep Dive Session](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/live-series-6-27-amp-7-20-microsoft-entra-tech-accelerator/ba-p/2520433) では、Microsoft Internet Access と Private Access が如何に組織のデジタル資産へのアクセスをより安全にするかという点をさらに紐解いて説明いたします。
+引き続き製品の Deep Dive ブログにもご期待ください。また、7 月 20 日の [Tech Accelerator Product Deep Dive Session](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/live-series-6-27-amp-7-20-microsoft-entra-tech-accelerator/ba-p/2520433) では、Microsoft Internet Access と Private Access がいかに組織のデジタル資産へのアクセスをより安全にするかという点をさらに紐解いて説明いたします。
 
 このソリューションをより良くするために、ぜひパブリック プレビューに参加いただき、フィードバックを提供ください。
 
 以下の公開情報もご参照いただけますと幸いです。
 
-[Microsoft Entra Internet Access](https://www.microsoft.com/security/business/identity-access/microsoft-entra-internet-access)<br>
-[Microsoft Entra Private Access](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-private-access)<br>
-[Get started and try previews](https://aka.ms/SSEPublicPreview)
+- [Microsoft Entra Internet Access](https://www.microsoft.com/security/business/identity-access/microsoft-entra-internet-access)
+- [Microsoft Entra Private Access](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-private-access)
+- [Get started and try previews](https://aka.ms/SSEPublicPreview)
