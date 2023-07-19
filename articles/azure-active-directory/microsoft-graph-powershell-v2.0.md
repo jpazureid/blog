@@ -1,3 +1,11 @@
+---
+title: Microsoft Graph PowerShell v2.0 でサポートされた認証方法と変更点
+date: 2023-07-20 9:00
+tags:
+  - Azure AD
+  - Microsoft Graph
+  - Microsoft Graph PowerShell
+---
 # Microsoft Graph PowerShell v2.0 でサポートされた認証方法と変更点
 
 こんにちは。Azure Identity チームの沓澤です。<Br>
