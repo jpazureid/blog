@@ -95,7 +95,8 @@ Microsoft Graph PowerShell v1.x では Select-MgProfile コマンドにより Mi
 
 Micrsosft Graph REST API Beta を呼び出す際には Microsoft Graph PowerShell Beta モジュール内のコマンドを使用します。命名規則は \<Verb\>-Mg**Beta**\<Noun\> です。
 
-下表に例を記載します:
+下表に例を記載します。
+
 | v1.0 | Beta |
 |:---:|:---:|
 | Get-MgUser | Get-MgBetaUser |
