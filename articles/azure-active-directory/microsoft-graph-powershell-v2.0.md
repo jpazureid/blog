@@ -95,11 +95,12 @@ Microsoft Graph PowerShell v1.x では Select-MgProfile コマンドにより Mi
 
 Micrsosft Graph REST API Beta を呼び出す際には Microsoft Graph PowerShell Beta モジュール内のコマンドを使用します。命名規則は \<Verb\>-Mg**Beta**\<Noun\> です。
 
-下表に例を記載します:
-|v1.0|Beta|
+下表に例を記載します。
+
+| v1.0 | Beta |
 |:---:|:---:|
-|Get-MgUser| Get-MgBetaUser|
-|Get-MgUserMessage| Get-MgBetaUserMessage|
+| Get-MgUser | Get-MgBetaUser |
+| Get-MgUserMessage | Get-MgBetaUserMessage |
 
 ### Connect-MgGraph コマンドにおける -ForceRefresh オプションの廃止
 
@@ -124,9 +125,9 @@ Connect-MgGraph -AccessToken $st
 
 モジュール名の変更を下表にまとめます:
 
-|v1.x|v2.0|
+| v1.x | v2.0 |
 |:---:|:---:|
-|DeviceManagement.Enrolment|DeviceManagement.Enrollment|
-|DeviceManagement.Enrollment | Identity.Governance|
+| DeviceManagement.Enrolment | DeviceManagement.Enrollment |
+| DeviceManagement.Enrollment | Identity.Governance |
 
 スクリプト内で Import-Module をしている場合にはモジュール名の変更が必要です。
