@@ -37,9 +37,9 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 **推奨事項とその対処方法**
 これらの新機能は、Azure Active Directory の推奨事項で利用可能です。各推奨事項には、問題の説明、アクションを実行する利点、段階的な改善手順を含むアクション プランが含まれています。Microsoft Entra Workload Identities の一部として最初に提供される、3 つのアプリの正常性に関する推奨事項は次のとおりです:
 	
-  1. 未使用のアプリケーション
-	2. 未使用のアプリケーション認証情報
-	3. 期限切れのアプリケーション認証情報
+　1. 未使用のアプリケーション
+　2. 未使用のアプリケーション認証情報
+　3. 期限切れのアプリケーション認証情報
 
 推奨事項の **状態** は、システムによって手動するか自動で更新されます。すべてのリソースがアクション プランに従って対処されると、その次に推奨事項のサービスが実行されるときに、推奨事項のステータスが自動的に「完了」に変わります。
 
@@ -47,23 +47,23 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 上記画面を確認し、最善の対応を行うには、以下の手順を実施ください:
 
-	1. Microsoft Entra 管理センター > Azure AD > [概要] に移動し、[推奨設定] を選択します。
-	2. リストから推奨事項を選択すると、詳細、状態、アクション プランが表示されます。
-	3. アクション プランに従い操作を行います。
-	4. 該当する場合は、推奨事項内のリソースのステータスをクリックし、[次としてマーク] を選択してステータスを選択します。
+  1. Microsoft Entra 管理センター > Azure AD > [概要] に移動し、[推奨設定] を選択します。
+  2. リストから推奨事項を選択すると、詳細、状態、アクション プランが表示されます。
+  3. アクション プランに従い操作を行います。
+  4. 該当する場合は、推奨事項内のリソースのステータスをクリックし、[次としてマーク] を選択してステータスを選択します。
 
  Microsoft Graph を使用してアプリの正常性に関する推奨事項を操作したい場合は、こちらの[ドキュメント](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-use-recommendations?toc=%2Fazure%2Factive-directory%2Fworkload-identities%2Ftoc.json&bc=%2Fazure%2Factive-directory%2Fworkload-identities%2Fbreadcrumb%2Ftoc.json)を参照してください。
 
-アプリの正常性に関する推奨事項を今すぐ試してベスト プラクティスを実施ください
+**アプリの正常性に関する推奨事項を今すぐ試してベスト プラクティスを実施ください**
 
 クラウド基盤にアクセスするワークロード ID が増加し続ける中、企業が攻撃や停止のリスクを軽減するために、セキュリティ体制を見直すことが重要です。
 
-参考情報:
+**参考情報:**
 
-- 人間以外の ID、アクセス許可のリスクについて詳しく知り、Microsoft Entra Workload Identities と Permissions Management の概要を把握するには、この Kuppinger Cole whitepaper と  2023 年のクラウド アクセス許可リスクの状況レポートを参照ください。
+- 人間以外の ID、アクセス許可のリスクについて詳しく知り、Microsoft Entra Workload Identities と Permissions Management の概要を把握するには、この [Kuppinger Cole whitepaper](https://www.kuppingercole.com/reprints/cb05bfdbbdb25b6535a42835b77465e2#heading1) と  [2023 年のクラウド アクセス許可リスクの状況レポート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW10qzO)を参照ください。
 - Microsoft Entra のワークロード ID のベスト プラクティスの詳細については、以下を参照ください:
-		- ワークロード ID をセキュリティで保護する
-		- ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する
-		- Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス
+		- [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
+		- [ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/zero-trust-for-developers)
+		- [Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/security-best-practices-for-app-registration)
 
 
