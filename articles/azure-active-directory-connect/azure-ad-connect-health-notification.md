@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect Health Notification メールについて
-date: 2018-03-1
+date: 2023-07-25
 tags:
   - Azure AD Connect
 ---
@@ -8,6 +8,8 @@ tags:
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/03/01/aadc-health-notification/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
+> 
+> 2018 年 3 月 1 日に「Azure AD Connect Health Notification メールについて」 として公開しておりましたが、情報が古くなってまいりましたので、 2023 年 7 月 25 日時点の最新情報として改めて更新のうえ公開しております。
 
 # Azure AD Connect Health Notification メールについて
 
@@ -21,6 +23,8 @@ Azure AD Connect を利用してオンプレミスと Azure AD を連携して�
 
 
 ![](./azure-ad-connect-health-notification/notification2.png)
+
+
 
 ## Q. このメールは何を通知しているのか？
 
