@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra IDにおける制限付き管理の管理単位の導入
-date: 2023-7-24 09:00
+date: 2023-7-26 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
