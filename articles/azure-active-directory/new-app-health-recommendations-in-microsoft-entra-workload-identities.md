@@ -16,10 +16,10 @@ tags:
 
 先日、弊社では 2023 年クラウドにおけるアクセス許可のリスク状態におけるレポートを発表し、クラウド環境の拡大だけでなく、重要なクラウド リソースにアクセスする ID の種類の増加に関して非常に興味深い調査結果が示されました。このレポートでは、ワークロード ID のセキュリティ保護がこれまで以上に重要になっている理由について興味深い調査結果が明らかにされています:
 
-  - ワークロード ID は、人間の ID を 10:1 で上回り、2021 年の 2 倍になりました。この大幅な増加により、新たなセキュリティ リスクが生じています。
-  - ワークロード ID の 80% 以上が非アクティブであり、2021 年に報告された割合の 2 倍となっています。
-  - ワークロード ID は付与された権限の 5% 未満しか使用していません。
-  - ワークロード ID の約 70% が機密データにアクセスできます。
+- ワークロード ID は、人間の ID を 10:1 で上回り、2021 年の 2 倍になりました。この大幅な増加により、新たなセキュリティ リスクが生じています。
+- ワークロード ID の 80% 以上が非アクティブであり、2021 年に報告された割合の 2 倍となっています。
+- ワークロード ID は付与された権限の 5% 未満しか使用していません。
+- ワークロード ID の約 70% が機密データにアクセスできます。
 
 膨大な数の非アクティブなワークロード ID と資格情報が存在するということは、特にその多くが高い権限を持っており、クラウド全体で動作していることを考えると、大幅なリスク軽減の機会となります。非アクティブな ID や古い認証情報は侵害のターゲットになりやすく、通常は削除しても影響はありませんが、資格情報の有効期限が切れると障害がにつながる可能性もあります。
 
@@ -29,14 +29,16 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 どの ID に危険な構成があるのか​​、または完全に削除する必要があるのかどうか​​を用意に確認することが非常に重要になっています。そのため、Microsoft Entra Workload Identities 内の新機能であるアプリの正常性に関する推奨事項をこの度発表いたします。
 
-**App Health 推奨事項によるアプリの正常性強化**
+## App Health 推奨事項によるアプリの正常性強化
+
 ワークロード ID の 80% 以上が非アクティブであるため、これらのアプリやサービスを可視化することは非常に重要です。Microsoft Entra Workload Identities のアプリの正常性に関する推奨機能は、環境を保護し、推奨されるベスト プラクティスに従って障害を回避するのに役立つ知見と実用的なガイダンスを提供します。例えば、30 日以上使用されていないアプリケーションへの対処、未使用のアプリケーションの資格情報の削除、期限切れが近い資格情報の更新などです。
 
 未使用のアプリケーションおよび未使用のアプリケーション認証情報を削除することで、ワークロード ID 全体のセキュリティ体制が向上し、良好な ID の状態が促進されます。これにより、攻撃者が未使用のアプリケーションを発見して悪用するなどの侵害のリスクが軽減されます。未使用の ID に付与された権限によっては、組織の機密データの漏洩につながったり、攻撃者がより攻撃の幅を広げてしまう可能性があります。
 
-**推奨事項とその対処方法**
+## 推奨事項とその対処方法
+
 これらの新機能は、Azure Active Directory の推奨事項で利用可能です。各推奨事項には、問題の説明、アクションを実行する利点、段階的な改善手順を含むアクション プランが含まれています。Microsoft Entra Workload Identities の一部として最初に提供される、3 つのアプリの正常性に関する推奨事項は次のとおりです:
-	
+
 　1. 未使用のアプリケーション
 　2. 未使用のアプリケーション認証情報
 　3. 期限切れのアプリケーション認証情報
@@ -54,7 +56,7 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
  Microsoft Graph を使用してアプリの正常性に関する推奨事項を操作したい場合は、こちらの[ドキュメント](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-use-recommendations?toc=%2Fazure%2Factive-directory%2Fworkload-identities%2Ftoc.json&bc=%2Fazure%2Factive-directory%2Fworkload-identities%2Fbreadcrumb%2Ftoc.json)を参照してください。
 
-**アプリの正常性に関する推奨事項を今すぐ試してベスト プラクティスを実施ください**
+## アプリの正常性に関する推奨事項を今すぐ試してベスト プラクティスを実施ください
 
 クラウド基盤にアクセスするワークロード ID が増加し続ける中、企業が攻撃や停止のリスクを軽減するために、セキュリティ体制を見直すことが重要です。
 
@@ -62,8 +64,6 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 - 人間以外の ID、アクセス許可のリスクについて詳しく知り、Microsoft Entra Workload Identities と Permissions Management の概要を把握するには、この [Kuppinger Cole whitepaper](https://www.kuppingercole.com/reprints/cb05bfdbbdb25b6535a42835b77465e2#heading1) と  [2023 年のクラウド アクセス許可リスクの状況レポート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW10qzO)を参照ください。
 - Microsoft Entra のワークロード ID のベスト プラクティスの詳細については、以下を参照ください:
-   - [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
+  - [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
   - [ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/zero-trust-for-developers)
   - [Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/security-best-practices-for-app-registration)
-
-
