@@ -1,8 +1,8 @@
 ---
 title: Azure AD Connect インストール前の確認事項
-date: 2020-05-23
+date: 2023-07-26
 tags:
-  - AAD Connect
+  - Azure AD Connect
 ---
 
 # Azure AD Connect インストール前の確認事項
@@ -29,13 +29,14 @@ Azure AD Connect 自体の要件としては下記技術情報のとおりとな
 
 ---
 - Q. Azure AD Connect をドメイン コントローラー上にインストールして問題ないか ?
-- A. 弊社としては推奨していません。
+- A. 技術的には共存させることは可能ですが、運用面やトラブル シューティング観点では、別のサーバーに構築する方が安心です。Azure AD Connect もドメイン コントローラーと同等のセキュリティで保護することを推奨していますが、ドメイン コントローラーには特に厳しい制限を課していることが一般的となりますため、通信やセキュリティの要件などを考慮し、お客様側で判断してください。
+
 ---
 
 
 - Q. Azure AD Connect を他のサービスが稼働している既存のサーバーに構成しても問題か？
-- A. 各要件を満たしている場合には特に制約はありません。
-   運用面にてメンテナンスやセキュリティ面での可用性を確保できるように構成してください。
+- A. 各要件を満たしている場合には特に技術的な制約はありませんが、弊社としてはドメイン コントローラーと同様、機能ごとにサーバーを分けることを推奨しています。
+運用面にてメンテナンスやセキュリティ面での可用性を確保できるように構成してください。
 
 ---
 
@@ -45,7 +46,7 @@ Azure AD Connect 自体の要件としては下記技術情報のとおりとな
 
 ## B. Azure AD Connect Health Agent for Sync の要件
 
-Azure AD Connect に同梱されている Azure AD Connect Health Agent for Sync を構成するには、プロキシ構成や要件は Azure AD Connect とは別にあります。
+Azure AD Connect に同梱されている Azure AD Connect Health Agent for Sync を構成する場合、プロキシ構成や要件は Azure AD Connect とは別に用意されています。
 弊社に Azure AD Connect インストール時にこの要件 (主にネットワーク関連の設定箇所) を満たしていないことでインストール ウィザードで警告が表示されるなどのお問い合わせを多くいただいております。
 各エンドポイント、プロキシの設定をインストール前に確認をお願いします。
 
@@ -57,16 +58,16 @@ Azure AD Connect に同梱されている Azure AD Connect Health Agent for Sync
 ---
 - Q. Azure AD Connect Health Agent をインストールし、同期対象となるテナントにて Azure AD Premium ライセンスがないが問題ないか ?
 A. インストール自体の処理やライセンス規約などに問題は起きません。
-   Azure ポータルからの監視機能が使用できないなどの制約が生じます。
+   ただし、 Azure ポータルからの監視機能が使用できないなどの制約が生じます。
 ---
  
-- Q. Azure AD Connect Health Agent for Sync を誤ってアンインストールしてしまった場合の対象方法。
+- Q. Azure AD Connect Health Agent for Sync を誤ってアンインストールしてしまった場合の対象方法を教えてください。
 - A. Azure AD Connect のインストール ウィザードを再試行することで再インストールされます。
 
 ---
 
 - Q. Azure AD Connect Health Agent for Sync 単体でアップグレード可能か ?
-- A. Azure AD Connect に同梱となり単体でのアップグレードは行えません。
+- A. いいえ、Azure AD Connect に同梱となり単体でのアップグレードは行えません。
  
 ---
 
@@ -83,7 +84,7 @@ Azure AD Connect で構成する認証方式 (パスワード ハッシュ同期
  
 ### C-2. パススルー認証
 
-パススルー認証エージェント (PTA) は Azure AD Connect をインストールするサーバーが 1 台目となり、PTA を別途インストールすることにより複数台で構成することを推奨しています。
+パススルー認証エージェント (PTA) は Azure AD Connect をインストールするサーバーが 1 台目となり、他のサーバーに PTA を別途インストールすることにより複数台で構成することを推奨しています。
 PTA をインストールするサーバーでは上述の A. B. とは別にネットワーク要件を満たす必要があります。
  
 ファイアウォールでの構成にて各エージェントの要件は下記となります。
@@ -94,13 +95,13 @@ PTA をインストールするサーバーでは上述の A. B. とは別にネ
 プロキシを経由し Azure AD と接続する場合には、WPAD が構成されていない環境の場合には下記技術情報に記載のとおり構成ファイルを編集する必要があります。
 
 - パススルー認証エージェントは、送信 Web プロキシ サーバーで通信できますか。
-  https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-pta-faq#can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server
+  https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/how-to-connect-pta-faq#------------------web-------------------
 
 ### [Q&A]
 
 ---
 - Q. パスワード ハッシュ同期を複数の Azure AD Connect サーバーで構成することが可能か。
-- A. 構成できません。Azure AD Connect は 1 台でパスワード ハッシュ同期を有効、その他 Azure AD Connect サーバーはステージング サーバーとしての構成となります。
+- A. いいえ、できません。パスワード ハッシュ同期はアクティブの Azure AD Connect サーバーでのみ行われます。その他の Azure AD Connect サーバーはステージング サーバーとなり、パスワード ハッシュ同期が有効化されている場合も、動作は停止しています。
 ---
 
 - Q. PTA の必要数は ?
