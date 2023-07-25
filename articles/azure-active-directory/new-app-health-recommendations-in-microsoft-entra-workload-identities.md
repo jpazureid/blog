@@ -16,10 +16,10 @@ tags:
 
 先日、弊社では 2023 年クラウドにおけるアクセス許可のリスク状態におけるレポートを発表し、クラウド環境の拡大だけでなく、重要なクラウド リソースにアクセスする ID の種類の増加に関して非常に興味深い調査結果が示されました。このレポートでは、ワークロード ID のセキュリティ保護がこれまで以上に重要になっている理由について興味深い調査結果が明らかにされています:
 
-- ワークロード ID は、人間の ID を 10:1 で上回り、2021 年の 2 倍になりました。この大幅な増加により、新たなセキュリティ リスクが生じています。
-- ワークロード ID の 80% 以上が非アクティブであり、2021 年に報告された割合の 2 倍となっています。
-- ワークロード ID は付与された権限の 5% 未満しか使用していません。
-- ワークロード ID の約 70% が機密データにアクセスできます。
+  - ワークロード ID は、人間の ID を 10:1 で上回り、2021 年の 2 倍になりました。この大幅な増加により、新たなセキュリティ リスクが生じています。
+  - ワークロード ID の 80% 以上が非アクティブであり、2021 年に報告された割合の 2 倍となっています。
+  - ワークロード ID は付与された権限の 5% 未満しか使用していません。
+  - ワークロード ID の約 70% が機密データにアクセスできます。
 
 膨大な数の非アクティブなワークロード ID と資格情報が存在するということは、特にその多くが高い権限を持っており、クラウド全体で動作していることを考えると、大幅なリスク軽減の機会となります。非アクティブな ID や古い認証情報は侵害のターゲットになりやすく、通常は削除しても影響はありませんが、資格情報の有効期限が切れると障害がにつながる可能性もあります。
 
@@ -60,10 +60,10 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 **参考情報:**
 
-- 人間以外の ID、アクセス許可のリスクについて詳しく知り、Microsoft Entra Workload Identities と Permissions Management の概要を把握するには、この [Kuppinger Cole whitepaper](https://www.kuppingercole.com/reprints/cb05bfdbbdb25b6535a42835b77465e2#heading1) と  [2023 年のクラウド アクセス許可リスクの状況レポート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW10qzO)を参照ください。
-- Microsoft Entra のワークロード ID のベスト プラクティスの詳細については、以下を参照ください:
-   - [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
-	 - [ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/zero-trust-for-developers)
-	 - [Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/security-best-practices-for-app-registration)
+  - 人間以外の ID、アクセス許可のリスクについて詳しく知り、Microsoft Entra Workload Identities と Permissions Management の概要を把握するには、この [Kuppinger Cole whitepaper](https://www.kuppingercole.com/reprints/cb05bfdbbdb25b6535a42835b77465e2#heading1) と  [2023 年のクラウド アクセス許可リスクの状況レポート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW10qzO)を参照ください。
+  - Microsoft Entra のワークロード ID のベスト プラクティスの詳細については、以下を参照ください:
+      - [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
+	   - [ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/zero-trust-for-developers)
+	   - [Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/security-best-practices-for-app-registration)
 
 
