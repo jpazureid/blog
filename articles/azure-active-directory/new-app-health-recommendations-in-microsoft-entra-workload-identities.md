@@ -47,10 +47,10 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 上記画面を確認し、最善の対応を行うには、以下の手順を実施ください:
 
-  1. Microsoft Entra 管理センター > Azure AD > [概要] に移動し、[推奨設定] を選択します。
-  2. リストから推奨事項を選択すると、詳細、状態、アクション プランが表示されます。
-  3. アクション プランに従い操作を行います。
-  4. 該当する場合は、推奨事項内のリソースのステータスをクリックし、[次としてマーク] を選択してステータスを選択します。
+　1. Microsoft Entra 管理センター > Azure AD > [概要] に移動し、[推奨設定] を選択します。
+　2. リストから推奨事項を選択すると、詳細、状態、アクション プランが表示されます。
+　3. アクション プランに従い操作を行います。
+　4. 該当する場合は、推奨事項内のリソースのステータスをクリックし、[次としてマーク] を選択してステータスを選択します。
 
  Microsoft Graph を使用してアプリの正常性に関する推奨事項を操作したい場合は、こちらの[ドキュメント](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/howto-use-recommendations?toc=%2Fazure%2Factive-directory%2Fworkload-identities%2Ftoc.json&bc=%2Fazure%2Factive-directory%2Fworkload-identities%2Fbreadcrumb%2Ftoc.json)を参照してください。
 
@@ -62,8 +62,8 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 - 人間以外の ID、アクセス許可のリスクについて詳しく知り、Microsoft Entra Workload Identities と Permissions Management の概要を把握するには、この [Kuppinger Cole whitepaper](https://www.kuppingercole.com/reprints/cb05bfdbbdb25b6535a42835b77465e2#heading1) と  [2023 年のクラウド アクセス許可リスクの状況レポート](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW10qzO)を参照ください。
 - Microsoft Entra のワークロード ID のベスト プラクティスの詳細については、以下を参照ください:
-		- [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
-		- [ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/zero-trust-for-developers)
-		- [Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/security-best-practices-for-app-registration)
+   - [ワークロード ID をセキュリティで保護する](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk)
+	 - [ゼロ トラストの原則を使用してアプリケーションのセキュリティを強化する](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/zero-trust-for-developers)
+	 - [Azure Active Directory でのアプリケーション プロパティのセキュリティに関するベスト プラクティス](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/security-best-practices-for-app-registration)
 
 
