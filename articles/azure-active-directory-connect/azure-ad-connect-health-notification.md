@@ -1,48 +1,58 @@
 ---
 title: Azure AD Connect Health Notification メールについて
-date: 2018-03-1
+date: 2023-07-25
 tags:
-  - AAD Connect
+  - Azure AD Connect
 ---
 
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/03/01/aadc-health-notification/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
+> 
+> 2018 年 3 月 1 日に「Azure AD Connect Health Notification メールについて」 として公開しておりましたが、情報が古くなってまいりましたので、 2023 年 7 月 25 日時点の最新情報として改めて更新のうえ公開しております。
 
 # Azure AD Connect Health Notification メールについて
 
-こんにちは！ Azure Identity サポートの谷です。  
+こんにちは！ Azure Identity サポートの小出です。  
 
 Azure AD Connect を利用してオンプレミスと Azure AD を連携している環境で最近 (2018 年 2 月) 突然次のような通知メールが届いているケースがあると思います。
 この通知メールについて Q&A 形式で纏めました。  
 
 <本文サンプル>
-![](./azure-ad-connect-health-notification/Notification.jpg)
+![](./azure-ad-connect-health-notification/notification1.png)
+
+
+![](./azure-ad-connect-health-notification/notification2.png)
+
+
 
 ## Q. このメールは何を通知しているのか？
 
-A. Azure AD Connect Health Agent によるデータのアップロードが RAISED (発生日時) から RESOLVE (解決日時) まで行われていなかったことを通知しています。
-Azure AD Connect はオンプレミスの Active Directory のユーザー情報を Azure AD に同期しますが、その他にもオンプレミスのサーバーの監視をおこなう Azure AD Connect Health Agent というものがあります。  
-この Agent は定期的にオンプレミスの監視対象とするサーバーの情報を Azure AD にアップロードします。  
+A. Azure AD Connect Health Agent による Azure データセンターへの正常性データのアップロードが RAISED (発生日時) から RESOLVE (解決日時) まで行われていなかったことを通知しています。
+Azure AD Connect はオンプレミスの Active Directory のユーザー情報を Azure AD に同期しますが、その他にもオンプレミスのサーバーの監視をおこなう Azure AD Connect Health Agent というエージェントがあります。  
+このエージェントは定期的にオンプレミスの監視対象とするサーバーの情報を Azure AD にアップロードします。  
 今回の通知は、そのアップロードが一定期間  RAISED (発生日時) から RESOLVE (解決日時) まで、行えていなかったことを管理者に通知しています。  
 Azure AD Connect Health Agent サービスによるアップロードが 2 時間以上行われていないと Azure Portal 上にそのことを示す通知が行われます。  
 Azure Portal : URL:https://aka.ms/aadconnecthealth  
 
-## Q. 何も構成変更を実施していないのに急に通知された理由は？
+メールは上記サンプルのように、基本的には発生した時と解消した時の2回通知されます。
 
-A. GDPR 対応に伴うマイクロソフト データセンターでの作業の影響によるものです。  
-データがアップロードされていないという情報についてもマイクロソフトのデータセンターにそのステータス情報が記録されていました。  
-今回 GDPR (General Data Protection Regulation (EU 一般データ保護規則)) への対応に伴い、約 30 日間でこのステータス情報を削除することになりました。  
-情報削除に伴い、 "監視通信が行えていない" という情報が削除され、結果として (= 解決した) という通知メールが配信された結果となります。  
 
-Title : GDPR compliance and Azure AD Connect Health  
-URL:https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-gdpr  
+
 
 ## Q. [Resolved] だが、監視通信は正常な状態になっているのか？
 
 A. "監視通信が行えていない" という情報が削除された結果であり、実際に監視通信が正常ではない状態が継続している可能性があります。  
+
 例えば、Azure AD Connect (AADC) サーバーを数時間程度シャットダウンした場合には、停止後から約 2 時間で監視通信が行えていない内容の通知メールが送付され、起動後から約 2 時間で監視通信が再開できた (今回の通知メールと同じ内容の) 通知メールが送付されます。  
-そのため、1 つの目安として通知メール内の "RAISED (問題発生日時)" と "RESOLVE (問題解決日時)" を参照し、メンテナンスや意図した作業に伴い AADC サーバーから Azure AD に向けた通信が行えないような状態に心当たりがないか確認します。そのようなメンテナンスなどの作業以上に長期間空いているようであれば、実際は以前から監視通信ができておらず、GDPR 対応のため弊社側で通信不可のステータス情報を削除した結果の通知である可能性があります。  
+そのため、1 つの目安として通知メール内の "RAISED (問題発生日時)" と "RESOLVE (問題解決日時)" を参照し、メンテナンスや意図した作業に伴い AADC サーバーから Azure AD に向けた通信が行えないような状態に心当たりがないか確認します。
+
+
+## Q. 通知メールはどのタイミングで配信されるのか？
+
+A. データセンター側では約 2 時間おきにアップロード状況の確認が行われています。
+
+確認が行われるまでに 2 時間以上アップロードされていない場合にメールで通知されるため、アップロードがされなくなってから、通知メールが配信されるまでは少なくとも 2 時間、場合によっては 4 時間ほど要します。
 
 ## Q. 監視通信が行えていないが、Azure Active Directory との同期処理は問題ないか？
 
@@ -55,7 +65,7 @@ A. 下記のサービスを停止することで無効化することが可能�
 - Azure AD Connect Health Sync Insights Service  
 - Azure AD Connect Health Sync Monitoring Service  
 
-**Q. 監視通信が正常に行えているか確認する方法は？**  
+## Q. 監視通信が正常に行えているか確認する方法は？
 
 A. Azure AD Connect サーバーにて、上述の 2 つのサービスが稼働していることを確認します。  
 Azure AD Connect サーバーにて、下記のコマンドを実行します。  
@@ -88,7 +98,7 @@ Connectivity Test Step 3 of 3 - EventHub data upload procedure completed success
 Test-AzureADConnectHealthConnectivity completed successfully...  
 ```
 
-- 3 つの確認ステップが実行されますので、それぞれ successfully となるかを確認ください。  
+- 3 つの確認ステップが実行されますので、それぞれ "completed successfully" となるかを確認ください。  
 
 Title : Azure AD Connect Health サービスへの接続テスト  
 URL:https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service
@@ -96,15 +106,16 @@ URL:https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/activ
 ## Q. 監視通信の通知メールの宛先を変更方法は？
 
 A. Azure Portal 画面より変更、無効化することが可能です。  
-Azure ポータル（http://portal.azure.com）にサインインします。  
-左側のメニューから [Azure Active Directory] – [Azure AD Connect] をクリックします。  
-[正常性と分析] の下にある [Azure AD Connect Health] をクリックします。  
-[Azure Active Directory Connect (Sync)] の枠内にある対象テナントをクリックします。  
-[操作] の枠内をクリックします。  
-[通知設定] をクリックします。  
-通知を無効化する場合 : "通知を使用すると、新しいアラートがあるときに通知を受け取ることができます。" 項目のチェックをオフに設定します。  
-通知先を変更する場合 : 変更を行うメールアドレス欄を選択し、変更後のアドレスを入力します。  
-[保存] をクリックします。  
+
+1. Azure ポータル（http://portal.azure.com）にサインインします。  
+2. 左側のメニューから [Azure Active Directory] – [Azure AD Connect] - [Connect 同期] をクリックします。  
+3. [正常性と分析] の下にある [Azure AD Connect Health] をクリックします。  
+4. [Azure Active Directory Connect (Sync)] の枠内にある [同期サービス] をクリックし、対象テナントをクリックします。  
+5. [操作] の枠内をクリックします。  
+6. [通知設定] をクリックします。  
+  通知を無効化する場合 : "新しいアラートの通知を電子メールで受け取ります。" 項目のチェックをオフに設定します。  
+  通知先を変更する場合 : 変更を行うメールアドレス欄を選択し、変更後のアドレスを入力します。  
+7. [保存] をクリックします。  
 
 Title : Azure Active Directory Connect Health の操作  
 URL:https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-operations
