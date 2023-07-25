@@ -58,7 +58,7 @@ Staging サーバーの構成方法はすこぶる簡単です！
 
 また、インストール後に Active から Staging へ、もしくはその逆にモードを変更するのも非常に簡単です。  
 インストール後の環境で Azure AD Connect ウィザード　(C:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe)　を起動して、追加のタスク画面にて [ステージング モードの構成] メニューを選択するだけです。  
-※ [こちら](https://github.com/jpazureid/blog/blob/master/azure-active-directory-connect/how-to-upgrade.md) の Blog でも Staging サーバーの構成手順をご紹介しておりますので、併せて参考にしていただければと思います！
+※ [こちら](https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/) の Blog でも Staging サーバーの構成手順をご紹介しておりますので、併せて参考にしていただければと思います！
 ![](./introduction-staging-server/aadc_staging_2-1.jpg)
 
 (バージョン 1.2.67.0 の画面です。バージョンによって表示が違う場合があります。)
