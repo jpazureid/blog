@@ -17,7 +17,10 @@ Azure AD Connect を利用してオンプレミスと Azure AD を連携して�
 この通知メールについて Q&A 形式で纏めました。  
 
 <本文サンプル>
-![](./azure-ad-connect-health-notification/Notification1.jpg)
+![](./azure-ad-connect-health-notification/notification1.png)
+
+
+![](./azure-ad-connect-health-notification/notification2.png)
 
 ## Q. このメールは何を通知しているのか？
 
@@ -29,16 +32,14 @@ Azure AD Connect Health Agent サービスによるアップロードが 2 時�
 Azure Portal : URL:https://aka.ms/aadconnecthealth  
 
 メールは上記サンプルのように、基本的には発生した時と解消した時の2回通知されます。
-![](./azure-ad-connect-health-notification/Notification1.jpg)
 
-
-![](./azure-ad-connect-health-notification/Notification2.jpg)
 
 
 
 ## Q. [Resolved] だが、監視通信は正常な状態になっているのか？
 
 A. "監視通信が行えていない" という情報が削除された結果であり、実際に監視通信が正常ではない状態が継続している可能性があります。  
+
 例えば、Azure AD Connect (AADC) サーバーを数時間程度シャットダウンした場合には、停止後から約 2 時間で監視通信が行えていない内容の通知メールが送付され、起動後から約 2 時間で監視通信が再開できた (今回の通知メールと同じ内容の) 通知メールが送付されます。  
 そのため、1 つの目安として通知メール内の "RAISED (問題発生日時)" と "RESOLVE (問題解決日時)" を参照し、メンテナンスや意図した作業に伴い AADC サーバーから Azure AD に向けた通信が行えないような状態に心当たりがないか確認します。
 
@@ -101,15 +102,16 @@ URL:https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/activ
 ## Q. 監視通信の通知メールの宛先を変更方法は？
 
 A. Azure Portal 画面より変更、無効化することが可能です。  
-Azure ポータル（http://portal.azure.com）にサインインします。  
-左側のメニューから [Azure Active Directory] – [Azure AD Connect] をクリックします。  
-[正常性と分析] の下にある [Azure AD Connect Health] をクリックします。  
-[Azure Active Directory Connect (Sync)] の枠内にある対象テナントをクリックします。  
-[操作] の枠内をクリックします。  
-[通知設定] をクリックします。  
-通知を無効化する場合 : "通知を使用すると、新しいアラートがあるときに通知を受け取ることができます。" 項目のチェックをオフに設定します。  
-通知先を変更する場合 : 変更を行うメールアドレス欄を選択し、変更後のアドレスを入力します。  
-[保存] をクリックします。  
+
+1. Azure ポータル（http://portal.azure.com）にサインインします。  
+2. 左側のメニューから [Azure Active Directory] – [Azure AD Connect] - [Connect 同期] をクリックします。  
+3. [正常性と分析] の下にある [Azure AD Connect Health] をクリックします。  
+4. [Azure Active Directory Connect (Sync)] の枠内にある [同期サービス] をクリックし、対象テナントをクリックします。  
+5. [操作] の枠内をクリックします。  
+6. [通知設定] をクリックします。  
+  通知を無効化する場合 : "新しいアラートの通知を電子メールで受け取ります。" 項目のチェックをオフに設定します。  
+  通知先を変更する場合 : 変更を行うメールアドレス欄を選択し、変更後のアドレスを入力します。  
+7. [保存] をクリックします。  
 
 Title : Azure Active Directory Connect Health の操作  
 URL:https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-operations
