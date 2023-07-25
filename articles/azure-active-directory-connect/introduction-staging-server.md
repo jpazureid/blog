@@ -64,7 +64,7 @@ Staging サーバーの構成方法はすこぶる簡単です！
 (バージョン 1.2.67.0 の画面です。バージョンによって表示が違う場合があります。)
 
 ウィザードを進めると以下のようなメニューが表示されるので、チェックを入れて進めれば Staging モードに、チェックを外して進めれば Active モードに切り替えられます。
-![](./introduction-staging-server/introduction-staging-server/aadc_staging_2-2.jpg)
+![](./introduction-staging-server/aadc_staging_2-2.jpg)
 
 ご注意いただきたいポイントとして [1 つの AAD テナントには 1 台の AADC Active サーバーのみがサポートされるトポロジである] 点です。  
 前述した [こちら](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/plan-connect-topologies) の技術情報でサポートされる/されないトポロジをご案内していますが、<span style="color: red; ">**1 つの AAD テナントに複数の Active な AADC サーバーから同期を行う構成は取れません**</span>のでご注意ください。
