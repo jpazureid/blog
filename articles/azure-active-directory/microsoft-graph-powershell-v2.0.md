@@ -63,7 +63,7 @@ Install-Module Microsoft.Graph.Beta
 システム割り当てマネージド ID での認証をする場合は以下コマンドを実行ください。
 
 ```powershell
-Connent-MgGraph -Identy
+Connent-MgGraph -Identity
 ```
 
 ユーザー割り当てマネージド ID での認証をする場合は以下コマンドを実行ください。
