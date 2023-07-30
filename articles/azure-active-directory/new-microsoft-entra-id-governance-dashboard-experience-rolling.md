@@ -9,7 +9,7 @@ tags:
 # Microsoft Entra ID Governance の新しいダッシュボードが近々公開されます
 
 
-こんにちは、Azure Identity サポート チームの 名取 です。
+こんにちは、Azure Identity サポート チームの 高田 です。
 
 本記事は、2023 年 7 月 19 日に米国の Azure Active Directory Identity Blog で公開された [New Microsoft Entra ID Governance Dashboard Experience Rolling Out Soon](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-microsoft-entra-id-governance-dashboard-experience-rolling/ba-p/2466928) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
