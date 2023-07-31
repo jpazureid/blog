@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect Health Notification メールについて
+title: Health service data is not up to date. の通知メールについて
 date: 2023-07-25
 tags:
   - Azure AD Connect
