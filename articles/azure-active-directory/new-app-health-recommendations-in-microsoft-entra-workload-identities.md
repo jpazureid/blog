@@ -37,7 +37,7 @@ Kuppinger Cole のホワイトペーパー[Securing Non-Human Identities](https:
 
 ## 推奨事項とその対処方法
 
-これらの新機能は、[Azure AD の推奨事項][(https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-recommendations](https://learn.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/overview-recommendations) で利用可能です。各推奨事項には、問題の説明、アクションを実行する利点、段階的な改善手順を含むアクション プランが含まれています。Microsoft Entra ワークロード ID の一部として最初に提供される、3 つのアプリの正常性に関する推奨事項は次のとおりです:
+これらの新機能は、[Azure AD の推奨事項](https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-recommendations) で利用可能です。各推奨事項には、問題の説明、アクションを実行する利点、段階的な改善手順を含むアクション プランが含まれています。Microsoft Entra ワークロード ID の一部として最初に提供される、3 つのアプリの正常性に関する推奨事項は次のとおりです:
 
 1. 未使用のアプリケーション
 2. 未使用のアプリケーション資格情報
