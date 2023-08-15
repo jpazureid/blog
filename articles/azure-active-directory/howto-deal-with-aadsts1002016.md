@@ -145,7 +145,6 @@ $pathForExport = "c:\temp\"  # CSV ファイルの出力先フォルダ名を入
 $startDate = (Get-Date).AddDays(-($agoDays)).ToString('yyyy-MM-dd')  # $agoDays で指定した日数を元に取得対象の開始日を得ます
 
 Connect-MgGraph -Scopes "AuditLog.Read.All" -TenantId $tId 
-Select-MgProfile "beta"  # ベータのエンドポイントへの接続が必要です
 
 # フィルタ条件を定義しています。サインイン ログに TLS 1.0 / 1.1 が利用されたことを示すエントリのみをフィルタするようにしています
 $procDetailFunction = "x: x/key eq 'legacy tls (tls 1.0, 1.1, 3des)' and x/value eq '1'"
