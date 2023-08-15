@@ -125,9 +125,12 @@ ExtensionAttribute1 などの属性は、ユーザーの onpremisesExtensionAttr
 
 
 > [!NOTE]
+> 
 > Microsoft Graph Powershell v2.x では、 Select-MgProfile コマンドでのベータ版切り替えがなくなりました。
 > v2 をご利用いただく場合、Select-MgProfile -name beta コマンドの切り替えではなく、 beta 用のコマンド Get-Mgbetauser をご利用ください。
+> 
 > Microsoft Graph Powershell v2.x の詳細は [こちら](https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-v2.0/) をご覧ください。
+> 
 > v1.x を利用されている場合、Connect-MgGraph での接続後、本コマンド実行前に Select-Mgprofile -name beta にてベータに切り替えを実施し、 Get-MgUser コマンドをご利用ください。
 
 <h3 id="idx1-6">削除済みユーザーを取得したい</h3>
@@ -216,13 +219,7 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 時折ご質問をいただくものとして、extensionattribute 関連の属性を更新したいといったお問い合わせがよくあるため、以下に手順を例として案内します。 Extensionattribute の値を更新したい場合、事前に beta に切り替えてからコマンドを実行ください。
 
 1. Connect-MgGraph にて接続します。
-2. beta バージョンへ切り替えます。
-
-	```
-	Select-MgProfile -Name "beta"
-	```
-
-3. Get-Mguser コマンドを実行して、ユーザーの情報を取得します。
+2. Get-Mguser コマンドを実行して、ユーザーの情報を取得します。
  
 	```
 	(Get-MgbetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).onpremisesExtensionAttributes | fl
@@ -232,20 +229,22 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 
 	![](./azuread-module-retirement4/azuread-module-retirement4-11-2.png)
  
-4. 以下のコマンドを実行して、たとえば ExtensionAttribute4 の値を test44 に更新します。
+3. 以下のコマンドを実行して、たとえば ExtensionAttribute4 の値を test44 に更新します。
  
 	```
 	Update-MgbetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6 -OnPremisesExtensionAttributes @{"ExtensionAttribute4"='test44'}
 	```
 
-5. 値が test44 に更新されたことを確認します。
+4. 値が test44 に更新されたことを確認します。
 
 	![](./azuread-module-retirement4/azuread-module-retirement4-12-2.png)
 
 
 > [!NOTE]
+> 
 > Microsoft Graph Powershell v2.x では、 Select-MgProfile コマンドでのベータ版切り替えがなくなりました。
 > 変更に伴い手順を変更しておりますが、もしまだ v1.x を利用されている場合は、接続後に Select-MgProfile -Name "beta" で切り替えを実施してください。
+> 
 > 利用しているバージョンが分からない場合は、 Get-InstalledModule Microsoft.Graph* を実行し、バージョンを確認してください。
 
 
