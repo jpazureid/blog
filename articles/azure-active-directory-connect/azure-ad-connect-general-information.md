@@ -12,7 +12,8 @@ tags:
 
 本記事は、 2020 年に初回投稿された記事を、現在の情報採取手順やご案内に見直し更新いたしております。
 
-Azure AD Connect に関わる問題が発生した場合にテクニカル サポートにお問い合わせいただく際に下記の情報をご提供いただくことで問い合わせがスムーズに行われますので、予め採取をお願いいたします。
+Azure AD Connect に関わる問題が発生した場合にテクニカル サポートにお問い合わせいただく際、下記の情報をご提供いただくことで問い合わせがスムーズに行われますので、予め採取をお願いいたします。
+
 調査過程で追加で採取いただく情報が増える可能性がありますので、予めご了承ください。
 
 
@@ -26,17 +27,27 @@ Azure AD Connect に関わる問題が発生した場合にテクニカル サ�
 Azure AD Connect トラブルシューティングは大区分として、Azure AD Connect サーバー全般に関わる問題か、特定のオブジェクトに関わる問題かにより調査に必要な情報が異なります。
 上記内容をスクリプトで一括採取する方法につきましてもご用意させていただいていますので、こちらをもとにシナリオごとに情報を採取してください。
 
+
  AADC サーバー情報一括採取ツール
+ 
  https://github.com/jpazureid/aadconnect-diagnostic
+
 
 なお、シナリオにかかわらず、以下の情報も一括採取ログと併せてお送りいただくと、よりスムーズな対応が可能です。
 
+
 a. エラーの画面またはログ抜粋
+
 　 オブジェクト同期に関わる問題につきましては、Synchronization Service Manager のステータスや詳細が確認できる画面キャプチャなど
+  
 b. テナント名   (例 contoso.onmicrosoft.com)
+
 c. 発生日時
+
 d. 現在の状況 (事象が継続中 or 断続的に発生 or 解消済み)
+
 e. 事象発生前後の状況 (構成変更やアップグレードをした場合には具体的なバージョンなど)
+
 
 
 
@@ -63,6 +74,7 @@ Azure AD Connect の構成ウィザードでは、Active Directory や Azure AD 
 接続の問題が疑われる場合は、 Azure AD Connect 構成ウィザード上のトラブルシューティングを実行し通信面の問題を確認することが可能です。
  
 Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
+
 https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/tshoot-connect-objectsync
 
 1. Azure AD Connectインストール サーバー上で PowerShell を管理者として起動します。
@@ -72,7 +84,7 @@ https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/tshoot-c
 5. PowerShell ウィンドウが起動するので、 Azure AD の通信状況を確認したい場合には「5」、オンプレミス AD の通信状況を確認したい場合には「6」を入力して Enter を押します。
 
 
-
+ ![](./azure-ad-connect-general-information/azure-ad-connect-general-information1.png)
 
 6. 結果が表示されます。通信に問題がある場合にはエラーが表示されるので内容を基にトラブルシューティングを実施ください。
 
