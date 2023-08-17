@@ -9,11 +9,12 @@ tags:
 # 先進的で強力な認証の推進
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
+
 本記事は、2023 年 7 月 17 日に米国の Azure Active Directory Identity Blog で公開された [Advancing Modern Strong Authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advancing-modern-strong-authentication/ba-p/3773135) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
-以前のブログ ["認証に電話網を使うのはそろそろやめよう (It’s Time to Hang Up on Phone Transports for Authentication)"](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) で、SMS や音声などの多要素認証 (MFA) メカニズムの脆弱性について書きました。マイクロソフトの [最近の MFA 調査研究](https://arxiv.org/pdf/2305.00945.pdf) によると、SMS は [Microsoft Authenticator](https://www.microsoft.com/ja-jp/security/mobile-authenticator-app) アプリと比較して、悪意のある攻撃者を阻止する効果が 40％ 低いと結論づけています。
+以前のブログ ["認証に電話網を使うのはそろそろやめよう (It’s Time to Hang Up on Phone Transports for Authentication)"](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) で、SMS や音声などの多要素認証 (MFA) メカニズムの脆弱性について書きました。マイクロソフトの [最近の MFA に関する調査研究](https://arxiv.org/pdf/2305.00945.pdf) によると、SMS は [Microsoft Authenticator](https://www.microsoft.com/ja-jp/security/mobile-authenticator-app) アプリと比較して、悪意のある攻撃者を阻止する効果が 40％ 低いと結論づけています。
 
 また、Authenticator の [セキュリティの改善](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-microsoft-authenticator-security-features-are-now-available/ba-p/2464386) (日本語訳したブログは [こちら](https://jpazureid.github.io/blog/azure-active-directory/new-authenticator-security-features/)) にも引き続き取り組んでいます。しかし、電話ベースの認証から脱却することには明確な利点があるにもかかわらず、未だ MFA 要求の約 44% が SMS や音声電話によるものです。悪意のある攻撃者は、電話方式に基づく MFA を悪用し続けているのです。ユーザーを保護するために、是非より強力な認証方法を使用していきましょう。
 
@@ -21,7 +22,7 @@ tags:
 
 ## 強力な認証の登録キャンペーン
 
-2021 年 11 月、Microsoft Authenticator を始めとして最新の認証方法の採用を促進するため、登録キャンペーンの機能をリリースしました。リリース以来、何千もの企業がこの機能を利用して最新の認証方法の採用を促進し、130 万人以上のユーザーが Microsoft Authenticator を主要な認証方法として設定し、利用を開始しています。しかしながら、お客様から、最新の強力な認証方法の登録に当たり、より細かく登録動作をコントロールしたいという声をお聞きしました。この声にこたえるため、新しい機能を追加しました。
+2021 年 11 月、Microsoft Authenticator を始めとして最新の認証方法の採用を促進するため、[登録キャンペーンの機能をリリース](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-microsoft-authenticator-security-features-are-now-available/ba-p/2464386) しました。リリース以来、何千もの企業がこの機能を利用して最新の認証方法の採用を促進し、130 万人以上のユーザーが Microsoft Authenticator を主要な認証方法として設定し、利用を開始しています。しかしながら、お客様から、最新の強力な認証方法の登録に当たり、より細かく登録動作をコントロールしたいという声をお聞きしました。この声にこたえるため、新しい機能を追加しました。
 
 ![登録キャンペーンのサインイン プロンプト](./advancing-modern-strong-authentication/advancing-modern-strong-authentication1.png)
 
