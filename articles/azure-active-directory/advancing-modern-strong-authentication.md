@@ -23,6 +23,8 @@ tags:
 
 2021 年 11 月、Microsoft Authenticator を始めとして最新の認証方法の採用を促進するため、登録キャンペーンの機能をリリースしました。リリース以来、何千もの企業がこの機能を利用して最新の認証方法の採用を促進し、130 万人以上のユーザーが Microsoft Authenticator を主要な認証方法として設定し、利用を開始しています。しかしながら、お客様から、最新の強力な認証方法の登録に当たり、より細かく登録動作をコントロールしたいという声をお聞きしました。この声にこたえるため、新しい機能を追加しました。
 
+![登録キャンペーンのサインイン プロンプト](./advancing-modern-strong-authentication/advancing-modern-strong-authentication1.png)
+
 まず始めに、プロンプトのスキップ回数に上限を導入します。最新のアップデートにより、ユーザーは最大 3 回まで登録を延期できるようになります。これにより、キャンペーンの効果を高めつつ、ユーザーは変更に向けて予定や準備に十分な時間をえることができるようになります。
 
 第二に、設定が "Microsoft マネージド" として設定されている組織の場合、MFA の方法として SMS または音声を利用しているユーザーに対して、この機能を自動的に有効にします。今月 (2023 年 7 月) より、この変更の段階的な展開を開始します。[Microsoft 365 管理センターのメッセージ センター](https://go.microsoft.com/fwlink/p/?linkid=2070717) で、管理者に対してこの変更が具体的に組織に影響する時期を通知しますので、ご注目ください。
@@ -34,6 +36,8 @@ tags:
 これは、フィッシング耐性のある認証を必要とする大統領令 14028「Improving the Nation's Cybersecurity (国家のサイバーセキュリティの改善)」に準拠する必要がある米国政府機関など、厳格なコンプライアンス要件がある規制の厳しい組織にとって特に有用です。
 
 [このページ](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/howto-authentication-passwordless-security-key) の指示に従って、FIDO2 セキュリティキーによるパスワードレス サインインを有効化ください。
+
+![FIDO2 セキュリティキーによるパスワードレス サインイン](./advancing-modern-strong-authentication/advancing-modern-strong-authentication2.png)
 
 サポートされるブラウザーのシナリオの詳細については、https://aka.ms/FIDOMatrix (日本語版の公開情報は [こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/fido2-compatibility)) を参照ください。
 
