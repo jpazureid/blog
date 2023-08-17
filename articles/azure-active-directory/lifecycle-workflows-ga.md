@@ -23,7 +23,7 @@ tags:
 
 2022 年の Ignite で、[ライフサイクル ワークフロー](https://learn.microsoft.com/en-us/azure/active-directory/governance/what-are-lifecycle-workflows) (LCW) のパブリックプレビューを発表しました。この機能では、自動化されたエンタープライズ レベルのユーザー ライフサイクル管理機能が提供され、組織は ID ライフサイクル管理を刷新し、IT 管理者がこれらの課題に対処するよう支援します。これ以来、世界中の何百もの組織がこの機能を試してフィードバックを提供くださいました。弊社では LCW をさらに改善し、IT 管理者がより多くの時間を節約し、作業ミスを減らし、損失につながる遅延を回避できるようにしました。これにより入社、異動、離職の繰り返しのタスクを自動化し、新しい従業員や役職変更のあった従業員がすぐに生産的になるよう支援できます。また、従業員が組織を離れた際にはアクセスが速やかに削除されたことを確認できるようになっています。
 
- ![](./lifecycle-workflows-ga/lifecycle-workflows-ga1.png")
+ ![](./lifecycle-workflows-ga/lifecycle-workflows-ga1.png)
 
  LCW がどのように IT 管理者の重要なタスクを自動化し、時間を節約し、リスクを減らし、そして従業員がより迅速に生産性を発揮できるよう支援しているかを次に探ってみましょう。
 
@@ -39,7 +39,7 @@ IT 管理者として、あなたにはこのプロセスを適切に管理す�
 
 Woodgrove の管理者である Lisa は、[Entra Identity Governance -> Lifecycle Workflows](https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview) に移動し、[ワークフローの作成] をクリックして、シナリオに合った組み込みのワークフロー テンプレートを選択します。今回の場合、Lisa は [新入社員をオンボードする] ワークフローテンプレート を選んで、新入社員のオンボード シナリオに使用します。
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga2.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga2.png)
 *Microsoft Entra ID Governance Lifecycle Workflows を使用して、適切なシナリオに合った組み込みワークフロー テンプレートを選択します。*
 
 Lisa は、[基本情報] タブからワークフロー名をカスタマイズし、トリガー イベントの詳細がすでに **employeeHireDate 属性**に基づいて**トリガー**されるように設定されていることを確認します。新しいライフサイクル ワークフローの機能強化により、必要に応じて代わりに**ユーザーの作成日**に基づいて**トリガー**を設定することも可能です。トリガー イベントの詳細は最大 180 日までカスタマイズできますが、新入社員のオンボーディングのシナリオでは、テンプレート値が新入社員の employeeHireDate に実行されるように設定されているため、追加の変更は必要ありません。
@@ -56,7 +56,7 @@ Woodgrove の新入社員に対してやるべきチェックリストのすべ�
 
 Lisa は、Woodgrove の企業ロゴが含まれたウェルカムメールをカスタマイズし、Woodgrove の新入社員ポータルへのリンクを追加したり、社員が Woodgrove からのメールであることを認識できるように、新入社員のチームメンバーに CC を付けることができるようになりました。
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga3.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga3.png)
 *新しくオンボードされた従業員のために、会社のロゴと関連情報が一致するようにウェルカム メールをカスタマイズできます。*
 
 Lisa は、すべての変更を確認するために [確認と作成] タブをクリックし、次に [スケジュールの有効化] チェックボックスをクリックして、ワークフローを保存するために [作成] をクリックします。
@@ -66,7 +66,7 @@ Lisa は、すべての変更を確認するために [確認と作成] タブ�
 
 作成、更新、および処理イベントを含む、ライフサイクル ワークフローによって実行されたすべてのアクションは、監査ログレポートに保存されます。さらに、ライフサイクル ワークフローではワークフローの履歴機能を提供しているため、より**詳細なレポーティング機能**により、誰に対して何が実行され、それが成功したかを素早く確認することができます。Lisa は選択したワークフローの**ワークフロー履歴**に移動して、ユーザー、実行、タスクのビューでワークフローの処理ステータスをチェックして、トラブルシューティングやコンプライアンスの目的で利用することができます。
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga4.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga4.png)
 *ワークフロー履歴からユーザーのワークフローのステータスを確認してトラブルシューティングとコンプライアンスに活用できます。*
 
 ## シナリオ 2: タイムリーにアクセスを削除するために従業員のオフボーディング プロセスを自動化する。
@@ -83,7 +83,7 @@ Tailspinonline 社の IT 管理者である Vance は、オフボーディング
 
 Vance は、[Entra Identity Governance -> Lifecycle Workflows](https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview) に移動し、[ワークフローの作成] をクリックして、シナリオに合った組み込みのワークフローテンプレートを選択します。この場合、退職のシナリオに相当するため、[リアルタイムの従業員の退職] ワークフローテンプレートを選びます。
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga5.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga5.png)
 *ライフサイクル ワークフローには、リアルタイムの従業員解雇など、複数の退職者シナリオのテンプレートが含まれています。*
 
 [基本情報] タブから、Vance は、ワークフロー名とをカスタマイズし、トリガー イベントの詳細がすでに**オンデマンド トリガーとしてトリガー イベント**が構成されていることを確認します。このテンプレートにより、Vance のような IT 管理者は、選択したユーザーに対してワークフローを即座に実行するか、今設定して後で実行するかを選択できるようになります。
@@ -96,14 +96,14 @@ Vance は、[Entra Identity Governance -> Lifecycle Workflows](https://entra.mic
 
 このテンプレートは、Vance のような IT 管理者に、**今すぐユーザーを選択**し**ワークフローを実行する**か、今すぐワークフローを作成し、**後でユーザーを選択して実行する**かという選択肢を提供します。[ユーザーの選択] タブから、Vance はユーザーを選択し、[確認と作成] タブをクリックし、全ての変更点を確認した後、[作成] をクリックしワークフローを保存します。ワークフローは直ちに Vance が選択したユーザーの処理を開始します。
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga6.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga6.png)
 *リアルタイムの従業員のオフボーディング ワークフローで、必要に応じて複数のユーザーを選択します。*
 
 **ステップ 3: ワークフローのステータスの監視します。**
 
 Vance は、選択したワークフローの**ワークフロー履歴**にを開き、進捗状況を監視し、退職処理が処理中であるかを確認することができます。オプションとして、個々のタスクのステータスを確認して、問題をチェックすることも可能です。
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga7.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga7.png)
 *リアルタイムな従業員のオフボーディング テンプレートを活用することで、従業員の退職と同時に確実にアクセス権を削除できます。*
 
 リアルタイムの従業員の退職テンプレートを使用することで、Vance はオフボーディング プロセスを自動化し、従業員の離職時にアクセス権が削除されるようにしました。また、オフボーディング プロセスの各タスクが正常に完了したことをワークフローの履歴で確認することで、組織の重要なデータの保護を支援をしました。
@@ -116,19 +116,19 @@ Vance は、選択したワークフローの**ワークフロー履歴**にを�
 
 > 「ライフサイクル ワークフローにより、マイクロソフトの Entra プラットフォームにれまで欠けていた Identity Governance の核となる要素が追加され、顧客が望んでいた自動化な JML(Joiner, Mover and Leaver) のユース ケースの課題が解決されました。これは、Entra をクライアントのシステム内の中心的な ID 管理システムとして使用するという大きな一歩となります。」- Erik Siebler (IAM Lead, DXC) 
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga8.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga8.png)
 
 > 「ライフサイクル ワークフローの製品ビジョンにこれまで期待を寄せていましたが、ようやく現在の入社、異動、退社のワークフローをレガシーな IAM プ>ラットフォームからクラウド ネイティブ IAM ソリューションに移行する未来が見えてきました。すでにいくつかのワークフローをライフサイクル ワークフローに移行し、O365 ライセンス、SMS、マネージャーへのメール通知を含め、店舗やバックオフィスの従業員のオンボーディングを行っています。」- Maqsood Ali Bhatti (IAM Lead, Elkjøp Nordic AS)
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga9.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga9.png)
 
 > 「ライフサイクル ワークフローによって、弊社ではついに、新入社員と退職者のプロセスを自動化して、自身とお客様のビジネスをサポートできるようになりました。この強力で素晴らしい機能により、弊社とお客様は共に Azure AD のアカウントのライフサイクルをコントロールして、アカウントを自動的にプロビジョニングおよびデプロビジョニングできるようになりました。」- Pim Jacobs (Principal Consultant, InSpark)
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga10.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga10.png)
 
 > 「どのお客様も ID の管理を難しいと感じていますが、弊社では Logic App を使用したり、ハイブリッドな働き方をする従業員に自動化の仕組みを利用してきました。このライフサイクル ワークフローは、様々な Azure サービスと完璧に統合されており、使ったことがなくてもすでに使い慣れることができるというのが、非常に良い点です。どのお客様でも、アカウントの管理は非常に煩雑であり、ライフサイクル ワークフローを使うことで、サードパーティの ID システムやアクセス管理ソリューションを利用するよりもはるかに少ないステップで、簡単に ID ワークフローの構築を開始することができます。この機能は、今後弊社にとって非常に重要なものになるでしょう。」- Nicola Alig (IAM Lead, BaseVision) 
 
-![](./lifecycle-workflows-ga/lifecycle-workflows-ga11.png")
+![](./lifecycle-workflows-ga/lifecycle-workflows-ga11.png)
 
 **新機能をぜひお試しください**
 
