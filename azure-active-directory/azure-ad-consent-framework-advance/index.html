@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>管理者の同意を実施したにも関わらず「管理者の承認が必要です」の画面が表示される | Japan Azure Identity Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは。Azure Identity チームの埴山です。不正なアプリを利用した攻撃を防ぐ目的で、一般ユーザーによる同意を制限しているお客様から、管理者同意に関するお問合せを多く頂いております。 そこで以前、「管理者の承認が必要」のメッセージが表示された場合の対処法 という記事を書きました。しかしながら記事を参考に管理者同意を実施したにもかかわらず、一般ユーザーがアプリにアクセスすると「管理者の">
+<meta property="og:type" content="article">
+<meta property="og:title" content="管理者の同意を実施したにも関わらず「管理者の承認が必要です」の画面が表示される">
+<meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/index.html">
+<meta property="og:site_name" content="Japan Azure Identity Support Blog">
+<meta property="og:description" content="こんにちは。Azure Identity チームの埴山です。不正なアプリを利用した攻撃を防ぐ目的で、一般ユーザーによる同意を制限しているお客様から、管理者同意に関するお問合せを多く頂いております。 そこで以前、「管理者の承認が必要」のメッセージが表示された場合の対処法 という記事を書きました。しかしながら記事を参考に管理者同意を実施したにもかかわらず、一般ユーザーがアプリにアクセスすると「管理者の">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/consent-flow.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/user-can-consent.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/user-already-consented.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework/consent-to-enterprise-application.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/configured-permissions.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/developer-tools.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/admin-consent-review.png">
+<meta property="article:published_time" content="2023-02-26T15:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-18T14:12:06.889Z">
+<meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="Azure AD">
+<meta property="article:tag" content="OAuth">
+<meta property="article:tag" content="Application">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/consent-flow.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpazureid.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan Azure Identity Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-azure-active-directory/azure-ad-consent-framework-advance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      管理者の同意を実施したにも関わらず「管理者の承認が必要です」の画面が表示される
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Published: 
+        <a href="" class="article-date-single">
+  <time datetime="2023-02-26T15:00:00.000Z" itemprop="datePublished">2023-02-27</time>
+</a>
+        
+          / Last update: <a id="update-time" class="article-date-single"></a>
+/ Contributors: <ul style="display: inline-block; list-style:none" id="contributors" class="github-contributors"> </ul>
+
+<script type="text/javascript">
+  const sourceUrl = "https://github.com/jpazureid/blog/blob/main/articles/azure-active-directory/azure-ad-consent-framework-advance.md";
+  const urlParts = sourceUrl.split("/");
+  const user = urlParts[3];
+  const repo = urlParts[4];
+  const filePath = urlParts.slice(7).join("/");
+  const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits?path=${filePath}`;
+  function formatDate(date) {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return year + '-' + month + '-' + day;
+  }
+
+  $.getJSON(apiUrl, function (data) {
+    const commit = data[0];
+    const updateDate = new Date(commit.commit.author.date);
+    const localDate = formatDate(updateDate);
+    const contributors = new Map();
+
+    data.reverse().forEach(function (commit) {
+      if (commit.author == null) {
+        return;
+      } else {
+        const name = commit.author.login;
+        const url = commit.author.html_url;
+        const avatar = commit.author.avatar_url;
+        contributors.set(name, { name, url, avatar });
+      }
+    });
+
+    $("#update-time").text(localDate);
+    $("#update-time").href = commit.html_url;
+    Array.from(contributors, ([_, value]) => value).reverse().forEach(function (contributor) {
+      $("#contributors").append(`<li class="contributor-avatar"><a target="_blank" rel="noopener" href="https://github.com/${contributor.name}" title="${contributor.name}"><img src="${contributor.avatar}" alt="${contributor.name}"/></a></li>`);
+    });
+  });
+</script>
+        
+        
+        
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6356a40f-471d-5c7e-baca-4c365928e08e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%AE%A1%E7%90%86%E8%80%85%E3%81%AE%E5%90%8C%E6%84%8F%E3%82%92%E5%AE%9F%E6%96%BD%E3%81%97%E3%81%9F%E3%81%AB%E3%82%82%E9%96%A2%E3%82%8F%E3%82%89%E3%81%9A%E3%80%8C%E7%AE%A1%E7%90%86%E8%80%85%E3%81%AE%E6%89%BF%E8%AA%8D%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%8D%E3%81%AE%E7%94%BB%E9%9D%A2%E3%81%8C%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-consent-framework-advance%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-consent-framework-advance.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-consent-framework-advance.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/" data-id="cllgo69ab00pw0nrxciz22u12" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>こんにちは。Azure Identity チームの埴山です。<br>不正なアプリを利用した攻撃を防ぐ目的で、一般ユーザーによる同意を制限しているお客様から、管理者同意に関するお問合せを多く頂いております。</p>
+<p>そこで以前、<a href="/blog/azure-active-directory/azure-ad-consent-framework/">「管理者の承認が必要」のメッセージが表示された場合の対処法</a> という記事を書きました。<br>しかしながら記事を参考に管理者同意を実施したにもかかわらず、一般ユーザーがアプリにアクセスすると「管理者の承認が必要です」の画面が表示されるというお問合せをいただくことがございます。</p>
+<p>アプリから想定外に同意要求がなされるのにはいくつかのパターンがあるのですが、いずれも「同意のフレームワーク」の仕組みについて理解が必要になります。<br>そこで今回の記事では、より技術的な視点で「同意のフレームワーク」がどのように動作するのか、想定外の同意要求はどのようにして発生するのか解説し、その対処方法をご案内します。</p>
+<h2 id="アプリが権限を要求する際の流れ"><a href="#アプリが権限を要求する際の流れ" class="headerlink" title="アプリが権限を要求する際の流れ"></a>アプリが権限を要求する際の流れ</h2><p>具体的なパターンを説明する前に、まずはアプリが実際にリソースへの権限を取得する流れを説明します。</p>
+<h3 id="同意の流れ"><a href="#同意の流れ" class="headerlink" title="同意の流れ"></a>同意の流れ</h3><p>サードパーティー製のアプリが、Azure AD で保護されたリソースにアクセスを行う場合、概ね以下のような流れになります。</p>
+<ol>
+<li>アプリが Azure AD の認可 (authorize) エンドポイントにアクセスし、ユーザーの同意を得る</li>
+<li>同意を得た結果 (authorization code) が Azure AD からアプリに返却される</li>
+<li>同意を得た結果 (authorization code) を元にアクセス トークンを取得する</li>
+<li>アクセス トークンを利用し、保護されたリソース (API) の呼び出しを実施する (図では省略)</li>
+</ol>
+<p><img src="/blog/azure-active-directory/azure-ad-consent-framework-advance/consent-flow.png" alt="consent flow"></p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>認証部分は省略しており、サインイン済みの状態を想定しています</p></div>
+<p>アプリは 1 の Step で動作に必要な権限を指定します。以前の記事で説明した通り、権限は scope と呼ばれる単位で管理されており、たとえばメール データを取得するアプリであれば <code>Mail.Read</code> を scope に指定しユーザー同意を得る必要があります。</p>
+<h2 id="認可リクエストの詳細"><a href="#認可リクエストの詳細" class="headerlink" title="認可リクエストの詳細"></a>認可リクエストの詳細</h2><p>同意要求は Azure AD の認可 (authorize) エンドポイントを介して実施されます。具体的には、以下のエンドポイントに対し GET リクエストを送信することで、サインイン ユーザーに対し同意要求を実施することが可能です。</p>
+<ul>
+<li><code>https://login.microsoftonline.com/&#123;tenant&#125;/oauth2/v2.0/authorize</code></li>
+</ul>
+<p>実際には上記の URL にアクセスするだけでは、「どのアプリ」が「どのような権限」を求めているか分かりません。オプショナルなパラメーターを除き、最低限必要なパラメーターを含めたリクエストの例は以下の通りです。</p>
+<ul>
+<li><code>https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=d6a9ba66-7c70-4c46-a221-39777901836c&amp;scope=Mail.Read&amp;redirect_uri=https%3A%2F%2Fjwt.ms&amp;response_type=code&amp;etc...</code></li>
+</ul>
+<p>URL の末尾 ? から後のクエリ パラメーターは、<code>=</code> で繋がれた Key, Value 形式になっていますが、同意のフレームワークで重要なのは特に以下パラメーターです。</p>
+<table>
+<thead>
+<tr>
+<th align="left">パラメーター</th>
+<th align="left">意味</th>
+<th align="left">例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">client_id</td>
+<td align="left">アクセス権を要求しているアプリのアプリケーション ID</td>
+<td align="left">d6a9ba66-7c70-4c46-a221-39777901836c</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">アプリが要求している権限</td>
+<td align="left">Mail.Read</td>
+</tr>
+</tbody></table>
+<p>ここでは <code>d6a9ba66-7c70-4c46-a221-39777901836c</code> のアプリが <code>Mail.Read</code> の権限を求めていることが分かります。</p>
+<h2 id="要求を受け取ったユーザーが出来ること"><a href="#要求を受け取ったユーザーが出来ること" class="headerlink" title="要求を受け取ったユーザーが出来ること"></a>要求を受け取ったユーザーが出来ること</h2><p>ユーザーが自身で同意が出来る場合には、同意画面が表示されます。ユーザーの同意が完了するとアプリは同意された API のアクセス許可の範囲で、ユーザーの代わりに API アクセスが出来るようになります。</p>
+<p><img src="/blog/azure-active-directory/azure-ad-consent-framework-advance/user-can-consent.png"></p>
+<p>一方で、ユーザーが自身で同意できない場合には、管理者の承認が必要の画面が表示され、アプリへのアクセスがブロックされます。ユーザーがどのような条件で同意できるかについては、<a href="/blog/azure-active-directory/azure-ad-consent-framework/">以前の記事</a>で解説をしていますので、そちらを確認してください。</p>
+<p>ポイントとして押さえておいていただきたい点としては、ユーザーが <code>Mail.Read</code> に同意済み、あるいは管理者がユーザーの代わりに同意済みの場合には、同意画面は<strong>再度現れることは無く</strong>、トークンの発行まで完了する点です。</p>
+<p><img src="/blog/azure-active-directory/azure-ad-consent-framework-advance/user-already-consented.png"></p>
+<p>つまり、ユーザー同意を制限している環境においても、管理者同意が完了しているアプリに対しては、同意画面は二度と表示がされないはずです。<br>しかしいくつかのシナリオにおいては、ユーザー同意が要求され「管理者の承認が必要です」の画面が表示されてしまいます。</p>
+<h2 id="管理者の同意を実施したのにユーザー同意が要求される-3-つのパターン"><a href="#管理者の同意を実施したのにユーザー同意が要求される-3-つのパターン" class="headerlink" title="管理者の同意を実施したのにユーザー同意が要求される 3 つのパターン"></a>管理者の同意を実施したのにユーザー同意が要求される 3 つのパターン</h2><p>では、どのようなパターンでユーザー同意が要求されてしまうのでしょうか。結論から言うと、以下の 3 つのパターンが挙げられます。</p>
+<ol>
+<li>アプリが同意要求に <code>prompt=consent</code> クエリ パラメーターを付与している</li>
+<li>アプリがすでに同意済みの権限以外の API のアクセス許可を要求している</li>
+<li>静的な同意と動的な同意の差異により、必要な権限に同意が出来ていない</li>
+</ol>
+<p>それぞれのパターンについて説明します。 </p>
+<h3 id="1-アプリが同意要求に-prompt-consent-クエリ-パラメーターを付与している"><a href="#1-アプリが同意要求に-prompt-consent-クエリ-パラメーターを付与している" class="headerlink" title="1. アプリが同意要求に prompt=consent クエリ パラメーターを付与している"></a>1. アプリが同意要求に <code>prompt=consent</code> クエリ パラメーターを付与している</h3><p>ユーザーまたは管理者が同意済みにも関わらず、毎回同意画面が出てしまう要因として考えられるのが、<code>prompt=consent</code> パラメーターです。<br>アプリは認可エンドポイントへのアクセス時に様々な<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-authorization-code">オプション パラメーター</a>を付与することができますが、<code>prompt</code> パラメーターは認可リクエスト時に表示される対話画面を指定します。</p>
+<p><code>prompt</code> パラメーターにより、資格情報の再入力を強制したり、対話的なサインイン画面を省略することを試みたりすることができますが <code>prompt=consent</code> パラメーターはユーザー同意を再度実施するよう強制します。<br>管理者の同意が実施済みであっても、<code>prompt=consent</code> パラメーターが付与されている場合には、必ず同意画面を表示しようと試みるため、ユーザー同意が制限されている環境では「管理者の承認が必要です」のエラー画面が表示されることになります。</p>
+<p>ユーザー同意が制限された環境では <code>prompt=consent</code> パラメーターが付与された同意要求をユーザーが処理することは不可能ですので、ユーザー同意を許可するようテナントの構成を変更するか、アプリが <code>prompt=consent</code> パラメーターを送信しないように改修する必要があります。サードパーティー製アプリの場合には、アプリの開発元にご確認ください。</p>
+<p>パラメーターにより同意画面が表示されているかは、アプリへのアクセス時の通信トレースを確認することで判別できます。Web アプリの場合にはアクセス時にブラウザーの開発者ツール (F12 トレース) を確認することで、authorize エンドポイントへの要求を確認することが可能です。</p>
+<p>開発者ツールの簡単な使い方と同意要求の解析方法は本ブログの<a href="#%E4%BB%98%E9%8C%B2">付録</a>にまとめましたので参考にしてください。</p>
+<h3 id="2-アプリがすでに同意済みの権限以外の-API-のアクセス許可を要求している"><a href="#2-アプリがすでに同意済みの権限以外の-API-のアクセス許可を要求している" class="headerlink" title="2. アプリがすでに同意済みの権限以外の API のアクセス許可を要求している"></a>2. アプリがすでに同意済みの権限以外の API のアクセス許可を要求している</h3><p>Azure AD の同意フレームワークでは「増分および動的な同意」がサポートされています。これは、アプリが必要なタイミングで、必要な権限を要求できるようになる仕組みで、例えば以下のような実装が考えられます。</p>
+<p>アプリは基本的にユーザーのメールボックスと連携するため <code>Mail.Read</code> の権限を要求するが、追加の機能を有効化することで取得したメールの添付ファイルを SharePoint Online に保存が出来る。機能を有効化する際には追加で <code>Files.ReadWrite</code> の権限を要求する。</p>
+<p>このように「増分および動的な同意」の機能により、アプリは必要に応じて、必要なタイミングで同意を要求することが可能です。アプリが最初に要求し同意済みの権限とは別に、追加の権限を要求した場合、そのタイミングでユーザー同意が要求されます。ユーザー同意が制限されている場合には、「管理者の承認が必要です」の画面が表示されます。</p>
+<p>対処方法は 「3. 静的な同意と動的な同意の差異により、必要な権限に同意が出来ていない」のシナリオと同様なので、<a href="#%E5%8B%95%E7%9A%84%E3%81%AA%E6%A8%A9%E9%99%90%E8%A6%81%E6%B1%82%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E5%90%8C%E6%84%8F%E3%82%92%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B">動的な権限要求に対して同意を実施する</a> を確認ください。</p>
+<h3 id="3-静的な同意と動的な同意の差異により、必要な権限に同意が出来ていない"><a href="#3-静的な同意と動的な同意の差異により、必要な権限に同意が出来ていない" class="headerlink" title="3. 静的な同意と動的な同意の差異により、必要な権限に同意が出来ていない"></a>3. 静的な同意と動的な同意の差異により、必要な権限に同意が出来ていない</h3><p>本パターンは、本質的には「アプリがすでに同意済みの権限以外の API のアクセス許可を要求している」と同じ要因ですが、特にお問合せを頂くことが多いため、個別に説明します。</p>
+<p>ここまで説明した「増分および動的な同意」機能は柔軟な権限要求を実装でき、アプリの機能拡張などをしやすくするメリットがあります。ただ動的な要求が出来る性質上、<strong>同意を実施するまでは本当にアプリの動作に必要な権限が分かりません。</strong><br>これは実際に<strong>アプリを利用するタイミングでしか必要な権限が何か分からない</strong>ことを意味しています。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>正確にはアプリが authorize エンドポイントに認可リクエストを送信する際、必要な API のアクセス許可として指定する scope パラメーターを確認するまで、動的なアクセス許可が特定できません</p></div>
+<p>この性質により、<strong>実際のアプリの利用時</strong>以外に同意を実施した際に、本当に必要な権限に同意が出来ないことがあります。より具体的には、エンタープライズ アプリケーションのアクセス許可から管理者の同意を付与するパターンでは動的に要求される権限に同意が出来ずに問題となる場合があります。</p>
+<h4 id="Azure-ポータル上から実施するアクセス許可への同意"><a href="#Azure-ポータル上から実施するアクセス許可への同意" class="headerlink" title="Azure ポータル上から実施するアクセス許可への同意"></a>Azure ポータル上から実施するアクセス許可への同意</h4><p>Azure ポータルのエンタープライズ アプリケーションから、登録されたアプリを選択し [アクセス許可] ブレードに移動すると、管理者同意を実施するボタンがあります。</p>
+<p><a href="../azure-active-directory/azure-ad-consent-framework/#%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3-1-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E7%AE%A1%E7%90%86%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%A7%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E8%A1%8C%E3%81%84%E3%80%81%E7%B5%84%E7%B9%94%E3%81%AE%E4%BB%A3%E7%90%86%E3%81%A8%E3%81%97%E3%81%A6%E5%90%8C%E6%84%8F%E3%81%99%E3%82%8B%E3%81%AB%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%82%92%E3%81%84%E3%82%8C%E3%81%A6%E5%90%8C%E6%84%8F%E3%82%92%E4%BB%98%E4%B8%8E%E3%81%99%E3%82%8B">「管理者の承認が必要」のメッセージが表示された場合の対処法</a> では、実際にグローバル管理者権限でアプリにサインインを実施し、同意画面で要求された権限に対し [組織の代理として同意する] 方法をお勧めしました。<br>しかし [組織の代理として同意する] にチェックをつけ忘れて承諾した場合、グローバル管理者はユーザー同意を完了させますので、その後アプリが同じ権限のみを求める限り、二度と同意画面が表示されることはありません。</p>
+<p>その際の代替方法として、エンタープライズ アプリケーションの [アクセス許可] ブレードから管理者の同意を付与する方法を紹介しました。</p>
+<p><img src="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework/consent-to-enterprise-application.png" alt="アクセス許可"></p>
+<p>上記の [Contoso に管理者の同意を与えます] ボタンをクリックすることで、要求された権限が表示され管理者同意を実施できます。</p>
+<p>前述の通り、アプリが要求している権限はアプリへのアクセス時にしか分かりません。しかし、エンタープライズ アプリケーションの [アクセス許可] ブレードからの同意ではアプリにアクセスせず Azure ポータル上で処理が完結します。<br>Azure ポータル上では一体何の権限に同意しているのでしょうか。</p>
+<h4 id="静的なアクセス許可"><a href="#静的なアクセス許可" class="headerlink" title="静的なアクセス許可"></a>静的なアクセス許可</h4><p>結論から言うと、エンタープライズ アプリケーションの [アクセス許可] ブレードの同意ボタンでは、アプリケーション開発者が設定した [静的なアクセス許可] に同意します。</p>
+<p>アプリの開発者はアプリの開発テナントに登録されたアプリケーション オブジェクトに、あらかじめ必要と考えられる API のアクセス許可、静的なアクセス許可 (構成されたアクセス許可) を定義しておくことが可能です。</p>
+<p><img src="/blog/azure-active-directory/azure-ad-consent-framework-advance/configured-permissions.png" alt="アプリ開発者が設定する静的なアクセス許可"></p>
+<p>事前定義された API のアクセス許可は、以前のバージョンである Azure AD の v1.0 エンドポイントを利用する際に利用されますが、現在主流の v2.0 エンドポイントではほとんど利用されません。</p>
+<p>しかしながら Azure ポータルからアプリに同意を付与する場合には、何の権限に同意すれば良いのかの情報がないため、v1.0 エンドポイントで利用されていた  [静的なアクセス許可] に同意が付与されます。</p>
+<p>結果として、アプリの開発者がアプリの実装時に動的に求める権限 (scope パラメーター) と、Azure AD にあらかじめ登録された [静的なアクセス許可] に差異が生じることがあります。</p>
+<p>例えばアプリ上では <code>Mail.Read</code> の権限を動的に要求しているのにもかかわらず、[静的なアクセス許可] には <code>User.Read</code> のみが設定されていた場合、いくら Azure ポータル上で管理者同意を実施しても <code>User.Read</code> にしか管理者同意が付与されません。そのため、一般ユーザーが <code>Mail.Read</code> の権限を動的に要求しているアプリにアクセスした際には、ユーザー同意が求められ、ユーザー同意が制限された環境では「管理者の承認が必要です」のエラーが表示されることが想定されます。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>現在 Azure AD の同意フレームワークでは「増分および動的な同意」がサポートされていますが、以前からサポートされていたわけではありません。</p><p>現在 Azure AD の同意エンドポイントは、MSAL ライブラリでも利用され、主流の v2.0 エンドポイントと、ADAL ライブラリで利用されていた旧来の v1.0 エンドポイントの 2 種類があります。</p><p>v1.0 のエンドポイントではあらかじめアプリの動作に必要な API の権限を定義しておき、定義された権限にのみ同意を実施する「静的な同意」のみをサポートしていました。</p></div>
+<h3 id="動的な権限要求に対して同意を実施する"><a href="#動的な権限要求に対して同意を実施する" class="headerlink" title="動的な権限要求に対して同意を実施する"></a>動的な権限要求に対して同意を実施する</h3><p>2, 3 で紹介した差分同意や動的な権限要求を実施するアプリに対しては、<strong>実際にアプリを利用する</strong>タイミングで求められた権限に同意を実施する必要があります。一つの方法が前回のブログで紹介したグローバル管理者でサインインを実施し [組織の代理として同意する] オプションにチェックを付けたうえで同意を行う方法です。[組織の代理として同意する] にチェックを付け忘れて同意を実施した場合には、エンタープライズ アプリを削除するなどして同意を取り消し、再度同意画面を表示させるという方法が考えられます。</p>
+<p>他の方法としては <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/configure-admin-consent-workflow">管理者の同意ワークフロー</a> を構成いただくことで<strong>ユーザーがアプリ利用時に求められた権限</strong>を把握し、管理者が同意することが可能です。管理者の同意ワークフローではグローバル管理者以外のユーザーでも同意が可能なため、柔軟な運用が可能になります。</p>
+<p>さらに細かい制御を実施したり、特定の権限にのみ同意を実施する方法は、後述の付録をご確認ください。</p>
+<h2 id="付録"><a href="#付録" class="headerlink" title="付録"></a>付録</h2><p>[組織の代理として同意する] チェックボックスでの同意や、管理者の同意ワークフローを利用できない場合、あるいは管理者の同意ではなく特定ユーザーにのみ同意を付与したい、といったシナリオではアプリが求めている API のアクセス許可を正確に把握する必要が出てきます。その際に有効なツールがブラウザーの開発者ツール (F12 トレース) です。</p>
+<h3 id="F12-トレースの確認方法"><a href="#F12-トレースの確認方法" class="headerlink" title="F12 トレースの確認方法"></a>F12 トレースの確認方法</h3><p>採取の仕方はブラウザーによって細かな違いがありますが、概ね以下の通りです。</p>
+<ol>
+<li>ブラウザーを開きます。</li>
+<li>F12 を押し、開発者ツールを起動します。</li>
+<li>[ネットワーク タブ] を選択します。</li>
+<li>“ログの保持” にチェックが入った状態 (有効) にします。</li>
+<li>同意を行うアプリにアクセスし組織アカウントでのサインインを実施します。</li>
+</ol>
+<p><img src="/blog/azure-active-directory/azure-ad-consent-framework-advance/developer-tools.png" alt="Edge の開発者ツール"></p>
+<p>採取した通信のうち、<code>https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize</code> へのアクセスを探し、ペイロードのクエリ文字列パラメーターを確認することで、authorize エンドポイントに対するリクエストの内容が分かります。</p>
+<p>上記の例では <code>client_id</code> (アプリケーション ID) が <code>d6a9ba66-7c70-4c46-a221-39777901836c</code> のアプリが権限を要求していること、<code>scope</code> として <code>User.Read offline_access</code> が要求されていること、<code>prompt</code> として <code>consent</code> が指定されているため、明示的な再同意が求められていることが確認できます。</p>
+<p>なお上記のログは、ダウンロード ボタン (↓) を選択することで har ファイルとしてダウンロード頂けます。サポート サービスをご利用いただく場合には、調査に有用な情報となりますので、問い合わせの際には添付いただくことをお勧めします。</p>
+<h3 id="管理者の同意エンドポイント"><a href="#管理者の同意エンドポイント" class="headerlink" title="管理者の同意エンドポイント"></a>管理者の同意エンドポイント</h3><p>具体的なアプリケーション ID と求められている権限が分かれば、管理者の同意を付与するためのリンクを作成することが可能です。</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/v2-admin-consent">管理者の同意エンドポイント (v2.0)</a> は、以下のような形式の URL です。</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET https://login.microsoftonline.com/&#123;tenant&#125;/v2.0/adminconsent</span><br><span class="line">        ?client_id=&#123;client_id&#125;</span><br><span class="line">        &amp;scope=&#123;scope&#125;</span><br><span class="line">        &amp;redirect_uri=&#123;redirect_uri&#125;</span><br><span class="line">        &amp;state=12345</span><br></pre></td></tr></table></figure>
+
+<p><code>client_id</code> と <code>scope</code> は <code>redirect_uri</code> はトレースなどで得られた値を指定します。<code>tenent</code> は GUID または &lt;初期ドメイン&gt;.onmicrosoft.com などのドメイン名を指定します。<br>たとえば、先ほどの F12 トレースで解析したアプリに対し、管理者同意を実施するには以下のような URL を組み立ててクラウド アプリケーション管理者などの管理者アカウントでアクセスします。</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET https://login.microsoftonline.com/oauth2beginner.onmicrosoft.com/v2.0/adminconsent</span><br><span class="line">        ?client_id=d6a9ba66-7c70-4c46-a221-39777901836c</span><br><span class="line">        &amp;scope=User.Read%20offline_access</span><br><span class="line">        &amp;redirect_uri=https%3A%2F%2Fjwt.ms</span><br><span class="line">        &amp;state=12345</span><br></pre></td></tr></table></figure>
+
+<p>管理者アカウントでアクセスした場合には、以下のような同意画面が表示され管理者の同意を実施できます。</p>
+<p><img src="/blog/azure-active-directory/azure-ad-consent-framework-advance/admin-consent-review.png" alt="管理者の同意エンドポイント"></p>
+<p>同意が正常に完了すると、redirect_uri に指定した URL に以下のような応答が返却されます。</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line">https://jwt.ms</span><br><span class="line">    ?admin_consent=True</span><br><span class="line">    &amp;tenant=&#123;tenant-gui&#125;</span><br><span class="line">    &amp;scope=&#123;scope&#125;</span><br><span class="line">    &amp;state=12345</span><br></pre></td></tr></table></figure>
+
+<p>リダイレクト URI には Azure ポータルの同意ボタンで利用される <code>https://portal.azure.com/TokenAuthorize</code> を指定しても構いません。</p>
+<h3 id="特定のユーザーに対しての同意を管理者が実施する"><a href="#特定のユーザーに対しての同意を管理者が実施する" class="headerlink" title="特定のユーザーに対しての同意を管理者が実施する"></a>特定のユーザーに対しての同意を管理者が実施する</h3><p>アプリが求めている権限が分かれば、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/grant-consent-single-user?pivots=msgraph-powershell">PowerShell を使用して 1 人のユーザーに代わって同意を許可する</a> のように、特定のユーザーの代わりに管理者が同意することも可能です。<br>通常アプリに対するユーザーの制限は <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users">ユーザーの割り当てが必要ですか？</a> のオプションを [はい] に設定し、アクセスを許可するユーザーを割り当てることが適切です。</p>
+<p>一方で、ユーザーにより付与したい権限が変わるようなシナリオでは個別のユーザー同意を付与する API を利用できます。たとえば Microsoft Graph SDK や Microsoft Graph Explorer など、付与する権限によって出来ることが変わるアプリに対し、特定のユーザーにはサインイン ログが見れるアクセス許可を、特定のユーザーにはユーザー一覧が取得できるアクセス許可を付与するといったことが可能です。</p>
+<h3 id="Microsoft-Graph-SDK-のサンプル"><a href="#Microsoft-Graph-SDK-のサンプル" class="headerlink" title="Microsoft Graph SDK のサンプル"></a>Microsoft Graph SDK のサンプル</h3><p>以下にユーザー委任のアクセス許可に関する PowerShell のサンプルを記載します。</p>
+<h4 id="特定アプリに対し-1-人のユーザーに変わって同意を許可"><a href="#特定アプリに対し-1-人のユーザーに変わって同意を許可" class="headerlink" title="特定アプリに対し 1 人のユーザーに変わって同意を許可"></a>特定アプリに対し 1 人のユーザーに変わって同意を許可</h4><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/grant-consent-single-user?pivots=msgraph-powershell">PowerShell を使用して 1 人のユーザーに代わって同意を許可する</a> を参照ください。</p>
+<h4 id="特定アプリに実施した同意情報を取得"><a href="#特定アプリに実施した同意情報を取得" class="headerlink" title="特定アプリに実施した同意情報を取得"></a>特定アプリに実施した同意情報を取得</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># クラウド アプリケーション管理者権限でサインイン</span></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scope</span> <span class="string">&quot;Application.Read.All,DelegatedPermissionGrant.ReadWrite.All&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得</span></span><br><span class="line"><span class="variable">$sp</span> = <span class="built_in">Get-MgServicePrincipal</span> <span class="literal">-Filter</span> <span class="string">&quot;appId eq &#x27;&lt;AppId&gt;&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された同意情報を取得</span></span><br><span class="line"><span class="variable">$delegatedPermissions</span> = <span class="built_in">Get-MgOauth2PermissionGrant</span> <span class="literal">-Filter</span> <span class="string">&quot;clientId eq &#x27;<span class="variable">$</span>(<span class="variable">$sp</span>.Id)&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$delegatedPermissions</span> | <span class="built_in">Format-List</span> Id, ConsentType, PrincipalId, ResourceId, Scope</span><br><span class="line"></span><br><span class="line"><span class="comment"># ClientId             : クライアント アプリの &quot;オブジェクト ID&quot; (ClientID ではない)</span></span><br><span class="line"><span class="comment"># Id                   : Oauth2PermissionGrant オブジェクトの ID</span></span><br><span class="line"><span class="comment"># ConsentType          : 管理者同意の場合 AllPrincipals, ユーザー同意は Principal</span></span><br><span class="line"><span class="comment"># PrincipalId          : ユーザー同意の場合のユーザー オブジェクト ID</span></span><br><span class="line"><span class="comment"># ResourceId           : リソースのオブジェクト ID</span></span><br><span class="line"><span class="comment"># Scope                : 同意済みの API のアクセス許可のリスト</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="特定アプリに対する管理者同意を含むすべてのユーザー委任の同意を削除"><a href="#特定アプリに対する管理者同意を含むすべてのユーザー委任の同意を削除" class="headerlink" title="特定アプリに対する管理者同意を含むすべてのユーザー委任の同意を削除"></a>特定アプリに対する管理者同意を含むすべてのユーザー委任の同意を削除</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># クラウド アプリケーション管理者権限でサインイン</span></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scope</span> <span class="string">&quot;Application.ReadWrite.All,DelegatedPermissionGrant.ReadWrite.All&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得</span></span><br><span class="line"><span class="variable">$sp</span> = <span class="built_in">Get-MgServicePrincipal</span> <span class="literal">-Filter</span> <span class="string">&quot;appId eq &#x27;&lt;AppId&gt;&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された同意を取得</span></span><br><span class="line"><span class="variable">$delegatedPermissions</span> = <span class="built_in">Get-MgOauth2PermissionGrant</span> <span class="literal">-Filter</span> <span class="string">&quot;clientId eq &#x27;<span class="variable">$</span>(<span class="variable">$sp</span>.Id)&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された同意を削除</span></span><br><span class="line"><span class="variable">$delegatedPermissions</span> | <span class="built_in">ForEach-Object</span>&#123; <span class="built_in">Remove-MgOauth2PermissionGrant</span> <span class="literal">-OAuth2PermissionGrantId</span> <span class="variable">$_</span>.Id &#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="特定アプリに対する-1-人の特定ユーザー委任の同意のみを削除"><a href="#特定アプリに対する-1-人の特定ユーザー委任の同意のみを削除" class="headerlink" title="特定アプリに対する 1 人の特定ユーザー委任の同意のみを削除"></a>特定アプリに対する 1 人の特定ユーザー委任の同意のみを削除</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># クラウド アプリケーション管理者権限でサインイン</span></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scope</span> <span class="string">&quot;User.ReadBasic.All,Application.ReadWrite.All,DelegatedPermissionGrant.ReadWrite.All&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$userUpnOrId</span> = <span class="string">&quot;user@example.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ユーザーのオブジェクト ID を取得</span></span><br><span class="line"><span class="variable">$user</span> = <span class="built_in">Get-MgUser</span> <span class="literal">-UserId</span> <span class="variable">$userUpnOrId</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得</span></span><br><span class="line"><span class="variable">$sp</span> = <span class="built_in">Get-MgServicePrincipal</span> <span class="literal">-Filter</span> <span class="string">&quot;appId eq &#x27;&lt;AppId&gt;&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された同意を取得</span></span><br><span class="line"><span class="variable">$delegatedPermissions</span> = <span class="built_in">Get-MgOauth2PermissionGrant</span> <span class="literal">-Filter</span> <span class="string">&quot;clientId eq &#x27;<span class="variable">$</span>(<span class="variable">$sp</span>.Id)&#x27; and principalId eq &#x27;<span class="variable">$</span>(<span class="variable">$user</span>.Id)&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された同意を削除</span></span><br><span class="line"><span class="variable">$delegatedPermissions</span> | <span class="built_in">ForEach-Object</span>&#123; <span class="built_in">Remove-MgOauth2PermissionGrant</span> <span class="literal">-OAuth2PermissionGrantId</span> <span class="variable">$_</span>.Id &#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="特定アプリに対する管理者の同意のみを削除"><a href="#特定アプリに対する管理者の同意のみを削除" class="headerlink" title="特定アプリに対する管理者の同意のみを削除"></a>特定アプリに対する管理者の同意のみを削除</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># クラウド アプリケーション管理者権限でサインイン</span></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scope</span> <span class="string">&quot;Application.ReadWrite.All,DelegatedPermissionGrant.ReadWrite.All&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得</span></span><br><span class="line"><span class="variable">$sp</span> = <span class="built_in">Get-MgServicePrincipal</span> <span class="literal">-Filter</span> <span class="string">&quot;appId eq &#x27;&lt;AppId&gt;&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された管理者同意を取得</span></span><br><span class="line"><span class="variable">$adminConsents</span> = <span class="built_in">Get-MgOauth2PermissionGrant</span> <span class="literal">-Filter</span> <span class="string">&quot;clientId eq &#x27;<span class="variable">$</span>(<span class="variable">$sp</span>.Id)&#x27; and consentType eq &#x27;AllPrincipals&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された管理者同意を削除</span></span><br><span class="line"><span class="variable">$adminConsents</span> | <span class="built_in">ForEach-Object</span>&#123; <span class="built_in">Remove-MgOauth2PermissionGrant</span> <span class="literal">-OAuth2PermissionGrantId</span> <span class="variable">$_</span>.Id &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="特定アプリに付与した管理者の同意のうち、一部の-API-のアクセス許可のみを削除"><a href="#特定アプリに付与した管理者の同意のうち、一部の-API-のアクセス許可のみを削除" class="headerlink" title="特定アプリに付与した管理者の同意のうち、一部の API のアクセス許可のみを削除"></a>特定アプリに付与した管理者の同意のうち、一部の API のアクセス許可のみを削除</h4><p>例えば “openid profile User.Read Mail.Read” から、 “User.Read Mail.Read” のみを削除する</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># クラウド アプリケーション管理者権限でサインイン</span></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scope</span> <span class="string">&quot;Application.ReadWrite.All,DelegatedPermissionGrant.ReadWrite.All&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 権限を割り当てたアプリのサービス プリンシパル オブジェクトの取得</span></span><br><span class="line"><span class="variable">$sp</span> = <span class="built_in">Get-MgServicePrincipal</span> <span class="literal">-Filter</span> <span class="string">&quot;appId eq &#x27;&lt;AppId&gt;&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 付与された管理者同意を取得</span></span><br><span class="line"><span class="variable">$adminConsents</span> = <span class="built_in">Get-MgOauth2PermissionGrant</span> <span class="literal">-Filter</span> <span class="string">&quot;clientId eq &#x27;<span class="variable">$</span>(<span class="variable">$sp</span>.Id)&#x27; and consentType eq &#x27;AllPrincipals&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 削除したい管理者の同意を指定</span></span><br><span class="line"><span class="variable">$RemovePermissions</span> = <span class="selector-tag">@</span>(<span class="string">&quot;User.Read&quot;</span>,<span class="string">&quot;Mail.Read&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 削除したい管理者の同意を除く新しいスコープを定義</span></span><br><span class="line"><span class="variable">$scope</span> = (<span class="variable">$adminConsents</span>.Scope.Split(<span class="string">&quot; &quot;</span>) | <span class="built_in">Where-Object</span> &#123; <span class="operator">-not</span> (<span class="variable">$RemovePermissions</span> <span class="operator">-ccontains</span> <span class="variable">$_</span>)&#125;) <span class="operator">-join</span> <span class="string">&quot; &quot;</span></span><br><span class="line">              </span><br><span class="line"><span class="comment"># 新しいスコープで管理者の同意を更新</span></span><br><span class="line"><span class="built_in">Update-MgOauth2PermissionGrant</span> <span class="literal">-OAuth2PermissionGrantId</span> <span class="variable">$adminConsents</span>.id <span class="literal">-Scope</span> <span class="variable">$scope</span></span><br></pre></td></tr></table></figure>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li></ul>
+
+        
+        <a href="https://github.com/jpazureid/blog/edit/main/articles/azure-active-directory/azure-ad-consent-framework-advance.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../automate-provisioning-and-governance-of-your-on-premises/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          オンプレミス アプリケーションのガバナンスと自動プロビジョニング
+        
+      </div>
+    </a>
+  
+  
+    <a href="../comprehend-account-lockout/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">よくわかるアカウント ロックアウトとよくある質問</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../advancing-modern-strong-authentication/">登録キャンペーンによる先進的で強力な認証の推進</a>
+          </li>
+        
+          <li>
+            <a href="../company-branding-ga/">新しい会社のブランド機能が一般公開されました</a>
+          </li>
+        
+          <li>
+            <a href="../entitlement-management-ga/">エンタイトルメント管理 - 新しく一般公開された機能のご紹介</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory-connect/azure-ad-connect-general-information/">[情報採取] Azure AD Connect に関わる問題などの際に採取、提供いただきたい情報</a>
+          </li>
+        
+          <li>
+            <a href="../new-microsoft-entra-id-governance-dashboard-experience-rolling/">Microsoft Entra ID Governance の新しいダッシュボードが近々公開されます</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090016/" rel="tag">80090016</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090030/" rel="tag">80090030</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AADSTS50107/" rel="tag">AADSTS50107</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-Sync/" rel="tag">AD Sync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ADSync/" rel="tag">ADSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Package/" rel="tag">Access Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Review/" rel="tag">Access Review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-review/" rel="tag">Access review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/App-Service/" rel="tag">App Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Audit-Logs/" rel="tag">Audit Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Application-Proxy/" rel="tag">Azure AD Application Proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2C/" rel="tag">Azure AD B2C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Directory-Rolls/" rel="tag">Azure AD Directory Rolls</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Domain-Services/" rel="tag">Azure AD Domain Services</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Join/" rel="tag">Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-License/" rel="tag">Azure AD License</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Ad-Connect/" rel="tag">Azure Ad Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/B2B/" rel="tag">B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CBA/" rel="tag">CBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Client-Secrets/" rel="tag">Client Secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Company-Branding/" rel="tag">Company Branding</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access-Policy/" rel="tag">Conditional Access Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Cross-Tenat-Synchronization/" rel="tag">Cross-Tenat Synchronization</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Device/" rel="tag">Device</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DirSync/" rel="tag">DirSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Directory-Synchronization-Accounts/" rel="tag">Directory Synchronization Accounts</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entitlement-Management/" rel="tag">Entitlement Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ExpressRoute/" rel="tag">ExpressRoute</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federated-Domain/" rel="tag">Federated Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federation/" rel="tag">Federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HAADJ/" rel="tag">HAADJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hard-match/" rel="tag">Hard match</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Governance/" rel="tag">Identity Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Protection/" rel="tag">Identity Protection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Intune/" rel="tag">Intune</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-ID/" rel="tag">Issuer ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-URI/" rel="tag">Issuer URI</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Key-Vault/" rel="tag">Key Vault</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Legacy-Authentication/" rel="tag">Legacy Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Limitation/" rel="tag">Limitation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-ID/" rel="tag">Managed ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra/" rel="tag">Microsoft Entra</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph/" rel="tag">Microsoft Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph-PowerShell/" rel="tag">Microsoft Graph PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Multi-Factor-Authentication/" rel="tag">Multi Factor Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OTP/" rel="tag">OTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIM/" rel="tag">PIM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIN/" rel="tag">PIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PRT/" rel="tag">PRT</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Policy/" rel="tag">Password Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Writeback/" rel="tag">Password Writeback</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Primary-Refresh-Token/" rel="tag">Primary Refresh Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Provisioning/" rel="tag">Provisioning</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RBAC/" rel="tag">RBAC</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSO/" rel="tag">SSO</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSPR/" rel="tag">SSPR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SameSite/" rel="tag">SameSite</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security-Default/" rel="tag">Security Default</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Self-Service-Password-Reset/" rel="tag">Self Service Password Reset</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Service-Principal/" rel="tag">Service Principal</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Signin-Logs/" rel="tag">Signin Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Smart-lockout/" rel="tag">Smart lockout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Soft-matching/" rel="tag">Soft matching</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Staged-Rollout/" rel="tag">Staged Rollout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Subscription/" rel="tag">Subscription</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TPM/" rel="tag">TPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tenant-Restrictions/" rel="tag">Tenant Restrictions</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Token/" rel="tag">Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Troubleshooting/" rel="tag">Troubleshooting</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Trusted-Platform-Module/" rel="tag">Trusted Platform Module</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/UPN/" rel="tag">UPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Verified-ID/" rel="tag">Verified ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WAP/" rel="tag">WAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WHfB/" rel="tag">WHfB</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-10/" rel="tag">Windows 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Defender-ATP/" rel="tag">Windows Defender ATP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Hello-for-Business/" rel="tag">Windows Hello for Business</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WorkPlace-Join/" rel="tag">WorkPlace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Workplace-Join/" rel="tag">Workplace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/supportMultipleDomain/" rel="tag">supportMultipleDomain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/unusual-sign-in/" rel="tag">unusual sign-in</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" rel="tag">クレームルール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" rel="tag">テナント制限</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" rel="tag">トラステッド プラットフォーム モジュール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" rel="tag">トラブルシューティング</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" rel="tag">ログ取得</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" rel="tag">条件付きアクセス</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" rel="tag">証明書</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" rel="tag">証明書認証</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/">AD FS</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/AADSTS50107">AADSTS50107</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD">Azure AD</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/CBA">CBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Conditional-Access">Conditional Access</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Federated-Domain">Federated Domain</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Hybrid-Azure-AD-Join">Hybrid Azure AD Join</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Intune">Intune</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-ID">Issuer ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-URI">Issuer URI</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/MFA">MFA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Managed-Domain">Managed Domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/SameSite">SameSite</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Security">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Smart-lockout">Smart lockout</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/WAP">WAP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Workplace-Join">Workplace Join</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/supportMultipleDomain">supportMultipleDomain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB">クレームルール</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">トラブルシューティング</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/">Azure AD</a><span class="tag-list-count">247</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090016">80090016</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090030">80090030</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/AD-FS">AD FS</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Package">Access Package</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Review">Access Review</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-review">Access review</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/App-Service">App Service</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Application">Application</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Audit-Logs">Audit Logs</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Application-Proxy">Azure AD Application Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2B">Azure AD B2B</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2C">Azure AD B2C</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Domain-Services">Azure AD Domain Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Join">Azure AD Join</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/B2B">B2B</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Client-Secrets">Client Secrets</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Compliant">Compliant</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access">Conditional Access</a><span class="tag-list-count">23</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access-Policy">Conditional Access Policy</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD">Azure AD</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Key-Vault">Key Vault</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/">AAD Connect</a><span class="tag-list-count">18</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/AD-Sync">AD Sync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/ADSync">ADSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/DirSync">DirSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SMTP">SMTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SSO">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/Soft-matching">Soft matching</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/UPN">UPN</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/05/">2023 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/02/">2023 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/12/">2022 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/07/">2022 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/05/">2022 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">2022 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">2021 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/07/">2021 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">2021 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">2021 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">2021 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">2021 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">2021 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">2021 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">2020 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">2020 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">2020 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">2020 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/07/">2020 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/06/">2020 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">2020 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">2020 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">2020 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">2020 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">2020 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">2019 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">2019 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">2019 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/09/">2019 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/07/">2019 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">2019 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/02/">2019 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">2018 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/11/">2018 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/10/">2018 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">2018 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">2018 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/07/">2018 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">2018 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">2018 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/04/">2018 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/03/">2018 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">2018 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/01/">2018 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">2017 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/11/">2017 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">2017 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/06/">2017 / 06</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/80090016/" style="font-size: 10px;">80090016</a> <a href="../../tags/80090030/" style="font-size: 10px;">80090030</a> <a href="../../tags/AAD-Connect/" style="font-size: 17.5px;">AAD Connect</a> <a href="../../tags/AADSTS50107/" style="font-size: 10px;">AADSTS50107</a> <a href="../../tags/AD-FS/" style="font-size: 18.13px;">AD FS</a> <a href="../../tags/AD-Sync/" style="font-size: 10px;">AD Sync</a> <a href="../../tags/ADSync/" style="font-size: 10px;">ADSync</a> <a href="../../tags/Access-Package/" style="font-size: 10px;">Access Package</a> <a href="../../tags/Access-Review/" style="font-size: 10px;">Access Review</a> <a href="../../tags/Access-review/" style="font-size: 11.88px;">Access review</a> <a href="../../tags/App-Service/" style="font-size: 10px;">App Service</a> <a href="../../tags/Application/" style="font-size: 13.75px;">Application</a> <a href="../../tags/Audit-Logs/" style="font-size: 10px;">Audit Logs</a> <a href="../../tags/Azure-AD/" style="font-size: 20px;">Azure AD</a> <a href="../../tags/Azure-AD-Application-Proxy/" style="font-size: 10px;">Azure AD Application Proxy</a> <a href="../../tags/Azure-AD-B2B/" style="font-size: 13.75px;">Azure AD B2B</a> <a href="../../tags/Azure-AD-B2C/" style="font-size: 11.25px;">Azure AD B2C</a> <a href="../../tags/Azure-AD-Connect/" style="font-size: 15.63px;">Azure AD Connect</a> <a href="../../tags/Azure-AD-Directory-Rolls/" style="font-size: 10px;">Azure AD Directory Rolls</a> <a href="../../tags/Azure-AD-Domain-Services/" style="font-size: 10px;">Azure AD Domain Services</a> <a href="../../tags/Azure-AD-Join/" style="font-size: 10.63px;">Azure AD Join</a> <a href="../../tags/Azure-AD-License/" style="font-size: 10px;">Azure AD License</a> <a href="../../tags/Azure-Ad-Connect/" style="font-size: 10px;">Azure Ad Connect</a> <a href="../../tags/B2B/" style="font-size: 12.5px;">B2B</a> <a href="../../tags/CBA/" style="font-size: 10px;">CBA</a> <a href="../../tags/Client-Secrets/" style="font-size: 10px;">Client Secrets</a> <a href="../../tags/Company-Branding/" style="font-size: 10px;">Company Branding</a> <a href="../../tags/Compliant/" style="font-size: 10.63px;">Compliant</a> <a href="../../tags/Conditional-Access/" style="font-size: 18.75px;">Conditional Access</a> <a href="../../tags/Conditional-Access-Policy/" style="font-size: 10.63px;">Conditional Access Policy</a> <a href="../../tags/Cross-Tenat-Synchronization/" style="font-size: 10px;">Cross-Tenat Synchronization</a> <a href="../../tags/Device/" style="font-size: 10.63px;">Device</a> <a href="../../tags/DirSync/" style="font-size: 10px;">DirSync</a> <a href="../../tags/Directory-Synchronization-Accounts/" style="font-size: 10px;">Directory Synchronization Accounts</a> <a href="../../tags/Entitlement-Management/" style="font-size: 10.63px;">Entitlement Management</a> <a href="../../tags/ExpressRoute/" style="font-size: 10px;">ExpressRoute</a> <a href="../../tags/Federated-Domain/" style="font-size: 10.63px;">Federated Domain</a> <a href="../../tags/Federation/" style="font-size: 10px;">Federation</a> <a href="../../tags/HAADJ/" style="font-size: 10px;">HAADJ</a> <a href="../../tags/Hard-match/" style="font-size: 10px;">Hard match</a> <a href="../../tags/Hybrid-Azure-AD-Join/" style="font-size: 15px;">Hybrid Azure AD Join</a> <a href="../../tags/Identity-Governance/" style="font-size: 10.63px;">Identity Governance</a> <a href="../../tags/Identity-Protection/" style="font-size: 10.63px;">Identity Protection</a> <a href="../../tags/Intune/" style="font-size: 11.25px;">Intune</a> <a href="../../tags/Issuer-ID/" style="font-size: 10px;">Issuer ID</a> <a href="../../tags/Issuer-URI/" style="font-size: 10px;">Issuer URI</a> <a href="../../tags/Key-Vault/" style="font-size: 10px;">Key Vault</a> <a href="../../tags/Legacy-Authentication/" style="font-size: 10px;">Legacy Authentication</a> <a href="../../tags/Limitation/" style="font-size: 10px;">Limitation</a> <a href="../../tags/MFA/" style="font-size: 16.88px;">MFA</a> <a href="../../tags/Managed-Domain/" style="font-size: 10.63px;">Managed Domain</a> <a href="../../tags/Managed-ID/" style="font-size: 10px;">Managed ID</a> <a href="../../tags/Microsoft-Entra/" style="font-size: 10px;">Microsoft Entra</a> <a href="../../tags/Microsoft-Graph/" style="font-size: 13.13px;">Microsoft Graph</a> <a href="../../tags/Microsoft-Graph-PowerShell/" style="font-size: 10px;">Microsoft Graph PowerShell</a> <a href="../../tags/Multi-Factor-Authentication/" style="font-size: 10px;">Multi Factor Authentication</a> <a href="../../tags/OAuth/" style="font-size: 12.5px;">OAuth</a> <a href="../../tags/OTP/" style="font-size: 10px;">OTP</a> <a href="../../tags/PIM/" style="font-size: 10px;">PIM</a> <a href="../../tags/PIN/" style="font-size: 10px;">PIN</a> <a href="../../tags/PRT/" style="font-size: 10px;">PRT</a> <a href="../../tags/Password-Policy/" style="font-size: 10px;">Password Policy</a> <a href="../../tags/Password-Writeback/" style="font-size: 10px;">Password Writeback</a> <a href="../../tags/PowerShell/" style="font-size: 14.38px;">PowerShell</a> <a href="../../tags/Primary-Refresh-Token/" style="font-size: 10px;">Primary Refresh Token</a> <a href="../../tags/Provisioning/" style="font-size: 10px;">Provisioning</a> <a href="../../tags/RBAC/" style="font-size: 10.63px;">RBAC</a> <a href="../../tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="../../tags/SSO/" style="font-size: 10px;">SSO</a> <a href="../../tags/SSPR/" style="font-size: 11.25px;">SSPR</a> <a href="../../tags/SameSite/" style="font-size: 10px;">SameSite</a> <a href="../../tags/Security/" style="font-size: 16.25px;">Security</a> <a href="../../tags/Security-Default/" style="font-size: 10px;">Security Default</a> <a href="../../tags/Self-Service-Password-Reset/" style="font-size: 10px;">Self Service Password Reset</a> <a href="../../tags/Service-Principal/" style="font-size: 10px;">Service Principal</a> <a href="../../tags/Signin-Logs/" style="font-size: 10px;">Signin Logs</a> <a href="../../tags/Smart-lockout/" style="font-size: 10px;">Smart lockout</a> <a href="../../tags/Soft-matching/" style="font-size: 10px;">Soft matching</a> <a href="../../tags/Staged-Rollout/" style="font-size: 10px;">Staged Rollout</a> <a href="../../tags/Subscription/" style="font-size: 10px;">Subscription</a> <a href="../../tags/TLS-1-2/" style="font-size: 10.63px;">TLS 1.2</a> <a href="../../tags/TPM/" style="font-size: 10px;">TPM</a> <a href="../../tags/Tenant-Restrictions/" style="font-size: 10px;">Tenant Restrictions</a> <a href="../../tags/Token/" style="font-size: 10.63px;">Token</a> <a href="../../tags/Troubleshooting/" style="font-size: 11.88px;">Troubleshooting</a> <a href="../../tags/Trusted-Platform-Module/" style="font-size: 10px;">Trusted Platform Module</a> <a href="../../tags/UPN/" style="font-size: 11.25px;">UPN</a> <a href="../../tags/US-Identity-Blog/" style="font-size: 19.38px;">US Identity Blog</a> <a href="../../tags/Verified-ID/" style="font-size: 10px;">Verified ID</a> <a href="../../tags/WAP/" style="font-size: 10px;">WAP</a> <a href="../../tags/WHfB/" style="font-size: 10px;">WHfB</a> <a href="../../tags/Windows-10/" style="font-size: 10px;">Windows 10</a> <a href="../../tags/Windows-Defender-ATP/" style="font-size: 10px;">Windows Defender ATP</a> <a href="../../tags/Windows-Hello-for-Business/" style="font-size: 11.25px;">Windows Hello for Business</a> <a href="../../tags/WorkPlace-Join/" style="font-size: 10px;">WorkPlace Join</a> <a href="../../tags/Workplace-Join/" style="font-size: 10.63px;">Workplace Join</a> <a href="../../tags/Zero-Trust/" style="font-size: 13.13px;">Zero Trust</a> <a href="../../tags/graph-api/" style="font-size: 11.25px;">graph api</a> <a href="../../tags/signin-log/" style="font-size: 12.5px;">signin log</a> <a href="../../tags/supportMultipleDomain/" style="font-size: 10px;">supportMultipleDomain</a> <a href="../../tags/unusual-sign-in/" style="font-size: 10px;">unusual sign-in</a> <a href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" style="font-size: 10px;">クレームルール</a> <a href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" style="font-size: 10px;">テナント制限</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" style="font-size: 10px;">トラステッド プラットフォーム モジュール</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" style="font-size: 13.13px;">トラブルシューティング</a> <a href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" style="font-size: 10px;">ログ取得</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 10.63px;">情報採取</a> <a href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" style="font-size: 10.63px;">条件付きアクセス</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" style="font-size: 10px;">証明書</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" style="font-size: 10px;">証明書認証</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="https://privacy.microsoft.com/ja-jp/privacystatement" target="_blank" rel=”noopener”>Privacy & Cookies</a> |  
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/copyright" target="_blank" rel=”noopener”>Terms of use</a> |
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks" target="_blank" rel=”noopener”>Trademarks</a> |
+      &copy; 2023 Azure Identity Support Japan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

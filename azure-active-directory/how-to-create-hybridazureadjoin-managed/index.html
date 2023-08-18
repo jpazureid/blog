@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>マネージド ドメイン用(AD FS なし) Hybrid Azure AD Join を一から構成する | Japan Azure Identity Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは、 Azure Identity の山口です。今回は AD FS を利用しないマネージド ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。 はじめにAD FS を利用しないマネージド ドメイン環境の Hybrid Azure AD Join の環境構築手順は、下記公開情報にあります。 チュートリアル:マネージド ドメイン用のハイブリッド Azur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="マネージド ドメイン用(AD FS なし) Hybrid Azure AD Join を一から構成する">
+<meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/index.html">
+<meta property="og:site_name" content="Japan Azure Identity Support Blog">
+<meta property="og:description" content="こんにちは、 Azure Identity の山口です。今回は AD FS を利用しないマネージド ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。 はじめにAD FS を利用しないマネージド ドメイン環境の Hybrid Azure AD Join の環境構築手順は、下記公開情報にあります。 チュートリアル:マネージド ドメイン用のハイブリッド Azur">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/001.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/002.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/003.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/004.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/005.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/006.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/007.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/008.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/009.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/010.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/011.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/012.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/013.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/014.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/015.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/016.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/017.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/018.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/019.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/020.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/021.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/022.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/023.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/024.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/025.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/026.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/027.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/028.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/029.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/030.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/031.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/032.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/033.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/034.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/035.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/036.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/037.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/038.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/039.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/040.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/041.jpg">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/042.jpg">
+<meta property="article:published_time" content="2019-05-08T15:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-18T14:12:07.197Z">
+<meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="Azure AD">
+<meta property="article:tag" content="Hybrid Azure AD Join">
+<meta property="article:tag" content="Azure AD Connect">
+<meta property="article:tag" content="Managed Domain">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/001.jpg">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpazureid.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan Azure Identity Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-azure-active-directory/how-to-create-hybridazureadjoin-managed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      マネージド ドメイン用(AD FS なし) Hybrid Azure AD Join を一から構成する
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Published: 
+        <a href="" class="article-date-single">
+  <time datetime="2019-05-08T15:00:00.000Z" itemprop="datePublished">2019-05-09</time>
+</a>
+        
+          / Last update: <a id="update-time" class="article-date-single"></a>
+/ Contributors: <ul style="display: inline-block; list-style:none" id="contributors" class="github-contributors"> </ul>
+
+<script type="text/javascript">
+  const sourceUrl = "https://github.com/jpazureid/blog/blob/main/articles/azure-active-directory/how-to-create-hybridazureadjoin-managed.md";
+  const urlParts = sourceUrl.split("/");
+  const user = urlParts[3];
+  const repo = urlParts[4];
+  const filePath = urlParts.slice(7).join("/");
+  const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits?path=${filePath}`;
+  function formatDate(date) {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return year + '-' + month + '-' + day;
+  }
+
+  $.getJSON(apiUrl, function (data) {
+    const commit = data[0];
+    const updateDate = new Date(commit.commit.author.date);
+    const localDate = formatDate(updateDate);
+    const contributors = new Map();
+
+    data.reverse().forEach(function (commit) {
+      if (commit.author == null) {
+        return;
+      } else {
+        const name = commit.author.login;
+        const url = commit.author.html_url;
+        const avatar = commit.author.avatar_url;
+        contributors.set(name, { name, url, avatar });
+      }
+    });
+
+    $("#update-time").text(localDate);
+    $("#update-time").href = commit.html_url;
+    Array.from(contributors, ([_, value]) => value).reverse().forEach(function (contributor) {
+      $("#contributors").append(`<li class="contributor-avatar"><a target="_blank" rel="noopener" href="https://github.com/${contributor.name}" title="${contributor.name}"><img src="${contributor.avatar}" alt="${contributor.name}"/></a></li>`);
+    });
+  });
+</script>
+        
+        
+        
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9c246849-b5aa-5003-aa60-29db273ae05c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%94%A8%28AD+FS+%E3%81%AA%E3%81%97%29+Hybrid+Azure+AD+Join+%E3%82%92%E4%B8%80%E3%81%8B%E3%82%89%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="cllgo69av00qy0nrxbfsp1prn" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>こんにちは、 Azure Identity の山口です。<br>今回は AD FS を利用しないマネージド ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。</p>
+<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>AD FS を利用しないマネージド ドメイン環境の Hybrid Azure AD Join の環境構築手順は、下記公開情報にあります。</p>
+<p>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成<br>URL:<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-managed-domains">https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-managed-domains</a></p>
+<p>本 Blog では、 Azure AD にオンプレミス AD のデバイスが登録される仕組みを含め、一から Hybrid Azure AD Join を構成するまでの流れを画面ショット付きで解説します。</p>
+<h2 id="本-Blog-を作成するために利用した環境について"><a href="#本-Blog-を作成するために利用した環境について" class="headerlink" title="本 Blog を作成するために利用した環境について"></a>本 Blog を作成するために利用した環境について</h2><ol>
+<li>Azure AD テナント</li>
+<li>オンプレミス AD on Windows Server 2019 Datacenter</li>
+<li>Azure AD Connect(1.3.20.0) on Windows Server 2019 Datacenter</li>
+<li><ol start="4">
+<li>Windows 10 (1809)<br>※ Hybrid Azure AD Join を構成するためのオンプレミス AD 及び Azure AD Connect のサーバー OS は Windows Server 2012 R2 以降であれば可能です。</li>
+</ol>
+</li>
+</ol>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li>Azure AD へのカスタム ドメイン登録</li>
+<li>Azure AD Connect の設定</li>
+<li>SCP とは、 SCP の構成の確認</li>
+<li>Hybrid Azure AD Join 構成までの流れ</li>
+<li>userCertificate 属性について</li>
+<li>Azure AD へのデバイス同期の確認</li>
+<li>PRT (Primary Refresh Token) の取得</li>
+<li>おわりに</li>
+</ol>
+<h2 id="Azure-AD-へのカスタムドメイン登録"><a href="#Azure-AD-へのカスタムドメイン登録" class="headerlink" title="Azure AD へのカスタムドメイン登録"></a>Azure AD へのカスタムドメイン登録</h2><p>詳細については後述しますが、 Hybrid Azure AD Join の処理では、各クライアントがオンプレミス AD に登録された SCP (サービス接続ポイント) を参照し、デバイスの登録処理を行います。SCP には、オンプレミス AD が利用しているインターネット ルーティング可能な (外部 DNS から名前が引ける) ドメインを Azure AD に登録する必要があります。もしもオンプレミス AD のドメイン名が xxxxx.local などインターネット ルーティングができない名前の場合には、オンプレミス AD で代替 UPN サフィックスの登録作業を事前に実施しておきます。</p>
+<h3 id="代替-UPN-サフィックス登録の手順について"><a href="#代替-UPN-サフィックス登録の手順について" class="headerlink" title="代替 UPN サフィックス登録の手順について"></a>代替 UPN サフィックス登録の手順について</h3><p>オンプレミス AD に管理者アカウントにてサインイン後、[スタート] → [Windows 管理ツール] → [Active Directory ドメインと信頼関係] の順に選択します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/001.jpg"></p>
+<p>Active Directory ドメインと信頼関係の画面より、[Active Directory ドメインと信頼関係] を右クリックし、「プロパティ」を選択します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/002.jpg"></p>
+<p>UPN サフィックス画面より、代わりの UPN サフィックスの欄に、代替 UPN サフィックス名を入力後、「追加」をクリックし、「OK」ボタンをクリックします。<br>「OK」ボタンをクリック後、 Active Directory ドメインと信頼関係の画面を「x」ボタンをクリックし、閉じます。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/003.jpg"></p>
+<p>[スタート] → [Windows 管理ツール] → [Active Directory ユーザーとコンピューター] の順に選択します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/004.jpg"></p>
+<p>[ドメイン名] → [Users] → [代替 UPN サフィックスを設定するユーザー] の順に選択し、対象のユーザーを選択した状態で、右クリックより「プロパティ」を選択します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/005.jpg"></p>
+<p>選択したユーザーのプロパティ画面より、「アカウント」タブを選択後、ユーザー ログオン名のドメイン名のプルダウン メニューより、上記手順で作成した「代替 UPN サフィックス」を選択し、「OK」ボタンをクリックします。<br>「OK」ボタンをクリック後、 Active Directory ユーザーとコンピューターの画面を「x」ボタンをクリックし、閉じます。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/006.jpg"></p>
+<p>また、複数のユーザーの代替 UPN サフィックスを変更する場合は、変更対象のユーザーを複数選択した状態にて、右クリックより「プロパティ」を選択します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/007.jpg"></p>
+<p>複数の項目のプロパティ画面より、「アカウント」タブをクリックし、UPN サフィックスのプルダウン メニューより、上記手順で作成した「代替 UPN サフィックス」を選択し、「OK」ボタンをクリックします。<br>「OK」ボタンをクリック後、 Active Directory ユーザーとコンピューターの画面を「x」ボタンをクリックし、閉じます。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/008.jpg"></p>
+<p>Azure AD へのカスタム ドメイン登録の具体的な手順は下記のとおりです。</p>
+<p>カスタム ドメイン名より「＋カスタム ドメインの追加」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/009.jpg"></p>
+<p>オンプレミス AD 上に登録されているドメインのうち、 Hybrid Azure AD Join を構成するドメイン名を入力し、「ドメインの追加」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/010.jpg"></p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/011.jpg"></p>
+<p>ドメインの追加をクリックすると、 DNS サーバーに TXT レコードを登録するように指示されますので、お使いの DNS サーバーに記載されている TXT レコードを追加します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/012.jpg"></p>
+<p>追加後に、 DNS が浸透するまで待ち、「確認」ボタンをクリックします。<br>無事浸透が完了し、 Azure AD 側で対象ドメインが認識できるようになると、下記のとおり状態が「確認済み」となります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/013.jpg"></p>
+<h2 id="Azure-AD-Connect-の設定"><a href="#Azure-AD-Connect-の設定" class="headerlink" title="Azure AD Connect の設定"></a>Azure AD Connect の設定</h2><p><a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=47594">https://www.microsoft.com/en-us/download/details.aspx?id=47594</a> より Azure AD Connect をダウンロードした後のウィザード実行について画面ショット付きで手順を記載します。</p>
+<p>Azure AD Connect を起動し、「構成」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/014.jpg"></p>
+<p>追加のタスクより、「デバイス オプションの構成」を選択し「次へ」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/015.jpg"></p>
+<p>Windows Server 2012 R2 以上であれば、 Hybrid Azure AD Join を構成できます。そのまま「次へ」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/016.jpg"></p>
+<p>Azure AD に接続画面で、 Azure AD の対象テナントの全体管理者の資格情報を入力し、「次へ」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/017.jpg"></p>
+<p>デバイス オプションより、「ハイブリッド Azure AD 参加の構成」を選択し「次へ」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/018.jpg"></p>
+<p>デバイスのオペレーティング システムの画面より、「Windows 10 以降のドメインに参加しているデバイス。」を選択し「次へ」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/019.jpg"></p>
+<p>SCP の構成画面にて SCP (サービス接続ポイント) を構成します。<br>SCP はフォレスト単位ごとで構成する必要があります、今回は対象のオンプレミス AD のフォレストは 1 つしかないので、対象のフォレストにチェックをいれます。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/020.jpg"></p>
+<p>認証サービスに「Azure Active Directory」を選択します。<br>AD FS を構成している場合はフェデレーション サービス名を指定する必要がありますが、今回は AD FS 環境がない Managed Domain 環境なので、 Azure Active Directory を選択します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/021.jpg"></p>
+<p>エンタープライズ管理者の横の「追加」ボタンをクリックし、対象フォレストのエンタープライズ管理者の資格情報を入力し、「OK」ボタンをクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/022.jpg"></p>
+<p>すべての情報が入力されていることを確認し、「次へ」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/023.jpg"></p>
+<p>構成の準備完了の画面で「構成」をクリックし、対象フォレスト向けの SCP を構成します。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/024.jpg"></p>
+<p>構成が完了しましたの画面にて、「終了」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/025.jpg"></p>
+<h2 id="SCP-とは-SCP-の構成の確認"><a href="#SCP-とは-SCP-の構成の確認" class="headerlink" title="SCP とは (SCP の構成の確認)"></a>SCP とは (SCP の構成の確認)</h2><p>そもそも SCP (サービス接続ポイント) とは何なんなのでしょうか。<br>端的にいうと、 SCP はオンプレミス AD に登録している Windows 10 コンピューターなどのデバイスが、 Azure AD のテナントがどこにあるのかを探すために必要な参照先になります。</p>
+<p>今回、 構成例として、 「xxx.work」 というフォレストに関する SCP を構成しました。<br>そして、 Azure AD のテナント名は、「xxx.onmicrosoft.com」というテナント名になります。<br>オンプレミス AD 上にある xxx.work というフォレスト内にあるデバイスが 、 <strong>どの Azure AD のテナントに</strong> デバイスを登録すればいいのか、分かる必要があります。<br>逆にいうと、 SCP が正しく構成されていないと、 Azure AD にデバイスを登録することができず、 Hybrid Azure AD Join (正確には Azure AD Join) に失敗してしまいます。</p>
+<p>ちなみに SCP の実態は</p>
+<ul>
+<li><code>N=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,[Your Configuration Naming Context]</code></li>
+</ul>
+<p>という形で格納されています。下記手順で確認が可能です。<br>ADSI エディターを起動し「接続」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/026.jpg"></p>
+<p>接続ポイントとして、「識別名または名前付けコンテキストを選択または入力する」を選択し、CN=Configuration,DC=fabrikam,DC=com (ドメイン名が fabrikan.com である場合) 左記のように設定し「OK」ボタンをクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/027.jpg"></p>
+<p>[CN=Services]→[CN=Device Registration Configuration] の中にある「CN=62a0ff2e-97b9-4513-943f-0d221bd30080」が SCP オブジェクトの実態になります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/028.jpg"></p>
+<p>また、 Azure AD Connect で構成した SCP が正しく構成されているかについては、以下のコマンドレットで確認することができます。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$scp</span> = <span class="built_in">New-Object</span> System.DirectoryServices.DirectoryEntry;</span><br><span class="line"><span class="variable">$scp</span>.Path = <span class="string">&quot;LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=xxx,DC=work&quot;</span>;</span><br><span class="line"><span class="variable">$scp</span>.Keywords;</span><br></pre></td></tr></table></figure>
+
+<p>※ドメイン名は適宜実環境に置き換えて実行してください。</p>
+<p>実行結果は下記のとおりとなります。<br>正しく、デバイス登録先の Azure AD のテナント名となっていることが確認できます。<br>AzureADId は、 Azure ポータルの「プロパティ」画面で確認できる、「ディレクトリ ID」となります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/029.jpg"></p>
+<h2 id="Hybrid-Azure-AD-Join-構成までの流れ"><a href="#Hybrid-Azure-AD-Join-構成までの流れ" class="headerlink" title="Hybrid Azure AD Join 構成までの流れ"></a>Hybrid Azure AD Join 構成までの流れ</h2><p>まずは、オンプレミス AD に Windows 10 コンピューターが登録されてから、 Azure AD から PRT (Primary Refresh Token) を取得し、 Azure AD に連携した Office 365 などのアプリケーションにシングル サインオンできるまでの流れを記します。</p>
+<ol>
+<li><p>Windows 10 コンピューターを、オンプレミス AD に参加します。</p>
+</li>
+<li><p>オンプレミス AD 上のコンピューター オブジェクトの userCertificate 属性に Windows 10 コンピューターを認証するための証明書が当該コンピューターにより、追加されます。</p>
+</li>
+<li><p>オンプレミス AD 上のコンピューター オブジェクトの userCertificate 属性値に証明書が追加されると、Azure AD Connect がコンピューター オブジェクトを Azure AD に同期します。 (通常は 30 分間隔)</p>
+</li>
+<li><p>当該コンピューター上のタスク スケジューラにより証明書を使用して、 Azure Active Directory 上にデバイスが登録します。 <br>(このタイミングで  dsregcmd /status のコマンドレットをたたくと AzureADJoined の値が YES になります)</p>
+</li>
+<li><p>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、Azure AD による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。 <br>(このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になります)</p>
+</li>
+</ol>
+<h2 id="userCertificate-属性について"><a href="#userCertificate-属性について" class="headerlink" title="userCertificate 属性について"></a>userCertificate 属性について</h2><p>userCertificate 属性に証明書が設定されるまでのプロセスは以下のとおりです。</p>
+<ol>
+<li>まず、自己署名ユーザー証明書を持つコンピューターオブジェクトのみが Azure AD と同期されます。つまり userCertificare 属性に証明書セットされている Windows 10 コンピューターのみが、 Azure AD と同期されます。</li>
+<li>動作としては、ユーザー証明書の生成プロセスを管理する、スケジュールされたタスクがあります。タスクが開始されると、プロセスは Azure AD Connect で構成した、 SCP を確認します。</li>
+<li>デバイスは SCP を検出し、 Hybrid Azure AD Join (正確には Azure AD Join) を試みます。</li>
+<li>デバイスは、Azure デバイス登録サービス (DRS) を確認して、参加できるかどうかを確認します。</li>
+<li>成功した場合、ユーザー証明書が生成され、オンプレミスの AD に userCertificate 属性が設定されます。</li>
+</ol>
+<p>userCertificate 属性が設定されているかは、オンプレミス AD で Active Directory ユーザーとコンピューターの MMC スナップインで対象のコンピューター オブジェクトのプロパティを開き、[属性エディター] タブ内の「userCertificate」属性を確認します。</p>
+<p>なお、属性エディター タブは、既定のプロパティ画面では表示されないので、「Active Directory ユーザーとコンピューター」より、[表示] → [拡張機能]をクリックし、拡張機能を有効にした状態の後、コンピューターのプロパティ画面を開くことで、確認することが可能となります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/030.jpg"></p>
+<p>下記は証明書が追加されていない状態。(この状態では Azure AD Connect によるデバイス同期は行われません)</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/031.jpg"></p>
+<p>下記は証明書が追加されている状態。(この状態で Azure AD Connect は 30 分間隔でチェックを行い、 Azure AD にデバイスが登録されます)<br>Start-ADSyncSyncCycle -PolicyType Delta コマンドレットで手動同期することも可能です。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/032.jpg"></p>
+<p>下記は証明書の実態 (一部) です。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/033.jpg"></p>
+<p> Azure AD Connect の同期ルールを見てみると、 userCertificate 属性が ISNOTNULL (証明書がセットされていることが必須) であることが分かります。<br>[Synchronization Rules Editor] から Direction を「Outbound」を選択し、[Out to AAD - Device Join SOAInAD]を選択後に「View」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/034.jpg"></p>
+<p>Scoping Filter をクリックすると、 userCertificate が ISNOTNULL であることがわかります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/035.jpg"></p>
+<h2 id="Azure-AD-へのデバイス同期の確認"><a href="#Azure-AD-へのデバイス同期の確認" class="headerlink" title="Azure AD へのデバイス同期の確認"></a>Azure AD へのデバイス同期の確認</h2><p>直接 Azure ポータル (portal.azure.com ) の「デバイス」を参照することで、対象の Windows 10 コンピューターが同期されているか確認できますが、下記手順では、 Azure AD Connect を使い、実際に同期が行われているかどうかについて確認を行います。<br>Azure AD Connect の「Synchronization Service」にて確認を行います。</p>
+<p>「Windows アイコン」→「Synchronization Service」の順に選択すると、「Synchronization Service Manager」が起動します。<br>Start Time を見ると、19:51 の次に 20:21 に実行されておりますので、 30 分間隔で同期が行われていることが分かります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/036.jpg"></p>
+<p>20 : 21 の Export の Adds がデバイスが追加されたことを意味しますので、選択後、「Properties」をクリックします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/037.jpg"></p>
+<p>すると、 userCertificate を含む、 Windows 10 コンピューターの属性が、 Azure AD に同期されていることが確認できます。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/038.jpg"></p>
+<p>このタイミングで、 Windows 10 コンピューター上のコマンド プロンプトで dsregcmd /status のコマンドレットをたたくと下記のとおり、 AzureADJoined の値が 「YES」 になっていることが分かります。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/039.jpg"></p>
+<h2 id="PRT-Primary-Refresh-Token-の取得"><a href="#PRT-Primary-Refresh-Token-の取得" class="headerlink" title="PRT (Primary Refresh Token) の取得"></a>PRT (Primary Refresh Token) の取得</h2><p>現在、目次の「1. ～ 6.」までの作業が完了しています。<br>Azure AD にデバイスは登録されましたが、まだ Hybrid Azure AD Join の構成は完了してません。<br>最後の工程として、 Azure AD に同期済みの Azure AD ユーザーにて、対象の Windows 10 コンピューターにサインインし認証が成功したあとに、 Azure AD から PRT (Primary Refresh Token) を取得する必要があります。</p>
+<p>オンプレミス AD から Azure AD に同期済みの test001 から test003 のユーザーがいますので、対象の Windows 10 コンピューターに <a href="mailto:&#x74;&#x65;&#115;&#116;&#48;&#48;&#x31;&#x40;&#x78;&#x78;&#120;&#46;&#119;&#111;&#x72;&#x6b;">&#x74;&#x65;&#115;&#116;&#48;&#48;&#x31;&#x40;&#x78;&#x78;&#120;&#46;&#119;&#111;&#x72;&#x6b;</a> ユーザーでサインインします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/040.jpg"></p>
+<p>資格情報を入力し、サインインします。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/041.jpg"></p>
+<p>コマンドプロンプトを起動し、このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。</p>
+<p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/042.jpg"></p>
+<h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>Azure AD Connect を使うことで、比較的容易に Hybrid Azure AD Join の構成を行うことができるようになっています。反面、容易に構成できるようになったがために、構成がうまくいかなかった場合に、どこを確認すれば良いかが判断が難しくなっているかと思います。</p>
+<p>本 Blog で言及しましたとおり、 以下のポイントをおさえることで、構成が失敗してしまった場合のトラブルシュートをスムースに行えるのではないかと思います。</p>
+<ul>
+<li>SCP の構成が正しく行われているか</li>
+<li>Hybrid Azure AD Join する Windows 10 コンピューターにて、 userCertificate 属性に証明書が追加されているかどうか</li>
+<li>Azure AD Connect により、正常に同期が行われているかどうか</li>
+<li>PRT が正しく取得できているかどうか</li>
+</ul>
+<p>少しでも本 Blog が参考になれば幸いです。ご不明な点等ございましたら、是非弊社サポート サービスをご利用ください。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li></ul>
+
+        
+        <a href="https://github.com/jpazureid/blog/edit/main/articles/azure-active-directory/how-to-create-hybridazureadjoin-managed.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../microsoft-graph-api-signin-activity-reports/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          Microsoft Graph API を利用して Azure AD のサインイン アクティビティ レポートをファイルに出力する PowerShell スクリプト
+        
+      </div>
+    </a>
+  
+  
+    <a href="../how-to-get-sign-in-logs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure AD サインイン ログ取得方法まとめ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../advancing-modern-strong-authentication/">登録キャンペーンによる先進的で強力な認証の推進</a>
+          </li>
+        
+          <li>
+            <a href="../company-branding-ga/">新しい会社のブランド機能が一般公開されました</a>
+          </li>
+        
+          <li>
+            <a href="../entitlement-management-ga/">エンタイトルメント管理 - 新しく一般公開された機能のご紹介</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory-connect/azure-ad-connect-general-information/">[情報採取] Azure AD Connect に関わる問題などの際に採取、提供いただきたい情報</a>
+          </li>
+        
+          <li>
+            <a href="../new-microsoft-entra-id-governance-dashboard-experience-rolling/">Microsoft Entra ID Governance の新しいダッシュボードが近々公開されます</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090016/" rel="tag">80090016</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090030/" rel="tag">80090030</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AADSTS50107/" rel="tag">AADSTS50107</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-Sync/" rel="tag">AD Sync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ADSync/" rel="tag">ADSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Package/" rel="tag">Access Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Review/" rel="tag">Access Review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-review/" rel="tag">Access review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/App-Service/" rel="tag">App Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Audit-Logs/" rel="tag">Audit Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Application-Proxy/" rel="tag">Azure AD Application Proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2C/" rel="tag">Azure AD B2C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Directory-Rolls/" rel="tag">Azure AD Directory Rolls</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Domain-Services/" rel="tag">Azure AD Domain Services</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Join/" rel="tag">Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-License/" rel="tag">Azure AD License</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Ad-Connect/" rel="tag">Azure Ad Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/B2B/" rel="tag">B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CBA/" rel="tag">CBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Client-Secrets/" rel="tag">Client Secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Company-Branding/" rel="tag">Company Branding</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access-Policy/" rel="tag">Conditional Access Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Cross-Tenat-Synchronization/" rel="tag">Cross-Tenat Synchronization</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Device/" rel="tag">Device</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DirSync/" rel="tag">DirSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Directory-Synchronization-Accounts/" rel="tag">Directory Synchronization Accounts</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entitlement-Management/" rel="tag">Entitlement Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ExpressRoute/" rel="tag">ExpressRoute</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federated-Domain/" rel="tag">Federated Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federation/" rel="tag">Federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HAADJ/" rel="tag">HAADJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hard-match/" rel="tag">Hard match</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Governance/" rel="tag">Identity Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Protection/" rel="tag">Identity Protection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Intune/" rel="tag">Intune</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-ID/" rel="tag">Issuer ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-URI/" rel="tag">Issuer URI</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Key-Vault/" rel="tag">Key Vault</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Legacy-Authentication/" rel="tag">Legacy Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Limitation/" rel="tag">Limitation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-ID/" rel="tag">Managed ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra/" rel="tag">Microsoft Entra</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph/" rel="tag">Microsoft Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph-PowerShell/" rel="tag">Microsoft Graph PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Multi-Factor-Authentication/" rel="tag">Multi Factor Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OTP/" rel="tag">OTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIM/" rel="tag">PIM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIN/" rel="tag">PIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PRT/" rel="tag">PRT</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Policy/" rel="tag">Password Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Writeback/" rel="tag">Password Writeback</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Primary-Refresh-Token/" rel="tag">Primary Refresh Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Provisioning/" rel="tag">Provisioning</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RBAC/" rel="tag">RBAC</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSO/" rel="tag">SSO</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSPR/" rel="tag">SSPR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SameSite/" rel="tag">SameSite</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security-Default/" rel="tag">Security Default</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Self-Service-Password-Reset/" rel="tag">Self Service Password Reset</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Service-Principal/" rel="tag">Service Principal</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Signin-Logs/" rel="tag">Signin Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Smart-lockout/" rel="tag">Smart lockout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Soft-matching/" rel="tag">Soft matching</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Staged-Rollout/" rel="tag">Staged Rollout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Subscription/" rel="tag">Subscription</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TPM/" rel="tag">TPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tenant-Restrictions/" rel="tag">Tenant Restrictions</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Token/" rel="tag">Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Troubleshooting/" rel="tag">Troubleshooting</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Trusted-Platform-Module/" rel="tag">Trusted Platform Module</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/UPN/" rel="tag">UPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Verified-ID/" rel="tag">Verified ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WAP/" rel="tag">WAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WHfB/" rel="tag">WHfB</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-10/" rel="tag">Windows 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Defender-ATP/" rel="tag">Windows Defender ATP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Hello-for-Business/" rel="tag">Windows Hello for Business</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WorkPlace-Join/" rel="tag">WorkPlace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Workplace-Join/" rel="tag">Workplace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/supportMultipleDomain/" rel="tag">supportMultipleDomain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/unusual-sign-in/" rel="tag">unusual sign-in</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" rel="tag">クレームルール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" rel="tag">テナント制限</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" rel="tag">トラステッド プラットフォーム モジュール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" rel="tag">トラブルシューティング</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" rel="tag">ログ取得</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" rel="tag">条件付きアクセス</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" rel="tag">証明書</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" rel="tag">証明書認証</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/">AD FS</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/AADSTS50107">AADSTS50107</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD">Azure AD</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/CBA">CBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Conditional-Access">Conditional Access</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Federated-Domain">Federated Domain</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Hybrid-Azure-AD-Join">Hybrid Azure AD Join</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Intune">Intune</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-ID">Issuer ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-URI">Issuer URI</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/MFA">MFA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Managed-Domain">Managed Domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/SameSite">SameSite</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Security">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Smart-lockout">Smart lockout</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/WAP">WAP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Workplace-Join">Workplace Join</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/supportMultipleDomain">supportMultipleDomain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB">クレームルール</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">トラブルシューティング</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/">Azure AD</a><span class="tag-list-count">247</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090016">80090016</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090030">80090030</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/AD-FS">AD FS</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Package">Access Package</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Review">Access Review</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-review">Access review</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/App-Service">App Service</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Application">Application</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Audit-Logs">Audit Logs</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Application-Proxy">Azure AD Application Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2B">Azure AD B2B</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2C">Azure AD B2C</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Domain-Services">Azure AD Domain Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Join">Azure AD Join</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/B2B">B2B</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Client-Secrets">Client Secrets</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Compliant">Compliant</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access">Conditional Access</a><span class="tag-list-count">23</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access-Policy">Conditional Access Policy</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD">Azure AD</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Key-Vault">Key Vault</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/">AAD Connect</a><span class="tag-list-count">18</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/AD-Sync">AD Sync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/ADSync">ADSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/DirSync">DirSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SMTP">SMTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SSO">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/Soft-matching">Soft matching</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/UPN">UPN</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/05/">2023 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/02/">2023 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/12/">2022 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/07/">2022 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/05/">2022 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">2022 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">2021 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/07/">2021 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">2021 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">2021 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">2021 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">2021 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">2021 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">2021 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">2020 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">2020 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">2020 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">2020 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/07/">2020 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/06/">2020 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">2020 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">2020 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">2020 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">2020 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">2020 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">2019 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">2019 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">2019 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/09/">2019 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/07/">2019 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">2019 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/02/">2019 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">2018 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/11/">2018 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/10/">2018 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">2018 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">2018 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/07/">2018 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">2018 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">2018 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/04/">2018 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/03/">2018 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">2018 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/01/">2018 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">2017 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/11/">2017 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">2017 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/06/">2017 / 06</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/80090016/" style="font-size: 10px;">80090016</a> <a href="../../tags/80090030/" style="font-size: 10px;">80090030</a> <a href="../../tags/AAD-Connect/" style="font-size: 17.5px;">AAD Connect</a> <a href="../../tags/AADSTS50107/" style="font-size: 10px;">AADSTS50107</a> <a href="../../tags/AD-FS/" style="font-size: 18.13px;">AD FS</a> <a href="../../tags/AD-Sync/" style="font-size: 10px;">AD Sync</a> <a href="../../tags/ADSync/" style="font-size: 10px;">ADSync</a> <a href="../../tags/Access-Package/" style="font-size: 10px;">Access Package</a> <a href="../../tags/Access-Review/" style="font-size: 10px;">Access Review</a> <a href="../../tags/Access-review/" style="font-size: 11.88px;">Access review</a> <a href="../../tags/App-Service/" style="font-size: 10px;">App Service</a> <a href="../../tags/Application/" style="font-size: 13.75px;">Application</a> <a href="../../tags/Audit-Logs/" style="font-size: 10px;">Audit Logs</a> <a href="../../tags/Azure-AD/" style="font-size: 20px;">Azure AD</a> <a href="../../tags/Azure-AD-Application-Proxy/" style="font-size: 10px;">Azure AD Application Proxy</a> <a href="../../tags/Azure-AD-B2B/" style="font-size: 13.75px;">Azure AD B2B</a> <a href="../../tags/Azure-AD-B2C/" style="font-size: 11.25px;">Azure AD B2C</a> <a href="../../tags/Azure-AD-Connect/" style="font-size: 15.63px;">Azure AD Connect</a> <a href="../../tags/Azure-AD-Directory-Rolls/" style="font-size: 10px;">Azure AD Directory Rolls</a> <a href="../../tags/Azure-AD-Domain-Services/" style="font-size: 10px;">Azure AD Domain Services</a> <a href="../../tags/Azure-AD-Join/" style="font-size: 10.63px;">Azure AD Join</a> <a href="../../tags/Azure-AD-License/" style="font-size: 10px;">Azure AD License</a> <a href="../../tags/Azure-Ad-Connect/" style="font-size: 10px;">Azure Ad Connect</a> <a href="../../tags/B2B/" style="font-size: 12.5px;">B2B</a> <a href="../../tags/CBA/" style="font-size: 10px;">CBA</a> <a href="../../tags/Client-Secrets/" style="font-size: 10px;">Client Secrets</a> <a href="../../tags/Company-Branding/" style="font-size: 10px;">Company Branding</a> <a href="../../tags/Compliant/" style="font-size: 10.63px;">Compliant</a> <a href="../../tags/Conditional-Access/" style="font-size: 18.75px;">Conditional Access</a> <a href="../../tags/Conditional-Access-Policy/" style="font-size: 10.63px;">Conditional Access Policy</a> <a href="../../tags/Cross-Tenat-Synchronization/" style="font-size: 10px;">Cross-Tenat Synchronization</a> <a href="../../tags/Device/" style="font-size: 10.63px;">Device</a> <a href="../../tags/DirSync/" style="font-size: 10px;">DirSync</a> <a href="../../tags/Directory-Synchronization-Accounts/" style="font-size: 10px;">Directory Synchronization Accounts</a> <a href="../../tags/Entitlement-Management/" style="font-size: 10.63px;">Entitlement Management</a> <a href="../../tags/ExpressRoute/" style="font-size: 10px;">ExpressRoute</a> <a href="../../tags/Federated-Domain/" style="font-size: 10.63px;">Federated Domain</a> <a href="../../tags/Federation/" style="font-size: 10px;">Federation</a> <a href="../../tags/HAADJ/" style="font-size: 10px;">HAADJ</a> <a href="../../tags/Hard-match/" style="font-size: 10px;">Hard match</a> <a href="../../tags/Hybrid-Azure-AD-Join/" style="font-size: 15px;">Hybrid Azure AD Join</a> <a href="../../tags/Identity-Governance/" style="font-size: 10.63px;">Identity Governance</a> <a href="../../tags/Identity-Protection/" style="font-size: 10.63px;">Identity Protection</a> <a href="../../tags/Intune/" style="font-size: 11.25px;">Intune</a> <a href="../../tags/Issuer-ID/" style="font-size: 10px;">Issuer ID</a> <a href="../../tags/Issuer-URI/" style="font-size: 10px;">Issuer URI</a> <a href="../../tags/Key-Vault/" style="font-size: 10px;">Key Vault</a> <a href="../../tags/Legacy-Authentication/" style="font-size: 10px;">Legacy Authentication</a> <a href="../../tags/Limitation/" style="font-size: 10px;">Limitation</a> <a href="../../tags/MFA/" style="font-size: 16.88px;">MFA</a> <a href="../../tags/Managed-Domain/" style="font-size: 10.63px;">Managed Domain</a> <a href="../../tags/Managed-ID/" style="font-size: 10px;">Managed ID</a> <a href="../../tags/Microsoft-Entra/" style="font-size: 10px;">Microsoft Entra</a> <a href="../../tags/Microsoft-Graph/" style="font-size: 13.13px;">Microsoft Graph</a> <a href="../../tags/Microsoft-Graph-PowerShell/" style="font-size: 10px;">Microsoft Graph PowerShell</a> <a href="../../tags/Multi-Factor-Authentication/" style="font-size: 10px;">Multi Factor Authentication</a> <a href="../../tags/OAuth/" style="font-size: 12.5px;">OAuth</a> <a href="../../tags/OTP/" style="font-size: 10px;">OTP</a> <a href="../../tags/PIM/" style="font-size: 10px;">PIM</a> <a href="../../tags/PIN/" style="font-size: 10px;">PIN</a> <a href="../../tags/PRT/" style="font-size: 10px;">PRT</a> <a href="../../tags/Password-Policy/" style="font-size: 10px;">Password Policy</a> <a href="../../tags/Password-Writeback/" style="font-size: 10px;">Password Writeback</a> <a href="../../tags/PowerShell/" style="font-size: 14.38px;">PowerShell</a> <a href="../../tags/Primary-Refresh-Token/" style="font-size: 10px;">Primary Refresh Token</a> <a href="../../tags/Provisioning/" style="font-size: 10px;">Provisioning</a> <a href="../../tags/RBAC/" style="font-size: 10.63px;">RBAC</a> <a href="../../tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="../../tags/SSO/" style="font-size: 10px;">SSO</a> <a href="../../tags/SSPR/" style="font-size: 11.25px;">SSPR</a> <a href="../../tags/SameSite/" style="font-size: 10px;">SameSite</a> <a href="../../tags/Security/" style="font-size: 16.25px;">Security</a> <a href="../../tags/Security-Default/" style="font-size: 10px;">Security Default</a> <a href="../../tags/Self-Service-Password-Reset/" style="font-size: 10px;">Self Service Password Reset</a> <a href="../../tags/Service-Principal/" style="font-size: 10px;">Service Principal</a> <a href="../../tags/Signin-Logs/" style="font-size: 10px;">Signin Logs</a> <a href="../../tags/Smart-lockout/" style="font-size: 10px;">Smart lockout</a> <a href="../../tags/Soft-matching/" style="font-size: 10px;">Soft matching</a> <a href="../../tags/Staged-Rollout/" style="font-size: 10px;">Staged Rollout</a> <a href="../../tags/Subscription/" style="font-size: 10px;">Subscription</a> <a href="../../tags/TLS-1-2/" style="font-size: 10.63px;">TLS 1.2</a> <a href="../../tags/TPM/" style="font-size: 10px;">TPM</a> <a href="../../tags/Tenant-Restrictions/" style="font-size: 10px;">Tenant Restrictions</a> <a href="../../tags/Token/" style="font-size: 10.63px;">Token</a> <a href="../../tags/Troubleshooting/" style="font-size: 11.88px;">Troubleshooting</a> <a href="../../tags/Trusted-Platform-Module/" style="font-size: 10px;">Trusted Platform Module</a> <a href="../../tags/UPN/" style="font-size: 11.25px;">UPN</a> <a href="../../tags/US-Identity-Blog/" style="font-size: 19.38px;">US Identity Blog</a> <a href="../../tags/Verified-ID/" style="font-size: 10px;">Verified ID</a> <a href="../../tags/WAP/" style="font-size: 10px;">WAP</a> <a href="../../tags/WHfB/" style="font-size: 10px;">WHfB</a> <a href="../../tags/Windows-10/" style="font-size: 10px;">Windows 10</a> <a href="../../tags/Windows-Defender-ATP/" style="font-size: 10px;">Windows Defender ATP</a> <a href="../../tags/Windows-Hello-for-Business/" style="font-size: 11.25px;">Windows Hello for Business</a> <a href="../../tags/WorkPlace-Join/" style="font-size: 10px;">WorkPlace Join</a> <a href="../../tags/Workplace-Join/" style="font-size: 10.63px;">Workplace Join</a> <a href="../../tags/Zero-Trust/" style="font-size: 13.13px;">Zero Trust</a> <a href="../../tags/graph-api/" style="font-size: 11.25px;">graph api</a> <a href="../../tags/signin-log/" style="font-size: 12.5px;">signin log</a> <a href="../../tags/supportMultipleDomain/" style="font-size: 10px;">supportMultipleDomain</a> <a href="../../tags/unusual-sign-in/" style="font-size: 10px;">unusual sign-in</a> <a href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" style="font-size: 10px;">クレームルール</a> <a href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" style="font-size: 10px;">テナント制限</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" style="font-size: 10px;">トラステッド プラットフォーム モジュール</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" style="font-size: 13.13px;">トラブルシューティング</a> <a href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" style="font-size: 10px;">ログ取得</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 10.63px;">情報採取</a> <a href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" style="font-size: 10.63px;">条件付きアクセス</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" style="font-size: 10px;">証明書</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" style="font-size: 10px;">証明書認証</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="https://privacy.microsoft.com/ja-jp/privacystatement" target="_blank" rel=”noopener”>Privacy & Cookies</a> |  
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/copyright" target="_blank" rel=”noopener”>Terms of use</a> |
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks" target="_blank" rel=”noopener”>Trademarks</a> |
+      &copy; 2023 Azure Identity Support Japan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

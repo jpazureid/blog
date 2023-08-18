@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 | Japan Azure Identity Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは、Azure Identity サポート チームの中井です。 先日、以下にて 米国の Azure Active Directory Identity Blog で公開された Migrate your apps to access the license managements APIs from Microsoft Graph の翻訳ブログを公開いたしました。 Azure AD Grap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介">
+<meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/index.html">
+<meta property="og:site_name" content="Japan Azure Identity Support Blog">
+<meta property="og:description" content="こんにちは、Azure Identity サポート チームの中井です。 先日、以下にて 米国の Azure Active Directory Identity Blog で公開された Migrate your apps to access the license managements APIs from Microsoft Graph の翻訳ブログを公開いたしました。 Azure AD Grap">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/image1.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/image2.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/image3.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail1.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail2.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail3.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail4.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/image4.png">
+<meta property="article:published_time" content="2021-10-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-18T14:12:07.421Z">
+<meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="Azure AD">
+<meta property="article:tag" content="Microsoft Graph">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/image1.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpazureid.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan Azure Identity Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-azure-active-directory/operating-license-with-microsoft-graph" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Published: 
+        <a href="" class="article-date-single">
+  <time datetime="2021-10-01T00:00:00.000Z" itemprop="datePublished">2021-10-01</time>
+</a>
+        
+          / Last update: <a id="update-time" class="article-date-single"></a>
+/ Contributors: <ul style="display: inline-block; list-style:none" id="contributors" class="github-contributors"> </ul>
+
+<script type="text/javascript">
+  const sourceUrl = "https://github.com/jpazureid/blog/blob/main/articles/azure-active-directory/operating-license-with-microsoft-graph.md";
+  const urlParts = sourceUrl.split("/");
+  const user = urlParts[3];
+  const repo = urlParts[4];
+  const filePath = urlParts.slice(7).join("/");
+  const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits?path=${filePath}`;
+  function formatDate(date) {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return year + '-' + month + '-' + day;
+  }
+
+  $.getJSON(apiUrl, function (data) {
+    const commit = data[0];
+    const updateDate = new Date(commit.commit.author.date);
+    const localDate = formatDate(updateDate);
+    const contributors = new Map();
+
+    data.reverse().forEach(function (commit) {
+      if (commit.author == null) {
+        return;
+      } else {
+        const name = commit.author.login;
+        const url = commit.author.html_url;
+        const avatar = commit.author.avatar_url;
+        contributors.set(name, { name, url, avatar });
+      }
+    });
+
+    $("#update-time").text(localDate);
+    $("#update-time").href = commit.html_url;
+    Array.from(contributors, ([_, value]) => value).reverse().forEach(function (contributor) {
+      $("#contributors").append(`<li class="contributor-avatar"><a target="_blank" rel="noopener" href="https://github.com/${contributor.name}" title="${contributor.name}"><img src="${contributor.avatar}" alt="${contributor.name}"/></a></li>`);
+    });
+  });
+</script>
+        
+        
+        
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+46b96b98-ebd1-5cf0-b401-81c17207f03f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Graph+PowerShell+SDK+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C%E3%81%AE%E7%B4%B9%E4%BB%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Foperating-license-with-microsoft-graph%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Foperating-license-with-microsoft-graph.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Foperating-license-with-microsoft-graph.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/" data-id="cllgo69b600rj0nrx3896d8xy" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>こんにちは、Azure Identity サポート チームの中井です。</p>
+<p>先日、以下にて 米国の Azure Active Directory Identity Blog で公開された <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/migrate-your-apps-to-access-the-license-managements-apis-from/ba-p/2464366">Migrate your apps to access the license managements APIs from Microsoft Graph</a> の翻訳ブログを公開いたしました。</p>
+<p><a href="https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/">Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります | Japan Azure Identity Support Blog (jpazureid.github.io)</a></p>
+<p>上記記事では、Azure AD Graph エンドポイント廃止に伴い、MSOnline および Azure AD PowerShell モジュールでの従来のライセンス割り当て操作が利用できなくなることがアナウンスされています。そこで本記事では、今後利用が推奨される Microsoft Graph PowerShell (正式名称は Microsoft Graph PowerShell SDK) を使用したライセンス管理の方法をご紹介いたします。</p>
+<div class="alert is-important"><p class="alert-title">重要</p><p>MSOnline および Azure AD PowerShell モジュール自体も 2024 年 3 月 30 日 に廃止されることが発表されました。2023/6/30 廃止として以前案内しておりました当初の予定よりも延期されておりますが、 MSOnline および Azure AD PowerShell モジュールをご利用の場合、Microsoft Graph API への移行を検討ください。</p>
+<p>ライセンスの API につきましては、すでに 2023 年 3 月 31 日をもって廃止されております。まだ利用できる環境も多くありますが、いつ利用できなくなってもおかしくないため、可能な限り早めに移行してください。</p>
+<p>詳しくは <a href="../azure-active-directory/azuread-module-retirement1.md/">MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要</a> の記事を参照ください。</p></div>
+<h1 id="はじめに-Microsoft-Graph-PowerShell-とは？"><a href="#はじめに-Microsoft-Graph-PowerShell-とは？" class="headerlink" title="はじめに: Microsoft Graph PowerShell とは？"></a>はじめに: Microsoft Graph PowerShell とは？</h1><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/microsoftgraph/overview?view=graph-powershell-1.0">Microsoft Graph PowerShell</a> は、Microsoft Graph API をコマンドを実行して呼び出せるようにした PowerShell モジュールです。</p>
+<p>では Microsoft Graph API とは何かというと、 Azure AD だけでなく SharePoint、Outlook、Teams などの Microsoft 各サービスにアクセスし、データを取得できる統一のエンドポイントを提供しています。</p>
+<p>Azure AD テナントにおける情報取得は、これまで<a href="https://jpazureid.github.io/blog/azure-active-directory/powershell-module/">MSOnline および Azure AD PowerShell モジュール</a> を用いてきました。Azure AD PowerShell では、2022 年 7 月以降にサポート終了予定の Azure AD Graph API を呼び出しており、上述の翻訳記事では、Set-AzureADUserLicense を中心とするライセンス管理のコマンドが廃止となる予定であることをアナウンスいたしました。</p>
+<p><strong>ライセンス管理操作以外のコマンドは従来通りレスポンスを受け取れる予定です。</strong></p>
+<p>それ以外のコマンドについて Azure AD や MSOnline の PowerShell で提供されていたコマンドで MS Graph PowerShell コマンドで利用できる対照表としては次の公開情報があります。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0">Find Azure AD and MSOnline cmdlets in Microsoft Graph PowerShell</a></p>
+<p>対照表にしたがって、 MS Graph コマンドが利用できるものについての移行も併せてお願いしたいところではあるのですが、<br>実際のところ、対応表に記載があるコマンドであっても、従来のパラメーターやプロパティが Microsoft Graph PowerShell コマンドでは一部利用できないものもあります。<br>ライセンス管理以外のコマンドは、廃止日が 2024 年 3 月 30 日まで延期されましたので、それ以外のコマンドについて無理に急いで移行を進める必要はなく、まずはすでに廃止済みのライセンス管理のコマンドを移行してください。</p>
+<p>状況に変化がありましたら、改めて<a href="(../azure-active-directory/azuread-module-retirement1.md/)">サポート チームでのブログ</a>でもお知らせを予定しています。</p>
+<p>(Azure AD Graph API を呼び出すアプリケーションを作成されている場合、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview">公開情報</a> を参考に、Microsoft Graph API への移行をお願いいたします。)</p>
+<hr>
+<p>さて、前置きが長くなってしまいましたが、以下より、Microsoft Graph PowerShell を用いたライセンス管理操作についてご紹介いたします！</p>
+<p>非常にボリュームのある内容となっていますので、目次「3. ライセンス情報の取得」から、知りたい操作のリンクの内容を参照いただくだけでもコマンドを確認可能です (もちろん、初めての操作の場合は 1 や 2 の事前準備が必要です)。</p>
+<p>本記事で紹介する Microsoft Graph PowerShell メソッドの参考情報は、以下の通りとなっております。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0">Set-MgUserLicense</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.graph.groups/set-mggrouplicense?view=graph-powershell-1.0">Set-MgUserGroupLicense</a></li>
+</ul>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
+<li><a href="#idx1">Microsoft Graph PowerShell のインストール</a></li>
+<li><a href="#idx2">Connect-MgGraph による Azure AD へのサインイン</a><ul>
+<li><a href="#idx2-1">管理者の資格情報を利用する場合</a></li>
+<li><a href="#idx2-2">サービス プリンシパル（アプリケーション）を利用する方法</a></li>
+</ul>
+</li>
+<li><a href="#idx3">ライセンス情報の取得</a><ul>
+<li><a href="#idx3-1">テナントに紐づくライセンス情報を確認する</a></li>
+<li><a href="#idx3-2">ユーザーに割り当て済みのライセンスを確認する</a></li>
+</ul>
+</li>
+<li><a href="#idx4">シナリオ 1: ユーザーにライセンスを割り当てる</a><ul>
+<li><a href="#idx4-1">すべてのサービス プランを有効にして特定のライセンスを割り当てる</a></li>
+<li><a href="#idx4-2">特定のサービス プランを無効にして特定のライセンスを割り当てる</a></li>
+<li><a href="#idx4-3">複数のサービス プランを無効にして特定のライセンスを割り当てる</a></li>
+<li><a href="#idx4-4">[新機能] グループにライセンスを割り当てる</a></li>
+</ul>
+</li>
+<li><a href="#idx5">シナリオ 2: ユーザーから特定のライセンスを削除する</a><ul>
+<li><a href="#idx5-1">ユーザーから特定のライセンスを削除する</a></li>
+</ul>
+</li>
+<li><a href="#idx6">シナリオ 3: 割り当て済みライセンスの無効にするサービスプランを変更する</a><ul>
+<li><a href="#idx6-1">割り当て済みライセンスの無効にするサービス プランを変更する</a></li>
+<li><a href="#idx6-2">割り当て済みライセンスの無効にしているサービス プランをすべて有効にする</a></li>
+<li><a href="#idx6-3">すでに一部のサービス プランを無効にしているライセンスに対して、追加で特定のサービス プランを無効にする</a></li>
+<li><a href="#idx6-4">すでに 1 つ以上のサービス プランを無効にしているライセンスに対して、特定のサービス プランのみを無効から有効に変える</a></li>
+</ul>
+</li>
+<li><a href="#idx7">シナリオ 4: ライセンスを変更する</a></li>
+<li><a href="#idx8">操作完了後のサインアウト</a></li>
+<li><a href="#idx9">[補足] Set-MgUserLicense : License assignment cannot be done for user with invalid usage location. が出力される場合</a></li>
+</ol>
+<h1 id="idx1">1. Microsoft Graph PowerShell のインストール</h1>
+
+<p>PowerShell を管理者権限で開き、以下コマンドで、Microsoft Graph PowerShell SDK を操作端末にインストールします。</p>
+<p>※ インストール先をローカル ユーザーのみに限定する場合は、<code>-Scope CurrentUser</code> パラメーターを付けます。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Install-Module Microsoft.Graph</span><br></pre></td></tr></table></figure>
+
+<p>公開情報：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/graph/powershell/installation">Install the Microsoft Graph PowerShell SDK - Microsoft Graph | Microsoft Docs</a></p>
+<h1 id="idx2">2. Connect-MgGraph による Azure AD への認証</h1>
+
+<p>Azure AD への認証方法として、<strong>管理者の資格情報を使用する方法</strong>と、<strong>サービス プリンシパル</strong>を利用する方法があります。</p>
+<p>サービス プリンシパルを利用する方法とは、簡単に言うと証明書を発行したアプリケーションにアクセス許可を付与し、アプリケーション経由で Azure AD の認証および操作を行う方法です。管理者自身が操作してライセンスの管理を行う場合は管理者の資格情報を使用する方法でも構いません。バッチ処理など、無人化や自動化を行う場合はサービス プリンシパルを使用します。</p>
+<h2 id="idx2-1">管理者の資格情報を使用する場合</h2>
+
+<p>以下のコマンドを実行して、サインインとライセンスの管理に必要なアクセス許可への同意を行います。</p>
+<p>認証画面がポップアップしますので、管理者アカウントでサインします。アクセス許可の同意を求められたら [承諾] をクリックします。[組織の代理として同意する] はオフのままで問題ありません。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Connect-MgGraph -Scopes <span class="string">&quot;Organization.Read.All&quot;</span>,<span class="string">&quot;User.ReadWrite.All&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>テナントに紐づくライセンスの情報を確認するために Organization.Read.All のアクセス許可が必要です。またライセンスの付与などのために User.ReadWrite.All のアクセス許可が必要です。</p>
+<p>その後、シナリオ 1 以降の操作を行うために必要なモジュールをインポートしておきます。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Import-Module -Name Microsoft.Graph.Users</span><br></pre></td></tr></table></figure>
+
+<h2 id="idx2-2">サービス プリンシパル（アプリケーション）を使用する方法</h2>
+
+<p>基本的な内容は以下の公開情報となります。</p>
+<p>公開情報: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/graph/powershell/app-only?tabs=azure-portal">Microsoft の PowerShell SDK でアプリGraphを使用する - Microsoft Graph | Microsoft Docs</a></p>
+<p>まず、Azure AD にてアプリケーションの登録を行い、サービス プリンシパルを作成します。</p>
+<ol>
+<li>グローバル 管理者で Azure Portal にサインインし、[Azure Active Directory] – [アプリの登録] – [新規登録] をクリックします。</li>
+<li>[名前] に任意のアプリの名前を入力します。(例: App01)</li>
+<li>[サポートされているアカウントの種類] から [この組織ディレクトリのみに含まれるアカウント] を選択します。</li>
+<li>[リダイレクト URI] で [Web] を選択し、テキスト ボックスは空欄のままにし、[登録] をクリックします。<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/image1.png"></li>
+<li>表示された [アプリケーション (クライアント) ID] と [ディレクトリ (テナント) ID] の値を控えておきます。<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/image2.png"></li>
+<li>[API のアクセス許可] – [+アクセス許可の追加] をクリックします。[Microsoft Graph] – [アプリケーションの許可] をクリックし、[Organization.Read.All] と [User.ReadWrite.All] を選択して [アクセス許可の追加] をクリックします。<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/image3.png"></li>
+<li>[&lt;テナント名&gt; に管理者の同意を与えます] をクリックします。確認が表示されるので [はい] をクリックします。</li>
+</ol>
+<p>続いて、証明書を発行します。</p>
+<ol start="8">
+<li><p>PowerShell を起動し、以下のようにコマンドを実行します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$mycert</span> = New-SelfSignedCertificate -Subject <span class="string">&quot;CN=SelfSignedCert&quot;</span> -CertStoreLocation <span class="string">&quot;Cert:\CurrentUser\My&quot;</span>  -KeyExportPolicy Exportable -KeySpec Signature</span><br><span class="line"></span><br><span class="line"><span class="comment"># &quot;.\SelfSignedCert.cer&quot; は、エクスポート先のパスを適宜変更ください。</span></span><br><span class="line"><span class="variable">$mycert</span> | Export-Certificate -FilePath <span class="string">&quot;.\SelfSignedCert.cer&quot;</span>  </span><br><span class="line"><span class="variable">$mycert</span> | Select Thumbprint</span><br></pre></td></tr></table></figure></li>
+<li><p>Azure Portal で先ほど登録したアプリのページに戻り、[証明書とシークレット] をクリックします。</p>
+</li>
+<li><p>[証明書のアップロード] をクリックし、9 にて出力された SelfSignedCert.cer をアップロードします。</p>
+</li>
+</ol>
+<p>以上で、準備は完了となります。</p>
+<p>以下コマンドにて、サービス プリンシパルを使用して Azure AD に接続することができます。また、管理者の資格情報を使用する場合と同様、シナリオ 1 以降の操作を行うために必要なモジュールをインポートします。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Connect-MgGraph -Clientid <span class="string">&quot;&lt;登録したアプリのアプリケーション (クライアント) ID&gt;&quot;</span> -TenantId <span class="string">&quot;&lt;アプリを登録したテナントのディレクトリ (テナント) ID&gt;&quot;</span> -CertificateThumbprint <span class="string">&quot;&lt;証明書の拇印&gt;&quot;</span></span><br><span class="line">Import-Module -Name Microsoft.Graph.Users</span><br></pre></td></tr></table></figure>
+
+<p>▼ 実行例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Connect-MgGraph -Clientid <span class="string">&quot;89a531e4-38a8-41b3-9a5f-xxxxxxx&quot;</span> -TenantId <span class="string">&quot;a818a9d9-4bf7-4316-b8bb-xxxxxx&quot;</span> -CertificateThumbprint <span class="string">&quot;F683EBBE56184C197699930xxxxxxxxxx&quot;</span></span><br><span class="line">Import-Module -Name Microsoft.Graph.Users</span><br></pre></td></tr></table></figure>
+
+<h1 id="idx3">3. ライセンス情報の取得</h1>
+
+<h2 id="idx3-1">テナントに紐づくライセンス情報を確認する</h2>
+
+<p>以下のコマンドを実行し、テナントに紐づくライセンス情報を確認します。</p>
+<p>※ -Wrap 引数は、出力結果を途切れず折り返し表示するためのパラメーターです。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Get-MgSubscribedSku | ft Id, SkuId, SkuPartNumber -Wrap</span><br></pre></td></tr></table></figure>
+
+<p>出力例<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail1.png"></p>
+<p>ライセンスの付与の際には SkuId の値を使用します。そのため、どの SkuId がこれから管理したいライセンスなのかを判別する必要があります。</p>
+<p>SkuPartNumber の値から推測できるものもありますが、詳細は以下の公開情報に記載されていますのでそちらをご参照ください。例えば Microsoft 365 E5 の SkuPartNumber は SPE_E5 で SkuId は 06ebc4ee-1bb5-47dd-8120-11324bc54e06 です。</p>
+<p>公開情報: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/enterprise-users/licensing-service-plan-reference">ライセンスのための製品名とサービス プラン 識別子</a></p>
+<p>さらにライセンスの中の一部のサービス プランを無効にしたいというシナリオの場合、サービス プランの情報も確認しておく必要があります。その場合は以下のようにコマンドを実行します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Get-MgSubscribedSku -SubscribedSkuId <span class="string">&quot;&lt;Get-MgSubscribedSku コマンドで確認した、サービス プランを確認したいライセンスの Id&gt;&quot;</span> | Select-Object -ExpandProperty ServicePlans | ft ServicePlanId, ServicePlanName</span><br></pre></td></tr></table></figure>
+
+<p>▼ 実行例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Get-MgSubscribedSku -SubscribedSkuId <span class="string">&quot;a818a9d9-4bf7-4316-b8bb-e0f1a52ce5ea_184efa21-98c3-4e5d-95ab-d07053a96e67&quot;</span> | Select-Object -ExpandProperty ServicePlans | ft ServicePlanId, ServicePlanName</span><br></pre></td></tr></table></figure>
+
+<p>出力例<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail2.png"></p>
+<h2 id="idx3-2">ユーザーに割り当て済みのライセンスを確認する</h2>
+
+<p>ユーザーに割り当てられているライセンスを確認するには、<code>Get-MgUser</code> コマンドを使用する方法と、<code>Get-MgUserLicenseDetail</code> コマンドを使用する方法があります。</p>
+<ul>
+<li><code>Get-MgUser</code> コマンド</li>
+</ul>
+<p>Get-MgUser コマンドを使用することで、Set-MgUserLicense コマンドでも使用する MicrosoftGraphAssignedLicense の内容を確認することができます。（出力例は次のコマンド例と一緒に掲載します）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Get-MgUser -UserId &lt;対象ユーザーの UPN&gt; -Property AssignedLicenses | Select-Object -ExpandProperty AssignedLicenses</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Get-MgUserLicenseDetail</code> コマンド</li>
+</ul>
+<p>Get-MgUserLicenseDetail コマンドを使用することで、ユーザーに割り当てたライセンスやサービス プランのプロビジョニング状況を確認することができます。以下のように実行するとユーザーに割り当てたライセンスの情報を確認できます。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Get-MgUserLicenseDetail -UserId &lt;対象ユーザーの UPN&gt;</span><br></pre></td></tr></table></figure>
+
+<p>出力例<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail3.png"></p>
+<p>サービス プランの情報を確認するには以下のようにコマンドを実行します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Get-MgUserLicenseDetail -UserId &lt;対象ユーザーの UPN&gt; | Select-Object -ExpandProperty ServicePlans</span><br></pre></td></tr></table></figure>
+
+<p>出力例<br><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/licenseDetail4.png"></p>
+<h1 id="idx4">シナリオ 1: ユーザーにライセンスを割り当てる</h1>
+
+<p>ユーザーにライセンスを割り当てます。まだライセンスが何も割り当てられていない場合であっても、既に割り当てられており追加する場合でも、どちらも手順は同じです。</p>
+<h2 id="idx4-1"> すべてのサービス プランを有効にして特定のライセンスを割り当てる</h2>
+
+<p>割り当てるライセンスの SkuId を指定した MicrosoftGraphAssignedLicense オブジェクトを作成し、<code>Set-MgUserLicense</code> コマンドの AddLicenses パラメーターに配列として指定します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @&#123;SkuId = <span class="string">&quot;&lt;割り当てるライセンスの SkuId&gt;&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses @(<span class="variable">$License1</span>) -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<p>▼ 実行例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @&#123;SkuId = <span class="string">&quot;06ebc4ee-1bb5-47dd-8120-11324bc54e06&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId TestGraphUser01@contoso.onmicrosoft.com -AddLicenses @(<span class="variable">$License1</span>) -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<p>複数のライセンスを割り当てる場合はそれぞれの MicrosoftGraphAssignedLicense オブジェクトを作成し、<code>Set-MgUserLicense</code> コマンドの AddLicenses パラメーターに、以下のようにカンマ区切りで指定します。</p>
+<p>▼ 実行例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-MgUserLicense -UserId TestGraphUser01@contoso.onmicrosoft.com -AddLicenses @(<span class="variable">$License1</span>, <span class="variable">$License2</span>) -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h2 id="idx4-2"> 特定のサービス プランを無効にして特定のライセンスを割り当てる</h2>
+
+<p>ライセンス割り当て時に無効にするサービス プランがある場合は DisablePlans に ServicePlanId を配列として指定します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @&#123;SkuId = <span class="string">&quot;&lt;割り当てるライセンスの SkuId&gt;&quot;</span>; DisabledPlans = @(<span class="string">&quot;&lt;無効にするサービス プランの ServicePlanId&gt;&quot;</span>)&#125;</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses @(<span class="variable">$License1</span>) -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h2 id="idx4-3">複数のサービス プランを無効にして特定のライセンスを割り当てる</h2>
+
+<p>無効にするサービス プランが複数ある場合も、「複数のライセンスを割り当てる」 同様、 DisablePlans に ServicePlanId をカンマ区切りで指定します。</p>
+<h2 id="idx4-4">[新機能] グループにライセンスを割り当てる</h2>
+
+<p>Microsoft Graph PowerShell では、<code>Set-MgGroupLicense</code> コマンドにより、グループに対するライセンス割り当てを行うことが可能となりました。</p>
+<p>使い方は、ライセンス割り当て対象として UserId ではなく GroupId パラメーターを用います。その他の引数は <code>Set-MgUserLicense</code> と同様です。</p>
+<p>▼ すべてのサービス プランを有効にして特定のライセンスを割り当てる場合の実行例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-MgGroupLicense -GroupId &lt;対象グループの ObjectId&gt; -AddLicenses @(<span class="variable">$License1</span>) -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h1 id="idx5">シナリオ 2: ユーザーからライセンスを削除する</h1>
+
+<h2 id="idx5-1">ユーザーから特定のライセンスを削除する</h2>
+
+<p>ユーザーからライセンスを削除するには <code>Set-MgUserLicense</code> コマンドの RemoveLicenses パラメーターに削除したいライセンスの SkuId を配列として指定します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses @() -RemoveLicenses @(<span class="string">&quot;&lt;削除するライセンスの SkuId&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="idx6"> シナリオ 3: 割り当て済みライセンスの無効にするサービス プランを変更する</h1>
+
+<p>ライセンスを割り当てる場合と同じ方法で、DisabledPlans の内容を変更してコマンドを実行することにより、無効にするサービス プランを変更することができます。上書きになるので、元々無効だったサービス プランを引き続き無効にしたいのであれば DisabledPlans に改めて指定する必要があります。</p>
+<h2 id="idx6-1">割り当て済みライセンスの無効にするサービス プランを変更する</h2>
+
+<p>以下の例では、割り当て済みのライセンスに関して指定した 2 つのサービス プランだけを無効にします。指定していないサービス プランは有効になります。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @&#123;SkuId = <span class="string">&quot;&lt;無効にするサービス プランを変更する割り当て済みライセンスの SkuId&gt;&quot;</span>; DisabledPlans = @(<span class="string">&quot;&lt;無効にするサービス プランの ServicePlanId (1 つ目)&gt;&quot;</span>, <span class="string">&quot;&lt;無効にするサービス プランの ServicePlanId (2 つ目)&gt;&quot;</span>)&#125;</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses <span class="variable">$License1</span> -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h2 id="idx6-2">割り当て済みライセンスの無効にしているサービス プランをすべて有効にする</h2>
+
+<p>割り当て済みライセンスの無効にしているサービス プランをすべて有効にするには、DisabledPlans に何も指定をせずにコマンドを実行します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @&#123;SkuId = <span class="string">&quot;&lt;すべてのサービス プランを有効にする割り当て済みライセンスの SkuId&gt;&quot;</span>; DisabledPlans = @()&#125;</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses <span class="variable">$License1</span> -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h2 id="idx6-3">すでに一部のサービス プランを無効にしているライセンスに対して、追加で特定のサービス プランを無効にする</h2>
+
+<p>すでに一部のサービス プランを無効にしているライセンスに対して、追加で特定のサービス プランを無効にする場合、現在の DisablePlans の内容を取得した上で追加を行います。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = Get-MgUser -UserId &lt;対象ユーザーの UPN&gt; -Property AssignedLicenses | Select-Object -ExpandProperty AssignedLicenses | ?&#123;<span class="variable">$_</span>.SkuId -eq <span class="string">&quot;&lt;対象の割り当て済みライセンスの SkuId&gt;&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$License1</span>.DisabledPlans += <span class="string">&quot;&lt;追加で無効にするサービス プランの ServicePlanId&gt;&quot;</span></span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses <span class="variable">$License1</span> -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h2 id="idx6-4">すでに 1 つ以上のサービス プランを無効にしているライセンスに対して、特定のサービス プランのみを無効から有効に変える</h2>
+
+<p>すでに 1 つ以上のサービス プランを無効にしているライセンスに対して、特定のサービス プランのみを無効から有効に変える現在の DisablePlans の内容を取得した上で有効にするサービス プランを取り除きます。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = Get-MgUser -UserId &lt;対象ユーザーの UPN&gt; -Property AssignedLicenses | Select-Object -ExpandProperty AssignedLicenses | ?&#123;<span class="variable">$_</span>.SkuId -eq <span class="string">&quot;&lt;対象の割り当て済みライセンスの SkuId&gt;&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$License1</span>.DisabledPlans = @(<span class="variable">$License1</span>.DisabledPlans | ?&#123;<span class="variable">$_</span> -ne <span class="string">&quot;&lt;無効から有効に変えるサービス プランの ServicePlanId&gt;&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId &lt;対象ユーザーの UPN&gt; -AddLicenses <span class="variable">$License1</span> -RemoveLicenses @()</span><br></pre></td></tr></table></figure>
+
+<h1 id="idx7">シナリオ 4: ライセンスを変更する</h1>
+
+<p>現在割り当て済みのライセンスを削除して別のライセンスを割り当てるには、現在割り当て済みのライセンスは RemoveLicenses に指定し、新しく割り当てるライセンスを AddLicenses に指定します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$License1</span> = New-Object -TypeName Microsoft.Graph.PowerShell.Models.MicrosoftGraphAssignedLicense -Property @&#123;SkuId = <span class="string">&quot;&lt;新しく割り当てるライセンスの SkuId&gt;&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">Set-MgUserLicense -UserId TestGraphUser01@contoso.onmicrosoft.com -AddLicenses @(<span class="variable">$License1</span>) -RemoveLicenses @(<span class="string">&quot;&lt;現在割り当て済みのライセンス&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="idx8">4. 操作完了後のサインアウト</h1>
+以下のコマンドを実行し、Azure AD よりサインアウトします。
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Disconnect-MgGraph</span><br></pre></td></tr></table></figure>
+
+<h1 id="idx9">[補足] Set-MgUserLicense : License assignment cannot be done for user with invalid usage location. が出力される場合</h1>
+
+<p><code>Set-MgUserLicense</code> を実行し、以下のようなエラーが出力される場合は、ライセンス付与対象のユーザーに UsageLocation（利用場所）属性が設定されていないことが原因です。</p>
+<p>エラー例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-MgUserLicense -UserId TestGraphUser01@contoso.onmicrosoft.com -AddLicenses @(<span class="variable">$License1</span>) -RemoveLicenses @()</span><br><span class="line">Set-MgUserLicense : License assignment cannot be <span class="keyword">done</span> <span class="keyword">for</span> user with invalid usage location.</span><br><span class="line">At line:1 char:1</span><br><span class="line">+ Set-MgUserLicense -UserId TestGraphUser01@contoso.onmicrosoft.com -AddLicenses @ ...</span><br><span class="line">+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">    + CategoryInfo          : InvalidOperation: (&#123; UserId = test...ionJsonSchema &#125;:&lt;&gt;f__AnonymousType10`2) [Set-MgUserLice</span><br><span class="line">   nse_AssignExpanded], RestException`1</span><br><span class="line">    + FullyQualifiedErrorId : Request_BadRequest,Microsoft.Graph.PowerShell.Cmdlets.SetMgUserLicense_AssignExpanded</span><br></pre></td></tr></table></figure>
+
+<p>ライセンスを割り当てるユーザーは、事前に UsageLocation 属性が設定されている必要があるため、もし、上記エラーが出た場合は、以下のようなコマンドで UsageLocation を設定します。</p>
+<p>この例ではユーザーの UsageLocation を ”JP”（日本） に設定します。<br>その後、ライセンスの割り当てなどのコマンドを再実行ください。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Update-MgUser -UserId &lt;対象ユーザーの UPN&gt; -UsageLocation <span class="string">&quot;JP&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>また、UsageLocation 属性が設定されているかどうかは、[Azure Active Directory] &gt; [すべてのユーザー] &gt; [&lt;ライセンス付与対象のユーザー&gt;] より、プロファイルの「利用場所」項目から確認可能です。</p>
+<p><img src="/blog/azure-active-directory/operating-license-with-microsoft-graph/image4.png"></p>
+<p>本記事が皆様の参考となれば幸いです。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Microsoft-Graph/" rel="tag">Microsoft Graph</a></li></ul>
+
+        
+        <a href="https://github.com/jpazureid/blog/edit/main/articles/azure-active-directory/operating-license-with-microsoft-graph.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../CloudKnox-acquisition-whats-available-now-and-whats-coming-soon/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          CloudKnox 社の買収について - 現在利用可能なものと近日公開予定のもの
+        
+      </div>
+    </a>
+  
+  
+    <a href="../announcing-improved-identity-protection-signal-quality-and/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Identity Protection のシグナル品質と表示の向上</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../advancing-modern-strong-authentication/">登録キャンペーンによる先進的で強力な認証の推進</a>
+          </li>
+        
+          <li>
+            <a href="../company-branding-ga/">新しい会社のブランド機能が一般公開されました</a>
+          </li>
+        
+          <li>
+            <a href="../entitlement-management-ga/">エンタイトルメント管理 - 新しく一般公開された機能のご紹介</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory-connect/azure-ad-connect-general-information/">[情報採取] Azure AD Connect に関わる問題などの際に採取、提供いただきたい情報</a>
+          </li>
+        
+          <li>
+            <a href="../new-microsoft-entra-id-governance-dashboard-experience-rolling/">Microsoft Entra ID Governance の新しいダッシュボードが近々公開されます</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090016/" rel="tag">80090016</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090030/" rel="tag">80090030</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AADSTS50107/" rel="tag">AADSTS50107</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-Sync/" rel="tag">AD Sync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ADSync/" rel="tag">ADSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Package/" rel="tag">Access Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Review/" rel="tag">Access Review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-review/" rel="tag">Access review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/App-Service/" rel="tag">App Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Audit-Logs/" rel="tag">Audit Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Application-Proxy/" rel="tag">Azure AD Application Proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2C/" rel="tag">Azure AD B2C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Directory-Rolls/" rel="tag">Azure AD Directory Rolls</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Domain-Services/" rel="tag">Azure AD Domain Services</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Join/" rel="tag">Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-License/" rel="tag">Azure AD License</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Ad-Connect/" rel="tag">Azure Ad Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/B2B/" rel="tag">B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CBA/" rel="tag">CBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Client-Secrets/" rel="tag">Client Secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Company-Branding/" rel="tag">Company Branding</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access-Policy/" rel="tag">Conditional Access Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Cross-Tenat-Synchronization/" rel="tag">Cross-Tenat Synchronization</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Device/" rel="tag">Device</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DirSync/" rel="tag">DirSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Directory-Synchronization-Accounts/" rel="tag">Directory Synchronization Accounts</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entitlement-Management/" rel="tag">Entitlement Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ExpressRoute/" rel="tag">ExpressRoute</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federated-Domain/" rel="tag">Federated Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federation/" rel="tag">Federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HAADJ/" rel="tag">HAADJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hard-match/" rel="tag">Hard match</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Governance/" rel="tag">Identity Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Protection/" rel="tag">Identity Protection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Intune/" rel="tag">Intune</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-ID/" rel="tag">Issuer ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-URI/" rel="tag">Issuer URI</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Key-Vault/" rel="tag">Key Vault</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Legacy-Authentication/" rel="tag">Legacy Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Limitation/" rel="tag">Limitation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-ID/" rel="tag">Managed ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra/" rel="tag">Microsoft Entra</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph/" rel="tag">Microsoft Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph-PowerShell/" rel="tag">Microsoft Graph PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Multi-Factor-Authentication/" rel="tag">Multi Factor Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OTP/" rel="tag">OTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIM/" rel="tag">PIM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIN/" rel="tag">PIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PRT/" rel="tag">PRT</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Policy/" rel="tag">Password Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Writeback/" rel="tag">Password Writeback</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Primary-Refresh-Token/" rel="tag">Primary Refresh Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Provisioning/" rel="tag">Provisioning</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RBAC/" rel="tag">RBAC</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSO/" rel="tag">SSO</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSPR/" rel="tag">SSPR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SameSite/" rel="tag">SameSite</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security-Default/" rel="tag">Security Default</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Self-Service-Password-Reset/" rel="tag">Self Service Password Reset</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Service-Principal/" rel="tag">Service Principal</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Signin-Logs/" rel="tag">Signin Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Smart-lockout/" rel="tag">Smart lockout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Soft-matching/" rel="tag">Soft matching</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Staged-Rollout/" rel="tag">Staged Rollout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Subscription/" rel="tag">Subscription</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TPM/" rel="tag">TPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tenant-Restrictions/" rel="tag">Tenant Restrictions</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Token/" rel="tag">Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Troubleshooting/" rel="tag">Troubleshooting</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Trusted-Platform-Module/" rel="tag">Trusted Platform Module</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/UPN/" rel="tag">UPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Verified-ID/" rel="tag">Verified ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WAP/" rel="tag">WAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WHfB/" rel="tag">WHfB</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-10/" rel="tag">Windows 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Defender-ATP/" rel="tag">Windows Defender ATP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Hello-for-Business/" rel="tag">Windows Hello for Business</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WorkPlace-Join/" rel="tag">WorkPlace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Workplace-Join/" rel="tag">Workplace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/supportMultipleDomain/" rel="tag">supportMultipleDomain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/unusual-sign-in/" rel="tag">unusual sign-in</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" rel="tag">クレームルール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" rel="tag">テナント制限</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" rel="tag">トラステッド プラットフォーム モジュール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" rel="tag">トラブルシューティング</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" rel="tag">ログ取得</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" rel="tag">条件付きアクセス</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" rel="tag">証明書</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" rel="tag">証明書認証</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/">AD FS</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/AADSTS50107">AADSTS50107</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD">Azure AD</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/CBA">CBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Conditional-Access">Conditional Access</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Federated-Domain">Federated Domain</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Hybrid-Azure-AD-Join">Hybrid Azure AD Join</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Intune">Intune</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-ID">Issuer ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-URI">Issuer URI</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/MFA">MFA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Managed-Domain">Managed Domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/SameSite">SameSite</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Security">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Smart-lockout">Smart lockout</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/WAP">WAP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Workplace-Join">Workplace Join</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/supportMultipleDomain">supportMultipleDomain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB">クレームルール</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">トラブルシューティング</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/">Azure AD</a><span class="tag-list-count">247</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090016">80090016</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090030">80090030</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/AD-FS">AD FS</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Package">Access Package</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Review">Access Review</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-review">Access review</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/App-Service">App Service</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Application">Application</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Audit-Logs">Audit Logs</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Application-Proxy">Azure AD Application Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2B">Azure AD B2B</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2C">Azure AD B2C</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Domain-Services">Azure AD Domain Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Join">Azure AD Join</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/B2B">B2B</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Client-Secrets">Client Secrets</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Compliant">Compliant</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access">Conditional Access</a><span class="tag-list-count">23</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access-Policy">Conditional Access Policy</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD">Azure AD</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Key-Vault">Key Vault</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/">AAD Connect</a><span class="tag-list-count">18</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/AD-Sync">AD Sync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/ADSync">ADSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/DirSync">DirSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SMTP">SMTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SSO">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/Soft-matching">Soft matching</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/UPN">UPN</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/05/">2023 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/02/">2023 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/12/">2022 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/07/">2022 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/05/">2022 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">2022 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">2021 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/07/">2021 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">2021 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">2021 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">2021 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">2021 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">2021 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">2021 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">2020 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">2020 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">2020 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">2020 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/07/">2020 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/06/">2020 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">2020 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">2020 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">2020 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">2020 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">2020 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">2019 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">2019 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">2019 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/09/">2019 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/07/">2019 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">2019 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/02/">2019 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">2018 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/11/">2018 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/10/">2018 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">2018 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">2018 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/07/">2018 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">2018 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">2018 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/04/">2018 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/03/">2018 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">2018 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/01/">2018 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">2017 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/11/">2017 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">2017 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/06/">2017 / 06</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/80090016/" style="font-size: 10px;">80090016</a> <a href="../../tags/80090030/" style="font-size: 10px;">80090030</a> <a href="../../tags/AAD-Connect/" style="font-size: 17.5px;">AAD Connect</a> <a href="../../tags/AADSTS50107/" style="font-size: 10px;">AADSTS50107</a> <a href="../../tags/AD-FS/" style="font-size: 18.13px;">AD FS</a> <a href="../../tags/AD-Sync/" style="font-size: 10px;">AD Sync</a> <a href="../../tags/ADSync/" style="font-size: 10px;">ADSync</a> <a href="../../tags/Access-Package/" style="font-size: 10px;">Access Package</a> <a href="../../tags/Access-Review/" style="font-size: 10px;">Access Review</a> <a href="../../tags/Access-review/" style="font-size: 11.88px;">Access review</a> <a href="../../tags/App-Service/" style="font-size: 10px;">App Service</a> <a href="../../tags/Application/" style="font-size: 13.75px;">Application</a> <a href="../../tags/Audit-Logs/" style="font-size: 10px;">Audit Logs</a> <a href="../../tags/Azure-AD/" style="font-size: 20px;">Azure AD</a> <a href="../../tags/Azure-AD-Application-Proxy/" style="font-size: 10px;">Azure AD Application Proxy</a> <a href="../../tags/Azure-AD-B2B/" style="font-size: 13.75px;">Azure AD B2B</a> <a href="../../tags/Azure-AD-B2C/" style="font-size: 11.25px;">Azure AD B2C</a> <a href="../../tags/Azure-AD-Connect/" style="font-size: 15.63px;">Azure AD Connect</a> <a href="../../tags/Azure-AD-Directory-Rolls/" style="font-size: 10px;">Azure AD Directory Rolls</a> <a href="../../tags/Azure-AD-Domain-Services/" style="font-size: 10px;">Azure AD Domain Services</a> <a href="../../tags/Azure-AD-Join/" style="font-size: 10.63px;">Azure AD Join</a> <a href="../../tags/Azure-AD-License/" style="font-size: 10px;">Azure AD License</a> <a href="../../tags/Azure-Ad-Connect/" style="font-size: 10px;">Azure Ad Connect</a> <a href="../../tags/B2B/" style="font-size: 12.5px;">B2B</a> <a href="../../tags/CBA/" style="font-size: 10px;">CBA</a> <a href="../../tags/Client-Secrets/" style="font-size: 10px;">Client Secrets</a> <a href="../../tags/Company-Branding/" style="font-size: 10px;">Company Branding</a> <a href="../../tags/Compliant/" style="font-size: 10.63px;">Compliant</a> <a href="../../tags/Conditional-Access/" style="font-size: 18.75px;">Conditional Access</a> <a href="../../tags/Conditional-Access-Policy/" style="font-size: 10.63px;">Conditional Access Policy</a> <a href="../../tags/Cross-Tenat-Synchronization/" style="font-size: 10px;">Cross-Tenat Synchronization</a> <a href="../../tags/Device/" style="font-size: 10.63px;">Device</a> <a href="../../tags/DirSync/" style="font-size: 10px;">DirSync</a> <a href="../../tags/Directory-Synchronization-Accounts/" style="font-size: 10px;">Directory Synchronization Accounts</a> <a href="../../tags/Entitlement-Management/" style="font-size: 10.63px;">Entitlement Management</a> <a href="../../tags/ExpressRoute/" style="font-size: 10px;">ExpressRoute</a> <a href="../../tags/Federated-Domain/" style="font-size: 10.63px;">Federated Domain</a> <a href="../../tags/Federation/" style="font-size: 10px;">Federation</a> <a href="../../tags/HAADJ/" style="font-size: 10px;">HAADJ</a> <a href="../../tags/Hard-match/" style="font-size: 10px;">Hard match</a> <a href="../../tags/Hybrid-Azure-AD-Join/" style="font-size: 15px;">Hybrid Azure AD Join</a> <a href="../../tags/Identity-Governance/" style="font-size: 10.63px;">Identity Governance</a> <a href="../../tags/Identity-Protection/" style="font-size: 10.63px;">Identity Protection</a> <a href="../../tags/Intune/" style="font-size: 11.25px;">Intune</a> <a href="../../tags/Issuer-ID/" style="font-size: 10px;">Issuer ID</a> <a href="../../tags/Issuer-URI/" style="font-size: 10px;">Issuer URI</a> <a href="../../tags/Key-Vault/" style="font-size: 10px;">Key Vault</a> <a href="../../tags/Legacy-Authentication/" style="font-size: 10px;">Legacy Authentication</a> <a href="../../tags/Limitation/" style="font-size: 10px;">Limitation</a> <a href="../../tags/MFA/" style="font-size: 16.88px;">MFA</a> <a href="../../tags/Managed-Domain/" style="font-size: 10.63px;">Managed Domain</a> <a href="../../tags/Managed-ID/" style="font-size: 10px;">Managed ID</a> <a href="../../tags/Microsoft-Entra/" style="font-size: 10px;">Microsoft Entra</a> <a href="../../tags/Microsoft-Graph/" style="font-size: 13.13px;">Microsoft Graph</a> <a href="../../tags/Microsoft-Graph-PowerShell/" style="font-size: 10px;">Microsoft Graph PowerShell</a> <a href="../../tags/Multi-Factor-Authentication/" style="font-size: 10px;">Multi Factor Authentication</a> <a href="../../tags/OAuth/" style="font-size: 12.5px;">OAuth</a> <a href="../../tags/OTP/" style="font-size: 10px;">OTP</a> <a href="../../tags/PIM/" style="font-size: 10px;">PIM</a> <a href="../../tags/PIN/" style="font-size: 10px;">PIN</a> <a href="../../tags/PRT/" style="font-size: 10px;">PRT</a> <a href="../../tags/Password-Policy/" style="font-size: 10px;">Password Policy</a> <a href="../../tags/Password-Writeback/" style="font-size: 10px;">Password Writeback</a> <a href="../../tags/PowerShell/" style="font-size: 14.38px;">PowerShell</a> <a href="../../tags/Primary-Refresh-Token/" style="font-size: 10px;">Primary Refresh Token</a> <a href="../../tags/Provisioning/" style="font-size: 10px;">Provisioning</a> <a href="../../tags/RBAC/" style="font-size: 10.63px;">RBAC</a> <a href="../../tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="../../tags/SSO/" style="font-size: 10px;">SSO</a> <a href="../../tags/SSPR/" style="font-size: 11.25px;">SSPR</a> <a href="../../tags/SameSite/" style="font-size: 10px;">SameSite</a> <a href="../../tags/Security/" style="font-size: 16.25px;">Security</a> <a href="../../tags/Security-Default/" style="font-size: 10px;">Security Default</a> <a href="../../tags/Self-Service-Password-Reset/" style="font-size: 10px;">Self Service Password Reset</a> <a href="../../tags/Service-Principal/" style="font-size: 10px;">Service Principal</a> <a href="../../tags/Signin-Logs/" style="font-size: 10px;">Signin Logs</a> <a href="../../tags/Smart-lockout/" style="font-size: 10px;">Smart lockout</a> <a href="../../tags/Soft-matching/" style="font-size: 10px;">Soft matching</a> <a href="../../tags/Staged-Rollout/" style="font-size: 10px;">Staged Rollout</a> <a href="../../tags/Subscription/" style="font-size: 10px;">Subscription</a> <a href="../../tags/TLS-1-2/" style="font-size: 10.63px;">TLS 1.2</a> <a href="../../tags/TPM/" style="font-size: 10px;">TPM</a> <a href="../../tags/Tenant-Restrictions/" style="font-size: 10px;">Tenant Restrictions</a> <a href="../../tags/Token/" style="font-size: 10.63px;">Token</a> <a href="../../tags/Troubleshooting/" style="font-size: 11.88px;">Troubleshooting</a> <a href="../../tags/Trusted-Platform-Module/" style="font-size: 10px;">Trusted Platform Module</a> <a href="../../tags/UPN/" style="font-size: 11.25px;">UPN</a> <a href="../../tags/US-Identity-Blog/" style="font-size: 19.38px;">US Identity Blog</a> <a href="../../tags/Verified-ID/" style="font-size: 10px;">Verified ID</a> <a href="../../tags/WAP/" style="font-size: 10px;">WAP</a> <a href="../../tags/WHfB/" style="font-size: 10px;">WHfB</a> <a href="../../tags/Windows-10/" style="font-size: 10px;">Windows 10</a> <a href="../../tags/Windows-Defender-ATP/" style="font-size: 10px;">Windows Defender ATP</a> <a href="../../tags/Windows-Hello-for-Business/" style="font-size: 11.25px;">Windows Hello for Business</a> <a href="../../tags/WorkPlace-Join/" style="font-size: 10px;">WorkPlace Join</a> <a href="../../tags/Workplace-Join/" style="font-size: 10.63px;">Workplace Join</a> <a href="../../tags/Zero-Trust/" style="font-size: 13.13px;">Zero Trust</a> <a href="../../tags/graph-api/" style="font-size: 11.25px;">graph api</a> <a href="../../tags/signin-log/" style="font-size: 12.5px;">signin log</a> <a href="../../tags/supportMultipleDomain/" style="font-size: 10px;">supportMultipleDomain</a> <a href="../../tags/unusual-sign-in/" style="font-size: 10px;">unusual sign-in</a> <a href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" style="font-size: 10px;">クレームルール</a> <a href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" style="font-size: 10px;">テナント制限</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" style="font-size: 10px;">トラステッド プラットフォーム モジュール</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" style="font-size: 13.13px;">トラブルシューティング</a> <a href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" style="font-size: 10px;">ログ取得</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 10.63px;">情報採取</a> <a href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" style="font-size: 10.63px;">条件付きアクセス</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" style="font-size: 10px;">証明書</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" style="font-size: 10px;">証明書認証</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="https://privacy.microsoft.com/ja-jp/privacystatement" target="_blank" rel=”noopener”>Privacy & Cookies</a> |  
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/copyright" target="_blank" rel=”noopener”>Terms of use</a> |
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks" target="_blank" rel=”noopener”>Trademarks</a> |
+      &copy; 2023 Azure Identity Support Japan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
