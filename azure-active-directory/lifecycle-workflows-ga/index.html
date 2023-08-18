@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ライフサイクル ワークフローが一般提供 (GA) されました | Japan Azure Identity Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは、Azure Identity サポート チームの 中村 です。  本記事は、2023 年 7 月 14 日に米国の Microsoft Entra (Azure AD) Blog で公開された Lifecycle Workflows is now generally available! を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。  2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ライフサイクル ワークフローが一般提供 (GA) されました">
+<meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/index.html">
+<meta property="og:site_name" content="Japan Azure Identity Support Blog">
+<meta property="og:description" content="こんにちは、Azure Identity サポート チームの 中村 です。  本記事は、2023 年 7 月 14 日に米国の Microsoft Entra (Azure AD) Blog で公開された Lifecycle Workflows is now generally available! を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。  2">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga1.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga2.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga3.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga4.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga5.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga6.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga7.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga8.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga9.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga10.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga11.png">
+<meta property="article:published_time" content="2023-08-19T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-18T17:00:11.701Z">
+<meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="US Identity Blog">
+<meta property="article:tag" content="Lifecycle Workflows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga1.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpazureid.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan Azure Identity Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-azure-active-directory/lifecycle-workflows-ga" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ライフサイクル ワークフローが一般提供 (GA) されました
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Published: 
+        <a href="" class="article-date-single">
+  <time datetime="2023-08-19T00:00:00.000Z" itemprop="datePublished">2023-08-19</time>
+</a>
+        
+          / Last update: <a id="update-time" class="article-date-single"></a>
+/ Contributors: <ul style="display: inline-block; list-style:none" id="contributors" class="github-contributors"> </ul>
+
+<script type="text/javascript">
+  const sourceUrl = "https://github.com/jpazureid/blog/blob/main/articles/azure-active-directory/lifecycle-workflows-ga.md";
+  const urlParts = sourceUrl.split("/");
+  const user = urlParts[3];
+  const repo = urlParts[4];
+  const filePath = urlParts.slice(7).join("/");
+  const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits?path=${filePath}`;
+  function formatDate(date) {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return year + '-' + month + '-' + day;
+  }
+
+  $.getJSON(apiUrl, function (data) {
+    const commit = data[0];
+    const updateDate = new Date(commit.commit.author.date);
+    const localDate = formatDate(updateDate);
+    const contributors = new Map();
+
+    data.reverse().forEach(function (commit) {
+      if (commit.author == null) {
+        return;
+      } else {
+        const name = commit.author.login;
+        const url = commit.author.html_url;
+        const avatar = commit.author.avatar_url;
+        contributors.set(name, { name, url, avatar });
+      }
+    });
+
+    $("#update-time").text(localDate);
+    $("#update-time").href = commit.html_url;
+    Array.from(contributors, ([_, value]) => value).reverse().forEach(function (contributor) {
+      $("#contributors").append(`<li class="contributor-avatar"><a target="_blank" rel="noopener" href="https://github.com/${contributor.name}" title="${contributor.name}"><img src="${contributor.avatar}" alt="${contributor.name}"/></a></li>`);
+    });
+  });
+</script>
+        
+        
+        
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+29f77208-a33c-5cf8-8fb7-ea9133f67119%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB+%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%8C%E4%B8%80%E8%88%AC%E6%8F%90%E4%BE%9B+%28GA%29+%E3%81%95%E3%82%8C%E3%81%BE%E3%81%97%E3%81%9F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Flifecycle-workflows-ga%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Flifecycle-workflows-ga.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Flifecycle-workflows-ga.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflows-ga/" data-id="cllgu6gdi00rf0nqo3ldg6ipy" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>こんにちは、Azure Identity サポート チームの 中村 です。 </p>
+<p>本記事は、2023 年 7 月 14 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/lifecycle-workflows-is-now-generally-available/ba-p/2466931">Lifecycle Workflows is now generally available!</a> を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。</p>
+<hr>
+<p>2023 年 6 月 7 日に発表しましたとおり、<a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-id-governance-is-generally-available/ba-p/2466932">Microsoft Entra ID Governance</a> が、最新の機能の 1 つである <strong>ライフサイクルワークフロー (LCW)</strong> を含め、<strong>一般提供</strong> を開始されました。パブリック プレビュー以降の機能強化や改良を含め、LCW の豊富な機能についてご紹介できることを嬉しく思います。</p>
+<p>ユーザーの ID ライフサイクルは、組織のセキュリティ態勢の重要な部分であり、正しく管理されれば、新入社員 (Joiner)、異動者 (Mover)、離職者 (Leaver) (まとめて JML) のユーザーの生産性にプラスの影響を与えることができます。デジタル トランスフォーメーションが進むにつれ、優れた ID ライフサイクル管理の必要性が高まっています。しかし、IT およびセキュリティ チームは、一度に何百人もの従業員のオンボーディングとオフボーディングが必要となっており、これは複雑で時間がかかり、ミスを犯しやすい手作業のプロセスもあるため大きな課題に直面しています。これは、セキュリティ、ガバナンス、コンプライアンスの各分野でデジタル トランスフォーメーションに直面する IT 管理者が長きにわたり抱える課題です。ID ライフサイクルの課題を詳しく見てみると、以下の点が挙げられます:</p>
+<ol>
+<li>組織のすべての従業員が何かしらへのアクセスを必要としており、管理対象のアプリケーションの数やデータの量が著しく増加しています。これに加えて、規制要件も絶えず増加しています。IT 管理者はこれらの変化に対応するため、スクリプトを使用して JML のプロセスを実施していますが、問題が発生したときのトラブルシューティングは複雑で時間を要します。</li>
+<li>新しいユーザーのオンボーディングには多くの要素が絡み合っています。初日から従業員の生産性を確保するために手動の繰り返しの作業を減らすことは、コスト削減や競争の激しい求人市場において優れた人材を確保する上で重要です。</li>
+<li>サイバー犯罪が激化する中、従業員が組織を離れたり異動した際にアカウントとアクセスを適切なタイミングで削除しないと、組織がより多くのセキュリティの脅威に晒されます。IT 部門がリソースへのアクセス権の追加や削除を手動で行うと時間がかかりすぎてしまうため、遅延やエラーが発生し、コンプライアンスの問題が生じる可能性もあります。</li>
+</ol>
+<p>2022 年の Ignite で、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/active-directory/governance/what-are-lifecycle-workflows">ライフサイクル ワークフロー</a> (LCW) のパブリックプレビューを発表しました。この機能では、自動化されたエンタープライズ レベルのユーザー ライフサイクル管理機能が提供され、組織は ID ライフサイクル管理を刷新し、IT 管理者がこれらの課題に対処するよう支援します。これ以来、世界中の何百もの組織がこの機能を試してフィードバックを提供くださいました。弊社では LCW をさらに改善し、IT 管理者がより多くの時間を節約し、作業ミスを減らし、損失につながる遅延を回避できるようにしました。これにより入社、異動、離職の繰り返しのタスクを自動化し、新しい従業員や役職変更のあった従業員がすぐに生産的になるよう支援できます。また、従業員が組織を離れた際にはアクセスが速やかに削除されたことを確認できるようになっています。</p>
+<p> <img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga1.png"></p>
+<p> LCW がどのように IT 管理者の重要なタスクを自動化し、時間を節約し、リスクを減らし、そして従業員がより迅速に生産性を発揮できるよう支援しているかを次に探ってみましょう。</p>
+<h2 id="シナリオ-1-新入社員のオンボーディング-プロセスを自動化し初日から生産性を上げる"><a href="#シナリオ-1-新入社員のオンボーディング-プロセスを自動化し初日から生産性を上げる" class="headerlink" title="シナリオ 1: 新入社員のオンボーディング プロセスを自動化し初日から生産性を上げる"></a>シナリオ 1: 新入社員のオンボーディング プロセスを自動化し初日から生産性を上げる</h2><p>通常、新しい従業員のオンボーディングには、IT 部門に対して複数のチケットを手作業で作成し、IT 部門は一連のバラバラのステップを完了する必要があります。結果として、新しい従業員が一部アプリへの必要なアクセス権を得られなかったり、Microsoft Teams のグループ メンバーシップや、最初のサインインに必要な資格情報などが不足してしまうということがよくあります。サービス チケットの処理や、間違いやすく不足しがちなステップの追跡には、IT 管理者にとってかなりの時間と労力がかかるだけでなく、ユーザーの生産性にも悪影響を及ぼします。</p>
+<p>IT 管理者として、あなたにはこのプロセスを適切に管理する責任があります。ライフサイクル ワークフローを使用すると、従業員の開始日に基づいて、ユーザー アカウントを有効にし、新しい従業員にウェルカム メールを送信するとともに、マーケティング グループに従業員を追加し、組み込みの Logic Apps の拡張機能を使用して ServiceNow のチケットを作成するまでのカスタムワークフローをわずか数ステップで作成できます。</p>
+<p>これを実現する方法を見てみましょう！</p>
+<h3 id="ステップ-1-シナリオに適した既定のワークフロー-テンプレートを使用してカスタム-ワークフローを設定する。"><a href="#ステップ-1-シナリオに適した既定のワークフロー-テンプレートを使用してカスタム-ワークフローを設定する。" class="headerlink" title="ステップ 1: シナリオに適した既定のワークフロー テンプレートを使用してカスタム ワークフローを設定する。"></a>ステップ 1: シナリオに適した既定のワークフロー テンプレートを使用してカスタム ワークフローを設定する。</h3><p>Woodgrove の管理者である Lisa は、<a target="_blank" rel="noopener" href="https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview">Entra Identity Governance -&gt; Lifecycle Workflows</a> に移動し、[ワークフローの作成] をクリックして、シナリオに合った組み込みのワークフロー テンプレートを選択します。今回の場合、Lisa は [新入社員をオンボードする] ワークフローテンプレート を選んで、新入社員のオンボード シナリオに使用します。</p>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga2.png" alt="Microsoft Entra ID Governance Lifecycle Workflows を使用して、適切なシナリオに合った組み込みワークフロー テンプレートを選択します。"></p>
+<p>Lisa は、[基本情報] タブからワークフロー名をカスタマイズし、トリガー イベントの詳細がすでに <strong>employeeHireDate 属性</strong>に基づいて<strong>トリガー</strong>されるように設定されていることを確認します。新しいライフサイクル ワークフローの機能強化により、必要に応じて代わりに<strong>ユーザーの作成日</strong>に基づいて<strong>トリガー</strong>を設定することも可能です。トリガー イベントの詳細は最大 180 日までカスタマイズできますが、新入社員のオンボーディングのシナリオでは、テンプレート値が新入社員の employeeHireDate に実行されるように設定されているため、追加の変更は必要ありません。</p>
+<p>Lisa は、[スコープの構成] タブを使用して、ワークフローを特定のユーザーに対象を絞るようにさらにカスタマイズすることもできます。このためには、オンプレミス拡張属性やディレクトリ拡張属性など、サポートされている Azure Active Directory (Azure AD) のユーザープロパティが利用できます。これにより、必要な場合にはアメリカとヨーロッパにいるユーザー向けに異なるワークフローを設定することが可能です。</p>
+<h3 id="ステップ-2-新入社員の初日に実行されるタスクをカスタマイズする。"><a href="#ステップ-2-新入社員の初日に実行されるタスクをカスタマイズする。" class="headerlink" title="ステップ 2: 新入社員の初日に実行されるタスクをカスタマイズする。"></a>ステップ 2: 新入社員の初日に実行されるタスクをカスタマイズする。</h3><p>各ワークフロー テンプレートにはシナリオに対応した <strong>事前定義のタスク</strong> があるため、追加のタスクを構成する必要ありません。管理者は、適切なシナリオに対して、<strong>追加のビルトイン タスク</strong> を使用して、ワークフローをさらにカスタマイズすることができます。また、<strong>カスタムの拡張タスク</strong> を利用して、Microsoft の強力なロー コード ソリューションである <strong>Logic Apps で追加のアクション</strong> を実行することもできます。</p>
+<p>新しいライフサイクル ワークフローの機能強化により、アクセス パッケージの割り当てリクエストを行ったり、 カスタマイズした件名や本文、言語、追加の受信者を CC に追加することに加え、企業のロゴやドメインを含む独自のブランドでカスタマイズされた E メールを作成したりすることも可能です。</p>
+<p>Woodgrove の新入社員に対してやるべきチェックリストのすべての項目を漏れなく確認できるよう、Lisa は <strong>既存の Logic Apps</strong> を活用して、ノート パソコンの配送を依頼する <strong>Service Now チケット</strong> を作成するタスクを追加します。</p>
+<p>Lisa は、Woodgrove の企業ロゴが含まれたウェルカム E メールをカスタマイズし、Woodgrove の新入社員ポータルへのリンクを追加したり、社員が Woodgrove からの E メールであることを認識できるように、新入社員のチームメンバーを CC に入れるなどできるようになりました。</p>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga3.png" alt="新しくオンボードされた従業員のために、会社のロゴと関連情報が一致するようにウェルカム E メールをカスタマイズできます。"></p>
+<p>Lisa は、すべての変更を確認するために [確認と作成] タブをクリックし、次に [スケジュールの有効化] チェックボックスをクリックして、[作成] をクリックしてワークフローを保存します。ワークフローは、テナントのスケジュールに基づいて自動的に実行され、<strong>実行条件</strong> を満たしたユーザーに対してのみ実行されます。</p>
+<h3 id="ステップ-3-ワークフローのステータスを監視する。"><a href="#ステップ-3-ワークフローのステータスを監視する。" class="headerlink" title="ステップ 3: ワークフローのステータスを監視する。"></a>ステップ 3: ワークフローのステータスを監視する。</h3><p>作成、更新、および処理イベントを含め、ライフサイクル ワークフローによって実行されたすべてのアクションは、監査ログレポートに保存されます。さらに、ライフサイクル ワークフローではワークフローの履歴機能を提供しているため、<strong>詳細なレポーティング機能</strong> により、誰に対して何が実行され、それが成功したかを素早く確認することができます。Lisa は選択したワークフローの <strong>ワークフロー履歴</strong> に移動して、ユーザー、実行、タスクのビューでワークフローの処理ステータスをチェックして、トラブルシューティングやコンプライアンスの目的で利用することができます。</p>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga4.png" alt="ワークフロー履歴からユーザーのワークフローのステータスを確認してトラブルシューティングとコンプライアンスに活用できます。"></p>
+<h2 id="シナリオ-2-タイムリーにアクセスを削除するために従業員のオフボーディング-プロセスを自動化する。"><a href="#シナリオ-2-タイムリーにアクセスを削除するために従業員のオフボーディング-プロセスを自動化する。" class="headerlink" title="シナリオ 2: タイムリーにアクセスを削除するために従業員のオフボーディング プロセスを自動化する。"></a>シナリオ 2: タイムリーにアクセスを削除するために従業員のオフボーディング プロセスを自動化する。</h2><p>もう 1 つの重要な ID ライフサイクルのシナリオは、従業員のオフボーディングです。退職、離職、競合他社への移籍など、従業員をオフボーディングする必要がある理由はさまざまです。オフボーディングの理由にかかわらず、IT 管理者にとって重要なのは、セキュリティ リスクを低減するために、これらのアカウントを無効にし、すべてのリソース アクセスがタイムリーに元従業員から削除されるようにすることです。</p>
+<p>オフボーディング プロセスが数週間前から計画されている場合でも、リアルタイムで行われる場合でも、更には従業員が退職した後のアクセス削除の場合でも、ライフサイクル ワークフローの <strong>組み込みのオフボーディング ワークフロー テンプレート</strong> を用いることで、プロセスを自動化して柔軟に離職処理を行うことが可能となります。</p>
+<p>Tailspinonline 社の IT 管理者である Vance は、オフボーディング プロセスの管理を担当しています。ライフサイクル ワークフローに組み込まれたオフボーディング テンプレートを使用することで、会社のポリシーに基づいて、事前オフボーディング、リアルタイムのオフボーディング、事後オフボーディングのワークフローを事前に設定し、時間を節約することができます。このケースでは、 Vance は競合他社に移る従業員を迅速にオフボーディングする必要があるため、ユーザー アカウントを無効にするとともに、すべての Azure AD グループと Microsoft Teams から削除して、従業員のアクセスを即座にブロックすることとなります。</p>
+<p>それでは、どのように実現するか見てみましょう！</p>
+<h3 id="ステップ-1-シナリオに適した既定のワークフロー-テンプレートを使用してカスタム-ワークフローを設定する。-1"><a href="#ステップ-1-シナリオに適した既定のワークフロー-テンプレートを使用してカスタム-ワークフローを設定する。-1" class="headerlink" title="ステップ 1: シナリオに適した既定のワークフロー テンプレートを使用してカスタム ワークフローを設定する。"></a>ステップ 1: シナリオに適した既定のワークフロー テンプレートを使用してカスタム ワークフローを設定する。</h3><p>Vance は、<a target="_blank" rel="noopener" href="https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/overview">Entra Identity Governance -&gt; Lifecycle Workflows</a> に移動し、[ワークフローの作成] をクリックして、シナリオに合った組み込みのワークフロー テンプレートを選択します。この場合、退職のシナリオに相当するため、[リアルタイムの従業員の退職] ワークフロー テンプレートを選びます。</p>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga5.png" alt="ライフサイクル ワークフローには、リアルタイムの従業員解雇など、複数の退職者シナリオのテンプレートが含まれています。"></p>
+<p>Vance は、[基本情報] タブからワークフロー名をカスタマイズし、トリガー イベントの詳細がすでに <strong>オンデマンド トリガーとしてトリガー イベント</strong> で構成されていることを確認します。このテンプレートにより、Vance のような IT 管理者は、選択したユーザーに対してワークフローを即座に実行するか、今設定して後で実行するかを選択できるようになります。</p>
+<p>他のオフボーディング シナリオに対しては、彼は従業員の <strong>employeeLeaveDateTime 属性</strong> に基づいて <strong>トリガー</strong> するように、他の定義済みのワークフロー テンプレートから選択できます。この属性は、人事システムから取得されるとします。</p>
+<h3 id="ステップ-2-従業員に対してリアルタイムに実行するタスクをカスタマイズする。"><a href="#ステップ-2-従業員に対してリアルタイムに実行するタスクをカスタマイズする。" class="headerlink" title="ステップ 2: 従業員に対してリアルタイムに実行するタスクをカスタマイズする。"></a>ステップ 2: 従業員に対してリアルタイムに実行するタスクをカスタマイズする。</h3><p>各ワークフロー テンプレートには、シナリオに応じたタスクが <strong>あらかじめ定義</strong> されているため、追加タスクは必須ではありません。しかし、管理者はニーズに合わせてタスクのリストをカスタマイズすることができます。この場合、Vance はテンプレートに、<strong>ユーザーをすべてのグループと Teams から削除し、ユーザー アカウントを削除する</strong> タスクがすでに定義済みであることを確認できます。Vance の会社のポリシーでは、アカウントはオフボーディング後のプロセスの一部として削除されるため、ユーザー アカウントの削除タスクをここでは削除することとします。次に、<strong>ユーザー アカウントを無効にする</strong> タスクを追加し、<strong>従業員がサインインできない</strong> ようにします。</p>
+<p>このテンプレートは、Vance のような IT 管理者に、<strong>今すぐユーザーを選択</strong> し <strong>ワークフローを実行する</strong> か、今すぐワークフローを作成し、<strong>後でユーザーを選択して実行する</strong> かという選択肢を提供します。[ユーザーの選択] タブから、Vance はユーザーを選択し、[確認と作成] タブをクリックし、全ての変更点を確認した後、[作成] をクリックしワークフローを保存します。ワークフローは直ちに Vance が選択したユーザーの処理を開始します。</p>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga6.png" alt="リアルタイムの従業員の離職ワークフローにおいて必要に応じて複数のユーザーを選択可能です。"></p>
+<h3 id="ステップ-3-ワークフローのステータスの監視する。"><a href="#ステップ-3-ワークフローのステータスの監視する。" class="headerlink" title="ステップ 3: ワークフローのステータスの監視する。"></a>ステップ 3: ワークフローのステータスの監視する。</h3><p>Vance は、選択したワークフローの <strong>ワークフロー履歴</strong> を開き、進捗状況を監視し、退職処理が処理中であるかを確認することができます。オプションとして、個々のタスクのステータスを確認して、問題をチェックすることも可能です。</p>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga7.png" alt="リアルタイムな従業員のオフボーディング テンプレートを活用することで、従業員の退職と同時に確実にアクセス権を削除できます。"></p>
+<p>リアルタイムの従業員の退職テンプレートを使用することで、Vance はオフボーディング プロセスを自動化し、従業員の離職時にアクセス権が削除されるようにしました。また、オフボーディング プロセスの各タスクが正常に完了したことをワークフローの履歴で確認することで、組織の重要なデータの保護を支援をしました。</p>
+<p><strong>このような新しいライフサイクル ワークフローの機能強化</strong> により、<strong>より細かいワークフローの実行監査</strong> が可能となりました。いつでも <a target="_blank" rel="noopener" href="https://entra.microsoft.com/#view/Microsoft_AAD_LifecycleManagement/CommonMenuBlade/~/auditlogs">ライフサイクル ワークフローの監査ログ</a> または <a target="_blank" rel="noopener" href="https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/Audit%20logs">Entra Identity Governance の監査ログ</a> に移動して、ワークフロー実行情報やその他のワークフロー管理アクティビティを確認することができます。</p>
+<h2 id="お客様の声"><a href="#お客様の声" class="headerlink" title="お客様の声"></a>お客様の声</h2><p>プレビュー期間中、お客様やパートナー様から素晴らしいフィードバックをいただきました：</p>
+<blockquote>
+<p>「ライフサイクル ワークフローにより、マイクロソフトの Entra プラットフォームにれまで欠けていた Identity Governance の核となる要素が追加され、顧客が望んでいた自動的な JML(Joiner, Mover and Leaver) のユース ケースの課題が解決されました。これは、Entra をクライアントのシステム内の中心的な ID 管理システムとして使用するための大きな一歩となります。」- Erik Siebler (IAM Lead, DXC) </p>
+</blockquote>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga8.png"></p>
+<blockquote>
+<p>「ライフサイクル ワークフローの製品ビジョンにこれまで期待を寄せていましたが、ようやく現在の入社、異動、退社のワークフローをレガシーな IAM プラットフォームからクラウド ネイティブの IAM ソリューションに移行する未来が見えてきました。すでにいくつかのワークフローをライフサイクル ワークフローに移行し、O365 ライセンス、SMS、マネージャーへのメール通知を含め、店舗やバックオフィスの従業員のオンボーディングを行っています。」- Maqsood Ali Bhatti (IAM Lead, Elkjøp Nordic AS)</p>
+</blockquote>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga9.png"></p>
+<blockquote>
+<p>「ライフサイクル ワークフローによって、弊社ではついに、新入社員と退職者のプロセスを自動化して、自身とお客様のビジネスをサポートできるようになりました。この強力で素晴らしい機能により、弊社とお客様は共に Azure AD のアカウントのライフサイクルをコントロールして、アカウントを自動的にプロビジョニングおよびデプロビジョニングできるようになりました。」- Pim Jacobs (Principal Consultant, InSpark)</p>
+</blockquote>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga10.png"></p>
+<blockquote>
+<p>「どのお客様も ID の管理を難しいと感じていますが、弊社では Logic App を使用したり、ハイブリッドな働き方をする従業員に自動化の仕組みを利用してきました。このライフサイクル ワークフローは、様々な Azure サービスと完璧に統合されており、使ったことがなくてもすでに使い慣れることができるというのが、非常に良い点です。どのお客様でも、アカウントの管理は非常に煩雑であり、ライフサイクル ワークフローを使うことで、サードパーティの ID システムやアクセス管理ソリューションを利用するよりもはるかに少ないステップで、簡単に ID ワークフローの構築を開始することができます。この機能は、今後弊社にとって非常に重要なものになるでしょう。」- Nicola Alig (IAM Lead, BaseVision) </p>
+</blockquote>
+<p><img src="/blog/azure-active-directory/lifecycle-workflows-ga/lifecycle-workflows-ga11.png"></p>
+<h2 id="新機能をぜひお試しください"><a href="#新機能をぜひお試しください" class="headerlink" title="新機能をぜひお試しください"></a>新機能をぜひお試しください</h2><p>この新機能をぜひご利用いただきたいと思います。現在 Microsoft Entra ID Premium をご利用のお客様は、2 つの方法で新機能をご利用いただけます:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/EntraIDGovTrial">https://aka.ms/EntraIDGovTrial</a> で Microsoft Entra ID Governance のトライアルをセットアップする。</li>
+<li>Microsoft Entra ID Governance にアップグレードする。この方法の場合、ライセンスをオンラインで購入するか、ライセンスパートナー経由で購入するか、Microsoft アカウントチームと連携している場合は Microsoft から直接購入ください。</li>
+</ol>
+<p>Joseph Dadzie<br>Partner Director of Product Management<br>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joedadzie">@joedadzie</a><br>Twitter: <a target="_blank" rel="noopener" href="https://twitter.com/joe_dadzie">@joe_dadzie</a></p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Lifecycle-Workflows/" rel="tag">Lifecycle Workflows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
+
+        
+        <a href="https://github.com/jpazureid/blog/edit/main/articles/azure-active-directory/lifecycle-workflows-ga.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../advancing-modern-strong-authentication/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">登録キャンペーンによる先進的で強力な認証の推進</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">ライフサイクル ワークフローが一般提供 (GA) されました</a>
+          </li>
+        
+          <li>
+            <a href="../advancing-modern-strong-authentication/">登録キャンペーンによる先進的で強力な認証の推進</a>
+          </li>
+        
+          <li>
+            <a href="../company-branding-ga/">新しい会社のブランド機能が一般公開されました</a>
+          </li>
+        
+          <li>
+            <a href="../entitlement-management-ga/">エンタイトルメント管理 - 新しく一般公開された機能のご紹介</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory-connect/azure-ad-connect-general-information/">[情報採取] Azure AD Connect に関わる問題などの際に採取、提供いただきたい情報</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090016/" rel="tag">80090016</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090030/" rel="tag">80090030</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AADSTS50107/" rel="tag">AADSTS50107</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-Sync/" rel="tag">AD Sync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ADSync/" rel="tag">ADSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Package/" rel="tag">Access Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Review/" rel="tag">Access Review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-review/" rel="tag">Access review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/App-Service/" rel="tag">App Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Audit-Logs/" rel="tag">Audit Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Application-Proxy/" rel="tag">Azure AD Application Proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2C/" rel="tag">Azure AD B2C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Directory-Rolls/" rel="tag">Azure AD Directory Rolls</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Domain-Services/" rel="tag">Azure AD Domain Services</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Join/" rel="tag">Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-License/" rel="tag">Azure AD License</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Ad-Connect/" rel="tag">Azure Ad Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/B2B/" rel="tag">B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CBA/" rel="tag">CBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Client-Secrets/" rel="tag">Client Secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Company-Branding/" rel="tag">Company Branding</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access-Policy/" rel="tag">Conditional Access Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Cross-Tenat-Synchronization/" rel="tag">Cross-Tenat Synchronization</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Device/" rel="tag">Device</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DirSync/" rel="tag">DirSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Directory-Synchronization-Accounts/" rel="tag">Directory Synchronization Accounts</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entitlement-Management/" rel="tag">Entitlement Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ExpressRoute/" rel="tag">ExpressRoute</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federated-Domain/" rel="tag">Federated Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federation/" rel="tag">Federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HAADJ/" rel="tag">HAADJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hard-match/" rel="tag">Hard match</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Governance/" rel="tag">Identity Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Protection/" rel="tag">Identity Protection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Intune/" rel="tag">Intune</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-ID/" rel="tag">Issuer ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-URI/" rel="tag">Issuer URI</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Key-Vault/" rel="tag">Key Vault</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Legacy-Authentication/" rel="tag">Legacy Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Lifecycle-Workflows/" rel="tag">Lifecycle Workflows</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Limitation/" rel="tag">Limitation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-ID/" rel="tag">Managed ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra/" rel="tag">Microsoft Entra</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph/" rel="tag">Microsoft Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph-PowerShell/" rel="tag">Microsoft Graph PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Multi-Factor-Authentication/" rel="tag">Multi Factor Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OTP/" rel="tag">OTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIM/" rel="tag">PIM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIN/" rel="tag">PIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PRT/" rel="tag">PRT</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Policy/" rel="tag">Password Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Writeback/" rel="tag">Password Writeback</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Primary-Refresh-Token/" rel="tag">Primary Refresh Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Provisioning/" rel="tag">Provisioning</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RBAC/" rel="tag">RBAC</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSO/" rel="tag">SSO</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSPR/" rel="tag">SSPR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SameSite/" rel="tag">SameSite</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security-Default/" rel="tag">Security Default</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Self-Service-Password-Reset/" rel="tag">Self Service Password Reset</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Service-Principal/" rel="tag">Service Principal</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Signin-Logs/" rel="tag">Signin Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Smart-lockout/" rel="tag">Smart lockout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Soft-matching/" rel="tag">Soft matching</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Staged-Rollout/" rel="tag">Staged Rollout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Subscription/" rel="tag">Subscription</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TPM/" rel="tag">TPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tenant-Restrictions/" rel="tag">Tenant Restrictions</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Token/" rel="tag">Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Troubleshooting/" rel="tag">Troubleshooting</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Trusted-Platform-Module/" rel="tag">Trusted Platform Module</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/UPN/" rel="tag">UPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Verified-ID/" rel="tag">Verified ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WAP/" rel="tag">WAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WHfB/" rel="tag">WHfB</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-10/" rel="tag">Windows 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Defender-ATP/" rel="tag">Windows Defender ATP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Hello-for-Business/" rel="tag">Windows Hello for Business</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WorkPlace-Join/" rel="tag">WorkPlace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Workplace-Join/" rel="tag">Workplace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/supportMultipleDomain/" rel="tag">supportMultipleDomain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/unusual-sign-in/" rel="tag">unusual sign-in</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" rel="tag">クレームルール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" rel="tag">テナント制限</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" rel="tag">トラステッド プラットフォーム モジュール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" rel="tag">トラブルシューティング</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" rel="tag">ログ取得</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" rel="tag">条件付きアクセス</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" rel="tag">証明書</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" rel="tag">証明書認証</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/">AD FS</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/AADSTS50107">AADSTS50107</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD">Azure AD</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/CBA">CBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Conditional-Access">Conditional Access</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Federated-Domain">Federated Domain</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Hybrid-Azure-AD-Join">Hybrid Azure AD Join</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Intune">Intune</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-ID">Issuer ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-URI">Issuer URI</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/MFA">MFA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Managed-Domain">Managed Domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/SameSite">SameSite</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Security">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Smart-lockout">Smart lockout</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/WAP">WAP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Workplace-Join">Workplace Join</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/supportMultipleDomain">supportMultipleDomain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB">クレームルール</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">トラブルシューティング</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/">Azure AD</a><span class="tag-list-count">247</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090016">80090016</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090030">80090030</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/AD-FS">AD FS</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Package">Access Package</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Review">Access Review</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-review">Access review</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/App-Service">App Service</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Application">Application</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Audit-Logs">Audit Logs</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Application-Proxy">Azure AD Application Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2B">Azure AD B2B</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2C">Azure AD B2C</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Domain-Services">Azure AD Domain Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Join">Azure AD Join</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/B2B">B2B</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Client-Secrets">Client Secrets</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Compliant">Compliant</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access">Conditional Access</a><span class="tag-list-count">23</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access-Policy">Conditional Access Policy</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD">Azure AD</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Key-Vault">Key Vault</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/">AAD Connect</a><span class="tag-list-count">18</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/AD-Sync">AD Sync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/ADSync">ADSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/DirSync">DirSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SMTP">SMTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SSO">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/Soft-matching">Soft matching</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/UPN">UPN</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/05/">2023 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/02/">2023 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/12/">2022 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/07/">2022 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/05/">2022 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">2022 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">2021 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/07/">2021 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">2021 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">2021 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">2021 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">2021 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">2021 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">2021 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">2020 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">2020 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">2020 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">2020 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/07/">2020 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/06/">2020 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">2020 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">2020 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">2020 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">2020 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">2020 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">2019 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">2019 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">2019 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/09/">2019 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/07/">2019 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">2019 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/02/">2019 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">2018 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/11/">2018 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/10/">2018 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">2018 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">2018 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/07/">2018 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">2018 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">2018 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/04/">2018 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/03/">2018 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">2018 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/01/">2018 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">2017 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/11/">2017 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">2017 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/06/">2017 / 06</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/80090016/" style="font-size: 10px;">80090016</a> <a href="../../tags/80090030/" style="font-size: 10px;">80090030</a> <a href="../../tags/AAD-Connect/" style="font-size: 17.5px;">AAD Connect</a> <a href="../../tags/AADSTS50107/" style="font-size: 10px;">AADSTS50107</a> <a href="../../tags/AD-FS/" style="font-size: 18.13px;">AD FS</a> <a href="../../tags/AD-Sync/" style="font-size: 10px;">AD Sync</a> <a href="../../tags/ADSync/" style="font-size: 10px;">ADSync</a> <a href="../../tags/Access-Package/" style="font-size: 10px;">Access Package</a> <a href="../../tags/Access-Review/" style="font-size: 10px;">Access Review</a> <a href="../../tags/Access-review/" style="font-size: 11.88px;">Access review</a> <a href="../../tags/App-Service/" style="font-size: 10px;">App Service</a> <a href="../../tags/Application/" style="font-size: 13.75px;">Application</a> <a href="../../tags/Audit-Logs/" style="font-size: 10px;">Audit Logs</a> <a href="../../tags/Azure-AD/" style="font-size: 20px;">Azure AD</a> <a href="../../tags/Azure-AD-Application-Proxy/" style="font-size: 10px;">Azure AD Application Proxy</a> <a href="../../tags/Azure-AD-B2B/" style="font-size: 13.75px;">Azure AD B2B</a> <a href="../../tags/Azure-AD-B2C/" style="font-size: 11.25px;">Azure AD B2C</a> <a href="../../tags/Azure-AD-Connect/" style="font-size: 15.63px;">Azure AD Connect</a> <a href="../../tags/Azure-AD-Directory-Rolls/" style="font-size: 10px;">Azure AD Directory Rolls</a> <a href="../../tags/Azure-AD-Domain-Services/" style="font-size: 10px;">Azure AD Domain Services</a> <a href="../../tags/Azure-AD-Join/" style="font-size: 10.63px;">Azure AD Join</a> <a href="../../tags/Azure-AD-License/" style="font-size: 10px;">Azure AD License</a> <a href="../../tags/Azure-Ad-Connect/" style="font-size: 10px;">Azure Ad Connect</a> <a href="../../tags/B2B/" style="font-size: 12.5px;">B2B</a> <a href="../../tags/CBA/" style="font-size: 10px;">CBA</a> <a href="../../tags/Client-Secrets/" style="font-size: 10px;">Client Secrets</a> <a href="../../tags/Company-Branding/" style="font-size: 10px;">Company Branding</a> <a href="../../tags/Compliant/" style="font-size: 10.63px;">Compliant</a> <a href="../../tags/Conditional-Access/" style="font-size: 18.75px;">Conditional Access</a> <a href="../../tags/Conditional-Access-Policy/" style="font-size: 10.63px;">Conditional Access Policy</a> <a href="../../tags/Cross-Tenat-Synchronization/" style="font-size: 10px;">Cross-Tenat Synchronization</a> <a href="../../tags/Device/" style="font-size: 10.63px;">Device</a> <a href="../../tags/DirSync/" style="font-size: 10px;">DirSync</a> <a href="../../tags/Directory-Synchronization-Accounts/" style="font-size: 10px;">Directory Synchronization Accounts</a> <a href="../../tags/Entitlement-Management/" style="font-size: 10.63px;">Entitlement Management</a> <a href="../../tags/ExpressRoute/" style="font-size: 10px;">ExpressRoute</a> <a href="../../tags/Federated-Domain/" style="font-size: 10.63px;">Federated Domain</a> <a href="../../tags/Federation/" style="font-size: 10px;">Federation</a> <a href="../../tags/HAADJ/" style="font-size: 10px;">HAADJ</a> <a href="../../tags/Hard-match/" style="font-size: 10px;">Hard match</a> <a href="../../tags/Hybrid-Azure-AD-Join/" style="font-size: 15px;">Hybrid Azure AD Join</a> <a href="../../tags/Identity-Governance/" style="font-size: 10.63px;">Identity Governance</a> <a href="../../tags/Identity-Protection/" style="font-size: 10.63px;">Identity Protection</a> <a href="../../tags/Intune/" style="font-size: 11.25px;">Intune</a> <a href="../../tags/Issuer-ID/" style="font-size: 10px;">Issuer ID</a> <a href="../../tags/Issuer-URI/" style="font-size: 10px;">Issuer URI</a> <a href="../../tags/Key-Vault/" style="font-size: 10px;">Key Vault</a> <a href="../../tags/Legacy-Authentication/" style="font-size: 10px;">Legacy Authentication</a> <a href="../../tags/Lifecycle-Workflows/" style="font-size: 10px;">Lifecycle Workflows</a> <a href="../../tags/Limitation/" style="font-size: 10px;">Limitation</a> <a href="../../tags/MFA/" style="font-size: 16.88px;">MFA</a> <a href="../../tags/Managed-Domain/" style="font-size: 10.63px;">Managed Domain</a> <a href="../../tags/Managed-ID/" style="font-size: 10px;">Managed ID</a> <a href="../../tags/Microsoft-Entra/" style="font-size: 10px;">Microsoft Entra</a> <a href="../../tags/Microsoft-Graph/" style="font-size: 13.13px;">Microsoft Graph</a> <a href="../../tags/Microsoft-Graph-PowerShell/" style="font-size: 10px;">Microsoft Graph PowerShell</a> <a href="../../tags/Multi-Factor-Authentication/" style="font-size: 10px;">Multi Factor Authentication</a> <a href="../../tags/OAuth/" style="font-size: 12.5px;">OAuth</a> <a href="../../tags/OTP/" style="font-size: 10px;">OTP</a> <a href="../../tags/PIM/" style="font-size: 10px;">PIM</a> <a href="../../tags/PIN/" style="font-size: 10px;">PIN</a> <a href="../../tags/PRT/" style="font-size: 10px;">PRT</a> <a href="../../tags/Password-Policy/" style="font-size: 10px;">Password Policy</a> <a href="../../tags/Password-Writeback/" style="font-size: 10px;">Password Writeback</a> <a href="../../tags/PowerShell/" style="font-size: 14.38px;">PowerShell</a> <a href="../../tags/Primary-Refresh-Token/" style="font-size: 10px;">Primary Refresh Token</a> <a href="../../tags/Provisioning/" style="font-size: 10px;">Provisioning</a> <a href="../../tags/RBAC/" style="font-size: 10.63px;">RBAC</a> <a href="../../tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="../../tags/SSO/" style="font-size: 10px;">SSO</a> <a href="../../tags/SSPR/" style="font-size: 11.25px;">SSPR</a> <a href="../../tags/SameSite/" style="font-size: 10px;">SameSite</a> <a href="../../tags/Security/" style="font-size: 16.25px;">Security</a> <a href="../../tags/Security-Default/" style="font-size: 10px;">Security Default</a> <a href="../../tags/Self-Service-Password-Reset/" style="font-size: 10px;">Self Service Password Reset</a> <a href="../../tags/Service-Principal/" style="font-size: 10px;">Service Principal</a> <a href="../../tags/Signin-Logs/" style="font-size: 10px;">Signin Logs</a> <a href="../../tags/Smart-lockout/" style="font-size: 10px;">Smart lockout</a> <a href="../../tags/Soft-matching/" style="font-size: 10px;">Soft matching</a> <a href="../../tags/Staged-Rollout/" style="font-size: 10px;">Staged Rollout</a> <a href="../../tags/Subscription/" style="font-size: 10px;">Subscription</a> <a href="../../tags/TLS-1-2/" style="font-size: 10.63px;">TLS 1.2</a> <a href="../../tags/TPM/" style="font-size: 10px;">TPM</a> <a href="../../tags/Tenant-Restrictions/" style="font-size: 10px;">Tenant Restrictions</a> <a href="../../tags/Token/" style="font-size: 10.63px;">Token</a> <a href="../../tags/Troubleshooting/" style="font-size: 11.88px;">Troubleshooting</a> <a href="../../tags/Trusted-Platform-Module/" style="font-size: 10px;">Trusted Platform Module</a> <a href="../../tags/UPN/" style="font-size: 11.25px;">UPN</a> <a href="../../tags/US-Identity-Blog/" style="font-size: 19.38px;">US Identity Blog</a> <a href="../../tags/Verified-ID/" style="font-size: 10px;">Verified ID</a> <a href="../../tags/WAP/" style="font-size: 10px;">WAP</a> <a href="../../tags/WHfB/" style="font-size: 10px;">WHfB</a> <a href="../../tags/Windows-10/" style="font-size: 10px;">Windows 10</a> <a href="../../tags/Windows-Defender-ATP/" style="font-size: 10px;">Windows Defender ATP</a> <a href="../../tags/Windows-Hello-for-Business/" style="font-size: 11.25px;">Windows Hello for Business</a> <a href="../../tags/WorkPlace-Join/" style="font-size: 10px;">WorkPlace Join</a> <a href="../../tags/Workplace-Join/" style="font-size: 10.63px;">Workplace Join</a> <a href="../../tags/Zero-Trust/" style="font-size: 13.13px;">Zero Trust</a> <a href="../../tags/graph-api/" style="font-size: 11.25px;">graph api</a> <a href="../../tags/signin-log/" style="font-size: 12.5px;">signin log</a> <a href="../../tags/supportMultipleDomain/" style="font-size: 10px;">supportMultipleDomain</a> <a href="../../tags/unusual-sign-in/" style="font-size: 10px;">unusual sign-in</a> <a href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" style="font-size: 10px;">クレームルール</a> <a href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" style="font-size: 10px;">テナント制限</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" style="font-size: 10px;">トラステッド プラットフォーム モジュール</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" style="font-size: 13.13px;">トラブルシューティング</a> <a href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" style="font-size: 10px;">ログ取得</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 10.63px;">情報採取</a> <a href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" style="font-size: 10.63px;">条件付きアクセス</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" style="font-size: 10px;">証明書</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" style="font-size: 10px;">証明書認証</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="https://privacy.microsoft.com/ja-jp/privacystatement" target="_blank" rel=”noopener”>Privacy & Cookies</a> |  
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/copyright" target="_blank" rel=”noopener”>Terms of use</a> |
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks" target="_blank" rel=”noopener”>Trademarks</a> |
+      &copy; 2023 Azure Identity Support Japan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
