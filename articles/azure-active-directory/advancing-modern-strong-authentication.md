@@ -1,16 +1,19 @@
 ---
-title: 先進的で強力な認証の推進
+title: 登録キャンペーンによる先進的で強力な認証の推進
 date: 2023-08-18 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
 
-# 先進的で強力な認証の推進
+# 登録キャンペーンによる先進的で強力な認証の推進
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
 
 本記事は、2023 年 7 月 17 日に米国の Azure Active Directory Identity Blog で公開された [Advancing Modern Strong Authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advancing-modern-strong-authentication/ba-p/3773135) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+
+> [!NOTE]
+> 本件の [サインインを改善する] のプロンプトが表示されるアップデートに関しては、Azure AD Free テナントに対しては MC584364 にて、また Azure AD Premium テナントに対しては MC650420 にてアナウンスが行われております。2023 年 8 月 18 日現在、Azure AD Free テナントに対しては本機能の展開が完了しており、MC584364 のメッセージの閲覧可能期限は既に終了している状況です。
 
 ---
 
