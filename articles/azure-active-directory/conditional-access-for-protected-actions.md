@@ -26,7 +26,7 @@ tags:
 	○ 管理者が条件付きアクセスポリシーを削除するためには特権アクセス ワークステーションと FIDO2 キーが必要である。
 	○ 管理者がネットワークの場所を定義または変更するためにはフィッシングに強い MFA の完了が必要である。
  
-![](.\conditional-access-for-protected-actions\screen_shot.png)
+![](./conditional-access-for-protected-actions/screen_shot.png)
 
  
 上の図は、『Require_Passwordless MFA』の認証コンテキストに、５件の保護されたアクションを追加した例です。
