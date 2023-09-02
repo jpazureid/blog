@@ -1,13 +1,13 @@
 
 ---
-title:  近日公開予定： "macOS 向けの プラットフォーム SSO" 機能について
+title:  近日公開予定: "macOS 向けの プラットフォーム SSO" 機能について
 date: 2023-09-03 12:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-#  近日公開予定： "macOS 向けの プラットフォーム SSO" 機能について
+#  近日公開予定: "macOS 向けの プラットフォーム SSO" 機能について
  
 
 こんにちは、Azure Identity サポート チームの 竜 です。
