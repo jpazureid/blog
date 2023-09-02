@@ -1,6 +1,6 @@
 ---
 title: あらゆるデータソースから Microsoft Entra ID に ID を同期する新しい方法のご紹介
-date: 2023-08-25 09:00
+date: 2023-09-03 09:00
 tags:
     - Azure AD
     - US Identity Blog
