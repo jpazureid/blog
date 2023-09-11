@@ -56,7 +56,7 @@ tags:
 1. [https://aka.ms/EntraIDGovTrial](https://aka.ms/EntraIDGovTrial) で Microsoft Entra ID Governance の試用版をセットアップする。
 2. Microsoft Entra ID Governance にアップグレードする。ライセンスをオンラインで購入するか、ライセンス パートナー経由で購入するか、Microsoft アカウント チームと連携している場合は Microsoft から直接購入可能です。
 
-Joseph Dadzie 
-Partner Director of Product Management 
-LinkedIn: @joedadzie 
-Twitter: @joe_dadzie 
+Joseph Dadzie  
+Partner Director of Product Management  
+LinkedIn: @joedadzie  
+Twitter: @joe_dadzie  
