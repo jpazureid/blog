@@ -86,5 +86,5 @@ tags:
 ## おわりに
 
 以上、MFA に Microsoft Authenticator アプリをセットアップする手順をお送りしました。
-Microsoft Authenticator アプリは音声通話や SMS など電話網を利用した MFA よりもセキュアな認証方法です。本記事を活用して多くの方に Microsoft Authenticator アプリをご利用いただきセキュリティ向上の人役を担えれば嬉しく思います。
+Microsoft Authenticator アプリは音声通話や SMS など電話網を利用した MFA よりもセキュアな認証方法です。本記事を活用して多くの方に Microsoft Authenticator アプリをご利用いただきセキュリティ向上の一役を担えれば嬉しく思います。
 製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。
