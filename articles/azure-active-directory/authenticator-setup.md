@@ -17,7 +17,7 @@ tags:
 そこでこの記事では、最新のスクリーン ショットを利用した Microsoft Authenticator アプリのセットアップ手順を紹介します。
 
 ## セットアップ手順
-1. PC で https://aka.ms/mysecyrityinfo にアクセスし Microsoft Authenticator アプリをセットアップしたいユーザーの ID/Password を入力してサインインします。
+1. PC で https://aka.ms/mysecurityinfo にアクセスし Microsoft Authenticator アプリをセットアップしたいユーザーの ID/Password を入力してサインインします。
 
 2. [サインイン方法の追加] を選択します。
 ![](./authenticator-setup/authenticator-setup02.png)
