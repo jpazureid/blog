@@ -1,6 +1,6 @@
 ---
 title: MFA に Microsoft Authenticator アプリをスマートフォンのみでセットアップする手順
-date: 2023-09-16 09:00
+date: 2023-09-17 09:00
 tags:
     - Azure AD
     - MFA
