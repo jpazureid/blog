@@ -101,7 +101,7 @@ deviceRegistrationPolicy リソース タイプの構成時に新しいプロパ
 
 deviceRegistrationPolicy リソース タイプは、2023 年 9 月 25 日の週までは廃止予定のプロパティを返します。変更が行われた後は、新しいプロパティを返します。
 
-Best regards, 
-Sandeep Deo (@MsftSandeep) 
-Principal Product Manager 
-Microsoft Identity Division 
+Best regards,  
+Sandeep Deo (@MsftSandeep)  
+Principal Product Manager  
+Microsoft Identity Division  
