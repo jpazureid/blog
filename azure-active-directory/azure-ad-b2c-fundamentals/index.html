@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-b2c-fundamentals/azure-ad-b2c-tenant-overview.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-b2c-fundamentals/azure-ad-b2c-customize-flow.png">
 <meta property="article:published_time" content="2021-01-14T01:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-23T14:14:14.403Z">
+<meta property="article:modified_time" content="2023-10-02T01:06:57.761Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Azure AD B2C">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+13145ad6-8232-51a2-a7c6-c4e0a7b30112%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+B2C+%E3%81%AE%E3%82%AD%E3%83%9B%E3%83%B3%E3%81%A8%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-b2c-fundamentals%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-b2c-fundamentals.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-b2c-fundamentals.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-b2c-fundamentals/" data-id="clmw43nsz00qr0ntb4n1l46mz" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-b2c-fundamentals/" data-id="cln86xvy100qr0np8goqi8k22" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -249,14 +249,14 @@
 <li>作成した Azure AD B2C テナントを選択します。</li>
 </ol>
 <p>あるいは Azure AD B2C テナントのテナント ID を、<code>https://portal.azure.com/&lt;tenant id&gt;</code> のように指定してブラウザーからアクセスすることでも、Azure AD B2C テナントに切り替えいただけます。</p>
-<p>なお、Azure ポータルから Azure AD B2C テナントにアクセスしてユーザー (<a href="mailto:&#x61;&#100;&#x6d;&#105;&#110;&#x40;&#x63;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#98;&#50;&#99;&#x2e;&#111;&#110;&#x6d;&#x69;&#99;&#114;&#x6f;&#115;&#111;&#x66;&#x74;&#x2e;&#99;&#111;&#x6d;">&#x61;&#100;&#x6d;&#105;&#110;&#x40;&#x63;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#98;&#50;&#99;&#x2e;&#111;&#110;&#x6d;&#x69;&#99;&#114;&#x6f;&#115;&#111;&#x66;&#x74;&#x2e;&#99;&#111;&#x6d;</a> など) を作成いただき、グローバル管理者権限を付与することで、このユーザーを管理者としてご利用いただくことも可能です。その場合、直接 Azure AD B2C テナントにアクセスするためテナントの切り替えが不要となるほか、<a target="_blank" rel="noopener" href="https://developer.microsoft.com/ja-jp/graph/graph-explorer">Graph Explorer</a> などで Azure AD B2C テナントに対して API 呼び出しを実施いただくことも可能になります。このため、検証用に Azure AD B2C テナントに対しメンバー ユーザーとして管理ユーザーを作成いただくことをお勧めします。</p>
+<p>なお、Azure ポータルから Azure AD B2C テナントにアクセスしてユーザー (<a href="mailto:&#97;&#x64;&#x6d;&#x69;&#x6e;&#64;&#99;&#111;&#x6e;&#116;&#x6f;&#x73;&#111;&#98;&#50;&#x63;&#46;&#111;&#110;&#109;&#105;&#x63;&#x72;&#x6f;&#115;&#x6f;&#x66;&#x74;&#x2e;&#99;&#111;&#109;">&#97;&#x64;&#x6d;&#x69;&#x6e;&#64;&#99;&#111;&#x6e;&#116;&#x6f;&#x73;&#111;&#98;&#50;&#x63;&#46;&#111;&#110;&#109;&#105;&#x63;&#x72;&#x6f;&#115;&#x6f;&#x66;&#x74;&#x2e;&#99;&#111;&#109;</a> など) を作成いただき、グローバル管理者権限を付与することで、このユーザーを管理者としてご利用いただくことも可能です。その場合、直接 Azure AD B2C テナントにアクセスするためテナントの切り替えが不要となるほか、<a target="_blank" rel="noopener" href="https://developer.microsoft.com/ja-jp/graph/graph-explorer">Graph Explorer</a> などで Azure AD B2C テナントに対して API 呼び出しを実施いただくことも可能になります。このため、検証用に Azure AD B2C テナントに対しメンバー ユーザーとして管理ユーザーを作成いただくことをお勧めします。</p>
 <h3 id="Azure-AD-B2C-のコンシューマー-ユーザー-アカウントとはなんですか"><a href="#Azure-AD-B2C-のコンシューマー-ユーザー-アカウントとはなんですか" class="headerlink" title="Azure AD B2C のコンシューマー ユーザー アカウントとはなんですか"></a>Azure AD B2C のコンシューマー ユーザー アカウントとはなんですか</h3><p>Azure AD B2C のサインアップ フローで作成されたアカウントは、コンシューマー ユーザー アカウントと呼ばれます。コンシューマー ユーザー アカウントは、サインアップ フロー以外に Azure ポータル、あるいは Microsoft Graph API を利用して作成することが可能です。</p>
 <p>技術的にはコンシューマー アカウントは、連携している IdP のアカウント情報、またはローカル アカウントのメール アドレスを “ID プロパティ” として保持しています。ID プロパティ (identities 属性) のほか、表示名 (DisplayName) や拡張属性 (extension) を Microsoft Graph API を利用することで編集、またはユーザーの新規作成を行うことが可能です。</p>
 <p>詳細については、以下の公開情報をご確認ください。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/manage-user-accounts-graph-api">Microsoft Graph API を使用してユーザーを管理する - Azure AD B2C | Microsoft Docs</a></li>
 </ul>
-<h3 id="Azure-AD-B2C-の職場アカウント-管理ユーザー-とは何ですか"><a href="#Azure-AD-B2C-の職場アカウント-管理ユーザー-とは何ですか" class="headerlink" title="Azure AD B2C の職場アカウント (管理ユーザー) とは何ですか"></a>Azure AD B2C の職場アカウント (管理ユーザー) とは何ですか</h3><p>Azure AD B2C テナントにはコンシューマー ユーザー以外にも、管理用の Azure AD ユーザーを登録することが可能です。これらの職場アカウント (B2B ゲストユーザーを含む) は管理ユーザーとして Azure AD を直接利用することができ、Azure ポータルにサインインをしユーザーを操作を行う、Microsoft Graph API を呼び出すといったことが可能です。上記の <a href="mailto:&#x61;&#100;&#109;&#105;&#110;&#64;&#x63;&#111;&#x6e;&#116;&#111;&#115;&#x6f;&#98;&#x32;&#99;&#46;&#x6f;&#110;&#x6d;&#105;&#99;&#114;&#111;&#115;&#x6f;&#102;&#116;&#x2e;&#99;&#x6f;&#109;">&#x61;&#100;&#109;&#105;&#110;&#64;&#x63;&#111;&#x6e;&#116;&#111;&#115;&#x6f;&#98;&#x32;&#99;&#46;&#x6f;&#110;&#x6d;&#105;&#99;&#114;&#111;&#115;&#x6f;&#102;&#116;&#x2e;&#99;&#x6f;&#109;</a> がこの例に該当します。</p>
+<h3 id="Azure-AD-B2C-の職場アカウント-管理ユーザー-とは何ですか"><a href="#Azure-AD-B2C-の職場アカウント-管理ユーザー-とは何ですか" class="headerlink" title="Azure AD B2C の職場アカウント (管理ユーザー) とは何ですか"></a>Azure AD B2C の職場アカウント (管理ユーザー) とは何ですか</h3><p>Azure AD B2C テナントにはコンシューマー ユーザー以外にも、管理用の Azure AD ユーザーを登録することが可能です。これらの職場アカウント (B2B ゲストユーザーを含む) は管理ユーザーとして Azure AD を直接利用することができ、Azure ポータルにサインインをしユーザーを操作を行う、Microsoft Graph API を呼び出すといったことが可能です。上記の <a href="mailto:&#x61;&#x64;&#109;&#105;&#x6e;&#x40;&#99;&#111;&#x6e;&#x74;&#x6f;&#x73;&#111;&#98;&#50;&#99;&#46;&#x6f;&#x6e;&#x6d;&#x69;&#99;&#114;&#x6f;&#115;&#111;&#x66;&#116;&#46;&#99;&#x6f;&#109;">&#x61;&#x64;&#109;&#105;&#x6e;&#x40;&#99;&#111;&#x6e;&#x74;&#x6f;&#x73;&#111;&#98;&#50;&#99;&#46;&#x6f;&#x6e;&#x6d;&#x69;&#99;&#114;&#x6f;&#115;&#111;&#x66;&#116;&#46;&#99;&#x6f;&#109;</a> がこの例に該当します。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory-b2c/user-overview">Azure Active Directory B2C のユーザー アカウントの概要 | Microsoft Docs</a></li>
 </ul>
