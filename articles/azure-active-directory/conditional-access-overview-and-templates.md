@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセスの概要とテンプレートが一般提供 (GA) されました
-date: 2023-09-30 09:00
+date: 2023-10-03 09:00
 tags:
   - Azure AD
   - US Identity Blog
