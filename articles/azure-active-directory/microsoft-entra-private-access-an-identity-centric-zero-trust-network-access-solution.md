@@ -1,22 +1,22 @@
 ---
-title: Microsoft Entra Private Access: An Identity-Centric Zero Trust Network Access Solution
-date: 2023-09-29 09:00
+title: "Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション"
+date: 2023-10-04 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
 
-# Microsoft Entra Private Access: An Identity-Centric Zero Trust Network Access Solution
+# Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
-本記事は、2023 年 8 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Microsoft Entra Private Access: An Identity-Centric Zero Trust Network Access Solution](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-private-access-an-identity-centric-zero-trust/ba-p/3905451) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
+本記事は、2023 年 8 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Microsoft Entra Private Access: An Identity-Centric Zero Trust Network Access Solution](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-private-access-an-identity-centric-zero-trust/ba-p/3905451) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
-2023 年 7 月 11 日、[マイクロソフトの ID を軸とした Security Service Edge (SSE) ソリューション](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-expands-into-security-service-edge-with-two-new/ba-p/3847829) (日本語訳したブログは [こちら](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/))と 2 つの新しいサービスをご紹介しました: それが Microsoft Entra Private Access と Microsoft Entra Internet Access で、現在これらは **パブリック プレビュー** となっています。このブログでは、Microsoft Entra Private Access について詳しく説明します。
+2023 年 7 月 11 日、[マイクロソフトの ID を軸とした Security Service Edge (SSE) ソリューション](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/microsoft-entra-expands-into-security-service-edge-with-two-new/ba-p/3847829) (日本語訳したブログは [こちら](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/))と 2 つの新しいサービスをご紹介しました。それぞれ Microsoft Entra Private Access と Microsoft Entra Internet Access で、現在これらは **パブリック プレビュー** となっています。このブログでは、Microsoft Entra Private Access について詳しく説明します。
 
-![図 1 : 従来のネットワーク セキュリティ スタックとレガシー VPN ではもはや不十分](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution1.png)
+![図 1: 従来のネットワーク セキュリティ スタックとレガシー VPN ではもはや不十分](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution1.png)
 
 ## Microsoft Entra Private Access
 
@@ -34,7 +34,7 @@ Private Access は、オンプレミスまたはクラウド ベースのあら�
 
 最大級のグローバル プライベート ネットワークであるマイクロソフトの [グローバル ネットワーク](https://learn.microsoft.com/ja-jp/azure/networking/microsoft-global-network) から提供される Private Access では、プライベート アプリケーションの安全性が高まるだけでなく、従来の VPN に比べて従業員がより迅速にアクセスできるようになります。比類のない規模と広大なグローバル ネットワークにより、特にハイブリッド ワークやリモート ワーク環境で働くユーザーやデバイスをプライベート リソースに最適に接続することができます。
 
-![図 2 : ID を軸としたゼロ トラスト ネットワーク アクセス (ZTNA) により、どこにいるユーザーでもすべてのプライベート アプリケーションに安全にアクセスできます。](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution2.png)
+![図 2: ID を軸としたゼロ トラスト ネットワーク アクセス (ZTNA) により、どこにいるユーザーでもすべてのプライベート アプリケーションに安全にアクセスできます。](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution2.png)
 
 ## Private Access の主な機能
 
@@ -44,31 +44,31 @@ Microsoft Entra Private Access は、すべてのプライベート アプリケ
 
 レガシー VPN を ID を軸とした ZTNA に置き換えることで、暗黙の信頼や横断的な攻撃のリスクを最小限に抑えることができます。Quick Access を使用すると、広範なプライベート IP 範囲と完全修飾ドメイン名 (FQDN) を簡単に構成でき、すべてのプライベート リソースに対して、ID を軸としたゼロ トラスト ベースのアクセスを迅速に実現できます。
 
-![図 3 : Quick Access によるレガシー VPN からの迅速かつ簡単な移行](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution3.png)
+![図 3: Quick Access によるレガシー VPN からの迅速かつ簡単な移行](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution3.gif)
 
 ### すべてのプライベート アプリケーションに対する ID を中心としたセキュリティ制御の強化
 
 Private Access を使用すると、Kerberos や NT LAN Manager (NTLM) などのレガシー プロトコルを使用している場合でも、あらゆるプライベート アプリケーションへのアクセスに先進認証を必要とする条件付きアクセス ポリシーと多要素認証 (MFA) を作成できます。これにより、アプリケーションの機密性、ユーザー リスクのレベル、ネットワーク コンプライアンスなどに基づいたポリシーがレガシー アプリケーションに適用されます。例えば、リモート デスクトップ (RDP)、セキュア シェル (SSH)、SMB アプリケーションにアクセスしようとするユーザーに対して、多要素認証 (MFA) やデバイスの準拠状態のチェックを簡単に要求することができます。
 
-![図 4 : すべてのプライベート アプリケーションに対する ID を軸としたセキュリティ制御を強化](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution4.png)
+![図 4: すべてのプライベート アプリケーションに対する ID を軸としたセキュリティ制御を強化](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution4.gif)
 
 ### プライベート アプリケーションの自動検出とオンボーディング
 
 アプリケーション プロキシを使用する既存の社内 Web アプリケーションを含め、プライベート アプリケーションがプライベート ネットワーク、オンプレミス データセンター、クラウドのいずれでホストされていても自動的に検出可能となります。その後、アプリケーションを Microsoft Entra ID に組み込み、グループ化し、きめ細かなアクセス ポリシーを定義できます。
 
-![図 5 : プライベート アプリケーションの自動検出とオンボーディング](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution5.png)
+![図 5 : プライベート アプリケーションの自動検出とオンボーディング](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution5.png)
 
 ### きめ細かくセグメント化されたアプリケーション アクセス
 
 従来の VPN のように、リモート ユーザーにネットワーク全体へのアクセスを許可するのではなく、ユーザーやデバイス、各デバイス上で実行されているプロセスに基づいて、各アプリケーションまたはアプリケーションのグループごとにきめ細かくセグメント化されたアクセス ポリシーを定義することができます。
 
-![図 6 : きめ細かくセグメント化されたアプリケーション アクセス](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution6.png)
+![図 6 : きめ細かくセグメント化されたアプリケーション アクセス](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution6.png)
 
 ### インテリジェント ローカル アクセス
 
 従業員は、プライベート アプリケーションにリモートからアクセスする場合でも、社内からでアクセスする場合でも、一貫したセキュリティ体制を必要としています。インテリジェント ローカル アクセス機能は、ユーザーが企業ネットワーク内にいても、企業ネットワーク外のどこかからリモート接続しても、迅速かつシームレスな ZTNA (ゼロトラストでのネットワークアクセス) を可能にします。例えば、企業ネットワーク内にいるユーザーは、MFA などの CA ポリシーが適用されたまま、RDP や SMB などのオンプレミスの社内アプリケーションに接続でき、アプリケーション トラフィックは企業ネットワーク上から外部に出ることはありません。
 
-![図 7 : インテリジェント ローカル アクセス](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution7.png)
+![図 7 : インテリジェント ローカル アクセス](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution7.png)
 
 ## Microsoft Entra Private Access をはじめる
 
@@ -77,8 +77,8 @@ Private Access を使用すると、Kerberos や NT LAN Manager (NTLM) などの
 Quick Access を使用すると、特にレガシー VPN から ZTNA への移行を計画している場合、Private Access を最小構成で非常に簡単に開始できます。[初期設定](https://learn.microsoft.com/ja-jp/azure/global-secure-access/how-to-get-started-with-global-secure-access) を完了し、オンプレミスにコネクター エージェントを展開した後、Quick Access を有効にするために必要なのは、IP アドレス、IP アドレス範囲、または FQDN とポート番号を指定することだけです。その後、特定の条件付きアクセス ポリシーを割り当てることができ、これにより設定したすべてのアプリ セグメントに Quick Access が適用されます。たとえば、「myRDPアプリ」を作成し、IP アドレスベースのアプリ セグメントを割り当てます。プライベート アプリの名前を指定し、アプリで使用するコネクタを選択して、IP アドレス/範囲とポート番号を指定するだけです。その後、リモート クライアント マシンから RDP セッションを起動するだけで、接続先にアクセスできます。
 
 
-![図 8 : RDP アプリケーションへの Quick Access を設定する](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution8.png)
+![図 8 : RDP アプリケーションへの Quick Access を設定する](./microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution8.png)
 
 さまざまなユースケースやシナリオ、設定の前提条件、クライアントやリモート ネットワーク接続および Quick Access などを通じてプライベート ネットワーク上のリソースへのセキュアなアクセスを有効にする方法については、グローバル セキュア アクセスの [ドキュメント](https://learn.microsoft.com/ja-jp/azure/global-secure-access/how-to-get-started-with-global-secure-access) をご覧ください。
 
-オンデマンドの Tech Accelerator 製品 deep dive セッションで、Private Access の実際についてさらに詳しく学ぶことができます。
+オンデマンドの Tech Accelerator 製品 deep dive セッションで、Private Access の実際についてさらに詳しく学ぶことも可能です。
