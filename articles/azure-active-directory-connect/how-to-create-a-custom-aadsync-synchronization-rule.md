@@ -2,7 +2,7 @@
 title: Azure AD Connect - 属性フロー（変換フロー）のためのカスタム同期ルールの作り方
 date: 2018-04-13
 tags:
-  - AAD Connect
+  - Azure AD Connect
 ---
 
 > [!NOTE]
@@ -24,17 +24,17 @@ Support-Tip: (AADCONNECT) How to create a custom sychronization rule for attribu
 
 ### 1. Synchronization Rules Editor を開きます。
 
-![](./clip_image00211.jpg)
+![](./how-to-create-a-custom-aadsync-synchronization-rule/001.png)
 
 ### 2. Directions で [Inbound] を選択します。
 
 - **Inbound Synchronization Rule**: ソースコ ネクター スペースからメタバースへデータを取り出す際のルール
 - **Outbound Synchronization Rule**: メタバースからターゲットのコネクター スペースにデータを取り出す際のルール
-![](./clip_image0033.jpg) 
+![](./how-to-create-a-custom-aadsync-synchronization-rule/002.png)
 
 ### 3. 画面右上にある [Add New Rule] をクリックします。
 
-![](./clip_image0046.jpg) 
+![](./how-to-create-a-custom-aadsync-synchronization-rule/003.png)
 
 ### 4. Inbound Synchronization Rule を編集します。
 
@@ -52,7 +52,7 @@ Support-Tip: (AADCONNECT) How to create a custom sychronization rule for attribu
 
       <span style="background-color: #ffff00;">注意）優先度を上げるために”小さい”数字を選びました。</span>
 
-      ![](./how-to-create-a-custom-aadsync-synchronization-rule/clip_image0052.jpg)
+      ![](./how-to-create-a-custom-aadsync-synchronization-rule/004.png)
 
        ---
       同期ルール (Synchronization Rule) は、ある条件が満たされた場合に流しこまれる属性をいくつか持った構成オブジェクトです。
@@ -79,7 +79,7 @@ Support-Tip: (AADCONNECT) How to create a custom sychronization rule for attribu
     6. Merge Type: Update
 4. [Save] をクリックします。
 5. 同期ルールが追加されたことを確認します。
-![](./clip_image0066.jpg)
+![](./how-to-create-a-custom-aadsync-synchronization-rule/005.png)
 
 6. 最後に、追加した同期ルールを反映させるために完全同期を行います。
 
