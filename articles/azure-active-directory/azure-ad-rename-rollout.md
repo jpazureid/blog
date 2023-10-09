@@ -72,7 +72,7 @@ Active Directory の名称は変更されません。Azure Active Directory の�
 
   "state": "string"  
 
-}  
+}
 ```
 
 ソース: [conditionalAccessPolicy resource type - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/en-us/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
