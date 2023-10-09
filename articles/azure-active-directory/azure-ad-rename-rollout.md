@@ -54,8 +54,6 @@ Active Directory の名称は変更されません。Azure Active Directory の�
 顧客は詳細な技術面をほとんど意識していない (サインイン URL など) 事に加え、それら個別の技術は API と同じくブランド化されていません。例として、Microsoft Entra 条件付きアクセス (旧称 Azure AD 条件付きアクセス) の API が Microsoft Graph にどのように表示されるかを次に示します。 
 
 ```json
-{  
-
   "conditions": {"@odata.type": "microsoft.graph.conditionalAccessConditionSet"},  
 
   "createdDateTime": "String (timestamp)",  
@@ -70,9 +68,7 @@ Active Directory の名称は変更されません。Azure Active Directory の�
 
   "sessionControls": {"@odata.type": "microsoft.graph.conditionalAccessSessionControls"},  
 
-  "state": "string"  
-
-}
+  "state": "string"
 ```
 
 ソース: [conditionalAccessPolicy resource type - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/en-us/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
