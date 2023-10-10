@@ -1,12 +1,12 @@
 ---
-title: Azure AD の名称変更ロールアウトとリソースについて
-date: 2023-10-10 09:00
+title: Azure AD の名称変更のお知らせとよくある質問
+date: 2023-10-11 09:00
 tags:
     - Azure AD Rename ROllout
     - US Identity Blog
 ---
 
-# Azure AD の名称変更のロールアウトとリソースについて
+# Azure AD の名称変更のお知らせとよくある質問
 
 こんにちは、Azure Identity サポート チームの 中村 です。  
 
