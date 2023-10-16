@@ -5,6 +5,8 @@ tags:
     - PIM
 ---
 
+# グループ向けの PIM と条件付きアクセスとの統合機能が一般公開されました！
+
 こんにちは、 Azure ID チームの小出です。
 
 本記事は、2023 年 10 月 3 日に公開された [Just-in-time access to groups and Conditional Access integration in Privileged Identity Management](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/just-in-time-access-to-groups-and-conditional-access-integration/ba-p/2466926) の記事を日本語に分かりやすくおまとめしなおした記事となります。ご不明点などございましたら、お気軽にサポートまでお問い合わせをいただけますと幸いです。
