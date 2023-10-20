@@ -32,7 +32,7 @@ SP で指定された AuthnContext と、サインインを試行したユーザ
 > [!NOTE]
 > 証明書ベースの認証として判定される例としては、以下のような認証方法を使用した場合です
 > - Microsoft Entra CBA
-> - PRT (Microsoft Entra 参加済み端末 / Microsft Entra 登録済み端末 / Hybrid Microsoft Entra 参加済み端末からのサインイン等で使用されます)
+> - PRT (Microsoft Entra 参加済み端末 / Microsoft Entra 登録済み端末 / Hybrid Microsoft Entra 参加済み端末からのサインイン等で使用されます)
 > - Microsoft Authenticator を使用したパスワードレス認証
 
 ### AADSTS75011 エラーが生じるタイミング
@@ -66,7 +66,7 @@ SP 側で認証方法を指定するのが先であり、Microsoft Entra ID 側�
 
 対処案としては以下 2 つです。
 - SAML リクエスト内の "RequestedAuthnContext" 要素 を省略する
-- SAML リクエスト内の "FourceAuthn" 要素を true に変更する
+- SAML リクエスト内の "ForceAuthn" 要素を true に変更する
 
 それぞれ説明します。
 
@@ -97,7 +97,7 @@ SP の管理者または利用者からの "RequestedAuthnContext" 要素の変�
 
 認証強度が高い認証方法を使用中のユーザーをブロックする理由がなければ、"RequestedAuthnContext" の省略について前向きに検討いただくのが良いかと存じます。
 
-### SAML リクエスト内の "FourceAuthn" 要素を true に変更する
+### SAML リクエスト内の "ForceAuthn" 要素を true に変更する
 
 SAML リクエスト内に [ForceAuthn](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/single-sign-on-saml-protocol#authnrequest) 要素を含め、その値を true とすることで、SP にサインインする度に認証が要求されます。
 
@@ -110,4 +110,4 @@ SAML リクエスト内に ForceAuthn 要素を true として指定できるか
 ## おわりに
 本記事では AADSTS75011 エラーの原因と SP 側での対処案について主に説明しました。
 
-認証方法の指定をしているのが SP 側であることもあり Microsoft Entra ID 観点で実施できる対処案がなく恐縮ですが、AADSTS75011 エラーへの対処を検討する際に本記事がお役に立てば幸いです。
+現時点では認証方法の不一致が原因で AADSTS75011 エラーが発生した場合、Microsoft Entra ID 観点で実施できる対処策がないため、上記情報を参考に対処策を検討いただけますと幸いです。。
