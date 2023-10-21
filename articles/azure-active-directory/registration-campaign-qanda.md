@@ -35,7 +35,7 @@ Microsoft Entra ID P1 または P2 テナントを対象とした展開は 10 �
 
 ## Q. 登録キャンペーンの今回のアップデートはなぜ実施されるのですか？
 
-A. 以前のブログ記事 “認証に電話網を使うのはそろそろやめよう (It’s Time to Hang Up on Phone Transports for Authentication)” で、SMS や音声などの多要素認証 (MFA) メカニズムの脆弱性について説明しておりました。
+A. 以前のブログ記事 ["認証に電話網を使うのはそろそろやめよう (It’s Time to Hang Up on Phone Transports for Authentication)"](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) で、SMS や音声などの多要素認証 (MFA) メカニズムの脆弱性について説明しておりました。
 マイクロソフトの最近の MFA に関する調査研究によると、SMS は Microsoft Authenticator アプリと比較して、悪意のある攻撃者を阻止する効果が 40％ 低いと結論づけています。
 
 電話ベースの認証から脱却することには明確な利点があるにもかかわらず、未だ MFA 要求の約 44 % が SMS や音声電話によるものとなっています。
