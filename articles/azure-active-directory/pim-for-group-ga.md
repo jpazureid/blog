@@ -54,6 +54,12 @@ tags:
 
 グループ向けの PIM については、[こちらの公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/privileged-identity-management/concept-pim-for-groups) も併せてご確認ください。
 
+また、グループ向けの PIM を利用すると、Microsoft Defender や Intune の権限を管理することもできます。英語の記事ではございますが、下記にてこのシナリオに特化した手順の記載もありますので併せてご覧ください。
+
+[Configure Just-in-Time Access to M365 Defender](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/configure-just-in-time-access-to-m365-defender/ba-p/3764564)
+
+[Configuring Microsoft Intune just-in-time admin access with Azure AD PIM for Groups](https://techcommunity.microsoft.com/t5/intune-customer-success/configuring-microsoft-intune-just-in-time-admin-access-with/ba-p/3843972)
+
 ## 条件付きアクセス認証コンテキストを利用した PIM の管理
 
 これまで PIM のアクティブ化においては、 MFA や承認を要求することはできましたが、それ以上の細かいポリシーを適用することができませんでした。今回用意された条件付きアクセス認証コンテキストを利用すると、PIM の動作に対して条件付きアクセスが提供する細やかなポリシーを適用することができます。
