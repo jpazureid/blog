@@ -1,7 +1,6 @@
-
 ---
-title:  オンプレミスのパスワード変更で Microsoft Entra ID Protection のユーザー リスクを修復する
-date: 2023-10-23 12:00
+title: オンプレミスのパスワード変更で Microsoft Entra ID Protection のユーザー リスクを修復する
+date: 2023-10-22 10:00
 tags:
   - Azure AD
   - US Identity Blog
@@ -9,12 +8,13 @@ tags:
 
 # オンプレミスのパスワード変更で Microsoft Entra ID Protection のユーザー リスクを修復する
 
-
 こんにちは、Azure Identity サポート チームの 竜 です。
-本記事は、2023 年 08 月 31 日に米国の Azure Active Directory Identity Blog で公開された [Remediate User Risks in Microsoft Entra ID Protection Through On-premises Password Changes](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/remediate-user-risks-in-microsoft-entra-id-protection-through-on/ba-p/3773129) を意訳したものになります。
+
+本記事は、2023 年 9 月 28 日に米国の Azure Active Directory Identity Blog で公開された [Remediate User Risks in Microsoft Entra ID Protection Through On-premises Password Changes](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/remediate-user-risks-in-microsoft-entra-id-protection-through-on/ba-p/3773129) を意訳したものになります。
 
 ----
-ユーザー リスクに基づいてゼロ トラストの考えのもとセキュリティ侵害を防止することが、今日のデジタル環境において大変重要です。しかし、ハイブリッド環境におけるユーザー リスクの管理には、いくつもの課題がありました。この度、ハイブリッド環境におけるユーザー リスクの管理をより容易にするべく、Microsoft Entra ID Protection (旧 Azure AD Identity Protection) において、オンプレミスのパスワード変更によりユーザー リスクを修復できるようになりました。
+
+ユーザー リスクに基づいてゼロ トラストの考えのもとセキュリティ侵害を防止することが、今日のデジタル環境において大変重要です。しかし、ハイブリッド環境におけるユーザー リスクの管理には、いくつもの課題がありました。この度、ハイブリッド環境におけるユーザー リスクの管理をより容易にするべく、Microsoft Entra ID Protection (旧 Azure AD Identity Protection) において、**オンプレミスのパスワード変更によりユーザー リスクを修復できる** ようになりました。
 
 これまで、Microsoft Entra ID のパスワード保護機能を活用するために、Microsoft としては Microsoft Entra ID でパスワード変更を管理することを推奨していましたが、一方でこれにより、オンプレミスでパスワード変更を行うハイブリッド環境をご利用のお客様にとっては、ユーザー リスク ポリシーを有効化しづらい状況がありました。というのも、オンプレミスでパスワード変更を行っても Microsoft Entra ID Protection に反映されなかったため、リスクによりユーザーがブロックされた場合にオンプレミスでパスワード リセットしてもリスクをクリアできず、ユーザー自身で自己修復することができない状況でした。オンプレミスでのパスワード変更によりリスク修復ができない結果、リスクがある (リスクが修復されていない) と判断されるユーザーが増えていくため、一部のお客様では Microsoft Entra ID Protection によるリスク検出を利用することや、ハイブリッド環境のテナントを保護するためにリスク ベースのポリシーを活用することが難しい状況でした。
 
