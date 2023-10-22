@@ -7,8 +7,7 @@ tags:
 
 # Microsoft Entra の更新情報
 
-こんにちは、Azure Identity サポート チームの 中村 です。  
-
+こんにちは、Azure Identity サポート チームの 高田 です。
  
 本記事は、2023 年 10 月 2 日に米国の Microsoft Entra (Azure AD) Blog で公開された [What’s new in Microsoft Entra](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/what-s-new-in-microsoft-entra/ba-p/3796395) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
@@ -61,7 +60,7 @@ tags:
 
 [お客様によっては対応が必要です]
 
-**2024 年 1 月** より、Microsoft Entra ID は、従来の FIDO2 セキュリティ キーのサポートに加え、パブリック プレビューの認証方法として、コンピューターやモバイル デバイスに保存されたデバイスに紐づくパスキーをサポートします。これにより、ユーザーは既に保持しているデバイスを使ってフィッシング耐性のある認証を利用することができるようになります。
+**2024 年 1 月** より、Microsoft Entra ID は、従来の FIDO2 セキュリティ キーのサポートに加え、パブリック プレビューの認証方法として、コンピューターやモバイル デバイスに保存された [デバイスに紐づくパスキー](https://passkeys.dev/docs/reference/terms/#device-bound-passkey) をサポートします。これにより、ユーザーは既に保持しているデバイスを使ってフィッシング耐性のある認証を利用することができるようになります。
 
 このプレビュー リリースに際し、既存の FIDO2 認証方法ポリシーとエンドユーザー向けの登録エクスペリエンスを拡張する予定です。お客様の組織が物理的なセキュリティ キーのみを使用した FIDO2 認証を必要とする、もしくは要望する場合は、許容できるセキュリティ キー モデルのみを FIDO2 ポリシーにて許可するようキーの制限を実施ください。そうでない場合は、新しいプレビュー機能により、Windows、macOS、iOS、Android に保存されたデバイスに紐づくパスキーの登録が可能になります。FIDO2 キー制限の詳細については、[こちら](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/howto-authentication-passwordless-security-key) をご覧ください。
 
@@ -76,7 +75,7 @@ tags:
 ##### 2023 年 9 月の情報
 
 1. 一部のお客様から、廃止される Azure AD Graph API を使用しているアプリケーションを特定したり、どのような規模で使用しているのかを確認したりするのが難しいとのご意見をいただいております。弊社では現在、さらなる混乱を避けるために [ID の推奨事項機能](https://learn.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/overview-recommendations) を通じて、更新や修正が必要なアプリケーションを特定し、優先順位をつけるために必要な情報を提供する分析機能の提供に取り組んでいます。この機能のリリース予定日は近日中にお知らせします。
-2. 事前の連絡で説明したように、Azure AD Graph API 廃止の第一段階では、新規に作成されたアプリケーションが既定で Azure AD Graph API を使用できないようにする変更が行われます。この変更が行われる際は最低 3 ヶ月の事前通知を提供します。この最初の段階では、新しく作成されたアプリケーションのみが影響を受け、既存のアプリケーションは影響を受けません。
+2. 事前の連絡で説明したように、Azure AD Graph API 廃止の第一段階では、新規に作成された [アプリケーション](https://learn.microsoft.com/ja-jp/graph/api/resources/application?view=graph-rest-1.0) が既定で Azure AD Graph API を使用できないようにする変更が行われます。この変更が行われる際は最低 3 ヶ月の事前通知を提供します。この最初の段階では、新しく作成されたアプリケーションのみが影響を受け、既存のアプリケーションは影響を受けません。
 
 近い将来に、Microsoft Graph にまだ移行していない (新規) アプリケーションで混乱が生じないよう必要なタイムラインとアクションの詳細をお知らせします。新規に作成されたアプリケーションが Azure AD Graph API を使用できなくなる日付はまだ決まっていませんが、明確な情報の提供に向けて鋭意努力しております。この終了予定の API サービスからアプリケーションを移行されているお客様を支援する機能を提供してまいります。
 
@@ -95,7 +94,7 @@ Azure AD Graph を使用しているアプリケーションを特定し、同�
 
 [お客様によっては対応が必要です]
 
-現在 Entra ID Protection (旧 Identity Protection) でユーザー リスク ポリシーまたはサインイン リスク ポリシーを有効にしている場合は、[これらの手順](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies#migrate-risk-policies-from-identity-protection-to-conditional-access) に従って 条件付きアクセスに移行することをお勧めします。 Entra ID Protection のこれら 2 つのリスク ポリシーの画面は、2026 年 10 月 1 日に廃止されます。
+現在 Entra ID Protection (旧 Identity Protection) でユーザー リスク ポリシーまたはサインイン リスク ポリシーを有効にしている場合は、[これらの手順](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies#migrate-risk-policies-from-identity-protection-to-conditional-access) に従って 条件付きアクセスに移行することをお勧めします。 Entra ID Protection のこれら 2 つのリスク ポリシーの画面は、**2026 年 10 月 1 日** に廃止されます。
 
 条件付きアクセスでのサインイン リスクとユーザー リスク ポリシーの設定には以下のような利点があります。
 
@@ -111,9 +110,9 @@ Azure AD Graph を使用しているアプリケーションを特定し、同�
 
 [お客様によっては対応が必要です]
 
-[2023 年 3 月の変更通知](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-change-announcements-march-2023-train/) で、レガシーな MFA と SSPR ポリシーでの認証方法の管理を 2024 年 9 月 30 日に廃止すると発表しました。この日付は 2025 年 9 月 30 日に延期されました。
+[2023 年 3 月の変更通知](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-change-announcements-march-2023-train/) で、レガシーな [MFA](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-mfasettings#verification-methods) および [SSPR](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/concept-sspr-howitworks#authentication-methods) ポリシーでの認証方法の管理を 2024 年 9 月 30 日に廃止すると発表しました。この日付は **2025 年 9 月 30 日** に延期されました。
 
-組織は、パスワードレス、多要素認証、セルフサービス パスワード リセットなど、すべての認証シナリオで認証方法を一元的に管理できる統合された認証方法ポリシーに移行する必要があります。Azure AD での認証方法の管理について詳しくはこちらをご覧ください。
+組織は、パスワードレス、多要素認証、セルフサービス パスワード リセットなど、すべての認証シナリオで認証方法を一元的に管理できる統合された認証方法ポリシーに [移行](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-authentication-methods-manage) する必要があります。[Azure AD での認証方法の管理](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/concept-authentication-methods-manage) について詳しくはこちらをご覧ください。
 
 #### 登録キャンペーンの改善
 
@@ -121,7 +120,7 @@ Azure AD Graph を使用しているアプリケーションを特定し、同�
 
 ユーザーが [SMS や音声などの公衆交換電話網 (PSTN) を極力利用しないようにする](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) ため、[登録キャンペーン機能](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-registration-campaign) の改善に取り組んでいます。ユーザーはプロンプトを最大 3 回までスキップできますが、その後は登録操作を実行する必要があります。なお、管理者は、最大 3 回のスキップ設定を無効にするか、エンド ユーザーが無期限にスキップ出来るようにするかを選択可能です。
 
-次に、Microsoft マネージド状態にある Entra ID テナントについては、MFA に SMS や音声などの PSTN メソッドのみを使用しているユーザーに対して、この登録キャンペーン機能を自動的に有効にします。2023 年 9 月から、Entra IDプレミアムテナント向けにこの変更を段階的に展開していきます。
+次に、Microsoft マネージド状態にある Entra ID テナントについては、MFA に SMS や音声などの PSTN メソッドのみを使用しているユーザーに対して、この登録キャンペーン機能を自動的に有効にします。**2023 年 9 月** から、Entra ID Premium テナント向けにこの変更を段階的に展開していきます。
 
 #### ユーザーごとの MFA ポリシーにおける Authenticator Lite のサポート
 
@@ -135,27 +134,27 @@ Azure AD Graph を使用しているアプリケーションを特定し、同�
 
 [お客様によっては対応が必要です]
 
-現在、Entra ID (Azure AD) MFA は、テキスト メッセージ (SMS) を介してワン タイム パスコード (OTP) を配信しています。これらのテキスト (SMS) は、ユーザーの電話の OS に応じて、電話の既定のメッセージング アプリに送信されます。しかし、国によってはこれらの既定のアプリが必ずしもユーザーがよく使うメッセージ アプリとは限りません。ユーザーがよく使用するメッセージ プラットフォームで OTP を受け取れるようにするため、Entra ID は一部の地域で WhatsApp への OTP 配信を展開します。
+現在、Entra ID (Azure AD) MFA は、[テキスト メッセージ (SMS)](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/concept-authentication-phone-options#sms-message-verification) を介してワン タイム パスコード (OTP) を配信しています。これらのテキスト (SMS) は、ユーザーの電話の OS に応じて、電話の既定のメッセージング アプリに送信されます。しかし、国によってはこれらの既定のアプリが必ずしもユーザーがよく使うメッセージ アプリとは限りません。ユーザーがよく使用するメッセージ プラットフォームで OTP を受け取れるようにするため、Entra ID は一部の地域で WhatsApp への OTP 配信を展開します。
 
-2023 年 9 月中旬から、インド、インドネシア、ニュージーランドのユーザーは WhatsApp 経由で MFA テキスト メッセージを受け取るようになる可能性があります。以下の基準に当てはまるユーザーには、この新しい変更が適用される可能性がありますが、必ずその動作となるわけではありません。
+**2023 年 9 月中旬** から、インド、インドネシア、ニュージーランドのユーザーは WhatsApp 経由で MFA テキスト メッセージを受け取るようになる可能性があります。以下の基準に当てはまるユーザーには、この新しい変更が適用される可能性がありますが、必ずその動作となるわけではありません。
 
 - 認証方法としてテキスト メッセージ/SMS を有効にしている
 - すでに WhatsApp を使用している
 - 上に挙げた国のいずれかの国コードを持つ電話番号を保持している
 
-上にあげた国にユーザーがいる組織で、ユーザーに WhatsApp 経由で MFA テキスト メッセージを受け取らせたくない場合は、テナント内でテキスト メッセージを認証方法として無効にする必要があります。認証方法を管理する場所によりますが、ユーザーごとの MFA ポリシーをご利用の場合は「電話へのテキスト メッセージ」を無効にし、認証方法ポリシーを利用されている場合は「SMS」の設定を無効にする必要があります。
+上にあげた国にユーザーがいる組織で、ユーザーに WhatsApp 経由で MFA テキスト メッセージを受け取らせたくない場合は、テナント内でテキスト メッセージを認証方法として無効にする必要があります。認証方法を管理する場所によりますが、[ユーザーごとの MFA ポリシー](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx) をご利用の場合は「電話へのテキスト メッセージ」を無効にし、[認証方法ポリシー](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/~/AdminAuthMethods/fromNav/Identity) を利用されている場合は「SMS」の設定を無効にする必要があります。
 
 #### My Groups 管理コントロールの変更
 
 [お客様側での対応は不要です]
 
-2024 年 6 月から、Microsoft Entra 管理センターにあるグループ管理の設定から「[自分のグループ] でのグループ機能に対するユーザー アクセス権を制限します。」という文言が廃止されます。これは、My Groups を無効にすることができなくなることを意味します。6 月には、My Groups でのセキュリティ グループの表示と管理をエンド ユーザーから出来ないようにする新しい設定が優先されるようになります。
+**2024 年 6 月** から、Microsoft Entra 管理センターにあるグループ管理の設定から「[自分のグループ] でのグループ機能に対するユーザー アクセス権を制限します。」という文言が廃止されます。これは、My Groups を無効にすることができなくなることを意味します。6 月には、My Groups でのセキュリティ グループの表示と管理をエンド ユーザーから出来ないようにする新しい設定が優先されるようになります。
 
 この変更は自動的に行われます。管理者やユーザーは何もする必要はありません。
 
 - [自分のグループ] からグループ機能に対するユーザー アクセスを制限するという既存の設定が はい に設定されている場合、新しい設定でも、ユーザーが My Groups でセキュリティ グループを表示および編集出来ないように制限します。 既存の設定が いいえ に設定されている場合、新しい設定では、My Groupsでセキュリティ グループが表示されます。
 
-詳細については、[このドキュメント](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/groups-self-service-management#make-a-group-available-for-user-self-service) を参照ください。なお、管理者は引き続きグループ設定から、エンドユーザーが Microsoft 365 およびセキュリティ グループを作成できるかどうかを管理可能です。
+詳細については、[このドキュメント](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/groups-self-service-management#make-a-group-available-for-user-self-service) を参照ください。なお、管理者は引き続き [グループ設定](https://learn.microsoft.com/ja-jp/azure/active-directory/enterprise-users/groups-self-service-management#group-settings) から、エンドユーザーが Microsoft 365 およびセキュリティ グループを作成できるかどうかを管理可能です。
 
 #### Graph サービスエンドポイントでの HTTP/2 の有効化
 
