@@ -6,6 +6,7 @@ tags:
     - Access Review
 ---
 
+# Microsoft Entra ID Governance のアクセス レビューを用いて非アクティブなユーザーの棚卸をする方法
 
 こんにちは！ Azure ID チームの小出です。
 
