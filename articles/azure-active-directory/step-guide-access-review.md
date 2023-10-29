@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra ID Governance のアクセス レビューを用いて非アクティブなユーザーの棚卸をする方法
-date: 2023-10-25 09:00
+date: 2023-10-29 09:00
 tags:
     - Identity Governance
     - Access Review
