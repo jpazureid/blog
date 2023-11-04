@@ -1,6 +1,5 @@
-
 ---
-title:  ビジネス ゲスト向けの Microsoft Entra ID Governance ライセンスについて
+title: ビジネス ゲスト向けの Microsoft Entra ID Governance ライセンスについて
 date: 2023-11-05 01:00
 tags:
   - Azure AD
