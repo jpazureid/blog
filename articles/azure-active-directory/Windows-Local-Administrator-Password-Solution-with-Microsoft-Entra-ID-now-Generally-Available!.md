@@ -44,7 +44,6 @@ Windows LAPS のクライアント側設定を管理するには以下を使用�
 
 ![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!-2.png)
 
-
 今後提供予定の (ロードマップにある) 機能:
 
 - Windows LAPS が設定された場合にローカル管理者アカウントを自動作成。
