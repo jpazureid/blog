@@ -32,7 +32,8 @@ SP で指定された AuthnContext と、サインインを試行したユーザ
 > [!NOTE]
 > 証明書ベースの認証として判定される例としては、以下のような認証方法を使用した場合です
 > - Microsoft Entra CBA
-> - PRT (Microsoft Entra 参加済み端末 / Microsoft Entra 登録済み端末 / Hybrid Microsoft Entra 参加済み端末からのサインイン等で使用されます)
+> - AD FS での証明書認証
+> - Windows Hello for Business を使用した PRT での認証
 > - Microsoft Authenticator を使用したパスワードレス認証
 
 ### AADSTS75011 エラーが生じるタイミング
@@ -48,13 +49,13 @@ AADSTS75011 エラーが生じるタイミングは、上図の 4 と 5 の間�
 そのため、エラーが生じるまでの流れを説明します。
 
 1. `User` が `Service Provider` (`SP`) にアクセスします。
-1. `SP` はユーザーを認証するために Microsoft Entra ID にリダイレクトするよう `User` に指示します(SP によって Microsoft Entra ID へのリダイレクトが行われるきっかけは異なります)。    
-このとき SP は SAML リクエストを含むリダイレクト先 URL を生成します (https://login.microsoftonline.com/<tenantid>/saml2?SAMLRequest=xxx)。   
-**この SAML リクエストの中に [RequestedAuthnContext](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/single-sign-on-saml-protocol#requestedauthncontext) 要素が含まれています。**   
-RequestedAuthnContext 要素は、SP がユーザーに対して要求する認証方法を指定するための要素です。    
+1. `SP` はユーザーを認証するために Microsoft Entra ID にリダイレクトするよう `User` に指示します(SP によって Microsoft Entra ID へのリダイレクトが行われるきっかけは異なります)。
+このとき SP は SAML リクエストを含むリダイレクト先 URL を生成します (https://login.microsoftonline.com/<tenantid>/saml2?SAMLRequest=xxx)。
+**この SAML リクエストの中に [RequestedAuthnContext](https://learn.microsoft.com/ja-jp/azure/active-directory/develop/single-sign-on-saml-protocol#requestedauthncontext) 要素が含まれています。**
+RequestedAuthnContext 要素は、SP がユーザーに対して要求する認証方法を指定するための要素です。
 つまり、ここで証明書ベースの認証を指定したりなどの認証方法の指定ができます。
 1. `User` のブラウザーを通して、2. で `SP` が指示したリダイレクト先 (Microsoft Entra ID) にリクエストが生じます。
-1. サインインを試行するユーザーの認証状況を確認します。Microsoft Entra ID で認証済みの場合は通常は 5 への進みます。    
+1. サインインを試行するユーザーの認証状況を確認します。Microsoft Entra ID で認証済みの場合は通常は 5 への進みます。
 ただ、SAML リクエストの中に RequestedAuthnContext が含まれる際には、直近で使用した認証方法を確認します。
 **このとき、直近で使用した認証方法 (`User` が使用した認証方法) と RequestedAuthnContext で指定された認証方法 (`SP` が指定した認証方法) とが異なる場合に AADSTS75011 エラーが発生します。**
 
