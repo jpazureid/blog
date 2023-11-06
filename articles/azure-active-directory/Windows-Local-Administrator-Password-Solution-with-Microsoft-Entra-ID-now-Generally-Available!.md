@@ -31,3 +31,15 @@ Windows LAPS のクライアント側設定を管理するには以下を使用�
 - Microsoft Entra ハイブリッド参加デバイス用の [Windows LAPS Group Policy Object (GPO)](https://learn.microsoft.com/ja-jp/windows-server/identity/laps/laps-management-policy-settings#windows-laps-group-policy)
 
 お客様からのフィードバックに基づいて、さらに多くの機能のサポートを追加しています。現在は、以下のようなことが可能です:
+
+- **Windows LAPS を有効にする**には、テナント全体のポリシーとクライアント側のポリシーを使用します。これによりローカル管理者パスワードが Microsoft Entra ID にバックアップされます。
+- **クライアントポリシーを構成する**には Microsoft Intune ポータルを使用し、ローカル管理者のパスワード管理用にアカウント名、パスワードの有効期限、長さ、複雑さ、パスワードの手動リセットなどを設定できます。
+- **パスワードを回復する**際は、Microsoft Entra/Microsoft Intune ポータルまたは Microsoft Graph API/PSH を利用できます。
+- **すべてのLAPS対応デバイスを列挙する**には、Microsoft Entra ポータルまたは Microsoft Graph API/PSH を利用できます。
+- **Microsoft Entra ID のロールベースのアクセス制御 (RBAC) ポリシーを作成する**ことで、カスタム ロールと管理単位を使用してパスワード回復の権限を付与できます。
+- **監査ログを確認する**ことで、Microsoft Entra ポータルまたは Microsoft Graph API/PSH 経由で、パスワードの更新および取得イベントを監視できます。
+- **条件付きアクセスポリシーを構成する**ことでパスワード回復の権限を持つディレクトリ ロールを保護できます。
+
+![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!-1.png)
+
+![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!-2.png)
