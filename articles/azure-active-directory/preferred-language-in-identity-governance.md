@@ -1,6 +1,6 @@
 ---
 title: 通知メールにおける優先言語の選定ロジック
-date: 2023-10-31 09:00
+date: 2023-11-07 00:00
 tags:
     - Identity Governance
 ---
