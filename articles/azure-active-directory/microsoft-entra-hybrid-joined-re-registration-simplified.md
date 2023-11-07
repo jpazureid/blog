@@ -129,7 +129,7 @@ Microsoft Entra ID から離脱し Microsoft Entra ハイブリッド参加を�
 **この手順は Intune 登録しなければ不要です。** また、反映に時間がかかることがあります。
 
 1.  [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトの [MDM] の項目に値が入り [準拠している] が「はい」となっていることを確認します。
-2. [Microsoft Intune admin center (endpoint.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し対象デバイスの [対応] の項目が「準拠している」となっていることを確認します。
+2. [Microsoft Intune 管理センター (intune.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し対象デバイスの [対応] の項目が「準拠している」となっていることを確認します。
 
 <h2 id="anchor6">6. 事後作業: WHfB の再プロビジョニング</h2>
 
