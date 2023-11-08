@@ -40,7 +40,7 @@ tags:
 - [M365 Defender における Identity Protection アラート](https://learn.microsoft.com/ja-jp/microsoft-365/security/defender/investigate-alerts?view=o365-worldwide)
 - [保護されたアクションのための条件付きアクセス](https://jpazureid.github.io/blog/azure-active-directory/conditional-access-for-protected-actions/)
 - [テナント制限 v2](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-universal-tenant-restrictions)
-- [感謝のブランドにおけるサインインとサインアップページの先進的な拡張機能](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/how-to-customize-branding)
+- [会社のブランドにおけるサインインとサインアップページの先進的な拡張機能](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/how-to-customize-branding)
 - [セルフサービス パスワード リセット (SSPR) のハイパーリンクのカスタマイズ機能](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/how-to-customize-branding)
 - [カスタム ロールを用いたユーザー管理の委任](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/custom-user-permissions)
 - [ユーザー作成とユーザー招待機能の改善](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/add-users)
@@ -198,7 +198,7 @@ Azure AD Graph を使用しているアプリケーションを特定し、同�
 
 **2023 年 9 月 30 日** から、B2B コラボレーションを使用してテナントをまたいだサインインを行うエンドユーザーは、テナントのブランドの表示が変更されたことに気づくと思われます。サインイン時に、リソース テナントのブランドではなく、ホーム テナントのブランド（カスタマイズされていいない場合でも）が表示されるようになります。これは、ユーザーが自身のホーム アカウントにサインインしていることを明確にするためのものです。
 
-この通知はお客様への通知を目的としたものであり、対応は必要ありません。[詳細はこちら](https://learn.microsoft.com/ja-j/azure/active-directory/fundamentals/how-to-customize-branding#user-experience) をご覧ください。
+この通知はお客様への通知を目的としたものであり、対応は必要ありません。[詳細はこちら](https://learn.microsoft.com/ja-jp/entra/fundamentals/how-to-customize-branding#user-experience) をご覧ください。
 
 よろしくお願いいたします。
 
