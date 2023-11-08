@@ -68,7 +68,7 @@ Microsoft Entra ID から離脱し Microsoft Entra ハイブリッド参加を�
     ```
     dsregcmd /status
     ```
-3. [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] に 結合の種類 が "Microsoft Entra hybrid joined" の対象のデバイス オブジェクトが存在していることを確認します。もし、対象のデバイス オブジェクトが存在しない場合は Microsoft Entra Connect の同期 (既定では 30 分間隔) を待ちます。
+3. [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] に 結合の種類 が `Microsoft Entra hybrid joined` の対象のデバイス オブジェクトが存在していることを確認します。もし、対象のデバイス オブジェクトが存在しない場合は Microsoft Entra Connect の同期 (既定では 30 分間隔) を待ちます。
 
     ![](./microsoft-entra-hybrid-joined-re-registration-simplified/microsoft-entra-hybrid-joined-re-registration-simplified4-3.jpg)
 
