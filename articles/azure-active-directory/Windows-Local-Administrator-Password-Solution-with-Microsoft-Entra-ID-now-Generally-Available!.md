@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra ID を使用した Windows ローカル管理者パスワードソリューションの一般提供を開始しました！
-date: 2023-11-08 10:00
+date: 2023-11-09 09:00
 tags:
     - Azure AD
     - US Identity Blog
@@ -25,33 +25,33 @@ tags:
 - Windows Server 2022 
 - Windows Server 2019 
 
-Windows LAPS のクライアント側設定を管理するには以下を使用します：
+Windows LAPS のクライアント側設定を管理するには以下を使用します:
 
-- MDM 管理された Microsoft Entra 参加/ハイブリッド参加デバイス用の [Windows LAPS 構成サービスプロバイダ (CSP)](https://learn.microsoft.com/ja-jp/windows/client-management/mdm/laps-csp)
-- Microsoft Entra ハイブリッド参加デバイス用の [Windows LAPS Group Policy Object (GPO)](https://learn.microsoft.com/ja-jp/windows-server/identity/laps/laps-management-policy-settings#windows-laps-group-policy)
+- MDM 管理された Microsoft Entra 参加/ハイブリッド参加デバイス用の [Windows LAPS 構成サービス プロバイダー (CSP)](https://learn.microsoft.com/ja-jp/windows/client-management/mdm/laps-csp)
+- Microsoft Entra ハイブリッド参加デバイス用の [Windows LAPS グループ ポリシー オブジェクト (GPO)](https://learn.microsoft.com/ja-jp/windows-server/identity/laps/laps-management-policy-settings#windows-laps-group-policy)
 
-お客様からのフィードバックに基づいて、さらに多くの機能のサポートを追加しています。現在は、以下のようなことが可能です:
+お客様からのフィードバックに基づいて、さらに多くの機能のサポートを追加しています。現在は以下のようなことが可能です:
 
-- **Windows LAPS を有効にする**には、テナント全体のポリシーとクライアント側のポリシーを使用します。これによりローカル管理者パスワードが Microsoft Entra ID にバックアップされます。
-- **クライアントポリシーを構成する**には Microsoft Intune ポータルを使用し、ローカル管理者のパスワード管理用にアカウント名、パスワードの有効期限、長さ、複雑さ、パスワードの手動リセットなどを設定できます。
-- **パスワードを回復する**際は、Microsoft Entra/Microsoft Intune ポータルまたは Microsoft Graph API/PSH を利用できます。
-- **すべての LAPS 対応デバイスを列挙する**には、Microsoft Entra ポータルまたは Microsoft Graph API/PSH を利用できます。
-- **Microsoft Entra ID のロールベースのアクセス制御 (RBAC) ポリシーを作成する**ことで、カスタム ロールと管理単位を使用してパスワード回復の権限を付与できます。
-- **監査ログを確認する**ことで、Microsoft Entra ポータルまたは Microsoft Graph API/PSH 経由で、パスワードの更新および取得イベントを監視できます。
-- **条件付きアクセスポリシーを構成する**ことでパスワード回復の権限を持つディレクトリ ロールを保護できます。
+- **Windows LAPS を有効にする** には、テナント全体のポリシーとクライアント側のポリシーを使用します。これによりローカル管理者パスワードが Microsoft Entra ID にバックアップされます。
+- **クライアント ポリシーを構成する** には Microsoft Intune ポータルを使用し、ローカル管理者のパスワード管理用にアカウント名、パスワードの有効期限、長さ、複雑さ、パスワードの手動リセットなどを設定できます。
+- **パスワードを回復する** 際は、Microsoft Entra/Microsoft Intune ポータルまたは Microsoft Graph API/PSH を利用できます。
+- **すべての LAPS 対応デバイスを列挙する** には、Microsoft Entra ポータルまたは Microsoft Graph API/PSH を利用できます。
+- **Microsoft Entra ID のロールベースのアクセス制御 (RBAC) ポリシーを作成する** ことで、カスタム ロールと管理単位を使用してパスワード回復の権限を付与できます。
+- **監査ログを確認する** ことで、Microsoft Entra ポータルまたは Microsoft Graph API/PSH 経由で、パスワードの更新および取得イベントを監視できます。
+- **条件付きアクセス ポリシーを構成する** ことでパスワード回復の権限を持つディレクトリ ロールを保護できます。
 
-![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!-1.png)
+![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available/1.png)
 
-![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!-2.png)
+![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available/.png)
 
 今後提供予定の (ロードマップにある) 機能:
 
 - Windows LAPS が設定された場合にローカル管理者アカウントを自動作成。
 - ローカル管理者パスワードが認証に使用された場合にデバイスが Microsoft Entra ID に通知。
-- デバイス所有者が自身で (セルフサービスで) ローカル管理者パスワードを必要な時間だけ回
+- デバイス所有者が自身で (セルフサービスで) ローカル管理者パスワードを必要な時間だけ回復。
 
 いつものように、皆様からのフィードバック、ご意見、ご提案をお待ちしております！ [Microsoft Entra ID フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)でぜひ共有ください。皆様のご意見をお待ちしております。 
 
-Sandeep De (@[MsftSandeep](https://twitter.com/MsftSandeep))   
-Principal Product Manager
+Sandeep Deo (@[MsftSandeep](https://twitter.com/MsftSandeep))  
+Principal Product Manager  
 Microsoft Identity Division
