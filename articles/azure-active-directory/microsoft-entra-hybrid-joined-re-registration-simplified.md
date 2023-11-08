@@ -28,7 +28,7 @@ tags:
 6. [事後作業: WHfB の再プロビジョニング](#anchor6)
 
 <h2 id="anchor1">1. 注意事項</h2>
-再度 Microsoft Entra ハイブリッド参加を構成するためには、そのデバイス上での管理者権限と、デバイスがオンプレミスの Active Directory にアクセスできる環境 (社外にデバイスがある場合は、オンプレミス AD 環境への VPN 接続) が必要です。
+再度 Microsoft Entra ハイブリッド参加を構成するためには、そのデバイス上での管理者権限と、デバイスがオンプレミスの Active Directory およびインターネットの両方にアクセスできる環境 (社外にデバイスがある場合は、オンプレミス AD 環境への VPN 接続) が必要です。
 
 <h2 id="anchor2">2. 事前準備: Windows Hello for Business のリセット</h2>
 
@@ -53,34 +53,6 @@ tags:
 **Intune 登録していなければスキップください。**
 
 1. [Microsoft Intune 管理センター (intune.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し、存在する場合は対象デバイスを開いて [削除] ボタンをクリックして削除します (削除完了するまでに少し時間がかかります)。
-2. 対象のデバイス上で、[PowerShell] を **管理者権限** で実行します。
-3. 以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します。 **<span style="color: red; ">(表示されない場合は以下の 4. から 7. の手順は実施しないでください)</span>**
-
-    ```
-    Get-ChildItem HKLM:\Software\Microsoft\Enrollments | ForEach-Object {Get-ItemProperty $_.pspath} | where-object {$_.DiscoveryServiceFullURL} | Foreach-Object {$_.PSChildName}
-    ```
-
-4. 以下のコマンドを実行し、Enrollment ID を変数に格納します。
-
-    ```
-    $EnrollmentGUID = Get-ChildItem HKLM:\Software\Microsoft\Enrollments | ForEach-Object {Get-ItemProperty $_.pspath} | where-object {$_.DiscoveryServiceFullURL} | Foreach-Object {$_.PSChildName}
-    ```
-
-5. 以下のコマンドを実行し削除対象のレジストリを変数に格納します。(長いですが 1 行のコマンドです)
-    ```
-    $RegistryKeys = "HKLM:\SOFTWARE\Microsoft\Enrollments", "HKLM:\SOFTWARE\Microsoft\Enrollments\Status","HKLM:\SOFTWARE\Microsoft\EnterpriseResourceManager\Tracked", "HKLM:\SOFTWARE\Microsoft\PolicyManager\AdmxInstalled", "HKLM:\SOFTWARE\Microsoft\PolicyManager\Providers","HKLM:\SOFTWARE\Microsoft\Provisioning\OMADM\Accounts", "HKLM:\SOFTWARE\Microsoft\Provisioning\OMADM\Logger", "HKLM:\SOFTWARE\Microsoft\Provisioning\OMADM\Sessions"
-    ```
-    
-6. 以下のコマンドを実行し、デバイス登録情報に関するレジストリを削除します。
-
-    ```
-    foreach ($Key in $RegistryKeys) {if (Test-Path -Path $Key) {Get-ChildItem -Path $Key | Where-Object {$_.Name -match $EnrollmentGUID} | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue}}
-    ```
-
-7. 以下のコマンドを実行し、デバイス登録のタスクを削除します。 **<span style="color: red; ">変数 $EnrollmentGUID がブランクの状態で以下のコマンドを実行すると必要なタスクが削除される恐れがありますため注意してください (念のため IF 文で誤削除を予防はしています)。</span>**
-    ```
-    if ($EnrollmentGUID -eq $null) {Write-Warning "EnrollmentGUID is NULL"} elseif ($EnrollmentGUID -eq "") {Write-Warning "EnrollmentGUID is BLANK (but it is not NULL)"} else {Get-ScheduledTask | Where-Object {$_.Taskpath -match $EnrollmentGUID} | Unregister-ScheduledTask -Confirm:$false}
-    ```
 
 <h2 id="anchor4">4. Microsoft Entra ハイブリッド参加の再構成</h2>
 
@@ -96,11 +68,11 @@ Microsoft Entra ID から離脱し Microsoft Entra ハイブリッド参加を�
     ```
     dsregcmd /status
     ```
-3. Microsoft Entra Connect の同期 (既定では 30 分間隔) を経て [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] に対象のデバイス オブジェクトが同期されたことを確認します。
+3. [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] に 結合の種類 が "Microsoft Entra hybrid joined" の対象のデバイス オブジェクトが存在していることを確認します。もし、対象のデバイス オブジェクトが存在しない場合は Microsoft Entra Connect の同期 (既定では 30 分間隔) を待ちます。
 
     ![](./microsoft-entra-hybrid-joined-re-registration-simplified/microsoft-entra-hybrid-joined-re-registration-simplified4-3.jpg)
 
-4. 対象のデバイスがオンプレミスの Active Directory にアクセスできるネットワーク環境に接続していることを確認します (社内ネットワーク環境に接続するなど)。
+4. 対象のデバイスがオンプレミスの Active Directory およびインターネットの両方にアクセスできるネットワーク環境に接続していることを確認します (社内ネットワーク環境に接続するなど)。
 
 5. **管理者権限** でタスク スケジューラを起動し [タスク スケジューラ ライブラリ] > [Microsoft] > [Windows] > [Workplace Join] を開きます。
 6. [Automatic-Device-Join] を 右クリックし [実行する(R)] を選択します。
