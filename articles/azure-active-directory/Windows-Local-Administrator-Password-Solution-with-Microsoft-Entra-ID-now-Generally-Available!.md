@@ -40,9 +40,9 @@ Windows LAPS のクライアント側設定を管理するには以下を使用�
 - **監査ログを確認する** ことで、Microsoft Entra ポータルまたは Microsoft Graph API/PSH 経由で、パスワードの更新および取得イベントを監視できます。
 - **条件付きアクセス ポリシーを構成する** ことでパスワード回復の権限を持つディレクトリ ロールを保護できます。
 
-![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_1.png)
+![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_1.png)
 
-![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_2.png)
+![](./Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_2.png)
 
 今後提供予定の (ロードマップにある) 機能:
 
