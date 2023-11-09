@@ -14,6 +14,7 @@ tags:
 なお、本記事は 下記記事の続編となりますので、併せてご確認ください。
 
 ① [Microsoft Entra - Security Service Edge へ拡大するための新機能](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/)
+
 ② [Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/)
 
 ご不明点などございましたら、お気軽にサポートまでお問い合わせをいただけますと幸いです。
@@ -78,14 +79,14 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     [Global Secure Access 経由のユニバーサル条件付きアクセスについて説明します](https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-universal-conditional-access#known-limitations)
 
-        - プライベート アクセス トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 この動作をモデル化するために、クイック アクセスと Global Secure Access アプリに対してアプリケーション レベルで条件付きアクセス ポリシーを適用できます。 詳細については、https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-target-resource-private-access-apps を参照してください。
-        - インターネット トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 インターネット トラフィックはプライベート プレビュー段階です。 プライベート プレビューへのアクセスを要求するには、https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7Lm8YtbKDdHu3wnC0DGKg5UQUhPRU44R0RLVEwySTJYVUVGNEwyVjVIVi4u に入力してください。
+- プライベート アクセス トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 この動作をモデル化するために、クイック アクセスと Global Secure Access アプリに対してアプリケーション レベルで条件付きアクセス ポリシーを適用できます。 詳細については、https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-target-resource-private-access-apps を参照してください。
+- インターネット トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 インターネット トラフィックはプライベート プレビュー段階です。 プライベート プレビューへのアクセスを要求するには、https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7Lm8YtbKDdHu3wnC0DGKg5UQUhPRU44R0RLVEwySTJYVUVGNEwyVjVIVi4u に入力してください。
 
 2. データ流出の防止
 
-テナント制限 v2 は強力なデータ流出防止機能であり、管理対象デバイスや指定されたネットワークからの外部アクセスのリスクを管理できます。 Microsoft Entra Internet Accessでは、企業側でプロキシを使用することなく、すべての OS およびブラウザ プラットフォームで一括してテナント制限の機能を適用できるため、より柔軟できめ細かな制御が可能になります。
+    テナント制限 v2 は強力なデータ流出防止機能であり、管理対象デバイスや指定されたネットワークからの外部アクセスのリスクを管理できます。 Microsoft Entra Internet Accessでは、企業側でプロキシを使用することなく、すべての OS およびブラウザ プラットフォームで一括してテナント制限の機能を適用できるため、より柔軟できめ細かな制御が可能になります。
 
-  ![](./microsoft-entra-internet-access/microsoft-entra-internet-access4.png)
+    ![](./microsoft-entra-internet-access/microsoft-entra-internet-access4.png)
 
 
 3. トークンの窃取からの保護
@@ -131,7 +132,7 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     レポートとダッシュボードにより、環境の全体像を簡単に把握し、組織で共有することが可能となります。導入状況を確認し、新たなリスクを検出し、問題を迅速に修正することもできます。当社のダッシュボードは、マイクロソフトの SSE ソリューションを通じて接続されているユーザー、デバイス、宛先のその時点での全体像を提供します。来年早々には、ポリシーに関する解析情報と推奨事項が強化され、高度なアプリとネットワークの検出機能が提供される予定です。クライアントがインストールされているアクティブなデバイスの数や、どのあて先に通信が多く行われているかなども確認可能です。
 
-  ![](./microsoft-entra-internet-access/microsoft-entra-internet-access10.png)
+    ![](./microsoft-entra-internet-access/microsoft-entra-internet-access10.png)
 
 
 8. ネットワーク トラフィック ログに基づくカスタム ビューとダッシュボード
