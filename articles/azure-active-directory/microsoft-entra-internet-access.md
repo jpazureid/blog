@@ -1,5 +1,5 @@
 ---
-title: [パブリック プレビュー] Microsoft Entra Internet Access のご紹介
+title: パブリック プレビュー Microsoft Entra Internet Access のご紹介
 date: 2023-11-10 09:00
 tags:
     - Global Secure Access
