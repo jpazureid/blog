@@ -33,7 +33,7 @@ tags:
 影響を受ける可能性があるテナントは、2020 年 11 月以前に作成された Azure AD テナントのうち、下記すべてに該当するテナントです。
 
 - 「条件付きアクセス ポリシー」を利用していない
-- Azure AD Premium (単体または Microsoft 365 E3 や EMS E3 等 Azure AD Premium を含む) ライセンスを 1 ライセンスも持たない
+- Azure AD Premium (単体または Microsoft 365 E3 や EMS E3 等 Azure AD Premium を含む) ライセンスを 1 つも持たない
 - 現在「セキュリティの既定値群」を利用していない
 - レガシ認証の利用が無い (トラフィックが検出されていない) 
 
