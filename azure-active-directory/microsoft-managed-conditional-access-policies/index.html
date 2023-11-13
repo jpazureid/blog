@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/1.png">
 <meta property="article:published_time" content="2023-11-13T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-13T04:00:44.870Z">
+<meta property="article:modified_time" content="2023-11-13T06:51:43.625Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d8ddccec-4030-5d5a-8aff-26329da4a110%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-managed-conditional-access-policies%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-managed-conditional-access-policies.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-managed-conditional-access-policies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/" data-id="clowdn40y00tk0nquffwweqxy" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/" data-id="clowjr38p00tk0nmp48uyffjp" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -212,8 +212,8 @@
 <p>このポリシーは、以下の 3 つの条件をすべて満たすテナントに自動的に作成されます。</p>
 <ul>
 <li>「セキュリティの既定値群」機能が無効である</li>
-<li>テナント内の全てのユーザー分の Microsoft Entra ID P1 または P2 ライセンスがテナントに存在する</li>
 <li>“ユーザーごとの MFA” 機能で MFA が有効/強制されているユーザーが 500 未満である</li>
+<li>上記ユーザー数分の Microsoft Entra ID P1 または P2 ライセンスがテナントに存在する</li>
 </ul>
 <h2 id="Policy-3-リスクの高いサインインに対して多要素認証と再認証を必須とする"><a href="#Policy-3-リスクの高いサインインに対して多要素認証と再認証を必須とする" class="headerlink" title="Policy 3 : リスクの高いサインインに対して多要素認証と再認証を必須とする"></a>Policy 3 : リスクの高いサインインに対して多要素認証と再認証を必須とする</h2><p>このポリシーは、テナント内のすべてのユーザーを対象とし、リスクの高いサインインを検出した場合に多要素認証と再認証を要求します。</p>
 <p>「リスクの高いサインイン」とは、ユーザーのサインインが通常とは異なる場合を意味します。たとえば、通常とは異なる移動、パスワード スプレー攻撃、トークンの問題などが含まれます。これらのリスク定義の詳細については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks#sign-in-risk-detections">リスク検出とは</a>の記事を参照ください。</p>
