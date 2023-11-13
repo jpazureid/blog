@@ -83,7 +83,7 @@ Microsoft Entra ID から離脱し Microsoft Entra ハイブリッド参加を�
 
 9. [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトの [登録済み] の項目が日付であることを確認します。
 
-    ![すべてのデバイス登録済みを確認](./microsoft-entra-hybrid-joined-re-registration-simplified/microsoft-entra-hybrid-joined-re-registration-simplified4-8.jpg)
+    ![すべてのデバイスで登録済みを確認](./microsoft-entra-hybrid-joined-re-registration-simplified/microsoft-entra-hybrid-joined-re-registration-simplified4-8.jpg)
 
 10. 対象デバイスにて 画面のロック > アンロック をすることでプライマリ更新トークン (PRT) を取得します。(すぐにアンロックしていただいて問題ありません)
 11. 対象のデバイスにて対象の **ユーザー権限** でコマンド プロンプトを起動し、次のコマンドを実行して `AzureAdPrt : YES` となっていることを確認します (管理者として実行から起動しないようご注意ください)。
