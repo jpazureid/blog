@@ -9,7 +9,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
  
-本記事は、2020 年 11 月 10 日に米国の Microsoft Entra (Azure AD) Blog で公開された [It's Time to Hang Up on Phone Transports for Authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) の抄訳です。新着記事ではありませんが、以前より繰り返し多くの記事で参照されており、多くのお客様にとって有用であるため抄訳しました。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2020 年 11 月 10 日に米国の Microsoft Entra (Azure AD) Blog で公開された [It's Time to Hang Up on Phone Transports for Authentication](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752) の抄訳です。新着記事ではありませんが、以前より繰り返し様々な記事で参照されており、多くのお客様にとって有用であるため抄訳しました。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
@@ -55,4 +55,4 @@ PSTN を利用するのはやめて、Microsoft Authenticator を使いましょ
 
 安全にお過ごしください！
 
-Alex (Twitter: [@alex_t_weinert](Alex (Twitter: @alex_t_weinert)))
+Alex (Twitter: [@alex_t_weinert](http://twitter.com/alex_t_weinert)))
