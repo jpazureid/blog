@@ -1,6 +1,6 @@
 ---
 title: パブリック プレビュー Microsoft Entra Internet Access のご紹介
-date: 2023-11-10 09:00
+date: 2023-11-16 10:00
 tags:
     - Global Secure Access
 ---
@@ -13,24 +13,23 @@ tags:
 
 なお、本記事は 下記記事の続編となりますので、併せてご確認ください。
 
-① [Microsoft Entra - Security Service Edge へ拡大するための新機能](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/)
+1. [Microsoft Entra - Security Service Edge へ拡大するための新機能](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-expands-into-securityserviceedge-with-two-new-offerings/)
+2. [Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/)
 
-② [Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution/)
-
-ご不明点などございましたら、お気軽にサポートまでお問い合わせをいただけますと幸いです。
+ご不明点などございましたら、お気軽にサポートまでお問い合わせください。
 
 ----
 
 ## これまでのシリーズ記事
 
-多くのお客様では、ネットワークの境界にファイアウォールなどを設置し、内部ネットワークへのアクセスには VPN を使うなどしてセキュリティを管理していると思います。こうした方法は、ネットワーク内にリソースとユーザーを囲い込み、外部からのリモート アクセスを許可するという従来のシナリオでは有益でしたが、クラウド化やリモート ワークおよびハイブリッド ワークの広がりにより現代のセキュリティ要件やビジネス要件を満たせなくなってきつつあります。
+多くのお客様では、ネットワークの境界にファイアウォールなどを設置し、内部ネットワークへのアクセスには VPN を使うなどしていると思います。こうした方法は、ネットワーク内にリソースとユーザーを囲い込み、外部からのリモート アクセスを許可するという従来のシナリオでは有益でしたが、クラウド化やリモート ワークおよびハイブリッド ワークの広がりにより現代のセキュリティ要件やビジネス要件を満たせなくなってきつつあります。
 
 また、内部ネットワークにさえは入れれば権限管理が厳密に行われてないことも多く、ユーザーの資格情報が 1 人漏洩するだけで、攻撃の横展開を許し、機密情報など重要な情報が流出してしまう危険などもあります。従業員が様々な場所からインターネットを介し、より安全に情報にアクセスできるよう、Microsoft では、2023 年 7 月に、2つの新しい機能が利用できるようになりました。
 
 - Microsoft Entra Internet Access
 - Microsoft Entra Private Access
 
-この概要を、上記 ① のブログにて以前紹介させていただき、Microsoft Entra Private Access の詳細な紹介を ② にておまとめしております。今回は残りの、 Microsoft Entra Internet Access の機能について紹介します。
+この概要を、上記 1. のブログにて以前紹介し、Microsoft Entra Private Access の詳細な紹介を 2. にておまとめしております。今回は残りの、 Microsoft Entra Internet Access の機能について紹介します。
 
 ## Microsoft Entra Internet Access
 
@@ -38,7 +37,7 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
 ![](./microsoft-entra-internet-access/microsoft-entra-internet-access1.png)
 
-セキュリティ担当者は、ユーザー、デバイスのエンドポイント、ネットワークなどに対し、きめ細やかなアクセス制御を行うことができます。Webフィルタリング、クロステナント保護、データ損失防止、パケット インスペクションなど高度な機能によって、ユーザーやアプリ、リソースを保護できます。
+セキュリティ担当者は、ユーザー、デバイス (エンドポイント)、ネットワークなどに対し、きめ細やかなアクセス制御を行うことができます。Web フィルタリング、クロステナント保護、データ損失防止、パケット インスペクションなど高度な機能によって、ユーザーやアプリ、リソースを保護できます。
 
 ## 特徴
 
@@ -79,8 +78,8 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     [Global Secure Access 経由のユニバーサル条件付きアクセスについて説明します](https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-universal-conditional-access#known-limitations)
 
-- プライベート アクセス トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 この動作をモデル化するために、クイック アクセスと Global Secure Access アプリに対してアプリケーション レベルで条件付きアクセス ポリシーを適用できます。 詳細については、https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-target-resource-private-access-apps を参照してください。
-- インターネット トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 インターネット トラフィックはプライベート プレビュー段階です。 プライベート プレビューへのアクセスを要求するには、https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7Lm8YtbKDdHu3wnC0DGKg5UQUhPRU44R0RLVEwySTJYVUVGNEwyVjVIVi4u に入力してください。
+    - プライベート アクセス トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 この動作をモデル化するために、クイック アクセスと Global Secure Access アプリに対してアプリケーション レベルで条件付きアクセス ポリシーを適用できます。 詳細については、[Private Access アプリに条件付きアクセス ポリシーを適用する](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-target-resource-private-access-apps) を参照ください。
+    - インターネット トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 インターネット トラフィックはプライベート プレビュー段階です。 プライベート プレビューへのアクセスを要求するには、[こちらの Forms](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7Lm8YtbKDdHu3wnC0DGKg5UQUhPRU44R0RLVEwySTJYVUVGNEwyVjVIVi4u] から申請ください。
 
 2. データ流出の防止
 
@@ -88,16 +87,15 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access4.png)
 
-
 3. トークンの窃取からの保護
 
     Internet Access 機能では、条件付きアクセスに統合された構成として、準拠済みネットワークの概念を導入しています。この制御により、Microsoft Entra と統合されたクラウド アプリケーションをトークンの盗難から保護し、ユーザーが重要なクラウド サービスにアクセスする際に、テナント固有のネットワーク セキュリティポリシーを迂回しないようにすることができます。また、トークンの盗難が検出された場合は、継続的なアクセス評価を使用して Microsoft 365 アプリやリソースへのアクセスを即座にブロックすることもできます。
 
     なお、Microsoft 365 トラフィックに対する条件付きアクセスについては、継続的アクセス評価が現在サポートされていないため、今後のアップデートをお待ちください。
-    [Global Secure Access 経由のユニバーサル条件付きアクセスについて説明します](https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-universal-conditional-access#known-limitations)
+   
+    [Global Secure Access 経由のユニバーサル条件付きアクセスにおける既知の制限事項](https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-universal-conditional-access#known-limitations)
 
-
-4. ソース IP アドレスを維持する
+5. ソース IP アドレスを維持する
 
     一般的なプロキシは、ユーザーの元のソース IP を隠蔽し、条件付きアクセスの場所ポリシーの適用を困難にしてしまいます。そのため、リスク検出とアクティビティログの精度に影響を与えていました。Microsoft Entra Internet Access は、ユーザーの元のソース IP が維持されるようにすることで、条件付きアクセス、継続的なアクセス評価、ID のリスク検出、およびログにおける信頼できる場所の確認において、下位互換性を提供します。
 
@@ -105,19 +103,17 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access5.png)
 
-    下記にて場所ポリシーを厳密に管理するよう条件付きアクセスを構成することで、ロケーションに関するポリシーがより厳密に動作します。
+    下記にて場所ポリシーを厳密に管理するよう条件付きアクセスを構成することで、場所に関するポリシーがより厳密に動作します。
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access6.png)
 
-
-5. 条件付きアクセスでネットワーク アクセス制御を統一的に管理 
+6. 条件付きアクセスでネットワーク アクセス制御を統一的に管理 
 
     ユーザー、デバイス、場所、リスク構成など、条件付きアクセスで利用可能な豊富な条件に基づいて、あらゆるインターネットの宛先にネットワーク セキュリティ ポリシーを適用できるようになります。条件付きアクセスのセッション タブに「Global Secure Access Policy を利用する」の設定が追加され、今後利用できるようになります。
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access7.png)
 
-
-6. エンド ユーザーによる安全でないコンテンツへのアクセスを制限します。
+7. エンド ユーザーによる安全でないコンテンツへのアクセスを制限します。
 
     条件付きアクセスにおける、ユーザー、デバイス、場所の制御により、Web コンテンツ フィルタリング (URL、FQDN、Web カテゴリ) をもちいたアクセス制限も可能になります。攻撃対象の領域を減らし、ネットワーク セキュリティの管理体験がよりシンプルになります。
 
@@ -127,20 +123,17 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access9.png)
 
-
-7. 製品レポートとダッシュボード
+8. 製品レポートとダッシュボード
 
     レポートとダッシュボードにより、環境の全体像を簡単に把握し、組織で共有することが可能となります。導入状況を確認し、新たなリスクを検出し、問題を迅速に修正することもできます。当社のダッシュボードは、マイクロソフトの SSE ソリューションを通じて接続されているユーザー、デバイス、宛先のその時点での全体像を提供します。来年早々には、ポリシーに関する解析情報と推奨事項が強化され、高度なアプリとネットワークの検出機能が提供される予定です。クライアントがインストールされているアクティブなデバイスの数や、どのあて先に通信が多く行われているかなども確認可能です。
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access10.png)
 
-
-8. ネットワーク トラフィック ログに基づくカスタム ビューとダッシュボード
+9. ネットワーク トラフィック ログに基づくカスタム ビューとダッシュボード
 
     トラフィック ログのページでは、ソリューションを通じて発生したすべてのリクエストとレスポンスのトランザクションを可視化することができます。これらのログでは、デバイス ID、オペレーティング システム名とバージョンなど、デバイスから収集された情報を見ることもできます。 また、ソース IP とポート、宛先 IP とポート、FQDN などの関連するパケット情報も見ることができます。
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access11.png)
-
 
     診断設定で NetworkAccessTrafficLogs にチェックを入れて転送すると、 Log Analytics 側にてログを確認することができます。
 
@@ -150,19 +143,17 @@ Microsoft Entra Internet Access は、ID を中心とした Secure Web Gateway (
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access13.png)
 
-
-9. Microsoft 365 のセキュリティ イベントをリアルタイムに可視化
+10. Microsoft 365 のセキュリティ イベントをリアルタイムに可視化
 
     精細なログから、Microsoft 365 アプリとリソースの脅威を簡単かつ迅速に検出いただけます。インターネット アクセス ソリューションは、Microsoft 365 のログをユーザー、場所、デバイスの豊富な情報で拡張し、ユーザーの利用に影響を与えずに、ほぼリアルタイムに情報を提供します。
 
     ![](./microsoft-entra-internet-access/microsoft-entra-internet-access14.png)
 
-
 下記の機能は現在開発中で、来年早々にリリースされる予定です:
  
-・ 送受信トラフィックの制限機能: ユーザーの利用形態を考慮したクラウド ファイアウォールを活用することで、たきめ細かなポリシー条件により、IP アドレス、ポート、プロトコルなどに基づいて制限を行えるようにします。
-・ 悪意のあるネットワーク活動の特定とブロック: 侵入検知防御システム (IDPS) と脅威インテリジェンスにより、既知の悪意のある IP/FQDN/URL を特定およびブロックします。
-・ 暗号化されたトラフィックの検査: すべての TCP/UDP トラフィックに対してきめ細かな TLS のインスペクションを行います。
+- 送受信トラフィックの制限機能: ユーザーの利用形態を考慮したクラウド ファイアウォールを活用することで、たきめ細かなポリシー条件により、IP アドレス、ポート、プロトコルなどに基づいて制限を行えるようにします。
+- 悪意のあるネットワーク活動の特定とブロック: 侵入検知防御システム (IDPS) と脅威インテリジェンスにより、既知の悪意のある IP/FQDN/URL を特定およびブロックします。
+- 暗号化されたトラフィックの検査: すべての TCP/UDP トラフィックに対してきめ細かな TLS のインスペクションを行います。
 
 ## Microsoft Entra Internet Access の展開方法
 
