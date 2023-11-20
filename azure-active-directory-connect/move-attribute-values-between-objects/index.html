@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/move-attribute-values-between-objects/application-directory-synchronization/sync-routine-1024x569.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/move-attribute-values-between-objects/application-directory-synchronization/mail-duplicate-1024x568.jpg">
 <meta property="article:published_time" content="2018-10-10T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-20T19:03:05.917Z">
+<meta property="article:modified_time" content="2023-11-20T19:10:18.909Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+14e86825-7da0-5963-b879-efd1e1d179d3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+-+%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8C%E6%9C%9F%E3%81%AE%E5%BF%9C%E7%94%A8+%E2%80%93+%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E9%96%93%E3%81%AE%E5%B1%9E%E6%80%A7%E5%80%A4%E3%81%AE%E7%A7%BB%E5%8B%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fmove-attribute-values-between-objects%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fmove-attribute-values-between-objects.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fmove-attribute-values-between-objects.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/move-attribute-values-between-objects/" data-id="clp79yidk002c0noabi424eew" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/move-attribute-values-between-objects/" data-id="clp7a7syh002c0nnmhahl1i16" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -195,9 +195,9 @@
 <p>このような状態になった場合、<span style="color: green; ">“次回の同期で新 AD ユーザーの mail 属性値が改めて新 AAD の mail 属性に更新されるのでは？” </span>と考える方もいるかもしれません。<br>しかし、次回の同期時には <span style="color: green; ">AD からの Import において、AADC の MV 情報は何も更新されないため、AADC は AAD に改めて Export すべき更新が無い</span>と判断します。<br>つまり、次回同期でも新 AD ユーザーの mail 属性値は更新されず Null のままとなりオンプレミス AD の情報とも不整合が生じた状態となります。</p>
 <p>この場合の対処としては、オンプレミス AD にて新 AD ユーザーの mail 属性値を変更して同期を行い、再度目的の値に戻して同期を行います。具体的な作業は次のとおりです。</p>
 <ul>
-<li>新 AD ユーザーの mail 属性に一時的な値 (<a href="mailto:&#117;&#x73;&#x65;&#x72;&#x6e;&#97;&#109;&#x65;&#45;&#116;&#101;&#x6d;&#x70;&#64;&#99;&#111;&#110;&#116;&#111;&#x73;&#x6f;&#46;&#x63;&#x6f;&#109;">&#117;&#x73;&#x65;&#x72;&#x6e;&#97;&#109;&#x65;&#45;&#116;&#101;&#x6d;&#x70;&#64;&#99;&#111;&#110;&#116;&#111;&#x73;&#x6f;&#46;&#x63;&#x6f;&#109;</a> 等) をセットする</li>
+<li>新 AD ユーザーの mail 属性に一時的な値 (<a href="mailto:&#x75;&#x73;&#x65;&#114;&#110;&#97;&#109;&#101;&#x2d;&#x74;&#x65;&#109;&#x70;&#64;&#99;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#99;&#111;&#109;">&#x75;&#x73;&#x65;&#114;&#110;&#97;&#109;&#101;&#x2d;&#x74;&#x65;&#109;&#x70;&#64;&#99;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#99;&#111;&#109;</a> 等) をセットする</li>
 <li>この状態で一度 AADC による同期を行い、一時的なメール アドレス値を新 AAD ユーザーの mail 属性に反映させる</li>
-<li>改めて新 AD ユーザーの mail 属性に本来セットしたかった値 (<a href="mailto:&#117;&#x73;&#101;&#114;&#x6e;&#x61;&#109;&#x65;&#x40;&#99;&#x6f;&#110;&#116;&#x6f;&#115;&#111;&#x2e;&#99;&#x6f;&#109;">&#117;&#x73;&#101;&#114;&#x6e;&#x61;&#109;&#x65;&#x40;&#99;&#x6f;&#110;&#116;&#x6f;&#115;&#111;&#x2e;&#99;&#x6f;&#109;</a> 等) をセットする</li>
+<li>改めて新 AD ユーザーの mail 属性に本来セットしたかった値 (<a href="mailto:&#117;&#x73;&#x65;&#x72;&#110;&#x61;&#109;&#x65;&#64;&#99;&#111;&#x6e;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#99;&#x6f;&#x6d;">&#117;&#x73;&#x65;&#x72;&#110;&#x61;&#109;&#x65;&#64;&#99;&#111;&#x6e;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#99;&#x6f;&#x6d;</a> 等) をセットする</li>
 <li>再度 AADC による同期を行い、本来の目的であるメール アドレス値を新 AAD ユーザーの mail 属性に反映させる</li>
 </ul>
 <p>そもそものお話として、上記のような症状が発生することが無いよう<span style="color: red; "><strong>削除する情報を先に AAD に同期して、追加する情報は後から同期する</strong></span>運用をぜひ留意いただければ幸いです。<br>以下の技術情報でも、AADC のアーキテクチャに関する情報を公開しておりますので、興味を持っていただけた方はぜひ併せてご参照ください。</p>
@@ -259,7 +259,7 @@
       <ul>
         
           <li>
-            <a href="../../azure-active-directory/emphasizing-security-by-default-with-advanced-microsoft/">Microosft Authenticator の新機能によるセキュリティの改善</a>
+            <a href="../../azure-active-directory/emphasizing-security-by-default-with-advanced-microsoft/">Microsoft Authenticator の新機能によるセキュリティの改善</a>
           </li>
         
           <li>
