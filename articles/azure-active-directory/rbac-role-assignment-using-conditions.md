@@ -5,6 +5,7 @@ tags:
     - US Identity Blog
 ---
 
+#  条件を利用した Azure RBAC のロール割り当てについて
 
 こんにちは！ Azure ID チームの小出です。
 
