@@ -1,11 +1,11 @@
 ---
-title: 認証に電話網を使うのはそろそろやめよう
+title: Microosft Authenticator の新機能によるセキュリティの改善
 date: 2023-11-21 09:00
 tags:
     - US Identity Blog
 ---
 
-# 認証に電話網を使うのはそろそろやめよう
+# Microosft Authenticator の新機能によるセキュリティの改善
 
 こんにちは、Azure Identity サポート チームの 高田 です。
  
