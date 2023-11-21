@@ -52,7 +52,7 @@ tags:
 
 ## 実際の構成例は？
 アクセス パッケージを割り当てた時に追加で実施したいタスクとしては、「割り当てられたユーザーのプロパティ変更」や「割り当てられたユーザーへのメール送信」などが挙げられます。
-今回は、アクセスパッケージが割り当てられたら「割り当てられたユーザーの部署（department 属性）およびExtenrionAttribute1 属性を変更する」「変更された旨と、パッケージ内のリソース リンクをユーザーに通知する」といった拡張機能を実装してみたいと思います。
+今回は、アクセスパッケージが割り当てられたら「割り当てられたユーザーの部署（department 属性）およびExtenrionAttribute1 属性を変更する」「変更された旨と、パッケージ内のリソース リンクをユーザーにメール通知する」といった拡張機能を実装してみたいと思います。
 
 手順は大きく分けて４つあります。
 
@@ -72,36 +72,37 @@ tags:
 
 ### ① カタログにカスタム拡張機能を追加し、ロジック アプリを作成する
 
-1. Azure ポータルにサインインし、[Azure Active Directory] - [Identity Governance] - [カタログ] - [新しいカタログ] よりカタログを作成します。名前と説明を入力し、作成してください。カタログはアクセスパッケージに含めることが出来るリソース (グループ、アプリケーション、SPO サイト) を纏めるために利用します。
+1-1. Azure ポータルにサインインし、[Azure Active Directory] - [Identity Governance] - [カタログ] - [新しいカタログ] よりカタログを作成します。名前と説明を入力し、作成してください。カタログはアクセスパッケージに含めることが出来るリソース (グループ、アプリケーション、SPO サイト) を纏めるために利用します。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension5.png)
 
-2. 作成したカタログについて、メニューから [カスタム拡張機能] を選択し [カスタム拡張機能の追加] をクリックします。
+1-2. 作成したカタログについて、メニューから [カスタム拡張機能] を選択し [カスタム拡張機能の追加] をクリックします。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension6.png)
 
-3. カスタム拡張機能に名前と説明を付けます。どのようなカスタム タスクが実行されるかを説明に記載しておくと分かりやすいです。
+1-3. カスタム拡張機能に名前と説明を付けます。どのようなカスタム タスクが実行されるかを説明に記載しておくと分かりやすいです。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension7.png)
 
-4. アクセス パッケージにこの拡張機能を紐づける時、どのようなタイミングでトリガーされるかを指定します。今回は「要求ワークフロー」を指定します。
+1-4. アクセス パッケージにこの拡張機能を紐づける時、どのようなタイミングでトリガーされるかを指定します。今回は「要求ワークフロー」を指定します。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension8.png)
 
-5. ロジック アプリの実行中に、アクセス パッケージの割り当て処理などを一時停止するかを指定します。今回は  department 属性を正しく変更しメールが送信できたら処理を再度開始したいので、「起動して待機」を指定します。待機時間などは既定値のままですが、任意に変更できます。
+1-5. ロジック アプリの実行中に、アクセス パッケージの割り当て処理などを一時停止するかを指定します。今回は  department 属性を正しく変更しメールが送信できたら処理を再度開始したいので、「起動して待機」を指定します。待機時間などは既定値のままですが、任意に変更できます。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension9.png)
 
-6. このカスタム拡張機能に紐づけるロジック アプリを作成します。サブスクリプションとリソース グループを選択し、ロジック アプリの名前を指定して、「ロジック アプリの作成」をクリックします。
+1-6. このカスタム拡張機能に紐づけるロジック アプリを作成します。サブスクリプションとリソース グループを選択し、ロジック アプリの名前を指定して、「ロジック アプリの作成」をクリックします。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension10.png)
 
-7. ロジック アプリのデプロイが完了するのを待機します。下記のように成功メッセージが表示されれば次へ進みます。
+1-7. ロジック アプリのデプロイが完了するのを待機します。下記のように成功メッセージが表示されれば次へ進みます。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension11.png)
 
-8. 最終確認画面で作成をクリックすれば完了です。
-9. 下記のように、一覧に表示されていることを確認します。
+1-8. 最終確認画面で作成をクリックすれば完了です。
+
+1-9. 下記のように、一覧に表示されていることを確認します。
 
 ![](./access-package-with-custom-extension/access-package-with-custom-extension12.png)
 
@@ -115,7 +116,7 @@ tags:
 
 ### ③ マネージド ID を用意し、権限を付与する
 
-今回のロジックアプリでは「割り当てられたユーザーの部署（department 属性）およびExtenrionAttribute1 属性を変更する」「変更された旨と、パッケージ内のリソース リンクをユーザーに通知する」という 2 つのタスクを Microsoft Graph API を利用して実現します。
+今回のロジックアプリでは「割り当てられたユーザーの部署（department 属性）およびExtenrionAttribute1 属性を変更する」「変更された旨と、パッケージ内のリソース リンクをユーザーにメール通知する」という 2 つのタスクを Microsoft Graph API を利用して実現します。
 
 呼び出されたロジック アプリで Graph API クエリを実行するためには、ロジック アプリ内で認証の構成を行う必要があります。
 Azure AD にアプリを作成してクライアント シークレットなどを利用して認証を行うこともできますが、今回はマネージド ID を利用する方法を紹介します。
@@ -216,7 +217,7 @@ New-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId $graph.Id -AppRoleId
 
 (4)  メールの送付先となるアドレスを準備する
 
-(5)  パッケージ内のリソース リンクをユーザーに通知する
+(5)  パッケージ内のリソース リンクをユーザーにメール通知する
 
 
 
@@ -280,7 +281,7 @@ New-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId $graph.Id -AppRoleId
 ![](./access-package-with-custom-extension/access-package-with-custom-extension36.png)
 
 
-#### (5) パッケージ内のリソース リンクをユーザーに通知する
+#### (5) パッケージ内のリソース リンクをユーザーにメール通知する
 
 メールの送付は [user: sendMail - Microsoft Graph v1.0](https://learn.microsoft.com/ja-jp/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http) の API で実行できますので、下記のように実行します。
 
