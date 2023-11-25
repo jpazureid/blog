@@ -1,6 +1,6 @@
 ---
 title: 条件を利用した Azure RBAC のロール割り当て
-date: 2023-11-24 09:00
+date: 2023-11-26 09:00
 tags:
     - US Identity Blog
 ---
