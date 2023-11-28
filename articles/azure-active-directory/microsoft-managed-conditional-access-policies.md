@@ -177,6 +177,17 @@ Microsoft マネージド条件付きアクセス ポリシーは、作成され
 
 ---
 
+<span style="color:green">Q</span>.  "ユーザーごとの MFA" の機能を現在利用しているかどうか、どうやって確認すればいいでしょうか？
+
+<span style="color:red">A</span>. "ユーザーごとの MFA" を利用しているかは [Azure Portal (portal.azure.com)] > [Microsoft Entra ID (Azure Active Directory)] > [ユーザー] > [ユーザーごとの MFA] からご確認いただけます。対応する公開情報のページは[こちら](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfa-userstates#view-the-status-for-a-user)です。
+
+一覧に表示されるユーザーの [MULTI-FACTOR AUTHENTICATION の状態] が [有効] もしくは [強制] となっている場合、"ユーザーごとの MFA" の機能により MFA が要求されています。  
+※ [任意] のフィルターから検索が可能です
+
+![](./microsoft-managed-conditional-access-policies/2.png)
+
+---
+
 <span style="color:green">Q</span>.  「"ユーザーごとの MFA" 機能を使用しているユーザーに多要素認証を必須とする Microsoft マネージド条件付きアクセス ポリシー」は、どのユーザーが対象になりますか？
 
 <span style="color:red">A</span>. このポリシーが作成された時点で、"ユーザーごとの MFA" 機能により多要素認証が有効または強制されている既存のユーザーが、ポリシーの対象となります。「"ユーザーごとの MFA" 機能を使用しているユーザーに多要素認証を必須とする Microsoft マネージド ポリシー」が追加された後に作成されたユーザーや新たに "ユーザーごとの MFA" を有効化されたユーザーは、このポリシーの対象とはなりません。
