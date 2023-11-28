@@ -182,7 +182,7 @@ Microsoft マネージド条件付きアクセス ポリシーは、作成され
 <span style="color:red">A</span>. "ユーザーごとの MFA" を利用しているかは [Azure Portal (portal.azure.com)] > [Microsoft Entra ID (Azure Active Directory)] > [ユーザー] > [ユーザーごとの MFA] からご確認いただけます。対応する公開情報のページは[こちら](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfa-userstates#view-the-status-for-a-user)です。
 
 一覧に表示されるユーザーの [MULTI-FACTOR AUTHENTICATION の状態] が [有効] もしくは [強制] となっている場合、"ユーザーごとの MFA" の機能により MFA が要求されています。  
-※ [任意] のフィルターから検索が可能です
+※ [MULTI-FACTOR AUTHENTICATION の状態] についてフィルターを利用した検索が可能です。
 
 ![](./microsoft-managed-conditional-access-policies/2.png)
 
