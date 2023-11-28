@@ -14,8 +14,9 @@
 <meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームです。 今回は、最近お問い合わせをよくいただく「Microsoft マネージド条件付きアクセス ポリシー」についてです。Microsoft マネージド条件付きアクセス ポリシーについて、概要とよくいただくご質問を Q&amp;A 形式でおまとめいたしました。既存のドキュメントではカバーされていない動作や質問について今後も適宜内容">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/1.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/2.png">
 <meta property="article:published_time" content="2023-11-13T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-25T23:48:23.742Z">
+<meta property="article:modified_time" content="2023-11-28T14:46:26.556Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -157,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d8ddccec-4030-5d5a-8aff-26329da4a110%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-managed-conditional-access-policies%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-managed-conditional-access-policies.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-managed-conditional-access-policies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/" data-id="clpepco1p00vl0omh6q0afuel" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-managed-conditional-access-policies/" data-id="clpigb9cv00vl0npbdwd075as" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -268,6 +269,11 @@
 <hr>
 <p><span style="color:green">Q</span>.  Microsoft マネージド条件付きアクセス ポリシーが作成されるとライセンスは消費されますか？</p>
 <p><span style="color:red">A</span>. Microsoft マネージド条件付きアクセス ポリシーの対象となるユーザーに自動的にライセンスが割り当てられることはありません。Microsoft マネージド条件付きアクセス ポリシーを利用される場合には、その対象となるユーザーへ Microsoft Entra ID P1 以上 (Policy3 の場合は Microsoft Entra ID P2) のライセンスを割り当てください。</p>
+<hr>
+<p><span style="color:green">Q</span>.  “ユーザーごとの MFA” の機能を現在利用しているかどうか、どうやって確認すればいいでしょうか？</p>
+<p><span style="color:red">A</span>. “ユーザーごとの MFA” を利用しているかは [Azure Portal (portal.azure.com)] &gt; [Microsoft Entra ID (Azure Active Directory)] &gt; [ユーザー] &gt; [ユーザーごとの MFA] からご確認いただけます。対応する公開情報のページは<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfa-userstates#view-the-status-for-a-user">こちら</a>です。</p>
+<p>一覧に表示されるユーザーの [MULTI-FACTOR AUTHENTICATION の状態] が [有効] もしくは [強制] となっている場合、”ユーザーごとの MFA” の機能により MFA が要求されています。<br>※ [MULTI-FACTOR AUTHENTICATION の状態] についてフィルターを利用した検索が可能です。</p>
+<p><img src="/blog/azure-active-directory/microsoft-managed-conditional-access-policies/2.png"></p>
 <hr>
 <p><span style="color:green">Q</span>.  「”ユーザーごとの MFA” 機能を使用しているユーザーに多要素認証を必須とする Microsoft マネージド条件付きアクセス ポリシー」は、どのユーザーが対象になりますか？</p>
 <p><span style="color:red">A</span>. このポリシーが作成された時点で、”ユーザーごとの MFA” 機能により多要素認証が有効または強制されている既存のユーザーが、ポリシーの対象となります。「”ユーザーごとの MFA” 機能を使用しているユーザーに多要素認証を必須とする Microsoft マネージド ポリシー」が追加された後に作成されたユーザーや新たに “ユーザーごとの MFA” を有効化されたユーザーは、このポリシーの対象とはなりません。</p>
