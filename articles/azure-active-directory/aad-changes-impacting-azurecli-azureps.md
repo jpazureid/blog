@@ -1,12 +1,12 @@
 ---
-title: Values of identifierUris property must use a verified domain of the organization or its subdomain エラーの対処法
+title: Values of identifierUris property must use a verified domain of the organization or its subdomain (IdentifierUris プロパティの値には、組織またはそのサブドメインの確認済みドメインを使用する必要があります) エラーの対処法
 date: 2021-10-20 10:00
 tags:
   - Azure AD
   - Service Principal
 ---
 
-# Values of identifierUris property must use a verified domain of the organization or its subdomain エラーの対処法
+# Values of identifierUris property must use a verified domain of the organization or its subdomain (IdentifierUris プロパティの値には、組織またはそのサブドメインの確認済みドメインを使用する必要があります) エラーの対処法
 
 こんにちは、Azure Identity サポート チームの栗井です。
 
