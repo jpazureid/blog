@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra ID に必要な通信先エンドポイントのまとめ
-date: 2023-11-28 21:18
+date: 2023-12-01 09:00
 tags:
   - Entra ID
   - Network
