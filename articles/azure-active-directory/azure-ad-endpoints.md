@@ -1,63 +1,63 @@
 ---
-title: Microsoft Entra ID ‚É•K—v‚È’ÊMæƒGƒ“ƒhƒ|ƒCƒ“ƒg‚Ü‚Æ‚ß
+title: Microsoft Entra ID ã«å¿…è¦ãªé€šä¿¡å…ˆã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã®ã¾ã¨ã‚
 date: 2023-11-28 21:18
 tags:
   - Entra ID
   - Network
 ---
 
-# Entra ID ‚É•K—v‚ÈƒGƒ“ƒhƒ|ƒCƒ“ƒg‚Ü‚Æ‚ß
+# Entra ID ã«å¿…è¦ãªã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã®ã¾ã¨ã‚
 
-‚±‚ñ‚É‚¿‚ÍAAzure & Identity ƒTƒ|[ƒg ƒ`[ƒ€‚Ì‘å’ë‚Å‚·B
+ã“ã‚“ã«ã¡ã¯ã€Azure & Identity ã‚µãƒãƒ¼ãƒˆ ãƒãƒ¼ãƒ ã®å¤§åº­ã§ã™ã€‚
 
-¡‰ñ‚Í‚æ‚­‚²¿–â‚ğ‚¢‚½‚¾‚­ Microsoft Entra ID ‚ğ‚²—˜—p‚¢‚½‚¾‚­Û‚É•K—v‚Æ‚È‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg (URL/IP ƒAƒhƒŒƒX) ‚É‚Â‚¢‚Ä‚²ˆÄ“à‚µ‚Ü‚·BMicrosoft Entra ID ‚É‚¨‚¢‚Ä‚Í”FØ‚©‚çƒAƒJƒEƒ“ƒgŠÇ—AƒAƒJƒEƒ“ƒg“¯Šú‚ÉŠ‚é‚Ü‚Å•¡”‚ÌƒT[ƒrƒX‚ğ’ñ‹Ÿ‚µ‚Ä‚¨‚èA‚²—˜—p‚¢‚½‚¾‚­‹@”\‚É‚æ‚Á‚ÄƒAƒNƒZƒXæ‚ÌƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ªˆÙ‚È‚è‚Ü‚·B‚¨‹q—l‚É‚æ‚Á‚Ä‚ÍAƒlƒbƒgƒ[ƒN ƒvƒƒLƒV‚É‚ÄŒµ–§‚ÉÚ‘±‰Â”\‚ÈƒGƒ“ƒhƒ|ƒCƒ“ƒg (URL) æ‚ğ§Œä‚³‚ê‚Ä‚¢‚éê‡‚ª‚ ‚èA‚»‚¤‚¢‚Á‚½§Œä‚ğs‚í‚ê‚Ä‚¢‚é‚¨‹q—l‚Å‚ÍA³í‚ÉƒT[ƒrƒX‚ğ—˜—p‚·‚é‚½‚ß‚ÉŒÂ•Ê‚ÉƒGƒ“ƒhƒ|ƒCƒ“ƒg (URL) ‚ğ‹–‰Â‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
+ä»Šå›ã¯ã‚ˆãã”è³ªå•ã‚’ã„ãŸã ã Microsoft Entra ID ã‚’ã”åˆ©ç”¨ã„ãŸã ãéš›ã«å¿…è¦ã¨ãªã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ (URL/IP ã‚¢ãƒ‰ãƒ¬ã‚¹) ã«ã¤ã„ã¦æ¡ˆå†…ã—ã¾ã™ã€‚Microsoft Entra ID ã«ãŠã„ã¦ã¯èªè¨¼ã‹ã‚‰ã‚¢ã‚«ã‚¦ãƒ³ãƒˆç®¡ç†ã€ã‚¢ã‚«ã‚¦ãƒ³ãƒˆåŒæœŸã«è‡³ã‚‹ã¾ã§è¤‡æ•°ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã—ã¦ãŠã‚Šã€ã”åˆ©ç”¨ã„ãŸã ãæ©Ÿèƒ½ã«ã‚ˆã£ã¦ã‚¢ã‚¯ã‚»ã‚¹å…ˆã®ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆãŒç•°ãªã‚Šã¾ã™ã€‚ãŠå®¢æ§˜ã«ã‚ˆã£ã¦ã¯ã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ ãƒ—ãƒ­ã‚­ã‚·ã«ã¦å³å¯†ã«æ¥ç¶šå¯èƒ½ãªã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ (URL) å…ˆã‚’åˆ¶å¾¡ã•ã‚Œã¦ã„ã‚‹å ´åˆãŒã‚ã‚Šã€ãã†ã„ã£ãŸåˆ¶å¾¡ã‚’è¡Œã‚ã‚Œã¦ã„ã‚‹ãŠå®¢æ§˜ã§ã¯ã€æ­£å¸¸ã«ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚ã«å€‹åˆ¥ã«ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ (URL/IP ã‚¢ãƒ‰ãƒ¬ã‚¹) ã¸ã®é€šä¿¡ã‚’è¨±å¯ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
-–{‹L–‚É‚¨‚¢‚Ä‚ÍAŒ»“_‚Å’ñ‹Ÿ‚µ‚Ä‚¢‚é Microsoft Entra ID ‚ÌŠeƒT[ƒrƒX‚ÉŠÖ‚µA•K—v‚Æ‚È‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹LÚ‚µ‚½ŒöŠJ‘—¿‚Ö‚ÌƒŠƒ“ƒN‚ğ‚Ü‚Æ‚ß‚Ü‚·B‚±‚ê‚É‚æ‚èAu‚Ç‚ÌƒGƒ“ƒhƒ|ƒCƒ“ƒg‚É‘Î‚µ‚ÄƒAƒNƒZƒX‹–‰Â‚ğ‚·‚ê‚Î‚¢‚¢‚Ì‚©‚Ü‚Æ‚ß‚Ä’m‚è‚½‚¢Iv‚Æ‚¢‚Á‚½‚²—v–]‚É‚¨‰‚¦o—ˆ‚½‚çK‚¢‚Å‚·B
+æœ¬è¨˜äº‹ã«ãŠã„ã¦ã¯ã€ç¾æ™‚ç‚¹ã§æä¾›ã—ã¦ã„ã‚‹ Microsoft Entra ID ã®å„ã‚µãƒ¼ãƒ“ã‚¹ã«é–¢ã—ã€å¿…è¦ã¨ãªã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨˜è¼‰ã—ãŸå…¬é–‹è³‡æ–™ã¸ã®ãƒªãƒ³ã‚¯ã‚’ã¾ã¨ã‚ã¾ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ã€Œã©ã®ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã«å¯¾ã—ã¦ã‚¢ã‚¯ã‚»ã‚¹è¨±å¯ã‚’ã™ã‚Œã°ã„ã„ã®ã‹ã¾ã¨ã‚ã¦çŸ¥ã‚ŠãŸã„ï¼ã€ã¨ã„ã£ãŸã”è¦æœ›ã«ãŠå¿œãˆå‡ºæ¥ãŸã‚‰å¹¸ã„ã§ã™ã€‚
 
 > [!NOTE]
-> ƒTƒ|[ƒgƒ`[ƒ€‚É‚Ä‰Â”\‚ÈŒÀ‚èv‘¬‚©‚Â–Ô—…“I‚Èî•ñ‚ÌXV‚É“w‚ß‚Ä‚¨‚è‚Ü‚·‚ªA–{‹L–‚É‚Ä‚·‚×‚Ä‚Ìî•ñ‚Ì–Ô—…‚ª‚Å‚«‚Ä‚¢‚é‚í‚¯‚Å‚Í‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX‚ª—˜—p‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ÍƒhƒLƒ…ƒƒ“ƒg‚ÌXV‚Æ‚Æ‚à‚É•Ï‰»‚·‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B³®‚ÈˆÄ“à‚É‚Â‚¢‚Ä‚ÍŠeŒöŠJî•ñ‚ğQÆ‚¢‚½‚¾‚­‚©A•¾ĞƒTƒ|[ƒgƒT[ƒrƒX‚Ü‚Å‚¨–â‚¢‡‚í‚¹‚­‚¾‚³‚¢B
+> ã‚µãƒãƒ¼ãƒˆ ãƒãƒ¼ãƒ ã«ã¦å¯èƒ½ãªé™ã‚Šè¿…é€Ÿã‹ã¤ç¶²ç¾…çš„ãªæƒ…å ±ã®æ›´æ–°ã«åŠªã‚ã¦ãŠã‚Šã¾ã™ãŒã€æœ¬è¨˜äº‹ã«ã¦ã™ã¹ã¦ã®æƒ…å ±ã®ç¶²ç¾…ãŒã§ãã¦ã„ã‚‹ã‚ã‘ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹ãŒåˆ©ç”¨ã™ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®æ›´æ–°ã¨ã¨ã‚‚ã«å¤‰åŒ–ã™ã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚æ­£å¼ãªæ¡ˆå†…ã«ã¤ã„ã¦ã¯å„å…¬é–‹æƒ…å ±ã‚’å‚ç…§ã„ãŸã ãã‹ã€å¼Šç¤¾ã‚µãƒãƒ¼ãƒˆ ã‚µãƒ¼ãƒ“ã‚¹ã¾ã§ãŠå•ã„åˆã‚ã›ãã ã•ã„ã€‚
 
-## Microsoft Entra ID ‚ÅŠî–{“I‚É—˜—p‚³‚ê‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Entra ID ã§åŸºæœ¬çš„ã«åˆ©ç”¨ã•ã‚Œã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-‚Ü‚¸‰‚ß‚É Microsoft Entra ID ‚ğ—˜—p‚¢‚½‚¾‚­Û‚ÉŠî–{“I‚É•K—v‚Æ‚È‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ÍA[Office 365 ‚Ì URL ‚Æ IP ƒAƒhƒŒƒX‚Ì”ÍˆÍ](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) ‚É‹LÚ‚³‚ê‚Ä‚¢‚é ID 56 , ID 59 ‚»‚µ‚Ä ID 125 ‚É‚È‚è‚Ü‚·B‚±‚¿‚ç‚Í Microsoft 365 ‚ğ—˜—p‚·‚éÛ‚É Micorosft Entra ID ‚ğ—˜—p‚·‚éƒVƒiƒŠƒI‚ÅÅ’áŒÀ•K—v‚Æ‚È‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‚Ü‚Æ‚ß‚½‚à‚Ì‚Å‚·BMicrosoft Entra ID ‚ğ‚²—˜—p‚¢‚½‚¾‚­Û‚ÍA”FØ‚ğs‚¤ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚±‚ê‚ç‚ÌƒGƒ“ƒhƒ|ƒCƒ“ƒg‚É‚Â‚¢‚Äƒlƒbƒgƒ[ƒN‚Ì‘a’Ê‚ğŠm•Û‚­‚¾‚³‚¢B
+ã¾ãšåˆã‚ã« Microsoft Entra ID ã‚’åˆ©ç”¨ã„ãŸã ãéš›ã«åŸºæœ¬çš„ã«å¿…è¦ã¨ãªã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã¯ã€[Office 365 ã® URL ã¨ IP ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ç¯„å›²](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ ID 56 , ID 59 ãã—ã¦ ID 125 ã«ãªã‚Šã¾ã™ã€‚ã“ã¡ã‚‰ã¯ Microsoft 365 ã‚’åˆ©ç”¨ã™ã‚‹éš›ã« Micorosft Entra ID ã‚’åˆ©ç”¨ã™ã‚‹ã‚·ãƒŠãƒªã‚ªã§æœ€ä½é™å¿…è¦ã¨ãªã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’ã¾ã¨ã‚ãŸã‚‚ã®ã§ã™ã€‚Microsoft Entra ID ã‚’ã”åˆ©ç”¨ã„ãŸã ãéš›ã¯ã€èªè¨¼ã‚’è¡Œã†ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã“ã‚Œã‚‰ã®ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã«ã¤ã„ã¦ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã®ç–é€šã‚’ç¢ºä¿ãã ã•ã„ã€‚
 
-## Microsoft Entra ID ‚ÅƒfƒoƒCƒXŠÇ—‚É—˜—p‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Entra ID ã§ãƒ‡ãƒã‚¤ã‚¹ç®¡ç†ã«åˆ©ç”¨ã™ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-Entra ID ‚Å‚Í Microsoft Entra ƒnƒCƒuƒŠƒbƒhQ‰ÁAMicrosoft Entra Q‰Á‚»‚µ‚Ä Microsoft Entra “o˜^A‚Æ‚¢‚¤ 3 ‚Â‚Ì•û–@‚ÅƒfƒoƒCƒX‚ğ“o˜^‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚¢‚¸‚ê‚Ì•û–@‚ğ—˜—p‚·‚éê‡‚Å‚àA[Microsoft Entra ƒnƒCƒuƒŠƒbƒhQ‰Á‚ğ\¬‚·‚é](https://learn.microsoft.com/ja-jp/entra/identity/devices/how-to-hybrid-join#network-connectivity-requirements) ‚Ìƒy[ƒW‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+Entra ID ã§ã¯ Microsoft Entra ãƒã‚¤ãƒ–ãƒªãƒƒãƒ‰å‚åŠ ã€Microsoft Entra å‚åŠ ãã—ã¦ Microsoft Entra ç™»éŒ²ã€ã¨ã„ã† 3 ã¤ã®æ–¹æ³•ã§ãƒ‡ãƒã‚¤ã‚¹ã‚’ç™»éŒ²ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ã„ãšã‚Œã®æ–¹æ³•ã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã§ã‚‚ã€[Microsoft Entra ãƒã‚¤ãƒ–ãƒªãƒƒãƒ‰å‚åŠ ã‚’æ§‹æˆã™ã‚‹](https://learn.microsoft.com/ja-jp/entra/identity/devices/how-to-hybrid-join#network-connectivity-requirements) ã®ãƒšãƒ¼ã‚¸ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
-## Microsoft Entra ID ‚É‚Ä—˜—p‹K–ñ‚ğ—˜—p‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Entra ID ã«ã¦åˆ©ç”¨è¦ç´„ã‚’åˆ©ç”¨ã™ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-Microsoft Entra ID ‚É‚Ä—˜—p‹K–ñ‚ğ—˜—p‚·‚éê‡‚ÍA[Microsoft Entra ‚Ì—˜—p‹K–ñ‚Ì‚æ‚­Šñ‚¹‚ç‚ê‚é¿–â](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/terms-of-use#frequently-asked-questions) ‚Ìƒy[ƒW‚É‚ ‚é "Q:—˜—p‹K–ñƒT[ƒrƒX‚É‚Í‚Ç‚ÌƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ª”FØ‚Ég—p‚³‚ê‚Ü‚·‚©?" ‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+Microsoft Entra ID ã«ã¦åˆ©ç”¨è¦ç´„ã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã¯ã€[Microsoft Entra ã®åˆ©ç”¨è¦ç´„ã®ã‚ˆãå¯„ã›ã‚‰ã‚Œã‚‹è³ªå•](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/terms-of-use#frequently-asked-questions) ã®ãƒšãƒ¼ã‚¸ã«ã‚ã‚‹ "Q: åˆ©ç”¨è¦ç´„ã‚µãƒ¼ãƒ“ã‚¹ã«ã¯ã©ã®ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆãŒèªè¨¼ã«ä½¿ç”¨ã•ã‚Œã¾ã™ã‹ï¼Ÿ" ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
-## Microsoft Entra Connect ‚ÉŠÖ˜A‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Entra Connect ã«é–¢é€£ã™ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-Microsoft Entra Connect ‚ğ—˜—p‚µ‚ÄAƒnƒCƒuƒŠƒbƒh ID ƒ\ƒŠƒ…[ƒVƒ‡ƒ“ (ƒIƒ“ƒvƒŒƒ~ƒX‚©‚ç‚ÌƒAƒJƒEƒ“ƒg‚Ì“¯Šú) ‚ğ—˜—p‚³‚ê‚éÛ‚É•K—v‚È URL ‚Æ IP ƒAƒhƒŒƒX‚Ìˆê——‚É‚Â‚¢‚Ä‚Íã‹L‚ÌuMicrosoft Entra ID ‚ÅŠî–{“I‚É—˜—p‚³‚ê‚éƒGƒ“ƒhƒ|ƒCƒ“ƒgv‚Ìß‚ğ‚²——‚­‚¾‚³‚¢B‚Ü‚½•¹‚¹‚ÄA[Microsoft Entra Connect ‚ÌÚ‘±‚ÉŠÖ‚·‚é–â‘è‚Ìƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/tshoot-connect-connectivity) ‚Ìƒy[ƒW‚àQÆ‚ğ‚¨Š©‚ß‚µ‚Ü‚·BŠJ•ú‚ª•K—v‚Èƒlƒbƒgƒ[ƒN ƒ|[ƒg‚ÆƒvƒƒgƒRƒ‹‚É‚Â‚¢‚Ä‚ÍA[ƒnƒCƒuƒŠƒbƒh ID ‚Å•K—v‚Èƒ|[ƒg‚ÆƒvƒƒgƒRƒ‹](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-ports) ‚Ìƒy[ƒW‚É‚àà–¾‚ª‚ ‚è‚Ü‚·‚Ì‚Å‚²——‚­‚¾‚³‚¢B
+Microsoft Entra Connect ã‚’åˆ©ç”¨ã—ã¦ã€ãƒã‚¤ãƒ–ãƒªãƒƒãƒ‰ ID ã‚½ãƒªãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ (ã‚ªãƒ³ãƒ—ãƒ¬ãƒŸã‚¹ã‹ã‚‰ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®åŒæœŸ) ã‚’åˆ©ç”¨ã•ã‚Œã‚‹éš›ã«å¿…è¦ãª URL ã¨ IP ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ä¸€è¦§ã«ã¤ã„ã¦ã¯ä¸Šè¨˜ã®ã€ŒMicrosoft Entra ID ã§åŸºæœ¬çš„ã«åˆ©ç”¨ã•ã‚Œã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã€ã®ç¯€ã‚’ã”è¦§ãã ã•ã„ã€‚ã¾ãŸä½µã›ã¦ã€[Microsoft Entra Connect ã®æ¥ç¶šã«é–¢ã™ã‚‹å•é¡Œã®ãƒˆãƒ©ãƒ–ãƒ«ã‚·ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/tshoot-connect-connectivity) ã®ãƒšãƒ¼ã‚¸ã‚‚å‚ç…§ã‚’ãŠå‹§ã‚ã—ã¾ã™ã€‚é–‹æ”¾ãŒå¿…è¦ãªãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ ãƒãƒ¼ãƒˆã¨ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã«ã¤ã„ã¦ã¯ã€[ãƒã‚¤ãƒ–ãƒªãƒƒãƒ‰ ID ã§å¿…è¦ãªãƒãƒ¼ãƒˆã¨ãƒ—ãƒ­ãƒˆã‚³ãƒ«](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-ports) ã®ãƒšãƒ¼ã‚¸ã«ã‚‚èª¬æ˜ãŒã‚ã‚Šã¾ã™ã®ã§ã”è¦§ãã ã•ã„ã€‚
 
-## Microsoft Entra Connect Health Service ‚É—˜—p‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Entra Connect Health Service ã«åˆ©ç”¨ã™ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
  
-Microsoft Entra Connect Health Service ‚ğ—˜—p‚·‚éê‡‚ÍA[Microsoft Entra Connect Health ƒG[ƒWƒFƒ“ƒg‚ÌƒCƒ“ƒXƒg[ƒ‹](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/how-to-connect-health-agent-install#outbound-connectivity-to-azure-service-endpoints) ƒy[ƒW‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+Microsoft Entra Connect Health Service ã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã¯ã€[Microsoft Entra Connect Health ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/how-to-connect-health-agent-install#outbound-connectivity-to-azure-service-endpoints) ãƒšãƒ¼ã‚¸ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
-## Microsoft Entra ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒvƒƒLƒV ƒRƒlƒNƒ^‚É‚Ä—˜—p‚³‚ê‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Entra ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ—ãƒ­ã‚­ã‚· ã‚³ãƒã‚¯ã‚¿ã«ã¦åˆ©ç”¨ã•ã‚Œã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-Microsoft Entra ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒvƒƒLƒV ƒRƒlƒNƒ^‚ğ—˜—p‚³‚ê‚éÛ‚ÍA[ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒvƒƒLƒV‚ğg—p‚µ‚ÄƒIƒ“ƒvƒŒƒ~ƒX ƒAƒvƒŠ‚ğ’Ç‰Á‚·‚é](https://docs.microsoft.com/ja-jp/azure/active-directory/app-proxy/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) ƒy[ƒW‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+Microsoft Entra ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ—ãƒ­ã‚­ã‚· ã‚³ãƒã‚¯ã‚¿ã‚’åˆ©ç”¨ã•ã‚Œã‚‹éš›ã¯ã€[ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ—ãƒ­ã‚­ã‚·ã‚’ä½¿ç”¨ã—ã¦ã‚ªãƒ³ãƒ—ãƒ¬ãƒŸã‚¹ ã‚¢ãƒ—ãƒªã‚’è¿½åŠ ã™ã‚‹](https://docs.microsoft.com/ja-jp/azure/active-directory/app-proxy/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) ãƒšãƒ¼ã‚¸ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
 
-## Microsoft Entra ƒvƒƒrƒWƒ‡ƒjƒ“ƒO ƒT[ƒrƒX‚ğ—˜—p‚·‚é IP ƒAƒhƒŒƒX‚Ì”ÍˆÍ
+## Microsoft Entra ãƒ—ãƒ­ãƒ“ã‚¸ãƒ§ãƒ‹ãƒ³ã‚° ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ã™ã‚‹ IP ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ç¯„å›²
  
-Microsoft Entra ƒvƒƒrƒWƒ‡ƒjƒ“ƒO ƒT[ƒrƒX‚Í‚ğ—˜—p‚·‚éê‡‚ÍA[ƒ`ƒ…[ƒgƒŠƒAƒ‹: Microsoft Entra ID ‚Ì SCIM ƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ÌƒvƒƒrƒWƒ‡ƒjƒ“ƒO](https://learn.microsoft.com/ja-jp/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges) ‚É‹LÚ‚³‚ê‚Ä‚¢‚é IP ƒAƒhƒŒƒX‚Ì”ÍˆÍ‚ğQÆ‚­‚¾‚³‚¢B
+Microsoft Entra ãƒ—ãƒ­ãƒ“ã‚¸ãƒ§ãƒ‹ãƒ³ã‚° ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã¯ã€[ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«: Microsoft Entra ID ã® SCIM ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã®ãƒ—ãƒ­ãƒ“ã‚¸ãƒ§ãƒ‹ãƒ³ã‚°](https://learn.microsoft.com/ja-jp/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges) ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ IP ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ç¯„å›²ã‚’å‚ç…§ãã ã•ã„ã€‚
 
-## ƒIƒ“ƒvƒŒƒ~ƒX‚É‚ ‚é Multi-Factor Authentication Server ‚ª—˜—p‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## ã‚ªãƒ³ãƒ—ãƒ¬ãƒŸã‚¹ã«ã‚ã‚‹ Multi-Factor Authentication Server ãŒåˆ©ç”¨ã™ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
  
-2024 ”N 9 Œ 30 “ú‚ÉƒT[ƒrƒX‚Ì’ñ‹ŸI—¹‚ªƒAƒiƒEƒ“ƒX‚ª‚³‚ê‚Ä‚¢‚Ü‚·‚ªAƒIƒ“ƒvƒŒƒ~ƒX‚Ì MFA ƒT[ƒo[‚ğ—˜—p‚·‚éê‡‚ÍA[Azure Multi-Factor Authentication Server ‚Ìƒtƒ@ƒCƒAƒEƒH[ƒ‹‚Ì—vŒ](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) ‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+2024 å¹´ 9 æœˆ 30 æ—¥ã«ã‚µãƒ¼ãƒ“ã‚¹ã®æä¾›çµ‚äº†ãŒã‚¢ãƒŠã‚¦ãƒ³ã‚¹ãŒã•ã‚Œã¦ã„ã¾ã™ãŒã€ã‚ªãƒ³ãƒ—ãƒ¬ãƒŸã‚¹ã® MFA ã‚µãƒ¼ãƒãƒ¼ã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã¯ã€[Azure Multi-Factor Authentication Server ã®ãƒ•ã‚¡ã‚¤ã‚¢ã‚¦ã‚©ãƒ¼ãƒ«ã®è¦ä»¶](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
-## Microsoft Private Access —p‚ÉƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒvƒƒLƒV ƒRƒlƒNƒ^‚É‚Ä—˜—p‚³‚ê‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Private Access ç”¨ã«ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ ãƒ—ãƒ­ã‚­ã‚· ã‚³ãƒã‚¯ã‚¿ã«ã¦åˆ©ç”¨ã•ã‚Œã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-Microsoft Entra Private Access —p‚ÉƒAƒvƒŠ ƒvƒƒLƒV ƒRƒlƒNƒ^‚É‚Â‚¢‚Ä‚ÍA[Microsoft Entra Private Access —p‚ÉƒAƒvƒŠ ƒvƒƒLƒV ƒRƒlƒNƒ^‚ğ\¬‚·‚é•û–@
-](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) ‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+Microsoft Entra Private Access ç”¨ã«ã‚¢ãƒ—ãƒª ãƒ—ãƒ­ã‚­ã‚· ã‚³ãƒã‚¯ã‚¿ã«ã¤ã„ã¦ã¯ã€[Microsoft Entra Private Access ç”¨ã«ã‚¢ãƒ—ãƒª ãƒ—ãƒ­ã‚­ã‚· ã‚³ãƒã‚¯ã‚¿ã‚’æ§‹æˆã™ã‚‹æ–¹æ³•
+](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
-## Microsoft Azure ŠÇ—ƒZƒ“ƒ^[‚¨‚æ‚Ñˆê”Ê“I‚ÈƒT[ƒrƒX‚É—˜—p‚³‚ê‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+## Microsoft Azure ç®¡ç†ã‚»ãƒ³ã‚¿ãƒ¼ãŠã‚ˆã³ä¸€èˆ¬çš„ãªã‚µãƒ¼ãƒ“ã‚¹ã«åˆ©ç”¨ã•ã‚Œã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
 
-Microsoft Entra ID ‚Ì”FØ‚Å‚Í‚È‚¢‚Å‚·‚ªAAzure ƒ|[ƒ^ƒ‹‚âˆê”Ê“I‚ÈƒAƒJƒEƒ“ƒg ƒT[ƒrƒX‚É•K—v‚Æ‚È‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ÍA[ƒtƒ@ƒCƒAƒEƒH[ƒ‹‚Ü‚½‚ÍƒvƒƒLƒV ƒT[ƒo[‚Å Azure portal ‚Ì URL ‚ğ‹–‰Â‚·‚é](https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud) ‚Ìƒy[ƒW‚É‹LÚ‚³‚ê‚Ä‚¢‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg‚ğ‹–‰Â‚­‚¾‚³‚¢B
+Microsoft Entra ID ã®èªè¨¼ã§ã¯ãªã„ã§ã™ãŒã€Azure ãƒãƒ¼ã‚¿ãƒ«ã‚„ä¸€èˆ¬çš„ãªã‚¢ã‚«ã‚¦ãƒ³ãƒˆ ã‚µãƒ¼ãƒ“ã‚¹ã«å¿…è¦ã¨ãªã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã¯ã€[ãƒ•ã‚¡ã‚¤ã‚¢ã‚¦ã‚©ãƒ¼ãƒ«ã¾ãŸã¯ãƒ—ãƒ­ã‚­ã‚· ã‚µãƒ¼ãƒãƒ¼ã§ Azure portal ã® URL ã‚’è¨±å¯ã™ã‚‹](https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud) ã®ãƒšãƒ¼ã‚¸ã«è¨˜è¼‰ã•ã‚Œã¦ã„ã‚‹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚’è¨±å¯ãã ã•ã„ã€‚
 
 
-¡ŒãAEntra ID ‚ğ‚²—˜—p‚¢‚½‚¾‚­Û‚É–{ƒuƒƒO‚Ì“à—e‚ª­‚µ‚Å‚àQl‚Æ‚È‚è‚Ü‚·‚ÆK‚¢‚Å‚·B
+ä»Šå¾Œã€Entra ID ã‚’ã”åˆ©ç”¨ã„ãŸã ãéš›ã«æœ¬ãƒ–ãƒ­ã‚°ã®å†…å®¹ãŒå°‘ã—ã§ã‚‚å‚è€ƒã¨ãªã‚Šã¾ã™ã¨å¹¸ã„ã§ã™ã€‚
