@@ -41,7 +41,7 @@ Microsoft Entra 管理センターでは、Security Copilot に対し、その�
 
 マイクロソフトの SSE ソリューションと Microsoft Entra ポートフォリオの統合により、あらゆるアプリケーションや Web サイトへのアクセスを許可する前に、ID、デバイス、アプリケーション、およびネットワークの条件を考慮した統合された条件付きアクセス ポリシーを適用することが可能になります。これは、アプリケーションがどの ID プロバイダーを使用しているかに関係なく、さらに、アプリケーションに変更を加えることなく機能します。
 
-![](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai2.jpg)
+![](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai2.png)
 
 皆様の多くが既にお試しの [Microsoft Entra Internet Access](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-internet-access?rtc=2) は、Microsoft 365 トラフィックを安全に保つための ID 中心のセキュア Web ゲートウェイ (SWG) です。弊社は、2023 年末までにすべてのインターネット アプリとリソースを含むようにパブリック プレビューを拡張し、次のような新しいコア機能を追加する予定です:
 
@@ -63,13 +63,13 @@ Microsoft Entra 管理センターでは、Security Copilot に対し、その�
 
 昨年、弊社では約 700 万の既存テナントに対して Microsoft Entra ID (旧 [Azure Active Directory](https://learn.microsoft.com/ja-jp/entra/fundamentals/new-name)) のセキュリティの既定値群を有効にし、これらのテナントにおける侵害の件数を 80% 削減しました。お客様からの好意的なフィードバックに基づき、弊社ではさらに、お客様のリスク情報、現在の使用状況、およびライセンスに基づいて、対象となるテナントに条件付きアクセス ポリシーを自動的に作成することで、より多くの Microsoft Entra ID のお客様が自身を保護できるよう支援してまいります。**Microsoft マネージド条件付きアクセス ポリシー** が展開されると、リスクが高いと想定されるシナリオにて多要素認証 (MFA) を実施する 3 つのポリシーが作成されます。詳細については、Alex Weinert の最近のブログ記事 [Automatic Conditional Access policies in Microsoft Entra streamline identity protection](https://www.microsoft.com/en-us/security/blog/2023/11/06/automatic-conditional-access-policies-in-microsoft-entra-streamline-identity-protection/) をご覧ください。
 
-![Microsoft マネージド条件付きアクセス ポリシーが作成されたテナントです。ポリシーの詳細が右側のコンテキスト ウィンドウに表示されています。選択されているポリシーでは、特定の管理者ロールが Microsoft 管理ポータルにアクセスする際に多要素認証の実施を必須とすることが示されています。](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai3.jpg)
+![Microsoft マネージド条件付きアクセス ポリシーが作成されたテナントです。ポリシーの詳細が右側のコンテキスト ウィンドウに表示されています。選択されているポリシーでは、特定の管理者ロールが Microsoft 管理ポータルにアクセスする際に多要素認証の実施を必須とすることが示されています。](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai3.png)
 
 しかし、すべての MFA 方式が同等にユーザーを保護するわけではありません。FIDO2 セキュリティ キー、Windows Hello、**Microsoft Entra 証明書ベース認証 (CBA)**、パスキーなど、より効果的な MFA 方式では暗号技術が使用されており、認証にフィッシング耐性を付与します。Microsoft Entra CBA のプレビューでは、証明書、リソースの種類、ユーザーおよびグループごとに認証ポリシーを調整することができます。これらのフィッシングに強い認証方式により、パスワードを完全に排除することが可能になり、パスワードの推測、傍受、フィッシングを防ぐことが可能となります。
 
 マイクロソフトは、Windows 11 を皮切りに、エコシステム全体でパスキーのサポートに取り組んでいます。Windows Hello を使用して Web サイト、アプリケーション、またはサービスのパスキーを作成すると、顔、指紋、またはデバイスの PIN を使用してデバイスからサインイン可能となります。これにより、企業や政府機関のお客様は、物理的な FIDO2 セキュリティ キーに代わる、フィッシングに強い新たな選択肢を得ることができます。Microsoft Entra ID ユーザーは、まもなく **Microsoft Authenticator アプリ** にて管理されるパスキーを使用してサインインできるようになります。
 
-![](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai4.jpg)
+![](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai4.png)
 
 最後に、[Microsoft Entra ID Protection](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-id-protection?rtc=1) では、トークンの有効期間が異常に長い場合や、なじみのない場所からトークンが再生された場合などの異常を検出するようになりました。アラートが上がると、条件付きアクセスは直ちにトークンを失効させ、パスワードのリセットやステップアップ MFA などの他の対策とともに、管理者による手動での介入を必要とせずに再認証を強制することができます。また、ユーザーがオンプレミスでパスワードを変更した場合に、Entra ID Protection は [自動的にリスクを修復](https://jpazureid.github.io/blog/azure-active-directory/Remediate-User-Risks-in-Microsoft-Entra-ID-Protection-Through-On-premises-Password-Changes/) できるようになりました。これにより、ハイブリッド組織はユーザー リスク ポリシーをより簡単に利用できるようになります。
 
@@ -79,7 +79,7 @@ Microsoft Entra 管理センターでは、Security Copilot に対し、その�
 
 [Microsoft Defender for Cloud (MDC) 統合](https://learn.microsoft.com/ja-jp/entra/permissions-management/permissions-management-for-defender-for-cloud) プレビューは、ID とアクセス許可に関する分析情報を他のクラウド セキュリティ情報と統合し、単一のインターフェイスで表示します。このビューでは、権限リスクに対処するための実用的な推奨事項やアクセス許可のクリープ インデックスが表示され、Azure、Amazon Web Services (AWS)、Google Cloud のクラウド リソースに対して最小権限でのアクセスを簡単に実施できるようになります。
 
-![Microsoft Entra Permissions Management と Microsoft Defender for Cloud (MDC) (現在パブリック プレビュー中) の統合により、他のクラウドのセキュリティ態勢に関する分析情報を単一のインターフェイスに統合して効率的に確認できるようになります。](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai5.jpg)
+![Microsoft Entra Permissions Management と Microsoft Defender for Cloud (MDC) (現在パブリック プレビュー中) の統合により、他のクラウドのセキュリティ態勢に関する分析情報を単一のインターフェイスに統合して効率的に確認できるようになります。](./identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai5.png)
 
 このたび一般提供が開始された [2 つ目の統合](https://learn.microsoft.com/ja-jp/entra/permissions-management/how-to-configure-servicenow-application) により、ServiceNow のお客様は、ServiceNow ポータルを介してマルチクラウド環境 (Azure、AWS、Google Cloud) に対し、期限付きのオンデマンド許可を要求できるようになりました。IT サービス管理 (ITSM) ソリューションは多くのお客様で利用されているため、ServiceNow の既存の承認ワークフローにアクセス許可要求を追加することで、ゼロ トラストの体制より強化することが可能となります。ユーザがアクセス承認を要求すると、ServiceNow のプラグインが Permissions Management から最新のデータを取得し、要求されたユーザー権限を要求者のロールに基づく期限付きの承認とともに ServiceNow に送り返します。
 
