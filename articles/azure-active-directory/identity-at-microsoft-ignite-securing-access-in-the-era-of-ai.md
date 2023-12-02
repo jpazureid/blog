@@ -1,5 +1,5 @@
 ---
-title: Microsoft Ignite の ID: AI 時代におけるアクセスのセキュリティ保護
+title: "Microsoft Ignite における ID: AI 時代におけるアクセスのセキュリティ保護"
 date: 2023-12-03 09:00
 tags:
     - Azure AD
