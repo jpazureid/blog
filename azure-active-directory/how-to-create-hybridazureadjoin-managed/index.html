@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/041.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/042.jpg">
 <meta property="article:published_time" content="2019-05-08T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-03T01:15:17.200Z">
+<meta property="article:modified_time" content="2023-12-03T17:13:02.985Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Azure AD Connect">
@@ -200,7 +200,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9c246849-b5aa-5003-aa60-29db273ae05c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%94%A8%28AD+FS+%E3%81%AA%E3%81%97%29+Hybrid+Azure+AD+Join+%E3%82%92%E4%B8%80%E3%81%8B%E3%82%89%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="clposjdk700uy0nt74t3me97f" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="clppqr2eh00uy0nqt2f2uhn3h" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -342,7 +342,7 @@
 <p>このタイミングで、 Windows 10 コンピューター上のコマンド プロンプトで dsregcmd /status のコマンドレットをたたくと下記のとおり、 AzureADJoined の値が 「YES」 になっていることが分かります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/039.jpg"></p>
 <h2 id="PRT-Primary-Refresh-Token-の取得"><a href="#PRT-Primary-Refresh-Token-の取得" class="headerlink" title="PRT (Primary Refresh Token) の取得"></a>PRT (Primary Refresh Token) の取得</h2><p>現在、目次の「1. ～ 6.」までの作業が完了しています。<br>Azure AD にデバイスは登録されましたが、まだ Hybrid Azure AD Join の構成は完了してません。<br>最後の工程として、 Azure AD に同期済みの Azure AD ユーザーにて、対象の Windows 10 コンピューターにサインインし認証が成功したあとに、 Azure AD から PRT (Primary Refresh Token) を取得する必要があります。</p>
-<p>オンプレミス AD から Azure AD に同期済みの test001 から test003 のユーザーがいますので、対象の Windows 10 コンピューターに <a href="mailto:&#116;&#101;&#115;&#116;&#x30;&#48;&#x31;&#64;&#x78;&#120;&#x78;&#46;&#119;&#x6f;&#114;&#107;">&#116;&#101;&#115;&#116;&#x30;&#48;&#x31;&#64;&#x78;&#120;&#x78;&#46;&#119;&#x6f;&#114;&#107;</a> ユーザーでサインインします。</p>
+<p>オンプレミス AD から Azure AD に同期済みの test001 から test003 のユーザーがいますので、対象の Windows 10 コンピューターに <a href="mailto:&#116;&#x65;&#115;&#116;&#x30;&#x30;&#49;&#64;&#120;&#x78;&#120;&#x2e;&#119;&#111;&#x72;&#x6b;">&#116;&#x65;&#115;&#116;&#x30;&#x30;&#49;&#64;&#120;&#x78;&#120;&#x2e;&#119;&#111;&#x72;&#x6b;</a> ユーザーでサインインします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/040.jpg"></p>
 <p>資格情報を入力し、サインインします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/041.jpg"></p>
