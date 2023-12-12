@@ -240,12 +240,12 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 
 Q. Set-MsolUser コマンドで実施できた StrongAuthenticationRequirements の有効化や、StrongAuthenticationMethod を無効化する代替案はありますか？
 
-A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応していません。[公開情報](https://learn.microsoft.com/ja-jp/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) にも記載があります。
-
-> この機能は現在、StrongAuthenticationMethods プロパティを使用して、MSOL Set-MsolUser コマンドレットを使用してのみサポートされています。
+A. いいえ、現状新しい Microsoft Graph PowerShell SDK では対応していません。
 
 StrongAuthenticationMethod プロパティは、"ユーザーごとの MFA" の機能で利用される項目ですが、この機能はレガシーとなり、現在は条件付きアクセスでの管理を推奨しております。そのため、ユーザーごとの MFA を利用している場合、今後は条件付きアクセスで MFA を要求する形に移行することをお勧めいたします。条件付きアクセスにてユーザーに MFA を要求すると、そのユーザー次回サインイン時に自動的に MFA の登録を求められます。例えば、条件付きアクセスにてすべてのアプリに対して MFA を要求するように構成すると、これは "ユーザーごとの MFA" の機能において、ユーザーの MFA の状態を "有効" にするのと同じ意味になります。このため、現在 "ユーザーごとの MFA" の機能において、ユーザーの MFA の状態を "有効" にすることで MFA を構成している場合は、条件付きアクセスにてすべてのアプリに対して MFA を要求するように構成ください。
 
-一方で、MFA の再登録を要求する場合は、[公開情報 (英語)](https://learn.microsoft.com/en-us/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
+一方で、MFA の再登録を要求する場合は、[公開情報](https://learn.microsoft.com/ja-jp/graph/api/resources/authenticationmethods-overview?view=graph-rest-1.0#require-re-register-multifactor-authentication) に記載があり、Microsoft Graph API (PowerShell SDK) を利用して、利用可能なすべての認証方法を個別に削除するというのが今後の正しい代替方法となります。
+
+> ユーザーが次回サインインするときに新しい多要素認証を設定するように要求するには、個々の DELETE 認証方法操作を呼び出して、各ユーザーの現在の認証方法を削除します。 
 
 基本的なユーザー管理コマンドについて案内していますが、もし利用方法が不明なコマンドがございましたらお気軽にお問い合わせを起票ください。
