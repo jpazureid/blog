@@ -34,7 +34,7 @@ Microsoft はこのほど、Entra 製品群に、組織のセキュリティ改�
 - [モバイルでの Azure AD 証明書ベースの認証 (CBA)](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/)
 - [Apple デバイスでのエンタープライズ SSO](https://learn.microsoft.com/ja-jp/mem/intune/configuration/use-enterprise-sso-plug-in-ios-ipados-macos?pivots=all)
 - [SP-initiated フローでの SAML 要求署名の検証](https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/howto-enforce-signed-saml-authentication)
-- [条件付きアクセスの認証強度](https://learn.microsoft.com/ja-jp/azure/active-directory/external-identities/authentication-conditional-access#assigning-conditional-access-policies-to-external-user-types)
+- [条件付きアクセスの認証強度](https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/concept-authentication-strengths)
 - [条件付きアクセスにおける外部ユーザーの種類ごとのきめ細かな制御](https://learn.microsoft.com/ja-jp/azure/active-directory/external-identities/authentication-conditional-access#assigning-conditional-access-policies-to-external-user-types)
 - [Azure AD ID Protection: 検証済み脅威アクター IP のサインインの検知](https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk)
 - [既定で安全な構成: Azure RBAC におけるロール選択画面](https://learn.microsoft.com/ja-jp/azure/role-based-access-control/role-assignments-portal#step-3-select-the-appropriate-role)

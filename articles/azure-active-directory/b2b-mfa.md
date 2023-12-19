@@ -52,6 +52,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/b2b-
 
 ## 2. ゲスト ユーザーによる登録済み認証方法の変更手順について
 上述の通り、ゲスト ユーザーは多要素認証の認証情報についてテナント毎に登録が必要となります。各テナントの認証情報については、以下の手順に沿ってゲスト ユーザー自身にてセキュリティ情報ページから認証情報の追加・変更をすることができます。
+なお、ゲスト招待されたユーザーが OTP でサインインするユーザーの場合は上記手順ではアクセスできない可能性があります。この場合は "https://myaccount.microsoft.com/?tenant=contoso.onmicrosoft.com" のように URL にゲスト招待先テナント情報を付与してアクセスして下さい。
 
 (1) マイアカウント ( https://myaccount.microsoft.com/) にアクセスし、ゲスト ユーザーのアカウントにてサインインを実施します。
 
@@ -67,6 +68,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/b2b-
 必要に応じて認証方法の追加 / 変更 / 削除 をクリックして設定内容を管理することが可能です。
 ※すでに認証情報が登録されている場合は多要素認証が要求されます。
   ![](./b2b-mfa/4.png)
+
 
 ## 3. Azure B2B での例外的な多要素認証の動作について
 
