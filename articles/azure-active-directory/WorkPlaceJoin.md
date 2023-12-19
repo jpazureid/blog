@@ -42,7 +42,7 @@ Windows 10 の 1703 (Build 15063.138) 以後のバージョンにて Office の�
 
 
 ## 「すべてのアプリにサインインしたままにする」の画面を表示させたくない場合  
-各 OS 毎でレジストリを追加することで制御することが可能です。
+レジストリを追加することで制御することが可能です。
 
 ### 表示させなくするレジストリ
  レジストリ キーパス : HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin
