@@ -1,4 +1,4 @@
-![image](https://github.com/marikamiwa/blog/assets/123721875/38f5110a-5abd-43bf-a833-1e79fa63177a)---
+---
 title: MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理
 date: 2023-03-12 09:00
 tags:
