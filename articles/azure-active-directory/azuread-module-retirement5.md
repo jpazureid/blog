@@ -212,28 +212,15 @@ Remove-MgGroupMemberByRef -GroupId '872648e7-b23a-4328-bd46-f1bd431c2354' -Direc
 
 <h2 id="idx4">4. 特定のユーザーが所属するグループ一覧の取得</h2>
 
-特定のユーザーが所属するグループ一覧を取得するには、Get-MgUserMemberOf を用い、ユーザーの ObjectID または UPN を指定します。
+特定のユーザーが所属するグループ一覧を取得するには、Get-MgUserMemberOfAsGroup を用い、ユーザーの ObjectID または UPN を指定します。
 
 ```
-Get-MgUserMemberOf -UserId e16fe23f-88cc-476e-8cac-df4f40ed266b |Where-Object {$_['@odata.type'] -eq '#microsoft.graph.group'}
+Get-MgUserMemberOfAsGroup -UserId e16fe23f-88cc-476e-8cac-df4f40ed266b
 ```
 
-![](./azuread-module-retirement5/usermemberof1.png)
-
-ユーザーが所属するグループの表示名も一緒に出力したい場合は、以下のように additionalproperties から displayName が取得できます。
-
-```
-Get-MgUserMemberOf -UserId e16fe23f-88cc-476e-8cac-df4f40ed266b |Where-Object {$_['@odata.type'] -eq '#microsoft.graph.group'} | %{
-    [pscustomobject]@{
-        Id = $_.id
-        displayName = $_.additionalproperties['displayName']
-    }
-}
-```
-
-![](./azuread-module-retirement5/usermemberof2.png)
+![](./azuread-module-retirement5/mgusermemberofasgroup.png)
 
 以下の公開情報も併せてご確認ください。
 
-- [Get-MgUserMemberOf (Microsoft.Graph.Users) | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mgusermemberof?view=graph-powershell-1.0)
+- [Get-MgUserMemberOfAsGroup (Microsoft.Graph.Users) | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mgusermemberofasgroup?view=graph-powershell-1.0)
 - [ユーザーの直接メンバーシップを一覧表示する - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/api/user-list-memberof?view=graph-rest-1.0&tabs=http)
