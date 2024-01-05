@@ -110,7 +110,7 @@ Remove-MgDomainFederationConfiguration -DomainId <カスタムドメイン名> -
 > New コマンドでは、各種パラメータを指定することでマネージド ドメインからフェデレーション ドメインへの切り替えが可能です。実行例は下記の通りです。
 
 ```Powershell
-New-MgDomainFederationConfiguration -DomainId "<カスタム ドメイン名>" -PreferredAuthenticationProtocol "wsFed" -ActiveSignInUri $Active -DisplayName $display -IssuerUri $issuer -MetadataExchangeUri $Meta -NextSigningCertificate $NextCert -PassiveSignInUri $Passive -SignOutUri $SignOUt -SigningCertificate $SignCert -FederatedIdpMfaBehavior $MFA | Format-List![image](https://github.com/jpazureid/blog/assets/70502265/04978b92-ccba-4001-9793-4092bf9237b0)
+New-MgDomainFederationConfiguration -DomainId "<カスタム ドメイン名>" -PreferredAuthenticationProtocol "wsFed" -ActiveSignInUri $Active -DisplayName $display -IssuerUri $issuer -MetadataExchangeUri $Meta -NextSigningCertificate $NextCert -PassiveSignInUri $Passive -SignOutUri $SignOUt -SigningCertificate $SignCert -FederatedIdpMfaBehavior $MFA | Format-List
 ```
 
 
