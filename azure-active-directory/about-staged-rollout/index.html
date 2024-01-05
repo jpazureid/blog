@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/input-password.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/adfs-signinpage.png">
 <meta property="article:published_time" content="2023-06-18T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-31T00:11:20.689Z">
+<meta property="article:modified_time" content="2024-01-05T20:59:38.802Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Staged Rollout">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+67d562b5-7ded-5901-a72c-a1e117c8fc2f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BStaged+Rollout+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fabout-staged-rollout%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fabout-staged-rollout.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fabout-staged-rollout.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/" data-id="clqsql06d00450ns32us508c3" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/" data-id="clr14dl3300450npmfbf6cn1y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -234,7 +234,7 @@
 <blockquote>
 <p>New コマンドでは、各種パラメータを指定することでマネージド ドメインからフェデレーション ドメインへの切り替えが可能です。実行例は下記の通りです。</p>
 </blockquote>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-MgDomainFederationConfiguration</span> <span class="literal">-DomainId</span> <span class="string">&quot;&lt;カスタム ドメイン名&gt;&quot;</span> <span class="literal">-PreferredAuthenticationProtocol</span> <span class="string">&quot;wsFed&quot;</span> <span class="literal">-ActiveSignInUri</span> <span class="variable">$Active</span> <span class="literal">-DisplayName</span> <span class="variable">$display</span> <span class="literal">-IssuerUri</span> <span class="variable">$issuer</span> <span class="literal">-MetadataExchangeUri</span> <span class="variable">$Meta</span> <span class="literal">-NextSigningCertificate</span> <span class="variable">$NextCert</span> <span class="literal">-PassiveSignInUri</span> <span class="variable">$Passive</span> <span class="literal">-SignOutUri</span> <span class="variable">$SignOUt</span> <span class="literal">-SigningCertificate</span> <span class="variable">$SignCert</span> <span class="literal">-FederatedIdpMfaBehavior</span> <span class="variable">$MFA</span> | <span class="built_in">Format-List</span>![<span class="type">image</span>](https://github.com/jpazureid/blog/assets/<span class="number">70502265</span>/<span class="number">04978</span>b92<span class="literal">-ccba</span><span class="literal">-4001</span><span class="literal">-9793</span><span class="literal">-4092bf9237b0</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-MgDomainFederationConfiguration</span> <span class="literal">-DomainId</span> <span class="string">&quot;&lt;カスタム ドメイン名&gt;&quot;</span> <span class="literal">-PreferredAuthenticationProtocol</span> <span class="string">&quot;wsFed&quot;</span> <span class="literal">-ActiveSignInUri</span> <span class="variable">$Active</span> <span class="literal">-DisplayName</span> <span class="variable">$display</span> <span class="literal">-IssuerUri</span> <span class="variable">$issuer</span> <span class="literal">-MetadataExchangeUri</span> <span class="variable">$Meta</span> <span class="literal">-NextSigningCertificate</span> <span class="variable">$NextCert</span> <span class="literal">-PassiveSignInUri</span> <span class="variable">$Passive</span> <span class="literal">-SignOutUri</span> <span class="variable">$SignOUt</span> <span class="literal">-SigningCertificate</span> <span class="variable">$SignCert</span> <span class="literal">-FederatedIdpMfaBehavior</span> <span class="variable">$MFA</span> | <span class="built_in">Format-List</span></span><br></pre></td></tr></table></figure>
 
 
 <p><strong>Q. Staged Rollout 機能を対象グループに割り当てたときの反映時間について、教えてください。</strong></p>
@@ -385,7 +385,7 @@
       <a href="https://privacy.microsoft.com/ja-jp/privacystatement" target="_blank" rel=”noopener”>Privacy & Cookies</a> |  
       <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/copyright" target="_blank" rel=”noopener”>Terms of use</a> |
       <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks" target="_blank" rel=”noopener”>Trademarks</a> |
-      &copy; 2023 Azure Identity Support Japan<br>
+      &copy; 2024 Azure Identity Support Japan<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
