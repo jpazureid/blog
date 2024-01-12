@@ -9,7 +9,7 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの小出です。
 
-この記事は、この記事は、MSOnline / AzureAD モジュール廃止について、[1. 概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)、[2. 移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)、[3. インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) の続きとして連載しています。[4. ではユーザーに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/)を、 [5. ではグループに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/)についておまとめさせていただきましたので、今回の 6. では、 Microsoft Entra （Azure AD）ロールの管理について情報をおまとめいたしました。
+この記事は、MSOnline / AzureAD モジュール廃止について、[1. 概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)、[2. 移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)、[3. インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) の続きとして連載しています。[4. ではユーザーに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/)を、 [5. ではグループに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/)についておまとめさせていただきましたので、今回の 6. では、 Microsoft Entra （Azure AD）ロールの管理について情報をおまとめいたしました。
 
 まだモジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2. と 3. をご確認ください。
 
