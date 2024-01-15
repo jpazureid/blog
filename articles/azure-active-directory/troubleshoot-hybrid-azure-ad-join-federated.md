@@ -49,7 +49,7 @@ HAADJ として構成が完了するまでの流れ
 マネージドの HAADJ と同様に、正常に HAADJ できているかの最初の確認としては、 Azure ポータルを開き [Azure Active Directory] ブレードの [デバイス] 欄で結合の種類が 
 Hybrid Azure AD Joined となっている状態で対象のコンピューターが存在するか確認します。
 
-![](.\troubleshoot-hybrid-azure-ad-join-federated/device-list-azure-portal.png)
+![](./troubleshoot-hybrid-azure-ad-join-federated/device-list-azure-portal.png)
 
 対象のデバイスが [Azure Active Directory] ブレードの [デバイス] 欄に存在しない場合、デバイス登録の処理 ("HAADJ として構成が完了するまでの流れ" の 2 の処理) のどこかで失敗している可能性が考えられます。
 
