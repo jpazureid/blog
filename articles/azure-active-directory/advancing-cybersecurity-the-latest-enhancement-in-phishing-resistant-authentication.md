@@ -1,12 +1,14 @@
 ---
-title: サイバーセキュリティの向上-フィッシングに強い認証に対する最新の機能強化
+title: サイバーセキュリティの向上 - フィッシングに強い認証に対する最新の機能強化
 date: 2024-01-19 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
 
-こんにちは、Azure Identity サポートチームの 張替 です。
+# サイバーセキュリティの向上 - フィッシングに強い認証に対する最新の機能強化
+
+こんにちは、Azure Identity サポート チームの 張替 です。
 
 本記事は、2023 年 12 月 15 日に米国の Azure Active Directory Identity Blog で公開された [Advancing Cybersecurity: The Latest enhancement in Phishing-Resistant Authentication - Microsoft Community Hub](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/advancing-cybersecurity-the-latest-enhancement-in-phishing/ba-p/2365681) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
