@@ -20,7 +20,7 @@ Microsoft Entra Permissions Management は、組織のマルチクラウド基�
 
 ユーザーは、ServiceNow ポータルからマルチ クラウド環境 (Microsoft Azure、Amazon Web Services (AWS)、Google Cloud Platform (GCP)) に対して、期限付きのオンデマンドのアクセス許可を要求できるようになりました。この統合により、ServiceNow の既存の承認ワークフローにアクセス許可の要求が追加され、組織のゼロ トラスト体制を強化することができ、マルチ クラウド環境で最小特権の原則を実施することが可能になります。詳細については、[こちら](https://learn.microsoft.com/ja-jp/entra/permissions-management/how-to-configure-servicenow-application) をご覧ください。
 
-![](./Introducing-New-Features-of-Microsoft-Entra-Permissions-Management/introducing-new-features-of-microsoft-entra-permissions-management1.png)
+![](./introducing-new-features-of-microsoft-entra-permissions-management/introducing-new-features-of-microsoft-entra-permissions-management1.png)
 
 ## Microsoft Defender for Cloudとの統合 (パブリック プレビュー)
 
@@ -30,13 +30,13 @@ Microsoft Entra Permissions Management は、組織のマルチクラウド基�
 
 Permissions Management をご利用のお客様は、Okta および AWS IAM Identity Center 上の ID を検出できるようになりました。これにより、お客様は、使用している ID プロバイダーやソリューションに関係なく、すべての ID とそのアクセス許可を一元的に把握できるようになります。お客様はけ数回クリックで Okta と AWS IAM Identity Center を構成いただけます。
 
-![](./Introducing-New-Features-of-Microsoft-Entra-Permissions-Management/introducing-new-features-of-microsoft-entra-permissions-management2.png)
+![](./introducing-new-features-of-microsoft-entra-permissions-management/introducing-new-features-of-microsoft-entra-permissions-management2.png)
 
 ## アクセス許可の分析レポート (パブリック プレビュー)
 
 このレポートでは、Permissions Management における ID とリソース全体の詳細を一覧で確認できます。このレポートは、Permissions Management ページで直接表示するか、Excel 形式でダウンロードするか、PDF としてエクスポートすることも可能です。当該レポートは Microsoft Azure、AWS、GCP を含むサポートされているすべてのクラウド環境で利用可能です。 詳しくは[こちら](https://learn.microsoft.com/ja-jp/entra/permissions-management/product-permissions-analytics-reports#download-the-permissions-analytics-report-in-pdf-format) をご覧ください。
 
-![](./Introducing-New-Features-of-Microsoft-Entra-Permissions-Management/introducing-new-features-of-microsoft-entra-permissions-management3.png)
+![](./introducing-new-features-of-microsoft-entra-permissions-management/introducing-new-features-of-microsoft-entra-permissions-management3.png)
 
 ## 新しい API
 
