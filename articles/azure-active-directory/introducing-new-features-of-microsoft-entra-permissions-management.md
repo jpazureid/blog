@@ -1,12 +1,14 @@
 ---
 title: Microsoft Entra Permissions Management の新機能の紹介
-date: 2024-01-19 10:00
+date: 2024-01-20 10:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
 
-こんにちは、Azure Identity サポートチームの 張替 です。
+# Microsoft Entra Permissions Management の新機能の紹介
+
+こんにちは、Azure Identity サポート チームの 張替 です。
 
 本記事は、2023 年 12 月 14 日に米国の [Azure Active Directory Identity Blog で公開された Introducing New Features of Microsoft Entra Permissions Management - Microsoft Community Hub](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/introducing-new-features-of-microsoft-entra-permissions/ba-p/2466925) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
