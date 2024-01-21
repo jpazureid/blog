@@ -1,6 +1,6 @@
 ---
 title: Microsoft Graph PowerShell SDK への移行について 6_ロール割り当て
-date: 2024-01-15 09:00
+date: 2024-01-21 09:00
 tags:
     - Microsoft Graph PowerShell SDK
 ---
