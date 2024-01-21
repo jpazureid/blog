@@ -9,9 +9,9 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの小出です。
 
-この記事は、MSOnline / AzureAD モジュール廃止について、[1. 概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)、[2. 移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)、[3. インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) の続きとして連載しています。[4. ではユーザーに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/) を、 [5. ではグループに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/) についておまとめしましたので、今回の 6. では、Microsoft Entra （Azure AD）ロールの管理について情報をまとめました。
+この記事は、MSOnline / AzureAD モジュール廃止について、[1. 概要編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/)、[2. 移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)、[3. インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/) の続きとして連載しています。[4. ではユーザーに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/) を、 [5. ではグループに関する操作](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/) についておまとめしましたので、今回の 6. では、Microsoft Entra (Azure AD) ロールの管理について情報をまとめました。
 
-まだ Microsoft Graph PowerShell SDK モジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2. と 3. をご確認ください。
+まだ Microsoft Graph PowerShell SDK モジュールをインストールしていない場合や、Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2. と 3. をご確認ください。
 
 なお、下記にはいくつか簡易的なスクリプトの案内などもございますが、こちらのカスタマイズに関するお問い合わせは承っておりません。あくまでもサンプルとなりますので参考として利用いただき、カスタマイズにつきましてはお客様自身で実施くださいますようお願い申し上げます。
 
@@ -49,7 +49,7 @@ Get-MgRoleManagementDirectoryRoleAssignment -All -Filter "roleDefinitionId eq '6
 
 ![](./azuread-module-retirement6/azuread-module-retirement6-3.png)
 
-なお、この例の場合、PrincipalID にユーザーの ObjectID が表示されておりますが、一見誰にロールが割り当てられているかが分かりにくいと思います。上記コマンドでは ExpandProperty オプションを利用して、 principal の中身（ロールが割り当てられているユーザーなどの情報が格納されている）を取得していますので、中身を展開するようにコマンドを記載すれば、オブジェクト ID ではない値を表示することが可能です。例えば以下では、グローバル管理者ロールを持つユーザーの UserPrincipalName のみ取得するようなコマンドにしています。
+なお、この例の場合、PrincipalID にユーザーの ObjectID が表示されておりますが、一見誰にロールが割り当てられているかが分かりにくいと思います。上記コマンドでは ExpandProperty オプションを利用して、 principal の中身 (ロールが割り当てられているユーザーなどの情報が格納されている) を取得していますので、中身を展開するようにコマンドを記載すれば、オブジェクト ID ではない値を表示することが可能です。例えば以下では、グローバル管理者ロールを持つユーザーの UserPrincipalName のみ取得するようなコマンドにしています。
 
 ```PowerShell 
 (Get-MgRoleManagementDirectoryRoleAssignment -Filter "roleDefinitionId eq '62e90394-69f5-4237-9190-012177145e10'" -All -ExpandProperty "principal").principal.additionalproperties.userPrincipalName
