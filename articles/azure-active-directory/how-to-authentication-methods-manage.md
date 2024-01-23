@@ -130,7 +130,7 @@ MFA で利用可能な認証方法の設定について確認します。
 |電話への連絡 | [音声通話](#音声通話) |
 |電話へのテキスト メッセージ | [SMS](#sms) |
 |モバイル アプによる通知 | [Microsoft Authenticator](#microsoft-authenticator) |
-|モバイル アプリからの確認コードまたはハードウェア トークンからの確認コード | [サード パーティ製のソフトウェア OATH トークン](#サード-パーティ製のソフトウェア-OATH-トークン) <br> [ハードウェア OATH トークン (近日公開予定)](#ハードウェア-OATH-トークン-近日公開予定) <br> [Microsoft Authenticator](#microsoft-authenticator) |
+|モバイル アプリからの確認コードまたはハードウェア トークンからの確認コード | [サード パーティ製のソフトウェア OATH トークン](#サード-パーティ製のソフトウェア-OATH-トークン) <br> [ハードウェア OATH トークン](#ハードウェア-OATH-トークン) <br> [Microsoft Authenticator](#microsoft-authenticator) |
 
 本記事の例ですと、レガシー MFA ポリシーの設定画面では、以下の 3 つの認証方法が有効でした。この場合は、上記表でそれぞれレガシー MFA ポリシーに対応する認証方法を認証方法ポリシーの画面で有効にします。
 
@@ -140,7 +140,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 設定の実施後の認証方法ポリシーの画面 (本記事での例) は以下のようになります。お客様でも、事前に控えておいたレガシー MFA ポリシーの設定状況を用いて認証方法ポリシーを同じように変更ください。
 
-![](./how-to-authentication-methods-manage/image-after-mfa.png)
+![](how-to-authentication-methods-manage/manage-after-mfa.png)
 
 ### レガシー SSPR ポリシーの認証方法ポリシーへの移行
 
@@ -159,7 +159,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 設定の実施後の認証方法ポリシーの画面 (本記事での例) は以下のようになります。お客様でも、事前に控えておいたレガシー SSPR ポリシーの設定状況を用いて認証方法ポリシーを同じように変更ください。
 
-![](./how-to-authentication-methods-manage/image-after-sspr.png)
+![](how-to-authentication-methods-manage/manage-after-sspr.png)
 
 ## 3. 移行が進行中での状態の確認
 
@@ -175,7 +175,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 動作確認が完了したら、移行のステップを [移行が進行中] から [移行が完了済み] に変更します。
 
-![](how-to-authentication-methods-manage/aftermigration.png)
+![](how-to-authentication-methods-manage/after-migration.png)
 
 なお、テナントにてレガシー ポリシーが有効な場合には [移行が完了済み] に変更することは出来ません。
 
@@ -210,7 +210,7 @@ MFA で利用可能な認証方法の設定について確認します。
    
    ![](./how-to-authentication-methods-manage/auth2.png)
 
-1. [保存] をクリックします。
+4. [保存] をクリックします。
 
 ### SMS
 
