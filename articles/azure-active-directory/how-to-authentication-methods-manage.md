@@ -23,7 +23,7 @@ toc:
 
 今回は、Microsoft Entra ID (Azure AD) における認証方法ポリシーの移行方法についてご紹介します。これまで MFA (Multi-Factor Authentication) と SSPR (Self Service Password Reset) で利用可能な認証方法はそれぞれ個別の画面で別々に管理されていました。現在これら別々の管理画面はレガシーな管理方法として扱われており、今後、この 2 種類のレガシー ポリシーを統一した、新しい認証方法ポリシーにて一元管理することが必要となっています。
 
-![](how-to-authentication-methods-manage/manage.png)
+![](how-to-authentication-methods-manage/migration-image.png)
 
 レガシーな MFA と SSPR 用のポリシーは **2025 年 9 月 30 日** に非推奨となり、この期日までに新しい認証方法ポリシーに移行いただく必要がございます。適切に移行いただければ、現在と動作に変わりはなく、また今後よりきめ細かい制御も可能となります。
 
@@ -43,15 +43,15 @@ MFA で利用可能な認証方法の設定について確認します。
 
 1. [Azure Portal] > [Microsoft Entra ID] > [ユーザー] > [ユーザーごとの MFA] に移動します。
    
-   ![](./how-to-authentication-methods-manage/legacy-mfa-1.png)
+   ![](./how-to-authentication-methods-manage/legacy-mfa1.png)
 
 2. [サービス設定] に移動します。
    
-   ![](./how-to-authentication-methods-manage/legacy-mfa-2.png)
+   ![](./how-to-authentication-methods-manage/legacy-mfa2.png)
 
 3. [検証オプション] 項目からどの項目にチェックが入っているかを控えます。これがレガシー MFA ポリシーの設定です。
    
-   ![](how-to-authentication-methods-manage/legacymfa3.png)
+   ![](how-to-authentication-methods-manage/legacy-mfa3.png)
 
 上記のスクリーンショットでは、ユーザーが利用可能な MFA の方法として、3 つがチェックされていることがわかります。これは、ユーザーが MFA を要求された際に、これらいずれかの方法を利用して (登録済みであれば) 認証を行えるということを意味します。
 
@@ -64,7 +64,7 @@ MFA で利用可能な認証方法の設定について確認します。
 1. [Microsoft Entra ID] > [パスワード リセット] > [認証方法] に移動します。
 2. 以下の [ユーザーが使用できる方法] でどの項目にチェックが入っているかを確認します。これがレガシー SSPR ポリシーの設定です。
    
-   ![](how-to-authentication-methods-manage/legacysspr1.png)
+   ![](how-to-authentication-methods-manage/legacy-sspr1.png)
 
 例えば、上記のスクリーンショットでは、ユーザーが利用可能な SSPR の方法として、[電子メール] または [携帯電話] にチェックされていることがわかります。これは、レガシー MFA ポリシーと同様に、ユーザーが上記のいずれかの方法を利用して SSPR を行うことができるということを意味しています。
 
@@ -90,7 +90,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 3. 画面右に表示される項目から、現在は [移行前] または [移行が進行中] の状態にあることを確認します。
 
-![](how-to-authentication-methods-manage/beforemigration.png)
+![](how-to-authentication-methods-manage/before-migration.png)
 
 併せて、移行ステップである [移行前] [移行が進行中] [移行が完了済み] のそれぞれの意味を確認ください。移行の各ステップでどのポリシーの設定が参照されるかついては、[移行の管理] の項目の設定状況に依存します。各ステップで参照されるポリシーについて以下にまとめましたのでご覧ください。
 
@@ -114,7 +114,7 @@ MFA で利用可能な認証方法の設定について確認します。
 まずは移行の管理画面から移行のステップを一つ進めます。既定の状態が [移行前] の場合、[移行が進行中] を選択し、[保存] を選択します。
 (既定の状態が [移行が進行中] の場合、本手順は省略してください。)
 
-![](how-to-authentication-methods-manage/migrationinprogress.png)
+![](how-to-authentication-methods-manage/migration-in-progress.png)
 
 上記のように移行の状態を [移行が進行中] に保存しても、認証方法ポリシーとレガシー ポリシーの両方が評価されるため、これまで利用できていた認証方法が使えなくなるということはありません。
 
@@ -181,7 +181,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 [移行が完了済み] に変更すると、レガシー ポリシーについては以下のような表示となり、新しい認証方法ポリシーによって管理されていることが明記されます。
 
-![\[移行が完了済み\] に移行後のレガシー MFA ポリシー (\[検証オプション\])](./how-to-authentication-methods-manage/mfa-finish.png)
+![\[移行が完了済み\] に移行後のレガシー MFA ポリシー (\[検証オプション\])](./how-to-authentication-methods-manage/mfa-after.png)
 
 ![\[移行が完了済み\] に移行後のレガシー SSPR ポリシー (\[パスワード リセット\] > \[認証方法\])](how-to-authentication-methods-manage/sspr-after.png)
 [移行が完了済み] になりましたら、一連の移行作業はすべて完了です。今後はレガシー ポリシーではなく、新しい認証ポリシーの画面にて認証方法の構成を実施ください。
