@@ -22,7 +22,7 @@ URL: <https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/pend
 
 まず、本ブログにて取り扱うデバイス状態についてご説明します。
 デバイス状態を確認することができるコマンド[dsregcmd /status]の結果が、下図のように表記されている状態が対象です。
-![](./azure-active-directory/hybrid-pending-device/command.png)
+![](./hybrid-pending-device/command.png)
 AzureADJoined : YES
 DomainJoined : YES
 DeviceAuthStatus : FAILED. Device is either disabled or deleted.
