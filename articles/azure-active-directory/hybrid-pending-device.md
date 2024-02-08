@@ -14,7 +14,7 @@ tags:
 この事象については下記公開情報で解説されています。
 
 Title: Microsoft Entra ID の保留中のデバイス - Active Directory | Microsoft Learn
-URL: https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/pending-devices/
+URL: <https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/pending-devices/>
 
 上記公開情報を分かりやすくするため、本ブログを用意しました。
 
@@ -61,7 +61,7 @@ Microsoft Entra ID 上から対象のデバイス オブジェクトが削除さ
 再構成の手順は下記の弊社ブログをご参照ください。
 
 Microsoft Entra ハイブリッド参加を再構成する (簡易版)
-URL: https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-hybrid-joined-re-registration-simplified/
+URL: <https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-hybrid-joined-re-registration-simplified/>
 
 ## おわりに
 
