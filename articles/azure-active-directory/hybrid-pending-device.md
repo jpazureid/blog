@@ -22,13 +22,13 @@ URL: <https://learn.microsoft.com/ja-jp/troubleshoot/azure/active-directory/pend
 
 まず、本ブログにて取り扱うデバイス状態についてご説明します。
 デバイス状態を確認することができるコマンド[dsregcmd /status]の結果が、下図のように表記されている状態が対象です。
-![](./workspaces/blog/articles/azure-active-directory/hybrid-pending-device/command.png)
+![](./azure-active-directory/hybrid-pending-device/command.png)
 AzureADJoined : YES
 DomainJoined : YES
 DeviceAuthStatus : FAILED. Device is either disabled or deleted.
 
 また、Microsoft Entra ID 上では登録済み欄が"保留中"となっている状態を表します。
-![](./workspaces/blog/articles/azure-active-directory/hybrid-pending-device/Microsoft_Entra.png)
+![](./hybrid-pending-device/Microsoft_Entra.png)
 
 ## [登録済み]欄の日付が[保留中]に戻るというのは誤解です!
 
@@ -50,10 +50,10 @@ Microsoft Entra ID 上から対象のデバイス オブジェクトが削除さ
 
 ・ 1 つ目のシナリオ
   管理者ロールを持つユーザーが、Azure ポータルやコマンドなどで、Microsoft  Entra ID 上から該当デバイスを削除した場合
-![](./workspaces/blog/articles/azure-active-directory/hybrid-pending-device/device.png)
+![](./hybrid-pending-device/device.png)
 ・ 2 つ目のシナリオ
 　オンプレミス AD 上で該当のコンピューターアカウントが Microsoft Entra Connect の同期対象外 OU に移動された後に、Microsoft Entra Connect の同期が行われた場合
-![](./workspaces/blog/articles/azure-active-directory/hybrid-pending-device/users_and_computers.png)
+![](./hybrid-pending-device/users_and_computers.png)
 
 ## 本事象の解消方法について
 
