@@ -1,6 +1,6 @@
 ---
 title: 監査ログを使用した特権ロール割り当ての管理
-date: 2024-02-05 09:00
+date: 2024-02-11 09:00
 tags:
     - US Identity Blog
 ---
@@ -29,16 +29,15 @@ Microsoft Entra ID をご利用いただくなかで、必ずどのお客様も�
 
 Microsoft Entra ID における特権とは、ディレクトリ上のリソースの管理を何らかの主体に委任し、資格情報や認証/認可のポリシーの変更、制限付きのデータへのアクセスを行えるようにするアクセス許可のことを指します。Microsoft Entra ロールには、それぞれロールごとに、このアクセス許可の内容が定義されています。ロールを割り当てられたユーザーには、このアクセス許可が付与され、様々な管理操作が可能となります。
 
-まずは、割り当てられているロールにどのような管理権限があるのかを確認することが重要です。すべての組み込みロールに定義されている権限は、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/permissions-reference)で確認できます。 
+まずは、割り当てられているロールにどのような管理権限があるのかを確認することが重要です。すべての組み込みロールに定義されている権限は、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/permissions-reference) で確認できます。 
 
 また、 Azure ポータル上でロールを検索し、「説明」メニューを開くことでもアクセス許可一覧を確認できます。この方法であれば、カスタム ロールに定義されているアクセス許可も確認できます。
 
 ![](./easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs1.png)
 
-例えば、特権認証管理者ロールと認証管理者ロールは、名前が似ていますが異なるアクセス許可がいくつかあります。特権認証管理者の方が高い権限を持っており、具体的な権限の違いは[こちら](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/privileged-roles-permissions?tabs=admin-center#compare-authentication-roles)にて確認できます。
+例えば、特権認証管理者ロールと認証管理者ロールは、名前が似ていますが異なるアクセス許可がいくつかあります。特権認証管理者の方が高い権限を持っており、具体的な権限の違いは [こちら](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/privileged-roles-permissions?tabs=admin-center#compare-authentication-roles) にて確認できます。
 
-
-同様のロール間に違いがあるもう 1 つの例は、エンドユーザーの管理を担うロールです。具体的には、パスワードのリセットができるロールや、機密性の高い属性を編集できるロールなどについてです。これらのロールの違いとニュアンスの詳細は、[ここ](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/privileged-roles-permissions?tabs=admin-center#who-can-reset-passwords)に概説されています。
+同様のロール間に違いがあるもう 1 つの例は、エンドユーザーの管理を担うロールです。具体的には、パスワードのリセットができるロールや、機密性の高い属性を編集できるロールなどについてです。これらのロールの違いとニュアンスの詳細は、[ここ](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/privileged-roles-permissions?tabs=admin-center#who-can-reset-passwords) に概説されています。
 
 ## アクティビティの監査 
 
@@ -50,7 +49,7 @@ Entra ID の監査ログを Microsoft Sentinel に取り込むには、Microsoft
 
 ![](./easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs2.png)
  
-IdentityInfo テーブルに、UEBA によって収集されたユーザー情報が格納されます。そのため、ユーザが割り当てられた Entra ID ロールもここに含まれます。これにより、特権ロールが割り当てられたアカウントの一覧を簡単に取得できます。
+IdentityInfo テーブルに、UEBA によって収集されたユーザー情報が格納されます。そのため、ユーザーが割り当てられた Entra ID ロールもここに含まれます。これにより、特権ロールが割り当てられたアカウントの一覧を簡単に取得できます。
 
 以下のクエリを実行すると、アカウントが実行したアクティビティと、そのアカウントに割り当てられたロールの一意のリストが得られます: 
 
@@ -58,15 +57,15 @@ IdentityInfo テーブルに、UEBA によって収集されたユーザー情�
 AuditLogs
 | where TimeGenerated > ago(90d)
 | extend ActorName = iif(
-                         isnotempty(tostring(InitiatedBy["user"])),
-                         tostring(InitiatedBy["user"]["userPrincipalName"]),
-                         tostring(InitiatedBy["app"]["displayName"])
-                     )
+    isnotempty(tostring(InitiatedBy["user"])),
+    tostring(InitiatedBy["user"]["userPrincipalName"]),
+    tostring(InitiatedBy["app"]["displayName"])
+)
 | extend ActorID = iif(
-                       isnotempty(tostring(InitiatedBy["user"])),
-                       tostring(InitiatedBy["user"]["id"]),
-                       tostring(InitiatedBy["app"]["id"])
-                   )
+    isnotempty(tostring(InitiatedBy["user"])),
+    tostring(InitiatedBy["user"]["id"]),
+    tostring(InitiatedBy["app"]["id"])
+)
 | where isnotempty(ActorName)
 | join kind=inner (IdentityInfo
     | where TimeGenerated > ago(7d)
@@ -80,33 +79,32 @@ AuditLogs
 | sort by OperationsCount desc
 ```
 
-
 このクエリを使用すると、Entra ID でタスクを実行したすべてのアカウントの結果が返されますので、着目したい特権操作以外の情報も大量に含まれている可能性があります。特定の Entra ID ロールに絞ってフィルタリングするには、以下のクエリを実行します。例として 3 つのロールの結果を出すようにしていますが、追加で複数のロールを含めていただいて構いません。
 
 ```
 let PrivilegedRoles = dynamic(["Global Administrator",
-    "Security Administrator",
-    "Compliance Administrator"
-   ]);
+                               "Security Administrator",
+                               "Compliance Administrator"
+                              ]);
 AuditLogs
 | where TimeGenerated > ago(90d)
 | extend ActorName = iif(
-isnotempty(tostring(InitiatedBy["user"])),
-tostring(InitiatedBy["user"]["userPrincipalName"]),
-tostring(InitiatedBy["app"]["displayName"])
+    isnotempty(tostring(InitiatedBy["user"])),
+    tostring(InitiatedBy["user"]["userPrincipalName"]),
+    tostring(InitiatedBy["app"]["displayName"])
 )
 | extend ActorID = iif(
-isnotempty(tostring(InitiatedBy["user"])),
-tostring(InitiatedBy["user"]["id"]),
-tostring(InitiatedBy["app"]["id"])
+    isnotempty(tostring(InitiatedBy["user"])),
+    tostring(InitiatedBy["user"]["id"]),
+    tostring(InitiatedBy["app"]["id"])
 )
 | where isnotempty(ActorName)
 | join kind=inner (IdentityInfo
-| where TimeGenerated > ago(7d)
-| where strlen(tostring(AssignedRoles)) > 2
-| summarize arg_max(TimeGenerated, *) by AccountUPN
-| project AccountObjectId, AssignedRoles)
-on $left.ActorID == $right.AccountObjectId
+    | where TimeGenerated > ago(7d)
+    | where strlen(tostring(AssignedRoles)) > 2
+    | summarize arg_max(TimeGenerated, *) by AccountUPN
+    | project AccountObjectId, AssignedRoles)
+    on $left.ActorID == $right.AccountObjectId
 | where AssignedRoles has_any (PrivilegedRoles)
 | summarize Operations = make_set(OperationName) by ActorName, ActorID, Identity, tostring(AssignedRoles)
 | extend OperationsCount = array_length(Operations)
@@ -114,24 +112,21 @@ on $left.ActorID == $right.AccountObjectId
 | sort by OperationsCount desc
 ```
 
-
 クエリを実行すると、その結果から、Entra ID テナントで実行されたアクティビティと、それらのアカウントにどのようなロールが割り当てられているかがわかります。以下の例では、上 2 つの結果には何の問題もありません。しかし、3 行目を見ると、グローバル管理者ロールを持つユーザーが、サービス プリンシパルを作成したことがわかります。
 
-サービス プリンシパルを作成する場合、グローバル管理者ロールよりも低い権限で実施できます。したがって、このユーザにはより低い権限のロールを付与すべきです。付与可能なロールを確認するには、Entra IDで特定のタスクを実行するために必要な最も権限の低いロールが記載されている[このリスト](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/delegate-by-task)を確認してください。
+サービス プリンシパルを作成する場合、グローバル管理者ロールよりも低い権限で実施できます。したがって、このユーザーにはより低い権限のロールを付与すべきです。付与可能なロールを確認するには、Entra ID で特定のタスクを実行するために必要な最も権限の低いロールが記載されている [このリスト](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/delegate-by-task) を確認ください。
 
 ![](./easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs3.png)
 
-
 ## Log Analytics を利用する方法
-
 
 ![](./easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs4.png)
 
-Entra ID の監査ログを Log Analytics ワークスペースに取り込むには、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs)の手順を参照ください。
+Entra ID の監査ログを Log Analytics ワークスペースに取り込むには、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs) の手順を参照ください。
  
 付与されたロールを含むテーブルはないため、クエリにユーザーの一覧を追加してフィルタリングする必要があります。特定の Entra ID ロールが割り当てられているユーザーの一覧を取得するには、いくつかの方法があります。
 
-簡単な方法は、Entra ID にアクセスし、[ロールと管理者] のブレードを選択することです。そこからロールを選択し、ロールが割り当てられた ID をすべてエクスポートしておきます。特権ユーザーの UPN を取得しておくことが重要です。これはユーザーが持つロールと一緒に、これらの UPN をクエリに追加する必要があるためです。クエリ自体にいくつかロールの例を示していいます。ユーザが複数のロールを持つ場合は、すべてのロールをクエリに追加ください。
+簡単な方法は、Entra ID にアクセスし、[ロールと管理者] のブレードを選択することです。そこからロールを選択し、ロールが割り当てられた ID をすべてエクスポートしておきます。特権ユーザーの UPN を取得しておくことが重要です。これはユーザーが持つロールと一緒に、これらの UPN をクエリに追加する必要があるためです。クエリ自体にいくつかロールの例を示していいます。ユーザーが複数のロールを持つ場合は、すべてのロールをクエリに追加ください。
 
 ```
 datatable(UserPrincipalName:string, Roles:dynamic) [
@@ -140,25 +135,25 @@ datatable(UserPrincipalName:string, Roles:dynamic) [
     "admin3@contoso.com", dynamic(["Compliance Administrator"])
 ]
 | join kind=inner (AuditLogs
-        | where TimeGenerated > ago(90d)
-        | extend ActorName = iif(
-                                isnotempty(tostring(InitiatedBy["user"])),
-                                tostring(InitiatedBy["user"]["userPrincipalName"]),
-                                tostring(InitiatedBy["app"]["displayName"])
-                            )
-        | extend ActorID = iif( 
-                            isnotempty(tostring(InitiatedBy["user"])),
-                            tostring(InitiatedBy["user"]["id"]),
-                            tostring(InitiatedBy["app"]["id"])
-                        )
-        | where isnotempty(ActorName) ) on $left.UserPrincipalName == $right.ActorName
+    | where TimeGenerated > ago(90d)
+    | extend ActorName = iif(
+        isnotempty(tostring(InitiatedBy["user"])),
+        tostring(InitiatedBy["user"]["userPrincipalName"]),
+        tostring(InitiatedBy["app"]["displayName"])
+    )
+    | extend ActorID = iif( 
+        isnotempty(tostring(InitiatedBy["user"])),
+        tostring(InitiatedBy["user"]["id"]),
+        tostring(InitiatedBy["app"]["id"])
+    )
+    | where isnotempty(ActorName) ) on $left.UserPrincipalName == $right.ActorName
 | summarize Operations = make_set(OperationName) by ActorName, ActorID, tostring(Roles)
 | extend OperationsCount = array_length(Operations)
 | project ActorName, Operations, OperationsCount, Roles, ActorID
 | sort by OperationsCount desc
 ```
 
-クエリを実行すると、フィルタリングしたユーザーによって Entra ID テナントで実行されたアクティビティ情報が得られます。以下の例では、上 2 つの結果に問題があるということがわかります。どちらもグローバル管理者ロールを持っていますが、これらの操作にはグローバル管理者ロールは必要なく、グローバル管理者以外のロールでも実施できます。したがって、これらのユーザーにはより低い権限のロールを付与しなおすべきです。どのロールを付与できるかは、[このリスト](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/delegate-by-task)を確認し、Entra ID で特定のタスクを実行するために必要な最も権限の低いロールを確認ください。
+クエリを実行すると、フィルタリングしたユーザーによって Entra ID テナントで実行されたアクティビティ情報が得られます。以下の例では、上 2 つの結果に問題があるということがわかります。どちらもグローバル管理者ロールを持っていますが、これらの操作にはグローバル管理者ロールは必要なく、グローバル管理者以外のロールでも実施できます。したがって、これらのユーザーにはより低い権限のロールを付与しなおすべきです。どのロールを付与できるかは、[このリスト](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/delegate-by-task) を確認し、Entra ID で特定のタスクを実行するために必要な最も権限の低いロールを確認ください。
 
 
 
