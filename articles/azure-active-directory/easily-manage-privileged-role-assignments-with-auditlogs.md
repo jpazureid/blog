@@ -155,7 +155,7 @@ datatable(UserPrincipalName:string, Roles:dynamic) [
 
 クエリを実行すると、フィルタリングしたユーザーによって Entra ID テナントで実行されたアクティビティ情報が得られます。以下の例では、上 2 つの結果に問題があるということがわかります。どちらもグローバル管理者ロールを持っていますが、これらの操作にはグローバル管理者ロールは必要なく、グローバル管理者以外のロールでも実施できます。したがって、これらのユーザーにはより低い権限のロールを付与しなおすべきです。どのロールを付与できるかは、[このリスト](https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/delegate-by-task) を確認し、Entra ID で特定のタスクを実行するために必要な最も権限の低いロールを確認ください。
 
-
+![](./easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs5.png)
 
 上記例の 1 行目に関して、このユーザーがそれでもグローバル管理者ロールを必要とする場合、グローバル管理者にはセキュリティ管理者ロールよりも多くの権限が含まれているため、セキュリティ管理者ロールは冗長になります。セキュリティ管理者ロールを外しても問題ありません。
 
