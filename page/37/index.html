@@ -83,6 +83,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-active-directory-federation-service/update-token-certificate" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../active-directory-federation-service/update-token-certificate/" class="article-date">
+  <time datetime="2017-10-02T15:00:00.000Z" itemprop="datePublished">2017-10-03</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../active-directory-federation-service/update-token-certificate/">AD FS の証明書更新手順（トークン署名証明書、トークン暗号化解除証明書）</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        Note本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/03/ad-fs-tokencert/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。
+皆様、こんにちは。Azure &amp; Identity サポート担当の竹村です。
+前回に引き続き、本エントリではトークン署名証明書、トークン暗号化解除証明書の更新手順をご紹介いたします。
+トークン署名証明書、トークン暗号化解除証明書は AD FS が発行する自己証明書であり、既定では 1 年に 1 回自動的に新しい証明書の作成、更新処理が行われます。これを、自動ロールオーバー機能 と呼びます。
+自動ロールオーバー機能は、具体的には以下のように動作します。
+
+有効期限が切れる 20 日前に、セカ...
+        <p class="article-readmore">
+          <a href="../../active-directory-federation-service/update-token-certificate/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/update-token-certificate/" data-id="clskq0jsy00tv0npl0dw63swl" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-azure-active-directory/azure-mfa-timing" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -121,7 +175,7 @@ Azure AD では、ユーザー名、パスワードによるサインインだ�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-mfa-timing/" data-id="clsgagl53006s0nryc2mn07ur" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-mfa-timing/" data-id="clskq0jn5006s0npld3nz8o3b" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li></ul>
@@ -150,6 +204,10 @@ Azure AD では、ユーザー名、パスワードによるサインインだ�
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/">インタラクティブ マップを使用した Entra サインイン ログの可視化手法</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/">監査ログを使用した特権ロール割り当ての管理</a>
           </li>
         
@@ -163,10 +221,6 @@ Azure AD では、ユーザー名、パスワードによるサインインだ�
         
           <li>
             <a href="../../azure-active-directory/introducing-new-features-of-microsoft-entra-permissions-management/">Microsoft Entra Permissions Management の新機能の紹介</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/advancing-cybersecurity-the-latest-enhancement-in-phishing-resistant-authentication/">サイバーセキュリティの向上 - フィッシングに強い認証に対する最新の機能強化</a>
           </li>
         
       </ul>

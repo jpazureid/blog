@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azureadconnect_faq/aadcfaq063.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azureadconnect_faq/ssm_operations.jpg">
 <meta property="article:published_time" content="2023-06-15T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-10T16:26:10.824Z">
+<meta property="article:modified_time" content="2024-02-13T18:52:41.323Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure Ad Connect">
 <meta name="twitter:card" content="summary">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e29f366b-a258-5ebd-b3c6-212b834b2c62%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fazureadconnect_faq%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fazureadconnect_faq.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fazureadconnect_faq.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azureadconnect_faq/" data-id="clsgaglcy010n0nry3ymka6a4" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azureadconnect_faq/" data-id="clskq0jv1010p0npl6wwl6ld7" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -251,7 +251,7 @@
 <p>同期エラーが発生するたびに毎回メッセージを送信するのではなく、バックエンド サービスから返されたすべてのエラーのダイジェストを毎日送信することになります。</p>
 </blockquote>
 <h3 id="Q-AADC-からの同期エラーの通知メールを受信しました。受信者はどこで確認できますか？"><a href="#Q-AADC-からの同期エラーの通知メールを受信しました。受信者はどこで確認できますか？" class="headerlink" title="Q. AADC からの同期エラーの通知メールを受信しました。受信者はどこで確認できますか？"></a><strong>Q. AADC からの同期エラーの通知メールを受信しました。受信者はどこで確認できますか？</strong></h3><p><strong>A.</strong> 同期処理での問題について、以前通知は 2 種類ありましたが、現在は統一されています。下記手順にてご確認ください。</p>
-<p>Azure AD Connect Health Agent : <a href="mailto:&#x61;&#122;&#x75;&#x72;&#x65;&#x2d;&#110;&#x6f;&#114;&#x65;&#112;&#x6c;&#x79;&#64;&#109;&#105;&#x63;&#x72;&#x6f;&#115;&#x6f;&#102;&#x74;&#46;&#99;&#x6f;&#x6d;">&#x61;&#122;&#x75;&#x72;&#x65;&#x2d;&#110;&#x6f;&#114;&#x65;&#112;&#x6c;&#x79;&#64;&#109;&#105;&#x63;&#x72;&#x6f;&#115;&#x6f;&#102;&#x74;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>Azure AD Connect Health Agent : <a href="mailto:&#97;&#x7a;&#117;&#x72;&#x65;&#x2d;&#110;&#111;&#x72;&#101;&#112;&#x6c;&#x79;&#x40;&#x6d;&#x69;&#x63;&#x72;&#x6f;&#115;&#111;&#102;&#x74;&#x2e;&#x63;&#x6f;&#109;">&#97;&#x7a;&#117;&#x72;&#x65;&#x2d;&#110;&#111;&#x72;&#101;&#112;&#x6c;&#x79;&#x40;&#x6d;&#x69;&#x63;&#x72;&#x6f;&#115;&#111;&#102;&#x74;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>Azure AD Connect Health Agent 通知先設定手順</p>
 <p>設定箇所 : [Azure ポータル] - [Azure AD Connect] - [Azure AD Connect Health] - [同期エラー] - [通知設定]</p>
 <p>設定項目 : 追加の電子メール受信者</p>
@@ -386,6 +386,10 @@
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/">インタラクティブ マップを使用した Entra サインイン ログの可視化手法</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/">監査ログを使用した特権ロール割り当ての管理</a>
           </li>
         
@@ -399,10 +403,6 @@
         
           <li>
             <a href="../../azure-active-directory/introducing-new-features-of-microsoft-entra-permissions-management/">Microsoft Entra Permissions Management の新機能の紹介</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/advancing-cybersecurity-the-latest-enhancement-in-phishing-resistant-authentication/">サイバーセキュリティの向上 - フィッシングに強い認証に対する最新の機能強化</a>
           </li>
         
       </ul>
