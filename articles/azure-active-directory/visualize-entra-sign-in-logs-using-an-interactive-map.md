@@ -10,7 +10,7 @@ tags:
 
 
 
-こんにちは！ Azure ID チームの小出です。
+こんにちは、Azure Identity サポート チームの 山下 です。
 
 本記事は、2024 年 1 月 16 日に米国の Microsoft Entra (Azure AD) Blog で公開された [ Visualize Entra Sign-in Logs using an Interactive Map - Microsoft Community Hub](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/visualize-entra-sign-in-logs-using-an-interactive-map/ba-p/4013853) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
