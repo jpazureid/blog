@@ -68,7 +68,8 @@ SigninLogs
 | whereTimeGenerated >ago(7d)
 | whereisnotempty(LocationDetails.geoCoordinates)
 | extend Latitude =toreal(LocationDetails.geoCoordinates["latitude"])
-| extend Longitude =toreal(LocationDetails.geoCoordinates["longitude"])|summarize Count =count()byLongitude,Latitude
+| extend Longitude =toreal(LocationDetails.geoCoordinates["longitude"])
+| summarize Count =count()byLongitude,Latitude
 | project Longitude,Latitude,Count
 | render scatterchart with(kind=map)
 ```
