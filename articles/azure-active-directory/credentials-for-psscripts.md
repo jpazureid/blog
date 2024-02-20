@@ -14,7 +14,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 いずれの PowerShell モジュールも、最初に認証コマンド実行によるアクセス トークンの取得が必要となるためです。
 
 例えば Microsoft Graph PowerShell SDK の認証用コマンド "Connect-MgGraph" では、以下のようにユーザー認証画面が表示されます。しかし自動実行を想定したスクリプトの場合、ユーザーによるサインイン操作が発生することは不都合です。
-![](.\credentials-for-psscripts\popup.png) 
+![](./credentials-for-psscripts/popup.png) 
 
 こんなシナリオの解決策としては、サービスプリンシパル・マネージド ID の活用が最適です！
 
