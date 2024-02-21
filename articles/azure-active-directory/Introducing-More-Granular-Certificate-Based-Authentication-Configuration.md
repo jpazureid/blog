@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセスの新しいオプション 高度な証明書ベース認証 (CBA) がパブリック プレビューになりました
-date: 202-08-19 09:00
+date: 2024-02-22 09:00
 tags:
     - Conditional Access
     - US Identity Blog
