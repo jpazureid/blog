@@ -21,9 +21,6 @@ tags:
 例として、Contoso という企業では、従業員にスマート カードを使用して 3 種類の多要素証明書を従業員に発行しているとします。これらの証明書は、機密、秘密、トップシークレットのような異なるセキュリティ クリアランス レベルに対応しています。Contoso 社は、適切な多要素証明書を持つユーザーのみが、対応する分類のデータにアクセスできるようにする必要があります。
 
 
-![新しくオンボードされた従業員のために、会社のロゴと関連情報が一致するようにウェルカム E メールをカスタマイズできます。](./lifecycle-workflows-ga/lifecycle-workflows-ga3.png)
-
-
 ![図 1: 認証強度 - 高度な CBA オプション](./Introducing-More-Granular-Certificate-Based-Authentication-Configuration/Introducing-More-Granular-Certificate-Based-Authentication-Configuration1.png)
 
 
