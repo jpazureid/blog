@@ -20,7 +20,9 @@ tags:
 
 例として、Contoso という企業では、従業員にスマート カードを使用して 3 種類の多要素証明書を従業員に発行しているとします。これらの証明書は、機密、秘密、トップシークレットのような異なるセキュリティ クリアランス レベルに対応しています。Contoso 社は、適切な多要素証明書を持つユーザーのみが、対応する分類のデータにアクセスできるようにする必要があります。
 
+
 ![図 1: 認証強度 - 高度な CBA オプション](./Introducing-More-Granular-Certificate-Based-Authentication-Configuration/Introducing-More-Granular-Certificate-Based-Authentication-Configuration1.png)
+
 
 条件付きアクセスの認証強度の機能により、お客様は証明書発行者や OID のポリシーに基づいてアクセスを許可する高度な CBA オプションを使用して、カスタムの認証強度ポリシーを作成できるようになりました。パートナーの Entra ID テナントから多要素認証 (MFA)  が信頼されている外部ユーザーの場合、これらのプロパティに基づいてアクセスを制限することもできます。 
 
