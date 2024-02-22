@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセスの新しいオプション 高度な証明書ベース認証 (CBA) がパブリック プレビューになりました
-date: 2024-02-22 09:00
+date: 2024-02-22 12:00
 tags:
     - Conditional Access
     - US Identity Blog
@@ -26,7 +26,8 @@ tags:
 
 条件付きアクセスの認証強度の機能により、お客様は証明書発行者や OID のポリシーに基づいてアクセスを許可する高度な CBA オプションを使用して、カスタムの認証強度ポリシーを作成できるようになりました。パートナーの Entra ID テナントから多要素認証 (MFA)  が信頼されている外部ユーザーの場合、これらのプロパティに基づいてアクセスを制限することもできます。 
 
-これにより、[12月に共有した最新の更新](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/advancing-cybersecurity-the-latest-enhancement-in-phishing/ba-p/2365681)に加えて、CBA に柔軟性が追加されました。私たちは、すべてのお客様に対してフィッシング耐性のある認証機能をより向上させ、米国政府のお客様が「[国家のサイバーセキュリティの向上に関する大統領令 14028](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/)」を満たすことができるよう、引き続きサポートしていきます。
+これにより、[12 月に共有した最新の更新](https://jpazureid.github.io/blog/azure-active-directory/advancing-cybersecurity-the-latest-enhancement-in-phishing-resistant-authentication/) に加えて、CBA に柔軟性が追加されました。私たちは、すべてのお客様に対してフィッシング耐性のある認証機能をより向上させ、米国政府のお客様が「[国家のサイバーセキュリティの向上に関する大統領令 14028](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/)」を満たすことができるよう、引き続きサポートしていきます。
 
-この新機能の詳細については、[認証強度の詳細オプション](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strength-advanced-options)をご確認ください。
+この新機能の詳細については、[認証強度の詳細オプション](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strength-advanced-options) をご確認ください。
 
+Alex Weinert
