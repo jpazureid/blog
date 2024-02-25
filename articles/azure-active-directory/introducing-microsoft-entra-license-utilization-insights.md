@@ -1,12 +1,11 @@
 ---
-title: 
-date: 2024-02-22 12:00
+title: Microsoft Entra ライセンスの使用状況分析機能のご紹介
+date: 2024-02-25 09:00
 tags:
-    - Conditional Access
     - US Identity Blog
 ---
 
-# 
+# Microsoft Entra ライセンスの使用状況分析機能のご紹介
 
 こんにちは、Azure Identity サポート チームの 高田 です。
  
