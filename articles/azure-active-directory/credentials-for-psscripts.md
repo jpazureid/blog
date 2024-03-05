@@ -46,8 +46,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 
 マネージド ID が利用可能なシナリオである下記 2 つの条件が満たされる場合は、マネージド ID のご利用が最もおすすめです。
 
-- 条件 1: コマンド実行元がマネージド ID に対応した Azure リソースである
-- 条件 2: 利用予定のコマンドがマネージド ID に対応している
+- 条件: コマンド実行元がマネージド ID に対応した Azure リソースである
 
 上述のとおり、マネージド ID では資格情報の管理が不要という大きなメリットがあります。そして、管理者側で予めマネージド ID を有効化した Azure リソース上でのみ認証が可能であるため、外部のシステムによる ID の不正利用ができないというセキュリティ面での利点もあります。
 
@@ -55,7 +54,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 
 ## アプリケーション (サービス プリンシパル) およびマネージド ID を使った認証コマンド
 
-以下ではまず、もっと思お勧めするマネージド ID を利用した方法についてお知らせします。続いて、アプリケーション (サービス プリンシパル) を利用した認証方法についてもおまとめします。
+以下ではまず、もっともお勧めするマネージド ID を利用した方法についてお知らせします。続いて、アプリケーション (サービス プリンシパル) を利用した認証方法についてもおまとめします。
 
 ### マネージド ID の場合
 
@@ -64,11 +63,11 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 - Microsoft Graph PowerShell SDK の認証用コマンド "Connect-MgGraph" を自動で実行したい。
 - 実行元は Azure VM (Windows) 上の PowerShell である。
 
-Azure VM はマネージド ID に対応した Azure リソースです。かつ、Connect-MgGraph コマンドもマネージド ID に対応しています。そのため、Azure VM 上で Microsoft Graph PowerShell SDK を利用するシナリオではマネージド ID を利用した認証が可能です。マネージド ID には「システム割り当て マネージド ID」と「ユーザー割り当て マネージド ID」の 2 種類がありますが、ここでは「システム割り当て マネージド ID」の利用例を紹介します。これら二つのの違いについては、[Azure リソースのマネージド ID とは (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/entra/identity/managed-identities-azure-resources/overview) の公開情報をご参照ください。
+Azure VM はマネージド ID に対応した Azure リソースです。かつ、Connect-MgGraph コマンドもマネージド ID に対応しています。そのため、Azure VM 上で Microsoft Graph PowerShell SDK を利用するシナリオではマネージド ID を利用した認証が可能です。マネージド ID には「システム割り当て マネージド ID」と「ユーザー割り当て マネージド ID」の 2 種類がありますが、ここでは「システム割り当て マネージド ID」の利用例を紹介します。これら二つの違いについては、[Azure リソースのマネージド ID とは (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/entra/identity/managed-identities-azure-resources/overview) の公開情報をご参照ください。
 
 #### マネージド ID の有効化
 
-まずは、PowerShell コマンド実行元の Azure VM で SAMI を有効化します。
+まずは、PowerShell コマンド実行元の Azure VM で「システム割り当て マネージド ID」を有効化します。
 
 1. Azure ポータルで、該当の Azure VM リソースを開きます
 2. [セキュリティ] > [ID] の設定画面に進みます
