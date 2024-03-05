@@ -145,10 +145,10 @@ Connect-MgGraph -ClientId "クライアント ID" -TenantId "テナント ID" -C
 3. 任意の説明 (空欄でも構いません) を入力、有効期限を指定のうえ [+ 追加] を押下します。
 4. 新しいシークレットが発行されます。[値] の項目に表示される文字列が、クライアント シークレットの値です。この文字列をコピーして控えます。
 
-    ![](.\credentials-for-psscripts\secret-visible.png)
+    ![](./credentials-for-psscripts/secret-visible.png)
 
 > [!NOTE] 一度この画面を離れると、シークレット文字列を再表示することはできません。次回以降はマスクされた値のみが表示されるので、ご注意ください。
-> ![](.\credentials-for-psscripts\secret-hidden.png) 
+> ![](./credentials-for-psscripts/secret-hidden.png) 
 
 ##### クライアント シークレットを利用した認証
 
