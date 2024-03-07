@@ -37,7 +37,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 マネージド ID では、Azure 内部のエンドポイントで Azure リソースに紐づいた ID として Microsoft Entra ID の認証処理を行います。利用者は、Azure 上のリソース (Azure VM や WebApp など) を作成すれば、この ID をすぐに利用でき、資格情報の管理 (有効期限に応じた更新、資格情報漏洩の対策など) が不要という大きなメリットがあります。
 
 マネージド ID の利用をサポートする Azure リソースについては、以下の公開情報をご参照ください。
-[マネージド ID を使用して他のサービスにアクセスできる Azure サービス](https://learn.microsoft.com/ja-jp/entra/identity/managed-identities-azure-resources/managed-identities-status)
+[マネージド ID を使用して他のサービスにアクセスできる Azure サービス (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/entra/identity/managed-identities-azure-resources/managed-identities-status)
 
 ## アプリケーション (サービス プリンシパル) オブジェクトのシークレット/証明書とマネージド ID のどれを使えばいい？
 
