@@ -125,7 +125,7 @@ Microsoft Entra ID では、以下の手順で秘密鍵を含まない証明書�
 
 ##### 証明書を利用した認証
 
-証明書を使って、Connect-AzAccount を実行します。上の手順で控えたアプリケーション (クライアント) ID とディレクトリ (テナント) ID、証明書の拇印をここで使用します。
+証明書を使って、Connect-MgGraph を実行します。上の手順で控えたアプリケーション (クライアント) ID とディレクトリ (テナント) ID、証明書の拇印をここで使用します。
 
 ```powershell
 Connect-MgGraph -ClientId "クライアント ID" -TenantId "テナント ID" -CertificateThumbprint "証明書の拇印"
@@ -153,7 +153,7 @@ Connect-MgGraph -ClientId "クライアント ID" -TenantId "テナント ID" -C
 
 ##### クライアント シークレットを利用した認証
 
-クライアント シークレットを使って、Connect-AzAccount を実行します。
+クライアント シークレットを使って、Connect-MgGraph を実行します。
 
 ```powershell
 $Client_Id = "クライアント ID"
