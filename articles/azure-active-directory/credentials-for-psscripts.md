@@ -115,7 +115,7 @@ Connect-MgGraph -Identity
 
 ##### 証明書の準備
 
-証明機関 (CA) で証明書のファイル (秘密鍵あり / 秘密鍵なし) を取得ください。Windows 端末上で自己署名証明書を発行する場合の例については、[自己署名公開証明書を作成してアプリケーションを認証する (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/entra/identity-platform/howto-create-self-signed-certificate) の公開情報をご参照ください。PowerShell を実行するの Windows 端末で、[個人 (/My)] の証明書ストアに秘密鍵を含む証明書をインポートします。証明書の拇印をお手元にお控えください。
+証明機関 (CA) で証明書のファイル (秘密鍵あり / 秘密鍵なし) を取得ください。Windows 端末上で自己署名証明書を発行する場合の例については、[自己署名公開証明書を作成してアプリケーションを認証する (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/entra/identity-platform/howto-create-self-signed-certificate) の公開情報をご参照ください。PowerShell を実行する Windows 端末で、[個人 (/My)] の証明書ストアに秘密鍵を含む証明書をインポートします。証明書の拇印をお手元にお控えください。
 
 Microsoft Entra ID では、以下の手順で秘密鍵を含まない証明書をアップロードします。
 
