@@ -11,7 +11,7 @@ tags:
 
 本記事は、2024 年 2 月 6 日に米国の Microsoft Entra (Azure AD) Blog で公開された[Auto Rollout of Conditional Access Policies in Microsoft Entra ID](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/auto-rollout-of-conditional-access-policies-in-microsoft-entra/ba-p/4044870) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
-> [!Note]
+> [!NOTE]
 > サポート チームからの補足: Microsoft マネージド条件付きアクセス ポリシーの自動有効化は、下記ポリシーがレポート専用モードで作成されているテナントにおいて、現在順次進められております。自動有効化をご要望でないお客様は、レポート専用モードを無効状態に変更するようご対応ください。
 
 ----
