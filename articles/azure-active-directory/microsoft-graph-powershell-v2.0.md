@@ -77,7 +77,7 @@ Connect-MgGraph -Identity -u <ユーザー割り当てマネージド ID のア�
 クライアント シークレットで認証する場合は以下コマンドを実行ください。認証ポップアップにクライアント シークレットの文字列を入力します。
 
 ```powershell
-$ClientSecretCredential = Get-Credential -Username "<アプリケーション ID>" Message "Enter the client secret string."
+$ClientSecretCredential = Get-Credential -UserName "<アプリケーション ID>" -Message "Enter the client secret string."
 Connect-MgGraph -TenantId "<テナント Id>" -ClientSecretCredential $ClientSecretCredential
 ```
 
