@@ -240,7 +240,6 @@ SSPR の画面に遷移します。
 
 - オンプレミス AD でパスワード変更をまたはパスワードリセットを行う
 - Azure にサインイン後自らパスワード "変更" を行う
-- Azure のセルフサービス パスワードリセット (SSPR) を利用し自らパスワード "リセット" を行う
 
 Active Directory の保護されたグループ (いわゆる管理者グループ) に所属すると、そのユーザー アカウントの adminCount 属性に "1" が自動で設定されます。
 この属性が 1 に設定されたアカウントに対してはドメイン コントローラーにおける SDProp と呼ばれるプロセスにより 1 時間に 1 回、AdminSDHolder オブジェクトに設定されているアクセス許可で上書きされます。そのため、AD ユーザーに対してパスワード リセットを実行している "AD DS コネクタ アカウント" のリセット権限が失われ、結果として Azure AD Connect のパスワード リセットが失敗します。
@@ -360,3 +359,8 @@ https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/unable-conf
 
 パスワードの書き戻し (FAQ)  
 https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/active-directory-passwords-faq#password-writeback
+
+### 更新履歴
+2024.3.27
+誤記のため以下を削除。
+- Azure のセルフサービス パスワードリセット (SSPR) を利用し自らパスワード "リセット" を行う
