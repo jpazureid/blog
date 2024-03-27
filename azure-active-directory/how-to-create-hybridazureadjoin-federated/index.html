@@ -65,7 +65,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/056.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg">
 <meta property="article:published_time" content="2019-09-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-27T07:11:03.915Z">
+<meta property="article:modified_time" content="2024-03-27T23:50:39.843Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="Azure AD">
@@ -210,7 +210,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e1d2c8be-bc67-5c07-bd26-7fca32574336%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%95%E3%82%A7%E3%83%87%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%94%A8%28AD+FS+%E3%81%82%E3%82%8A%29+Hybrid+Azure+AD+Join+%E3%82%92%E4%B8%80%E3%81%8B%E3%82%89%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="clu9gvvgz00w50nnw0k2g2wxt" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cluaglcyj00w50nmwhin3edng" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -336,7 +336,7 @@
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/051.jpg"></p>
 <p>この時点で Azure AD Join は完了しているので確認します。<br>Windows 10 コンピューターにログオンし、dsregcmd /status コマンド レットを実行すると、下記のとおり、AzureAdJoined が YES になっていることが分かります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/017.jpg"></p>
-<h1 id="PRT-を取得する。"><a href="#PRT-を取得する。" class="headerlink" title="PRT を取得する。"></a>PRT を取得する。</h1><p>PRT を取得するためには、Azure AD に同期済みのオンプレミス AD ユーザーでログオンする必要があるのは、フェデレーション ドメインの場合でも同様です。<br>Azure AD に同期済みの下記「<a href="mailto:&#116;&#101;&#115;&#116;&#x30;&#x30;&#x31;&#64;&#x78;&#120;&#120;&#x2e;&#119;&#x6f;&#114;&#x6b;">&#116;&#101;&#115;&#116;&#x30;&#x30;&#x31;&#64;&#x78;&#120;&#120;&#x2e;&#119;&#x6f;&#114;&#x6b;</a>」で Windows 10 コンピューター (Windows10-18091) にログオンします。</p>
+<h1 id="PRT-を取得する。"><a href="#PRT-を取得する。" class="headerlink" title="PRT を取得する。"></a>PRT を取得する。</h1><p>PRT を取得するためには、Azure AD に同期済みのオンプレミス AD ユーザーでログオンする必要があるのは、フェデレーション ドメインの場合でも同様です。<br>Azure AD に同期済みの下記「<a href="mailto:&#x74;&#101;&#x73;&#116;&#x30;&#x30;&#49;&#64;&#120;&#x78;&#120;&#x2e;&#x77;&#111;&#x72;&#107;">&#x74;&#101;&#x73;&#116;&#x30;&#x30;&#49;&#64;&#120;&#x78;&#120;&#x2e;&#x77;&#111;&#x72;&#107;</a>」で Windows 10 コンピューター (Windows10-18091) にログオンします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/055.jpg"></p>
 <p>資格情報を入力してログオンします。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/056.jpg"></p>
 <p>コマンドプロンプトを起動し、このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg"></p>
