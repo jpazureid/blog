@@ -1,6 +1,6 @@
 ---
 title: "今すぐご対応を: Microsoft マネージド条件付きアクセス ポリシーを有効化またはカスタマイズする"
-date: 2024-03-27 09:00
+date: 2024-03-31 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
@@ -27,16 +27,16 @@ Microsoft マネージド条件付きアクセス ポリシーを発表して以
 1. [条件付きアクセス ポリシー ブレード](https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies/fromNav/Identity) でこれらのポリシーを確認する。 
 2. [緊急アクセス用アカウントやサービス アカウント](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-policy-common?tabs=secure-foundation#user-exclusions) を除外するなどのカスタマイズを行う。
 
-![緊急アクセス用アカウントやサービス アカウントを除外する手順](./act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies/act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies1.gif)
+    ![緊急アクセス用アカウントやサービス アカウントを除外する手順](./act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies/act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies1.gif)
 
 3. 準備ができたら、ポリシーをオンの状態に移行する。
 
-![Microsoft マネージド ポリシーをオンの状態に移行する手順](./act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies/act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies2.gif)
+    ![Microsoft マネージド ポリシーをオンの状態に移行する手順](./act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies/act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies2.gif)
 
 より詳細なカスタマイズを行いたい場合は、ポリシーを複製してさらにご調整ください。
 
 リソースを保護する方法の詳細については、[Microsoft マネージド ポリシー](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/managed-policies) に関するドキュメントをご覧ください。
 
-Nitika Gupta
-Principal Group Product Manager, Microsoft
+Nitika Gupta  
+Principal Group Product Manager, Microsoft  
 [LinkedIn](https://www.linkedin.com/in/guptanitika/)
