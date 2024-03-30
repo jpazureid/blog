@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra ID における削除されたオブジェクトの追跡について
-date: 2024-03-29 10:00
+date: 2024-03-31 10:00
 tags:
     - US Identity Blog
 ---
