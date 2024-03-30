@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの 姚 (ヨウ) です。 今回は Hybrid Azure AD Join を構成した際の、デバイスにログオンするユーザーの UPN とドメイン名の関係について説明します。この内容は以下の公開情報で説明されておりますが、今回はより分かりやすい解説を目指します。 ハイブリッド Azure AD 参加でのオンプレミス AD ユーザー">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2021-01-04T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-30T21:36:19.288Z">
+<meta property="article:modified_time" content="2024-03-30T21:51:50.968Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="UPN">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5f13229c-e608-5791-91f1-2cdb2cd68fb3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BHybrid+Azure+AD+Join+%E3%81%A8%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE+UPN%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhaadj-and-upn%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhaadj-and-upn.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhaadj-and-upn.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/haadj-and-upn/" data-id="cluem459300bi0olj1nidd9ww" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/haadj-and-upn/" data-id="cluemo4bi00bi0nmi4dif4n06" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -183,15 +183,15 @@
 </thead>
 <tbody><tr>
 <td align="center">オンプレミス AD 側の UPN</td>
-<td align="center"><a href="mailto:&#x78;&#120;&#120;&#120;&#120;&#x40;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#x2e;&#108;&#111;&#99;&#x61;&#108;">&#x78;&#120;&#120;&#120;&#120;&#x40;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#x2e;&#108;&#111;&#99;&#x61;&#108;</a></td>
-<td align="center"><a href="mailto:&#x78;&#x78;&#120;&#120;&#x78;&#64;&#99;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#x2e;&#99;&#x6f;&#46;&#106;&#112;">&#x78;&#x78;&#120;&#120;&#x78;&#64;&#99;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#x2e;&#99;&#x6f;&#46;&#106;&#112;</a></td>
-<td align="center"><a href="mailto:&#x78;&#120;&#x78;&#x78;&#120;&#x40;&#x63;&#111;&#110;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#x63;&#111;&#x6d;">&#x78;&#120;&#x78;&#x78;&#120;&#x40;&#x63;&#111;&#110;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#x63;&#111;&#x6d;</a></td>
+<td align="center"><a href="mailto:&#x78;&#x78;&#x78;&#120;&#120;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#111;&#x2e;&#x6c;&#111;&#x63;&#x61;&#x6c;">&#x78;&#x78;&#x78;&#120;&#120;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#111;&#x2e;&#x6c;&#111;&#x63;&#x61;&#x6c;</a></td>
+<td align="center"><a href="mailto:&#x78;&#x78;&#120;&#x78;&#x78;&#x40;&#x63;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#x63;&#111;&#x2e;&#106;&#112;">&#x78;&#x78;&#120;&#x78;&#x78;&#x40;&#x63;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#x63;&#111;&#x2e;&#106;&#112;</a></td>
+<td align="center"><a href="mailto:&#120;&#120;&#120;&#120;&#120;&#64;&#99;&#x6f;&#110;&#x74;&#111;&#115;&#111;&#46;&#x63;&#111;&#x6d;">&#120;&#120;&#120;&#120;&#120;&#64;&#99;&#x6f;&#110;&#x74;&#111;&#115;&#111;&#46;&#x63;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td align="center">Azure AD 側の UPN</td>
-<td align="center"><a href="mailto:&#x78;&#120;&#x78;&#120;&#120;&#64;&#x63;&#111;&#110;&#x74;&#x6f;&#115;&#x6f;&#46;&#x63;&#x6f;&#x6d;">&#x78;&#120;&#x78;&#120;&#120;&#64;&#x63;&#111;&#110;&#x74;&#x6f;&#115;&#x6f;&#46;&#x63;&#x6f;&#x6d;</a></td>
-<td align="center"><a href="mailto:&#120;&#x78;&#120;&#x78;&#120;&#x40;&#99;&#x6f;&#110;&#116;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#x6f;&#x6d;">&#120;&#x78;&#120;&#x78;&#120;&#x40;&#99;&#x6f;&#110;&#116;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
-<td align="center"><a href="mailto:&#120;&#x78;&#x78;&#120;&#x78;&#x40;&#x63;&#x6f;&#110;&#x74;&#111;&#115;&#x6f;&#x2e;&#99;&#111;&#x6d;">&#120;&#x78;&#x78;&#120;&#x78;&#x40;&#x63;&#x6f;&#110;&#x74;&#111;&#115;&#x6f;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td align="center"><a href="mailto:&#120;&#x78;&#x78;&#120;&#x78;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#111;&#46;&#x63;&#x6f;&#x6d;">&#120;&#x78;&#x78;&#120;&#x78;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#111;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td align="center"><a href="mailto:&#x78;&#120;&#x78;&#120;&#120;&#x40;&#x63;&#111;&#x6e;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#99;&#x6f;&#x6d;">&#x78;&#120;&#x78;&#120;&#120;&#x40;&#x63;&#111;&#x6e;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td align="center"><a href="mailto:&#120;&#120;&#x78;&#120;&#120;&#64;&#x63;&#111;&#110;&#116;&#111;&#x73;&#x6f;&#46;&#x63;&#111;&#x6d;">&#120;&#120;&#x78;&#120;&#120;&#64;&#x63;&#111;&#110;&#116;&#111;&#x73;&#x6f;&#46;&#x63;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td align="center">Azure AD に登録されているカスタムドメイン</td>
@@ -226,15 +226,15 @@
 </thead>
 <tbody><tr>
 <td align="center">オンプレミス AD 側の UPN</td>
-<td align="center"><a href="mailto:&#x78;&#120;&#120;&#120;&#x78;&#x40;&#99;&#x6f;&#x6e;&#116;&#111;&#115;&#x6f;&#46;&#x6c;&#x6f;&#x63;&#97;&#108;">&#x78;&#120;&#120;&#120;&#x78;&#x40;&#99;&#x6f;&#x6e;&#116;&#111;&#115;&#x6f;&#46;&#x6c;&#x6f;&#x63;&#97;&#108;</a></td>
-<td align="center"><a href="mailto:&#x78;&#x78;&#x78;&#x78;&#120;&#x40;&#99;&#x6f;&#110;&#x74;&#111;&#115;&#x6f;&#x2e;&#99;&#x6f;&#46;&#106;&#112;">&#x78;&#x78;&#x78;&#x78;&#120;&#x40;&#99;&#x6f;&#110;&#x74;&#111;&#115;&#x6f;&#x2e;&#99;&#x6f;&#46;&#106;&#112;</a></td>
-<td align="center"><a href="mailto:&#x78;&#x78;&#x78;&#120;&#x78;&#x40;&#99;&#111;&#110;&#116;&#x6f;&#115;&#111;&#x2e;&#99;&#x6f;&#109;">&#x78;&#x78;&#x78;&#120;&#x78;&#x40;&#99;&#111;&#110;&#116;&#x6f;&#115;&#111;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td align="center"><a href="mailto:&#x78;&#x78;&#120;&#120;&#x78;&#64;&#99;&#111;&#x6e;&#116;&#x6f;&#x73;&#x6f;&#x2e;&#108;&#111;&#x63;&#97;&#x6c;">&#x78;&#x78;&#120;&#120;&#x78;&#64;&#99;&#111;&#x6e;&#116;&#x6f;&#x73;&#x6f;&#x2e;&#108;&#111;&#x63;&#97;&#x6c;</a></td>
+<td align="center"><a href="mailto:&#x78;&#x78;&#120;&#120;&#x78;&#64;&#99;&#111;&#x6e;&#x74;&#111;&#x73;&#111;&#x2e;&#x63;&#x6f;&#x2e;&#x6a;&#x70;">&#x78;&#x78;&#120;&#120;&#x78;&#64;&#99;&#111;&#x6e;&#x74;&#111;&#x73;&#111;&#x2e;&#x63;&#x6f;&#x2e;&#x6a;&#x70;</a></td>
+<td align="center"><a href="mailto:&#120;&#120;&#120;&#x78;&#120;&#64;&#x63;&#x6f;&#110;&#x74;&#x6f;&#x73;&#111;&#46;&#x63;&#x6f;&#109;">&#120;&#120;&#120;&#x78;&#120;&#64;&#x63;&#x6f;&#110;&#x74;&#x6f;&#x73;&#111;&#46;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td align="center">Azure AD 側の UPN</td>
-<td align="center"><a href="mailto:&#120;&#x78;&#x78;&#x78;&#x78;&#x40;&#x63;&#x6f;&#110;&#x74;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#111;&#x6d;">&#120;&#x78;&#x78;&#x78;&#x78;&#x40;&#x63;&#x6f;&#110;&#x74;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#111;&#x6d;</a></td>
-<td align="center"><a href="mailto:&#120;&#120;&#x78;&#x78;&#120;&#64;&#99;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#x63;&#111;&#109;">&#120;&#120;&#x78;&#x78;&#120;&#64;&#99;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#x63;&#111;&#109;</a></td>
-<td align="center"><a href="mailto:&#x78;&#120;&#x78;&#x78;&#120;&#64;&#99;&#x6f;&#x6e;&#116;&#111;&#x73;&#111;&#46;&#99;&#111;&#109;">&#x78;&#120;&#x78;&#x78;&#120;&#64;&#99;&#x6f;&#x6e;&#116;&#111;&#x73;&#111;&#46;&#99;&#111;&#109;</a></td>
+<td align="center"><a href="mailto:&#x78;&#x78;&#x78;&#120;&#120;&#64;&#99;&#x6f;&#x6e;&#x74;&#111;&#115;&#x6f;&#x2e;&#99;&#x6f;&#x6d;">&#x78;&#x78;&#x78;&#120;&#120;&#64;&#99;&#x6f;&#x6e;&#x74;&#111;&#115;&#x6f;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td align="center"><a href="mailto:&#120;&#120;&#x78;&#x78;&#120;&#64;&#x63;&#111;&#110;&#116;&#x6f;&#115;&#x6f;&#46;&#99;&#111;&#x6d;">&#120;&#120;&#x78;&#x78;&#120;&#64;&#x63;&#111;&#110;&#116;&#x6f;&#115;&#x6f;&#46;&#99;&#111;&#x6d;</a></td>
+<td align="center"><a href="mailto:&#120;&#120;&#x78;&#120;&#x78;&#64;&#99;&#x6f;&#110;&#116;&#x6f;&#x73;&#x6f;&#46;&#x63;&#x6f;&#109;">&#120;&#120;&#x78;&#120;&#x78;&#64;&#99;&#x6f;&#110;&#116;&#x6f;&#x73;&#x6f;&#46;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td align="center">Azure AD に登録されているカスタムドメイン</td>
@@ -308,6 +308,10 @@
       <ul>
         
           <li>
+            <a href="../keep-track-object-deletions/">Microsoft Entra ID における削除されたオブジェクトの追跡</a>
+          </li>
+        
+          <li>
             <a href="../act-now-turn-on-or-customize-microsoft-managed-conditional-access-policies/">今すぐご対応を: Microsoft マネージド条件付きアクセス ポリシーを有効化またはカスタマイズする</a>
           </li>
         
@@ -321,10 +325,6 @@
         
           <li>
             <a href="../rm64-fsz-info/">RM64-FSZ 従来の管理者ロールの廃止に関するよくある質問</a>
-          </li>
-        
-          <li>
-            <a href="../mc705680-20240110/">MC705680 (2024/1/10 公開) の通知内容の説明</a>
           </li>
         
       </ul>
