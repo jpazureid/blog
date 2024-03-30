@@ -1,12 +1,12 @@
 ---
-title: Microsoft Entra ID における削除されたオブジェクトの追跡について
+title: Microsoft Entra ID における削除されたオブジェクトの追跡
 date: 2024-03-31 10:00
 tags:
     - US Identity Blog
 ---
 
 
-# Microsoft Entra ID における削除されたオブジェクトの追跡について
+# Microsoft Entra ID における削除されたオブジェクトの追跡
 
 こんにちは！ Azure ID チームの小出です。
 
