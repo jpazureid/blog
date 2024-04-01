@@ -1,12 +1,12 @@
 ---
-title: Microsoft Entra の変更管理のアナウンス (2022 年 6 月分)
+title: Microsoft Entra、Copilot for Security に ID スキルを追加
 date: 2022-07-10 09:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# Microsoft Entra の変更管理のアナウンス (2022 年 6 月分)
+# Microsoft Entra、Copilot for Security に ID スキルを追加
 
 こんにちは、Azure Identity サポート チームの 名取 です。
 
