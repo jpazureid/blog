@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra、Copilot for Security に ID スキルを追加
-date: 2022-07-10 09:00
+date: 2024-04-10 09:00
 tags:
   - Azure AD
   - US Identity Blog
