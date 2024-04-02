@@ -1,12 +1,12 @@
 ---
-title: Microsoft Entra、Copilot for Security に ID スキルを追加
+title: Microsoft Entra、Copilot for Security に 新しい ID スキルを追加
 date: 2024-04-10 09:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# Microsoft Entra、Copilot for Security に ID スキルを追加
+# Microsoft Entra、Copilot for Security に新しい ID スキルを追加
 
 こんにちは、Azure Identity サポート チームの 名取 です。
 
@@ -14,11 +14,11 @@ tags:
 
 ----
 
-本日、Microsoft Copilot for Security が 4 月 1 日より全世界で一般提供されることを発表しました。 スタンドアロンの Copilot for Security では、次の新しい Microsoft Entra のスキルが使用できるようになります: 「ユーザーの詳細」、「グループの詳細」、「サインイン ログ」、「監査ログ」、「診断ログ」です。Microsoft Entra に組み込まれたスキルである「ユーザーリスク調査」も、パブリックプレビューで利用できるようになります。 
+本日、Microsoft Copilot for Security が 4 月 1 日より全世界で一般提供されることを[発表しました](https://www.microsoft.com/en-us/security/blog/2024/03/13/microsoft-copilot-for-security-is-generally-available-on-april-1-2024-with-new-capabilities/)。 スタンドアロンの Copilot for Security では、次の新しい Microsoft Entra のスキルが使用できるようになります: 「ユーザーの詳細」、「グループの詳細」、「サインイン ログ」、「監査ログ」、「診断ログ」です。Microsoft Entra に組み込まれたスキルである「ユーザーリスク調査」も、パブリックプレビューで利用できるようになります。 
 
-これらの新しい機能により、ID の観点とセキュリティ インシデントに関する知見が得られるようになり、ID 関連のリスクとサインイン問題の解決を支援することで、ID 管理者が侵害からよりよく保護されるようなります。Copilot for Security に新しい ID 機能を導入することで、ID およびセキュリティ管理者を人並外れたスピードで保護し、支援できることを嬉しく思います。 
+これらの新しい機能により、ID の観点とセキュリティ インシデントに関する知見が得られるようになり、ID 関連のリスクとサインイン問題の解決を支援することで、ID 管理者が侵害からよりよく保護されるようなります。Copilot for Security に新しい ID 機能を導入することで、ID およびセキュリティ管理者を人並外れた[スピードで保護](https://www.microsoft.com/ja-jp/security/business/ai-machine-learning/microsoft-copilot-security)し、支援できることを嬉しく思います。 
 
-# Copilot for Security の ID スキル
+# Copilot for Security の新しい ID スキル
 
 次に、Copilot for Security のこれらの新しい Entra のスキルを管理者が自然言語のプロンプトを介して日常の業務にどのように生かせるか、また、どのように ID 管理者がアクセスを保護していけるか順に詳しく見てみましょう。
 
@@ -32,17 +32,16 @@ tags:
   
 ここでは例として、ID 管理者が、ユーザー名「rashok」という危険なユーザーを特定した上で、Copilot に「rashok」の 3 月 5 日の監査ログを説明するよう要求し、そのユーザーの侵害のリスクが高かった期間中にどのような行動がとられたかを調べています。
   
-
 ![](./microsoft-entra-adds-identity-skills-to-copilot-for-security/fig1.jpeg) 
-> (上図翻訳)
->2024 年 3 月 5 日、Ravi Ashok (ユーザー ID: d7972ccc- 82b3-4ea5-a3b4-7902de3f986c) という名前のユーザーによって、Entra ID Audit ログに関連する一連のアクティビティが開始されました。すべてのアクティビティが成功しました。主なアクティビティの概要は以下のとおりです:
+>(上図翻訳)
+>*2024 年 3 月 5 日、Ravi Ashok (ユーザー ID: d7972ccc- 82b3-4ea5-a3b4-7902de3f986c) という名前のユーザーによって、Entra ID Audit ログに関連する一連のアクティビティが開始されました。すべてのアクティビティが成功しました。主なアクティビティの概要は以下のとおりです:*
+>
+>*1. ユーザーがアクセス パッケージの割り当てを要求: この操作は 23:48:07.20892257 に実行されました。ターゲット リソースは、ID が "90425fa0-9141-4930- 92d0-7d6808959d65" の AccessPackageAssignmentRequestでした。リクエストの状態は「Submitted」に更新され、さらにリクエストの状態が「Accepted」に更新されました。*
 > 
->1. ユーザーがアクセス パッケージの割り当てを要求: この操作は 23:48:07.20892257 に実行されました。ターゲット リソースは、ID が "90425fa0-9141-4930- 92d0-7d6808959d65" の AccessPackageAssignmentRequestでした。リクエストの状態は 「Submitted」に更新され、さらにリクエストの状態が「Accepted」に更新されました。
+>*2. アクセス パッケージ割り当てリクエストの自動承認: この操作は 23:48:11.1376478Z に実行されました。ターゲット リソースは、ID が "90425fa0-9141-4930-92d0-7d6808959d65" の AccessPackageAssignmentRequest でした。リクエストの状態が「Delivering」に更新され、さらにリクエストの状態が「AutoApproved」に更新されました。*
 > 
->2. アクセス パッケージ割り当てリクエストの自動承認: この操作は 23:48:11.1376478Z に実行されました。ターゲット リソースは、ID が "90425fa0-9141-4930-92d0-7d6808959d65" の AccessPackageAssignmentRequest でした。リクエストの状態が「Delivering」に更新され、さらにリクエストの状態が「AutoApproved」に更新されました。
-> 
->3. アクセス パッケージ のリソース割り当ての完了: この操作は 23:48:15.0048206Z に実行されました。ターゲット リソース タイプは "Other" で、ID は "af8e1455-b4c5-430d-868f-aa4e76258518" でした。ステータスが "Fulfilled "に更新されました。
-  
+>*3. アクセス パッケージ のリソース割り当ての完了: この操作は 23:48:15.0048206Z に実行されました。ターゲット リソース タイプは "Other" で、ID は "af8e1455-b4c5-430d-868f-aa4e76258518" でした。ステータスが "Fulfilled "に更新されました。*
+
 診断ログは、テナントのポリシー設定が健全および完全でるかを確認するのに役立ちます。これにより、サインインログと監査ログが正しく設定され、ログ収集プロセスに抜け漏れがないことを確認できます。管理者は「テナントではどのようなログが収集されているか」または「監査ログは有効になっているか」を尋ねて、抜け漏れがあれば迅速に修正できます。
   
 # Entra における Copilot を使用したリスク調査
