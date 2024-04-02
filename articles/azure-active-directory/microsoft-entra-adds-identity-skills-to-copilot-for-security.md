@@ -30,12 +30,10 @@ tags:
 
    **監査ログ**は、ロールやアクセス権限の変更など、監査ログに関連する異常を特定するのに役立ちます。管理者は、「このユーザーが開始したアクションの監査ログを表示して」または「これに似たイベントの監査ログを表示して」と Copilot に依頼するだけです。
   
-
 ここでは例として、ID 管理者が、ユーザー名「rashok」という危険なユーザーを特定した上で、Copilot に「rashok」の 3 月 5 日の監査ログを説明するよう要求し、そのユーザーの侵害のリスクが高かった期間中にどのような行動がとられたかを調べています。
   
 
-![](./workspaces/blog/articles/azure-active-directory/microsoft-entra-adds-identity-skills-to-copilot-for-security/fig1.jpeg) 
-
+![](./microsoft-entra-adds-identity-skills-to-copilot-for-security/fig1.jpeg) 
 > (上図翻訳)
 > 2024 年 3 月 5 日、Ravi Ashok (ユーザー ID: d7972ccc- 82b3-4ea5-a3b4-7902de3f986c) という名前のユーザーによって、Entra ID Audit ログに関連する一連のアクティビティが開始されました。すべてのアクティビティが成功しました。主なアクティビティの概要は以下のとおりです:
 > 
@@ -51,7 +49,7 @@ tags:
   
 Copilot for Security によって ID のリスクへの対応速度がどれだけ向上するかをよりよく理解するために、数回の異常なサインイン試行により、あるユーザーに高リスク レベルのフラグが立てられたシナリオを考えてみたいと思います。Copilot for Security のパブリック プレビュー機能である Microsoft Entra のユーザー リスク調査スキルを使用することで、管理者はユーザーのリスク レベルを分析すると共に、インシデントの影響を緩和して状況を解決する方法について推奨事項をえることができます:
   
-  <通常の画像の挿入でよいです>
+![](./microsoft-entra-adds-identity-skills-to-copilot-for-security/movie1.gif) 
   
 ID 管理者が、一連の異常なサインインにより、ユーザーが高リスクであるとマークされたことに気づいたとします。Copilot for Security を使用すると、管理者は問題のユーザーをクリックしてリスクの概要と修復手順を即座に受け取ることができ、リスクを迅速に調査して解決に導くことが可能となります。
   
