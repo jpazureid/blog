@@ -1,6 +1,6 @@
 ---
 title: "重要なお知らせ: Azure AD Graph API の廃止"
-date: 2024-03-17 09:00
+date: 2024-04-07 09:00
 tags:
     - US Identity Blog
 ---
@@ -94,6 +94,7 @@ A. Microsoft Entra の概要ページにある「推奨設定」タブを活用�
 最近、テナントで Azure AD Graph API を使用しているアプリケーションとサービス プリンシパルに関する情報を提供する 2 つの Entra 推奨事項の展開を開始しました。これらの新しい推奨事項は、影響を受けるアプリケーションとサービスプリンシパルを特定し、お客様が速やかに Microsoft Graph に移行できるようサポートします。
 
 ![](./important-update-azure-ad-graph-api-retirement/pic.png)
+
 ---
 
 Q. 2024 年 6 月 30 日以降、Azure AD Graphを使用するアプリケーションはどうなりますか？
@@ -104,7 +105,7 @@ A. 2024 年 6 月 30 日までに登録された既存のアプリケーショ�
 
 Q. 今後の廃止サイクルではどうなりますか？
 
-A. 今回の更新では、2024 年 6 月 30 日以降に始まる Azure AD Graph 廃止の第一段階について説明しました。今後数ヶ月の間に、Azure AD Graph の第 2 段階目の廃止に向けたタイムラインをお知らせする予定です。第 2 段階では、既存のアプリケーションを含むすべてのアプリケーションに対し、AuthenticationBehaviors プロパティ (blockAzureADGraphAccess: false) が構成されていない限り、Azure AD Graph API の使用をブロックするよう計画しています。  
+A. 今回の更新では、2024 年 6 月 30 日以降に始まる Azure AD Graph 廃止の第一段階について説明しました。今後数ヶ月の間に、Azure AD Graph の第二段階目の廃止に向けたタイムラインをお知らせする予定です。第二段階では、既存のアプリケーションを含むすべてのアプリケーションに対し、AuthenticationBehaviors プロパティ (blockAzureADGraphAccess: false) が構成されていない限り、Azure AD Graph API の使用をブロックするよう計画しています。  
 
 この次の段階のリタイアの前に、最低 3 ヶ月の事前通知が提供されます。今後も本記事にて順次アップデート情報をご案内します。
 
