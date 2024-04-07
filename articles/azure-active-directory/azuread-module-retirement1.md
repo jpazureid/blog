@@ -83,47 +83,42 @@ tags:
 - 新しいモジュールのコマンドや代替 API があるものについては、2024/3/30 を過ぎるとすぐに利用できなくなる可能性があるため、引き続き早めに移行ください。
 - 2024/3/30 を過ぎても引き続き利用できるコマンド一覧の情報、実際に動作しなくなる具体的なコマンド一覧の情報などはありません。
 
-## いまできること・確認すること
+## いまできること & 確認すること
 
-1. 現在利用しているコマンド・スクリプトなどを確認する。[こちらの記事](https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/)をもとに、MSOL や Azure AD の PowerShell コマンドを利用していないか確認する。
-2. MSOL や Azure AD の PowerShell コマンドを利用している場合、[こちらの公開情報](https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0) にて対応するコマンドを探す。
-3. 既存のスクリプトの書き換え、コマンドの置き換えを実施し、新しいモジュールで動作するよう修正する。
-4. 利用中の MSOL や Azure AD コマンドの置き換えとなるものが見つからない、想定したように動作しない場合は、お問い合わせください。
-
-なお、今すぐMicrosoft Graph PowerShell に移行する準備ができていない場合は、下記を実施ください。 
+今すぐ Microsoft Graph PowerShell に移行する準備をお進めください。具体的には下記内容を実施ください。 
 
 1. 現在利用しているコマンドおよびスクリプトなどを確認する。[こちらの記事](https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/) をもとに、MSOL や Azure AD の PowerShell コマンドを利用していないか確認する。
 2. MS Online モジュールのバージョンを調べるために、Get-InstalledModule MSOnline  の PowerShell コマンドを実行する。 
 3. 古いバージョンを利用している場合は、MSOnline PowerShell の最新バージョン（1.1.183.81）に更新する。これにより、2024 年 6 月 30 日以降の影響を回避できます。 
 4. MSOL や Azure AD の PowerShell コマンドを利用している場合、[こちらの公開情報](https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0) にて対応するコマンドを探す。
 5. 2025 年 3 月 30 日までに、既存のスクリプトの書き換え、コマンドの置き換えを実施し、新しいモジュールで動作するよう修正する。
-6. 利用中の MSOL や Azure AD コマンドの置き換えとなるものが見つからない、想定したように動作しない場合は、お問い合わせください。
+6. 利用中の MSOL や Azure AD コマンドの置き換えとなるものが見つからない、想定したように動作しない場合はマイクロソフト サポートに問い合わせる。
 
 ##  本廃止に関する弊社ブログ記事リンク
 
 ### アップデート情報 (英語記事翻訳)
 
-[Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります](https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/)
-[Azure AD の変更管理を簡素化します](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/)  
-[Microsoft Entra の変更管理のアナウンス (2022 年 9 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train/#Azure-AD%E3%80%81Azure-AD-Preview%E3%80%81MSOnline-PowerShell-%E3%81%AE%E5%BB%83%E6%AD%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
-[Microsoft Entra の変更のアナウンス (2023 年 3 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-change-announcements-march-2023-train/)  
-[重要 - Azure AD Graph の廃止と PowerShell モジュールの非推奨](https://jpazureid.github.io/blog/azure-active-directory/important-azure-ad-graph-retirement-and-powershell-module/)  
+- [Azure AD Graph および MSOnline での従来のライセンスの割り当て方法が廃止され Microsoft Graph によるライセンス管理に変わります](https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/)
+- [Azure AD の変更管理を簡素化します](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/)  
+- [Microsoft Entra の変更管理のアナウンス (2022 年 9 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train/#Azure-AD%E3%80%81Azure-AD-Preview%E3%80%81MSOnline-PowerShell-%E3%81%AE%E5%BB%83%E6%AD%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+- [Microsoft Entra の変更のアナウンス (2023 年 3 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-change-announcements-march-2023-train/)  
+- [重要 - Azure AD Graph の廃止と PowerShell モジュールの非推奨](https://jpazureid.github.io/blog/azure-active-directory/important-azure-ad-graph-retirement-and-powershell-module/)  
 
 ### 既存モジュール使用状況について
 
-[Azure AD Graph / MSOnline PowerShell モジュール利用状況の調べ方](https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/)
+- [Azure AD Graph / MSOnline PowerShell モジュール利用状況の調べ方](https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/)
 
 ### 新しいモジュールへの移行導入
 
-[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 2_移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)  
-[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/)
+- [MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 2_移行導入編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/)  
+- [MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/)
 
 ### 新しいモジュールの使用方法 (ライセンスに関する操作について)
 
-[Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/)
-[Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 (一括設定編)](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/)
+- [Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/)
+- [Microsoft Graph PowerShell SDK を使用したライセンス管理操作の紹介 (一括設定編)](https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/)
 
 ### 新しいモジュールの使用方法 (ライセンス以外の操作について)
 
-[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 4_ユーザー管理](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/)
-[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/)
+- [MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 4_ユーザー管理](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/)
+- [MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/)
