@@ -9,7 +9,7 @@ tags:
 
 こんにちは！ Azure ID チームの小出です。
 
-本記事は 2024 年 4 月 1 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Important update: Deprecation of Azure AD PowerShell and MSOnline PowerShell modules](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/important-update-deprecation-of-azure-ad-powershell-and-msonline/ba-p/4094536) をの抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は 2024 年 4 月 1 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Important update: Deprecation of Azure AD PowerShell and MSOnline PowerShell modules](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/important-update-deprecation-of-azure-ad-powershell-and-msonline/ba-p/4094536) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 なお、日本語での詳細情報のまとめは、[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/) にて案内しております。この記事の内容も反映しておりますので、併せてご確認ください。
 
