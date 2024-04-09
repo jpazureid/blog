@@ -17,25 +17,15 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
   # If you want to deploy preview site automatically
-  deploy-preview-if-pr-owner-is-linked-account:
+  deploy-preview-if-pr-owner-is-owner
     runs-on: ubuntu-latest
     if:
       github.event_name == 'pull_request_target' &&
       (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'edited' || github.event.action == 'synchronize')
     steps:
-      - name: check linked account
-        # skip checking if pr is created by repository owner
-        if: github.event.pull_request.head.repo.owner.login != github.event.repository.owner.login
-        id: check_linked_account
-        uses: cssjpn/blog-gh-actions/check-linked-account@v1
-        with:
-          token: ${{ secrets.JPCSSBLOG_DEV_TOKEN }}
-          allowExternalUser: 'allow'
-
       # Checks-out after passed the check
       - uses: actions/checkout@v2
         if:
-          steps.check_linked_account.outputs.isLinked == 'true' || 
           github.event.pull_request.head.repo.owner.login == github.event.repository.owner.login
         with:
           ref: 'refs/pull/${{ github.event.number }}/merge'
@@ -43,7 +33,6 @@ jobs:
 
       - name: Deploy preview site
         if:
-          steps.check_linked_account.outputs.isLinked == 'true' || 
           github.event.pull_request.head.repo.owner.login == github.event.repository.owner.login
         uses: cssjpn/blog-gh-actions/deploy-preview@v1
         with:
