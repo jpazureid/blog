@@ -50,7 +50,7 @@ Microsoft Entra Internet Access を使用すると、インターネット フ�
 
 弊社の 2023 年の Ignite リリースでは、SWG、トランスポート層セキュリティ (TLS) インスペクション、クラウド ファイアウォール、ネットワーク データ損失防止 (DLP)、および Microsoft Threat Protection 機能を含む、完全に統合されたセキュリティサービスエッジ（SSE）ソリューションを提供することで、お客様の仕事をより楽にしていきたいという Microsoft の願いが表されています。これは、皆様の企業と従業員の皆様を保護していくという道のりの中の、多くの段階的なマイルストーンの一つであるのです。
 
-皆様におかれましては、ぜひ [Microsoft Entra Internet Access Public Preview](https://entra.microsoft.com/#view/Microsoft_Azure_Network_Access/Welcome.ReactView) の機能をテストし始め、間もなくリリースされる Internet Acces sの最新情報をお楽しみにお待ちください。
+皆様におかれましては、ぜひ [Microsoft Entra Internet Access Public Preview](https://entra.microsoft.com/#view/Microsoft_Azure_Network_Access/Welcome.ReactView) の機能をテストし始め、間もなくリリースされる Internet Access の最新情報をお楽しみにお待ちください。
 
 Anupma Sharma  
 Principal Group Product Manager, Microsoft
