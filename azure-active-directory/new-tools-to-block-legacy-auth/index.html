@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/legauth8.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/legauth9.png">
 <meta property="article:published_time" content="2020-04-10T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-15T18:22:11.863Z">
+<meta property="article:modified_time" content="2024-04-19T20:44:00.759Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Conditional Access">
@@ -168,7 +168,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+a9f3f95e-ad87-5d6f-a439-600ffb4e1ddf%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%AC%E3%82%AC%E3%82%B7%E3%83%BC%E8%AA%8D%E8%A8%BC%E3%82%92%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E3%83%84%E3%83%BC%E3%83%AB%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fnew-tools-to-block-legacy-auth%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fnew-tools-to-block-legacy-auth.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fnew-tools-to-block-legacy-auth.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/" data-id="clv1a84sk00gk0nmmgwr88mbe" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/" data-id="clv751x1900gn0ntm00n75eqx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -225,7 +225,7 @@
 <p><img src="/blog/azure-active-directory/new-tools-to-block-legacy-auth/legauth9.png"></p>
 <h2 id="ステップ-3-組織内のレガシー認証をブロックする"><a href="#ステップ-3-組織内のレガシー認証をブロックする" class="headerlink" title="ステップ 3:組織内のレガシー認証をブロックする"></a>ステップ 3:組織内のレガシー認証をブロックする</h2><h3 id="Azure-AD-の条件付きアクセスを使用したレガシー認証のブロック"><a href="#Azure-AD-の条件付きアクセスを使用したレガシー認証のブロック" class="headerlink" title="Azure AD の条件付きアクセスを使用したレガシー認証のブロック"></a>Azure AD の条件付きアクセスを使用したレガシー認証のブロック</h3><p>数日間レポート専用モードでポリシーを監視し、ポリシーの影響を理解できたら、レガシー認証のブロックを開始する準備が整ったと言えるでしょう。最も簡単な方法は、ポリシーの状態を <strong>レポート専用</strong> から <strong>オン</strong> に変更することです。または、まだ準備ができていないユーザーがおり、それらに対してレポート専用モードでレガシー認証をブロックした場合の影響を監視し続けたい場合は、レガシー認証をブロックする条件付きアクセス ポリシーを別個に作成します。</p>
 <h3 id="サービス-サイドでのレガシー認証のブロック"><a href="#サービス-サイドでのレガシー認証のブロック" class="headerlink" title="サービス サイドでのレガシー認証のブロック"></a>サービス サイドでのレガシー認証のブロック</h3><p>条件付きアクセスに加えて、従来の認証をサービス側またはリソース側 (認証プラットフォーム側ではなく) でブロックすることも可能です。たとえば、Exchange Online では、ユーザーに対して POP3 または IMAP4 を無効にすることができます。ここで問題となるのは、レガシー認証と最新の認証が両方可能なプロトコル (EWS、MAPI など) を完全にブロックできないということです。この問題を解決するために、Exchange Online は認証ポリシーと呼ばれる機能をリリースしました。プロトコルの接続は、Azure AD または AD FS に対して資格情報をチェックする前に拒否されるため、認証前にポリシーが強制されます。</p>
-<p>このブログ記事が、組織内のレガシー認証をブロックするために必要なすべての情報を提供できていれば幸いです。ご質問がある場合は、以下のコメント欄でこのブログ記事に返信するか、弊社チーム (<a href="mailto:&#x69;&#x6e;&#x74;&#x65;&#x6c;&#x6c;&#x69;&#103;&#x65;&#x6e;&#116;&#97;&#99;&#99;&#x65;&#x73;&#x73;&#112;&#109;&#64;&#x6d;&#x69;&#99;&#114;&#x6f;&#x73;&#x6f;&#x66;&#x74;&#x2e;&#x63;&#x6f;&#x6d;">&#x69;&#x6e;&#x74;&#x65;&#x6c;&#x6c;&#x69;&#103;&#x65;&#x6e;&#116;&#97;&#99;&#99;&#x65;&#x73;&#x73;&#112;&#109;&#64;&#x6d;&#x69;&#99;&#114;&#x6f;&#x73;&#x6f;&#x66;&#x74;&#x2e;&#x63;&#x6f;&#x6d;</a>) にメールを送る、もしくは Twitter で Alex (<a target="_blank" rel="noopener" href="http://twitter.com/alex_t_weinert">@alex_t_weinert</a>) と私 (<a target="_blank" rel="noopener" href="http://twitter.com/daniel_e_wood">@daniel_e_wood</a>) まで連絡ください。</p>
+<p>このブログ記事が、組織内のレガシー認証をブロックするために必要なすべての情報を提供できていれば幸いです。ご質問がある場合は、以下のコメント欄でこのブログ記事に返信するか、弊社チーム (<a href="mailto:&#105;&#110;&#x74;&#x65;&#108;&#x6c;&#x69;&#x67;&#x65;&#110;&#x74;&#x61;&#x63;&#99;&#x65;&#x73;&#115;&#112;&#109;&#64;&#109;&#105;&#99;&#114;&#x6f;&#x73;&#x6f;&#102;&#x74;&#x2e;&#x63;&#111;&#x6d;">&#105;&#110;&#x74;&#x65;&#108;&#x6c;&#x69;&#x67;&#x65;&#110;&#x74;&#x61;&#x63;&#99;&#x65;&#x73;&#115;&#112;&#109;&#64;&#109;&#105;&#99;&#114;&#x6f;&#x73;&#x6f;&#102;&#x74;&#x2e;&#x63;&#111;&#x6d;</a>) にメールを送る、もしくは Twitter で Alex (<a target="_blank" rel="noopener" href="http://twitter.com/alex_t_weinert">@alex_t_weinert</a>) と私 (<a target="_blank" rel="noopener" href="http://twitter.com/daniel_e_wood">@daniel_e_wood</a>) まで連絡ください。</p>
 
       
       
@@ -281,6 +281,10 @@
       <ul>
         
           <li>
+            <a href="../microsoft-entra-resilience-update-workload-identity-authentication/">Microsoft Entra の耐障害性を高める取り組み: ワークロード ID 認証</a>
+          </li>
+        
+          <li>
             <a href="../microsoft-entra-internet-access-unify-security-service-edge-with/">Microsoft Entra Internet Access: Security Service Edge を ID とアクセス管理で統合する</a>
           </li>
         
@@ -294,10 +298,6 @@
         
           <li>
             <a href="../important-update-azure-ad-graph-api-retirement/">重要なお知らせ: Azure AD Graph API の廃止</a>
-          </li>
-        
-          <li>
-            <a href="../keep-track-object-deletions/">Microsoft Entra ID における削除されたオブジェクトの追跡</a>
           </li>
         
       </ul>
