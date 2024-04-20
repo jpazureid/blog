@@ -46,7 +46,7 @@ tags :
 
 2023 年 6 月、Azure AD Graph API サービスの非推奨化に関する 3 年間の通知期間完了に関する [最新情報](https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/) を共有した。このサービスは現在廃止サイクルに入っており、廃止 (停止) は段階的に行われます。この廃止サイクルの最初の段階では、2024 年 6 月 30 日以降に作成されたアプリケーションで、Azure AD Graph API (https://graph.windows.net) へのリクエストに対してエラー (HTTP 403) を受け取ることになります。
 
-アプリケーションによっては、Microsoft Graph への移行が完了していない場合があることを理解しています。私たちは、2024 年 6 月 30 日以降に作成されたアプリケーションが、2025 年 6 月まで Azure AD Graph API の使用を再開できるようにするオプション構成を提供しています。 インストールやセットアップの一環としてアプリケーションを作成する必要があるソフトウェアを開発または配布し、これらのアプリケーションがAzure AD Graph APIにアクセスする必要がある場合は、影響を避けるために今すぐ準備する必要があります。
+アプリケーションによっては、Microsoft Graph への移行が完了していない場合があることを理解しています。私たちは、2024 年 6 月 30 日以降に作成されたアプリケーションが、2025 年 6 月まで Azure AD Graph API の使用を再開できるようにするオプション構成を提供しています。 インストールやセットアップの一環としてアプリケーションを作成する必要があるソフトウェアを開発または配布し、これらのアプリケーションが Azure AD Graph API にアクセスする必要がある場合は、影響を避けるために今すぐ準備する必要があります。
 
 テナントの状態を監視し、テナントで Azure AD Graph API を使用しているアプリケーションとサービス プリンシパルに関する情報を提供する [Microsoft Entra レコメンデーション](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/overview-recommendations) の展開を開始しました。これらの新しい推奨事項は、影響を受けるアプリケーションとサービス プリンシパルを Microsoft Graph に移行する取り組みをサポートするよう情報を提供します。
 
@@ -64,7 +64,7 @@ Azure AD Graph の廃止、Azure AD Graph の新しい推奨事項、および 2
 
 2021 年、今後の Entra の PowerShell エクスペリエンスとして Microsoft Graph PowerShell SDK に投資し、[Azure AD と MS Online PowerShell モジュールへの投資を終了する予定であることを説明](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/automate-and-manage-azure-ad-tasks-at-scale-with-the-microsoft/ba-p/1942489) しました。2023 年 6 月、Azure AD と MS Online PowerShell モジュールの非推奨化を 2024 年 3 月 30 日まで延期すると [発表](https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/) しました。その後、Microsoft Graph PowerShell SDK 不足している機能の解消を大幅に進めてきました。
 
-**2024 年 3 月 30 日をもって、これらのPowerShellモジュールは非推奨となります**
+**2024 年 3 月 30 日をもって、これらの PowerShell モジュールは非推奨となります**
 
 - [Azure AD PowerShell](https://learn.microsoft.com/ja-jp/powershell/azure/active-directory/overview?view=azureadps-2.0) (AzureAD)
 - [Azure AD PowerShell Preview](https://www.powershellgallery.com/packages/AzureADPreview/2.0.2.149) (AzureADPreview)
