@@ -44,7 +44,7 @@ tags :
 
 [お客様によっては対応が必要です]
 
-2023 年 6 月、Azure AD Graph API サービスの非推奨化に関する 3 年間の通知期間完了に関する [最新情報](https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/) を共有した。このサービスは現在廃止サイクルに入っており、廃止 (停止) は段階的に行われます。この廃止サイクルの最初の段階では、2024 年 6 月 30 日以降に作成されたアプリケーションで、Azure AD Graph API (https://graph.windows.net) へのリクエストに対してエラー (HTTP 403) を受け取ることになります。
+2023 年 6 月、Azure AD Graph API サービスの非推奨化に関する 3 年間の通知期間完了に関する [最新情報](https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/) を共有しました。このサービスは現在廃止サイクルに入っており、廃止 (停止) は段階的に行われます。この廃止サイクルの最初の段階では、2024 年 6 月 30 日以降に作成されたアプリケーションで、Azure AD Graph API (https://graph.windows.net) へのリクエストに対してエラー (HTTP 403) を受け取ることになります。
 
 アプリケーションによっては、Microsoft Graph への移行が完了していない場合があることを理解しています。私たちは、2024 年 6 月 30 日以降に作成されたアプリケーションが、2025 年 6 月まで Azure AD Graph API の使用を再開できるようにするオプション構成を提供しています。 インストールやセットアップの一環としてアプリケーションを作成する必要があるソフトウェアを開発または配布し、これらのアプリケーションが Azure AD Graph API にアクセスする必要がある場合は、影響を避けるために今すぐ準備する必要があります。
 
@@ -81,7 +81,7 @@ Azure AD PowerShell、Azure AD PowerShell Preview、および MS Online は、20
 - [Microsoft Graph PowerShell SDK overview](https://learn.microsoft.com/en-us/powershell/microsoftgraph/overview?view=graph-powershell-1.0)
 - [Migrate from Azure AD PowerShell to Microsoft Graph PowerShell](https://learn.microsoft.com/en-us/powershell/microsoftgraph/migration-steps?view=graph-powershell-1.0)
 - [Azure AD PowerShell to Microsoft Graph PowerShell migration FAQ](https://learn.microsoft.com/ja-jp/powershell/azure/active-directory/migration-faq?view=azureadps-2.0)
-  • [Find Azure AD and MSOnline cmdlets in Microsoft Graph PowerShell](https://learn.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0)
+- [Find Azure AD and MSOnline cmdlets in Microsoft Graph PowerShell](https://learn.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0)
 
 #### Azure Multi-Factor Authentication Server 利用者への事前通知
 
@@ -119,7 +119,7 @@ Azure AD PowerShell、Azure AD PowerShell Preview、および MS Online は、20
 
 効率的な動的グループのルールを推奨するため、Microsoft Entra および Intune 管理センターの動的グループ ルール ビルダーのユーザー体験が更新されました。'match' および 'notMatch' 演算子は効率が悪く、必要な場合にのみ使用する必要があるため、**2024 年 7 月** をもって、ルールビルダーから削除されます。しかし、これらの演算子はまだ API レベルではサポートされておりますので、両方の管理センターのテキスト ボックスからルールを直接記載して利用することは可能です。したがって、これらの演算子を使用する必要がある場合は、継続して使用することができます！テキスト ボックスを使ったルールの書き方については、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/users/groups-dynamic-membership#rule-builder-in-the-azure-portal) のドキュメントをご参照ください。
 
-#### 条件付きアクセス '場所' の条件が変更
+#### 条件付きアクセス '場所' の条件が移動
 
 [お客様による対応は必要ありません。]
 
@@ -168,7 +168,7 @@ Azure AD PowerShell、Azure AD PowerShell Preview、および MS Online は、20
 
 [お客様による対応は必要ありません。]
 
-**2024 年 6 月** より、組織からの招待時のメールにおいて、フッターに **今後の招待をブロックする** オプションが表示されなくなります。以前は招待メールの送付これ以上しないように要望していたゲスト ユーザーに対しても、この変更に伴い、今後はメッセージが送付されるようになります。過去に https://invitations.microsoft.com/unsubscribe/manage で管理されていた配信停止リストにユーザーが追加されることは今後ありません。
+**2024 年 6 月** より、組織からの招待時のメールにおいて、フッターに **今後の招待をブロックする** オプションが表示されなくなります。以前は招待メールの送付これ以上しないように要望していたゲスト ユーザーに対しても、この変更に伴い、今後はメッセージが送付されるようになります。過去に https://invitations.microsoft.com/unsubscribe/manage で管理されていた配信停止リストに今後ユーザーが追加されることは今後ありません。
 
 この変更は自動的に行われますので、管理者とユーザーの対応は不要です。詳細は以下のとおりです:
 
@@ -188,7 +188,8 @@ Azure AD PowerShell、Azure AD PowerShell Preview、および MS Online は、20
 
 新機能の発表は以下のとおりです。
 
-- [Soft Delete capability for Managed Service Identity](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/delete-recover-faq#are-managed-identities-soft-deleted-)
+- [アプリケーションの削除と回復に関する FAQ]([https://learn.microsoft.com/ja-jp/entra/identity/enterprise-apps/delete-recover-faq#are-managed-identities-soft-deleted-](https://learn.microsoft.com/ja-jp/entra/identity/enterprise-apps/delete-recover-faq))
+
 
 よろしくお願いいたします。
 
