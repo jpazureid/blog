@@ -1,6 +1,6 @@
 ---
 title : Microsoft Entra の更新情報 (2024 年 4 月)
-date : 2024-04-22 10:00
+date : 2024-04-21 10:00
 tags : 
     - Azure AD
     - US Identity Blog
