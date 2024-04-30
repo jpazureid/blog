@@ -38,3 +38,6 @@ Microsoft Entra ID の会社のブランド機能を管理できる新しいロ�
 設定が適用されると、ユーザーは Entra ID の会社のブランド機能を通して認証 UX を構成できるようになります。
 
 会社のブランド機能を設定し、ユーザーに一貫したサインインを提供する方法については、[こちら](https://learn.microsoft.com/ja-jp/entra/fundamentals/how-to-customize-branding)をご覧ください。
+
+James Mantu 
+Sr. Product Manager, Microsoft identity
