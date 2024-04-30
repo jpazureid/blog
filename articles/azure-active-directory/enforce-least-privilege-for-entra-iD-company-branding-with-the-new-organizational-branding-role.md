@@ -24,10 +24,17 @@ Microsoft Entra ID の会社のブランド機能を管理できる新しいロ�
 会社のブランド機能の構成のための新しいロールをユーザーに割り当てるには、以下の手順をご確認ください:
 
  1. Microsoft Entra ID にサインインし、ユーザー を選択します。
+  ![](./enforce-least-privilege-for-entra-iD-company-branding-with-the-new-organizational-branding-role/picture1.png)
+
  2. 会社のブランド機能の役割を割り当てるユーザーを選択し、開きます。
+  ![](./enforce-least-privilege-for-entra-iD-company-branding-with-the-new-organizational-branding-role/picture2.png)
+ 
  3. [**割り当てられたロール**]を選択し、[**＋割り当ての追加**]を選択します。
+  ![](./enforce-least-privilege-for-entra-iD-company-branding-with-the-new-organizational-branding-role/picture3.png)
+ 
  4. [**組織のブランド管理者**] company ロールを選択し、ユーザーに割り当てます。
-   
+   ![](./enforce-least-privilege-for-entra-iD-company-branding-with-the-new-organizational-branding-role/picture4.png)
+ 
 設定が適用されると、ユーザーは Entra ID の会社のブランド機能を通して認証 UX を構成できるようになります。
 
 会社のブランド機能を設定し、ユーザーに一貫したサインインを提供する方法については、[こちら](https://learn.microsoft.com/ja-jp/entra/fundamentals/how-to-customize-branding)をご覧ください。
