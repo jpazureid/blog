@@ -95,8 +95,7 @@ Azure AD や Microsoft 365 サービスをご利用いただくなかで、利�
 
 なお、以前は、ロックアウトの最中に管理者がロックアウトを解除することはできない旨を公開情報で案内していましたが、現在は管理者側からユーザーのパスワードをリセットすることで、ロックアウトを解除することができるようになりました。
 
-管理者がユーザーのパスワードをリセットする手順は [こちらの公開情報](https://learn.microsoft.com/ja-jp/entra/fundamentals/users-reset-password-azure-portal) にてご案内しておりますので、
-今回は、ユーザーが SSPR にてパスワードをリセットすることでロックを解除する方法について、以下に手順を記載します。
+管理者がユーザーのパスワードをリセットする手順は [こちらの公開情報](https://learn.microsoft.com/ja-jp/entra/fundamentals/users-reset-password-azure-portal) にて案内しております。今回はユーザーが SSPR にてパスワードをリセットすることでロックを解除する方法について、以下に手順を記載します。
 
 1. http://aka.ms/sspr へアクセスします。
 2. https://passwordreset.microsoftonline.com/ の画面に遷移し、下記の画面が表示されるので、UPN と文字列を入力します。
