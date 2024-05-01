@@ -26,7 +26,7 @@ PIM やアクセス レビューなど、主に Microsoft Entra ID P2 の機能�
     - Entra ID ユーザーは、myprofile.microsoft.com または myaccount.microsoft.com 経由で自身の言語設定を更新できます。更新する権限がない場合は、管理者が優先言語を更新します。
     - システムは、Entra ID ユーザーオブジェクトに優先言語が設定されているかどうかを確認し、指定されていればその言語を使用します。
 	
-    My Account の画面では、下記にて言語設定を行えます。
+    My Account の画面では、下記にて言語設定を行えます。My Account の画面では、「優先する言語」の項目ではなく「表示言語」の言語を設定することで PreferredLanguage 属性も変更されますので、「表示言語」の言語を変更ください。
 
     ![](./preferred-language-in-identity-governance/language2.png)
 	
