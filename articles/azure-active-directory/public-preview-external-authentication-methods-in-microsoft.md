@@ -45,11 +45,11 @@ Gret と申します。外部の認証方法の主要な機能と、MFA パー�
 
 外部の認証方法は、条件付きアクセス ポリシー、PIM ロールのアクティベーション、ID Protection リスクベースのポリシー、および Microsoft Intune デバイス登録からの MFA 要件を満たすために使用できます。これらは Entra ID 認証方法ポリシーの一部として作成および管理されます。これにより、ビルトインの認証方法と同じ、一貫性のある管理体験が得られます。Entra 管理センターの認証方法の管理画面で、新しい「Add external method (Preview)」ボタンを使用して外部の認証方法を追加できます。
 
-![外部の認証方法が追加され認証方法ポリシーの管理画面に表示されている様子です。](./public-preview-external-authentication-methods-in-microsoft/pic1.png)
+![図 1: 外部の認証方法が追加され認証方法ポリシーの管理画面に表示されている様子です。](./public-preview-external-authentication-methods-in-microsoft/pic1.png)
 
 ユーザーが、MFA を満たすために認証方法を選択する際に、外部の認証方法が既定の認証方法と併せて表示されます。
 
-![外部の認証方法が追加され認証方法ポリシーの管理画面に表示されている様子です。](./public-preview-external-authentication-methods-in-microsoft/pic2.png)
+![図 2: サインインの際に既定の認証方法に加えて、外部の認証方法が表示されている様子です。](./public-preview-external-authentication-methods-in-microsoft/pic2.png)
 
 詳細については、[公開資料](https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-authentication-external-method-manage) をご覧ください。
 
