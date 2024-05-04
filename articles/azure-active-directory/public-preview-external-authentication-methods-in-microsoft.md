@@ -10,7 +10,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
-本記事は、2024 年 5 月 2 日に米国の Microsoft Entra (Azure AD) Blog で公開された [https://techcommunity.microsoft.com/t5/microsoft-entra-blog/public-preview-external-authentication-methods-in-microsoft/ba-p/4078808](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/public-preview-external-authentication-methods-in-microsoft/ba-p/4078808) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2024 年 5 月 2 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Public preview: External authentication methods in Microsoft Entra ID](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/public-preview-external-authentication-methods-in-microsoft/ba-p/4078808) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
 
