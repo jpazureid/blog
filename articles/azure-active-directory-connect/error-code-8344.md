@@ -104,7 +104,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 実行例 
 
 ``` PowerShell
-Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com' -SkipAdminSdHolders
+Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
 9. 上記完了後に Azure AD Connect サーバーにて差分同期を実施し、事象が解消するかご確認いただければと存じます。
