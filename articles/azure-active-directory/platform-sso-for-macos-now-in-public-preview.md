@@ -34,7 +34,7 @@ tags:
 
 もし、まだお済みでない場合には、以下の手順を実施して、ご準備ください:
 
-  1. [Mac OS 用ポータル サイト アプリ 5.2404.0以降が使用できるようデバイスを更新します。](https://learn.microsoft.com/ja-jp/mem/intune/apps/apps-company-portal-macos)
+  1. [Mac OS 用ポータル サイト アプリ 5.2404.0 以降が使用できるようデバイスを更新します。](https://learn.microsoft.com/ja-jp/mem/intune/apps/apps-company-portal-macos)
   2. [Enterprise SSO プラグイン](https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin)を展開します。
   3. ユーザーが[多要素認証の登録](https://learn.microsoft.com/ja-jp/entra/id-protection/howto-identity-protection-configure-mfa-policy)をしていることを確認します。多要素認証の方法としては、Microsoft Authenticator の使用をお勧めします。
   4. Google Chrome ユーザーの場合は、[Microsoft シングル サインオン拡張機能](https://chromewebstore.google.com/detail/microsoft-single-sign-on/ppnbnpeolgkicgegkbkbjmhlideopiji?pli=1)をインストールします。
