@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/enterpriseapps-multitenantapps/fig5.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/enterpriseapps-multitenantapps/fig6.png">
 <meta property="article:published_time" content="2021-06-30T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-09T00:51:49.440Z">
+<meta property="article:modified_time" content="2024-05-09T09:42:23.522Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Application">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+113c4f6a-867b-57b5-8beb-45aa1e5401ba%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%97%E3%83%A9%E3%82%A4%E3%82%BA+%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%80%81%E7%AE%A1%E7%90%86%E8%80%85%E3%81%AE%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8C%E8%BF%BD%E5%8A%A0%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%21%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fenterpriseapps-multitenantapps%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fenterpriseapps-multitenantapps.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fenterpriseapps-multitenantapps.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/enterpriseapps-multitenantapps/" data-id="clvyj9sd900910ns5akqdaryj" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/enterpriseapps-multitenantapps/" data-id="clvz283ya00910nlccnwsct7n" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -190,7 +190,7 @@
 <h2 id="どのような操作で、ユーザーによって「マルチテナント-アプリケーション」が追加されるのか？"><a href="#どのような操作で、ユーザーによって「マルチテナント-アプリケーション」が追加されるのか？" class="headerlink" title="どのような操作で、ユーザーによって「マルチテナント アプリケーション」が追加されるのか？"></a>どのような操作で、ユーザーによって「マルチテナント アプリケーション」が追加されるのか？</h2><p>ここでは、弊社が公開しているマルチテナント アプリケーション <a target="_blank" rel="noopener" href="https://developer.microsoft.com/ja-jp/graph/graph-explorer">“Microsoft Graph Explorer”</a> を例に説明します。</p>
 <p><a target="_blank" rel="noopener" href="https://developer.microsoft.com/ja-jp/graph/graph-explorer">“Microsoft Graph Explorer”</a> は、Microsoft Graph REST API 要求を簡単に作成し、対応する応答を表示できる開発者ツールです。このアプリケーションは、弊社の Azure AD テナント (microsoft.com) の [アプリの登録] 上で、マルチテナント アプリケーションとして登録されています。</p>
 <ul>
-<li>仮定 1 : userA さん (<a href="mailto:&#117;&#115;&#x65;&#114;&#65;&#64;&#x63;&#x6f;&#x6e;&#x74;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#111;&#x6d;">&#117;&#115;&#x65;&#114;&#65;&#64;&#x63;&#x6f;&#x6e;&#x74;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#111;&#x6d;</a>) は、contoso.com の Azure AD に所属するユーザーです。</li>
+<li>仮定 1 : userA さん (<a href="mailto:&#x75;&#115;&#x65;&#x72;&#x41;&#64;&#x63;&#x6f;&#x6e;&#116;&#x6f;&#x73;&#111;&#x2e;&#x63;&#111;&#x6d;">&#x75;&#115;&#x65;&#x72;&#x41;&#64;&#x63;&#x6f;&#x6e;&#116;&#x6f;&#x73;&#111;&#x2e;&#x63;&#111;&#x6d;</a>) は、contoso.com の Azure AD に所属するユーザーです。</li>
 <li>仮定 2 : contoso.com の Azure AD の [エンタープライズ アプリケーション] 上には、まだ “Microsoft Graph Explorer” のサービス プリンシパルは存在しません。</li>
 </ul>
 <h3 id="userA-さんによってマルチテナント-アプリ「Graph-Explorer」が追加される時の操作"><a href="#userA-さんによってマルチテナント-アプリ「Graph-Explorer」が追加される時の操作" class="headerlink" title="userA さんによってマルチテナント アプリ「Graph Explorer」が追加される時の操作"></a>userA さんによってマルチテナント アプリ「Graph Explorer」が追加される時の操作</h3><ol>
@@ -204,7 +204,7 @@
 </li>
 </ol>
 <ol start="4">
-<li><p><a href="mailto:&#x75;&#115;&#101;&#x72;&#x41;&#x40;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#x6f;&#46;&#x63;&#x6f;&#x6d;">&#x75;&#115;&#101;&#x72;&#x41;&#x40;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#x6f;&#46;&#x63;&#x6f;&#x6d;</a>でのサインインが成功します。</p>
+<li><p><a href="mailto:&#117;&#115;&#101;&#x72;&#x41;&#x40;&#x63;&#x6f;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#99;&#x6f;&#109;">&#117;&#115;&#101;&#x72;&#x41;&#x40;&#x63;&#x6f;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#99;&#x6f;&#109;</a>でのサインインが成功します。</p>
 <p> <img src="/blog/azure-active-directory/enterpriseapps-multitenantapps/fig3.png" alt="fig3"></p>
 </li>
 <li><p>次回以降 userA が Graph Explorer にアクセスする際は、openid, profile, User.Read, offline_access のアクセス許可への同意が要求されることはありません。</p>

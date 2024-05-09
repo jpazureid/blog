@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/4-SecDetail.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/5-CheckPoint.jpg">
 <meta property="article:published_time" content="2020-05-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-09T00:51:48.984Z">
+<meta property="article:modified_time" content="2024-05-09T09:42:23.062Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2c7a2080-ff06-561f-bfe2-8fabb5a18cc0%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5Bpermission-issue+-+Error+Code+%3B+8344%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Ferror-code-8344%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Ferror-code-8344.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Ferror-code-8344.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/" data-id="clvyj9sgs00js0ns524x5e333" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/" data-id="clvz2841y00js0nlcdqy1eb64" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -240,7 +240,7 @@ Connected data source error: この操作を実行するための十分なアク
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ADSyncMsDsConsistencyGuidPermissions</span> <span class="literal">-ADConnectorAccountDN</span> &lt;String&gt; [-<span class="type">ADobjectDN</span> &lt;<span class="built_in">String</span>&gt;] [&lt;<span class="type">CommonParameters</span>&gt;]</span><br></pre></td></tr></table></figure>
 
 <p>実行例 </p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ADSyncMsDsConsistencyGuidPermissions</span> <span class="literal">-ADConnectorAccountDN</span> <span class="string">&#x27;CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com&#x27;</span> <span class="literal">-SkipAdminSdHolders</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ADSyncMsDsConsistencyGuidPermissions</span> <span class="literal">-ADConnectorAccountDN</span> <span class="string">&#x27;CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <ol start="9">
 <li>上記完了後に Azure AD Connect サーバーにて差分同期を実施し、事象が解消するかご確認いただければと存じます。</li>
