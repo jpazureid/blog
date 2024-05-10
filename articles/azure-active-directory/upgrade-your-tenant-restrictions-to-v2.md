@@ -1,6 +1,6 @@
 ---
 title: テナント制限を v2 にアップグレードください
-date: 2024-05-13 09:00
+date: 2024-05-11 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
