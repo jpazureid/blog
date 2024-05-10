@@ -9,6 +9,7 @@ tags:
 # テナント制限を v2 にアップグレードください
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
+
 本記事は、2024 年 3 月 21 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Upgrade your tenant restrictions to v2](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/upgrade-your-tenant-restrictions-to-v2/ba-p/4081855) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
@@ -29,17 +30,17 @@ tags:
 
 テナント制限を利用する場合、すべてのユーザー認証トラフィックをプロキシ経由でルーティングする必要があります。通常、プロキシはオンプレミス ネットワークの出口にありますが、クラウドベースのプロキシでもかまいません。プロキシでは、発信元のデバイスやネットワークの場所に関係なくヘッダーが挿入され、これによりトラフィックに対して宛先の許可リストが強制されるようになります。テナント制限 v1 では、宛先の許可リストがそのままヘッダーに一覧で指定されました。テナント制限 v2 では、ヘッダーにはテナント ID とポリシー ID が指定されます。トラフィックが Microsoft Entra ID に到着すると、Entra ID がヘッダーを読み取り、ポリシーの内容を適用します。トラフィックの宛先が許可リストにない場合は、ユーザーにエラー メッセージが表示されます。
 
-![図 1 : テナント制限によってブロックされたユーザーの例](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-1.png)
+![図 1: テナント制限によってブロックされたユーザーの例](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-1.png)
 
 ## テナント制限 v1 のしくみ
 
-ID には、内部 ID と外部 ID の 2 種類があります。組織は、ID プロバイダー (IdP) を使用して内部 ID を作成および管理しますが、個人アカウントや外部組織によって作成された ID などの外部 ID は管理しません。テナント制限 v1 は、両方の種類の ID に適用されます。
+ID には、内部 ID と外部 ID の 2 種類があります。組織は ID プロバイダー (IdP) を使用して内部 ID を作成および管理しますが、個人アカウントや外部組織によって作成された ID などの外部 ID は管理しません。テナント制限 v1 は、両方の種類の ID に適用されます。
 
 以下の図では、2 種類の ID (緑が内部 ID、黒が外部 ID) が企業ネットワーク上にあるか、仮想プライベート ネットワーク (VPN) で接続されています。どちらの ID も、Microsoft 365 サービスにアクセスしようとすると、企業ネットワークの外向きのプロキシを経由します。通常、どちらも同じように許可された宛先情報を含むヘッダーが挿入されます。この動作にはいくつかの制限があります。ネットワーク プロキシで許可リストを維持している場合、管理者はテナントを追加または削除するときに各プロキシでヘッダーを更新する必要があります。また、ヘッダーにはサイズ制限があることにも注意が必要です。
 
-![図 2 : テナント制限 v1 は、ユーザーやアプリの粒度を指定することなく、外部テナントの宛先にも等しく適用されます。](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-2.png)
+![図 2: テナント制限 v1 は、ユーザーやアプリの粒度を指定することなく、外部テナントの宛先にも等しく適用されます。](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-2.png)
 
-## アウトバウンドのクロステナント アクセス設定によるテナント制限 v1
+## 送信アクセス方向のクロステナント アクセス設定によるテナント制限 v1
 
 Microsoft Entra ID では、クロステナント アクセス設定機能を構成することで、ユーザーごとやグループごと、アプリケーションごとに送信アクセスを制御できます。このクロステナント アクセス ポリシーは、デバイスやネットワークの場所に関係なく、内部 ID に適用されます。
 
@@ -47,7 +48,7 @@ Microsoft Entra ID では、クロステナント アクセス設定機能を構
 
 テナント制限 v1 とクロステナント アクセス設定の両方が評価され、最も制限の厳しいポリシーが適用されます。しかし、前述のとおりクロステナント アクセス設定は内部 ID にのみ適用されます。ユーザーに対してテナント制限 v1 により外部テナントへのアクセスを許可すると、たとえクロステナント アクセス設定によるグループまたはアプリケーションの制限があっても、すべての外部 ID がそれらのテナント内の任意のリソースにアクセスできるようになります。
 
-![図 3 : クロステナント アクセス設定により、内部 ID に対してユーザーとアプリの設定を細かく適用できます。](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-3.png)
+![図 3: クロステナント アクセス設定により、内部 ID に対してユーザーとアプリの設定を細かく適用できます。](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-3.png)
 
 ## クロステナント アクセス設定によるテナント制限 v2
 
@@ -55,14 +56,14 @@ Microsoft Entra ID では、クロステナント アクセス設定機能を構
 
 次の例では、組織は内部 ID に対してグループとアプリケーションの制限を設けています。同時に、一部の例外を除いて、外部 ID が外部テナントにアクセスすることをブロックすることも可能です。この場合、テナント C の Bob に対して例外が設定されています。Bob は Microsoft Exchange のみへのアクセスを許可され、企業ネットワークにいるときに電子メールをチェックできるようになっています。
 
-![図 4 : テナント制限 v2 を利用することで、ユーザーとアプリごとに、外部 ID をきめ細かく制御できます。](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-4.png)
+![図 4: テナント制限 v2 を利用することで、ユーザーとアプリごとに、外部 ID をきめ細かく制御できます。](./upgrade-your-tenant-restrictions-to-v2/upgrade-your-tenant-restrictions-to-v2-4.png)
 
 前の図は、テナント制限 v2 がいかに柔軟に動作するかを示しています。テナント制限 v1 と v2 は同じライセンス要件であるため、ポリシーの再作成とネットワーク プロキシでヘッダーの挿入処理を更新するという 1 回限りの作業で移行が完了します。
 
 テナント制限 v2 への移行計画の詳細については、[テナント制限 v1 からテナント制限 v2 への移行を計画する](https://learn.microsoft.com/ja-jp/entra/external-id/tenant-restrictions-migration) のドキュメントをご覧ください。
 
-テナント制限をさらに強化するには、[ユニバーサル テナント制限](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-universal-tenant-restrictions) についてもご覧ください。ユニバーサル テナント制限では、データ レイヤーを保護し、企業ネットワーク プロキシでのテナント制限のヘッダー挿入処理を回避するようなトークンの侵入を防止します。また、この機能は、トラフィックが企業ネットワーク プロキシを経由していなくても、ヘッダーを挿入でき、Microsoft 365 リソースに低遅延で接続が可能です。
+テナント制限をさらに強化するには、[ユニバーサル テナント制限](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-universal-tenant-restrictions) についてもご覧ください。ユニバーサル テナント制限では、データ レイヤーを保護し、企業ネットワーク プロキシでのテナント制限のヘッダー挿入処理を回避するようなトークンの侵入を防止します。またこの機能は、トラフィックが企業ネットワーク プロキシを経由していなくても、ヘッダーを挿入でき、Microsoft 365 リソースに低遅延で接続が可能です。
 
-Jeff Bley
-Senior Product Manager, Microsoft
+Jeff Bley  
+Senior Product Manager, Microsoft  
 [LinkedIn](https://www.linkedin.com/in/jeffrey-bley/)
