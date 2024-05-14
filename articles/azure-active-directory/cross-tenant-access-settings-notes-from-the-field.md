@@ -34,7 +34,7 @@ B2B ゲスト ユーザーがリソース テナントで追加の MFA 方式を
 
 ホーム テナントですでに MFA を登録し、Windows Hello for Business のような高度な MFA 方式の利便性に慣れている B2B ゲスト ユーザーがいたとして、そのユーザーがリソース テナントにアクセスしようとすると以下のように認証が一時的に中断されます。ユーザーがホーム テナントですでに強力な認証を実施済みの場合でも、リソース テナントで再度認証のプロンプトが表示されるのです。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field1.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field1.png)
 
 図 1: 外部テナントにて保護されたリソースにアクセスする B2B ゲスト ユーザーに対して表示される MFA プロンプト
 
@@ -52,11 +52,11 @@ B2B ゲスト ユーザーがリソース テナントで追加の MFA 方式を
 
 MFA の既定の信頼設定は、[Microsoft Entra 管理センター](https://entra.microsoft.com) で確認できます。既定の設定では、Microsoft Entra ID テナントは、他のテナントからの受信方向の MFA を信頼しません。この動作を変更するには、受信アクセスの設定を編集する必要があります。以下のスクリーンショットに必要な構成を示します。"Microsoft Entra テナントからの多要素認証を信頼する" 設定はデフォルトで無効になっているため、MFA を信頼したい場合は、これを有効にする必要があります。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field2.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field2.png)
 
 図 2: Microsoft Entra 管理センターのテナント間アクセス設定
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field3.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field3.png)
 
 図 3: 既定の信頼設定
 
@@ -64,7 +64,7 @@ MFA の既定の信頼設定は、[Microsoft Entra 管理センター](https://e
 
 一度構成すれば、B2B ゲストユーザーは、外部のリソース テナントで使用可能な MFA 方式よりも高い認証強度を持つ認証方式を追加で使用できるようになります。この構成により、B2B コラボレーションでフィッシング耐性のある認証方法を使用することも可能になるため、これは非常に重要な利点です。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field4.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field4.png)
 
 図 4: ホームテナントとリソーステナントで利用可能な認証方法の比較
 
@@ -96,9 +96,11 @@ Microsoft Entra のテナント間アクセス設定により、組織は他の 
 
 テナント間アクセス設定は次のように考えていただくのがよいです。
 
-    • 受信アクセス設定は、"外部" アカウントが "内部" アプリにアクセスするのを制御します。
-    • 送信アクセス設定は、"内部" アカウントが "外部" アプリにアクセスするのを制御します。
-    • テナント制限は、"外部" アカウントが "外部" アプリにアクセスするのを制御します。
+ ・受信アクセス設定は、"外部" アカウントが "内部" アプリにアクセスするのを制御します。
+ 
+ ・送信アクセス設定は、"内部" アカウントが "外部" アプリにアクセスするのを制御します。　　
+ 
+ ・テナント制限は、"外部" アカウントが "外部" アプリにアクセスするのを制御します。
 
 要約すると、テナント制限では、ユーザーがネットワークやデバイスから外部アカウントでサインインした際に、外部アプリへのアクセスを制御するポリシーを作成することができ、受信アクセスと送信アクセスの設定では、テナント内のゲスト アカウントやリソース テナント内のゲスト アカウント（ユーザーがどこにアクセスしているか）に焦点を当てます。
 
@@ -120,23 +122,23 @@ Contoso は、B2B ビジネスの連携先に対して、より詳細な制御�
 
 Microsoft Entra 管理 から External Identities メニューに移動し、テナント間アクセス設定を選択します。既定の設定を選択し、送信アクセスの既定値の編集を選択します。 [アクセスのブロック] を選択し、[適用対象] オプションを選択します。ユーザの一部を選択することも、すべてのユーザーに適用することもできます。この例では、すべてのユーザーとすべての外部アプリケーションがブロックされます。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field5.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field5.png)
 
 図 5: 送信アクセス設定
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field6.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field6.png)
 
 図 6: 送信アクセス設定をブロック
 
 リソース テナントに何らかのアクセスを試みると、以下の通知が表示されます。このメッセージは想定されたもので、テナント全体の送信アクセスの既定の設定が効いて、リソース テナント全体へのアクセスを明示的にブロックしているためです。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field7.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field7.png)
 
 図 7: リソース テナントへのアクセスがブロック
 
 ユーザーのサインイン ログを見れば、失敗の理由とアクセスしたリソース テナントの情報が確認できます。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field8.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field8.png)
 
 図 8: サインイン ログ
 
@@ -144,17 +146,17 @@ Microsoft Entra 管理 から External Identities メニューに移動し、テ
 
 さらに、グループ向けの PIM を使用して、永続的なアクセスを許可しないようにすることもできます。この場合、Privileged Identity Management (PIM) を介してアクセスを要求する必要があります。PIM の有効化のプロセスでは、承認者、MFA、または条件付きアクセスによる追加の認証コンテキストを要求するように設定できます。例えば、ステップアップ認証や場所ベースのポリシー制限などです。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field9.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field9.png)
 
 図 9: 送信アクセス設定のユーザーとグループ
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field10.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field10.png)
 
 図 10: 送信アクセス設定の外部アプリケーション
 
 必要な送信アクセス設定を構成すると、選択したユーザーまたはグループに含まれるユーザーが、選択した外部アプリケーションへのアクセスを許可されます。以下のログでは、デモ ユーザーが上記の設定に従って選択した外部アプリケーションにアクセスしたことが分かります。
 
-![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field11.png")
+![](./cross-tenant-access-settings-notes-from-the-field/cross-tenant-access-settings-notes-from-the-field11.png)
 
 図 11: サインイン成功のログ
  
@@ -168,5 +170,5 @@ Microsoft Entra 管理 から External Identities メニューに移動し、テ
 
 このブログ記事では、Microsoft Entra のテナント間アクセスと送信アクセス設定を使用して、外部コラボレーションを管理および保護する方法について説明しました。テナント間アクセス設定を使用すると、他のテナントのユーザーとリソースを共有できます。一方、送信アクセス設定とテナント制限を使用すると、ユーザーがアクセスできる外部テナントを制御可能です。両方の機能をテナント レベルで設定し、ビジネス ニーズに応じて許可または拒否する組織を指定できます。さらに、MFA の信頼の設定を使用して、テナント間のアクセス シナリオで既存の強力な認証方法を使用し、セキュリティ体制を強化する方法についても説明しました。
 
-Morne Naude, Senior Consultant
+Morne Naude, Senior Consultant  
 Heiko Bischoff, Senior Consultant
