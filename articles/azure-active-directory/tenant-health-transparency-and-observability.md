@@ -1,6 +1,6 @@
 ---
 title: テナントの正常性の透明性と監視
-date: 2024-05-10 10:00
+date: 2024-05-25 10:00
 tags:
   - Azure AD
   - US Identity Blog
