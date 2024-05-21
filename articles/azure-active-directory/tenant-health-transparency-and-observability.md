@@ -42,8 +42,10 @@ Premium ライセンスをお持ちのお客様が主要な認証シナリオを
 正常性監視のメトリクスにアクセスする方法の詳細については、[Microsoft Learn のドキュメント][(](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/concept-microsoft-entra-health))を参照ください。
 
 
+![](./tenant-health-transparency-and-observability/1.png)
+*図は、シナリオ監視ランディング ページと MFA でのサインイン シナリオの詳細を示しています*
 
-
+![](./tenant-health-transparency-and-observability/2.png)
 
 テナント内の観測可能性が向上しても、Microsoft 側の問題が発生した場合、お客様は従来のインシデントに頼ることになります。他のサービス プロバイダーと同様に、影響を受ける顧客にインシデントに関するメッセージを通知し、サービスの正常性に関するお知らせを Azure の Web サイトと通信 フィードに投稿します。しかし、このアプローチが一から作成したサービスモニターと人間主導の通信だけに依存している場合、限界があります。お客様がコミュニケーションの適時性やモニタリングの範囲自体に懸念を持つのは当然です。  
 
