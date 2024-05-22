@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Entra External ID が一般提供 (GA) されました"
-date: 2024-05-xx 09:00
+date: 2024-05-27 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
@@ -14,7 +14,7 @@ tags:
  
 ----
 
-次世代の顧客 ID アクセス管理 (CIAM: Customer Identity Access Management) 機能を実現する開発者向けソリューション、 「**Microsoft Entra External ID**」 が ** 5 月 15 日から一般公開 (GA) されたこと** をお知らせします。External ID では パートナー向けアプリケーション、企業のお客様向けアプリケーション、消費者向けアプリケーションを構築するいずれの場合においても、安全かつシンプルに CIAM をカスタマイズすることができます。
+次世代の顧客 ID アクセス管理 (CIAM: Customer Identity Access Management) 機能を実現する開発者向けソリューション、 「**Microsoft Entra External ID**」 が **5 月 15 日から一般公開 (GA) されたこと** をお知らせします。External ID では パートナー向けアプリケーション、企業のお客様向けアプリケーション、消費者向けアプリケーションを構築するいずれの場合においても、安全かつシンプルに CIAM をカスタマイズすることができます。
 
 
 ## Microsoft Entra External ID
@@ -41,7 +41,7 @@ Microsoft Entra External ID を使用すると、次のことが実現できま�
 
 
 **「Komatsu は、すべての外部向けアプリケーションに Entra External ID を使用しています。これにより、お客様に素晴らしい体験を提供するとともに、ビジネスがしやすい信頼できるパートナーであることをお客様に示すことができています。」
-- Michael McClanahan 氏 (副社長, トランスフォーメーション担当兼 CIO) **
+- Michael McClanahan 氏 (副社長, トランスフォーメーション担当兼 CIO)**
 (./announcing-general-availability-of-microsoft-entra-external-id/announcing-general-availability-of-microsoft-entra-external-id002.png)
 
 
