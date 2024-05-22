@@ -1,6 +1,6 @@
-![image](https://github.com/chkoide/blog/assets/58282173/898f9965-7f99-443b-aa86-a4a7b6732384)---
+---
 title: ライフサイクル ワークフローを利用した簡易人事システムの紹介
-date: 2024-05-20 09:00
+date: 2024-05-27 09:00
 tags:
     - Identity Governance
     - Lifecycle Workflow
@@ -20,13 +20,13 @@ tags:
 
 **＜利用前＞**
 
-![](./lifecycle-workflow/lw1.png)
+![](./lifecycle-workflow/lw1-2.png)
 
 
 **＜利用後＞**
 
 
-![](./lifecycle-workflow/lw2.png)
+![](./lifecycle-workflow/lw2-2.png)
 
 
 ## 具体的なシナリオ
