@@ -67,4 +67,3 @@ Copilot for Security により、セキュリティ チームと IT チームは
 
 Sarah Scott,  
 Principal Manager, Product Management
-  
