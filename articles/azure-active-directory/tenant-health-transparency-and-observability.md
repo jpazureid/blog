@@ -1,12 +1,12 @@
 ---
-title: テナントの正常性の透明性と監視
-date: 2024-05-25 10:00
+title: テナントの正常性に関する透明性と可視化
+date: 2024-05-24 10:00
 tags:
   - Azure AD
   - US Identity Blog
 ---
 
-# テナントの正常性の透明性と監視
+# テナントの正常性に関する透明性と可視化
 
 こんにちは、Azure Identity サポート チームの 名取 です。
 
@@ -14,9 +14,9 @@ tags:
 
 ----
 
-今までの回復性に関するブログ記事では、[地域ごとに分離された認証エンドポイント](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-resilience-update-workload-identity-authentication/)に関する最新のアップデートや、昨年の業界初の[バックアップ認証サービス](https://jpazureid.github.io/blog/azure-active-directory/advances-in-azure-ad-resilience/)に関する発表など、継続的に耐障害性と信頼性に関する改善に努め、最新の情報をお伝えしてきました。このような、水面下でのイノベーションにより、毎月世界全体で安定した非常に高い可用性の提供を実現しております。
+今までの耐障害性に関するブログ記事では、[地域ごとに分離された認証エンドポイント](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-resilience-update-workload-identity-authentication/) に関する最新のアップデートや、昨年の業界初の [バックアップ認証サービス](https://jpazureid.github.io/blog/azure-active-directory/advances-in-azure-ad-resilience/) に関する発表など、継続的に耐障害性と信頼性に関する改善に努め、最新の情報をお伝えしてきました。このような、水面下でのイノベーションにより、毎月世界全体で安定した非常に高い可用性の提供を実現しております。
 
-この記事では、Microsoft Entra がどのようにして可用性と耐障害性を確保しているかをお客様にもお分かりいただけるよう、概要をお話ししてまいりたいと思います。これは、障害が発生した際に弊社が説明責任を果たせるようにするためというだけでなく、お客様のテナントにてどのようなアクションを取ることで正常性を高めていけるのかということを、よりよく理解するためでもあります。グローバル レベルでは、過去の可用性を [SLA レポート](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/reference-sla-performance)で確認することが可能です。認証の可用性が、お約束している 99.99% ([2021年春に開始](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/99-99-uptime-for-azure-active-directory/ba-p/1999628)) を大きく上回り、ほとんどの月で 99.999% に到達しています。しかし、各テナントのレベルで可用性を確認しなければ、説得力も実効性もありません。自社テナントのアプリやデバイスを使うユーザーに対する稼働時間はどうなのか？サインインの数が急増したときに自社のテナントはきちんとそれに対応できているのか？というのが大事なポイントなのです。
+この記事では、Microsoft Entra がどのようにして可用性と耐障害性を確保しているかをお客様にもお分かりいただけるよう、概要をお話ししてまいりたいと思います。これは、障害が発生した際に弊社が説明責任を果たせるようにするためというだけでなく、お客様のテナントにてどのようなアクションを取ることで正常性を高めていけるのかということを、よりよく理解するためでもあります。グローバル レベルでは、過去の可用性を [SLA レポート](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/reference-sla-performance)で確認することが可能です。認証の可用性が、お約束している 99.99% ([2021 年春に開始](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/99-99-uptime-for-azure-active-directory/ba-p/1999628)) を大きく上回り、ほとんどの月で 99.999% に到達しています。しかし、各テナントのレベルで可用性を確認しなければ、説得力も実効性もありません。自社テナントのアプリやデバイスを使うユーザーに対する稼働時間はどうなのか？サインインの数が急増したときに自社のテナントはきちんとそれに対応できているのか？というのが大事なポイントなのです。
 
 お客様からは、クラウドに移行した際の耐障害性について詳細情報を知りたいというお話をいただきます。オンプレミスの世界では、ID の正常性の監視はそのオンプレミス環境内で、完全にお客様の管理下で行われます。運用における障害検知などはすべてその企業の IT 部門の内部で行われていました。現在のように外部のクラウドベースの ID サービスを使い、さらに外部との依存関係が複数あるような環境では、オンプレミスの世界と同じか、もしくはそれ以上の透明性を実現する必要があると弊社では考えています。
 
@@ -32,17 +32,16 @@ Premium ライセンスをお持ちのお客様が主要な認証シナリオを
 
 最初のパブリック プレビュー提供中に、高可用性の維持に関連して、以下の正常性メトリクスをリリースいたします:
 
-・多要素認証 (MFA)
-・条件付きアクセス ポリシーでカバーされているデバイスのサインイン  
-・条件付きアクセス ポリシーで準拠済みと判定されたデバイスへのサインイン  
-・SAML (Security Assertion Markup Language) サインイン   
+- 多要素認証 (MFA)
+- 条件付きアクセス ポリシーでカバーされているデバイスのサインイン  
+- 条件付きアクセス ポリシーで準拠済みと判定されたデバイスへのサインイン  
+- SAML (Security Assertion Markup Language) サインイン   
   
 まず認証関連のシナリオから始める予定です。これはすべてのお客様にとって認証が業務遂行に必要不可欠であるためです。ただし、エンタイトルメント管理やディレクトリ構成、アプリの正常性のような分野の他のシナリオも、データの異常パターンに対応するためのスマートな検出機能とともに、今後追加される予定です。Microsoft Entra 管理センター、Azure Portal、M365 管理センターで正常性メトリックを公開しますが、プログラムによるアクセスや他の監視パイプラインへの統合も行えるよう Microsoft Graph でも公開いたします。
 
 正常性監視のメトリクスにアクセスする方法の詳細については、[Microsoft Learn のドキュメント](https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/concept-microsoft-entra-health)を参照ください。
 
-![](./tenant-health-transparency-and-observability/1.png)
-*図は、シナリオ監視ランディング ページと MFA でのサインイン シナリオの詳細を示しています*
+![図はシナリオごとの監視のトップ ページと MFA でのサインイン シナリオの詳細を示しています](./tenant-health-transparency-and-observability/1.png)
 
 ![](./tenant-health-transparency-and-observability/2.png)
 
