@@ -53,7 +53,7 @@ Entra P1 および P2 のお客様向けに、オンプレミスのパスワー�
 
 ### ユーザー リスク調査 Copilot のパブリック プレビュー
 
-[Copilot for Security の一部としてパブリック プレビューで提供されている](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-adds-identity-skills-to-copilot-for-security%20copy/) Microsoft Entra の ユーザー リスク調査スキルの導入により、ユーザーのリスク レベルの詳細や、ユーザーのリスクを軽減するための推奨事項について知ることがこれまで以上に容易になりました。このスキルは、ユーザーのリスク履歴、そのユーザーのリスクを軽減する方法、ID の脅威に対する対応をどのように自動化するかという方法をまとめて教えてくれます。
+[Copilot for Security の一部としてパブリック プレビューで提供されている](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-adds-identity-skills-to-copilot-for-security/) Microsoft Entra の ユーザー リスク調査スキルの導入により、ユーザーのリスク レベルの詳細や、ユーザーのリスクを軽減するための推奨事項について知ることがこれまで以上に容易になりました。このスキルは、ユーザーのリスク履歴、そのユーザーのリスクを軽減する方法、ID の脅威に対する対応をどのように自動化するかという方法をまとめて教えてくれます。
 
 ![ID 管理者が、一連の異常なサインインにより、あるユーザが高リスクとしてフラグ付けされていることに気付いたとします。Copilot for Security を使用すると、管理者は問題のユーザーをクリックして、リスクの概要と対処方法を即座に受け取ることで、リスクを迅速に調査して解決できます。](./new-developments-in-microsoft-entra-id-protection/new-developments-in-microsoft-entra-id-protection-3.gif)
 
