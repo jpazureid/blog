@@ -197,42 +197,30 @@ Import-CSV "C:\Temp\Users.csv" | ForEach {
 
 <h3 id="idx3-2">グループ メンバーの削除</h3>
 
-グループ メンバーの削除には Remove-MgGroupMemberByRef を用い、グループの ObjectID および削除したいユーザーの Object ID を指定してグループ メンバーを削除します。
+グループ メンバーの削除には Remove-MgGroupMemberDirectoryObjectByRef を用い、グループの ObjectID および削除したいユーザーの Object ID を指定してグループ メンバーを削除します。
 
 ```
-Remove-MgGroupMemberByRef -GroupId '872648e7-b23a-4328-bd46-f1bd431c2354' -DirectoryObjectId '8a7c50d3-fcbd-4727-a889-8ab232dfea01'
+Remove-MgGroupMemberDirectoryObjectByRef -GroupId '872648e7-b23a-4328-bd46-f1bd431c2354' -DirectoryObjectId '8a7c50d3-fcbd-4727-a889-8ab232dfea01'
 ```
 
 グループ メンバー削除に関しても、グループ メンバーの追加と同様、CSV ファイルを利用してのメンバーの一括削除や Get-MgUser とコマンドを組み合わせての UPN 指定によるメンバー削除が可能です。
 
 以下の公開情報も併せてご確認ください。
 
-- [Remove-MgGroupMemberByRef (Microsoft.Graph.Groups) | Microsoft Docs](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/remove-mggroupmemberbyref?view=graph-powershell-1.0)  
+- [Remove-MgGroupMemberDirectoryObjectByRef (Microsoft.Graph.Groups) | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/remove-mggroupmemberdirectoryobjectbyref?view=graph-powershell-1.0)  
 - [メンバーを削除する - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/api/group-delete-members?view=graph-rest-1.0&tabs=http)  
 
 <h2 id="idx4">4. 特定のユーザーが所属するグループ一覧の取得</h2>
 
-特定のユーザーが所属するグループ一覧を取得するには、Get-MgUserMemberOf を用い、ユーザーの ObjectID または UPN を指定します。
+特定のユーザーが所属するグループ一覧を取得するには、Get-MgUserMemberOfAsGroup を用い、ユーザーの ObjectID または UPN を指定します。
 
 ```
-Get-MgUserMemberOf -UserId de673304-dcaf-4bfd-9acb-4f2abb937948
+Get-MgUserMemberOfAsGroup -UserId e16fe23f-88cc-476e-8cac-df4f40ed266b
 ```
 
-![](./azuread-module-retirement5/azuread-module-retirement5-11.png)
-
-ユーザーが所属するグループの表示名も一緒に出力したい場合は、以下のように additionalproperties から displayName が取得できます。
-
-```
-Get-MgUserMemberOf -UserId "de673304-dcaf-4bfd-9acb-4f2abb937948" | %{
-    [pscustomobject]@{
-        Id = $_.id
-        displayName = $_.additionalproperties['displayName']
-    }
-}
-```
-
-![](./azuread-module-retirement5/azuread-module-retirement5-12.png)
+![](./azuread-module-retirement5/mgusermemberofasgroup.png)
 
 以下の公開情報も併せてご確認ください。
 
-[Get-MgUserMemberOf (Microsoft.Graph.Users) | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mgusermemberof?view=graph-powershell-1.0)
+- [Get-MgUserMemberOfAsGroup (Microsoft.Graph.Users) | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mgusermemberofasgroup?view=graph-powershell-1.0)
+- [ユーザーの直接メンバーシップを一覧表示する - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/api/user-list-memberof?view=graph-rest-1.0&tabs=http)
