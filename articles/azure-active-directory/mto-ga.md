@@ -88,6 +88,6 @@ Viva Engageによる従業員エンゲージメント体験の向上は、従業
  
 ゲスト招待はテナント間同期を利用して個別に同期対象の構成などを実施することもできますが、上記 6 のように「ユーザーを共有する」ボタンから一気に MTO 所属テナントすべてに同期を行うことも可能です。MTO のユーザー共有も、裏側ではテナント間同期の機能が使用されておりますので動作としては同様です。MTO 側から操作すると、複数テナントに一度に同期してくれるため便利ですが、一方で、同期される属性や値のルールは事前に決められているため、テナント間同期を個別に利用する方が柔軟に対応できるという点もご認識ください。
 
-ここまで実行すれば、あとはサービス側の要件を確認すれば、上記紹介した Teams や Viva Engage などの新しい機能を利用できます。新しい Teams クライアントの使用など、Microsoft Teams の要件は [こちらの公開情報](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/plan-multi-tenant-org-overview?view=o365-worldwide)に記載されています。Viva Engage の設定要件は [こちらの公開情報](https://learn.microsoft.com/ja-jp/Viva/engage/mto-setup) をご覧ください。
+ここまで実行すれば、あとはサービス側の要件を確認すれば、上記紹介した Teams や Viva Engage などの新しい機能を利用できます。新しい Teams クライアントの使用など、Microsoft Teams の要件は [こちらの公開情報](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/plan-multi-tenant-org-overview?view=o365-worldwide) に記載されています。Viva Engage の設定要件は [こちらの公開情報](https://learn.microsoft.com/ja-jp/Viva/engage/mto-setup) をご覧ください。
 
 上記サービスごとの要件を満たしている状況であれば、 MTO を利用して、 Teams や Viva Engage の新しいエクスペリエンスを利用できますので、複数のテナントからなる組織全体でシームレスにコラボレーションできるようになります。マルチ テナント組織についてフィードバックがございましたら、[こちらのサイト](https://feedback.azure.com/d365community) よりお寄せください。
