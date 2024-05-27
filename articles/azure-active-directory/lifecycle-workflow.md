@@ -211,7 +211,16 @@ tags:
 
 5. ウェルカム メールの送信をタスクとして追加します。(詳細は文末をご参照ください) また、先ほどと同様に新卒向けアクセス パッケージの要求タスクを作成します。
 
+![](./lifecycle-workflow/lw2-02.png)
+
 ![](./lifecycle-workflow/lw15.png)
+
+![](./lifecycle-workflow/lw2-01.png)
+
+![](./lifecycle-workflow/lw2-03.png)
+
+![](./lifecycle-workflow/lw2-04.png)
+
 
 6. スケジュールを有効にして作成します。
 
