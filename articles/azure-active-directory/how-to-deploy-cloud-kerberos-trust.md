@@ -17,7 +17,7 @@ list_number: false
 
 こんにちは。 Azure Identity サポート チームです。 こちらのブログでは Windows Hello for Business のクラウド Kerberos 信頼の展開方法についてご紹介します。
 
-ハイブリッド構成では、キー信頼および証明書信頼を含め計 3 つの信頼モデルがあります。もし証明書認証のシナリオをサポートする必要がない場合、クラウド Kerberos 信頼は最も推奨される信頼モデルとなります。公開情報をご参照いただいてもクラウド Kerberos 信頼を展開することは可能ですが、情報が複数のページに分かれており、また展開をおこなう手順も複数あることから必要なポイントをお纏めしてわかりやすくお伝えできればと思います。
+ハイブリッド構成では、キー信頼および証明書信頼を含め計 3 つの信頼モデルがあります。もし証明書認証のシナリオをサポートする必要がない場合、クラウド Kerberos 信頼が最も推奨される信頼モデルです。公開情報をご参照いただいてもクラウド Kerberos 信頼を展開することは可能ですが、情報が複数のページに分かれており、また展開をおこなう手順も複数あることから必要なポイントをお纏めしてわかりやすくお伝えできればと思い本ブログを執筆しました。
 
 ## 構成ステップ概要
 
@@ -26,7 +26,7 @@ list_number: false
 1. Microsoft Entra Kerberos サーバー オブジェクトの構成
 2. クライアント側でのクラウド Kerberos 信頼の有効化
 
-※上記ステップを実施する前に、[こちら](https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust#prerequisites)の公開情報をご参照の上、前提条件が満たされているか事前にご確認ください。
+※上記ステップを実施する前に、[こちら](https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust#prerequisites) の公開情報をご参照の上、前提条件が満たされているか事前にご確認ください。
 
 各ステップの詳細について以下に記載いたします。
 
@@ -35,10 +35,10 @@ list_number: false
 オンプレミスのドメイン環境に、PowerShell モジュールを使用し Kerberos サーバー オブジェクトを構成します。複数ドメインが存在する環境では各ドメインに同サーバー オブジェクトを構成する必要があります。事前に下記 2 つの資格情報を手元にご用意ください。
 
 (a) Domain Admins および Enterprise Admins グループのメンバーである Active Directory ユーザー  
-    ※後述の $domainCred で使用される資格情報です。
+    ※ 後述の $domainCred で使用される資格情報です。
     
-(b) Microsoft Entra テナントのグローバル管理者の権限が割り当てられている Microsoft Entra ユーザー  
-    ※後述の $cloudCred で使用される資格情報です。
+(b) Microsoft Entra テナントのグローバル管理者の権限が割り当てられている Microsoft Entra ID ユーザー  
+    ※ 後述の $cloudCred で使用される資格情報です。
 
 上記 2 つの資格情報は PowerShell コマンド実行時に使用されます。
 
@@ -53,7 +53,7 @@ list_number: false
 
 お客様の構成などによっては適していないプロンプト例もあるため、もし未確定の要素がある場合は、すべてのシナリオに対応しているプロンプト例 3 を選択されることをお勧めします。
 
-以下にプロンプト例 3 で想定されているシナリオについて説明します。その他プロンプト例の詳細については後述の「[その他プロンプト例に関する補足](https://miniature-umbrella-4pwp9p9jr9x2q5xg-4000.app.github.dev/blog/azure-active-directory/how-to-deploy-cloud-kerberos-trust/#%E3%81%9D%E3%81%AE%E4%BB%96%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E4%BE%8B%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%A3%9C%E8%B6%B3)」をご参照ください。
+以下にプロンプト例 3 で想定されているシナリオについて説明します。その他プロンプト例の詳細については後述の [その他プロンプト例に関する補足](https://miniature-umbrella-4pwp9p9jr9x2q5xg-4000.app.github.dev/blog/azure-active-directory/how-to-deploy-cloud-kerberos-trust/#%E3%81%9D%E3%81%AE%E4%BB%96%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E4%BE%8B%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%A3%9C%E8%B6%B3) をご参照ください。
 
 ### プロンプト例 3
 
@@ -81,11 +81,11 @@ Set-AzureADKerberosServer -Domain $domain -UserPrincipalName $userPrincipalName 
 > [!NOTE]
 > $domain = $env:USERDNSDOMAIN は、実行する環境のドメイン名を取得するコマンドとなりますが、ドメイン ユーザーで Windows 端末へログオンしている場合のみ有効です。ドメイン ユーザー以外で Windows 端末へログオンしている場合は、$domain = "contoso.com" のようにドメインを指定ください。
 
-コマンドの実行が正常に完了されたら、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-authentication-passwordless-security-key-on-premises#view-and-verify-the-microsoft-entra-kerberos-server)のコマンドからサーバー オブジェクトが作成されていることが確認いただけます。
+コマンドの実行が正常に完了されたら、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-authentication-passwordless-security-key-on-premises#view-and-verify-the-microsoft-entra-kerberos-server) のコマンドからサーバー オブジェクトが作成されていることが確認いただけます。
 
 ## 2. クラウド Kerberos 信頼の有効化
 
-Windows Hello for Business の機能は既定で無効となっています。グループ ポリシーまたは Microsoft Intune の構成プロファイルなどを使用して同機能を有効化ください。クラウド Kerberos 信頼を展開する際に必須となるレジストリは後述の 2 つのみ、その他のレジストリはオプションとなりますのでお客様のご要件に応じて適宜構成ください。グループ ポリシーまた Microsoft Intune の構成手順については [こちら](https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust?tabs=intune#configure-windows-hello-for-business-policy-settings) をご確認ください。
+Windows Hello for Business の機能は既定で無効となっています。グループ ポリシーまたは Microsoft Intune の構成プロファイルなどを使用して同機能を有効化ください。クラウド Kerberos 信頼を展開する際に必須となるレジストリは後述の 2 つのみ、その他のレジストリはオプションとなりますのでお客様のご要件に応じて適宜構成ください。グループ ポリシーまたは Microsoft Intune の構成手順については [こちら](https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust?tabs=intune#configure-windows-hello-for-business-policy-settings) をご確認ください。
 
 **Windows Hello  for Business を有効化するレジストリ**
 
