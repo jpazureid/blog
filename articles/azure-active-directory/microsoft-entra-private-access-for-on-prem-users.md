@@ -34,10 +34,8 @@ DC に直接アクセスする代わりに、その社員のトラフィック�
  
 このようなセキュリティ対策が追加されても、従業員のユーザー体験は引き続きスムーズです。企業ネットワークから出るのは認証トラフィックだけで、アプリケーション トラフィックは企業ネットワーク内のローカルに留まります。これにより、遅延が最小限に抑えられ、従業員は必要な情報に迅速かつ効率的にアクセスできます。
 
-![](./microsoft-entra-private-access-for-on-prem-users/microsoft-entra-private-access-for-on-prem-users1.png")
-
+![](./microsoft-entra-private-access-for-on-prem-users/microsoft-entra-private-access-for-on-prem-users1.png)
 図 1: Microsoft Entra プライベート アクセスは、オンプレミスのユーザーに対して、オンプレミスのリソースへの柔軟な MFA を実施し、セキュリティ体制を強化して攻撃対象領域を最小限に抑えます。
- 
 
 ## 主なメリット: Microsoft Entra プライベート アクセスでオンプレミス リソースへのネットワーク アクセスのセキュリティを強化
 
