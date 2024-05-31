@@ -11,6 +11,9 @@ tags:
 
 本記事は、2024 年 5 月 14 日に米国の Core Infrastructure and Security Blog で公開された [Microsoft will require MFA for all Azure users](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/microsoft-will-require-mfa-for-all-azure-users/ba-p/4140391) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
+> [!NOTE]
+> 2024/05/28 更新: 現時点で本変更の適用範囲となる管理ポータルについて、Azure ポータル (https://portal.azure.com) のほか、Microsoft Entra 管理センター (https://entra.microsoft.com) が含まれることを確認しています。
+
 ----
 
 2024 年 7 月、Azure チームは多要素認証 (MFA) を要求するセキュリティ対策の展開を予定しています。テナントレベルでこのセキュリティのベースラインを確立することで、クラウドへの投資と企業を保護するためのセキュリティがさらに強化されます。
