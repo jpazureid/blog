@@ -13,7 +13,6 @@ tags:
 
 > [!NOTE]
 > 2024/05/28 更新: 現時点で本変更の適用範囲となる管理ポータルについて、Azure ポータル (https://portal.azure.com) のほか、Microsoft Entra 管理センター (https://entra.microsoft.com) が含まれることを確認しています。
-> 今後、その他の管理ポータルについても MFA を義務付ける可能性がある点を予めご留意ください。
 
 ----
 
