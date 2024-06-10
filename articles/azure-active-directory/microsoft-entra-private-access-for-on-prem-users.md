@@ -1,12 +1,10 @@
 ---
 title: オンプレミス ユーザー向けの Microsoft Entra プライベート アクセス
-date: 2024-06-3
+date: 2024-06-11 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
-
-
 
 こんにちは、Azure Identity サポートチームの 張替 です。
 
@@ -14,13 +12,13 @@ tags:
 
 ----
 
-クラウドの技術とハイブリッド ワーク モデルの出現は、サイバー脅威の急速な激化と高度化とともに、人々の仕事のやり方を大きく塗り替えています。組織の境界がますます曖昧になるにつれ、かつては認証済みのユーザーにとって安全であった社内アプリケーションやリソースが、今では踏み台となったシステムやユーザーからの侵入に対して脆弱になっています。ユーザーが従来の仮想プライベート ネットワーク (VPN) を通じて企業ネットワークに接続すると、ネットワーク全体への広範なアクセスが許可されるため、潜在的に重大なセキュリティ リスクが生じます。このような課題により、従来のネットワーク セキュリティのアプローチでは対応しきれない新たな需要が生じています。Gartner 社 ([Gartner Identifies Three Factors Influencing Growth in Security Spending](https://www.gartner.com/en/newsroom/press-releases/2022-10-13-gartner-identifies-three-factors-influencing-growth-i)) でさえ、2025 年までに 70% のリモートアクセスが VPN サービスではなく ZTNA で行われると予測しています。2021 年末時点では、これは 10% 未満でした。
+クラウドの技術とハイブリッド ワーク モデルの出現は、サイバー脅威の急速な激化と高度化とともに、人々の仕事のやり方を大きく塗り替えています。組織の境界がますます曖昧になるにつれ、かつては認証済みのユーザーにとって安全であった社内アプリケーションやリソースが、今では踏み台となったシステムやユーザーからの侵入に対して脆弱になっています。ユーザーが従来の仮想プライベート ネットワーク (VPN) を通じて企業ネットワークに接続すると、ネットワーク全体への広範なアクセスが許可されるため、潜在的に重大なセキュリティ リスクが生じます。このような課題により、従来のネットワーク セキュリティのアプローチでは対応しきれない新たな需要が生じています。Gartner 社 ([Gartner Identifies Three Factors Influencing Growth in Security Spending](https://www.gartner.com/en/newsroom/press-releases/2022-10-13-gartner-identifies-three-factors-influencing-growth-i)) でさえ、2025 年までに 70% のリモート アクセスが VPN サービスではなく ZTNA で行われると予測しています。2021 年末時点では、これは 10% 未満でした。
 
 Microsoft Entra プライベート アクセス ([Microsoft Entra Private Access](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-private-access)) は、マイクロソフトの Security Service Edge (SSE) ソリューションの一部であり、ユーザーをあらゆる社内リソースやアプリケーションに安全に接続し、従来の VPN の運用の複雑さとリスクを軽減します。過剰なアクセスを排除し、攻撃者による侵害範囲の拡大を防止することで、組織のセキュリティ体制を強化します。従来の VPN による企業の保護が効果的でくなりつつある中、Microsoft Entra プライベート アクセスは、ユーザーが自宅、リモート、オフィスのいずれで作業していようと、あらゆるデバイスとネットワークから社内アプリケーションに簡単かつ安全に接続できるようにします。
 
 ## 認証にドメイン コントローラーを使用する社内アプリへのセキュアなアクセスを実現
 
-Microsoft Entra プライベート アクセス (プレビュー) を使用すると、ネットワークへの完全なアクセスを許可することなく、あらゆるデバイスやプロトコルににおいて、オンプレミス ユーザーがドメイン コントローラー (DC) に認証してオンプレミス リソースにアクセスする際に、きめ細かくアプリごとにポリシーを構成し、多要素認証 (MFA) を実施できるようになります。また、MFA と特権 ID 管理（PIM）を適用し、DC への特権アクセスを行うことで、ID の脅威から DC を保護し、不正アクセスを防止できます。
+Microsoft Entra プライベート アクセス (プレビュー) を使用すると、ネットワークへの完全なアクセスを許可することなく、あらゆるデバイスやプロトコルにおいて、オンプレミス ユーザーがドメイン コントローラー (DC) に認証してオンプレミス リソースにアクセスする際に、きめ細かくアプリごとにポリシーを構成し、多要素認証 (MFA) を実施できるようになります。また、MFA と特権 ID 管理（PIM）を適用し、DC への特権アクセスを行うことで、ID の脅威から DC を保護し、不正アクセスを防止できます。
 
 セキュリティ体制を強化し、攻撃対象領域を最小限に抑えるには、先進認証に対応していないレガシー アプリケーションや独自開発のアプリケーションを含むすべての社内リソースとアプリケーションに MFA などの堅牢な条件付きアクセスの制御を導入することが極めて重要です。そうすることで、ネットワーク基盤の心臓部である DC を保護することが可能となります。
 
@@ -34,12 +32,12 @@ DC に直接アクセスする代わりに、その社員のトラフィック�
  
 このようなセキュリティ対策が追加されても、従業員のユーザー体験は引き続きスムーズです。企業ネットワークから出るのは認証トラフィックだけで、アプリケーション トラフィックは企業ネットワーク内のローカルに留まります。これにより、遅延が最小限に抑えられ、従業員は必要な情報に迅速かつ効率的にアクセスできます。
 
-![](./microsoft-entra-private-access-for-on-prem-users/microsoft-entra-private-access-for-on-prem-users1.png)
-図 1: Microsoft Entra プライベート アクセスは、オンプレミスのユーザーに対して、オンプレミスのリソースへの柔軟な MFA を実施し、セキュリティ体制を強化して攻撃対象領域を最小限に抑えます。
+![図 1: Microsoft Entra プライベート アクセスは、オンプレミスのユーザーに対して、オンプレミスのリソースへの柔軟な MFA を実施し、セキュリティ体制を強化して攻撃対象領域を最小限に抑えます。
+](./microsoft-entra-private-access-for-on-prem-users/microsoft-entra-private-access-for-on-prem-users1.png)
 
 ## 主なメリット: Microsoft Entra プライベート アクセスでオンプレミス リソースへのネットワーク アクセスのセキュリティを強化
 
-オンプレミス リソースのセキュリティを強化し、ID の脅威から DC を含む重要な資産を保護しようとお考えの組織であればは、プレビュー中の Microsoft Entra プライベート アクセスが提供する主要機能から恩恵を受けることができます。Microsoft Entra プライベート アクセスでは、アクセス可能な範囲をきめ細かく制限でき、さらに条件付きアクセスの制御をすべての社内アプリケーションに拡張できます。
+オンプレミス リソースのセキュリティを強化し、ID の脅威から DC を含む重要な資産を保護しようとお考えの組織であれば、プレビュー中の Microsoft Entra プライベート アクセスが提供する主要機能から恩恵を受けることができます。Microsoft Entra プライベート アクセスでは、アクセス可能な範囲をきめ細かく制限でき、さらに条件付きアクセスの制御をすべての社内アプリケーションに拡張できます。
  
 Microsoft Entra プライベート アクセスにより、認証に DC を使用する社内アプリケーションに MFA を実装することができ、これにより不正アクセスを防止し、ID 関連のリスクを低減するためのセキュリティ レイヤーを追加することができます。個々のアプリケーションまたはグループに対してきめ細かなアクセス ポリシーを有効にすることで、許可されたユーザーのみが重要なリソースやサービスとやり取りできるようにすることができます。さらに、Microsoft Entra プライベート アクセスは、レガシー プロトコルに依存するものであっても、すべての社内リソースに条件付きアクセス制御を拡張しますので、企業はアプリケーションの機密性やユーザー リスク、ネットワークの準拠状態などの要因を考慮すして、環境全体で最新の認証方法を適用可能となります。
 
@@ -49,9 +47,8 @@ Microsoft Entra プライベート アクセスを用いることで、レガシ
  
 今すぐ [Microsoft Entra プライベート アクセス](https://www.microsoft.com/en-ca/security/business/identity-access/microsoft-entra-private-access) のプレビューに参加して、進化するセキュリティの課題のその先に進んでまいりましょう。
  
-詳しくは「[New capabilities to protect on-premises resources with MFA via Microsoft Entra Private Access](https://www.youtube.com/watch?v=_p4bzmPl7MY)」 もご覧ください。  
+詳しくは「[New capabilities to protect on-premises resources with MFA via Microsoft Entra Private Access](https://www.youtube.com/watch?v=_p4bzmPl7MY)」もご覧ください。  
  
 このトピックの詳細については以下もご覧ください。
 
-[Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション | Japan Azure Identity Support Blog (jpazureid.github.io)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution)
-
+- [Microsoft Entra Private Access: ID を中心としたゼロ トラスト ネットアーク アクセス ソリューション | Japan Azure Identity Support Blog (jpazureid.github.io)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-private-access-an-identity-centric-zero-trust-network-access-solution)
