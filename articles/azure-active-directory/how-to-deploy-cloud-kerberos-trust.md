@@ -1,6 +1,6 @@
 ---
 title: クラウド Kerberos 信頼デプロイ方法 
-date: 2024-05-30 09:00
+date: 2024-06-10 10:00
 tags:
   - Windows Hello for Business
   - Azure AD
@@ -46,14 +46,12 @@ list_number: false
 
 こちらの [公開情報](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-authentication-passwordless-security-key-on-premises#create-a-kerberos-server-object) を参照いただくと 4 つのプロンプト例があることが確認できます。最適なプロンプト例を選択する上で考慮すべきポイントは下記二点であり、これらの組み合わせによりプロンプト例が 4 つに分かれています。
 
-- 上述の資格情報 (a) を使用して Windows へログインをおこなうか  
-    ※ $domainCred = Get-Credential を指定しない場合、 Windows にログインしている資格情報が PowerShell コマンドを実行時に使用されます。
-- 上述の資格情報 (b) での認証時に多要素認証が要求されるか  
-    ※ $cloudCred = Get-Credential はパスワード認証のみに対応しており、多要素認証には対応しておりません。
+- 上述の資格情報 (a) を使用して Windows へログインをおこなうか ($domainCred = Get-Credential を指定しない場合、 Windows にログインしている資格情報が PowerShell コマンドを実行時に使用されます)。
+- 上述の資格情報 (b) での認証時に多要素認証が要求されるか ($cloudCred = Get-Credential はパスワード認証のみに対応しており、多要素認証には対応しておりません)。
 
 お客様の構成などによっては適していないプロンプト例もあるため、もし未確定の要素がある場合は、すべてのシナリオに対応しているプロンプト例 3 を選択されることをお勧めします。
 
-以下にプロンプト例 3 で想定されているシナリオについて説明します。その他プロンプト例の詳細については後述の [その他プロンプト例に関する補足](https://miniature-umbrella-4pwp9p9jr9x2q5xg-4000.app.github.dev/blog/azure-active-directory/how-to-deploy-cloud-kerberos-trust/#%E3%81%9D%E3%81%AE%E4%BB%96%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E4%BE%8B%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%A3%9C%E8%B6%B3) をご参照ください。
+以下にプロンプト例 3 で想定されているシナリオについて説明します。その他プロンプト例の詳細については後述の [その他プロンプト例に関する補足] をご参照ください。
 
 ### プロンプト例 3
 
