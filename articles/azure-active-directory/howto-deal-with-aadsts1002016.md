@@ -121,7 +121,7 @@ Windows 7 / Windows Server 2008 R2 の場合は、OS として TLS 1.2  を利�
 
 1. Azure portal (https://portal.azure.com) に全体管理者でサインインし、 [Azure Active Directory] を開きます。
 2. [サインイン ログ] を選択します。
-3. フィルタとして "許可された時刻:過去 24 時間" が既定で設定されていますので適宜 "過去 7 日間" などに変更します。
+3. フィルターとして "許可された時刻:過去 24 時間" が既定で設定されていますので適宜 "過去 7 日間" などに変更します。
 4. [ダウンロード] - "CSV のダウンロード" をクリックします。
 5. InteractiveSignIns_20xx-xx-xx_20xx-xx-xx、NonInteractiveSignIns_20xx-xx-xx_20xx-xx-xx、ApplicationSignIns_20xx-xx-xx_20xx-xx-xx、MSISignIns_20xx-xx-xx_20xx-xx-xx の 4 つをそれぞれダウンロードします。
 6. ダウンロードした CSV ファイルを開き、"サインインのエラー コード" として 1002016 が含まれていないか確認します。
@@ -133,11 +133,11 @@ Azure AD Premium をテナントで利用されていることが前提ですが
 
 2. 次のコマンドを実行して、Microsoft Graph SDK をインストールし、実行ポリシーを設定します。
   ```
-Install-Module Microsoft.Graph -Scope AllUsers
+Install-Module Microsoft.Graph.Beta -Scope AllUsers
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
   ```
 
-3. 次のスクリプトを PowerShell スクリプト (.ps1) ファイルに保存します。最初の 3 行は、取得対象テナントのテナント ID、何日分のログを取得するかの日数 (例では 7 日になっています)、出力先のフォルダ名 (例では c:\temp\) を環境に合わせて編集します。
+3. 次のスクリプトを PowerShell スクリプト (.ps1) ファイルに保存します。最初の 3 行は、取得対象テナントのテナント ID、何日分のログを取得するかの日数 (例では 7 日になっています)、出力先のフォルダー名 (例では c:\temp\) を環境に合わせて編集します。
   ```
 $tId = "テナント ID"  # テナント ID を入れてください。テナント ID は Azure ポータルの Azure Active Directory の概要から取得できます。 
 $agoDays = 7  # 何日前からのログを取得するか日数を指定します。
@@ -156,9 +156,9 @@ $clauses = (
 )
 
 # フィルタ条件に従って対話型、非対話型、 ServicePrincipal のそれぞれのログを取得します。
-$signInsInteractive = Get-MgAuditLogSignIn -Filter ($clauses[0,3] -Join " and ") -All
-$signInsNonInteractive = Get-MgAuditLogSignIn -Filter ($clauses[0,1,3] -Join " and ") -All
-$signInsWorkloadIdentities = Get-MgAuditLogSignIn -Filter ($clauses[0,2,3] -Join " and ") -All
+$signInsInteractive = Get-MgBetaAuditLogSignIn  -Filter ($clauses[0,3] -Join " and ") -All
+$signInsNonInteractive = Get-MgBetaAuditLogSignIn  -Filter ($clauses[0,1,3] -Join " and ") -All
+$signInsWorkloadIdentities = Get-MgBetaAuditLogSignIn  -Filter ($clauses[0,2,3] -Join " and ") -All
 
 $columnList = @{  # 対話型、非対話型の出力ファイルに含むカラムを定義しています
     Property = "CorrelationId", "createdDateTime", "userPrincipalName", "userId",
