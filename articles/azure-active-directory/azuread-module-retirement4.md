@@ -222,7 +222,7 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 2. Get-MgBetaUser コマンドを実行して、ユーザーの情報を取得します。
  
 	```
-	(Get-MgbetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).onpremisesExtensionAttributes | fl
+	(Get-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).OnpremisesExtensionAttributes | fl
 	```
 
 	以下の画面では、ユーザーの ExtensionAttribute4 の値に test4 という文字列が入っていることが確認できます。
