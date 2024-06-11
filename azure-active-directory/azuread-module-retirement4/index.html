@@ -21,12 +21,12 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-6.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-7.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-8.png">
-<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-9.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11-2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-10.png">
-<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11.png">
-<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-12.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11-2.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-12-2.png">
 <meta property="article:published_time" content="2023-04-14T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-06-11T07:31:08.281Z">
+<meta property="article:modified_time" content="2024-06-11T07:50:41.808Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="PowerShell">
 <meta property="article:tag" content="Microsoft Graph">
@@ -168,7 +168,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d3308aac-df89-5fa4-997d-543131f5baeb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMSOnline+%2F+AzureAD+PowerShell+%E3%81%8B%E3%82%89+Graph+PowerShell+SDK+%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+4_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazuread-module-retirement4%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazuread-module-retirement4.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazuread-module-retirement4.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/" data-id="clxa32fe7007l0npggzrlgsfe" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/" data-id="clxa3rlha00x00oo3bt33bgeu" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -244,10 +244,13 @@
 <h3 id="idx1-5">特定のユーザーの extensionAttribute の値を取得したい</h3>
 
 <p>ExtensionAttribute1 などの属性は、ユーザーの onpremisesExtensionAttributes の配下に用意されているので、下記のように実行して取得します。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(get-mguser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3).onpremisesExtensionAttributes | fl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(Get-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).OnpremisesExtensionAttributes | fl</span><br></pre></td></tr></table></figure>
 
-<p><img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-9.png"></p>
-<p>こちらは beta のみ対応しておりますので、Connect-MgGraph での接続後、本コマンド実行前に Select-Mgprofile -name beta にてベータに切り替えを実施ください。</p>
+<p><img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11-2.png"></p>
+<div class="alert is-info"><p class="alert-title">Note</p><p></p>
+<p>Microsoft Graph Powershell v2.x では、 Select-MgProfile コマンドでのベータ版切り替えがなくなりました。</p><p>v2 をご利用いただく場合、Select-MgProfile -name beta コマンドの切り替えではなく、 beta 用のコマンド Get-Mgbetauser をご利用ください。</p>
+<p>Microsoft Graph Powershell v2.x の詳細は <a href="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-v2.0/">こちら</a> をご覧ください。</p>
+<p>v1.x を利用されている場合、Connect-MgGraph での接続後、本コマンド実行前に Select-Mgprofile -name beta にてベータに切り替えを実施し、 Get-MgUser コマンドをご利用ください。</p></div>
 <h3 id="idx1-6">削除済みユーザーを取得したい</h3>
 
 <p>削除済みのオブジェクトを取得するコマンドは、Get-MgDirectoryDeletedItem です。-DirectoryObjectID オプションに microsoft.graph.user と記載すると、削除されたユーザー オブジェクトが返されます (これらは、いわゆるごみ箱にある状態のユーザーで、30 日後に完全に削除されると参照できなくなります)。</p>
@@ -297,20 +300,21 @@
 <ol>
 <li><p>Connect-MgGraph にて接続します。</p>
 </li>
-<li><p>beta バージョンへ切り替えます。</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Select-MgProfile -Name &quot;beta&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>Get-Mguser コマンドを実行して、ユーザーの情報を取得します。</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(Get-MgUser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3).onpremisesExtensionAttributes | fl</span><br></pre></td></tr></table></figure>
+<li><p>Get-MgBetaUser コマンドを実行して、ユーザーの情報を取得します。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(Get-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).OnpremisesExtensionAttributes | fl</span><br></pre></td></tr></table></figure>
 
-<p> 以下の画面では、ユーザーの ExtensionAttribute1 の値に test という文字列が入っていることが確認できます。</p>
-<p> <img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11.png"></p>
+<p> 以下の画面では、ユーザーの ExtensionAttribute4 の値に test4 という文字列が入っていることが確認できます。</p>
+<p> <img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11-2.png"></p>
 </li>
-<li><p>以下のコマンドを実行して、たとえば ExtensionAttribute1 の値を test2 に更新します。</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Update-MgUser -UserId 4e6bc6e4-d6e7-4bd8-9079-3393e12dcec3 -OnPremisesExtensionAttributes @&#123;&quot;ExtensionAttribute1&quot;=&#x27;test2&#x27;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>値が test2 に更新されたことを確認します。</p>
-<p> <img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-12.png"></p>
+<li><p>以下のコマンドを実行して、たとえば ExtensionAttribute4 の値を test44 に更新します。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Update-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6 -OnPremisesExtensionAttributes @&#123;&quot;ExtensionAttribute4&quot;=&#x27;test44&#x27;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>値が test44 に更新されたことを確認します。</p>
+<p> <img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-12-2.png"></p>
 </li>
 </ol>
+<div class="alert is-info"><p class="alert-title">Note</p><p></p>
+<p>Microsoft Graph Powershell v2.x では、 Select-MgProfile コマンドでのベータ版切り替えがなくなりました。</p><p>変更に伴い手順を変更しておりますが、もしまだ v1.x を利用されている場合は、接続後に Select-MgProfile -Name “beta” で切り替えを実施してください。</p>
+<p>利用しているバージョンが分からない場合は、 Get-InstalledModule Microsoft.Graph* を実行し、バージョンを確認してください。</p></div>
 <h2 id="idx6">6. よくある質問</h3>
 
 <p>Q. Set-MsolUser コマンドで実施できた StrongAuthenticationRequirements の有効化や、StrongAuthenticationMethod を無効化する代替案はありますか？</p>
