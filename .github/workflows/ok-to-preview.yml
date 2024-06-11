@@ -23,7 +23,7 @@ jobs:
       env:
         TOKEN: ${{ steps.generate_token.outputs.token }}
       with:
-        token: ${{ secrets.PAT }}
+        token: ${{ env.TOKEN }}
         reaction-token: ${{ secrets.GITHUB_TOKEN }}
         issue-type: pull-request
         commands: ok-to-preview
