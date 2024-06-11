@@ -219,7 +219,7 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 時折ご質問をいただくものとして、extensionattribute 関連の属性を更新したいといったお問い合わせがよくあるため、以下に手順を例として案内します。 Extensionattribute の値を更新したい場合、事前に beta に切り替えてからコマンドを実行ください。
 
 1. Connect-MgGraph にて接続します。
-2. Get-Mguser コマンドを実行して、ユーザーの情報を取得します。
+2. Get-MgBetaUser コマンドを実行して、ユーザーの情報を取得します。
  
 	```
 	(Get-MgbetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).onpremisesExtensionAttributes | fl
