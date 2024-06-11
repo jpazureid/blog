@@ -1,4 +1,4 @@
-# blog
+# blog test commit
 
 日本マイクロソフト Azure Identity サポート チームのブログです。
 
