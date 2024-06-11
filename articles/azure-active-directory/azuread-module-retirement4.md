@@ -232,7 +232,7 @@ Update-Mguser コマンドを利用して更新が可能です。たとえばユ
 3. 以下のコマンドを実行して、たとえば ExtensionAttribute4 の値を test44 に更新します。
  
 	```
-	Update-MgbetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6 -OnPremisesExtensionAttributes @{"ExtensionAttribute4"='test44'}
+	Update-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6 -OnPremisesExtensionAttributes @{"ExtensionAttribute4"='test44'}
 	```
 
 4. 値が test44 に更新されたことを確認します。
