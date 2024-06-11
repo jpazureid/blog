@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/the-false-identifier-anti-pattern/loginfigure3.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/the-false-identifier-anti-pattern/loginfigure4.png">
 <meta property="article:published_time" content="2023-07-02T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-06-11T07:19:23.831Z">
+<meta property="article:modified_time" content="2024-06-11T07:20:21.681Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d407f72c-68d8-5d18-ab89-2f3309f825c0%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%81%BD%E3%81%AE+ID+%28%E8%AD%98%E5%88%A5%E5%AD%90%29+%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fthe-false-identifier-anti-pattern%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fthe-false-identifier-anti-pattern.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fthe-false-identifier-anti-pattern.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/the-false-identifier-anti-pattern/" data-id="clxa2nbor00zu0nqo4usfavkk" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/the-false-identifier-anti-pattern/" data-id="clxa2ojvt00zu0nlg9w5n069y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -181,7 +181,7 @@
 <h2 id="ローカルでの一意な識別子"><a href="#ローカルでの一意な識別子" class="headerlink" title="ローカルでの一意な識別子"></a>ローカルでの一意な識別子</h2><p>識別子がローカルで一意である場合、ID プロバイダーはドメイン内のユーザー間で値が重複しないように検出し、重複を防止します。ローカルでの一意性が強制されていれば、シングル サインオン (SSO) 時に 2 つの異なる ID プロバイダーのアカウントが同じ文字列で表されることはありません。しかし、現在の ID 基盤では、ユーザーが複数の組織や企業、学校などのコミュニティに属している場合があり、それらのコミュニティが重複または反復する通信チャネルを保持している可能性は十分にあります。</p>
 <p>テスト用アカウントと本番用アカウントを持っている社員は、両方のアカウントで同じ電話番号を設定するかもしれません。また、非従業員が企業間コラボレーションのために招待されたゲスト アカウントと顧客アカウントを持ち (ID プロバイダの小売サービスを使用するため)、両方とも同じ電子メール アドレスを使用する場合もあります。これらの例では、電子メールと電話番号はローカルで一意ではなく、アカウントを区別するには不十分です。しかし、トークンに含めるペイロードとしては許容されます。これは、これら属性がトークン内で一意性の要件を持たないペイロードの一部であり、トークンの Subject (一意性の要件がある) に関する追加情報を提供するためのものだからです。</p>
 <h2 id="単一の発行者内で再割り当てを行わない"><a href="#単一の発行者内で再割り当てを行わない" class="headerlink" title="単一の発行者内で再割り当てを行わない"></a>単一の発行者内で再割り当てを行わない</h2><p>セクション 5.7 の 2 つ目の節は、属性のライフサイクルに言及しています。電子メール アドレスおよび電話番号とユーザーとの紐づけが解かれるタイミングとしては様々なものがあり得ます。問題はその次に何が起こるかです。識別子が 2 つの異なるタイミングで 2 つの異なるユーザに割り当てられると、後に割り当てられたユーザーが、その前に割り当てられていたユーザーの権限とデータを得てしまうリスクがあります。</p>
-<p>例えば、ある組織が Fred Smith という人を雇い、<a href="mailto:&#x66;&#115;&#x6d;&#105;&#116;&#x68;&#64;&#99;&#111;&#109;&#112;&#97;&#x6e;&#x79;&#46;&#x63;&#x6f;&#109;">&#x66;&#115;&#x6d;&#105;&#116;&#x68;&#64;&#99;&#111;&#109;&#112;&#97;&#x6e;&#x79;&#46;&#x63;&#x6f;&#109;</a> という電子メール アドレスを割り当てたとします。Fred がやがて退職し、Frida Smith が採用され、同じ電子メール アドレスが割り当てられました。この時、例え電子メール アドレスが同じでも、トークンの Subject は Fred と Frida で異なる値である必要があります。これにより、Frida が Fred のデータにアクセスする可能性を防ぐことができます。</p>
+<p>例えば、ある組織が Fred Smith という人を雇い、<a href="mailto:&#x66;&#x73;&#x6d;&#x69;&#116;&#x68;&#x40;&#99;&#x6f;&#x6d;&#112;&#97;&#110;&#121;&#x2e;&#x63;&#x6f;&#109;">&#x66;&#x73;&#x6d;&#x69;&#116;&#x68;&#x40;&#99;&#x6f;&#x6d;&#112;&#97;&#110;&#121;&#x2e;&#x63;&#x6f;&#109;</a> という電子メール アドレスを割り当てたとします。Fred がやがて退職し、Frida Smith が採用され、同じ電子メール アドレスが割り当てられました。この時、例え電子メール アドレスが同じでも、トークンの Subject は Fred と Frida で異なる値である必要があります。これにより、Frida が Fred のデータにアクセスする可能性を防ぐことができます。</p>
 <h2 id="時間が経過した際の安定性"><a href="#時間が経過した際の安定性" class="headerlink" title="時間が経過した際の安定性"></a>時間が経過した際の安定性</h2><p>企業の合併や買収のような事が生じた際に、社外のゲストやパートナーで連絡先情報の変更が生じる可能性についても考慮が必要です。例えば A 社が B 社を買収した場合には、社員の連絡先情報 (電子メール アドレスなど) を変更する必要が生じますが、同時にユーザーが引き続き SSO 可能とすることが重要です。トークンの Subject は、社名の変更、企業の移行、新しい市外局番へのオフィスの移転、その他のイベントが生じても影響を受けないだけの安定性が必要となります。</p>
 <h2 id="現実世界での例"><a href="#現実世界での例" class="headerlink" title="現実世界での例"></a>現実世界での例</h2><p>実例を見ていきましょう。Frida という会計士がいるとします。この人は Company3 という企業で働き、Company1 と Company2 という企業にサービスを提供しています (Company2 では 2 つの部門で働いている)。Frida の専門は RP.com という SaaS の会計アプリケーションで、彼女は一日中そのアプリケーションで様々な顧客のために業務を行っています。Frida が持っている電子メール アドレスは 1 つだけで、これは雇用主である Company3 から得たものです。彼女が 4 つの ID プロバイダーのアカウントにサインインし、RP.com に SSO しようとするとどうなるでしょうか？</p>
 <p><img src="/blog/azure-active-directory/the-false-identifier-anti-pattern/loginfigure1.png" alt="Frida は 3 つの会社において、4 つの異なるアカウントに 1 つの電子メール アドレスを使ってサインインします。トークンの Subject のマッピングはどのようになるべきでしょうか？"></p>
