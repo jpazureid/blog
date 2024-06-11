@@ -117,7 +117,7 @@ Get-MgUser -Filter "accountEnabled eq true and usertype eq 'Guest'"
 ExtensionAttribute1 などの属性は、ユーザーの onpremisesExtensionAttributes の配下に用意されているので、下記のように実行して取得します。
 
 ```
-(get-mgbetauser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).onpremisesExtensionAttributes | fl
+(Get-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6).OnpremisesExtensionAttributes | fl
 ```
 
 ![](./azuread-module-retirement4/azuread-module-retirement4-11-2.png)
