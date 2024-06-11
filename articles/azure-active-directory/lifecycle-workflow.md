@@ -1,6 +1,6 @@
 ---
 title: ライフサイクル ワークフローを利用した簡易人事システムの紹介
-date: 2024-05-27 09:00
+date: 2024-06-11 09:00
 tags:
     - Identity Governance
     - Lifecycle Workflow
