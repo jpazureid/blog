@@ -68,4 +68,4 @@ Microsoft は、新しい統合プラットフォームの進歩と革新を通�
 Joseph Dadzie
 Partner Director of Product Management
 [LinkedIn](https://www.linkedin.com/in/joedadzie/)  
-[Twitter](https://twitter.com/joe_dadzie) 
+[Twitter](https://twitter.com/joe_dadzie)
