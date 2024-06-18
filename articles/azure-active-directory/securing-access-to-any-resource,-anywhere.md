@@ -22,14 +22,14 @@ Microsoft Entra は、[信頼できる ID をあらゆる場所であらゆる�
 
 多くの組織が、クラウドにおけるアクセスの複雑さを克服するための課題に取り組んでいますが、この問題の例としては、ばらばらに管理されたロールベースのアクセス制御 (RBAC) システムや、社内ポリシーからの逸脱などが挙げられます。こうした課題は、さまざまなベンダーのクラウド サービスを利用する機会が増えることで、さらに深刻化しています。また、過剰にアクセス許可が付与された ID によって、重大な情報漏洩が度々発生しています。弊社がお客様やり取りしていると、多くの組織が現在、特権アクセス管理 (PAM) や ID ガバナンス/管理 (IGA) ソリューションなどを 7 ～ 8 製品ほど組み合わせてマルチクラウド アクセスの課題に取り組んでいるということが分かっています。複数のソリューションの組み合わせや人員増強など大変な取り組みを進めているにもかかわらず、現在も多くの企業がクラウドのアクセス全体を俯瞰できる形にするという点では苦戦しています。
 
-[当社の 2024 年マルチクラウド セキュリティ リスク レポート](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/final/en-us/microsoft-brand/documents/2024-State-of-Multicloud-Security-Risk-Report.pdf)では、過剰にアクセス許可が付与されたユーザー ID およびワークロード ID から生じる継続的な課題を強調しています。[Microsoft Entra Permissions Management](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-permissions-management) の過去 1 年間の使用データを分析した結果、マルチクラウド環境における複雑さは、主に ID の急激な増加と過剰に付与された権限に起因することが確認されました。他にも以下の点が挙げられます:
+[当社の 2024 年マルチクラウド セキュリティ リスク レポート](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/final/en-us/microsoft-brand/documents/2024-State-of-Multicloud-Security-Risk-Report.pdf)では、過剰にアクセス許可が付与されたユーザー ID およびワークロード ID から生じる継続的な課題を強調しています。[Microsoft Entra Permissions Management](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-permissions-management) の過去 1 年間の使用データを分析した結果、マルチクラウド環境における複雑さは、主に ID の急激な増加と過剰に付与された権限に起因することが確認されました。([他にも](https://aka.ms/multicloudinfographic))以下の点が挙げられます:
 
 - ID に付与可能なアクセス許可は 51,000 以上あり、そのうち半分がリスクの高いアクセス許可である。
 - 51,000 の限のうち、使のうち、使用されているのはわずか 2% である。
 - 2 億 900 万件の ID のうち、50% 以上がすべてのリソースにアクセス可能な権限を持つ最高特権の ID であることが確認された。
 
+![](./securing-access-to-any-resource,-anywhere/1.png)
 *図1：2024年マルチクラウド・セキュリティ・リスクの現状と主な調査結果*
-
 
 ## クラウド アクセス管理に対する当社のビジョンの紹介: 統合プラットフォームの構築
 
@@ -44,15 +44,17 @@ Microsoft Entra は、[信頼できる ID をあらゆる場所であらゆる�
 - **細かな制御**: そのロールにあった期間だけ適切な権限を付与する。
 - **自動化されたガバナンス**： 自動化されたポリシーを用いて継続的に準拠状態を維持する。
 
+![](./securing-access-to-any-resource,-anywhere/2.png)
 *図 2: 複数のクラウドにわたりあらゆる ID からのアクセスを保護する*
 
 業界をリードする Microsoft Entra 製品を基盤として、あらゆるクラウド内のリソースへ安全にアクセスできるようにする取り組みが進んでいます:
 
 - **Permissions Management (CIEM)**: ID、アクセス許可、使用状況を可視化するのに利用
 - **Privileged Identity Management (PAM)**:人間の ID とワークロードの ID の両方に対して最小限の権限の制御を適用するのに利用
-- **ID ガバナンス (IGA)**: 所属や使用法に関係なく ID のライフサイクルとアクセス ワークフローを自動化するのに利用
-- **ワークロード ID (ワークロード用の ID とアクセス許可)**: ワークロード ID に対してカスタマイズした認証ポリシーを適用するのに利用
+- **[ID ガバナンス](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-id-governance) (IGA)**: 所属や使用法に関係なく ID のライフサイクルとアクセス ワークフローを自動化するのに利用
+- **[ワークロード ID](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-workload-id) (ワークロード用の ID とアクセス許可)**: ワークロード ID に対してカスタマイズした認証ポリシーを適用するのに利用
 
+![](./securing-access-to-any-resource,-anywhere/3.png)
 *図3：4つの重要分野の融合*
 
 さらに、継続的な Copilot の取り組みの一環として、AI と機械学習を活用してクラウド上のアクセス管理プラットフォーム内のすべてのテクノロジーを強化しています。これにより企業は、手動で検出することが困難なリスクを発見することが可能となり、その中でも最も重大なリスクを特定することが可能となりました。また、それに対してより良い改善策を提案することも可能です。プラットフォームの採用が拡大するにつれて、あらゆる ID に対して実際の利用状況に基づくカスタム ロールとポリシーを提示できるようになります。これらにより、クラウド上でのアクセス管理が簡素化され、組織がクラウド環境をより効果的に保護できるようになります。
@@ -65,6 +67,5 @@ Microsoft は、新しい統合プラットフォームの進歩と革新を通�
 
 Joseph Dadzie
 Partner Director of Product Management
-LinkedIn   
-Twitter   
-
+[LinkedIn](https://www.linkedin.com/in/joedadzie/)  
+[Twitter](https://twitter.com/joe_dadzie) 
