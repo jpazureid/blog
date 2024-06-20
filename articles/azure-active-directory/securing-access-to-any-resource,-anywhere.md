@@ -47,8 +47,8 @@ Microsoft Entra は、[信頼できる ID をあらゆる場所であらゆる�
 
 業界をリードする Microsoft Entra 製品を基盤として、あらゆるクラウド内のリソースへ安全にアクセスできるようにする取り組みが進んでいます:
 
-- **Permissions Management (CIEM)**: ID、アクセス許可、使用状況を可視化するのに利用
-- **Privileged Identity Management (PAM)**: 人間の ID とワークロードの ID の両方に対して最小限の権限の制御を適用するのに利用
+- **[Permissions Management](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-permissions-management) (CIEM)**: ID、アクセス許可、使用状況を可視化するのに利用
+- **[Privileged Identity Management](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-id) (PAM)**: 人間の ID とワークロードの ID の両方に対して最小限の権限の制御を適用するのに利用
 - **[ID ガバナンス](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-id-governance) (IGA)**: 所属や使用法に関係なく ID のライフサイクルとアクセス ワークフローを自動化するのに利用
 - **[ワークロード ID](https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-workload-id) (ワークロード用の ID とアクセス許可)**: ワークロード ID に対してカスタマイズした認証ポリシーを適用するのに利用
 
