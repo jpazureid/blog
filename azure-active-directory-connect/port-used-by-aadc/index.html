@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-5.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-6.png">
 <meta property="article:published_time" content="2023-06-28T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-06-20T19:21:27.339Z">
+<meta property="article:modified_time" content="2024-06-26T02:48:21.163Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3668d38f-e94e-5c97-94af-51404462947f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%81%AE%E9%80%9A%E4%BF%A1%E8%A6%81%E4%BB%B6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fport-used-by-aadc%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fport-used-by-aadc.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fport-used-by-aadc.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/" data-id="clxnneksc002e0oni1c1t7u2y" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/" data-id="clxv8kjnb002e0nmy05x6dpng" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -199,7 +199,7 @@
 <h3 id="パススルー認証を使う際に必要な通信要件"><a href="#パススルー認証を使う際に必要な通信要件" class="headerlink" title="パススルー認証を使う際に必要な通信要件"></a>パススルー認証を使う際に必要な通信要件</h3><p>パススルー認証に必要な通信要件は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/how-to-connect-pta-quick-start">こちらの公開情報</a>に記載があります。<br>まずは下記のポートを使用して通信ができるよう、ファイアウォールなどの設定をご確認ください。</p>
 <p><img src="/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-6.png" alt="aadc-port-0626-6"></p>
 <p>また、公開情報に記載の通り、下記 URL への通信も許可してください。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.msappproxy.net </span><br><span class="line">*.servicebus.windows.net </span><br><span class="line">autologon.microsoftazuread-sso.com （発信 HTTP プロキシを利用している場合）</span><br><span class="line">login.windows.net</span><br><span class="line">login.microsoftonline.com</span><br><span class="line">rl3.digicert.com:80</span><br><span class="line">crl4.digicert.com:80</span><br><span class="line">ocsp.digicert.com:80</span><br><span class="line">www.d-trust.net:80</span><br><span class="line">root-c3-ca2-2009.ocsp.d-trust.net:80</span><br><span class="line">crl.microsoft.com:80</span><br><span class="line">oneocsp.microsoft.com:80</span><br><span class="line">ocsp.msocsp.com:80</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.msappproxy.net </span><br><span class="line">*.servicebus.windows.net </span><br><span class="line">autologon.microsoftazuread-sso.com （発信 HTTP プロキシを利用している場合）</span><br><span class="line">login.windows.net</span><br><span class="line">login.microsoftonline.com</span><br><span class="line">crl3.digicert.com:80</span><br><span class="line">crl4.digicert.com:80</span><br><span class="line">ocsp.digicert.com:80</span><br><span class="line">www.d-trust.net:80</span><br><span class="line">root-c3-ca2-2009.ocsp.d-trust.net:80</span><br><span class="line">crl.microsoft.com:80</span><br><span class="line">oneocsp.microsoft.com:80</span><br><span class="line">ocsp.msocsp.com:80</span><br></pre></td></tr></table></figure>
 
 <h2 id="ウィルス対策ソフトでのスキャン除外項目"><a href="#ウィルス対策ソフトでのスキャン除外項目" class="headerlink" title="ウィルス対策ソフトでのスキャン除外項目"></a>ウィルス対策ソフトでのスキャン除外項目</h2><p>基本的には SQL Server 2012 Express LocalDB としての除外をご考慮いただければと存じますので、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-JP/troubleshoot/sql/database-engine/security/antivirus-and-sql-server">こちらの公開情報</a>をまずは参考としてご参照いただければと存じます。</p>
 <p>上記技術情報を踏まえ、AADC 製品を添付の SQL Server 2012 Express LocalDB をご利用いただいた状態で、既定でセットアップされた際の除外対象は以下となります。</p>
