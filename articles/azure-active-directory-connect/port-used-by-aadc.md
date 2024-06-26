@@ -146,7 +146,7 @@ Azure AD Connect ではなく、新しい Azure AD Cloud Sync をご利用のお
 autologon.microsoftazuread-sso.com （発信 HTTP プロキシを利用している場合）
 login.windows.net
 login.microsoftonline.com
-rl3.digicert.com:80
+crl3.digicert.com:80
 crl4.digicert.com:80
 ocsp.digicert.com:80
 www.d-trust.net:80
