@@ -1,11 +1,11 @@
 ---
-title: "Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する最新情報"
+title: "Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27)"
 date: 2024-07-01 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
 ---
-# Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する最新情報
+# Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27)
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
 
