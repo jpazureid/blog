@@ -13,7 +13,7 @@ tags:
 
 > [!NOTE]
 > 2024/05/28 更新: 現時点で本変更の適用範囲となる管理ポータルについて、Azure ポータル (<https://portal.azure.com>) のほか、Microsoft Entra 管理センター (<https://entra.microsoft.com>) が含まれることを確認しています。
-> 2024/07/01 更新: 本変更に関する最新情報の抄訳ブログについて、[Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する最新情報](https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/) をご参照ください。
+> 2024/07/01 更新: 本変更に関する最新情報の抄訳ブログについて、[Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27)](https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/) をご参照ください。
 
 ----
 
