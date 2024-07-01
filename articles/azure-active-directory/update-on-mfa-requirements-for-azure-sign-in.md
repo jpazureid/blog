@@ -75,7 +75,7 @@ Active Directory Federation Services などのフェデレーション ID プロ
 クラウド リソースを保護するために、今すぐ MFA を設定することをお勧めします。[Microsoft Entra の MFA ウィザード](https://aka.ms/EntraIDMFAWizard) を使用して MFA を設定し、[MFA 導入ガイド](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfa-getstarted) を参照してユーザーとデータの安全を確保してください。 自動化のためにユーザー ID を使用している場合は、[マネージド ID またはサービス プリンシパル](https://learn.microsoft.com/ja-jp/azure/devops/integrate/get-started/authentication/service-principal-managed-identity?view=azure-devops) への移行プロセスを開始してください。
 
 > [!WARNING]
-> MFA ウィザードを進めると、MFA を利用するためのテナントで使用できる認証方法の設定や条件付きアクセス ポリシーが自動で展開され、MFA が要求されるユーザーが発生しますので、ご注意ください。
+> MFA ウィザードを進めると、テナントで使用する認証方法や条件付きアクセス ポリシーが自動で構成されます。ウィザードでの構成内容については十分に確認の上、実行ください。
 
 Azure ポータルおよび Azure CLI 等のサインイン時に MFA が義務付けられることに関するブログ記事、投稿、およびお客様への直接の通知については引き続き公開し、クラウド リソースの効果的な準備と安全性の確保を支援します。
 
