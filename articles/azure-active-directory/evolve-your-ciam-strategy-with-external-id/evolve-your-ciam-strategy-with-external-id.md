@@ -1,9 +1,10 @@
 ---
 title: External ID とともに CIAM 戦略を進化させましょう
 
-date: 
+date: 2024-07-12 17:00
 tags:
     - US Identity Blog
+    - External ID
 ---
 
 # External ID とともに CIAM 戦略を進化させましょう
@@ -33,10 +34,10 @@ tags:
 ![](evolve-your-ciam-strategy-with-external-id/img.png)
 *私たちの目標は、ボット攻撃、サインイン詐欺、サインアップ詐欺からクラス最高の保護を提供し、外部ユーザーの道のりをステップごとに監視できるようにすることです。*
 
-## 7月16日の AMA（Ask Me Anything）では、External ID について深く掘り下げます！ 
+## 7 月 16 日の AMA（Ask Me Anything）では、External ID について深く掘り下げます！ 
 
 一般提供（GA）の発表以来、External ID を使い始めたいというお客様から多くの関心が寄せられています。そこで、2024 年 7 月 16 日午前 9 時（米国太平洋標準時）に開催されるライブ [Ask Me Anything ウェビナー](https://aka.ms/ExternalIDAMA) をお見逃しなく！
-オンラインから登録し、当社の製品エキスパートによる、External ID が外部向けアプリへのセキュアなエンド ツー エンドの ID 体験の実装を数ヶ月から数分に短縮する方法をご紹介するライブデモにご参加ください。  
+オンラインから登録し、当社の製品エキスパートによる、External ID が外部向けアプリへのセキュアなエンド ツー エンドの ID 体験の実装を数ヶ月から数分に短縮する方法をご紹介するライブ デモにご参加ください。  
 
 AMA イベントでは、External ID、Azure AD B2C、Azure AD B2B などに関する FAQ にお答えする時間も設けています。これらに関する FAQ の多くは、公開情報やテナント上の管理ポータルでも確認することが可能です。
 
