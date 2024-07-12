@@ -1,6 +1,6 @@
 ---
 title: "サイバーセキュリティ インシデント発生時にパスワードの一括リセットを実施するための効果的な戦略"
-date: 2024-07-10 09:00
+date: 2024-07-12 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
