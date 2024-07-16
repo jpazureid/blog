@@ -5,6 +5,11 @@ tags:
   - Azure AD
   - Windows Hello for Business
   - WHfB
+toc:
+  enabled: true
+min_depth: 1
+max_depth: 4
+list_number: false
 ---
 
 # Windows Hello for Business の構成解説
@@ -16,137 +21,48 @@ tags:
 
 今後 WHfB の構成の把握と利用の検討に活用いただけますと幸いです。
 
-WHfB に関連して、Hybrid、クラウドのみ、オンプレミスのみ、キー信頼や証明書信頼などの言葉をよく耳にすると思います。
-それぞれの言葉を理解していないと、何を構成しているのかわかりづらく、混乱すると思います。
+ WHfB には展開モデル、そして信頼モデルの概念があります。
+はじめに展開モデルについて、続いて信頼モデルの順に説明して整理していきます。
 
-では、それぞれについて説明し、整理していきます。
+## 展開モデルとは
 
-まずは、オンプレミスのみ、クラウドのみ、Hybrid という種類について説明します。
+展開モデルはユーザーの認証先を示しており、 (1) クラウドのみ、(2) ハイブリッド、(3) オンプレミスのみ の 3 つに分類されます。それぞれの展開モデルについて以下の表にお纏めしましたのでご参照ください。
 
-これらはデバイスの登録先を示しています。
+＊＊なお、本ブログではオンプレミスのみの構成については、Microsfot Entra ID が一切利用されないオンプレミス環境に閉じたパターンであり、お問い合わせ状況からも需要は少ない傾向もありますので、詳細については言及しません。
 
-WHfB ではユーザーがログオンする Windows 10 デバイスを IdP (Identity Provider, Azure AD や ADFS/オンプレミス AD が該当する) に登録することが必須です。
-また、デバイス登録先にはオンプレミスのみ、クラウドのみ、その両方 (これが Hybrid です) の三種類があります。
-
-それぞれの種類について以下に説明いたします。
-＊なお、本ブログではオンプレミスのみの構成については、Azure AD が一切利用されないオンプレミス環境に閉じたパターンであり、お問い合わせ状況からも需要は少ない傾向もありますので、詳細については言及しません。
-
-## **デバイスの登録先**
-
-#### **(1) オンプレミスのみ**
-
-オンプレミスのみのデバイス登録は、AD FS サーバーにオンプレミスの Active Directory に参加したデバイスを登録する方法です。
-
-#### **(2) クラウドのみ**
-
-クラウドのみのデバイス登録は、Azure AD にデバイスを参加させる、Azure AD Join のデバイス登録です。
-Azure AD テナントでは既定で Azure AD Join したデバイスに対して WHfB が有効に構成されます。
-このため、Azure AD Join したデバイスに対して Azure AD のユーザーで一番最初にログオンすると WHfB のプロビジョニングの画面が表示されます。
-そのまま、プロビジョニングを完了すれば、WHfB を利用できます。
-
-Azure AD Join の詳細については、以下の公開情報を参照ください。
-
-Azure AD 参加済みデバイス
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-azure-ad-join
-
-方法:Azure AD Join の実装を計画する
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/azureadjoin-plan
-
-#### **(3) Hybrid**
-＿＿＿
-
-Hybrid のデバイス登録は、オンプレミスの Active Directory に参加したデバイスを Azure AD にも参加させる、Hybrid Azure AD Join のデバイス登録です。
-Hybrid Azure AD Join の詳細については、以下の公開情報を参照ください。
-
-ハイブリッド Azure AD 参加済みデバイス
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-azure-ad-join-hybrid
-
-チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-managed-domains
-
-チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-federated-domains
-
-チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
-https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-manual
+| 展開モデル | 概要 |
+| :- | :- |
+| (1) クラウドのみ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | クラウド移行が完了しており、ユーザーの認証先がクラウド (Microsoft Entra ID) のみで、且つデバイスの登録方法として、Microsoft Entra 登録済み・Microsoft Entra 参加済みが該当します。<br><br>各登録方法の詳細については、以下の公開情報を参照いただけますと幸いです。<br><br>Title:Microsoft Entra 登録済みデバイスとは<br>url:https://learn.microsoft.com/ja-jp/entra/identity/devices/concept-device-registration<br><br>Title:Microsoft Entra 参加済みデバイスとは<br>url:https://learn.microsoft.com/ja-jp/entra/identity/devices/concept-directory-join<br><br>Title:Microsoft Entra 参加デプロイを計画する<br>url:https://learn.microsoft.com/ja-jp/entra/identity/devices/device-join-plan<br> |
+| (2) ハイブリッド | クラウド移行がまだ完了しておらず、認証先がクラウドのみではなくオンプレミス環境も含む構成で、且つデバイスの登録方法として、Microsoft Entra 参加済み・ Microsoft Entra ハイブリッド参加済みが該当します。<br>※Microsoft Entra 登録済みもサポートされますが BYOD 向けのソリューションのため省略します。<br><br>Microsoft Entra ハイブリッド参加済みの詳細については、以下の公開情報を参照いただけますと幸いです。<br><br>Title:Microsoft Entra ハイブリッド参加済みデバイスとは<br>url:https://learn.microsoft.com/ja-jp/entra/identity/devices/concept-hybrid-join<br><br>Title:Microsoft Entra ハイブリッド参加デバイスの手動構成<br>url:https://learn.microsoft.com/ja-jp/entra/identity/devices/hybrid-join-manual |
+| (3) オンプレミス&nbsp; &nbsp; | クラウド サービスを利用されておらず、ユーザーの認証先がオンプレミス環境のみの構成で、且つデバイスはオンプレミスドメイン参加済みデバイスのみがこのシナリオに該当します。 |
 
 
-## **信頼の種類**
+ここまでで、「(2) ハイブリッド」は認証先にクラウドのみではなく、オンプレミス環境を含む WHfB 構成であることがわかります。
+この「(2) ハイブリッド」には 3 つの信頼モデルが存在しており、この詳細について続けて説明します。
 
-ここからは信頼の種類についてです。
-信頼の種類には、キー信頼と証明書信頼の二種類があります。
+## 信頼モデルとは
 
-#### **キー信頼:**
-Active Directory のドメイン コントローラーとは認証用キーを利用して認証処理を行います。
-プロビジョニングの際に認証用のキーが生成されますが、このキーは、ユーザーの個人ストアに自己署名の証明書と紐づきます。
+信頼モデルは、 WHfB (PIN または生体認証) を使用して Windows へサインインをおこなったクライアントが、ドメイン コントローラーに対してどのように認証をおこなうかを定義したものとなり、(a) キー信頼と (b) 証明書信頼、そして (c) クラウド Kerberos 信頼の 3 つの種類が存在します。
 
-#### **証明書信頼:**
-Active Directory のドメイン コントローラーとは認証用キーを含む証明書を利用して認証処理を行います。
-プロビジョニングの際に認証用のキーが生成されますが、この認証キーを秘密キーとして、証明機関から証明書の発行を受けます。ユーザーの個人ストアには、その証明書が格納されます。
+クラウド アプリへの SSO は Microsoft Entra ID から発行されるトークンにより実現され、オンプレミス環境のリソース (ファイル サーバー等) への SSO はドメイン コントローラーから発行される Kerberos チケットにより実現されます。
 
-キー信頼では、直接キーを利用した認証を行うことができるのですが、そのためにはドメイン コントローラーが Windows Server 2016 以上である必要があります。
-Windows Server 2016 よりも前のドメイン コントローラーを引き続き利用する必要がある、かつ認証で利用する証明書を管理する必要があるという要件がある場合、証明書信頼を選択します。
-ただ、証明書信頼の場合には、必ず Windows Server 2016 以降の AD FS サーバーが必要ですので、 現在フェデレーション環境であるものの、今後、 AD FS とはサヨナラしてマネージド環境に変更することを検討している場合にも AD FS が WHfB のために必要になります。
-そのため、Windows Server 2016 以降のドメイン コントローラーへの置き換えが完了しているようでしたらキー信頼が圧倒的にお勧めです。
+Microsoft Entra ID へ同期されたユーザーアカウントの場合、パスワードを使用して Windows へサインインをおこなうと、Microsoft Entra 参加済みであっても、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/devices/device-sso-to-on-premises-resources)の公開情報に記載の通り、Microsoft Entra ID から連携される資格情報を使用してオンプレミスのリソースへの SSO をおこなうことができます。
 
+一方で、パスワードではなく WHfB で Windows へサインインをした場合、Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスは信頼モデルを構成するまでドメイン コントローラーから Kerberos チケットを取得することができません。これは既定でドメイン コントローラーが WHfB による証明書ベースの Kerberos チケット取得に対応していないためです。
 
-それぞれの展開方法は以下の公開情報を参照ください。
+ WHfB で Windows へサインインをした場合、いずれかの信頼モデルを構成することでドメイン コントローラーにて WHfB による証明書ベースの Kerberos チケットの取得要求が可能となり、 Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスにてオンプレミス環境のリソースへ SSO をおこなうことが可能となります。
 
-ハイブリッド Azure AD に参加しているキー信頼の展開
-https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-key-trust
+各信頼モデルまた Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みであるかによっても必要となるインフラストラクチャと展開方法が異なってきます。
+下表に信頼モデルの概要および展開方法に関するドキュメントをお纏めします。
 
-ハイブリッド Azure AD に参加している証明書信頼の展開
-https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust
+|信頼モデル | 概要                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | 
+| (a) キー信頼               | WHfB のプロビジョニングの際にデバイスで作成された認証用の秘密鍵を利用して、自己署名証明書を作成しユーザーの個人ストアにます。<br>オンプレミスのリソースへのアクセス時に利用される Kerberos の TGT の要求時にチケットの要求とともに、ユーザーの個人ストアの自己署名証明書をドメイン コントローラーに送付します。<br>この自己署名証明書にユーザー名などの情報が含まれており、ドメイン コントローラーはこれらの情報をもとにユーザーを特定し、TGT を発行します。<br><br>デバイス登録方法ごとに本モデルの展開方法は下記の通りです。<br><br>・Microsoft Entra 参加済み<br>Title:Microsoft Entra参加済みデバイスのシングル サインオン (SSO) を構成する<br>url:https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso<br><br>・Microsoft Entra ハイブリッド参加済み<br>Title:ハイブリッド キー信頼デプロイ ガイド<br>url:https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-key-trust<br>                  | 
+| (b) 証明書信頼             | WHfB のプロビジョニングの際にデバイスで作成された認証用の秘密鍵を利用して、証明書機関から発行された証明書をユーザーの個人ストアに保持します。<br>オンプレミスのリソースへのアクセス時に利用される Kerberos の TGT の要求時にチケットの要求とともに、ユーザーの個人ストアの証明書機関から発行された証明書をドメイン コントローラーに送付します。<br>ドメイン コントローラーではこの証明書の情報をもとにユーザーを特定し、TGT を発行します。<br><br>デバイス登録方法ごとに本モデルの展開方法は下記の通りです。<br><br>・Microsoft Entra 参加済み<br>Title:Microsoft Entra 参加済みオンプレミス シングル サインオンの証明書の使用<br>url:https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-cert<br><br>・Microsoft Entra ハイブリッド参加済み<br>Title:ハイブリッド証明書信頼展開ガイド<br>url:https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cert-trust<br> | 
+| (c) クラウド Kerberos 信頼&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Microsoft Entra ID から PRT とともに発行された Partial TGT (部分的な Kerberos チケット) を保持します。<br>オンプレミスのリソースへのアクセス時に利用される Kerberos の TGT の要求時にチケットの要求とともに、Microsoft Entra ID から発行される Partial TGT をドメイン コントローラーに送付します。<br>ドメイン コントローラーではこの Partial TGT の情報をもとにユーザーを特定し、TGT を発行します。<br><br>デバイス登録方法に関わらず本モデルの展開方法は同じです。<br><br>Title:クラウド Kerberos 信頼デプロイ ガイド<br>url:https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust?tabs=intune<br>                                                                                                                                                                                                                                                                                                                | 
 
 
-## **認証プロセス**
+WHfB の構成に関する説明は以上となります。今後 WHfB の構成の種類の全体像の把握に本ブログの内容が少しでも参考となりますと幸いです。
 
-#### **キー信頼:**
-Hybrid の WHfB のキー信頼モデルの場合、Kerberos の TGT の要求時にユーザーの個人ストアの自己署名証明書をドメイン コントローラーに送付します。
-この自己署名証明書にユーザー名などの情報が含まれるので、ドメイン コントローラーではこれらの情報をもとにユーザーを特定します。
-つまり、パスワードの代わりにユーザーが自己署名証明書を送付していることになります。
-
-次にドメイン コントローラーは自身の Kerberos 認証用の証明書で TGT に署名し、クライアントに TGT を返します。
-クライアントは署名を検証し、TGT を発行したドメイン コントローラーが信頼できるかどうかを判断します。
-
-#### **証明書信頼:**
-Hybrid の WHfB の証明書信頼モデルの場合、Kerberos の TGT の要求時にユーザーの個人ストアにある "証明機関から発行された証明書" をドメイン コントローラーに送付します。
-ドメイン コントローラーではこの証明書の情報をもとにユーザーを特定します。
-つまり、パスワードの代わりにユーザーが "証明機関が発行した証明書" を送付していることになります。
-
-次にドメイン コントローラーは自身の Kerberos 認証用の証明書で TGT に署名し、クライアントに TGT を返します。
-クライアントは署名を検証し、TGT を発行したドメイン コントローラーが信頼できるかどうかを判断します。
-
-
-以上がデバイスの登録先、 Hybrid とした場合の信頼の種類についてのご紹介です。
-
-補足としてクラウドのみの構成を実施した場合でもオンプレミスのリソースに対する SSO を実施させる裏技について紹介します。
-(公開情報でもご紹介しているものですので裏技でもありませんが)
-
-## **クラウドのみの WHfB の構成においてオンプレミス リソースへの SSO ができるように構成する方法**
-
-クラウドのみの WHfB の構成に対しても、追加でキー信頼または証明書信頼を構成することでオンプレミスのリソースへアクセスするための Kerberos の TGT を取得でき、オンプレミス リソースへの WHfB としてのシングル サインオンを実現することが可能です。
-
-クラウドのみのキー信頼の構成は、クラウドのみの WHfB の構成に対して以下の構成を追加で構築することによって実現できます。
-＊以下の追加の構成はユーザーのプロビジョニング後でも問題はありません。
-
-この構成の追加によって、ドメイン コントローラーから返される Kerberos 認証用の証明書を正常に検証できる状態を実現できます。
-
-Windows Hello for Business を使用して Azure AD に参加しているデバイスをオンプレミスのシングル サインオン用に構成する
-https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base
-
-
-一方クラウドのみの証明書信頼の構成の場合、以下の構成を追加構築することによってオンプレミス Active Directory へのシングル サインオンの実現は可能です。
-＊証明書信頼の場合、ユーザーの WHfB のプロビジョニング前に以下の追加の構成を完了している必要があります。
-
-この追加構成によって、WHfB 認証用のキーをもとに証明書を発行し、正常に検証できることを実現できます。
-同時にドメイン コントローラーから返される Kerberos 認証用の証明書を正常に検証できる構成も実現できます。
-
-AADJ オンプレミス シングル サインオン用の証明書の使用
-https://docs.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-cert
-
-
-
-今後 WHfB の構成の種類の全体像の把握に本ブログの内容が少しでも参考となりますと幸いです。
-
-※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。
+なお、ハイブリッド構成においては、特別な要件がない限り、弊社ではクラウド Kerberos 信頼での展開を推奨しております。
+クラウド Kerberos 信頼の構築手順については、[公開情報](https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust?tabs=intune)に加えこちらの[ブログ](https://jpazureid.github.io/blog/azure-active-directory/how-to-deploy-cloud-kerberos-trust/)にもお纏めしていますので、是非ご参考いただければと思います。
