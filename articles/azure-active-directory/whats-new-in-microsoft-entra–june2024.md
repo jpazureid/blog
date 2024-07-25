@@ -1,12 +1,12 @@
 ---
 title: "Microsoft Entra の新機能 – 2024年6月"
-date: 2024-07-23 09:00
+date: 2024-07-25 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
 ---
 
-# Microsoft Entra の新機能 – 2024年6月
+# Microsoft Entra の新機能 – 2024 年 6 月
 
 こんにちは、Azure Identity サポート チームの 夏木 です。
  
@@ -26,7 +26,7 @@ Microsoft Entra のブログでは、四半期ごとに新機能のリリース�
 
 ### 新しいリリース
 
-- [Microsoft Entra ID Protection: リスクを修復してユーザーをブロック解除する](onenote:#section-id={89300469-DAE0-4FF7-B54C-E8A6DF394F41}&end&base-path=https://microsoftapc-my.sharepoint.com/personal/yukanatsuki_microsoft_com/Documents/Yuka%20さん%20@%20Microsoft/note.one)
+- [Microsoft Entra ID Protection: リスクを修復してユーザーをブロック解除する](https://learn.microsoft.com/en-us/entra/id-protection/howto-identity-protection-remediate-unblock)
 - [オンプレミスのパスワードリセット: ユーザーリスクの軽減](https://learn.microsoft.com/en-us/entra/id-protection/howto-identity-protection-remediate-unblock)
 - [Android デバイス用の複数のパスワードレスサインイン](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-authentication-passwordless-phone)
 - [Windows アカウント拡張機能が Microsoft シングル サインオンに](https://learn.microsoft.com/ja-jp/entra/fundamentals/whats-new#general-availability---windows-account-extension-is-now-microsoft-single-sign-on)
@@ -135,13 +135,13 @@ _[対応が必要な場合があります]_
 
 Microsoft Entra ID において、フロントライン ワーカー が QR コードと PIN で認証する新しい簡単な方法を導入します。これにより、シフト中に長い UPN や英数字のパスワードを何度も入力する必要がなくなります。
 
-この機能のプライベートプレビューリリースは 2024 年 8 月であり、すべてのユーザーが https://login.microsoftonline.com の「サインインオプション」 > 「組織にサインイン」ページに移動すると「QR コードでサインイン」という新しいリンクが表示されます。この「QR コードでサインイン」というリンクは、モバイルデバイス (Android/iOS/iPadOS) のみで表示されます。プライベートプレビューに参加していない場合、プライベートプレビュー中はテナントのユーザーはこの方法でサインインできず、サインインを試みるとエラーメッセージが表示されます。
+この機能のプライベート プレビュー リリースは 2024 年 8 月であり、すべてのユーザーが https://login.microsoftonline.com の「サインインオプション」 > 「組織にサインイン」ページに移動すると「QR コードでサインイン」という新しいリンクが表示されます。この「QR コードでサインイン」というリンクは、モバイルデバイス (Android/iOS/iPadOS) のみで表示されます。プライベート プレビューに参加していない場合、プライベート プレビュー中はテナントのユーザーはこの方法でサインインできず、サインインを試みるとエラーメッセージが表示されます。
 
 この機能には「プレビュー」タグが付いており、一般提供されるまでその状態が続きます。お使いの組織はこの機能をテストするために有効化する必要があります。広範なテストはパブリック プレビューで利用可能となり、後日発表します。
 
 プライベート プレビュー中は技術サポートは提供されません。プレビュー中のサポートについての詳細は、こちらをご覧ください：[Microsoft Entra ID プレビュー プログラム情報 - Microsoft Entra | Microsoft Learn](https://learn.microsoft.com/en-us/entra/fundamentals/licensing-preview-info).
 
-#### 電話設定の変更: カスタムグリーティングと発信者 ID
+#### 電話設定の変更: カスタム グリーティングと発信者 ID
 
 _[対応が必要な場合があります]_
 
@@ -163,7 +163,7 @@ _[対応が必要な場合があります]_
 
 _[対応が必要な場合があります]_
 
-Entra Connect Sync における Group Writeback V 2 のパブリックプレビューは利用できなくなり、Connect Sync は Active Directory へのクラウド セキュリティ グループのプロビジョニングをサポートしなくなります。
+Entra Connect Sync における Group Writeback V2 のパブリックプレビューは利用できなくなり、Connect Sync は Active Directory へのクラウド セキュリティ グループのプロビジョニングをサポートしなくなります。
 
 これに代わる機能として、Entra Cloud Sync に「Group Provision to AD」という機能が提供されており、クラウド セキュリティ グループを AD にプロビジョニングするために使用できます。Cloud Sync の拡張機能とその他の新機能が開発されています。
 
@@ -175,7 +175,7 @@ _[対応不要]_
 
 サービスの継続的な改善の一環として、ユーザーごとの MFA 管理構成エクスペリエンスを Entra ID の外観に合わせて更新します。この変更にはコア機能の変更は含まれず、視覚的な改善のみが含まれます。2024 年 8 月から、Entra 管理センターおよび Azure ポータルの両方から新しいエクスペリエンスにリダイレクトされます。最初の 30 日間は旧エクスペリエンスに切り替えるためのバナーが表示され、その後は新しいエクスペリエンスのみが使用可能になります。新しいエクスペリエンスをリリース次第、[公開情報](https://learn.microsoft.com/entra/identity/authentication/howto-mfa-userstates) を更新します。
 
-#### Microsoft Entra条件付きアクセスにおける「ターゲットリソース」の更新
+#### Microsoft Entra 条件付き条件付きアクセスにおける「ターゲットリソース」の更新
 
 _[対応不要]_
 
