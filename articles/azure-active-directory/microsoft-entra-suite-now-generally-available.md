@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Entra Suite が一般提供 (GA) されました"
-date: 2024-07-23 09:00
+date: 2024-07-25 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
