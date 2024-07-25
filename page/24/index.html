@@ -83,6 +83,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-active-directory-federation-service/adfs-wap-federation-renew" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../active-directory-federation-service/adfs-wap-federation-renew/" class="article-date">
+  <time datetime="2022-02-04T16:00:00.000Z" itemprop="datePublished">2022-02-05</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../active-directory-federation-service/adfs-wap-federation-renew/">AD FS 2019 以降でセカンダリ AD FS をホスト名のみで構成すると WAP の構成および信頼関係の更新に失敗する</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは、Azure Identity サポート チームの山口です。
+AD FS ファームを Windows Server 2019 以降 のサーバー (複数) で構成している環境において、WAP サーバーの新規構成および信頼関係の更新に失敗する事象について紹介します。この事象は次の 2 つの条件を満たした場合に発生します。
+
+AD FS ファームのセカンダリ サーバーを構成する際、プライマリ サーバーを FQDN ではなくホスト名のみで構成している
+WAP を新規構成する際に発生する通信、あるいは信頼関係の更新処理に伴う通信がセカンダリ AD FS に対して行われる場合
+
+本事象の影響を受ける環境か確認する方法、発生する事象の詳細と具体的な対処方法は以下のとおりです。
+影響を受ける構成かどうかを確認する方法AD FS 2019 以降でセカンダリ サーバーが存在する場合、セカンダリ サー...
+        <p class="article-readmore">
+          <a href="../../active-directory-federation-service/adfs-wap-federation-renew/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-wap-federation-renew/" data-id="clz0m76se00080npf0z50dblx" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-azure-active-directory/howto-deal-with-throttling" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/howto-deal-with-throttling/" class="article-date">
+  <time datetime="2022-02-02T15:00:00.000Z" itemprop="datePublished">2022-02-03</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/howto-deal-with-throttling/">「要求が調整されています」エラーの原因と対処策について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは、 Azure ID チームの小出です。今回は、サインイン ログや監査ログを大量にダウンロードしようとした際に発生する、 “要求が調整されます” というエラー メッセージの原因と対策についてご案内します。
+事象についてAzure AD のサインイン ログや監査ログをダウンロードしようとした際に、しばらくの間ダウンロード中の画面が表示された後、エラーになってしまう事象です。同時に、下記のように “要求が調整されます” や “サーバーに対する要求が調整されています。” とのメッセージが表示されます。  
+
+なぜメッセージが表示されてしまうのか発生しているエラーは、一般的には多くの Graph API リクエストを送付したことによって発生するエラーです。  
+サインイン ログや監査ログは、 Graph API を使用してログを収集します。Graph API には大量の要求が行われた際、...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/howto-deal-with-throttling/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-throttling/" data-id="clz0m76wr00cj0npf0y3169dq" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Audit-Logs/" rel="tag">Audit Logs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Signin-Logs/" rel="tag">Signin Logs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-azure-active-directory/how-to-update-samlsigningcertificate" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -122,7 +229,7 @@ Azure AD において、具体的にどういった場面で SAML 署名証明�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-update-samlsigningcertificate/" data-id="clyxce7mt00cg0no42g248gb5" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-update-samlsigningcertificate/" data-id="clz0m76wr00cg0npff80bgwrx" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
@@ -173,7 +280,7 @@ Azure AD において、具体的にどういった場面で SAML 署名証明�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/achieving-zero-trust-readiness-in-your-apps-2-designing-for-least-privilege/" data-id="clyxce7ka004g0no4hlgr8fqm" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/achieving-zero-trust-readiness-in-your-apps-2-designing-for-least-privilege/" data-id="clz0m76u6004g0npfgv4k927t" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -225,7 +332,7 @@ Azure AD において、具体的にどういった場面で SAML 署名証明�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/external-identities-b2c-supports-authenticator-apps-and-new-data/" data-id="clyxce7me00b50no4gynkdq2q" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/external-identities-b2c-supports-authenticator-apps-and-new-data/" data-id="clz0m76wb00b50npf3pttgo08" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -278,7 +385,7 @@ CAE は、以下を含めたアカウントのライフサイクルにおいて�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/continuous-access-evaluation-in-azure-ad-is-now-generally/" data-id="clyxce7lv00950no4cx4850en" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/continuous-access-evaluation-in-azure-ad-is-now-generally/" data-id="clz0m76vr00950npf5xpxhj2z" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -329,7 +436,7 @@ CAE は、以下を含めたアカウントのライフサイクルにおいて�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities/" data-id="clyxce7na00e80no48hbf4pvh" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/join-us-to-build-solutions-using-decentralized-identities/" data-id="clz0m76x900e80npf5xq94mbf" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -380,7 +487,7 @@ CAE は、以下を含めたアカウントのライフサイクルにおいて�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad/" data-id="clyxce7p700jx0no4af2o6pgd" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad/" data-id="clz0m76z700k00npf89sdct04" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -432,7 +539,7 @@ CAE は、以下を含めたアカウントのライフサイクルにおいて�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/end-of-support-for-azure-ad-graph-permission-sign-up-through/" data-id="clyxce7m400a40no4aj3w3957" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/end-of-support-for-azure-ad-graph-permission-sign-up-through/" data-id="clz0m76w000a40npf2osh6uo2" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -483,110 +590,10 @@ CAE は、以下を含めたアカウントのライフサイクルにおいて�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-azuread-custom-security-attributes/" data-id="clyxce7n000d70no4hlozfopg" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-azuread-custom-security-attributes/" data-id="clz0m76wy00d70npfhg5a79nz" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/" class="article-date">
-  <time datetime="2021-12-18T00:00:00.000Z" itemprop="datePublished">2021-12-18</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/">ゼロ トラスト展開のためのよりよいコントロールとインサイト</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        こんにちは、 Azure Identity サポート チームの小出です。
-本記事は、 2021 年 11 月 30 日に米国の Azure Active Directory Identity Blog で公開された More control and better insights for your Zero Trust deployments を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。
-
-Ignite 2021 はお楽しみいただけましたか？ユーザーやアプリケーションを脅威から保護するため、ゼロ トラストを展開するうえでどのように Azure Active Directory を使っているか、皆様からのご意見を伺うことができました。多くの方から、ID 環境の保護と調査のために、より強力で使いやすいツールを求める声をいただいています。そこで...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/" data-id="clyxce7nz00ga0no4bbxt34v5" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/aspdotnet-from-v1-to-v2" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/aspdotnet-from-v1-to-v2/" class="article-date">
-  <time datetime="2021-12-12T15:00:00.000Z" itemprop="datePublished">2021-12-13</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/aspdotnet-from-v1-to-v2/">ASP.NET アプリケーションの AAD 認証を v1 から v2 に変更する</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        本記事は Azure Tech Advent Calendar 2021 13 日目の記事です。Japan Azure Identity Support Blog では、お問合せの多い事象へのトラブルシューティング方法や、英文で公開された記事の日本語訳の情報を発信しています。今回の記事では、たびたびお問い合わせいただくことのある ASP.NET + MVC + Azure AD 認証を構成しているアプリケーションを Azure AD 認証エンドポイント v1 から v2 に変更する際のポイントについて説明します。
-ASP.NET アプリケーションの Azure AD 認証ASP.NET アプリケーションに Azure AD の組織アカウントを利用してサインインを追加する場合、Open Web Interface for .NET (OWIN) を利用することで簡単に実装することが可能です。...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/aspdotnet-from-v1-to-v2/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/aspdotnet-from-v1-to-v2/" data-id="clyxce7kk005c0no4aexfgx9n" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
 
     </footer>
   </div>
@@ -612,6 +619,14 @@ ASP.NET アプリケーションの Azure AD 認証ASP.NET アプリケーショ
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/microsoft-entra-suite-now-generally-available/">Microsoft Entra Suite が一般提供 (GA) されました</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory/whats-new-in-microsoft-entra%E2%80%93june2024/">Microsoft Entra の新機能 – 2024年6月</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory/move-to-cloud-authentication-with-the-ad-fs-migration-tool!/">AD FS 移行ツールを利用してクラウド認証に移行しましょう！</a>
           </li>
         
@@ -621,14 +636,6 @@ ASP.NET アプリケーションの Azure AD 認証ASP.NET アプリケーショ
         
           <li>
             <a href="../../azure-active-directory/evolve-your-ciam-strategy-with-external-id/evolve-your-ciam-strategy-with-external-id/">External ID とともに CIAM 戦略を進化させましょう</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/effective-strategies-for-conducting-mass-password-resets-during-cybersecurity-incidents/">サイバー セキュリティ インシデント発生時にパスワードの一括リセットを実施するための効果的な戦略</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/">Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27)</a>
           </li>
         
       </ul>

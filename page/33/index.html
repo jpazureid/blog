@@ -83,6 +83,120 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-azure-active-directory-connect/error-code-8344" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory-connect/error-code-8344/" class="article-date">
+  <time datetime="2020-05-25T15:00:00.000Z" itemprop="datePublished">2020-05-26</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory-connect/error-code-8344/">permission-issue - Error Code ; 8344</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        Azure AD Connect 構築後、運用中に同期処理にて正常に行えないことで下記の事象が発生します。事象発生内容、それぞれのケースの対処方法をお纏めいたしました。
+permission-issue とは
+Azure AD Connect でユーザー オブジェクトを同期した場合の動作としては、下記の流れで処理が行われます。
+
+Active Directory から Azure Active Directory に同期
+Azure Active Directory から ユーザーオブジェクトの mS-DS-ConsistencyGuid 属性を取得し、Azure AD Connect に格納
+Azure AD Connect から Active Directory のユーザーオブジェクトの mS-DS-ConsistencyGuid 属性の書き込み
+
+ 上記の 3. の処理で通常はユーザ...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory-connect/error-code-8344/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/" data-id="clz0m76t800240npf6xlgdyix" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-azure-active-directory/azure-ad-consent-framework" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/azure-ad-consent-framework/" class="article-date">
+  <time datetime="2020-05-21T15:00:00.000Z" itemprop="datePublished">2020-05-22</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/azure-ad-consent-framework/">「管理者の承認が必要」のメッセージが表示された場合の対処法</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは。Azure Identity チームの埴山です。今回は、Azure AD の同意のフレームワークについて解説します。
+早速ですが、皆さんはアプリケーションを利用しようと思った際に、以下のように、”管理者の承認が必要” と表示されてしまったことは無いでしょうか。
+
+あるいは、以下のような同意画面を見たことはないでしょうか。
+
+多くはアプリケーションを利用する際に表示される画面ですが、皆さんはこの画面の意味がお分かりでしょうか。
+この画面は、Azure AD の同意のフレームワークと呼ばれる仕組みで、ユーザーがアプリケーションに対し、安全に権限を委任するための仕組みです。
+今回は、この同意のフレームワークについて、どのような機能であり、”管理者の承認が必要” と表示されたときには、どのように対処すればよいのか、次の順番で解説します。
+
+何のための機能なのか
+アプリケーションに同意を...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/azure-ad-consent-framework/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework/" data-id="clz0m771m00x90npf9qr19uv6" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -126,7 +240,7 @@ HAADJ として構成が完了するまでの流れ
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated/" data-id="clyxce7st010b0no4fnyo8mid" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-federated/" data-id="clz0m7732010d0npfdoojgc3z" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Troubleshooting/" rel="tag">Troubleshooting</a></li></ul>
@@ -179,7 +293,7 @@ Azure Active Directory や Office 365 などの Microsoft のサー...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/moving-towards-real-time-policy-and-security-enforcement/" data-id="clyxce7o400gk0no40wzcdybd" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/moving-towards-real-time-policy-and-security-enforcement/" data-id="clz0m76y500gn0npf6188eo33" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li></ul>
@@ -231,7 +345,7 @@ COVID-19 の感染拡大を遅らせるため企業は従業員に在宅勤務�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/faq-using-ca-to-secure-remote-access/" data-id="clyxce7ry00y80no43f37dh28" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/faq-using-ca-to-secure-remote-access/" data-id="clz0m772100ya0npf9fzte28j" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li></ul>
@@ -286,7 +400,7 @@ COVID-19 の感染拡大を遅らせるため企業は従業員に在宅勤務�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/" data-id="clyxce7oe00he0no4h0hbgche" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/new-tools-to-block-legacy-auth/" data-id="clz0m76yg00hg0npf18ik6cjl" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Legacy-Authentication/" rel="tag">Legacy Authentication</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li></ul>
@@ -337,7 +451,7 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/zero-hype/" data-id="clyxce7sz010p0no4akda888v" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/zero-hype/" data-id="clz0m7739010t0npf9z8222hv" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li></ul>
@@ -389,7 +503,7 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/update-for-google-chrome-80-same-site/" data-id="clyxce7iu000p0no4e57pg17b" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/update-for-google-chrome-80-same-site/" data-id="clz0m76sm000p0npff83242jf" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SameSite/" rel="tag">SameSite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/WAP/" rel="tag">WAP</a></li></ul>
@@ -441,7 +555,7 @@ Ignite では、製品マーケティングを統括する同僚の Nupur Goyals
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/3-ways-aad-ca-balances-security-and-productivity/" data-id="clyxce7jp002x0no4ga1ud4ha" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/3-ways-aad-ca-balances-security-and-productivity/" data-id="clz0m76tk002x0npf6xsg2w3y" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li></ul>
@@ -492,112 +606,10 @@ http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-AADSTS50107/" data-id="clyxce7r900wc0no442yldvzr" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-AADSTS50107/" data-id="clz0m771a00we0npfacdofz76" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AADSTS50107/" rel="tag">AADSTS50107</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Issuer-ID/" rel="tag">Issuer ID</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Issuer-URI/" rel="tag">Issuer URI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/supportMultipleDomain/" rel="tag">supportMultipleDomain</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/5-identity-priorities-for-2020" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/5-identity-priorities-for-2020/" class="article-date">
-  <time datetime="2020-02-12T15:00:00.000Z" itemprop="datePublished">2020-02-13</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/5-identity-priorities-for-2020/">2020 年アイデンティティについて取り組むべき 5 つのポイント</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-本記事は、 2020 年 1 月 28 日に Azure Active Directory Identity Blog に公開された記事 (5 identity priorities for 2020 - preparing for what’s next) を翻訳したものです。原文は こちら より参照ください。
-
-Microsoft アイデンティティ グループの慣習として、毎年、顧客との共同イノベーション週間というものを開催しています。次の新しい 10 年で最初のイベントを始めるにあたり、2020 年またさらにその先を見据え、常に念頭にあるのは、私たちの戦略と製品の方向性を形作るお客様の優先事項がどのようのように進化していくのかという点です。
-過去の 10 年間を振り返ってみると、デジタル トランスフォーメーションが人々の働き方や企業のビジネスのあり方を大きく変えてきたのは驚くべきこと...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/5-identity-priorities-for-2020/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/5-identity-priorities-for-2020/" data-id="clyxce7rd00wm0no4bfjq0b4z" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/microsoft-graph-api-signin-activity-reports-v2" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/microsoft-graph-api-signin-activity-reports-v2/" class="article-date">
-  <time datetime="2020-01-25T15:00:00.000Z" itemprop="datePublished">2020-01-26</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/microsoft-graph-api-signin-activity-reports-v2/">マネージド ID を利用して Azure AD サインイン アクティビティ レポートを CSV ファイルで取得する PowerShell スクリプト</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        こんにちは、 Azure &amp; Identity サポート チームの平形です。
-以前、Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを Azure AD Graph API を経由して取得するスクリプトを紹介しました。今回はスクリプト内にクライアント シークレットや証明書の情報を記載しなくてもよい方法として、マネージド ID を使用したレポート取得方法と共に、いくつかのサインイン ログ・監査ログを取得するサンプルをご用意いたしました。
-マネージド ID は特殊なサービス プリンシパルであり、このサービス プリンシパルを用いて認証を行うには Azure 内部のみアクセス可能な特殊なエンドポイントにアクセスする必要があります。通常のサービス プリンシパルと同じように RBAC を設定することで Azure 各種リソースへアクセスが可能になる一方、サ...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/microsoft-graph-api-signin-activity-reports-v2/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports-v2/" data-id="clyxce7ns00ft0no4cskz183z" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Managed-ID/" rel="tag">Managed ID</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li></ul>
 
     </footer>
   </div>
@@ -623,6 +635,14 @@ Microsoft アイデンティティ グループの慣習として、毎年、顧
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/microsoft-entra-suite-now-generally-available/">Microsoft Entra Suite が一般提供 (GA) されました</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory/whats-new-in-microsoft-entra%E2%80%93june2024/">Microsoft Entra の新機能 – 2024年6月</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory/move-to-cloud-authentication-with-the-ad-fs-migration-tool!/">AD FS 移行ツールを利用してクラウド認証に移行しましょう！</a>
           </li>
         
@@ -632,14 +652,6 @@ Microsoft アイデンティティ グループの慣習として、毎年、顧
         
           <li>
             <a href="../../azure-active-directory/evolve-your-ciam-strategy-with-external-id/evolve-your-ciam-strategy-with-external-id/">External ID とともに CIAM 戦略を進化させましょう</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/effective-strategies-for-conducting-mass-password-resets-during-cybersecurity-incidents/">サイバー セキュリティ インシデント発生時にパスワードの一括リセットを実施するための効果的な戦略</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/">Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27)</a>
           </li>
         
       </ul>
