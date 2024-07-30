@@ -100,10 +100,10 @@ Azure AD のパスワード有効期限は、Microsoft 365 管理センターも
 1. Microsoft 365 管理センターを開きます。
 2. [設定] - [組織設定] - [セキュリティとプライバシー] タブ内の [パスワードの有効期限ポリシー] を選択します。
 ![](./comprehend-password-policy/comprehend-password-policy4.png)
-3. 設定値を確認します。以下の画像では、パスワードの有効期限が 90 日に設定されています。  
-![](./comprehend-password-policy/comprehend-password-policy5.png)
-4. パスワードの有効期限を無期限にしたい場合は、以下のようにチェックボックスをオフにします。  
-![](./comprehend-password-policy/comprehend-password-policy6.png)
+3. 設定値を確認します。以下の画像では、パスワードの有効期限が無期限に設定されています。  
+![](./comprehend-password-policy/comprehend-password-policy-241.png)
+4. パスワードの有効期限を設定したい場合は、以下のようにチェックボックスをオフにします。
+![](./comprehend-password-policy/comprehend-password-policy-242.png)
 
 > [!TIP]  
 > 上記の設定でパスワード有効期限を 90 日などに設定している環境でも、システム用アカウントなど、一部のユーザーだけ無期限にしたいシナリオがあるかと思います。  
