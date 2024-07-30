@@ -79,7 +79,7 @@ D. 補足情報 (FAQ)
 
 例えば、ドメイン参加しているクライアント端末にログオンする際は、認証はオンプレミス AD にて行われるため、オンプレミス AD のパスワード有効期限が適用されます。Azure ポータルや Microsoft 365 にサインインする際は、Azure AD 側の有効期限設定が適用されます。オンプレミス AD のパスワード有効期限を迎えると、次のオンプレミス AD へのサインインの際にオンプレミス側でパスワードの変更が要求されます。パスワードを変更すると、そのパスワードが Azure AD にも反映され、新しいパスワードで Azure AD にもサインインできるようになります。
 
-しかしながら、パスワード ハッシュ同期では、同期ユーザーの Azure AD 側のパスワード有効期限は無期限とするよう個別に設定されています。このため、オンプレミス AD のパスワード有効期限が切れたあとも、オンプレミス側で有効期限切れのパスワードにて Azure AD 側にサインインできます。オンプレミス側で新しいパスワードに変更し、それが Azure AD に同期されると、Azure AD にその新しいパスワードでサインイン可能となります。オンプレミス側で有効期限が切れているパスワードで Azure AD にサインインさせたくない場合は、EnforceCloudPasswordPolicyForPasswordSyncedUsers のオプションをオンにして、 Azure AD 側のパスワード ポリシーを無期限にしないよう設定します (詳細を補足 D にて記載しています)。
+しかしながら、パスワード ハッシュ同期では、同期ユーザーの Azure AD 側のパスワード有効期限は無期限とするよう個別に設定されています。このため、オンプレミス AD のパスワード有効期限が切れたあとも、オンプレミス側で有効期限切れのパスワードにて Azure AD 側にサインインできます。オンプレミス側で新しいパスワードに変更し、それが Azure AD に同期されると、Azure AD にその新しいパスワードでサインイン可能となります。オンプレミス側で有効期限が切れているパスワードで Azure AD にサインインさせたくない場合は、CloudPasswordPolicyForPasswordSyncedUsersEnabled のオプションをオンにして、 Azure AD 側のパスワード ポリシーを無期限にしないよう設定します (詳細を補足 D にて記載しています)。
 
 ### シナリオ C-2: パススルー認証や AD FS 環境などオンプレミス側で認証を行う同期ユーザー
 
@@ -107,7 +107,7 @@ Azure AD のパスワード有効期限は、Microsoft 365 管理センターも
 
 > [!TIP]  
 > 上記の設定でパスワード有効期限を 90 日などに設定している環境でも、システム用アカウントなど、一部のユーザーだけ無期限にしたいシナリオがあるかと思います。  
-> この場合は、上記の設定に加え、そのアカウントに対してのみ Set-AzureADUser コマンドで DisablePasswordExpiration を設定することで、個別に無期限にできます。  
+> この場合は、上記の設定に加え、そのアカウントに対してのみ Update-MgUser コマンドで DisablePasswordExpiration を設定することで、個別に無期限にできます。  
 > 詳細は、[個別のユーザーのパスワードを無期限に設定する](https://docs.microsoft.com/ja-jp/microsoft-365/admin/add-users/set-password-to-never-expire?view=o365-worldwide) の情報をご確認ください。  
  
 ### シナリオ C-4: ゲスト ユーザー
@@ -120,12 +120,17 @@ Azure AD のパスワード有効期限は、Microsoft 365 管理センターも
 
 ### <span style="color: blue; ">Q:</span> パスワード ハッシュ同期の環境で、オンプレミス AD 側の有効期限が切れたときに、 Azure AD 側に引き続き古いパスワードでアクセスできてしまいます。同期ユーザーの Azure AD 側のパスワードの有効期限を無期限から変更することはできますか。  
 
-<span style="color: red; ">A:</span> はい、テナント側の EnforceCloudPasswordPolicyForPasswordSyncedUsers オプションを適用することで可能です。 Azure AD 側からパスワードを変更するためには、Azure AD Connect でパスワード ライトバックを有効にする必要もあります。
+<span style="color: red; ">A:</span> はい、テナント側の CloudPasswordPolicyForPasswordSyncedUsersEnabled  オプションを適用することで可能です。 Azure AD 側からパスワードを変更するためには、Azure AD Connect でパスワード ライトバックを有効にする必要もあります。
 
 以下のコマンドを実行すると、Azure AD 側のユーザーにもパスワード有効期限を設定することができます。
 
 ```PowerShell
-Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true
+$OnPremSync = Get-MgDirectoryOnPremiseSynchronization
+$OnPremSync.Features.CloudPasswordPolicyForPasswordSyncedUsersEnabled = $true
+
+Update-MgDirectoryOnPremiseSynchronization `
+  -OnPremisesDirectorySynchronizationId $OnPremSync.Id `
+  -Features $OnPremSync.Features 
 ```
 
 > [!WARNING]  
@@ -141,7 +146,12 @@ Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
 <span style="color: red; ">A:</span> はい、テナント側の ForcePasswordChangeOnLogOn オプションを有効化することで可能です。 Azure AD 側からパスワードを変更するために、Azure AD Connect でパスワード ライトバックの機能を有効に設定ください。
 
 ```PowerShell
-Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true
+$OnPremSync = Get-MgDirectoryOnPremiseSynchronization
+$OnPremSync.Features.UserForcePasswordChangeOnLogonEnabled = $true
+
+Update-MgDirectoryOnPremiseSynchronization `
+  -OnPremisesDirectorySynchronizationId $OnPremSync.Id `
+  -Features $OnPremSync.Features 
 ```
 
 既定では上記機能は無効のため、事前にオンプレミス側でパスワードを変更しないと、以下のようにエラーになってしまいます。上記のコマンドを実行すると、Azure AD 側で新しいパスワードへの変更要求画面が表示されるようになります。この機能については、[公開情報の記載](https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization#enforcecloudpasswordpolicyforpasswordsyncedusers) もご確認ください。
@@ -154,11 +164,11 @@ Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true
 
 ### <span style="color: blue; ">Q:</span> Azure AD のパスワード ポリシーがいつのまにか無期限になっています。誰が変更したか確認する方法はありますか？
 
-<span style="color: red; ">A:</span> 直近でポリシーが変更されている場合は、Azure AD の監査ログで確認することが可能です。Set password policy のアクティビティでフィルターをかけたのちに、開始者（アクター）に記載のユーザーを確認ください。
+<span style="color: red; ">A:</span> 直近でポリシーが変更されている場合は、Microsoft Entra ID の監査ログで確認することが可能です。Set password policy のアクティビティでフィルターをかけたのちに、開始者（アクター）に記載のユーザーを確認ください。
 
-### <span style="color: blue; ">Q:</span> PowerShell で Get-MsolPasswordPolicy コマンドを実行し、テナントに設定されているパスワード有効期限を調べました。2147483647 日と表示されるのですが、どのような意味ですか？
+### <span style="color: blue; ">Q:</span> PowerShell で Get-MgDomain コマンドを実行し、テナントに設定されているパスワード有効期限を調べました。2147483647 日と表示されるのですが、どのような意味ですか？
 
-<span style="color: red; ">A:</span> テナントのパスワード有効期限が無期限になっていることを示しています。  
+<span style="color: red; ">A:</span> そのドメインについては、テナントのパスワード有効期限が無期限になっていることを示しています。  
 
 ### <span style="color: blue; ">Q:</span> Microsoft 365 管理センターや PowerShell からパスワード ポリシーを編集しましたが、期限切れの通知が来ません。
 
@@ -178,20 +188,20 @@ Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true
 
 テナントに設定されている有効期限を確認するには以下のように実施ください。
 
-1. Connect-MsolService コマンドを実行します。
-2. Get-Msoldomain コマンドを実行し、正しいテナントに接続できているか確認します。
-3. 下記のコマンドを実行し、テナントのパスワード有効期限ポリシーを確認します。この例では、パスワードの有効期限が切れるまでの日数（ValidityPeriod）は 90 日となります。
+1. Connect-MgGraph コマンドを実行します。
+2. Get-MgContext コマンドを実行し、正しいテナントに接続できているか確認します。
+3. 下記のコマンドを実行し、テナントのパスワード有効期限ポリシーを確認します。この例では、パスワードの有効期限が切れるまでの日数（PasswordValidityPeriodInDays）は 90 日となります。
 
 ```PowerShell
-Get-MsolPasswordPolicy -DomainName contoso.onmicrosoft.com
+Get-MgDomain -DomainId contoso.onmicrosoft.com | select Id,PasswordNotificationWindowInDays,PasswordValidityPeriodInDays
 ```
 
 例として、以下のようにコマンド実行結果が表示されます。
 
 ```PowerShell
-ExtensionData                                    NotificationDays ValidityPeriod
--------------                                    ---------------- --------------  
-System.Runtime.Serialization.ExtensionDataObject               14             90
+Id                            PasswordNotificationWindowInDays PasswordValidityPeriodInDays
+--                            -------------------------------- ----------------------------
+contoso.onmicrosoft.com                                   14                   90
 ```
 
 ユーザーが最後にパスワードを変更した日時を取得するには以下のようにします。
@@ -199,15 +209,14 @@ System.Runtime.Serialization.ExtensionDataObject               14             90
 4. 引き続き、PowerShell より以下のコマンドを実行します。  
  
 ```PowerShell
-Get-MsolUser -UserPrincipalName user@contoso.onmicrosoft.com | ft UserPrincipalName, LastPasswordChangeTimestamp
+Get-MgUser -UserId admin@contoso.onmicrosoft.com -Property UserPrincipalName, LastPasswordChangeDateTime | fl UserPrincipalName, LastPasswordChangeDateTime
 ```
 
 コマンドの実行結果の例は以下のとおりです。
 
 ```PowerShell
-UserPrincipalName                   LastPasswordChangeTimestamp
------------------                   --------------------------- 
-user@consoto.onmicrosoft.com        2021/02/02 16:11:54
+UserPrincipalName          : admin@M365x61971868.onmicrosoft.com
+LastPasswordChangeDateTime : 2024/02/27 4:51:12
 ```
 
 5. 現在の日付を確認し、パスワードを最後に変更した日付とパスワード有効期限の日数と比較し、有効期限を確認します。
