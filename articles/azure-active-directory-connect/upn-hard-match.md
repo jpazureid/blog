@@ -70,9 +70,14 @@ ldifde -f c:\ ldifde_user.txt -d "手順 5. でコピーした内容" -p subtree
 
 Azure AD の紐づけ対象のアカウントに ImmutableId が設定されていないことを確認します。ImmutableId が設定されている場合には、すでに同期対象となっていることを示します。
 
-1. インターネットに接続している任意のコンピューター上で "Windows PowerShell 用 Windows Azure Active Directory モジュール" を管理者として実行します。
-2. 起動した PowerShell にて Connect-MsolService コマンドを実行します。
-※ 認証ダイアログが表示されますので、管理者ユーザーの資格情報を入力して [OK] ボタンをクリックします。
+1. インターネットに接続している任意のコンピューター上で PowerShell を起動します。
+2. 起動した PowerShell にて Connect-MgGraph コマンドを実行します。
+
+```
+Connect-MgGraph -Scopes "Organization.Read.All","User.ReadWrite.All"
+```
+
+※ 認証ダイアログが表示される場合は、管理者ユーザーの資格情報を入力して [OK] ボタンをクリックします。
 3. 下記のコマンドを実行します。
 
 ```
@@ -101,9 +106,14 @@ UserPrincipalName     : test12127@m365x61971868.onmicrosoft.com
 - オンプレミス AD 側: objectGUID
 - Azure AD 側: ImmutableId
 
-1. インターネットに接続している任意のコンピューター上で "Windows PowerShell 用 Windows Azure Active Directory モジュール" を管理者として実行します。
-2. 起動した PowerShell にて Connect-MsolService コマンドを実行します。
-  ※認証ダイアログが表示されますので、管理者ユーザーの資格情報を入力して [OK] ボタンをクリックします。
+1. インターネットに接続している任意のコンピューター上で PowerShell を起動します。
+2. 起動した PowerShell にて Connect-MgGraph コマンドを実行します。
+
+```
+Connect-MgGraph -Scopes "Organization.Read.All","User.ReadWrite.All"
+```
+
+※ 認証ダイアログが表示される場合は、管理者ユーザーの資格情報を入力して [OK] ボタンをクリックします。
 3. 下記のコマンドを実行します。
 
 ```powershell
