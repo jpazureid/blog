@@ -1,10 +1,12 @@
 ---
-title: 使用状況と分析情報: 顧客 ID データの分析
+title: 使用状況と分析情報 - 顧客 ID データの分析
 date: 2024-08-07 09:00
 tags:
     - Azure AD
     - US Identity Blog
 ---
+
+# 使用状況と分析情報: 顧客 ID データの分析
 
 こんにちは、Azure Identity サポートチームの 張替 です。
 本記事は、2024 年 3 月 18 日に米国の Azure Active Directory Identity Blog で公開された [Cross-tenant access settings - Notes from the field](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/cross-tenant-access-settings-notes-from-the-field/ba-p/4081841) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
