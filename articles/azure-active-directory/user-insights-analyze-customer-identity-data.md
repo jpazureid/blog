@@ -9,7 +9,7 @@ tags:
 # 使用状況と分析情報: 顧客 ID データの分析
 
 こんにちは、Azure Identity サポートチームの 張替 です。
-本記事は、2024 年 3 月 18 日に米国の Azure Active Directory Identity Blog で公開された [Cross-tenant access settings - Notes from the field](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/cross-tenant-access-settings-notes-from-the-field/ba-p/4081841) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2024 年 6 月 25 日に米国の Azure Active Directory Identity Blog で公開された [User insights: Analyze customer identity data](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/user-insights-analyze-customer-identity-data/ba-p/3827373) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ---
 
