@@ -34,7 +34,7 @@ Microsoft の SSE ソリューションは、オンプレミスかクラウド�
 
 ### ID とネットワーク アクセスが独立して動作することによるセキュリティの抜け穴の排除
 
-Microsoft の SSE ソリューションでは、[ID ソリューションとネットワーク アクセス ソリューションが連携して動作します](https://sponsored.bloomberg.com/article/microsoft-security/Time-to-Break-the-Silos-Between-Identity-and-Network-Security)。これら別々の要素を統合することで、新たな脅威に直面する中で、お客様のセキュリティ担当チームが組織のセキュリティ態勢を強化可能となるのです。アプリケーションごとにどのツールが有効かを決めたり、ID チームとネットワーク チームが作成したポリシーをどのように橋渡しするかを決めたりする必要はもうありません。このソリューションにより、あらゆるアプリケーション、リソース、アクセス先に対して、管理しやすく、統一された ID 中心のアプローチでアクセスを保護することができます。複雑でバラバラなセキュリティ管理によってユーザーの生産性を犠牲にすることはありません。
+Microsoft の SSE ソリューションでは、[ID ソリューションとネットワーク アクセス ソリューションが連携して動作します](https://sponsored.bloomberg.com/article/microsoft-security/Time-to-Break-the-Silos-Between-Identity-and-Network-Security)。これら別々の要素を統合することで、新たな脅威に直面する中で、お客様のセキュリティ担当チームが組織のセキュリティ態勢を強化可能となるのです。アプリケーションごとにどのツールが有効かを決めたり、ID チームとネットワーク チームが作成したポリシーをどのように橋渡しするかを決めたりする必要はもうありません。このソリューションにより、あらゆるアプリケーション、リソース、アクセス先に対して、管理しやすく統一された ID 中心のアプローチでアクセスを保護することができます。複雑でバラバラなセキュリティ管理によってユーザーの生産性を犠牲にすることはありません。
 
 ### グローバル規模でアクセスをよりシンプルにしエンドユーザー体験を向上
 
@@ -56,7 +56,7 @@ Microsoft Entra Private Access は、ID を中心とした ZTNA ソリューシ�
 
 ### 従来の VPN を ID 中心の ZTNA ソリューションに置き換える
 
-Microsoft Entra Private Access を使用すると、[従来の VPN を簡単に廃止し](https://sponsored.bloomberg.com/article/microsoft-security/Its-Time-to-Move-Beyond-Traditional-VPNs)、ID 中心の ZTNA ソリューションにアップグレードが可能です。これにより、攻撃対象領域を減らしつつ、攻撃者の横展開を水平移動を軽減し、IT チームにとって不必要な運用の複雑さを取り除くことができます。従来の VPN とは異なり、Microsoft Entra Private Access は、リモートかローカルかを問わず、すべてのハイブリッド ユーザーにネットワークへの最小特権のアクセスを許可し、オンプレミスまたはクラウド上のレガシー アプリ、カスタム アプリ、最新のアプリ、またはプライベート アプリへのアクセスを保護します。
+Microsoft Entra Private Access を使用すると、[従来の VPN を簡単に廃止し](https://sponsored.bloomberg.com/article/microsoft-security/Its-Time-to-Move-Beyond-Traditional-VPNs)、ID 中心の ZTNA ソリューションにアップグレードが可能です。これにより、攻撃対象領域を減らしつつ、攻撃者の横展開を防ぎ、IT チームにとって不必要な運用の複雑さを取り除くことができます。従来の VPN とは異なり、Microsoft Entra Private Access は、リモートかローカルかを問わず、すべてのハイブリッド ユーザーにネットワークへの最小特権のアクセスを許可し、オンプレミスまたはクラウド上のレガシー アプリ、カスタム アプリ、最新のアプリ、またはプライベート アプリへのアクセスを保護します。
 
 ### すべてのプライベート リソースに条件付きアクセスを強制
 
@@ -74,7 +74,7 @@ Microsoft Entra Internet Access は、SaaS アプリケーションとインタ�
 
 ### インターネット上の脅威から組織を保護
 
-Microsoft Entra Internet Access は、企業のユーザーが望ましくないオンライン コンテンツにアクセスしないように制限する、堅牢な Web コンテンツ フィルタリング オプションを提供しています。[Web カテゴリ フィルタリング](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-web-content-filtering) を使用すると、法的責任、高帯域、生産性の損失、一般的なブラウジング、およびセキュリティの脅威 (マルウェア、危険な Web サイト、スパム サイトなど) のサイトを含む、事前に用意された [Web カテゴリ](https://learn.microsoft.com/ja-jp/entra/global-secure-access/reference-web-content-filtering-categories) に基づいて、インターネットの膨大な接続先を簡単に許可またはブロックすることができます。より詳細な制御を行うには、完全修飾ドメイン名 (FQDN) フィルタリングを使用して、特定のエンドポイントを許可またはブロックするポリシーを作成したり、Web カテゴリ ポリシーを上書きしたりすることも可能です。
+Microsoft Entra Internet Access は、企業のユーザーが望ましくないオンライン コンテンツにアクセスしないように制限する、堅牢な Web コンテンツ フィルタリング オプションを提供しています。[Web カテゴリ フィルタリング](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-web-content-filtering) を使用すると、法的責任、高帯域、生産性の損失、一般的なブラウジング、およびセキュリティの脅威 (マルウェア、危険な Web サイト、スパム サイトなど) のサイトを含む、事前に用意された [Web カテゴリ](https://learn.microsoft.com/ja-jp/entra/global-secure-access/reference-web-content-filtering-categories) に基づいて、インターネットの膨大な接続先を簡単に許可またはブロックすることができます。より詳細な制御を行うには、完全修飾ドメイン名 (FQDN) のフィルタリングを使用して、特定のエンドポイントを許可またはブロックするポリシーを作成したり、Web カテゴリ ポリシーを上書きしたりすることも可能です。
 
 ### 条件付きアクセスの豊富な機能をインターネット セキュリティに拡張
 
@@ -92,7 +92,7 @@ Microsoft Entra Internet Access は、企業のユーザーが望ましくない
 
 2024 年 7 月 31 日に開催予定の [Zero Trust spotlight](https://aka.ms/ZeroTrustWebcast) にぜひご登録ください。この会では、Microsoft の専門家によりこれらの発表についてより深く解説がなされる予定です。また製品の詳細ブログや、2024 年 8 月 14 日に開催予定の [Tech Accelerator での製品の詳細セッション](https://techcommunity.microsoft.com/t5/tech-community-live/microsoft-entra-suite-tech-accelerator/ec-p/4189272) にもご期待ください。これらのイベントでは、Microsoft の SSE ソリューションとその 2 つのコア製品である Microsoft Entra Private Access と Microsoft Entra Internet Access が、どのようにして組織のデジタル資産全体を保護していくかというそのアプローチをお見せできると存じます。
 
-Microsoft の営業担当者に連絡して試用版をぜひお試しいただき、Microsoft Entra Private Access と Microsoft Entra Internet Access にぜひ触れていただきたく思います。このソリューションをより良いものにするために、皆様のご意見をお聞かせください。
+Microsoft の営業担当者に連絡して試用版をお試しいただき、Microsoft Entra Private Access と Microsoft Entra Internet Access にぜひ触れていただきたく思います。このソリューションをより良いものにするために、皆様のご意見をお聞かせください。
 
-Sinead O'Donovan
+Sinead O'Donovan  
 Vice President of Product Management, Identity and Network Access at Microsoft
