@@ -10,7 +10,8 @@ tags:
 > 2022-10-03: 本記事の初版を投稿  
 > 2023-04-13: MSOL/AzureAD PowerShell の最新の非推奨情報を反映  
 > 2023-06-19: 非推奨の日程の延期情報を反映  
-> 2024-04-07: 非推奨のスケジュールのアップデートを反映 
+> 2024-04-07: 非推奨のスケジュールのアップデートを反映
+> 2024-08-14: 最新のアップデートについて更新しました 
 
 # MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要
 
@@ -18,7 +19,7 @@ tags:
 
 今回は、MSOnline (以降 MSOL) および Azure AD PowerShell の非推奨スケジュールについてご案内します。以前より、下記の弊社ブログにて、本内容については案内を行っていますが、情報のアップデートにより、複数の記事に分かれてしまうなどわかりにくくなっている状況でした。そこで今回は、現時点での最新情報と実施いただきたいこと、関連記事の URL などをまとめてご紹介します。
 
-## 最新情報 (2024/4/7 最終更新) のまとめ
+## 最新情報 (2024/8/14 最終更新) のまとめ
 
 ### MSOL / Azure AD PowerShell のライセンス割り当て関連のコマンド (2023/6/19 最終更新)
 
@@ -63,11 +64,11 @@ tags:
   </tbody>
 </table>
 
-### MSOL / Azure AD PowerShell のライセンス割り当て関連「以外」のコマンドについて (2024/4/7 最終更新) 
+### MSOL / Azure AD PowerShell のライセンス割り当て関連「以外」のコマンドについて (2024/8/14 最終更新) 
 
 ライセンス割り当てに関するコマンド以外 (例: Connect-MsolService や Get-AzureADUser など) は、**2024 年 3 月 30 日 をもって非推奨となりました**。当初 2023 年 6 月 30 日 に非推奨となる予定でしたが、まだ Microsoft Graph API や新しい PowerShell モジュールで利用できないコマンドがあるために、対応も含め非推奨の日が 2024 年 3 月 30 日まで延期されていました。 
 
-現在は MSOnline モジュール、AzureAD モジュールだけでなく、 AzureADPreview モジュールのコマンドも非推奨になりましたが、新しいコマンドの用意がなく引き続き以前のモジュールを利用しなければならないシナリオにおいて、コマンドの動作や今後の対応について多くお問い合わせをいただいております。今後は、MSOnline バージョン 1.1.166.0 (2017 年) 以降のみ、2025 年 3 月 30 日まで、重要なセキュリティ修正に対してのみサポートが提供されます。なお、1.1.166.0 より前のバージョンを使用すると、**2024 年 6 月 30 日以降にコマンドが動作しないなどの影響が発生する可能性がある** ためご注意ください。 
+現在は MSOnline モジュール、AzureAD モジュールだけでなく、 AzureADPreview モジュールのコマンドも非推奨になりましたが、新しいコマンドの用意がなく引き続き以前のモジュールを利用しなければならないシナリオにおいて、コマンドの動作や今後の対応について多くお問い合わせをいただいております。今後は、MSOnline バージョン 1.1.166.0 (2017 年) 以降のみ、2025 年 3 月 30 日まで、重要なセキュリティ修正に対してのみサポートが提供されます。なお、1.1.166.0 より前のバージョンを使用すると、**2024 年 6 月 30 日以降、数週間程度でコマンドが動作しなくなるため、現在はコマンドが利用できないといった影響が発生する** 点にご注意ください。 1.1.166.0 以前のモジュールはレガシー認証を利用しており、Microsoft Online サインイン アシスタント パッケージがインストールされていることが特徴です。これらのバージョンを利用している場合は、1.1.166.0 以降の新しいバージョンを利用し、可能な限り早めに新しいモジュール・コマンドに移行してください。
 
 対象となるコマンドは、Connect-MsolService や Get-AzureADUser コマンドだけでなく、 MSOL や AzureAD がつくコマンドすべてです。各モジュールのコマンド一覧は、下記公開情報にて紹介しています。
 
@@ -90,8 +91,8 @@ tags:
 1. 現在利用しているコマンドおよびスクリプトなどを確認する。[こちらの記事](https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/) をもとに、MSOL や Azure AD の PowerShell コマンドを利用していないか確認する。
 2. MS Online モジュールのバージョンを調べるために、Get-InstalledModule MSOnline  の PowerShell コマンドを実行する。 
 3. 古いバージョンを利用している場合は、MSOnline PowerShell の最新バージョン（1.1.183.81）に更新する。これにより、2024 年 6 月 30 日以降の影響を回避できます。 
-4. MSOL や Azure AD の PowerShell コマンドを利用している場合、[こちらの公開情報](https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0) にて対応するコマンドを探す。
-5. 2025 年 3 月 30 日までに、既存のスクリプトの書き換え、コマンドの置き換えを実施し、新しいモジュールで動作するよう修正する。
+4. MSOL や Azure AD の PowerShell コマンドを利用している場合、[こちらの公開情報](https://docs.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map?view=graph-powershell-1.0) にて対応するコマンドを探す。[Find-MgGraphCommand コマンド](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/find-mg-graph-command?view=graph-powershell-1.0) などを利用してコマンドを探す方法などもあります。
+5. 2025 年 3 月 30 日までに、既存のスクリプトの書き換え、コマンドの置き換えを実施し、新しいモジュールで動作するよう修正する。もしくは、[Microsoft Entra PowerShell](https://jpazureid.github.io/blog/azure-active-directory/introducing-entra-powershell/) を活用し、以前のコマンドをそのまま実行できるような形に置き換える。
 6. 利用中の MSOL や Azure AD コマンドの置き換えとなるものが見つからない、想定したように動作しない場合はマイクロソフト サポートに問い合わせる。
 
 ##  本廃止に関する弊社ブログ記事リンク
@@ -102,7 +103,10 @@ tags:
 - [Azure AD の変更管理を簡素化します](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/)  
 - [Microsoft Entra の変更管理のアナウンス (2022 年 9 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-September-2022-train/#Azure-AD%E3%80%81Azure-AD-Preview%E3%80%81MSOnline-PowerShell-%E3%81%AE%E5%BB%83%E6%AD%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 - [Microsoft Entra の変更のアナウンス (2023 年 3 月の状況)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-change-announcements-march-2023-train/)  
-- [重要 - Azure AD Graph の廃止と PowerShell モジュールの非推奨](https://jpazureid.github.io/blog/azure-active-directory/important-azure-ad-graph-retirement-and-powershell-module/)  
+- [重要 - Azure AD Graph の廃止と PowerShell モジュールの非推奨](https://jpazureid.github.io/blog/azure-active-directory/important-azure-ad-graph-retirement-and-powershell-module/)
+- [重要なお知らせ: Azure AD PowerShell および MSOnline PowerShell モジュールの廃止](https://jpazureid.github.io/blog/azure-active-directory/important-update-deprecation-of-azure-ad-powershell-and-msonline/)
+- [Microsoft Entra の更新情報 (2024 年 4 月)](https://jpazureid.github.io/blog/azure-active-directory/what-s-new-in-microsoft-entra-2024-04/)
+- [Microsoft Entra の新機能 – 2024年6月](https://jpazureid.github.io/blog/azure-active-directory/whats-new-in-microsoft-entra%E2%80%93june2024/)
 
 ### 既存モジュール使用状況について
 
@@ -122,3 +126,10 @@ tags:
 
 - [MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 4_ユーザー管理](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/)
 - [MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/)
+- [Microsoft Graph PowerShell SDK への移行について 6_ロール割り当て](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement6/)
+
+### Microsoft Entra PowerShell について
+- [Microsoft Entra PowerShell の紹介](https://jpazureid.github.io/blog/azure-active-directory/introducing-entra-powershell/)
+
+### よくある質問
+- [Azure AD Graph から Microsoft Graph への移行に関する FAQ](https://learn.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-faq)
