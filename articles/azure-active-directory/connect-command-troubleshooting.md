@@ -1,56 +1,52 @@
 ---
-title: "Microsoft Entra ID 認証コマンドのトラブルシューティングガイド"
+title: "Microsoft Entra ID 認証コマンドのトラブルシューティング ガイド"
 date: 2024-8-19
 ---
 
-# Microsoft Entra ID 認証コマンドのトラブルシューティングガイド
+# Microsoft Entra ID 認証コマンドのトラブルシューティング ガイド
 
 こんにちは。Azure & Identity サポート チームの栗井です。
 
-Microsoft Azure の各種リソース操作や情報取得を行う方法として、多くのお客様に、各種 PowerShell モジュール (Azure PowerShell, Microsoft Graph PowerShell SDK、Azure CLI etc...) をご利用いただいてます！
-
-本記事では、各種認証用コマンド (az login、Connect-AzAccount、Connect-MgGraph) の実行に失敗する際のトラブルシューティング Tips をご紹介します。
+Microsoft Azure の各種リソース操作や情報取得を行う方法として、多くのお客様に、各種 PowerShell モジュール (Azure PowerShell, Microsoft Graph PowerShell SDK、Azure CLI etc...) をご利用いただいてます！本記事では、各種認証用コマンド (az login、Connect-AzAccount、Connect-MgGraph) の実行に失敗する際のトラブルシューティング Tips をご紹介します。
 
 - [az login (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/cli/azure/authenticate-azure-cli)
-
 - [Connect-AzAccount (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/powershell/module/az.accounts/connect-azaccount)
-
 - [Connect-MgGraph (learn.microsoft.com)](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.authentication/connect-mggraph)
 
+以下では最初に、これらモジュールの扱いと弊社技術サポートからの支援範囲についてお知らせし、そのあと Tips をおまとめいたします。
 
-## Azure CLI、Azure PowerShell、Microsoft Graph PowerShell SDK は オープンソース プロジェクト です
+## Azure CLI、Azure PowerShell、Microsoft Graph PowerShell SDK の扱い
 
 いずれのモジュールもオープンソース プロジェクトとして、Github Community による継続的な開発・改良が重ねられ、新しいバージョンがリリースされています。
 
 - [Microsoft Azure PowerShell (github.com)](https://github.com/Azure/azure-powershell) / [issues](https://github.com/Azure/azure-powershell/issues)
-    - [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/Azure/azure-powershell/issues/new/choose)
-
+- [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/Azure/azure-powershell/issues/new/choose)
 - [Microsoft Azure CLI (github.com)](https://github.com/Azure/azure-cli) / [issues](https://github.com/Azure/azure-cli/issues)
-    - [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/Azure/azure-cli/issues/new/choose)
-
+- [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/Azure/azure-cli/issues/new/choose)
 - [Powershell SDK for Microsoft Graph (github.com)](https://github.com/microsoftgraph/msgraph-sdk-powershell) / [issues](https://github.com/microsoftgraph/msgraph-sdk-powershell/issues)
 
+## 弊社技術サポートからの支援範囲
 
-### 弊社技術サポートからのご支援について
-コマンド実行時に発生する Microsoft Entra ID による認証処理については弊社サポートでの技術支援が可能です。
+コマンド実行時に発生する Microsoft Entra ID に対する認証処理の問題については弊社サポートでの技術支援が可能です。一方で、モジュール自体の動作や実装に依存するご質問、トラブルシューティングについては、これらのモジュールがオープンソース プロジェクトであるという性質上、支援ができかねる (もしくは支援範囲が限定的となる) 場合がございます。
 
-一方で、モジュール自体の動作や実装に依存するご質問・トラブルシューティングについては、オープンソース プロジェクトの性質上、ご支援ができかねる (もしくはご支援範囲が限定的となる) 場合がございます。
+支援ができかねる (支援範囲が限定的となる) 場合の例は以下のとおりです。
 
-#### (例)
-1. 公開情報 (learn.microsoft.com) 上に記載の無い、モジュールの実装・仕様に関する Q&A
-1. モジュール自体の動作起因と判断される事象のトラブルシューティング・調査
-1. モジュールの問題修正や機能改善を目的とした、実装変更のリクエスト
-1. GitHub issues 上での既知事例の調査
-1. GitHub 上で記載のある英語情報の翻訳・要約作業
-1. モジュールのソースコード解析
+1. 公開情報 (learn.microsoft.com) 上に記載の無い、モジュールの実装および仕様に関する Q&A
+2. モジュール自体の動作に問題がある判断される事象のトラブルシューティングおよび調査
+3. モジュールの問題修正や機能改善を目的とした実装変更のリクエスト
+4. GitHub issues 上での既知事例の調査
+5. GitHub 上で記載のある英語情報の翻訳や要約作業
+6. モジュールのソースコード解析や仕様確認
 
+弊社サポートでのご支援が困難と判断した際には、GitHub Community への相談 (issue 起票) へ誘導する場合がございますことを、予めご承知おきいただきますようお願いいたします。
 
-弊社サポートでのご支援が困難と判断した際には、GitHub Community へのご相談 (issue 起票) へのご誘導となる場合がございますこと、ご承知おきいただきますようお願いいたします。
+## 認証用コマンドのエラー時に考えられる原因
 
-## 認証コマンド失敗時に考えられる原因のパターン
+これらのモジュールが提供する認証用コマンドとしては、az login、Connect-AzAccount、Connect-MgGraph などがあります。順に考えられる原因を上げていきますのでご確認ください。
 
-### 考えられる原因 1. モジュールのバージョン依存
-各モジュールのリリース履歴は以下をご参照ください。
+### 考えられる原因 1. 古いモジュールのバージョンを利用している
+
+既存の不具合は、新しいバージョンで改修が行われます。古いバージョンをご利用の環境で事象が発生する場合は、最新バージョンへのアップグレードをお試しください。各モジュールのリリース履歴は以下をご参照ください。
 
 - Azure CLI: [Azure CLI リリース ノート (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/cli/azure/release-notes-azure-cli)
 - Azure PowerShell:
@@ -59,86 +55,75 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
     - [Az.Accounts (powershellgallery.com)](https://www.powershellgallery.com/packages/Az.Accounts)
 - Microsoft Graph PowerShell: [Microsoft.Graph (powershellgallery.com)](https://www.powershellgallery.com/packages/Microsoft.Graph/)
 
+反対に、最新バージョンの動作に何らかの不具合がある場合も考えられます。問題が発生し始めた時期とバージョン アップのタイミングが合致している場合は、以前のバージョンへの切り戻しによる動作確認が有効な切り分けとなりますのでお試しください。
 
-既存の不具合は、新しいバージョンで改修が行われます。古いバージョンをご利用の環境で事象が発生する場合は、最新バージョンへのアップグレードをお試しください。
+### 考えられる原因 2. Microsoft Entra 側で認証処理が失敗している
 
-反対に、最新バージョンの動作に何らかの不具合がある場合も考えられます。問題が発生し始めた時期とバージョン アップのタイミングが合致している場合は、以前のバージョンへの切り戻しによる動作確認が有効な切り分けとなります。
-
-
-### 考えられる原因 2. 認証処理の失敗
-いずれのモジュールも、Microsoft Entra ID による認証処理が行われます。そのため、例えばユーザー認証やサービスプリンシパル認証の処理が失敗している場合には、コマンドの実行も失敗します。
-
-
-認証処理が正常に行われているかどうかは、Microsoft Entra ID のサインイン ログから確認します。
+いずれのモジュールも、Microsoft Entra ID による認証処理が行われます。そのため、例えばユーザー認証やサービス プリンシパル認証の処理が失敗している場合には、コマンドの実行も失敗します。Microsoft Entra として認証処理が正常に完了しているかどうかは、Microsoft Entra ID のサインイン ログから確認します。
 
 - 該当画面: [Azure ポータル > Microsoft Entra ID > サインイン ログ](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/SignIns)
 
 認証コマンドに失敗した時刻近辺で出力されているサインイン ログを確認します。
 
-- [成功] の出力が出ている場合: Microsoft Entra ID による 認証処理は自体成功しています。認証処完了後の、コマンド側の処理で何らかの失敗が発生している可能性が考えられます。
-- [失敗] の出力が出ている場合: Microsoft Entra ID による 認証処理が失敗しているため、サインイン ログのエラー内容に応じて対処します。
-- そもそもサインイン ログ自体が出力されていない: Microsoft Entra ID による認証処理が開始する以前の段階で、何らかの失敗が発生していることが考えられます。
-    - (例): クライアントと Microsoft Entra ID 間の通信に問題があり、認証要求が Microsoft Entra ID に到達していない。
-    - (例): 認証先の Microsoft Entra ID テナントに誤りがあり、別テナントに対しての認証試行が発生している (= 別テナントにサインイン ログが記録されている)
-    - (例): PowerShell 側での処理が認証処理開始前の段階で失敗している。
+- サインイン ログに [成功] の出力が出ている場合: Microsoft Entra ID による認証処理は自体成功しています。クライアントの画面上でエラーが表示されている場合は、認証処完了後のコマンド側の処理で何らかの処理が失敗している可能性が考えられます。
+- サインイン ログに [失敗] の出力が出ている場合: Microsoft Entra ID による認証処理が失敗しているため、サインイン ログのエラー内容に応じて対処します。
+- サインイン ログにログが出力されていない場合: Microsoft Entra ID による認証処理が開始する以前の段階で、何らかの失敗が発生していることが考えられます。
 
+3 つ目のサインイン ログにログが出力されていない場合は、以下のような要因が考えられます。
 
+- クライアントと Microsoft Entra ID 間の通信に問題があり、認証要求が Microsoft Entra ID に到達していない。
+- 認証先の Microsoft Entra ID テナントに誤りがあり、別テナントに対しての認証試行が発生している (= 別テナントにサインイン ログが記録されている)。
+- PowerShell 側での処理が認証処理の開始前の段階で失敗している。
 
-### 考えられる原因 3. ネットワークの問題
-コマンド実行時に発生するインターネット宛の通信に何らかの問題があり、コマンドの実行に失敗するパターンです。
+### 考えられる原因 3. ネットワークに問題がある
 
-要因としては様々なものが考えられますが、最もよくあるシナリオは、 **クライアントからインターネット宛の通信にプロキシを利用し、プロキシ側でアクセス可能な URLを制限している**ケースです。この場合、プロキシを利用せずにインターネットへのダイレクト接続が可能なネットワーク環境でコマンドを実行し、事象が解消されるかどうかを試しましょう。
+コマンド実行時に発生するインターネット宛の通信に何らかの問題があり、コマンドの実行に失敗するパターンです。認証要求が Microsoft Entra ID に到達していないため、Microsoft Entra ID のサインイン ログに記録が残りません。
 
-プロキシ側で、コマンド実行時に何らかの URL へのアクセスがブロックされていないかどうか、プロキシ側で記録されるログを確認することも有効です。
+要因としては様々なものが考えられますが、最もよくあるシナリオは、 **クライアントからインターネット宛の通信にプロキシを利用し、プロキシ側でアクセス可能な URL を制限している** ケースです。この場合、プロキシを利用せずにインターネットへのダイレクト接続が可能なネットワーク環境でコマンドを実行し、事象が解消されるかどうかを試しましょう。プロキシ側でコマンド実行時に何らかの URL へのアクセスがブロックされていないかどうか、プロキシ側で記録されるログを確認することも有効です。
 
+### 考えられる原因 4. その他の理由で失敗している
 
-### 考えられる原因 4. その他
-多くのパターンでは上記 1 ～ 3 のいずれかが該当しますが、その他の原因によってコマンドが失敗する場合もあります。
-
-上述の通り、いずれのモジュールも OSS として Github Community による開発が行われているため、GitHub issues より事例を検索できます。
-
-事例が無い場合は、issue を Open することでコミュニティに相談することも可能です。
+多くのパターンでは上記 1 ～ 3 のいずれかが該当しますが、その他の原因によってコマンドが失敗する場合もあります。この場合は、上述のとおり、いずれのモジュールも OSS として Github Community による開発が行われているため、GitHub issues より事例を検索ください。事例が無い場合は、issue を Open することでコミュニティに相談することも可能です。
 
 - [Microsoft Azure PowerShell | issues (github.com)](https://github.com/Azure/azure-powershell/issues)
-
 - [Microsoft Azure CLI | issues (github.com)](https://github.com/Azure/azure-cli/issues)
-
 - [Powershell SDK for Microsoft Graph |issues (github.com)](https://github.com/microsoftgraph/msgraph-sdk-powershell/issues)
 
+## デバッグ ログを活用しよう
 
+いずれの認証用コマンドにも、デバッグ用のオプションがあります。認証用コマンドの実行時にエラーが出て予期せず認証処理が失敗する場合、このデバッグ出力を確認することが有効です。それぞれ以下のようにして出力が可能です。
 
-### デバッグ ログを活用しよう
-いずれのコマンドも、デバッグ専用のオプションがあります。デバッグ ログに出力される内容は、問題の切り分けと調査に有効です。
+Azure CLI  の場合:
 
-- Azure CLI  の場合
-    ```powershell
-    az login --debug
-    ```
+```powershell
+az login --debug
+```
 
-- Azure PowerShell の場合
-    ```powershell
-    Connect-AzAccount -Debug
-    ```
+Azure PowerShell の場合:
 
-- Microsoft Graph PowerShell の場合
-    ```powershell
-    Connect-MgGraph -Debug
-    ```
+```powershell
+Connect-AzAccount -Debug
+```
+
+Microsoft Graph PowerShell の場合:
+
+```powershell
+Connect-MgGraph -Debug
+```
     
 デバッグ ログより、以下のような内容が判明する場合があります。
+
 - 上記の [考えられる原因 1 ～ 3] の該当有無
-- 認証処理に失敗している場合、Microsoft Entra ID のエラーコード・エラー文面
+- Entra ID 側での認証に失敗している場合は Microsoft Entra ID のエラーコードやエラー文面
 - 各 URL に対しての HTTP 接続試行のログとその結果 (200 OK、400 Bad Request など)
 - (.NET ベースのモジュールの場合) .NET のエラー
-
-
 
 ## 事象調査にあたって有用な情報採取
 
 弊社サポートより認証コマンド失敗のトラブルシューティング調査を行う際は、事象発生環境における以下の情報採取を依頼する場合がございます。
 
 1. 事象発生時のネットワーク パケット
-1. デバッグオプションを有効化した状態でのコマンド実行結果
+1. デバッグ オプションを有効化した状態でのコマンド実行結果
 
 お問い合わせ起票時にこれらの情報を提供いただけましたら、スムーズなご支援開始が可能です。以下にて採取手順をご紹介します。
 
