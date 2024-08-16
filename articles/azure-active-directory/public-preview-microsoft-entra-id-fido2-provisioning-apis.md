@@ -7,7 +7,7 @@ tags:
 
 こんにちは、Azure Identity サポート チームの 高田 です。
 
-本記事は、2024 年 8 月 7 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Public preview: Microsoft Entra ID FIDO2 provisioning APIs]([https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-security-service-edge-now-generally-available/ba-p/3847828](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/public-preview-microsoft-entra-id-fido2-provisioning-apis/ba-p/4062699)) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
+本記事は、2024 年 8 月 7 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Public preview: Microsoft Entra ID FIDO2 provisioning APIs](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/public-preview-microsoft-entra-id-fido2-provisioning-apis/ba-p/4062699) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
 
