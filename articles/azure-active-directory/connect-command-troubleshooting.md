@@ -48,7 +48,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 
 ## 認証用コマンドのエラー時に考えられる原因
 
-これらのモジュールが提供する認証用コマンドとしては、az login、Connect-AzAccount、Connect-MgGraph などがあります。順に考えられるエラーの原因を挙げていいきますのでご確認ください。
+これらのモジュールが提供する認証用コマンドとしては、az login、Connect-AzAccount、Connect-MgGraph などがあります。順に考えられるエラーの原因を挙げていきますのでご確認ください。
 
 ### 考えられる原因 1. 古いモジュールのバージョンを利用している
 
@@ -157,9 +157,9 @@ HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exc
 Certificate verification failed. This typically happens when using Azure CLI behind a proxy that intercepts traffic with a self-signed certificate. Please add this certificate to the trusted CA bundle. More info: https://docs.microsoft.com/cli/azure/use-cli-effectively#work-behind-a-proxy.
 ```
 
-このエラーの原因は、Azure CLI によるプロキシの TLS 証明書の検証失敗です。Azuer CLI は Windows の既定の証明書ストアではなく、環境変数 REQUESTS_CA_BUNDLE が指す .pem ファイルを参照して証明書を検証します。.pem ファイル内にプロキシが使用する TLS 証明書のルート証明書が含まれない場合、TLSL セッションの確立に失敗してコマンドが失敗します。
+このエラーの原因は、Azure CLI によるプロキシの TLS 証明書の検証失敗です。Azuer CLI は Windows の既定の証明書ストアではなく、環境変数 REQUESTS_CA_BUNDLE が指す .pem ファイルを参照して証明書を検証します。.pem ファイル内にプロキシが使用する TLS 証明書のルート証明書が含まれない場合、TLS セッションの確立に失敗してコマンドが失敗します。
 
-[Error: SSLError "bad handshake...certificate verify failed" (Proxy blocks connection)](https://learn.microsoft.com/ja-jp/cli/azure/use-azure-cli-successfully-troubleshooting#error-sslerror-bad-handshakecertificate-verify-failed-proxy-blocks-connection)
+[プロキシの背後での処理 (learn.microsoft.com)](https://learn.microsoft.com/ja-jp/cli/azure/use-azure-cli-successfully-troubleshooting#work-behind-a-proxy)
 
 上記公開情報に記載のとおり、.pem ファイルをご自身で作成いただき、REQUESTS_CA_BUNDLE にそのパスを設定することが有効な対処策です。もしくは別の手段として、既定で参照される .pem ファイル (ファイル パスは上記公開情報を参照) にプロキシが使用する TLS 証明書のルート証明書情報 (Base64 形式) を追記することも有効です。この方法では、既存の .pem ファイルに含まれる CA 証明書情報を引き継いだまま、プロキシの TLS 証明書の検証も可能となります。
 
@@ -201,6 +201,8 @@ Connect-MgGraph -TenantId "YOUR_TENANT_ID"
 ```
 
 ### 認証キャッシュによる影響
+
+該当モジュール: Azure CLI、Azure PowerShell、Microsoft Graph PowerShell 
 
 以前にモジュールを利用した際の認証キャッシュが残存することで、認証コマンドの実行に影響を及ぼす場合があります。認証時の挙動が不安定な場合は認証キャッシュの削除が有効です。
 
