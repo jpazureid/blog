@@ -29,7 +29,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
     - [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/Azure/azure-cli/issues/new/choose)
 - [Powershell SDK for Microsoft Graph (github.com)](https://github.com/microsoftgraph/msgraph-sdk-powershell)
     - [issues](https://github.com/microsoftgraph/msgraph-sdk-powershell/issues)
-    - [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/microsoftgraph/msgraph-sdk-powershell/issues/new/choose))
+    - [Feedback 専用フォーム (バグ報告、機能のリクエスト など)](https://github.com/microsoftgraph/msgraph-sdk-powershell/issues/new/choose)
 
 ## 弊社技術サポートからの支援範囲
 
@@ -85,7 +85,7 @@ Microsoft Azure の各種リソース操作や情報取得を行う方法とし�
 
 コマンド実行時に発生するインターネット宛の通信に何らかの問題があり、コマンドの実行に失敗するパターンです。認証要求が Microsoft Entra ID に到達していないため、Microsoft Entra ID のサインイン ログに記録が残りません。
 
-要因としては様々なものが考えられますが、最もよくあるシナリオは、 **クライアントからインターネット宛の通信にプロキシを利用し、プロキシ側でアクセス可能な URL を制限している** ケースです。この場合、プロキシを利用せずにインターネットへのダイレクト接続が可能なネットワーク環境でコマンドを実行し、事象が解消されるかどうかを試しましょう。プロキシ側でコマンド実行時に何らかの URL へのアクセスがブロックされていないかどうか、プロキシ側で記録されるログを確認することも有効です。
+要因としては様々なものが考えられますが、最もよくあるシナリオは、 **クライアントからインターネット宛の通信にプロキシを利用し、プロキシ側でアクセス可能な URL を制限している** ケースです。この場合、プロキシを利用せずにインターネットへのダイレクト接続が可能なネットワーク環境でコマンドを実行し、事象が解消されるかどうかお試しください。プロキシ側でコマンド実行時に何らかの URL へのアクセスがブロックされていないかどうか、プロキシ側で記録されるログを確認することも有効です。
 
 ### 考えられる原因 4. その他の理由で失敗している
 
