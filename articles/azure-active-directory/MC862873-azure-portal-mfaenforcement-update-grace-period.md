@@ -140,20 +140,20 @@ Microsoft Entra ID のグローバル管理者であったとしても、サブ�
 #### Q. Azure CLI についても延長できますか？
 
 A.
-今回申請では、以下の "フェーズ 1" の適用に対して延長を申し込むことができます。
+今回の申請では、以下の "フェーズ 1" の適用に対して延長を申し込むことができます。
 
 [必須の Microsoft Entra 多要素認証 (MFA) - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-mandatory-multifactor-authentication)
 >フェーズ 1: 2024 年後半以降、MFA は Azure portal、Microsoft Entra 管理センター、および Microsoft Intune 管理センターにサインインするのに必要になります。 適用は、世界中のすべてのテナントに徐々に実施されます。 
 >このフェーズは、Azure CLI、Azure PowerShell、Azure mobile app、IaC ツールなどの他の Azure クライアントには影響しません。 
 
-公開情報の適用範囲の表に記載されている実施段階が "2024 年後半" となっている以下のアプリケーション (Web サイト) に対する適用を延長できます。
-以下のアプリケーション以外の弊社が提供するサイトなどへのアクセスは適用範囲外となります。
+公開情報の "適用範囲" の表に記載されている実施段階が "2024 年後半" となっている以下のアプリケーション (Web サイト) に対する MFA の強制化を延長できます。  
+以下のアプリケーション以外の弊社が提供するサイトなどへのアクセスは MFA 強制化の適用範囲外となります。
 
 - Azure Portal (https://portal.azure.com/)
 - Microsoft Entra 管理センター (https://entra.microsoft.com/)
 - Microsoft Intune 管理センター (https://intune.microsoft.com/)
 
-フェーズ 2 である Azure CLI などに対する適用の延長申請に関しては今後の情報をお待ちください。
+フェーズ 2 である Azure CLI などに対する適用の延長申請は現時点では予定しておりません。
 
 #### Q. Microsoft Graph API PowerShell や SharePoint Online, Teams などの管理用 PowerShell コマンドの利用は今回の対象になりますか。また、他のアプリケーションへの利用も影響はありますか。
 
