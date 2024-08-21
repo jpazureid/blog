@@ -23,8 +23,8 @@ Azure ポータルにおける通知の場合、以下の表記を確認しま�
 
 グローバル管理者へのメールは以下のいずれかのタイトルで通知される予定です。
 
-    対応が必要: 2024 年 10 月 15 日までにテナントの多要素認証を有効にする  
-    Action required: Enable multifactor authentication for your tenant by 15 October 2024
+- 対応が必要: 2024 年 10 月 15 日までにテナントの多要素認証を有効にする  
+- Action required: Enable multifactor authentication for your tenant by 15 October 2024
 
 適用対象の詳細と延長申請について追加の情報がございますので、このブログでも内容を補足いたします。
 まずは、メッセージ センターで通知した MC862873 の内容について抄訳したものを以下に記載いたします。
@@ -73,10 +73,8 @@ Azure ポータルにおける通知の場合、以下の表記を確認しま�
 - [管理] 内にある [プロパティ] の項目を選択します
 - 以下の設定にて "はい" に設定して、[保存] を選択します
 
-```
-Azure リソースのアクセス管理  
-<アクセスしているユーザーの表示名>は、このテナント内のすべての Azure サブスクリプションおよび管理グループへのアクセスを管理できます。
-```
+>Azure リソースのアクセス管理  
+><アクセスしているユーザーの表示名>は、このテナント内のすべての Azure サブスクリプションおよび管理グループへのアクセスを管理できます。
 
 ![](./MC862873-azure-portal-mfaenforcement-update-grace-period/portal2.png)
 
@@ -108,10 +106,8 @@ https://aka.ms/managemfaforazure
 - [管理] 内にある [プロパティ] の項目を選択します
 - 以下の設定にて "いいえ" に設定して、[保存] を選択します
 
-```
-Azure リソースのアクセス管理  
-<アクセスしているユーザーの表示名>は、このテナント内のすべての Azure サブスクリプションおよび管理グループへのアクセスを管理できます。
-```
+>Azure リソースのアクセス管理  
+><アクセスしているユーザーの表示名>は、このテナント内のすべての Azure サブスクリプションおよび管理グループへのアクセスを管理できます。
 
 以上で申請は完了となります。
 
@@ -135,6 +131,8 @@ Microsoft Entra ID のグローバル管理者であったとしても、サブ�
 今回の延長申請では、この権限の昇格を必要なものとしており、申請を行う場合は事前に操作ください。
 なお、申請後は昇格された権限を削除いただいても構いません。申請後のアカウントの状態を確認することはありません。
 
+Entra ID と Azure サブスクリプションの関係につきましては以下のブログをご参考ください。
+
 [Azure サブスクリプションと Azure AD の管理者 | Japan Azure Identity Support Blog (jpazureid.github.io)](https://jpazureid.github.io/blog/azure-active-directory/subscription-azure-ad-relationship/)
 
 #### Q. Azure CLI についても延長できますか？
@@ -147,13 +145,13 @@ A.
 >このフェーズは、Azure CLI、Azure PowerShell、Azure mobile app、IaC ツールなどの他の Azure クライアントには影響しません。 
 
 公開情報の "適用範囲" の表に記載されている実施段階が "2024 年後半" となっている以下のアプリケーション (Web サイト) に対する MFA の強制化を延長できます。  
-以下のアプリケーション以外の弊社が提供するサイトなどへのアクセスは MFA 強制化の適用範囲外となります。
+以下のアプリケーション以外の弊社が提供するサイトなどへのアクセスは、本通知における MFA 義務付けの適用範囲外となります。
 
 - Azure Portal (https://portal.azure.com/)
 - Microsoft Entra 管理センター (https://entra.microsoft.com/)
 - Microsoft Intune 管理センター (https://intune.microsoft.com/)
 
-フェーズ 2 である Azure CLI などに対する適用の延長申請は現時点では予定しておりません。
+フェーズ 2 である Azure CLI などに対する適用の延長申請に関しては今後の情報をお待ちください。
 
 #### Q. Microsoft Graph API PowerShell や SharePoint Online, Teams などの管理用 PowerShell コマンドの利用は今回の対象になりますか。また、他のアプリケーションへの利用も影響はありますか。
 
