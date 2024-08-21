@@ -19,7 +19,7 @@ Microsoft では [Secure Future Initiative](https://www.microsoft.com/en/microso
 2024 年 8 月 15 日には、グローバル管理者へのメール、Microsoft 365 管理センターのメッセージ センターおよび Azure ポータルでの通知を開始いたしました。
 Azure ポータルにおける通知の場合、以下の表記を確認します。
 
-![](./MC862873-azure-portal-mfaenforcement-update-grace-period/portal1.png)
+![](./MC862873-azure-portal-mfaenforcement-update-grace-period/portal1-1.png)
 
 グローバル管理者へのメールは以下のいずれかのタイトルで通知される予定です。
 
