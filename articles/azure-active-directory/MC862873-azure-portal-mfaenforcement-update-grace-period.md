@@ -19,7 +19,7 @@ Microsoft では [Secure Future Initiative](https://www.microsoft.com/en/microso
 2024 年 8 月 15 日には、グローバル管理者へのメール、Microsoft 365 管理センターのメッセージ センターおよび Azure ポータルでの通知を開始いたしました。
 Azure ポータルにおける通知の場合、以下の表記を確認します。
 
-![](./MC862873-azure-portal-mfaenforcement-update-grace-period/portal1-1.png)
+![](./MC862873-azure-portal-mfaenforcement-update-grace-period/portal1-2.png)
 
 グローバル管理者へのメールは以下のいずれかのタイトルで通知される予定です。
 
@@ -82,7 +82,7 @@ Azure リソースのアクセス管理
 
 ### b. 延長申請
 
-- 先ほどの権限を昇格したアカウントにて以下の URL にアクセスください。
+- 先ほどの権限を昇格したアカウントにて以下の URL にアクセスください
 
 https://aka.ms/managemfaforazure
 
@@ -100,8 +100,8 @@ https://aka.ms/managemfaforazure
 
 ### c. 昇格した権限を削除します
 
-申請後、Azure サブスクリプションに対する権限が昇格された状態は不要であるため、削除することを検討ください
-以下の手順で昇格された状態を切り戻します
+申請後、Azure サブスクリプションに対する権限が昇格された状態は不要であるため、削除することを検討ください。
+以下の手順で昇格された状態を切り戻します。
 
 - Azure Portal (https://portal.azure.com/) にアクセスします
 - [Microsoft Entra ID] の項目を選択します
