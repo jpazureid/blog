@@ -13,6 +13,7 @@ tags:
 
 今年の始めに、Microsoft Entra Verified ID による顔チェックのパブリック プレビュー ([Face Check in Microsoft Entra Verified ID is now in preview | Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/2024/02/06/microsoft-entra-verified-id-introduces-face-check-in-preview/?culture=en-us&country=us)) を発表しました。この機能は、プライバシーを尊重した信頼性の高い本人確認用顔照合機能であり、Microsoft Entra Verified ID の最初のプレミアム機能です。本日、Microsoft Entra Verified ID での顔チェック ([Face Check with Microsoft Entra Verified ID](https://aka.ms/VerifyOnce)) の一般提供を開始したことを発表できることを嬉しく思います。
 この顔チェックの機能は、ネットワーク アクセス、ID 保護、ガバナンス、ID 検証機能を組み合わせてゼロ トラスト アクセスを提供する完全な ID ソリューションである Microsoft Entra Suite の一部としても、単体でも提供されます。
+
 ![図 1](./face-check-is-now-generally-available/face-check-is-now-generally-available1.png)
 
  
