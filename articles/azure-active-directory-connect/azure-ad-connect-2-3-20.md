@@ -2,7 +2,7 @@
 title: Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する際の対応方法について
 date: 2024-09-18 12:00
 tags:
-  - Microsoft Entra
+  - Microsoft Entra ID
   - Microsoft Entra Connect
   - TLS 1.2
 ---
