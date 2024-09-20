@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する際の対応方法について | Japan Azure Identity Support Blog</title>
+  <title>Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する際の対応方法 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure &amp; Identity サポート チームの野呂です。Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する、またはアップグレード後に同期に失敗するお問い合わせを多数お寄せいただいております。本記事では、これらの一般的な原因と対処方法をご紹介します。 事象についてMicrosoft Entra Connect 2.3.20">
+  <meta name="description" content="こんにちは、Azure &amp; Identity サポート チームの野呂です。弊社サポートチームでは、特定の環境において Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する、またはアップグレード後に同期に失敗するお問い合わせを多数お寄せいただいております。本記事では、これらの一般的な原因と対処方法をご紹介します。 事象の概要Microso">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する際の対応方法について">
+<meta property="og:title" content="Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する際の対応方法">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの野呂です。Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する、またはアップグレード後に同期に失敗するお問い合わせを多数お寄せいただいております。本記事では、これらの一般的な原因と対処方法をご紹介します。 事象についてMicrosoft Entra Connect 2.3.20">
+<meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの野呂です。弊社サポートチームでは、特定の環境において Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する、またはアップグレード後に同期に失敗するお問い合わせを多数お寄せいただいております。本記事では、これらの一般的な原因と対処方法をご紹介します。 事象の概要Microso">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/MEC_InstallError.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/MEC_UpgradeError.jpg">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/TLS12_Disabled.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/TLS12_Enabled.png">
 <meta property="article:published_time" content="2024-09-18T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-20T03:17:08.333Z">
+<meta property="article:modified_time" content="2024-09-20T17:55:38.876Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="Microsoft Entra Connect">
@@ -99,7 +99,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する際の対応方法について
+      Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する際の対応方法
     </h1>
   
 
@@ -162,43 +162,39 @@
         
         
         
-        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e33fa74a-2cee-5e26-b28d-8d0636614fe2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+Connect+2.3.20+%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E5%AF%BE%E5%BF%9C%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fazure-ad-connect-2-3-20%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fazure-ad-connect-2-3-20.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fazure-ad-connect-2-3-20.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e33fa74a-2cee-5e26-b28d-8d0636614fe2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+Connect+2.3.20+%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%8A%E3%82%88%E3%81%B3%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E5%AF%BE%E5%BF%9C%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fazure-ad-connect-2-3-20%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fazure-ad-connect-2-3-20.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fazure-ad-connect-2-3-20.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/" data-id="cm1a5gtnb001g0npg5mbjf8z9" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/" data-id="cm1b0ulcl001g0nmi1ltefp96" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>こんにちは、Azure &amp; Identity サポート チームの野呂です。<br>Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する、またはアップグレード後に同期に失敗するお問い合わせを多数お寄せいただいております。<br>本記事では、これらの一般的な原因と対処方法をご紹介します。</p>
-<h2 id="事象について"><a href="#事象について" class="headerlink" title="事象について"></a>事象について</h2><p>Microsoft Entra Connect 2.3.20 のインストール・アップグレードを試みた際に、エラーが出力され、インストール・アップグレードに失敗します。<br>もしくは、インストール・アップグレードには成功しますが、その後の同期処理に失敗します。<br>以下に、問題が発生した場合に出力される可能性のあるエラー例をお伝えします。</p>
-<h3 id="インストール時・アップグレード時のエラー"><a href="#インストール時・アップグレード時のエラー" class="headerlink" title="インストール時・アップグレード時のエラー"></a>インストール時・アップグレード時のエラー</h3><p>インストールを試みた際に、インストール ウィザードの構成画面にて、”An error occurred executing Configure AAD Sync task: An error occurred while sending the request.” のエラーが表示されインストールに失敗する事象が確認されております。</p>
-<p>インストール時のエラー画面例：</p>
+        <p>こんにちは、Azure &amp; Identity サポート チームの野呂です。弊社サポートチームでは、特定の環境において Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する、またはアップグレード後に同期に失敗するお問い合わせを多数お寄せいただいております。本記事では、これらの一般的な原因と対処方法をご紹介します。</p>
+<h2 id="事象の概要"><a href="#事象の概要" class="headerlink" title="事象の概要"></a>事象の概要</h2><p>Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードを試みた際にエラーが出力され、インストールおよびアップグレードに失敗します。もしくは、インストールおよびアップグレードには成功しますが、その後の同期処理に失敗します。これは　Microsoft Entra Connect と Microsoft Entra ID の間で TLS 1.2 にて通信を行えていない事が原因です。以下に、問題が発生した場合に出力される可能性のあるエラー例をお伝えします。</p>
+<h3 id="インストール時およびアップグレード時のエラー"><a href="#インストール時およびアップグレード時のエラー" class="headerlink" title="インストール時およびアップグレード時のエラー"></a>インストール時およびアップグレード時のエラー</h3><p>インストールを試みた際に、インストール ウィザードの構成画面にて、”An error occurred executing Configure AAD Sync task: An error occurred while sending the request.” のエラーが表示されインストールに失敗する事象が確認されております。</p>
+<p>インストール時のエラー画面例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/MEC_InstallError.png"></p>
 <p>また、アップグレードを試みた際に、インストール ウィザードの資格情報入力画面にて、正しい権限を持つ有効なアカウントを入力したのにも関わらず、エラーが出力される事象が発生するとのお問い合わせを多数お寄せいただいております。</p>
-<p>アップグレード時のエラー画面例：</p>
+<p>アップグレード時のエラー画面例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/MEC_UpgradeError.jpg"></p>
 <h3 id="アップグレード後の同期エラー"><a href="#アップグレード後の同期エラー" class="headerlink" title="アップグレード後の同期エラー"></a>アップグレード後の同期エラー</h3><p>アップグレード以降の同期サイクルにおいて、Microsoft Entra ID のコネクタにおける Import 処理や Export 処理が、”no-start-ma” や “stopped-extension-dll-exeption”, “stopped-server” などが記録されて失敗する事象を確認しています。</p>
-<p>Synchronization Service Manager の例：</p>
+<p>Synchronization Service Manager の例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/SynchronizationServiceManager.png"></p>
-<p>システム イベント ログの例：</p>
+<p>システム イベント ログの例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/SystemEventLog.png"></p>
-<p>アプリケーション イベント ログの例：</p>
+<p>アプリケーション イベント ログの例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/ApplicationEventLog.png"></p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Microsoft Entra Connect と Microsoft Entra ID の間で TLS 1.2 にて通信を行えていない事がエラー発生の原因です。</p>
-<p>Microsoft Entra Connect のバージョン 1.2.65.0 以降では、 Microsoft Entra ID との通信に対して TLS 1.2 のみの使用が完全にサポートされております。<br>また、Microsoft Entra Connect 2.3.20 では、導入サーバーにて、レジストリに TLS 1.2 を登録して明示的に有効化することがインストールの要件となっております。</p>
-<h2 id="対応方法"><a href="#対応方法" class="headerlink" title="対応方法"></a>対応方法</h2><p>Microsoft Entra Connect 2.3.20 のインストール・アップグレードを行う前に、導入サーバーにて、レジストリに TLS 1.2 を有効化する値を登録して明示的に有効化する必要がございます。<br>以下に、TLS 1.2 のレジストリ登録状況の確認方法とTLS 1.2 のレジストリ登録方法を記載いたします。</p>
-<h3 id="TLS-1-2-のレジストリ登録状況の確認方法"><a href="#TLS-1-2-のレジストリ登録状況の確認方法" class="headerlink" title="TLS 1.2 のレジストリ登録状況の確認方法"></a>TLS 1.2 のレジストリ登録状況の確認方法</h3><ol>
-<li>Microsoft Entra Connect を導入するサーバーで PowerShell を管理者権限で開き、下記のドキュメントに記載された [TLS 1.2 をチェックするための PowerShell スクリプト] を実行し、TLS 1.2 のレジストリ登録状況を確認します。<br>(スクリプトを実行した結果、Value が Not Found となっている場合は、TLS 1.2 用のレジストリが構成されていないと判断可能です)<br>Title : Microsoft Entra Connect に対する TLS 1.2 の強制 | TLS 1.2 をチェックするための PowerShell スクリプト<br>URL : <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-tls-enforcement#powershell-script-to-check-tls-12">https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-tls-enforcement#powershell-script-to-check-tls-12</a></li>
-</ol>
-<p>TLS 1.2 が構成されていないことを示す出力の例：</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Microsoft Entra Connect と Microsoft Entra ID の間で TLS 1.2 にて通信を行えていない事がエラー発生の原因です。Microsoft Entra Connect のバージョン 1.2.65.0 以降では、 Microsoft Entra ID との通信に対して TLS 1.2 のみの使用が完全にサポートされております。また、Microsoft Entra Connect 2.3.20 では、導入サーバーにてレジストリにて TLS 1.2 を明示的に有効化することがインストールの要件となっております。</p>
+<h2 id="対応方法"><a href="#対応方法" class="headerlink" title="対応方法"></a>対応方法</h2><p>Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードを行う前に、導入サーバーにてレジストリに TLS 1.2 を有効化する値を登録して明示的に有効化する必要がございます。以下に、TLS 1.2 のレジストリ登録状況の確認方法と TLS 1.2 のレジストリ登録方法を記載いたします。</p>
+<h3 id="TLS-1-2-のレジストリ登録状況の確認方法"><a href="#TLS-1-2-のレジストリ登録状況の確認方法" class="headerlink" title="TLS 1.2 のレジストリ登録状況の確認方法"></a>TLS 1.2 のレジストリ登録状況の確認方法</h3><p>まず、Microsoft Entra Connect を導入するサーバーで PowerShell を管理者権限で開き、下記のドキュメントに記載された [TLS 1.2 をチェックするための PowerShell スクリプト] を実行し、TLS 1.2 のレジストリ登録状況を確認します (スクリプトを実行した結果、Value が Not Found となっている場合は、TLS 1.2 用のレジストリが構成されていないと判断可能です)。</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-tls-enforcement#powershell-script-to-check-tls-12">Microsoft Entra Connect に対する TLS 1.2 の強制 | TLS 1.2 をチェックするための PowerShell スクリプト</a></p>
+<p>TLS 1.2 が構成されていないことを示す出力の例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/TLS12_Disabled.png"></p>
-<p>適切な TLS 1.2 構成を示す出力の例：</p>
+<p>適切な TLS 1.2 構成を示す出力の例:</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/TLS12_Enabled.png"></p>
-<h3 id="TLS-1-2-のレジストリ登録方法"><a href="#TLS-1-2-のレジストリ登録方法" class="headerlink" title="TLS 1.2 のレジストリ登録方法"></a>TLS 1.2 のレジストリ登録方法</h3><ol>
-<li>下記のドキュメントに記載された [TLS 1.2 を有効にする PowerShell スクリプト] を実行し、レジストリに TLS 1.2 を登録して明示的に有効化します。<br>Title : Microsoft Entra Connect に対する TLS 1.2 の強制 | TLS 1.2 を有効にする PowerShell スクリプト<br>URL : <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-tls-enforcement#powershell-script-to-enable-tls-12">https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-tls-enforcement#powershell-script-to-enable-tls-12</a></li>
-<li>導入サーバーを再起動します。</li>
-</ol>
-<p>これらのレジストリを登録することにより、これまで .Net Framework アプリケーションが TLS 1.2 以外を用いて通信を行っていた場合には TLS 1.2 を用いて通信を行うようになります。<br>一般的には TLS 1.2 が推奨されており、 TLS 1.2 を用いて通信を行うことに問題はございませんが、もし問題が生じた際にはこれらのレジストリを削除頂いた上で、再度再起動頂くことで元の状態に戻すことが可能です。</p>
+<h3 id="TLS-1-2-のレジストリ登録方法"><a href="#TLS-1-2-のレジストリ登録方法" class="headerlink" title="TLS 1.2 のレジストリ登録方法"></a>TLS 1.2 のレジストリ登録方法</h3><p>まず、下記のドキュメントに記載された [TLS 1.2 を有効にする PowerShell スクリプト] を実行し、レジストリに TLS 1.2 を登録して明示的に有効化します。</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-tls-enforcement#powershell-script-to-enable-tls-12">Microsoft Entra Connect に対する TLS 1.2 の強制 | TLS 1.2 を有効にする PowerShell スクリプト</a></p>
+<p>次に、導入サーバーを再起動します。これらのレジストリを登録することにより、これまで .NET Framework アプリケーションが TLS 1.2 以外を用いて通信を行っていた場合には TLS 1.2 を用いて通信を行うようになります。一般的には TLS 1.2 が推奨されており、 TLS 1.2 を用いて通信を行うことに問題はございませんが、もし問題が生じた際にはこれらのレジストリを削除頂いた上で、再度再起動頂くことで元の状態に戻すことが可能です。</p>
 <p>TLS 1.2 のレジストリを設定後も同期が行えない、インストールが行えない場合には弊社サポートまでお問い合わせください。</p>
 
       
@@ -246,7 +242,7 @@
       <ul>
         
           <li>
-            <a href="">Microsoft Entra Connect 2.3.20 のインストール・アップグレードに失敗する際の対応方法について</a>
+            <a href="">Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する際の対応方法</a>
           </li>
         
           <li>
