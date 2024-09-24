@@ -105,13 +105,13 @@ a. b. はブラウザーを用いて情報が確認できましたが、Microsof
 
 Microsoft Graph PowerShell からデバイス オブジェクトの情報を参照する手順は以下の通りです。
         
-1. Windows のスタートボタンから Windows PowerShell を起動します。
+i. Windows のスタートボタンから Windows PowerShell を起動します。
   
-2. 以下のコマンドを入力し、Microsoft Graph で ME-ID テナントにサインインします。
+ii. 以下のコマンドを入力し、Microsoft Graph で ME-ID テナントにサインインします。
 Connect-MgGraph -Scopes "Device.Read.All"
 認証画面が表示されるので、サインインしたい ME-ID テナントのユーザーとしてサインインします。
 
-3. Get-MgDevice -DeviceId コマンドで確認したいデバイスのオブジェクト ID を入力します。
+iii. Get-MgDevice -DeviceId コマンドで確認したいデバイスのオブジェクト ID を入力します。
 Get-MgDevice -DeviceId "オブジェクト ID" | fl
 ※ 少々紛らわしくて恐縮ですが、-DeviceId パラメーターで指定するのは [(デバイス ID ではなく) オブジェクト ID] です。
 
