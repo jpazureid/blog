@@ -158,7 +158,7 @@ Microsoft Entra 管理センターで表示されている属性名と、実際�
 
 ※ mdmAppId は [該当の ME-ID デバイスが MDM 管理されている] 場合、MDM 管理アプリケーションのアプリケーション ID 表示されますので、以下の表 3 に対応表をまとめました。
 
-![表3. MDM とmdmAppId の対応表](table-of-mdm-and-mdmappid.png)
+![表3. MDM と mdmAppId の対応表](table-of-mdm-and-mdmappid.png)
 
 ## 6. おわりに
 
