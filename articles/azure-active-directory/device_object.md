@@ -23,8 +23,7 @@ toc:
 
 ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。
 
-[Azure AD 登録 と Azure AD 参加 の違い](https://jpazureid.github.io/blog/azure-active-directory/azure-ad-join-vs-azure-ad-device-registration/)
-<!--上記ブログは相対パスで記載しないといけないルールですが、わかりません！-->
+[Azure AD 登録 と Azure AD 参加 の違い](/azure-active-directory/azure-ad-join-vs-azure-ad-device-registration.md)
         
 ある ME-ID のデバイス オブジェクトの属性情報を確認する、と一口に言っても以下のような複数の見方があります。
 
@@ -83,15 +82,14 @@ ii. 左のブレードの [ID とアクセス] > Azure AD デバイスの一覧�
 iii. Modify permissions から Device.Read.All を同意します。
 ![](modify_permission.png)   
 
-iv. クエリ として、https://graph.microsoft.com/v1.0/devices/{確認したいデバイスのオブジェクト ID} を指定し、Run query をクリックします。 
+iv. クエリ として、`https://graph.microsoft.com/v1.0/devices/{確認したいデバイスのオブジェクト ID` を指定し、Run query をクリックします。 
 ![](run_query.png)   
             
-         
 上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。
 以下の表示結果からは、Microsoft Entra 管理センターで確認できるデバイス オブジェクトの属性の数より多くの属性を確認できました。
 
 ▼ご参考: 弊社環境での Graph Explorer でのデバイス オブジェクトの情報取得例
-クエリ : https://graph.microsoft.com/v1.0/devices/03305133-d59c-4f4e-b6cb-2ad2c5d1a6f1
+クエリ : `https://graph.microsoft.com/v1.0/devices/03305133-d59c-4f4e-b6cb-2ad2c5d1a6f1`
 
 出力結果
 ![](device-details-in-graph-explorer.png)
@@ -103,8 +101,7 @@ ME-ID のデバイス オブジェクトの属性の一覧と、上記の [Graph
 a. b. はブラウザーを用いて情報が確認できましたが、Microsoft Graph PowerShell でデバイス オブジェクトの情報を取得するには、最初に作業する端末上に PowerShell モジュールのインストールが必要です。
 インストール方法についてはこちらの参考情報があります。
 
-[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編](https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/)
-<!--上記ブログは相対パスで記載しないといけないルールですが、わかりません！-->
+[MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編](/azure-active-directory/azuread-module-retirement3.md)
 
 Microsoft Graph PowerShell からデバイス オブジェクトの情報を参照する手順は以下の通りです。
         
@@ -121,7 +118,6 @@ Get-MgDevice -DeviceId "オブジェクト ID" | fl
 補足情報ですが、今回使った Get-MgDevice コマンドの詳細につきましては、英語の公開情報ですが、以下に記載があります。
 
 [Get-MgDevice (Microsoft.Graph.Identity.DirectoryManagement) | Microsoft Learn](https://learn.microsoft.com/ja-jp/powershell/module/microsoft.graph.identity.directorymanagement/get-mgdevice?view=graph-powershell-1.0)
-
 
 上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。
 以下の表示結果からは、Microsoft Entra 管理センターより多くの該当デバイス オブジェクトの属性情報を把握することができます。
@@ -143,7 +139,7 @@ Microsoft Entra 管理センターで表示されている属性名と、実際�
 また、Microsoft Entra 管理センターから得ることができない情報については、Graph Explorer / Microsoft Graph PowerShell で確認でき、Graph Explorer / Microsoft Graph PowerShell いずれも同じ情報を得られることがわかりました。
 以下の表 1 を元に、お客様のご用途に合うデバイス オブジェクトの確認方法をご利用ください。
 
-![](comparison-table-of-device-objects.png)
+![表1. デバイス属性と、Microsoft Entra 管理センター、Graph Explorer、Microsoft Graph PowerShell で確認できる属性の対応表](comparison-table-of-device-objects.png)
 
 ## 5. 条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表
 
@@ -158,16 +154,14 @@ Microsoft Entra 管理センターで表示されている属性名と、実際�
         
 以下に [デバイスのフィルターで利用可能な属性] という視点で、抜き出した状態で上記 a. b. c. それぞれの確認方法で取得可能なデバイス オブジェクトの属性情報の対応をおまとめしました。
 
-![](table-of-device-objects-available-for-filtering-devices.png)
+![表2. デバイスのフィルターで利用可能な属性と各確認方法で確認できる属性の対応表](table-of-device-objects-available-for-filtering-devices.png)
 
 ※ mdmAppId は [該当の ME-ID デバイスが MDM 管理されている] 場合、MDM 管理アプリケーションのアプリケーション ID 表示されますので、以下の表 3 に対応表をまとめました。
 
-![](table-of-mdm-and-mdmappid.png)
-
+![表3. MDM とmdmAppId の対応表](table-of-mdm-and-mdmappid.png)
 
 ## 6. おわりに
 
 本ブログでは、デバイス オブジェクトの属性の代表的な確認方法と、対応付けについてをまとめ、デバイス情報の活用例をご紹介しました。
 これらの情報を活用し、積極的なデバイス オブジェクトの利活用を検討していただけますと幸いです。
 2024 年 9 月現在の情報を元に本記事を作成しております。
-
