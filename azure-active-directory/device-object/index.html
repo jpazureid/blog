@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>デバイス オブジェクト属性の確認方法と各確認方法で表示される内容の比較について | Japan Azure Identity Support Blog</title>
+  <title>デバイス オブジェクトの属性の確認方法と各確認方法で表示される内容の比較 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. はじめにこんにちは、Azure &amp; Identity サポート チームの 西口 です。 今回は Microsoft Entra ID (ME-ID) のデバイス オブジェクトの属性について解説します。 ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。 Azure AD 登録 と Azure AD 参加 の違い ある ME-ID のデバイス オブジェクトの">
+  <meta name="description" content="1. はじめにこんにちは、Azure &amp; Identity サポート チームの 西口 です。 今回は Microsoft Entra ID (ME-ID) のデバイス オブジェクトの属性について解説します。ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。 Azure AD 登録 と Azure AD 参加 の違い ある ME-ID のデバイス オブジェクトの属">
 <meta property="og:type" content="article">
-<meta property="og:title" content="デバイス オブジェクト属性の確認方法と各確認方法で表示される内容の比較について">
+<meta property="og:title" content="デバイス オブジェクトの属性の確認方法と各確認方法で表示される内容の比較">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/device-object/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="1. はじめにこんにちは、Azure &amp; Identity サポート チームの 西口 です。 今回は Microsoft Entra ID (ME-ID) のデバイス オブジェクトの属性について解説します。 ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。 Azure AD 登録 と Azure AD 参加 の違い ある ME-ID のデバイス オブジェクトの">
+<meta property="og:description" content="1. はじめにこんにちは、Azure &amp; Identity サポート チームの 西口 です。 今回は Microsoft Entra ID (ME-ID) のデバイス オブジェクトの属性について解説します。ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。 Azure AD 登録 と Azure AD 参加 の違い ある ME-ID のデバイス オブジェクトの属">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/device-object/device-details-in-entra-admin-center.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/device-object/modify-permission.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/device-object/table-of-device-objects-available-for-filtering-devices.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/device-object/table-of-mdm-and-mdmappid.png">
 <meta property="article:published_time" content="2024-09-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-27T02:10:32.685Z">
+<meta property="article:modified_time" content="2024-09-28T22:54:19.736Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="Graph">
@@ -101,7 +101,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      デバイス オブジェクト属性の確認方法と各確認方法で表示される内容の比較について
+      デバイス オブジェクトの属性の確認方法と各確認方法で表示される内容の比較
     </h1>
   
 
@@ -164,9 +164,9 @@
         
         
         
-        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2b10fd14-e74c-5710-ab63-16c5a11b1bc2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9+%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%B1%9E%E6%80%A7%E3%81%AE%E7%A2%BA%E8%AA%8D%E6%96%B9%E6%B3%95%E3%81%A8%E5%90%84%E7%A2%BA%E8%AA%8D%E6%96%B9%E6%B3%95%E3%81%A7%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%E5%86%85%E5%AE%B9%E3%81%AE%E6%AF%94%E8%BC%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fdevice-object%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fdevice-object.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fdevice-object.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2b10fd14-e74c-5710-ab63-16c5a11b1bc2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9+%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%B1%9E%E6%80%A7%E3%81%AE%E7%A2%BA%E8%AA%8D%E6%96%B9%E6%B3%95%E3%81%A8%E5%90%84%E7%A2%BA%E8%AA%8D%E6%96%B9%E6%B3%95%E3%81%A7%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%E5%86%85%E5%AE%B9%E3%81%AE%E6%AF%94%E8%BC%83%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fdevice-object%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fdevice-object.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fdevice-object.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/device-object/" data-id="cm1k3656r009y0nogd1dy82uc" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/device-object/" data-id="cm1mr1idm009y0npa2psibu31" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -178,10 +178,9 @@
         </div>
           
         <h2 id="1-はじめに"><a href="#1-はじめに" class="headerlink" title="1. はじめに"></a>1. はじめに</h2><p>こんにちは、Azure &amp; Identity サポート チームの 西口 です。</p>
-<p>今回は Microsoft Entra ID (ME-ID) のデバイス オブジェクトの属性について解説します。</p>
-<p>ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。</p>
+<p>今回は Microsoft Entra ID (ME-ID) のデバイス オブジェクトの属性について解説します。ME-ID に登録できるデバイスの概要については、以下のブログを参照ください。</p>
 <p><a href="/blog/azure-active-directory/azure-ad-join-vs-azure-ad-device-registration/">Azure AD 登録 と Azure AD 参加 の違い</a></p>
-<p>ある ME-ID のデバイス オブジェクトの属性情報を確認する、と一口に言っても以下のような複数の見方があります。</p>
+<p>ある ME-ID のデバイス オブジェクトの属性情報を確認すると一口に言っても以下のような複数の見方があります。</p>
 <ul>
 <li>Microsoft Entra 管理センターのポータルから参照する</li>
 <li>Graph Explorer で参照する</li>
@@ -189,49 +188,70 @@
 </ul>
 <p>上記のように、1 つのデバイス オブジェクトを [複数の見方] で把握することが可能ですが、例えば [Microsoft Entra 管理センターから、あるデバイス オブジェクトの情報を参照した時] と [Graph Explorer で同じデバイス オブジェクトの情報を取得した時] で、微妙に表示されている属性名が異なることや表示されている/されていない属性の差があることで、それぞれの見方で得た情報の対応付けで困ったことはありませんか？</p>
 <p>上記のようなお悩みを抱えている方に向けて、本ブログはデバイス オブジェクトの代表的な確認方法と、それぞれの方法で参照した属性の対応付けについて紹介します。</p>
-<h2 id="2-デバイス-オブジェクトとは"><a href="#2-デバイス-オブジェクトとは" class="headerlink" title="2. デバイス オブジェクトとは"></a>2. デバイス オブジェクトとは</h2><p>ME-ID というディレクトリ上に登録された、種類がデバイスであるオブジェクト レコードのことを意味します。<br>以下の公開情報の Microsoft Graph API のデバイス リソース型の説明にも含まれていますが、デバイス オブジェクトには複数のプロパティ情報が含まれています。</p>
+<h2 id="2-デバイス-オブジェクトとは"><a href="#2-デバイス-オブジェクトとは" class="headerlink" title="2. デバイス オブジェクトとは"></a>2. デバイス オブジェクトとは</h2><p>ME-ID というディレクトリ上に登録された、種類がデバイスであるオブジェクト レコードのことを意味します。以下の公開情報の Microsoft Graph API のデバイス リソース型の説明にも含まれていますが、デバイス オブジェクトには複数のプロパティ情報が含まれています。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/resources/device?view=graph-rest-1.0">デバイス リソース型 - Microsoft Graph v1.0 | Microsoft Learn</a></p>
 <h2 id="3-デバイス-オブジェクトの確認方法"><a href="#3-デバイス-オブジェクトの確認方法" class="headerlink" title="3. デバイス オブジェクトの確認方法"></a>3. デバイス オブジェクトの確認方法</h2><p>それでは、以下のデバイス オブジェクトの代表的な 3 つの確認方法をご紹介します。</p>
 <p>a. Microsoft Entra 管理センターでの確認方法<br>b. Graph Explorer での確認方法<br>c. Microsoft Graph PowerShell での確認方法</p>
 <h3 id="a-Microsoft-Entra-管理センターでの確認方法"><a href="#a-Microsoft-Entra-管理センターでの確認方法" class="headerlink" title="a. Microsoft Entra 管理センターでの確認方法"></a>a. Microsoft Entra 管理センターでの確認方法</h3><p>Microsoft Entra 管理センターのポータルからデバイス オブジェクトの情報を参照する手順は以下の通りです。</p>
-<p>i. ブラウザーから <a target="_blank" rel="noopener" href="https://entra.microsoft.com/">Microsoft Entra 管理センター</a> にアクセスしてサインインします。</p>
-<p>ii. 画面左のメニューより [ID] &gt; [デバイス] &gt; [すべてのデバイス] の順に移動します。</p>
-<p>iii. 確認したいデバイス オブジェクトの名前をクリックします。</p>
-<p>上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。<br>以下の表示結果からは、該当デバイス オブジェクトの複数の属性情報 (名前やデバイス ID など) を把握することができますが、実はこれが該当デバイスの属性情報のすべてではありません。</p>
+<ol>
+<li>ブラウザーから <a target="_blank" rel="noopener" href="https://entra.microsoft.com/">Microsoft Entra 管理センター</a> にアクセスしてサインインします。</li>
+<li>画面左のメニューより [ID] &gt; [デバイス] &gt; [すべてのデバイス] の順に移動します。</li>
+<li>確認したいデバイス オブジェクトの名前をクリックします。</li>
+</ol>
+<p>上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。以下の表示結果からは、該当デバイス オブジェクトの複数の属性情報 (名前やデバイス ID など) を把握することができますが、実はこれが該当デバイスの属性情報のすべてではありません。</p>
 <p>なお、Microsoft Entra 管理センターからでは確認できない属性は、以降にご案内する b. Graph Explorer や c. Microsoft Graph PowerShell の方法から確認できます。</p>
-<p><img src="device-details-in-entra-admin-center.png"></p>
+<p><img src="/blog/azure-active-directory/device-object/device-details-in-entra-admin-center.png"></p>
 <p>ME-ID のデバイス オブジェクトの属性の一覧と、上記の [Microsoft Entra 管理センターで確認できるデバイスの属性] との対応付けは、4 章の [デバイス オブジェクト属性の各確認方法で表示される内容の比較表] に記載の表 1 をご確認ください。</p>
 <h3 id="b-Graph-Explorer-での確認方法"><a href="#b-Graph-Explorer-での確認方法" class="headerlink" title="b. Graph Explorer での確認方法"></a>b. Graph Explorer での確認方法</h3><p>Graph Explorer からデバイス オブジェクトの情報を参照する手順は以下の通りです。</p>
-<p>i. ブラウザーから <a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a> にアクセスしてサインインします。</p>
-<p>ii. 左のブレードの [ID とアクセス] &gt; Azure AD デバイスの一覧を選択します。</p>
-<p>iii. Modify permissions から Device.Read.All を同意します。<br><img src="modify-permission.png">   </p>
-<p>iv. クエリ として、<code>https://graph.microsoft.com/v1.0/devices/&#123;確認したいデバイスのオブジェクト ID</code> を指定し、Run query をクリックします。<br><img src="run-query.png">   </p>
-<p>上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。<br>以下の表示結果からは、Microsoft Entra 管理センターで確認できるデバイス オブジェクトの属性の数より多くの属性を確認できました。</p>
-<p>▼ご参考: 弊社環境での Graph Explorer でのデバイス オブジェクトの情報取得例<br>クエリ : <code>https://graph.microsoft.com/v1.0/devices/03305133-d59c-4f4e-b6cb-2ad2c5d1a6f1</code></p>
-<p>出力結果<br><img src="device-details-in-graph-explorer.png"></p>
+<ol>
+<li><p>ブラウザーから <a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a> にアクセスしてサインインします。</p>
+</li>
+<li><p>左のブレードの [ID とアクセス] &gt; Azure AD デバイスの一覧を選択します。</p>
+</li>
+<li><p>Modify permissions から Device.Read.All を同意します。</p>
+<p> <img src="/blog/azure-active-directory/device-object/modify-permission.png">   </p>
+</li>
+<li><p>クエリ として、<code>https://graph.microsoft.com/v1.0/devices/&#123;確認したいデバイスのオブジェクト ID</code> を指定し、Run query をクリックします。</p>
+<p> <img src="/blog/azure-active-directory/device-object/run-query.png">   </p>
+</li>
+</ol>
+<p>上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。以下の表示結果からは、Microsoft Entra 管理センターで確認できるデバイス オブジェクトの属性の数より多くの属性を確認できました。</p>
+<p>ご参考: 弊社環境での Graph Explorer でのデバイス オブジェクトの情報取得例</p>
+<p>Microsoft Graph API クエリ: <code>https://graph.microsoft.com/v1.0/devices/03305133-d59c-4f4e-b6cb-2ad2c5d1a6f1</code></p>
+<p>出力結果:</p>
+<p><img src="/blog/azure-active-directory/device-object/device-details-in-graph-explorer.png"></p>
 <p>ME-ID のデバイス オブジェクトの属性の一覧と、上記の [Graph Explorer で確認できるデバイスの属性] との対応付けは、4 章の [デバイス オブジェクト属性の各確認方法で表示される内容の比較表] に記載の表 1 をご確認ください。</p>
-<h3 id="c-Microsoft-Graph-PowerShell-での確認方法"><a href="#c-Microsoft-Graph-PowerShell-での確認方法" class="headerlink" title="c. Microsoft Graph PowerShell での確認方法"></a>c. Microsoft Graph PowerShell での確認方法</h3><p>a. b. はブラウザーを用いて情報が確認できましたが、Microsoft Graph PowerShell でデバイス オブジェクトの情報を取得するには、最初に作業する端末上に PowerShell モジュールのインストールが必要です。<br>インストール方法についてはこちらの参考情報があります。</p>
+<h3 id="c-Microsoft-Graph-PowerShell-での確認方法"><a href="#c-Microsoft-Graph-PowerShell-での確認方法" class="headerlink" title="c. Microsoft Graph PowerShell での確認方法"></a>c. Microsoft Graph PowerShell での確認方法</h3><p>上記の a. および b. はブラウザーを用いて情報が確認できましたが、Microsoft Graph PowerShell でデバイス オブジェクトの情報を取得するには、最初に作業する端末上に PowerShell モジュールのインストールが必要です。インストール方法については以下の参考情報があります。</p>
 <p><a href="/blog/azure-active-directory/azuread-module-retirement3/">MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編</a></p>
 <p>Microsoft Graph PowerShell からデバイス オブジェクトの情報を参照する手順は以下の通りです。</p>
-<p>i. Windows のスタートボタンから Windows PowerShell を起動します。</p>
-<p>ii. 以下のコマンドを入力し、Microsoft Graph で ME-ID テナントにサインインします。<br>Connect-MgGraph -Scopes “Device.Read.All”<br>認証画面が表示されるので、サインインしたい ME-ID テナントのユーザーとしてサインインします。</p>
-<p>iii. Get-MgDevice -DeviceId コマンドで確認したいデバイスのオブジェクト ID を入力します。<br>Get-MgDevice -DeviceId “オブジェクト ID” | fl<br>※ 少々紛らわしくて恐縮ですが、-DeviceId パラメーターで指定するのは [(デバイス ID ではなく) オブジェクト ID] です。</p>
-<p>補足情報ですが、今回使った Get-MgDevice コマンドの詳細につきましては、英語の公開情報ですが、以下に記載があります。</p>
+<ol>
+<li><p>Windows のスタートボタンから Windows PowerShell を起動します。</p>
+</li>
+<li><p>以下のコマンドを入力し、Microsoft Graph で ME-ID テナントにサインインします。認証画面が表示されるので、サインインしたい ME-ID テナントのユーザーとしてサインインします。</p>
+<p>Connect-MgGraph -Scopes “Device.Read.All”</p>
+</li>
+<li><p>Get-MgDevice -DeviceId コマンドで確認したいデバイスのオブジェクト ID を入力します。</p>
+<p> Get-MgDevice -DeviceId “オブジェクト ID” | fl</p>
+<p> ※ 少々紛らわしくて恐縮ですが、-DeviceId パラメーターで指定するのは [(デバイス ID ではなく) オブジェクト ID] です。</p>
+</li>
+</ol>
+<p>今回使った Get-MgDevice コマンドの詳細につきましては、英語の公開情報ですが、以下に記載があります。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/powershell/module/microsoft.graph.identity.directorymanagement/get-mgdevice?view=graph-powershell-1.0">Get-MgDevice (Microsoft.Graph.Identity.DirectoryManagement) | Microsoft Learn</a></p>
-<p>上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。<br>以下の表示結果からは、Microsoft Entra 管理センターより多くの該当デバイス オブジェクトの属性情報を把握することができます。<br>また、OnPremisesSecurityIdentifier については項目に表示されますが、値は入りません。</p>
-<p>▼ご参考: 弊社環境での Microsoft Graph PowerShell でのデバイス オブジェクトの情報取得例</p>
-<p><img src="device-details-in-graph-powershell.png"></p>
+<p>上記の操作をすると以下のようにデバイス オブジェクトの情報が表示されます。以下の表示結果からは、Microsoft Entra 管理センターより多くの該当デバイス オブジェクトの属性情報を把握することができます。また、OnPremisesSecurityIdentifier については項目に表示されますが、値は入りません。</p>
+<p>ご参考: 弊社環境での Microsoft Graph PowerShell でのデバイス オブジェクトの情報取得例</p>
+<p><img src="/blog/azure-active-directory/device-object/device-details-in-graph-powershell.png"></p>
 <p>ME-ID のデバイス オブジェクトの属性の一覧と、上記の [Microsoft Graph PowerShell で確認できるデバイスの属性] との対応付けは、4 章の [デバイス オブジェクト属性の各確認方法で表示される内容の比較表] に記載の表 1 をご確認ください。</p>
-<h2 id="4-デバイス-オブジェクト属性の各確認方法で表示される内容の比較表"><a href="#4-デバイス-オブジェクト属性の各確認方法で表示される内容の比較表" class="headerlink" title="4. デバイス オブジェクト属性の各確認方法で表示される内容の比較表"></a>4. デバイス オブジェクト属性の各確認方法で表示される内容の比較表</h2><p>上記の 3 つの確認方法で得られた情報を、以下の表 1 にまとめました。<br>N/A の記載は [その項目の表示が存在していない] ことを意味します。<br>Microsoft Entra 管理センターで表示されている属性名と、実際のオブジェクトの属性名では微妙に表記が異なっていることも確認できます。<br>これは、ポータル上でオブジェクトの情報を確認する際に、見えている情報の意味が分かりやすいよう表現を変えている場合があるためです。<br>たとえば、Microsoft Entra 管理センターで見ることができる “準拠している” は、isCompliant に対応していることが以下の表 1 からわかります。<br>また、Microsoft Entra 管理センターから得ることができない情報については、Graph Explorer / Microsoft Graph PowerShell で確認でき、Graph Explorer / Microsoft Graph PowerShell いずれも同じ情報を得られることがわかりました。<br>以下の表 1 を元に、お客様のご用途に合うデバイス オブジェクトの確認方法をご利用ください。</p>
-<p><img src="comparison-table-of-device-objects.png" alt="表1. デバイス属性と、Microsoft Entra 管理センター、Graph Explorer、Microsoft Graph PowerShell で確認できる属性の対応表"></p>
-<h2 id="5-条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表"><a href="#5-条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表" class="headerlink" title="5. 条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表"></a>5. 条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表</h2><p>これまで、デバイス オブジェクトの属性情報を確認する複数の方法についてご紹介しました。<br>この複数の視点での情報の見方がどのような場合に役立つのか、という例として、条件付きアクセス ポリシーでデバイス フィルター条件でのアクセス制御を行う際の設定シナリオを元に例をご紹介します。<br>条件付きアクセスのデバイスのフィルターに関しては、以下の公開情報にてご案内しております。</p>
+<h2 id="4-デバイス-オブジェクト属性の各確認方法で表示される内容の比較表"><a href="#4-デバイス-オブジェクト属性の各確認方法で表示される内容の比較表" class="headerlink" title="4. デバイス オブジェクト属性の各確認方法で表示される内容の比較表"></a>4. デバイス オブジェクト属性の各確認方法で表示される内容の比較表</h2><p>上記の 3 つの確認方法で得られた情報を、以下の表 1 にまとめました。N/A の記載は [その項目の表示が存在していない] ことを意味します。Microsoft Entra 管理センターで表示されている属性名と、実際のオブジェクトの属性名では微妙に表記が異なっていることも確認できます。これは、ポータル上でオブジェクトの情報を確認する際に、見えている情報の意味が分かりやすいよう表現を変えている場合があるためです。たとえば、Microsoft Entra 管理センターで見ることができる “準拠している” は、isCompliant に対応していることが以下の表 1 からわかります。また、Microsoft Entra 管理センターから得ることができない情報については、Graph Explorer / Microsoft Graph PowerShell で確認でき、Graph Explorer / Microsoft Graph PowerShell いずれも同じ情報を得られることがわかりました。以下の表 1 を元に、お客様のご用途に合うデバイス オブジェクトの確認方法をご利用ください。</p>
+<p><img src="/blog/azure-active-directory/device-object/comparison-table-of-device-objects.png" alt="表1. デバイス属性と、Microsoft Entra 管理センター、Graph Explorer、Microsoft Graph PowerShell で確認できる属性の対応表"></p>
+<h2 id="5-条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表"><a href="#5-条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表" class="headerlink" title="5. 条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表"></a>5. 条件付きアクセスのデバイスのフィルターでデバイス属性を利用する際の比較表</h2><p>これまで、デバイス オブジェクトの属性情報を確認する複数の方法についてご紹介しました。この複数の視点での情報の見方がどのような場合に役立つのか、という例として、条件付きアクセス ポリシーでデバイス フィルター条件でのアクセス制御を行う際の設定シナリオを元に例をご紹介します。条件付きアクセスのデバイスのフィルターに関しては、以下の公開情報にてご案内しております。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters">条件付きアクセス ポリシーの条件としてのデバイスのフィルター - Microsoft Entra ID | Microsoft Learn</a></p>
-<p>デバイスのフィルターで利用可能なデバイス属性は複数ありますが、Microsoft Entra 管理センターでデバイス オブジェクトを参照した際は、これまでのご案内の通り一部の属性情報のみが確認可能です。<br>そこで、Microsoft Graph PowerShell や Graph Explorer も併用いただくことで利用したい属性の情報をご確認いただくことが可能です。</p>
+<p>デバイスのフィルターで利用可能なデバイス属性は複数ありますが、Microsoft Entra 管理センターでデバイス オブジェクトを参照した際は、これまでのご案内の通り一部の属性情報のみが確認可能です。そこで、Microsoft Graph PowerShell や Graph Explorer も併用いただくことで利用したい属性の情報をご確認いただくことが可能です。</p>
 <p>以下に [デバイスのフィルターで利用可能な属性] という視点で、抜き出した状態で上記 a. b. c. それぞれの確認方法で取得可能なデバイス オブジェクトの属性情報の対応をおまとめしました。</p>
-<p><img src="table-of-device-objects-available-for-filtering-devices.png" alt="表2. デバイスのフィルターで利用可能な属性と各確認方法で確認できる属性の対応表"></p>
+<p><img src="/blog/azure-active-directory/device-object/table-of-device-objects-available-for-filtering-devices.png" alt="表2. デバイスのフィルターで利用可能な属性と各確認方法で確認できる属性の対応表"></p>
 <p>※ mdmAppId は [該当の ME-ID デバイスが MDM 管理されている] 場合、MDM 管理アプリケーションのアプリケーション ID 表示されますので、以下の表 3 に対応表をまとめました。</p>
-<p><img src="table-of-mdm-and-mdmappid.png" alt="表3. MDM と mdmAppId の対応表"></p>
-<h2 id="6-おわりに"><a href="#6-おわりに" class="headerlink" title="6. おわりに"></a>6. おわりに</h2><p>本ブログでは、デバイス オブジェクトの属性の代表的な確認方法と、対応付けについてをまとめ、デバイス情報の活用例をご紹介しました。<br>これらの情報を条件付きアクセスのデバイスのフィルターの作成などのシナリオでご活用ください。<br>2024 年 9 月現在の情報を元に本記事を作成しております。</p>
+<p><img src="/blog/azure-active-directory/device-object/table-of-mdm-and-mdmappid.png" alt="表3. MDM と mdmAppId の対応表"></p>
+<h2 id="6-おわりに"><a href="#6-おわりに" class="headerlink" title="6. おわりに"></a>6. おわりに</h2><p>本ブログでは、デバイス オブジェクトの属性の代表的な確認方法と、対応付けについてをまとめ、デバイス情報の活用例をご紹介しました。これらの情報を条件付きアクセスのデバイスのフィルターの作成などのシナリオでご活用ください。</p>
+<p>なお、2024 年 9 月現在の情報を元に本記事を作成しております。</p>
 
       
       
@@ -278,7 +298,7 @@
       <ul>
         
           <li>
-            <a href="">デバイス オブジェクト属性の確認方法と各確認方法で表示される内容の比較について</a>
+            <a href="">デバイス オブジェクトの属性の確認方法と各確認方法で表示される内容の比較</a>
           </li>
         
           <li>
