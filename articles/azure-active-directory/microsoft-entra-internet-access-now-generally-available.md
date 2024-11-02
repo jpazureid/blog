@@ -20,13 +20,13 @@ tags:
 
 2024 年 7 月 11 日に Microsoft Entra Suit の [一般提供を発表](https://jpazureid.github.io/blog/azure-active-directory/microsoft-security-service-edge-now-generally-available/) しました。この Microsoft Entra Suit には Security Service Edge (SSE) ソリューションの一部である Microsoft Entra Internet Access が含まれております。Microsoft Entra Internet Access は、ID を中心に据えたセキュア ウェブ ゲートウェイ (SWG) ソリューションにより、すべてのインターネットおよび SaaS アプリケーションやリソースへのアクセスを保護します。これにより、ID およびネットワーク アクセスの制御が単一のゼロ トラスト ポリシー エンジンを通じて統合され、これまでカバーできていなかったセキュリティの抜け穴が解消されるとともに、サイバー脅威のリスクを最小限に抑えることが可能となります。我々のソリューションは、Microsoft Entra ID をシームレスに統合し、複数の場所 (ツールなど) でユーザー、グループおよびアプリケーションを管理する負担を軽減します。ユニバーサル条件付きアクセス、文脈を意識したネットワーク保護およびウェブ コンテンツ フィルターによってユーザー、デバイスおよびアプリケーションを保護しますので、バラバラな複数のネットワーク セキュリティ ツールの管理に悩むことはなくなります。
 
-![図 1: ID 中心の SWG を用いてすべてのインターネットと Saas アプリおよびリソースへのアクセスを保護する。](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-01.png)
+![図 1: ID 中心の SWG を用いてすべてのインターネットと Saas アプリおよびリソースへのアクセスを保護する。](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-01.png)
 
 ### ID とネットワークの統合セキュリティ
 
 Entra ID との強力な統合によって、条件付きアクセスや継続的なアクセス評価 (CAE) をインターネット上のリソースやクラウド アプリケーションなど、Entra ID とフェデレーションしていない [外部の対象にまで拡張](https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-universal-conditional-access) できます。条件付きアクセスとの統合により、組織に合わせてカスタマイズしたネットワーク保護ポリシーを柔軟に適用し、デバイス、ユーザー、場所およびリスク条件を活用しながら、きめ細かい制御を強制することが可能になります。さらに、Microsoft Entra Internet Access はトークン再生攻撃からの防御やデータ流失の制御などの強化されたセキュリティ機能も提供します。
 
-![図 2: ネットワーク セキュリティ ポリシーの強制にユーザーやデバイス、場所、リスクという条件付きアクセスの制御を活用する。](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-02.png)
+![図 2: ネットワーク セキュリティ ポリシーの強制にユーザーやデバイス、場所、リスクという条件付きアクセスの制御を活用する。](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-02.png)
 
 ### 一連の流れを意識したネットワーク セキュリティでユーザーを保護
 
@@ -36,37 +36,37 @@ Microsoft Entra Internet Access により [ネットワークを対象とした�
 
 今後、TLS インスペクションおよび URL フィルターの機能を追加し、Web フィルター ポリシーでさらにきめ細かい制御ができるようにする予定です。加えて、既知の悪意あるインターネット サイトへのユーザーによるアクセスを防ぐために、脅威インテリジェンス (TI) のフィルターも追加する予定です。
 
-![](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-03.png)
+![](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-03.png)
 
 ### 準拠ネットワークのチェックでトークン再生攻撃へ多層防御を提供
 
 新機能である準拠ネットワークの制御により、Microsoft 365 アプリケーションを含め Entra ID とフェデレーションしているインターネット アプリケーションに対し、準拠ネットワークのチェック機能を条件付きアクセスと組み合わせて適用できるため、認証プレーン全体でトークン再生攻撃を防ぐことが可能となります。この機能により、ユーザーがアプリケーションにアクセスする際に、SSE のセキュリティ機能を迂回できないようにできます。送信元 IP を用いた場所に基づく強制には、煩雑な IP 管理に加え、支店ネットワークを経由してアクセスしてくるユーザーとトラフィックの紐づけという固有の問題点がありますが、準拠ネットワークの機能を用いればその欠点も解消可能です。
 
-![](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-04.png)
+![](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-04.png)
 
 ### ユニバーサル テナント制限 (TRv2) による制御でデータ流出を防止
 
 Microsoft Entra Internet Access では OS やブラウザに依存せず、すべての管理対象デバイスで [ユニバーサル テナント制限](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-universal-tenant-restrictions) の制御を有効にできます。テナント制限 v2 は強力なデータ流出防止機能であり、外部の ID およびアプリケーションへアクセス可能/不可能かを許可または拒否リストできめ細かく選定することにより、管理対象デバイスおよびネットワークに対する外部からのアクセスのリスクを管理可能となります。
 
-![図 5: ユニバーサル テナント制限](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-05.png)<br>
+![図 5: ユニバーサル テナント制限](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-05.png)<br>
 
 ### ユーザーの送信元 IP を隠蔽しない
 
 従来のサードパーティ SEE ソリューションはユーザーの送信元 IP を隠し、プロキシー サーバーの IP アドレスだけを見せますが、これでは Entra ID ログの信頼性が低下し、条件付きアクセスの制御においても制御の正確性が損なわれます。我々のソリューションでは、Entra ID の監査ログやリスク評価において可能な限り [エンドユーザーの送信元 IP を復元](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-source-ip-restoration) します。これにより、条件付きアクセス ポリシーで送信元 IP ベースの場所チェックを引き続き利用できますので、後方互換性も維持できます。
 
-![](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-06.png)
+![](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-06.png)
 
 ### グローバル スケールで高速かつ安定したアクセスを提供
 
 弊社はグローバル規模でプロキシを展開しており、インターネットへ流れるトラフィックを最適化するためにユーザーの近くにエンドポイントを展開し、通信に必要なホップ数を削減しています。ユーザーからわずか数ミリ秒の距離にある弊社のグローバル  セキュア エッジを経由して、リモートワークをしている従業員や支店とをつなげることができるのです。弊社はインターネット プロバイダーや SaaS サービスと数千のピアリングの接続を保持しており、加えて、Microsoft 365 および Azure のようなサービスには Microsoft WAN 基盤へ直接トラフィックを送ることにより、追加の通信ホップによるパフォーマンス劣化を回避しつつ、全体のユーザー エクスペリエンスを向上させています。
 
-![図 7: マイクロソフトのグローバル WAN](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-07.png)
+![図 7: マイクロソフトのグローバル WAN](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-07.png)
 
 ### 製品内のダッシュボードで高度な詳細情報とネットワーク解析情報を得る
 
 弊社が提供する製品内の包括的なレポートとダッシュボードにより、お客様は手軽に詳細情報を確認でき、組織全体のエコシステムを完全に把握可能です。包括的なネットワークとポリシー監視のログを通して展開状況を監視でき、緊急な脅威も特定でき、さらに迅速に問題に対処できます。このダッシュボードでは、ユーザー、デバイスおよび Microsoft の SSE ソリューションを経由した接続先の概要情報を確認可能です。企業内で行われるクロステナント アクセスの状況や、よくアクセスしているネットワーク接続先、その他のポリシーの解析情報も表示しています。
 
-![図 8: 製品内のダッシュボード](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-08.png)
+![図 8: 製品内のダッシュボード](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-08.png)
 
 ## Microsoft Entra Internet Access のアーキテクチャ概要
 
@@ -76,7 +76,7 @@ Microsoft SSE の [クライアント[(https://learn.microsoft.com/ja-jp/entra/g
 
 Microsoft の SSE の独自の利点の 1 つは [サードパーティの SSE ソリューション](https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-netskope-coexistence) と既定で互換性がある点です。これにより必要な通信だけを Microsoft の SSE エッジに流れるようにできます。例えば、Microsoft トラフィック プロファイルを利用して、Microsoft 365 と Entra ID の通信だけを管理し、Microsoft アプリケーションへのアクセスのパフォーマンスを最適化しつつ、他の通信は別のプロバイダーで管理するように構成可能です。トラフィック転送プロファイルの構成はシンプルなので、インターネットおよび Microsoft 365 を含めた SaaS アプリケーションへの通信を正確に制御できます。トラフィック プロファイルはユーザーごとに設定できますので、組織の要件に応じてグループ単位で割り当てることもできます。
 
-![図 9: 柔軟な展開オプション](./microsoft-entra-internet-access-now-generally-available\microsoft-entra-internet-access-now-generally-available-09.png)<br>
+![図 9: 柔軟な展開オプション](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-09.png)<br>
 
 ## まとめ
 
