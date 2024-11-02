@@ -40,7 +40,7 @@ Microsoft Entra Internet Access により [ネットワークを対象とした�
 
 ### 準拠ネットワークのチェックでトークン再生攻撃へ多層防御を提供
 
-新機能である準拠ネットワークの制御により、Microsoft 365 アプリケーションを含め Entra ID とフェデレーションしているインターネット アプリケーションに対し、準拠ネットワークのチェック機能を条件付きアクセスと組み合わせて適用できるため、認証プレーン全体でトークン再生攻撃を防ぐことが可能となります。この機能により、ユーザーがアプリケーションにアクセスする際に、SSE のセキュリティ機能を迂回できないようにできます。送信元 IP を用いた場所に基づく強制には、煩雑な IP 管理に加え、支店ネットワークを経由してアクセスしてくるユーザーとトラフィックの紐づけという固有の問題点がありますが、準拠ネットワークの機能を用いればその欠点も解消可能です。
+新機能である [準拠ネットワーク](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-compliant-network) の制御により、Microsoft 365 アプリケーションを含め Entra ID とフェデレーションしているインターネット アプリケーションに対し、準拠ネットワークのチェック機能を条件付きアクセスと組み合わせて適用できるため、認証プレーン全体でトークン再生攻撃を防ぐことが可能となります。この機能により、ユーザーがアプリケーションにアクセスする際に、SSE のセキュリティ機能を迂回できないようにできます。送信元 IP を用いた場所に基づく強制には、煩雑な IP 管理に加え、支店ネットワークを経由してアクセスしてくるユーザーとトラフィックの紐づけという固有の問題点がありますが、準拠ネットワークの機能を用いればその欠点も解消可能です。
 
 ![](./microsoft-entra-internet-access-now-generally-available/microsoft-entra-internet-access-now-generally-available-04.png)
 
@@ -70,7 +70,7 @@ Microsoft Entra Internet Access では OS やブラウザに依存せず、す�
 
 ## Microsoft Entra Internet Access のアーキテクチャ概要
 
-Microsoft SSE の [クライアント[(https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-install-windows-client) と [リモートネットワーク](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-create-remote-networks?tabs=microsoft-entra-admin-center) のアーキテクチャによりネットワーク アクセスとセキュリティが効率されます。デバイスで動作する Global Secure Access クライアントは現在 Windows と Android で利用可能です。MacOS と iOS 用のものは近日に公開されます。拠点間の接続は、ネットワーク デバイスから Microsoft の SSE エッジサービスへの Site-To-Site 接続に基づいて動作します。[Microsoft トラフィック](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-manage-microsoft-profile) はすでに一般公開されていますが、[インターネット アクセス プロファイル](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-manage-internet-access-profile) も近日に追加される予定です。エンドユーザーのデバイスと拠点ネットワーク間の通信モデルは Microsoft の SSE エッジを経由して保護およびトンネリングされています。さらに、弊社は [HPE Aruba](https://community.hpe.com/t5/networking/secure-access-to-saas-applications-with-hpe-aruba-networking-and/ba-p/7220489) と [Versa](https://versa-networks.com/blog/versa-sd-wan-and-microsoft-entra-combine-for-end-to-end-networking-and-security/) とパートナー提携を行い、弊社の SSE ソリューションと SD-WAN ソリューションとを統合するべく取り組んでいます。近日には他のパートナーとも追加の提携を行う予定です。
+Microsoft SSE の [クライアント](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-install-windows-client) と [リモートネットワーク](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-create-remote-networks?tabs=microsoft-entra-admin-center) のアーキテクチャによりネットワーク アクセスとセキュリティが効率されます。デバイスで動作する Global Secure Access クライアントは現在 Windows と Android で利用可能です。MacOS と iOS 用のものは近日に公開されます。拠点間の接続は、ネットワーク デバイスから Microsoft の SSE エッジサービスへの Site-To-Site 接続に基づいて動作します。[Microsoft トラフィック](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-manage-microsoft-profile) はすでに一般公開されていますが、[インターネット アクセス プロファイル](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-manage-internet-access-profile) も近日に追加される予定です。エンドユーザーのデバイスと拠点ネットワーク間の通信モデルは Microsoft の SSE エッジを経由して保護およびトンネリングされています。さらに、弊社は [HPE Aruba](https://community.hpe.com/t5/networking/secure-access-to-saas-applications-with-hpe-aruba-networking-and/ba-p/7220489) と [Versa](https://versa-networks.com/blog/versa-sd-wan-and-microsoft-entra-combine-for-end-to-end-networking-and-security/) とパートナー提携を行い、弊社の SSE ソリューションと SD-WAN ソリューションとを統合するべく取り組んでいます。近日には他のパートナーとも追加の提携を行う予定です。
 
 ## サードパーティの SSE ソリューションとの並列した相互運用
 
