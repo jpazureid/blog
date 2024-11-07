@@ -14,11 +14,11 @@ tags:
 
 # Microsoft Entra の新機能（2024 年 9 月） 
 
-まず、業界で最も包括的なセキュア アクセス ソリューションの一つである [Microsoft Entra Suite](https://techcommunity.microsoft.com/blog/identity/microsoft-entra-suite-now-generally-available/2520427) の一般提供を開始したことをお知らせします。攻撃経路の 66 %が十分に安全でない資格情報に関与しているなか、Microsoft Entra Suite は、クラウドおよびオンプレミスのアプリへの最小特権アクセスを可能にすることで、セキュリティ侵害を防ぎます。これにより、ネットワークアクセス、ID 保護、ガバナンス、および資格情報の検証が統合され、オンボーディングの効率化、リモート アクセスの刷新、アプリおよびリソースへの安全なアクセスが実現されます。[Microsoft Entra Suite のトライアル](https://aka.ms/EntraSuiteTrial) をぜひ開始ください。
+まず、業界で最も包括的なセキュア アクセス ソリューションの一つである [Microsoft Entra Suite](https://techcommunity.microsoft.com/blog/identity/microsoft-entra-suite-now-generally-available/2520427) の一般提供を開始したことをお知らせします。攻撃経路の 66 %が十分に安全でない資格情報に関与しているなか、Microsoft Entra Suite は、クラウドおよびオンプレミスのアプリへの最小特権アクセスを可能にすることで、セキュリティ侵害を防ぎます。これにより、ネットワーク アクセス、ID 保護、ガバナンス、および資格情報の検証が統合され、オンボーディングの効率化、リモート アクセスの刷新、アプリおよびリソースへの安全なアクセスが実現されます。[Microsoft Entra Suite のトライアル](https://aka.ms/EntraSuiteTrial) をぜひ開始ください。
 
 また、昨年 11 月、弊社はサイバー攻撃の増加に対抗するために Secure Future Initiative (SFI) を立ち上げました。セキュリティは今や弊社のすべての意思決定を左右する要因となっており、2024 年 9 月に発行された [SFI の進捗報告書](https://www.microsoft.com/en-us/security/blog/2024/09/23/securing-our-future-september-2024-progress-update-on-microsofts-secure-future-initiative-sfi/) に詳細がまとめられています。本日は、2024 年 7 月から 9 月にかけての Microsoft Entra における新しいセキュリティ改善と革新を製品ごとに整理して共有します。
 
-[「Microsoft Entra の新機能」](https://aka.ms/entra/whatsnew/sept24) ビデオもぜひご覧になり、製品のアップデートの概要を確認するとともに、詳細情報については Microsoft Entra 管理センターの[「新機能」ブレード][https://entra.microsoft.com/?Microsoft_AAD_IAM_clientoptimizations=false&feature.customportal=false&feature.canmodifyextensions=true&cmhisenabled=true&cmhusemsgraphapi=true#view/Microsoft_AAD_IAM/ChangeManagementHubList.ReactView] や[公開情報](https://learn.microsoft.com/ja-jp/entra/fundamentals/whats-new) もご覧ください。
+[「Microsoft Entra の新機能」](https://aka.ms/entra/whatsnew/sept24) ビデオもぜひご覧になり、製品のアップデートの概要を確認するとともに、詳細情報については Microsoft Entra 管理センターの [新機能ブレード](https://entra.microsoft.com/?Microsoft_AAD_IAM_clientoptimizations=false&feature.customportal=false&feature.canmodifyextensions=true&cmhisenabled=true&cmhusemsgraphapi=true#view/Microsoft_AAD_IAM/ChangeManagementHubList.ReactView) や[公開情報](https://learn.microsoft.com/ja-jp/entra/fundamentals/whats-new) もご覧ください。
 
 下記に、各サービスの新機能と、変更についてのアナウンスをおまとめしました。利用環境によって対応が必要なものもございますので、利用している機能について確認のうえ、必要に応じて対処してください。
 
@@ -37,11 +37,11 @@ tags:
 ### Microsoft Entra ID ガバナンスの新機能
 
 - [ライフサイクル ワークフローで同期されたユーザー アカウントの有効化、無効化、削除](https://learn.microsoft.com/en-us/entra/id-governance/manage-workflow-on-premises)
-- [カスタム セキュリティ属性を使用してライフサイクルワークフロースコープを構成](https://learn.microsoft.com/en-us/entra/id-governance/manage-workflow-custom-security-attribute)
+- [カスタム セキュリティ属性を使用してライフサイクル ワークフロー スコープを構成](https://learn.microsoft.com/en-us/entra/id-governance/manage-workflow-custom-security-attribute)
 - [ライフサイクル ワークフローにおけるワークフロー履歴のインサイト](https://learn.microsoft.com/en-us/entra/id-governance/lifecycle-workflow-insights)
 - [ユーザの職務内容変更時に異動タスクを実行するカスタム ワークフローの設定](https://learn.microsoft.com/en-us/entra/id-governance/tutorial-mover-custom-workflow-portal)
 - [エンタイトルメント管理の管理下にあるゲスト ユーザーの猶予期間のサポート](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-external-users#manage-the-lifecycle-of-external-users)
-- [クロステナントでのマネージャーの同期](https://learn.microsoft.com/en-us/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#attributes)
+- [クロス テナントでのマネージャーの同期](https://learn.microsoft.com/en-us/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#attributes)
  
 ### Microsoft Entra External ID の新機能
 
@@ -90,8 +90,8 @@ tags:
 | Microsoft Graph用Bicepテンプレートでの動的な型のバージョン管理 | お客様によっては対応が必要 | 
 | Entra Portalでのレガシーユーザー認証方法の管理経験の廃止 | 対応の必要なし | 
 | ブラウザ アクセスの有効化 (EBA) UI の廃止	| 対応の必要なし | 
-| マイグループ管理コントロールの変更延期 | 対応の必要なし | 
-| マイセキュリティ情報 サインイン方法の追加ピッカーのユーザーインターフェイスの更新	| 対応の必要なし | 
+| マイ グループ管理コントロールの変更延期 | 対応の必要なし | 
+| マイ セキュリティ情報 サインイン方法の追加ピッカーのユーザー インターフェイスの更新	| 対応の必要なし | 
 | プロビジョニングUXの近代化	| 対応の必要なし | 
 
 ### ユーザー エクスペリエンスの向上
@@ -122,7 +122,7 @@ tags:
 
 **フェーズ 2**：2025 年初頭から、Azure CLI、Azure PowerShell、Azure モバイルアプリ、および Infrastructure as Code（IaC）ツールのサインイン時にMFAを段階的に実施します。
 
-弊社からは、すべての Entra のグローバル管理者に電子メールおよび Azure サービス正常性の通知をとおして60 日の事前通知を送付し、強制の開始日と必要な対応についてお知らせする予定です。加えて、Azure ポータル、Entra 管理センター、M365 メッセージセンターでも追加の通知を行う予定です。
+弊社からは、すべての Entra のグローバル管理者に電子メールおよび Azure サービス正常性の通知をとおして 60 日の事前通知を送付し、強制の開始日と必要な対応についてお知らせする予定です。加えて、Azure ポータル、Entra 管理センター、M365 メッセージセンターでも追加の通知を行う予定です。
 
 弊社では、この MFA の強制に備えるにあたり一部のお客様でより長い準備期間が必要なことも承知しております。このため、複雑な環境や技術的障壁のあるお客様向けに延長期間を設けます。弊社からの通知には、お客様テナントでの MFA 強制の開始時期を延長する手順、延長期間、そのリンクも含まれる予定です。詳細については、
 [MC862873 - Azure ポータル (および Azure CLI 等) の MFA 義務付けの延長申請について](https://jpazureid.github.io/blog/azure-active-directory/MC862873-azure-portal-mfaenforcement-update-grace-period/) もご覧ください。
@@ -134,7 +134,7 @@ tags:
 
 今年初め、Microsoft Entra ID プラットフォームにおける Apple デバイスのキーチェーンに基づくデバイス ID の廃止を[発表](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-june-2024/ba-p/3796387) しました。 以前発表した 2026 年 6 月の非推奨の日程は、弊社がコミットメントとする安全な設計と既定の設定への対応の一環として、2025 年 6 月に前倒しされました。この変更は、デバイスのセキュリティを強化し、お客様のデータをより適切に保護するために行われます。
 
-この変更が実施されると、Microsoft Entra ID によって管理される新規登録された Apple デバイスは、Apple の Secure Enclave に基づく、強力なハードウェアベースのシークレットを使用するようになります。詳細については、[この非推奨に関する最新のドキュメント](https://learn.microsoft.com/en-us/entra/identity-platform/apple-sso-plugin#upcoming-changes-to-device-identity-key-storage) をご覧ください。お客様とアプリケーションの開発ベンダーの皆様におかれましては、この新しいデータ ストアとの互換性に問題がないかソフトウェアのテストを進めることをお勧めします。
+この変更が実施されると、Microsoft Entra ID によって管理される新規登録された Apple デバイスは、Apple の Secure Enclave に基づく、強力なハードウェア ベースのシークレットを使用するようになります。詳細については、[この非推奨に関する最新のドキュメント](https://learn.microsoft.com/en-us/entra/identity-platform/apple-sso-plugin#upcoming-changes-to-device-identity-key-storage) をご覧ください。お客様とアプリケーションの開発ベンダーの皆様におかれましては、この新しいデータ ストアとの互換性に問題がないかソフトウェアのテストを進めることをお勧めします。
  
 #### 2025 年 4 月 2 日までに Microsoft Entra Connect を最新バージョンにアップグレード
 
@@ -231,7 +231,7 @@ Microsoft Copilot のこれらのアッププデートについては、今後�
 
 参考:
 - [Azure Active Directory（Azure AD）グラフからMicrosoftグラフへの移行](https://learn.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview)
-- [Azure AD Graphアプリケーション移行計画チェックリスト(https://learn.microsoft.com/en-us/graph/migrate-azure-ad-graph-planning-checklist)
+- [Azure AD Graphアプリケーション移行計画チェックリスト](https://learn.microsoft.com/en-us/graph/migrate-azure-ad-graph-planning-checklist)
 - [Azure AD GraphからMicrosoft Graphへの移行に関するFAQ](https://learn.microsoft.com/en-us/graph/migrate-azure-ad-graph-faq)  
 
 #### 重要な更新: AzureAD PowerShell および MSOnline PowerShell の廃止
