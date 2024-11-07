@@ -136,7 +136,7 @@ tags:
 サービス変更の最小要件と予想される影響の一覧については、[こちらの記事](https://aka.ms/connectsync-bec-servicechange-blog) をご覧ください。アップグレード関連のガイダンスについては、[ドキュメント](https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-upgrade-previous-version) をご覧ください。
 
 > [!NOTE]
-> Microsoft Entra Connect のバージョンアップに関するお知らせは、 Microsoft 365 管理センター上のメッセージ センターにおいても、MC906491 にてお知らせいたしております。また、2024 年 10 月 7 日に [バージョン 2.4.18.0](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-version-history#24180) が既にリリース済みです。
+> Microsoft Entra Connect のバージョンアップに関するお知らせは、 Microsoft 365 管理センター上のメッセージ センターにおいても、MC906491 にてお知らせしております。また、2024 年 10 月 7 日に [バージョン 2.4.18.0](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-version-history#24180) が既にリリース済みです。
 > 
 > Entra Connect のアップグレードに関しては、長期間アップグレードを行わなかったことで、廃止期限やサポート期限が切れたお客様からよくお問い合わせいただいております。アップグレード手順の詳細などは下記ブログでも案内しておりますので、期限に余裕をもって準備ならびに対処を実施くださいますようお願い申し上げます。
 >
@@ -294,7 +294,7 @@ Microsoft Entra 管理センターのセルフサービスのグループ管理�
  
 [My Access](https://myaccess.microsoft.com/) において、ユーザーにお勧めのアクセス パッケージが一覧で表示されるという新機能が追加されます。これにより、ユーザーはアクセス パッケージの一覧をスクロールして探すことなく、最も関連性の高いアクセス パッケージを素早く閲覧できるようになります。テナントにあるすべてのアクセス パッケージを一覧して検索することも可能です。この変更は、10 月末までにプレビュー (オプトイン) としてすべてのお客様に展開され、展開後はこの変更についてお知らせする製品内のメッセージが画面上に表示されます。11 月末までにオプトアウトのプレビューに移行し、12 月に一般提供を開始する予定です。
 
-### Global Secure Access:  Microsoft Entra Internet および Microsoft Entra Private Access の新機能
+### Global Secure Access:  Microsoft Entra Internet および Microsoft Entra Private Access に関する変更のお知らせ
 
 #### Microsoft Entra Internet Access および Microsoft Entra Private Access の今後のライセンス強制
 
