@@ -294,8 +294,6 @@ Microsoft Entra 管理センターのセルフサービスのグループ管理�
  
 [My Access](https://myaccess.microsoft.com/) において、ユーザーにお勧めのアクセス パッケージが一覧で表示されるという新機能が追加されます。これにより、ユーザーはアクセス パッケージの一覧をスクロールして探すことなく、最も関連性の高いアクセス パッケージを素早く閲覧できるようになります。テナントにあるすべてのアクセス パッケージを一覧して検索することも可能です。この変更は、10 月末までにプレビュー (オプトイン) としてすべてのお客様に展開され、展開後はこの変更についてお知らせする製品内のメッセージが画面上に表示されます。11 月末までにオプトアウトのプレビューに移行し、12 月に一般提供を開始する予定です。
 
-### Global Secure Access:  Microsoft Entra Internet および Microsoft Entra Private Access に関する変更のお知らせ
-
 #### Microsoft Entra Internet Access および Microsoft Entra Private Access の今後のライセンス強制
 
 [対応が必要な場合があります]
