@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator の最新の機能強化
-date: 2024-11-08 09:00
+date: 2024-11-09 01:00
 tags:
     - Microsoft Entra
     - US Identity Blog
@@ -26,9 +26,9 @@ tags:
 
 ## パブリック プレビューの更新: Microsoft Authenticator におけるデバイスバインド パスキーのサポート
 
-5 月の [World Password Day](https://jpazureid.github.io/blog/azure-active-directory/public-preview-expanding-passkey-support-in-microsoft-entra-id/) において、より高いセキュリティ アシュアランスを必要とする組織を対象に、iOS および Android 用の Microsoft Authenticator においてデバイスに紐づくパスキーのサポートのパブリック プレビューを発表しました。そしてこの度、この機能にエキサイティングな新機能を追加しました！
+5 月の [World Password Day](https://jpazureid.github.io/blog/azure-active-directory/public-preview-expanding-passkey-support-in-microsoft-entra-id/) において、より高いセキュリティ アシュアランスを必要とする組織を対象に、iOS および Android 用の Microsoft Authenticator においてデバイスに紐づくパスキーのサポートのパブリック プレビューを発表しました。そしてこの度、この機能に新機能を追加しました！
 
-パブリック プレビューの期間中、パスキーの登録が煩雑でエラーが発生しやすいというお客様からの貴重なフィードバックをいただきました。ノート PC から登録する際、19 ものステップを踏んだり、デバイスの Bluetooth を有効にするなどの重要な前提条件を見逃したり、サポートされていないプロバイダーでパスキーを設定したりしたユーザーもいました。このようなフィードバックに基づき、私たちは登録フローを改善し、ユーザーが確実にパスキーを登録できるよう、よりカスタマイズされたユーザー体験を提供するようにしました。また、最初に Authenticator アプリにサインインするようユーザーを誘導することで、登録プロセスを最適化しました。このアプローチにより、シームレスなユーザー体験が提供され、前提条件を満たした状況でユーザーを誘導し、デバイス間の切り替えも大幅に削減されました。
+パブリック プレビューの期間中、パスキーの登録が煩雑でエラーが発生しやすいというお客様からの貴重なフィードバックをいただきました。ノート PC から登録する際、19 ものステップを踏んだり、デバイスの Bluetooth を有効にするなどの重要な前提条件を見逃したり、サポートされていないプロバイダーでパスキーを設定したりしたユーザーもいました。このようなフィードバックに基づき、私たちは登録フローを改善し、ユーザーが確実にパスキーを登録できるよう、よりカスタマイズされたユーザー体験を提供するようにしました。また最初に Authenticator アプリにサインインするようユーザーを誘導することで、登録プロセスを最適化しました。このアプローチにより、シームレスなユーザー体験が提供され、前提条件を満たした状況でユーザーを誘導し、デバイス間の切り替えも大幅に削減されました。
 
 ユーザー体験の強化に加え、アプリとしての正当性確認を導入することでセキュリティ体制も強化しました。Android と iOS の API を活用し、パスキーの登録前にユーザーのデバイス上の Microsoft Authenticator アプリの正当性を検証します。
 
@@ -52,17 +52,17 @@ Android 13 でのブローカーを経由した Microsoft アプリへの FIDO2 
 
 ## 一般提供 (GA): Android における Microsoft Authenticator の FIPS 準拠
 
-iOS と Android の Microsoft Authenticator が FIPS 140 に準拠しました。[iOS 版の Authenticator アプリは 2022 年 12 月から FIPS 140 に準拠していますが](https://jpazureid.github.io/blog/azure-active-directory/microsoft-brings-fips-140-compliance/)、Android の Authenticator アプリの FIPS 140 準拠バージョンは 2024 年 9 月にリリースされました。
+iOS と Android の Microsoft Authenticator が FIPS 140 に準拠しました。[iOS 版の Authenticator アプリは 2022 年 12 月から FIPS 140 に準拠しています](https://jpazureid.github.io/blog/azure-active-directory/microsoft-brings-fips-140-compliance/) が、Android の Authenticator アプリの FIPS 140 準拠バージョンは 2024 年 9 月にリリースされました。
 
 Microsoft Authenticator の FIPS 140 準拠は、連邦政府機関が [大統領令 (EO) 14028 "国家のサイバー セキュリティの改善"](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/) の要件を満たすこと、ならびに医療機関が [EPCS (Electronic Prescriptions for Controlled Substances)](https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-epcs-us) の要件を満たすのに重要な役割を果たします。 
 
-パスキー、パスワードレスの電話によるサインイン、多要素認証 (MFA)、ワンタイム パスワード コードを含む、Authenticator を使用した Microsoft Entra ID のすべての認証は FIPS 準拠と見なされます。この機能を有効にするために、Microsoft Authenticator または Microsoft Entra 管理センターで構成を変更する必要はありません。 Android の Microsoft Authenticator バージョン 6.2408.5807 以降のユーザーは、Microsoft Entra ID 認証が既定で FIPS 140 準拠となります。
+パスキー、パスワードレスの電話によるサインイン、多要素認証 (MFA)、ワンタイム パスワード コードを含む、Authenticator を使用した Microsoft Entra ID のすべての認証は FIPS 準拠と見なされます。この機能を有効にするために、Microsoft Authenticator または Microsoft Entra 管理センターで構成を変更する必要はありません。Android の Microsoft Authenticator バージョン 6.2408.5807 以降のユーザーは、Microsoft Entra ID 認証が既定で FIPS 140 準拠となります。
 
-Android 上の Microsoft Authenticator は、WolfSSL Inc. の wolfCrypt モジュールを使用して、FIPS 140-3 レベル 1 準拠を実現しています。使用されている認証の詳細については、[暗号モジュール検証プログラム](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4718) の情報を参照してください。
+Android 上の Microsoft Authenticator は、WolfSSL Inc. の wolfCrypt モジュールを使用して、FIPS 140-3 レベル 1 準拠を実現しています。使用されている認証の詳細については、[暗号モジュール検証プログラム](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4718) の情報を参照ください。
 
 これらのリリースにより、Microsoft Authenticator のユーザー体験とセキュリティ体制が大幅にレベルアップし、フィッシングへの対策を実施しやすくなりました。フィッシング対策をまだ検討されていない場合は、ぜひご検討ください。更新された [パスワードレス デプロイ ガイド](https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-plan-prerequisites-phishing-resistant-passwordless-authentication) を使用して、この取り組みをぜひ開始ください。
 
 これらの新機能をお試しいただき、ご意見をお聞かせいただけることを楽しみにしています。
 
-ありがとうございます。
+ありがとうございます。  
 Nitika Gupta
