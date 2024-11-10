@@ -33,14 +33,12 @@ ID に関連するサービスを提供する最大のプロバイダーの 1 �
 同様に、次のグラフに示されている Slow Loris 攻撃では、Microsoft Entra External ID は、実害が生じる前にアイドル状態の接続を特定して破棄することで攻撃を防いでいます。このような堅牢な保護により、サービス品質に影響を与えることなく大量の同時リクエストが処理され、アプリの安全性だけでなくエンド ユーザーの信頼も保たれることになるのです。(Microsoft 内部データ)
 
 ![図 3: Slow Loris 攻撃がブロックされた例。](./built-in-security-controls-for-external-facing-apps/pic3.png)
- 
 
 弊社は、潜在的な脅威に先手を打つべくシステムを継続的に更新していますのでご安心ください。
 
 ### 条件付きアクセスでリスクを検出および解消する
 
 ここまでで、外部テナントの作成時に既定で有効になる保護機能について説明してきました。お客様のアプリのセキュリティをさらに強化するために、[条件付きアクセス](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-policies) ポリシーをカスタマイズして多要素認証 (MFA) を求めることで、侵害のリスクが 99.22% と大幅に減少し ([2023 年 Microsoft デジタル防衛レポート](https://www.microsoft.com/ja-jp/security/security-insider/microsoft-digital-defense-report-2023))、不正アクセスが防止されるだけでなく、フィッシングやアカウント乗っ取りなどの脅威に対する堅牢な防御が提供されます。外部テナントで構成できるさまざまな MFA 方法の詳細については、[弊社ドキュメント](https://learn.microsoft.com/en-us/entra/external-id/customers/concept-multifactor-authentication-customers) をご覧ください。
-
  
 ![図 4: 外部ユーザー向けの MFA。](./built-in-security-controls-for-external-facing-apps/pic4.png)
 
