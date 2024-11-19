@@ -10,19 +10,19 @@ tags:
 
 こんにちは！ Azure ID チームの小出です。
 
-今回は、2024 年 10 月 29 日に米国の Microsoft Entra (Azure AD) Blog で Joseph Dadzie によって公開された [Manage Microsoft Entra ID role assignments with Microsoft Entra ID Governance](https://techcommunity.microsoft.com/blog/identity/manage-microsoft-entra-id-role-assignments-with-microsoft-entra-id-governance/4120307) と、 11 月 5 日に Kaitlin Murphy によって公開されました [Microsoft Entra ID Governance for government](https://techcommunity.microsoft.com/blog/identity/microsoft-entra-id-governance-for-government/3575578) を分かりやすく日本語におまとめしなおしたものになります。ご不明点などございましたらお気軽にサポートへお問い合わください。
+今回は、2024 年 10 月 29 日に米国の Microsoft Entra (Azure AD) Blog で Joseph Dadzie によって公開された [Manage Microsoft Entra ID role assignments with Microsoft Entra ID Governance](https://techcommunity.microsoft.com/blog/identity/manage-microsoft-entra-id-role-assignments-with-microsoft-entra-id-governance/4120307) と、11 月 5 日に Kaitlin Murphy によって公開されました [Microsoft Entra ID Governance for government](https://techcommunity.microsoft.com/blog/identity/microsoft-entra-id-governance-for-government/3575578) を分かりやすく日本語におまとめしなおしたものになります。ご不明点などございましたらお気軽にサポートへお問い合わください。
 
 ---
 
 ## 米国政府向けテナントでの Microsoft Entra ID Governance サポートの開始
 
-2024 年 11 月 1 日より、Microsoft Entra ID Governanceが、米国政府コミュニティクラウド (GCC)、GCC-High、および国防総省のクラウド環境において、連邦政府機関、州政府、地方政府、および政府請負業者向けに利用できるようになりました！Entra ID Governance は、2023 年 7 月 1 日に商用顧客向けに提供を開始した機能で、アクセス パッケージをはじめとするエンタイトルメント管理や、ライフサイクル ワークフローなどの機能が含まれています。この機能の開始後、強い要望があったため、今年初めに教育機関 (EDU) とフロント ライン ワーカー ((FLW) のお客様にも提供を拡大しました。そして今回新たに、Entra ID Governance 製品を米国政府機関のお客様もご利用いただけるようになりました。
+2024 年 11 月 1 日より、Microsoft Entra ID Governance が、米国政府コミュニティクラウド (GCC)、GCC-High、および国防総省のクラウド環境において、連邦政府機関、州政府、地方政府、および政府請負業者向けに利用できるようになりました！Entra ID Governance は、2023 年 7 月 1 日に商用顧客向けに提供を開始した機能で、アクセス パッケージをはじめとするエンタイトルメント管理や、ライフサイクル ワークフローなどの機能が含まれています。この機能の開始後、強い要望があったため、今年初めに教育機関 (EDU) とフロント ライン ワーカー (FLW) のお客様にも提供を拡大しました。そして今回新たに、Entra ID Governance 製品を米国政府機関のお客様もご利用いただけるようになりました。
 
 Microsoft Entra ID Governance は、組織が「適切なユーザーが適切なタイミングで適切なアプリやリソースにアクセスできるように」支援する機能です。自分の会社でも使えそうだろうかと悩むお客様もいらっしゃるかと思いますが、たとえば海外では、Rijksmuseum (アムステルダム国立美術館) のような公共機関でも利用されています。
 
 アムステルダム国立美術館は、フェルメールからゴッホまで、オランダの芸術と歴史の中でもっとも有名な作品が多く収蔵されている美術館ですが、ここでは研究や保存、美術館の清掃などに至るまで 1,000 人以上の人々を雇用しています。アムステルダム国立美術館では、Excel シートや独自のデータベースを手作業で管理していたことで、「従業員が役割を変更したり、新しいシステムにアクセスしたりしようとしたときに、不整合や更新作業の遅延でエラーが起きやすい」もしくは「契約終了後のユーザーもシステムにアクセスできてしまっていた」といった課題がありました。しかし、現在は Entra ID Governance を使用して管理負担を軽減し、ユーザー体験が向上したことで、ユーザーのアクセス管理に費やす時間を減らすことができています。このお客様の事例の全文は英語とはなりますが [Microsoft Customer Story-The Rijksmuseum saves hours in identity management with Microsoft Entra ID Governance.](https://customers.microsoft.com/en-us/story/1820605676075142331-rijksmuseum-microsoft-teams-higher-education-en-netherlands) でご覧いただくことが可能です。 
 
-商業、教育、フロント ライン ワーカーのお客様と同様に、Entra ID Governanceは、政府機関が要件に準拠し、Zero Trust の原則に従うことを支援します。KuppingerCole は最近、ID ガバナンスのシナリオの概要と Entra ID Governance のレビューを含む [ホワイト ペーパー](https://aka.ms/EntraIDGovExecView) を発行しました。
+商業、教育、フロント ライン ワーカーのお客様と同様に、Entra ID Governance は、政府機関が要件に準拠し、Zero Trust の原則に従うことを支援します。KuppingerCole は最近、ID ガバナンスのシナリオの概要と Entra ID Governance のレビューを含む [ホワイト ペーパー](https://aka.ms/EntraIDGovExecView) を発行しました。
 
  次のステップとして、Microsoft Entra ID Governance  をご検討中のお客様には以下をお勧めします:
 
@@ -90,4 +90,4 @@ Microsoft Entra ID Governance は、組織が「適切なユーザーが適切�
 
 ライフサイクル ワークフローの活用方法については、以前 [ライフサイクル ワークフローを利用した簡易人事システムの紹介](https://jpazureid.github.io/blog/azure-active-directory/lifecycle-workflow/) にて紹介いたしました。人事異動や新入社員対応でも活用できる機能となりますので、ぜひあわせてご覧ください。
 
-すでに Microsoft Entra ID Governance ライセンスをお持ちのお客様はすぐにこの機能をご利用いただけます。もしライセンスをお持ちでないお客様は、無料試用版のライセンスで利用を開始いただくか、すでにお持ちの P1 / P2 ライセンスからアップグレードすることも可能です。ライセンスを購入する場合は、ライセンス パートナーからオンラインで購入するか、Microsoft 365 管理センターより直接ライセンスを購入ください。
+すでに Microsoft Entra ID Governance ライセンスをお持ちのお客様はすぐにこの機能をご利用いただけます。もしライセンスをお持ちでないお客様は、無料試用版のライセンスで利用を開始いただくか、すでにお持ちの P1/P2 ライセンスからアップグレードすることも可能です。ライセンスを購入する場合は、ライセンス パートナーからオンラインで購入するか、Microsoft 365 管理センターより直接ライセンスを購入ください。
