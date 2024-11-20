@@ -14,7 +14,7 @@ Microsoft では [Secure Future Initiative](https://www.microsoft.com/en/microso
 
 [Announcing mandatory multifactor authentication for the Microsoft 365 admin center](https://techcommunity.microsoft.com/blog/microsoft_365blog/announcing-mandatory-multifactor-authentication-for-the-microsoft-365-admin-cent/4232568)
 
-通知内容の概要としましては、2025 年 2 月 3 日以降、Microsoft は Microsoft 365 管理センターにアクセスするすべてのユーザー アカウントに MFA (Multifactor Authentication) の要求を開始するという内容であり、これはテナント レベルで段階的にロールアウトされます。
+通知内容の概要としましては、2025 年 2 月 3 日以降、Microsoft 365 管理センターにアクセスするすべてのユーザー アカウントに MFA (Multifactor Authentication) の要求を開始するという内容であり、これはテナント レベルで段階的にロールアウトされます。
 
 メッセージ センターで通知した MC933540 の内容について抄訳したものを以下に記載いたしますので、確認いただければ幸いです。
 
@@ -83,17 +83,17 @@ A.
 A.
 いいえ、Microsoft 365 管理センターへのアクセスするユーザー全てに強制されます。組織で緊急アクセス用アカウントを用意いただいている場合、このアカウントに対しても MFA が要求されます。緊急アクセス用アカウントに対してはセキュリティキーを利用した MFA の方法などを設定することも併せてご検討いただけますと幸いです。
 
-#### Q. Azure Portal などのリソースに対する MFA 要求を既に延長している、Microsoft 365 管理センターに対する適用はどうなるのか？
+#### Q. Azure Portal などのリソースに対する MFA 要求を既に延長申請している、Microsoft 365 管理センターに対する MFA 要求はどうなるのか？
 
 A.
-Azure Portal などのリソースに対する MFA の要求に関して延長申請を既に実施いただいているお客様は、Microsoft 365 管理センターも併せて延期された状態となります。
-延長申請後の施行日は 2025 年 3 月 15 日であり、Azure Portal などのリソースに対する MFA の要求を延長した場合と同じ日程となります。
+Azure Portal などのリソースに対する MFA の要求に関して延長申請を既に実施いただいているお客様は、Microsoft 365 管理センターに対する MFA 要求も併せて延長申請された状態となります。
+延長申請後のロールアウトの開始日は 2025 年 3 月 15 日であり、Azure Portal などのリソースに対する MFA の要求を延長した場合と同じ日程となります。
 
 #### Q. この通知は、すべてのユーザーに対して MFA を要求しますか？
 
 A.
 いいえ、本通知によって影響のある操作は Microsoft 365 管理センターへのアクセスとなります。
-Microsoft 365 管理センターにアクセス可能なユーザーは、ロールを持つユーザーのみです。アクセス可能なロールに関する説明は以下の公開情報をご参考ください。
+Microsoft 365 管理センターにアクセス可能なユーザーは、管理者ロールを持つユーザーのみです。アクセス可能なロールに関する説明は以下の公開情報をご参考ください。
 
 [Microsoft 365 管理センターの管理者ロールについて - Microsoft 365 admin | Microsoft Learn](https://learn.microsoft.com/ja-jp/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)
 
