@@ -45,18 +45,18 @@ Microsoft では [Secure Future Initiative](https://www.microsoft.com/en/microso
 >[追加情報](https://learn.microsoft.com/entra/identity/authentication/concept-mandatory-multifactor-authentication)
 >[ヘルプとサポート](https://learn.microsoft.com/microsoft-365/admin/security-and-compliance/multi-factor-authentication-microsoft-365?view=o365-worldwide)
 
-なお、以下の弊社サポート ブログでお伝えした Azure Portal へのサインインに対して MFA を義務付ける取り組みとは、MFA が要求され始めるタイミングが異なります。
+なお、以下の弊社サポート ブログでお伝えした Azure Portal へのサインインに対して MFA を義務付ける取り組みとは、ロールアウトの開始日が異なります。
 
 [Microsoft は Azure ポータル(および Azure CLI 等) を利用するユーザーに MFA を義務付けます | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/microsoft-will-require-mfa-for-all-azure-users/)
 
 [Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27) | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/)
 
-Azure Portal などのリソースに対する MFA の要求は、フェーズ 1 が 2024 年 10 月 15 日より順次ロールアウトしており、各テナントへの展開を開始しておりますが、本ブログの対象となる Microsoft 365 管理センターに対しては、2025 年 2 月 3 日がロールアウトの開始日となっております。
+Azure Portal などのリソースに対する MFA の要求は、フェーズ 1 が 2024 年 10 月 15 日より順次ロールアウトしており、各テナントへの展開を開始しておりますが、本ブログの対象となる Microsoft 365 管理センターに対する MFA の要求は、2025 年 2 月 3 日がロールアウトの開始日となっております。
 
 一方で、ロールアウトの開始日を延期するための申請は同じ仕組みを利用しております。
-そのため、Azure Portal などのリソースに対する MFA の要求 (フェーズ 1) に関して延長申請を既に実施いただいているお客様は、Microsoft 365 管理センターも併せて延期が適用された状態となります。
+そのため、Azure Portal などのリソースに対する MFA の要求 (フェーズ 1) に関して延長申請を既に実施いただいているお客様は、Microsoft 365 管理センターに対する MFA 要求も併せて延期が適用された状態となります。
 
-なお、Microsoft 365 管理センターの延長申請後のロールアウトの開始日は 2025 年 3 月 15 日です。これは、Azure Portal などのリソースに対する MFA の要求を延長した場合と同じ日程となります。
+なお、Microsoft 365 管理センターに対する MFA 要求を延長申請した場合のロールアウト開始日は 2025 年 3 月 15 日です。これは、Azure Portal などのリソースに対する MFA の要求を延長した場合と同じ日程となります。
 延長申請のための操作に関しましては、以下のブログをご参照ください。
 
 [MC862873 - Azure ポータル (および Azure CLI 等) の MFA 義務付けの延長申請について | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/MC862873-azure-portal-mfaenforcement-update-grace-period/)
