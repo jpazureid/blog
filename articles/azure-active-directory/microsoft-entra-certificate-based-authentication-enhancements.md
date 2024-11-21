@@ -12,6 +12,8 @@ tags:
 
 本記事は、2024 年 7 月 3 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Microsoft Entra certificate-based authentication enhancements](https://techcommunity.microsoft.com/blog/identity/microsoft-entra-certificate-based-authentication-enhancements/1751778) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
+---
+
 Microsoft Entra の証明書ベースの認証 (CBA) の最新の機能をご紹介します。CBA は、フィッシングに強く、パスワード不要で、Active Directory フェデレーション サービス (AD FS) などのオンプレミスのフェデレーション基盤に依存せずに、PIV/CAC カードなどの X.509 証明書を使用してユーザーを認証するための便利な方法です。CBA は、すでに PIV/CAC カードを使用しており、フィッシングに強い認証を必要とする [大統領令 14028](https://learn.microsoft.com/ja-jp/entra/standards/memo-22-09-meet-identity-requirements) に準拠しようとしている連邦政府機関にとって特に重要となります。
 
 本日は、[今年初めに導入](https://techcommunity.microsoft.com/blog/identity/introducing-more-granular-certificate-based-authentication-configuration-in-cond/2365668) された多くの改善点の一般提供を発表します。ユーザー名バインド、アフィニティ バインド、認証ポリシー ルール、条件付きアクセスの高度な CBA オプションはすべて GA となりました。また、新機能である **発行者ヒント** のパブリック プレビューを発表できることを嬉しく思います。**発行者ヒント** 機能は、ユーザーが認証に適した証明書を簡単に識別できるようにすることで、ユーザー体験を大幅に向上させます。
@@ -26,7 +28,7 @@ Alex Weinert
 
 皆さん、こんにちは。Microsoft Entra のプリンシパル プロダクト マネージャーである Vimala Ranganathan です。本日は、新しい発行者ヒント機能と、一般提供が開始される機能について説明いたします。
 
-発行者ヒント機能は、ユーザーが認証に適した証明書を簡単に識別できるようにすることで、ユーザー体験を向上させます。テナント管理者によって有効にすると、Microsoft Entra ID は TLS ハンドシェイクの一部として [Trusted CA Indication](https://www.rfc-editor.org/rfc/rfc6066#page-12) という情報を送り返します。ここでいう Trusted CA (CA) というのは、テナントによって [Entra の信頼ストア](https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-certificate-based-authentication#step-1-configure-the-certification-authorities) にアップロードされた認証局 (CA) のサブジェクトのことを表します。クライアントまたはネイティブ アプリケーションは、サーバーから返されたヒントを使用して、証明書選択画面に表示される証明書をフィルターし、信頼ストア内の CA によって発行されたクライアント認証証明書のみをユーザーに表示します。
+**発行者ヒント** 機能は、ユーザーが認証に適した証明書を簡単に識別できるようにすることで、ユーザー体験を向上させます。テナント管理者によって有効にすると、Microsoft Entra ID は TLS ハンドシェイクの一部として [Trusted CA Indication](https://www.rfc-editor.org/rfc/rfc6066#page-12) という情報を送り返します。ここでいう Trusted CA (CA) というのは、テナントによって [Entra の信頼ストア](https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-certificate-based-authentication#step-1-configure-the-certification-authorities) にアップロードされた認証局 (CA) のサブジェクトのことを表します。クライアントまたはネイティブ アプリケーションは、サーバーから返されたヒントを使用して、証明書選択画面に表示される証明書をフィルターし、信頼ストア内の CA によって発行されたクライアント認証証明書のみをユーザーに表示します。
 
 ![図 1: 発行者ヒントが有効な場合の、改善された証明書選択画面](microsoft-entra-certificate-based-authentication-enhancements/image.png)
 
