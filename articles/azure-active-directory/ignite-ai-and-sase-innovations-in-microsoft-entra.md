@@ -1,5 +1,5 @@
 ---
-title: Ignite: Microsoft Entra の AI と SASE のイノベーション
+title: "Ignite: Microsoft Entra の AI と SASE のイノベーション"
 date: 2024-11-28 09:00
 tags:
   - Azure AD
