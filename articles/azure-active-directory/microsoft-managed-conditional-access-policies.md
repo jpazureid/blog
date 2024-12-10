@@ -61,6 +61,7 @@ Microsoft マネージド条件付きアクセス ポリシーは、作成され
 - Microsoft Entra 管理センター
 - Microsoft Intune 管理センター
 - Microsoft Purview コンプライアンス ポータル
+- Microsoft Teams 管理センター
 
 このポリシーは、以下の 2 つの条件を両方満たすテナントに自動的に作成されます。
 
