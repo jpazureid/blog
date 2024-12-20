@@ -19,8 +19,7 @@ tags:
 
 ## Microsoft Entra ID で基本的に利用されるエンドポイント
 
-まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、[Office 365 の URL と IP アドレスの範囲](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) に記載されている ID 56 , ID 59 , ID 97 そして ID 125 になります。こちらは Microsoft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。
-また、Windows を利用される場合は ctldl.windowsupdate.com および *.windowsupdate.com への許可も実施ください。
+まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、[Office 365 の URL と IP アドレスの範囲](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) に記載されている ID 56 , ID 59 , ID 97 そして ID 125 になります。こちらは Microsoft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。また、Windows を利用される場合は ctldl.windowsupdate.com および *.windowsupdate.com への許可も実施ください。
 
 ## Microsoft Entra ID でデバイス管理に利用するエンドポイント
 
