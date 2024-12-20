@@ -40,7 +40,7 @@ Microsoft Entra Connect Health Service を利用する場合は、[Microsoft Ent
 
 ## Microsoft Entra アプリケーション プロキシ コネクタにて利用されるエンドポイント
 
-Microsoft Entra アプリケーション プロキシ コネクタを利用される際は、[アプリケーション プロキシを使用してオンプレミス アプリを追加する](https://docs.microsoft.com/ja-jp/azure/active-directory/app-proxy/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) ページに記載されているエンドポイントを許可ください。
+Microsoft Entra アプリケーション プロキシ コネクタを利用される際は、[既存のオンプレミス プロキシ サーバーと連携する](https://learn.microsoft.com/ja-jp/entra/identity/app-proxy/application-proxy-configure-connectors-with-proxy-servers#proxy-outbound-rules) ページに記載されているエンドポイントを許可ください。
 
 ## Microsoft Entra プロビジョニング サービスを利用する IP アドレスの範囲
  
