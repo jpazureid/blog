@@ -19,7 +19,8 @@ tags:
 
 ## Microsoft Entra ID で基本的に利用されるエンドポイント
 
-まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、[Office 365 の URL と IP アドレスの範囲](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) に記載されている ID 56 , ID 59 そして ID 125 になります。こちらは Microsoft 365 を利用する際に Micorosft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。
+まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、[Office 365 の URL と IP アドレスの範囲](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) に記載されている ID 56 , ID 59 , ID 97 そして ID 125 になります。こちらは Microsoft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。
+また、Windows を利用される場合は ctldl.windowsupdate.com および *.windowsupdate.com への許可も実施ください。
 
 ## Microsoft Entra ID でデバイス管理に利用するエンドポイント
 
@@ -41,23 +42,21 @@ Microsoft Entra Connect Health Service を利用する場合は、[Microsoft Ent
 
 Microsoft Entra アプリケーション プロキシ コネクタを利用される際は、[アプリケーション プロキシを使用してオンプレミス アプリを追加する](https://docs.microsoft.com/ja-jp/azure/active-directory/app-proxy/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) ページに記載されているエンドポイントを許可ください。
 
-
 ## Microsoft Entra プロビジョニング サービスを利用する IP アドレスの範囲
  
 Microsoft Entra プロビジョニング サービスを利用する場合は、[チュートリアル: Microsoft Entra ID の SCIM エンドポイントのプロビジョニング](https://learn.microsoft.com/ja-jp/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges) に記載されている IP アドレスの範囲を参照ください。
-
-## オンプレミスにある Multi-Factor Authentication Server が利用するエンドポイント
- 
-2024 年 9 月 30 日にサービスの提供終了がアナウンスがされていますが、オンプレミスの MFA サーバーを利用する場合は、[Azure Multi-Factor Authentication Server のファイアウォールの要件](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) に記載されているエンドポイントを許可ください。
 
 ## Microsoft Private Access 用にアプリケーション プロキシ コネクタにて利用されるエンドポイント
 
 Microsoft Entra Private Access 用にアプリ プロキシ コネクタについては、[Microsoft Entra Private Access 用にアプリ プロキシ コネクタを構成する方法
 ](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) に記載されているエンドポイントを許可ください。
 
-## Microsoft Azure 管理センターおよび一般的なサービスに利用されるエンドポイント
+## Azure ポータルに利用されるエンドポイント
 
-Microsoft Entra ID の認証ではないですが、Azure ポータルや一般的なアカウント サービスに必要となるエンドポイントは、[ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する](https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud) のページに記載されているエンドポイントを許可ください。
+Microsoft Entra ID の認証ではないですが、Azure ポータルに必要となるエンドポイントは、[ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する](https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud) のページに記載されているエンドポイントを許可ください。
 
+## Microsoft Entra の証明書ベースの認証 (CBA) に利用されるエンドポイント
 
-今後、Entra ID をご利用いただく際に本ブログの内容が少しでも参考となりますと幸いです。
+Microsoft Entra の証明書ベースの認証 (CBA) をご利用いただいている場合は、[Microsoft Entra の証明書ベースの認証に関する技術的な詳細情報](https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-certificate-based-authentication-technical-deep-dive#how-does-microsoft-entra-certificate-based-authentication-work) に記載されているエンドポイントを許可ください。
+
+今後、Microsoft Entra ID をご利用いただく際に本ブログの内容が少しでも参考となりますと幸いです。
