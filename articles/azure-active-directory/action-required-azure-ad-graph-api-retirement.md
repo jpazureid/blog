@@ -5,6 +5,7 @@ tags:
     - Microsoft Entra
     - US Identity Blog
 ---
+
 # 要対応: Azure AD Graph API の廃止
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
@@ -22,8 +23,8 @@ tags:
 | フェーズ開始日 | 既存のアプリへの影響  | 新規のアプリへの影響 |
 | ------------- | ------------- | ------------- |
 | 2024 年 9 月 1 日 |    なし | **すべての新しいアプリでは Microsoft Graph を使用する必要があります。** <br>blockAzureAdGraphAccess を false に設定して [2025 年 6 月 30 日まで Azure AD Graph へのアクセスを延長して許可するようにアプリが構成](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http%22%20%5Cl%20%22allow-extended-azure-ad-graph-access-until-june-30-2025) されていない限り、新しいアプリが Azure AD Graph API を使おうとするとブロックされます。 |
-| 2025 年 2 月 1 日 |    アプリケーションは、blockAzureAdGraphAccess を false に設定して [Azure AD Graph アクセスへのアクセスを延長して許可するように構成](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http%22%20%5Cl%20%22allow-extended-azure-ad-graph-access-until-june-30-2025) されていない限り、Azure AD Graph API にリクエストを行うことができません。<br><span style="color:red">この影響に備えるには、本記事の手順に沿って対応を実施ください。</span> | 〃 |
-| 2025 年 7 月 1 日 |    Azure AD Graph が完全に廃止されます。Azure AD Graph API へのリクエストは機能しません。 | 〃 |
+| 2025 年 2 月 1 日 |    アプリケーションは、blockAzureAdGraphAccess を false に設定して [Azure AD Graph アクセスへのアクセスを延長して許可するように構成](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http%22%20%5Cl%20%22allow-extended-azure-ad-graph-access-until-june-30-2025) されていない限り、Azure AD Graph API にリクエストを行うことができません。<br><span style="color:red">この影響に備えるには、本記事の手順に沿って対応を実施ください。</span> | 同上 |
+| 2025 年 7 月 1 日 |    Azure AD Graph が完全に廃止されます。Azure AD Graph API へのリクエストは機能しません。 | 同上 |
 
 ## 必要なアクション
 
@@ -84,7 +85,7 @@ Microsoft Entra の 2 つの推奨事項によりアプリが特定できたら�
 
 「**廃止中の Azure AD Graph API から Microsoft Graph にアプリケーションを移行する**」に示されている影響を受けるリソースは、お客様のテナントで作成されたアプリケーションです。これらのそれぞれについて、次のことを行う必要があります:
 
-1. お客様の組織内のアプリケーションの所有者または開発者に連絡し、Azure AD Graph が廃止される予定であること、Microsoft Graph API に移行する計画があることを確認ください。アプリケーションの所有者は、Microsoft Entra の推奨事項 で [詳細情報] をクリックしてからアプリケーション名をクリックするか、Microsoft Entra 管理センターの [アプリの登録] でアプリケーションを検索することで見つけることが可能です。
+1. お客様の組織内のアプリケーションの所有者または開発者に連絡し、Azure AD Graph が廃止される予定であること、Microsoft Graph API に移行する計画があることを確認ください。アプリケーションの所有者は、Microsoft Entra の推奨事項 で [**詳細情報**] をクリックしてからアプリケーション名をクリックするか、Microsoft Entra 管理センターの [**アプリの登録**] でアプリケーションを検索することで見つけることが可能です。
 2. アプリケーションを 2025 年 2 月 1 日までに Microsoft Graph API に移行できない場合は、アプリケーションの利用延長を設定し、2025 年 6 月 30 日までのアクセスを許可することができます。これを行うには、アプリの authenticationBehaviors 設定で blockAzureADGraphAccess: false を設定します。Microsoft Graph Explorer または Microsoft Graph PowerShell でこの操作を実行できます。詳細はこちらを参照ください: [アプリケーション認証の管理 Behaviors - Microsoft Graph | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http)
 3. アプリケーション開発者は、Azure AD Graph から Microsoft Graph へのアプリケーションの移行に関するドキュメントを参照し、2025 年 6 月 30 日までにこの移行を完了するよう計画ください (アプリケーションに利用延長が設定されている場合)。
 
@@ -106,10 +107,10 @@ Microsoft Entra の 2 つの推奨事項によりアプリが特定できたら�
 
 テナントで Azure AD Graph を使用しているサービス プリンシパルの一部は、Microsoft から提供されている可能性があります。これらについては、Azure AD Graph API の代わりに Microsoft Graph を使用する、以下のようなアップデートが利用可能です:
 
-- Azure AD PowerShell: AzureAD PowerShell は非推奨であり、まもなく廃止される予定です。[Microsoft Graph PowerShel SDK](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/migration-steps?view=graph-powershell-1.0) に移行ください。
-- Azure CLI: [Microsoft Graph の移行 | Microsoft Learn](https://learn.microsoft.com/ja-jp/cli/azure/microsoft-graph-migration)
-- Azure PowerShell: [PowerShell Gallery | Az 12.4.0](https://www.powershellgallery.com/packages/Az/12.4.0)
-- Visual Studio: [Visual Studio 2022 バージョン 17.7 リリース ノート | Microsoft Learn](https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/release-notes-v17.7)
+- **Azure AD PowerShell**: AzureAD PowerShell は非推奨であり、まもなく廃止される予定です。[Microsoft Graph PowerShel SDK](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/migration-steps?view=graph-powershell-1.0) に移行ください。
+- **Azure CLI**: [Microsoft Graph の移行 | Microsoft Learn](https://learn.microsoft.com/ja-jp/cli/azure/microsoft-graph-migration)
+- **Azure PowerShell**: [PowerShell Gallery | Az 12.4.0](https://www.powershellgallery.com/packages/Az/12.4.0)
+- **Visual Studio**: [Visual Studio 2022 バージョン 17.7 リリース ノート | Microsoft Learn](https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/release-notes-v17.7)
 
 Microsoft Office、Microsoft Visual Studio Legacy、Microsoft Intune など、一部の Microsoft アプリケーションでは、Azure AD Graph API を使用しないようにするアップデートがまだ提供されていません。これらのアプリケーションについては、今後代替のバージョンが利用可能になったときに、Azure AD Graph API 廃止に関するブログの更新情報としてお知らせする予定です。これらのアプリケーションには、Azure AD Graph の利用延長が施されますので、アプリケーションをアップデートするために十分な猶予が与えられる予定です。
 
@@ -117,7 +118,7 @@ Microsoft Office、Microsoft Visual Studio Legacy、Microsoft Intune など、�
 
 アプリの Microsoft Graph への移行が完了していない場合、この廃止を延長することができます。アプリの authenticationBehaviors 構成で blockAzureADGraphAccess 属性を false に設定すると、アプリは 2025 年 6 月 30 日まで Azure AD Graph API を使用できるようになります。詳細なドキュメントは [こちら](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http#allow-extended-azure-ad-graph-access-until-june-30-2025) をご覧ください。 
 
-この設定を false に設定しない限り、新しいアプリケーションが Azure AD Graph API にアクセスしようとすると 403 エラーが発生します。2024 年に Microsoft Graph への移行が完了しないすべての既存アプリケーションについては、今すぐこの設定を計画ください。
+この設定を false に設定しない限り、新しいアプリケーションが Azure AD Graph API にアクセスしようとすると **403 エラー** が発生します。2024 年に Microsoft Graph への移行が完了しないすべての既存アプリケーションについては、今すぐこの設定を計画ください。
 
 詳細情報: [2025 年 6 月 30 日まで Azure AD Graph の拡張アクセスを許可する - Microsoft Graph｜Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http%22%20%5Cl%20%22allow-extended-azure-ad-graph-access-until-june-30-2025#allow-extended-azure-ad-graph-access-until-june-30-2025)
 
@@ -138,5 +139,5 @@ Azure AD Graph から Microsoft Graph への移行は、以下のツールやド
 また、必要に応じて、アプリケーションのアクセスを 2025 年 6 月 30 日まで延長することができます: [2025 年 6 月 30 日まで Azure AD Graph の拡張アクセスを許可する - Microsoft Graph｜Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/applications-authenticationbehaviors?tabs=http%22%20%5Cl%20%22allow-extended-azure-ad-graph-access-until-june-30-2025#allow-extended-azure-ad-graph-access-until-june-30-2025)
 
 Kristopher Bash  
-Product Manager, Microsoft Graph  
+Product Manager, Microsoft Graph  
 [LinkedIn](https://www.linkedin.com/in/kristopher-bash-aa3224133/)
