@@ -59,7 +59,7 @@ ID 管理者、セキュリティ アナリスト、ネットワーク セキュ
 パブリック プレビューでは、以下の 2 つの重要なシナリオにおいて ID 管理者とセキュリティ アナリストを支援するスキルを提供いたします: 
 
 - Microsoft Entra の Security Copilot を使用してアクセスのガバナンスとポリシーの適用を管理
-- Microsoft Entra の Security Copilot を使用してアクセス失敗をトラブルシューティング。
+- Microsoft Entra の Security Copilot を使用してアクセス失敗をトラブルシューティング
  
 
 ## Microsoft Entra の Security Copilot を使用してアクセスのガバナンスとポリシーの適用を管理 
