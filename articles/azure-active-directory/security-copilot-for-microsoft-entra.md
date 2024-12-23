@@ -89,4 +89,5 @@ Security Copilot を用いることで、セキュリティおよび IT 部門�
 Security Copilot の導入方法については[こちらの資料](https://learn.microsoft.com/en-us/copilot/security/get-started-security-copilot)をご覧ください。また、貴社の営業担当者にもお問い合わせいただき、そのメリットについてご確認ください。
 
 Sarah Scott
+
 Principal Manager, Product Management
