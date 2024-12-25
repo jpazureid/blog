@@ -134,7 +134,7 @@ Microsoft Defender を使用して URL をブロックする方法について�
 
 万が一、上記すべての対策が失敗した場合も、異常検知の機能で攻撃のブロックと修復が可能です。
 
-### Microsoft Entra ID Protection と Microsoft Defender を使用して、異常なセッションを監視
+### Microsoft Entra ID Protection と Microsoft Defender を使用して異常なセッションを監視
 
 ユーザーがセッションを開始したり、アプリケーションにアクセスしようとすると、Microsoft Entra ID Protection はユーザーとセッションのリスク要因に通常と異なる (異常な) 要素がないかを調べます。以下は、リスク レベルを高める異常の例です:
 
