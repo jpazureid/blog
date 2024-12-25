@@ -1,9 +1,9 @@
 ---
 title: カスタム OTP E メール プロバイダーのサポートでエンドユーザー体験が向上
-date: 2024-12-25 01:00
+date: 2024-12-26 09:00
 tags:
   - Microsoft Entra
-  - US Identity Blo
+  - US Identity Blog
 ---
 
 # カスタム OTP E メール プロバイダーのサポートでエンドユーザー体験が向上
