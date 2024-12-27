@@ -1,6 +1,6 @@
 ---
-title: "【 Entra ID 初学者向けシリーズ第 1 弾】 条件付きアクセス 入門編"
-date: 2024-12-25 09:00
+title: "Entra ID 初学者向けシリーズ第 1 弾 - 条件付きアクセス 入門"
+date: 2024-12-27 01:00
 tags:
     - Microsoft Entra
     - US Identity Blog
@@ -14,9 +14,9 @@ tags:
 
 **本記事の対象者**
 
-・Microsoft Entra 条件付きアクセスの基本を理解したい方
-・よくあるお問い合わせの事例を通じて実践的な知識を得たい方
-・Microsoft Entra  のサインインログの基本的な分析方法を知りたい方
+- Microsoft Entra 条件付きアクセスの基本を理解したい方
+- よくあるお問い合わせの事例を通じて実践的な知識を得たい方
+- Microsoft Entra  のサインインログの基本的な分析方法を知りたい方
 
 **記事概要**
 
@@ -34,18 +34,17 @@ tags:
 
 条件付きアクセスの流れ:
 
-    1. ユーザーが特定のリソース (Web アプリや Web API) にアクセスを試みます。
-    2. 特定のリソース (Web アプリや Web API) が Entra ID で認証してくるようユーザーに要求し、ユーザーは Entra ID に誘導されます。
-    3. Entra ID によりサインインが求められます。
-    4. ユーザーが ID/PW などを入力しサインインが成功すると、アクセス要求が条件付きアクセス ポリシーによって評価されます。
-        ・ポリシーの適用条件に合致しなかった場合 → ポリシーは適用されずアクセスが許可されます 🙆‍♀️ 
-        ・ポリシーの適用条件に合致し、制御を満たした場合 → アクセスが許可されます 🙆‍♀️
-        ・ポリシーの適用条件に合致したが、制御を満たさない場合 → アクセスが拒否されます 🙅‍♀️
+1. ユーザーが特定のリソース (Web アプリや Web API) にアクセスを試みます。
+2. 特定のリソース (Web アプリや Web API) が Entra ID で認証してくるようユーザーに要求し、ユーザーは Entra ID に誘導されます。
+3. Entra ID によりサインインが求められます。
+4. ユーザーが ID/PW などを入力しサインインが成功すると、アクセス要求が条件付きアクセス ポリシーによって評価されます。
+    - ポリシーの適用条件に合致しなかった場合 → ポリシーは適用されずアクセスが許可されます 🙆‍♀️ 
+    - ポリシーの適用条件に合致し、制御を満たした場合 → アクセスが許可されます 🙆‍♀️
+    - ポリシーの適用条件に合致したが、制御を満たさない場合 → アクセスが拒否されます 🙅‍♀️
 
 ポリシーの適用条件や制御に具体的に設定できる値については後述します。
 
-より細かい説明についてはこちらの記事もご覧ください:  
-[改めて知る Microsoft Entra 条件付きアクセス | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/review-ca/)
+より細かい説明については [改めて知る Microsoft Entra 条件付きアクセス](https://jpazureid.github.io/blog/azure-active-directory/review-ca/) の記事もご覧ください:  
 
 ## 条件付きアクセスの考え方ポイント
 
@@ -64,11 +63,12 @@ tags:
 
 条件付きアクセスは、ポリシーが適用される条件を満たした場合に、アクセスをブロックもしくは制御するためのものあり、条件を満たしたものを許可するというものではありません。ファイアーウォールのルールとは異なり、既定ですべてブロックがあり、そのうえで一部を許可するというイメージではない点に注意ください。ID とパスワードという最低限の認証を突破した後に、条件に合うものに追加の制御 (もしくはブロック) を適用するというイメージです。
 
-改めて、「アクセスを許可する」というものではなく、「特定の条件を満たした場合に制御が適用される（条件を満たさなかった場合は制御が適用されない）」というイメージになります。
+改めて、「アクセスを許可する」というものではなく、「特定の条件を満たした場合に制御が適用される (条件を満たさなかった場合は制御が適用されない)」というイメージになります。
 
-詳細はこちらの記事もご覧ください：  
-[条件付きアクセスの基本的な考え方 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/conditional-access-basic/)  
-[改めて知る Microsoft Entra 条件付きアクセス | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/review-ca/)
+詳細は以下の記事もご覧ください:
+
+- [条件付きアクセスの基本的な考え方 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/conditional-access-basic/)  
+- [改めて知る Microsoft Entra 条件付きアクセス | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/review-ca/)
 
 ### 条件付きアクセスの考え方のポイント 2
 
@@ -80,11 +80,9 @@ tags:
 
 ![conditional-access-3](starter-series-conditional-access/conditional-access-3.png)
 
-このようにユーザーがサインインしているアプリが、別のクラウド上の Web API (リソース) を呼び出すということは一般的であり、これはサービスの依存関係とも呼ばれます。条件付きアクセスを利用する際に意識するべき依存関係については以下の記事に解説されていますのでご覧ください。  
-[条件付きアクセスのサービスの依存関係 - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/service-dependencies)
+このようにユーザーがサインインしているアプリが、別のクラウド上の Web API (リソース) を呼び出すということは一般的であり、これはサービスの依存関係とも呼ばれます。条件付きアクセスを利用する際に意識するべき依存関係については [条件付きアクセスのサービスの依存関係](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/service-dependencies) に解説されていますのでご覧ください。
 
-そのほかの条件付きアクセスの動作の仕組みやよくある質問に関しては以下の記事をご覧ください。  
-[Azure AD の条件付きアクセスに関する Q&A | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/)
+そのほかの条件付きアクセスの動作の仕組みやよくある質問に関しては [Azure AD の条件付きアクセスに関する Q&A](https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/) の記事もご覧ください。  
 
 ## 条件付きアクセスポリシーの作成
 
@@ -92,7 +90,7 @@ tags:
 
 ![conditional-access-4](starter-series-conditional-access/conditional-access-4.png)
 
-上記の囲まれた部分の構成が終わったら、次にその条件に合致したときにどのような制御を適用するかを決めます。それが、以下の画面です。
+上記の囲まれた部分の構成が終わったら、次にその条件に合致したときにどのような制御を適用するかを決めます。それが以下の画面です。
 
 条件に合致したときにアクセスを許可する場合、許可に際して適用される制御の内容を選択します。例えば、条件に合致したときに多要素認証を求めたい場合は「多要素認証を要求する」にチェックを付けます。
 
@@ -100,56 +98,57 @@ tags:
 
 なお、条件に合致したときにセッションに対しても制御を適用することが可能です。例えば、サインインの頻度という制御を適用すると、8 時間毎に再認証をユーザーに求めるということも可能です (頻繁な再認証はセキュリティをむしろ低下させるため推奨しておりません)。
 
-各設定値の詳細はこちらの公開情報をご覧ください:  
-[条件付きアクセス ポリシーの構築 - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-policies)
+各設定値の詳細は [条件付きアクセス ポリシーの構築](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-policies) の公開情報もご覧ください。
 
 ## よくあるお問い合わせの例
 
 これまでの説明をもとに、条件付きアクセス ポリシーの理解向上に役立ついくつかのお問い合わせ例をご紹介いたします。
 
-- 基本編 ① 場所やデバイスの状態をもとに制御したい
-- 基本編 ② ポリシーを構成したが思ったように適用されない
-- 中級編 ① 「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用した状態で Intune の新規デバイス登録は可能か
-- 中級編 ② Teams 以外のすべてのアプリをブロックしているのに Teams にアクセスできない
+- 基本編 1: 場所やデバイスの状態をもとに制御したい
+- 基本編 2: ポリシーを構成したが思ったように適用されない
+- 中級編 3: 「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用した状態で Intune の新規デバイス登録は可能か
+- 中級編 4: Teams 以外のすべてのアプリをブロックしているのに Teams にアクセスできない
 
-### 基本編 ① 場所やデバイスの状態をもとに制御したい
+### 基本編 1: 場所やデバイスの状態をもとに制御したい
 
-----お問い合わせの例-----------------------------  
-以下を満たす条件付きアクセスポリシーを作成したい。
+以下のようなお問い合わせがあったとします。
 
-<シナリオ A >  
-社外からの Office 365 へのアクセスは準拠済みのデバイスのみに制限したい
-
-<シナリオ B >
-Android / iOS に対しては指定した IP アドレスの範囲からしかアクセスを許可しない  
-\------------------------------------------------
+> 以下を満たす条件付きアクセスポリシーを作成したい。
+> 
+> <シナリオ A>  
+> 社外からの Office 365 へのアクセスは準拠済みのデバイスのみに制限したい
+> 
+> <シナリオ B>
+> Android / iOS に対しては指定した IP アドレスの範囲からしかアクセスを許可しない  
 
 これらの場合、ポリシーの構成としては、すべてのネットワークの場所に対して「準拠済みのデバイスを要求する」もしくは「アクセスをブロックする」と構成して、ポリシーの対象外の場所に「社内」や「指定した IP アドレスの範囲」を指定します。各シナリオを言い換えると以下のようになります。
 
-<シナリオ A >  
-全ての場所で Office 365 へのアクセスは準拠済みのデバイスを必要とするが、社内はその対象外とする。
+<シナリオ A>  
+全ての場所ですべてのユーザーに対し、Office 365 にアクセスする際は準拠済みのデバイスを必要とするが、社内はその対象外とする。
 
-<シナリオ B >  
-Android / iOS に対してはすべての場所 (指定した IP アドレスの範囲はその対象外) でアクセスをブロックする。
+<シナリオ B>  
+Android / iOS に対してはすべての場所 (指定した IP アドレスの範囲はその対象外) ですべてのユーザーとアプリに対してアクセスをブロックする。
 
 これらを実際のポリシーの構成に落とし込むと以下のようになります。このように、要望されているシナリオを条件付きアクセス ポリシーの構成に合うように少し変換して構成ください。
 
-＜シナリオ A の設定例＞
+<シナリオ A の設定例>
+
 ![conditional-access-6](starter-series-conditional-access/conditional-access-6.png)
 
-＜シナリオ B の設定例＞
+<シナリオ B の設定例>
+
 ![conditional-access-7](starter-series-conditional-access/conditional-access-7.png)
 
-### 基本編 ② ポリシーを構成したが思ったように適用されない
+### 基本編 2: ポリシーを構成したが思ったように適用されない
 
-----お問い合わせの例-----------------------------  
-以下条件付きアクセスポリシーを設定をしたが、適用されない。
-オフィス以外の場所からのアクセスはブロックしたい。
+以下のようなお問い合わせがあったとします。
 
-![conditional-access-8](starter-series-conditional-access/conditional-access-8.png)  
-\------------------------------------------------
+> 以下条件付きアクセスポリシーを設定をしたが、適用されない。オフィス以外の場所からのアクセスはブロックしたい。
+> 
+> ![conditional-access-8](starter-series-conditional-access/conditional-access-8.png)  
 
-ターゲット リソースが指定されていないため、何もポリシーの対象となっておらず機能しません。以下は割り当てをするときに必ず指定する必要があるものです:  
+ターゲット リソースが指定されていないため、何もポリシーの対象となっておらず機能しません。以下は割り当てをするときに必ず指定する必要があるものです:
+
 - ユーザー
 - ターゲットリソース
 
@@ -157,68 +156,69 @@ Android / iOS に対してはすべての場所 (指定した IP アドレスの
 
 前述のとおり、条件付きアクセスは、条件に合ったものに対して制御を適用するというものですので、ポリシーが適用される条件についてはすべて指定するようにご注意ください。
 
-### 中級編 ① 「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用した状態で Intune の新規デバイス登録は可能か
+### 中級編 3: 「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用した状態で Intune の新規デバイス登録は可能か
 
-----お問い合わせの例-----------------------------  
-条件付きアクセスにて、「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用された状態にしました。新しいデバイスの Intune 登録は可能でしょうか。  
-![conditional-access-10](starter-series-conditional-access/conditional-access-10.png)  
-\------------------------------------------------
+以下のようなお問い合わせがあったとします。
+
+> 条件付きアクセスにて、「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用された状態にしました。新しいデバイスの Intune 登録は可能でしょうか。
+> 
+> ![conditional-access-10](starter-series-conditional-access/conditional-access-10.png)  
 
 このお客様は、条件付きアクセスにて「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用にした際に、これから Intune 登録しようとしているデバイスはこの条件を満たせない (登録しようとしているその時点ではデバイスはまだ非準拠である) ため、新規の Intune 登録がブロックされるのではないかと懸念してこのようなお問い合わせをされました。
 
 このシナリオは条件付きアクセスで考慮されており、Bootstrap シナリオと呼ばれます。この Bootstrap シナリオに当たる以下の場合は、条件付きアクセス ポリシー適用の対象となるユーザーとリソースを設定していても、制御が適用されません:
-Device registration
-Intune Management Setup
-Intune Check-In
-Multi-Factor Auth Connector
-(一覧は公開されていないため、上記の他にもある可能性あり)
+
+- Device registration
+- Intune Management Setup
+- Intune Check-In
+- Multi-Factor Auth Connector
+- (一覧は公開されていないため、上記の他にもある可能性あり)
 
 この時、条件付きアクセス ポリシーとしては、制御が適用されないという結果になりますので、サインイン ログ上は、条件付きアクセス ポリシーの適用が失敗したと表示される場合があります。しかしながら、これは想定された動作であるため心配いただく必要はありません。
 
-詳細はこちらの記事もご覧ください：  
-[準拠しているデバイス、ハイブリッド参加済みデバイス、または MFA を必須にする - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/policy-alt-all-users-compliant-hybrid-or-mfa)
+詳細は [準拠しているデバイス、ハイブリッド参加済みデバイス、または MFA を必須にする](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/policy-alt-all-users-compliant-hybrid-or-mfa) の公開情報もご覧ください。
 
-### 中級編 ② Teams 以外のすべてのアプリをブロックしているのに Teams にアクセスできない
+### 中級編 4: Teams 以外のすべてのアプリをブロックしているのに Teams にアクセスできない
 
-----お問い合わせの例-----------------------------  
-Teams 以外のすべてのアプリをブロックし、Teams はポリシーの対象外としている。
-しかし、Teams にアクセスできないのはなぜでしょうか。
-![conditional-access-11](starter-series-conditional-access/conditional-access-11.png)  
-\------------------------------------------------
+以下のようなお問い合わせがあったとします。
 
-Microsoft Entra 条件付きアクセスのサービス依存関係が原因です。前述のとおり、Teams にアクセスするためには、Microsoft SharePoint Online や Microsoft Exchange Online のリソースにアクセスする必要があります。しかし、このシナリオでは Teams のみがポリシーの対象外であり、Microsoft SharePoint Online や Microsoft Exchange Online は条件付きアクセス ポリシーの適用対象となります。このため、Teams アプリが使用しているリソースがブロックされる状態であり、結果的に Teams にもアクセスできません。  
+> Teams 以外のすべてのアプリをブロックし、Teams はポリシーの対象外としている。しかし、Teams にアクセスできないのはなぜでしょうか。
+> 
+> ![conditional-access-11](starter-series-conditional-access/conditional-access-11.png)  
+
+Microsoft Entra 条件付きアクセスのサービス依存関係が原因です。前述のとおり、Teams にアクセスするためには、Microsoft SharePoint Online や Microsoft Exchange Online のリソースにアクセスする必要があります。しかし、このシナリオでは Teams のみがポリシーの対象外であり、Microsoft SharePoint Online や Microsoft Exchange Online は条件付きアクセス ポリシーの適用対象となります。このため、Teams アプリが使用しているリソースがブロックされる状態であり、結果的に Teams にもアクセスできません。
+
 ![conditional-access-12](starter-series-conditional-access/conditional-access-12.png)
 
 Teams のみをユーザーに利用させたいというお客様は多くいらっしゃいますが、Teams のこのような性質により、Teams のみユーザーに利用させるということは極めて困難です。条件付きアクセス ポリシーの観点では、Microsoft SharePoint Online や Microsoft Exchange Online も条件付きアクセスポリシーで許可いただく必要があります。結果としてユーザーは Outlook や SharePoint Online にもアクセスが可能となります。弊社としてはこういった依存関係を考慮して、条件付きアクセスポリシーの対象および対象外としては Office 365 の利用をお勧めしています。
 
-詳細はこちらの記事もご覧ください：  
-[条件付きアクセスのサービスの依存関係 - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/service-dependencies)
+詳細は [条件付きアクセスのサービスの依存関係](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/service-dependencies) の公開情報もご覧ください。
 
-## サインインログを見るときのポイント
+## サインイン ログを見るときのポイント
 
 条件付きアクセスに起因してサインインがブロックされた場合、その概要がサインイン画面に表示されます。この時、「詳細」をクリックするか、画面右下の ... をクリックすると、エラーの詳細を確認可能です。サインイン時のエラー画面にて表示される以下の情報を控えてサインイン ログを検索すると詳細な情報を得ることが出来ます。
 
 - 要求 ID (Request ID): 各サインインの ID
-- 相関 ID (Correlation ID) : 一連のサインインの ID
+- 相関 ID (Correlation ID): 一連のサインインを束ねた ID
 - Timestamp: サインインした時刻
 - アプリ名: アクセス先のアプリ
 
 ![conditional-access-13](starter-series-conditional-access/conditional-access-13.png)
 
-Entra ID のサインインログを確認するには以下の手順を実施ください。
+Entra ID のサインイン ログを確認するには以下の手順を実施ください。
 
-1. Azure Portal  ( <https://portal.azure.com> ) にアクセスします。
+1. Azure Portal  (https://portal.azure.com) にアクセスします。
 2. 管理者アカウントでサインインします。
 3. [Microsoft Entra ID] > [サインイン ログ] に移動します。
 
-適当なサインインログの内容をクリックすると、以下のように情報が表示されます。[基本情報] タブにその概要が表示されます。ここでで注目したい値は以下のとおりです。
+適当なサインイン ログの内容をクリックすると、以下のように情報が表示されます。[基本情報] タブにその概要が表示されます。ここでで注目したい値は以下のとおりです。
 
 - 要求 ID (Request ID): 各サインインの ID
-- 相関 ID (Correlation ID) : 一連のサインインの ID
+- 相関 ID (Correlation ID): 一連のサインインを束ねた ID
 - Timestamp: サインインした時刻
 - リソース名: アクセス先のリソース
 - リソース ID: アクセス先のリソースの ID
-   ユーザー: サインインしたユーザーの UPN
+- ユーザー: サインインしたユーザーの UPN
 
 ![conditional-access-14](starter-series-conditional-access/conditional-access-14.png)
 
@@ -237,10 +237,7 @@ Entra ID のサインインログを確認するには以下の手順を実施�
 - アクセス権の付与ではなく、特定の条件を満たした場合に制御が適用される (条件を満たさなかった場合は制御が適用されない) というイメージである
 - 条件付きアクセスでの制御の対象はユーザーの目の前で動いているアプリではなく、クラウド上の ”リソース” である
 - ユーザーの目の前で動いているアプリがどのクラウド "リソース" を利用しているかを意識することでポリシーの構成をスムーズに行うことが可能である
-  
-
-
-  
+   
 # 参考になる資料
 
 上記内容をご覧いただけましたら、是非以下の資料についてもご覧ください。
