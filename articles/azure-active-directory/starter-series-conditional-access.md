@@ -28,7 +28,7 @@ tags:
 
 ### 条件付きアクセスとは
 
-![conditional-access-1](starter-series-conditional-access/conditional-access-1.png)
+![ユーザーと条件、リソースの関係を表した画像](starter-series-conditional-access/conditional-access-1.png)
 
 条件付きアクセスは、ユーザーが Entra ID と連携したリソースにアクセスする際に、特定の条件に基づいてポリシーを適用し、リソースへのアクセスを制御する仕組みです。これにより、必要なユーザーだけが適切な状況でリソースにアクセスできるようになりセキュリティを高めることが可能です。条件付きアクセス ポリシーが適用されるのは、ユーザーが Entra ID にサインインした後、Entra ID がクラウド上のリソースに対して各種のトークンを発行する直前となります。
 
@@ -59,7 +59,7 @@ tags:
 
 条件に合致した場合にサインインに対して適用される制御 (制限) としては、「アクセスのブロック」や「多要素認証を要求する」、「Microsoft Entra ハイブリッド参加済みデバイスが必要」というものがあります。実際の画面とその考え方は以下の画像のとおりです。
 
-![conditional-access-2](starter-series-conditional-access/conditional-access-2.png)
+![アクセスのブロックとアクセス権の付与について解説した画像](starter-series-conditional-access/conditional-access-2.png)
 
 条件付きアクセスは、ポリシーが適用される条件を満たした場合に、アクセスをブロックもしくは制御するためのものあり、条件を満たしたものを許可するというものではありません。ファイアーウォールのルールのような「既定ですべてブロックがあり、そのうえで一部を許可する」というイメージではない点に注意ください。ID とパスワードという最低限の認証を突破した後に、条件に合うものに追加の制御 (もしくはブロック) を適用するというイメージです。
 
@@ -78,23 +78,23 @@ tags:
 
 他にも例えば、ユーザーが Windows 上で Teams のネイティブ クライアント アプリにアクセスしたとします。この時、ユーザーは Teams のネイティブ クライアント アプリにだけアクセスしているわけではありません。実際は、Teams のクラウド側の Web サービスに加え、SharePoint Online、Exchange Online、Microsoft Planner という複数の Web API にアクセスをしています。つまり、Teams のクライアントは、それが使用するデータのもととなっている複数のクラウド上の "リソース" にアクセスしています。Teams はこれらリソースの一つでもアクセスができないと (条件付きアクセスでブロックされると)、正常に動作しません。
 
-![conditional-access-3](starter-series-conditional-access/conditional-access-3.png)
+![Teams におけるサービスの依存関係を表した画像](starter-series-conditional-access/conditional-access-3.png)
 
 このようにユーザーがサインインしているアプリが、別のクラウド上の Web API (リソース) を呼び出すということは一般的であり、これはサービスの依存関係とも呼ばれます。条件付きアクセスを利用する際に意識するべき依存関係については [条件付きアクセスのサービスの依存関係](https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/service-dependencies) に解説されていますのでご覧ください。
 
 そのほかの条件付きアクセスの動作の仕組みやよくある質問に関しては [Azure AD の条件付きアクセスに関する Q&A](https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/) の記事もご覧ください。  
 
-## 条件付きアクセスポリシーの作成
+## 条件付きアクセス ポリシーの作成
 
 条件付きアクセス ポリシーにて設定可能な値の概要は以下のとおりです。まず、条件について以下に概要をおまとめしました。条件付きアクセス ポリシーでは、まず大きく適用対象のユーザーと適用対象のリソースを選択する必要があります。これらに加えて、さらにネットワークの場所やクライアント OS の種類など細かく適用条件を選択することが可能です。
 
-![conditional-access-4](starter-series-conditional-access/conditional-access-4.png)
+![条件付きアクセス ポリシーの割り当てについて概要をまとめた画像](starter-series-conditional-access/conditional-access-4.png)
 
 上記の囲まれた部分の構成が終わったら、次にその条件に合致したときにどのような制御を適用するかを決めます。それが以下の画面です。
 
 条件に合致したときにアクセスを許可する場合、許可に際して適用される制御の内容を選択します。例えば、条件に合致したときに多要素認証を求めたい場合は「多要素認証を要求する」にチェックを付けます。
 
-![conditional-access-5](starter-series-conditional-access/conditional-access-5.png)
+![アクセス制御において許可とセッション制御の概要をまとめた画像](starter-series-conditional-access/conditional-access-5.png)
 
 なお、条件に合致したときにセッションに対しても制御を適用することが可能です。例えば、サインインの頻度という制御を適用すると、8 時間毎に再認証をユーザーに求めるということも可能です (頻繁な再認証はセキュリティをむしろ低下させるため推奨しておりません)。
 
@@ -133,11 +133,11 @@ Android / iOS に対してはすべての場所 (指定した IP アドレスの
 
 <シナリオ A の設定例>
 
-![conditional-access-6](starter-series-conditional-access/conditional-access-6.png)
+![シナリオ A の設定例を示した画像](starter-series-conditional-access/conditional-access-6.png)
 
 <シナリオ B の設定例>
 
-![conditional-access-7](starter-series-conditional-access/conditional-access-7.png)
+![シナリオ B の設定例を示した画像](starter-series-conditional-access/conditional-access-7.png)
 
 ### 基本編 2: ポリシーを構成したが思ったように適用されない
 
@@ -145,14 +145,14 @@ Android / iOS に対してはすべての場所 (指定した IP アドレスの
 
 > 以下条件付きアクセスポリシーを設定をしたが、適用されない。オフィス以外の場所からのアクセスはブロックしたい。
 > 
-> ![conditional-access-8](starter-series-conditional-access/conditional-access-8.png)  
+> ![ターゲット リソースが設定されていない状態の画像](starter-series-conditional-access/conditional-access-8.png)  
 
 ターゲット リソースが指定されていないため、何もポリシーの対象となっておらず機能しません。以下は割り当てをするときに必ず指定する必要があるものです:
 
 - ユーザー
 - ターゲットリソース
 
-![conditional-access-9](starter-series-conditional-access/conditional-access-9.png)
+![ターゲット リソースに着目した状態の画像](starter-series-conditional-access/conditional-access-9.png)
 
 前述のとおり、条件付きアクセスは、条件に合ったものに対して制御を適用するというものですので、ポリシーが適用される条件についてはすべて指定するようにご注意ください。
 
@@ -162,7 +162,7 @@ Android / iOS に対してはすべての場所 (指定した IP アドレスの
 
 > 条件付きアクセスにて、「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用された状態にしました。新しいデバイスの Intune 登録は可能でしょうか。
 > 
-> ![conditional-access-10](starter-series-conditional-access/conditional-access-10.png)  
+> ![「デバイスは準拠しているとしてマーク済みである必要があります」にチェックがついた状態の画像](starter-series-conditional-access/conditional-access-10.png)  
 
 このお客様は、条件付きアクセスにて「デバイスは準拠しているとしてマーク済みである必要があります」の制御を適用にした際に、これから Intune 登録しようとしているデバイスはこの条件を満たせない (登録しようとしているその時点ではデバイスはまだ非準拠である) ため、新規の Intune 登録がブロックされるのではないかと懸念してこのようなお問い合わせをされました。
 
@@ -184,11 +184,11 @@ Android / iOS に対してはすべての場所 (指定した IP アドレスの
 
 > Teams 以外のすべてのアプリをブロックし、Teams はポリシーの対象外としている。しかし、Teams にアクセスできないのはなぜでしょうか。
 > 
-> ![conditional-access-11](starter-series-conditional-access/conditional-access-11.png)  
+> ![ターゲット リソースの対象として Microsoft Teams Services のみが選択されている状態の画像](starter-series-conditional-access/conditional-access-11.png)  
 
 Microsoft Entra 条件付きアクセスのサービス依存関係が原因です。前述のとおり、Teams にアクセスするためには、Microsoft SharePoint Online や Microsoft Exchange Online のリソースにアクセスする必要があります。しかし、このシナリオでは Teams のみがポリシーの対象外であり、Microsoft SharePoint Online や Microsoft Exchange Online は条件付きアクセス ポリシーの適用対象となります。このため、Teams アプリが使用しているリソースがブロックされる状態であり、結果的に Teams にもアクセスできません。
 
-![conditional-access-12](starter-series-conditional-access/conditional-access-12.png)
+![Teams の依存関係を表した画像](starter-series-conditional-access/conditional-access-12.png)
 
 Teams のみをユーザーに利用させたいというお客様は多くいらっしゃいますが、Teams のこのような性質により、Teams のみユーザーに利用させるということは極めて困難です。条件付きアクセス ポリシーの観点では、Microsoft SharePoint Online や Microsoft Exchange Online も条件付きアクセスポリシーで許可いただく必要があります。結果としてユーザーは Outlook や SharePoint Online にもアクセスが可能となります。弊社としてはこういった依存関係を考慮して、条件付きアクセスポリシーの対象および対象外としては Office 365 の利用をお勧めしています。
 
@@ -205,7 +205,7 @@ Teams のみをユーザーに利用させたいというお客様は多くい�
 - Timestamp: サインインした時刻
 - アプリ名: アクセス先のアプリ
 
-![conditional-access-13](starter-series-conditional-access/conditional-access-13.png)
+![サインイン画面で詳細を表示した状態の画像](starter-series-conditional-access/conditional-access-13.png)
 
 Entra ID のサインイン ログを確認するには以下の手順を実施ください。
 
@@ -213,7 +213,7 @@ Entra ID のサインイン ログを確認するには以下の手順を実施�
 2. 管理者アカウントでサインインします。
 3. [Microsoft Entra ID] > [サインイン ログ] に移動します。
 
-適当なサインイン ログの内容をクリックすると、以下のように情報が表示されます。[基本情報] タブにその概要が表示されます。ここでで注目したい値は以下のとおりです。
+適当なサインイン ログの内容をクリックすると、以下のように情報が表示されます。[基本情報] タブにその概要が表示されます。ここで注目したい値は以下のとおりです。
 
 - 要求 ID (Request ID): 各サインインの ID
 - 相関 ID (Correlation ID): 一連のサインインを束ねた ID
@@ -222,7 +222,7 @@ Entra ID のサインイン ログを確認するには以下の手順を実施�
 - リソース ID: アクセス先のリソースの ID
 - ユーザー: サインインしたユーザーの UPN
 
-![conditional-access-14](starter-series-conditional-access/conditional-access-14.png)
+![サインイン ログの基本情報のタブを開いた状態の画像](starter-series-conditional-access/conditional-access-14.png)
 
 [条件付きアクセス] タブでは以下の内容などを確認することが可能です。ポリシーの適用が思ったように行われない場合は、この画面を見て各ポリシーの適用状況をご確認ください。
 
@@ -230,7 +230,7 @@ Entra ID のサインイン ログを確認するには以下の手順を実施�
 - どの条件に合致したのか
 - どの制御が適用されたのか
 
-![conditional-access-15](starter-series-conditional-access/conditional-access-15.png)
+![サインイン ログの条件付きアクセスのタブを開いた状態の画像](starter-series-conditional-access/conditional-access-15.png)
 
 ## まとめ
 
