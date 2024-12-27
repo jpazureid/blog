@@ -1,39 +1,39 @@
 ---
-title: ハイブリッド Azure AD 参加を再構成する
+title: Microsoft Entra ハイブリッド参加を再構成する
 date: 2023-04-24 09:00
 tags:
-  - Azure AD
-  - Hybrid Azure AD Join 
+  - Microsoft Entra ID
+  - Microsoft Entra Hybrid Join 
   - Troubleshooting
 ---
 
-# ハイブリッド Azure AD 参加を再構成する
+# Microsoft Entra ハイブリッド参加を再構成する
 
 こんにちは、Azure & Identity サポート チームの長谷川です。
 
-この記事では、対象デバイスのハイブリッド Azure AD 参加 (略称 HAADJ) を再構成する手順を紹介します。
+この記事では、対象デバイスの Microsoft Entra ハイブリッド参加 (略称 MEHJ) を再構成する手順を紹介します。
 
 <!-- more -->
 
-HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤ってデバイス オブジェクトを削除してしまう場合があるかと思います。削除後、再度 Azure AD Connect (略称 AADC) でデバイス オブジェクトが同期されると [Azure Portal (portal.azure.com)] > [Azure Active Directory] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトが表示されるようになりますが、[登録済み] の項目が「保留中」のまま遷移しない状態になります。「保留中」から登録日に遷移させるためにはデバイスで HAADJ を再構成する必要があるものの、実際のデバイス側は既に HAADJ の構成が完了しているため、そのままでは HAADJ を再構成する動作が生じません。こういった場合に、本ブログを参考に HAADJ を再構成いただけると幸いです。
+MEHJ を構成完了後、たとえばなんらか Microsoft Entra ID 上から誤ってデバイス オブジェクトを削除してしまう場合があるかと思います。削除後、再度 Microsoft Entra Connect (略称 MEC) でデバイス オブジェクトが同期されると [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトが表示されるようになりますが、[登録済み] の項目が「保留中」のまま遷移しない状態になります。「保留中」から登録日に遷移させるためにはデバイスで MEHJ を再構成する必要があるものの、実際のデバイス側は既に MEHJ の構成が完了しているため、そのままでは MEHJ を再構成する動作が生じません。こういった場合に、本ブログを参考に MEHJ を再構成いただけると幸いです。
 
 ## 目次
 
 1. [注意事項](#anchor1)
 2. [事前準備: Windows Hello for Business のリセット](#anchor2)
 3. [事前準備: Intune の登録解除](#anchor3)
-4. [HAADJ 再構成: 既存情報のクリア](#anchor4)
-5. [HAADJ 再構成: 改めて構成](#anchor5)
+4. [MEHJ 再構成: 既存情報のクリア](#anchor4)
+5. [MEHJ 再構成: 改めて構成](#anchor5)
 6. [事後確認: Intune の登録](#anchor6)
 7. [事後作業: WHfB の再プロビジョニング](#anchor7)
 
 <h2 id="anchor1">1. 注意事項</h2>
 
-本手順は Azure AD でデバイスを認証する「Sync Join」「マネージド」「クラウド認証」などと呼ばれる構成方法にのみ適用可能です。
+本手順は Microsoft Entra ID でデバイスを認証する「Sync Join」「マネージド」「クラウド認証」などと呼ばれる構成方法にのみ適用可能です。
 
-この構成方法は、オンプレミスの Active Directory サーバーから AADC を介して Azure AD にデバイス オブジェクトを同期し、Azure AD でデバイスを認証して HAADJ としてデバイスを構成するものです。もしも AD FS でクレーム ルールを使用してデバイスを認証し、Azure AD にデバイスを登録して HAADJ を構成している場合はこの手順は利用できません。
+この構成方法は、オンプレミスの Active Directory サーバーから MEC を介して Microsoft Entra ID にデバイス オブジェクトを同期し、Microsoft Entra ID でデバイスを認証して MEHJ としてデバイスを構成するものです。もしも AD FS でクレーム ルールを使用してデバイスを認証し、Microsoft Entra ID にデバイスを登録して MEHJ を構成している場合はこの手順は利用できません。
 
-なお、再度 HAADJ を構成するためにはそのデバイス上での管理者権限と、デバイスがオンプレミスの Active Directory にアクセスできる環境 (社外にデバイスがある場合は、オンプレミス AD 環境への VPN 接続) が必要です。
+なお、再度 MEHJ を構成するためにはそのデバイス上での管理者権限と、デバイスがオンプレミスの Active Directory にアクセスできる環境 (社外にデバイスがある場合は、オンプレミス AD 環境への VPN 接続) が必要です。
 
 <h2 id="anchor2">2. 事前準備: Windows Hello for Business のリセット</h2>
 
@@ -57,7 +57,7 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
 **Intune 登録していなければスキップください。**
 
-1. [Microsoft Intune admin center (endpoint.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し、存在する場合は対象デバイスを開いて [削除] ボタンをクリックして削除します (削除完了するまでに少し時間がかかります)。
+1. [Microsoft Intune 管理センター (intune.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し、存在する場合は対象デバイスを開いて [削除] ボタンをクリックして削除します (削除完了するまでに少し時間がかかります)。
 2. 対象のデバイス上で、[PowerShell] を **管理者権限** で実行します。
 3. 以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します。 **<span style="color: red; ">(表示されない場合は以下の 4. から 7. の手順は実施しないでください)</span>**
 
@@ -87,11 +87,11 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
     if ($EnrollmentGUID -eq $null) {Write-Warning "EnrollmentGUID is NULL"} elseif ($EnrollmentGUID -eq "") {Write-Warning "EnrollmentGUID is BLANK (but it is not NULL)"} else {Get-ScheduledTask | Where-Object {$_.Taskpath -match $EnrollmentGUID} | Unregister-ScheduledTask -Confirm:$false}
     ```
 
-<h2 id="anchor4">4. HAADJ 再構成: 既存情報のクリア</h2>
+<h2 id="anchor4">4. MEHJ 再構成: 既存情報のクリア</h2>
 
-実際に HAADJ の再登録を行うに際して既存の情報をクリアしておきます。
+実際に MEHJ の再登録を行うに際して既存の情報をクリアしておきます。
 
-1. 対象のデバイスにて __管理者権限__ でコマンド プロンプトを起動し、次のコマンドで HAADJ を解除します。
+1. 対象のデバイスにて __管理者権限__ でコマンド プロンプトを起動し、次のコマンドで MEHJ を解除します。
     ```
     dsregcmd /leave
     ```
@@ -122,9 +122,9 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
     ![](./haadj-re-registration/haadj-re-registration4-7.png)
 
-8. AADC の同期 (既定では 30 分間隔) を待ち、[Azure Portal (portal.azure.com)] > [Azure Active Directory] > [デバイス] > [すべてのデバイス] にて対象のデバイス オブジェクトが削除されていることを確認します。
+8. MEC の同期 (既定では 30 分間隔) を待ち、[Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] にて対象のデバイス オブジェクトが削除されていることを確認します。
 
-<h2 id="anchor5">5. HAADJ 再構成: 改めて構成</h2>
+<h2 id="anchor5">5. MEHJ 再構成: 改めて構成</h2>
 
 以下の手順で実際に再構成を行います。
 
@@ -135,22 +135,22 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
     ![](./haadj-re-registration/haadj-re-registration5-4.png)
 
-5. オンプレミスの Active Directory にて対象のコンピューター アカウントに userCertificate に値が書き込まれたことを確認します (上記「4. HAADJ 再構成: 既存情報のクリア」の 3 から 5 の手順を参考)。
+5. オンプレミスの Active Directory にて対象のコンピューター アカウントに userCertificate に値が書き込まれたことを確認します (上記「4. MEHJ 再構成: 既存情報のクリア」の 3 から 5 の手順を参考)。
 
     ![](./haadj-re-registration/haadj-re-registration5-5.png)
 
-6. AADC の同期 (既定では 30 分間隔) を経て [Azure Portal (portal.azure.com)] > [Azure Active Directory] > [デバイス] > [すべてのデバイス] に対象のデバイス オブジェクトが同期されたことを確認します。
+6. MEC の同期 (既定では 30 分間隔) を経て [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] に対象のデバイス オブジェクトが同期されたことを確認します。
 
     ![](./haadj-re-registration/haadj-re-registration5-6.png)
 
-7. Azure AD への同期を確認後、再度 [Automatic-Device-Join] を実行します。(3 から 4 の手順を参考)
+7. Microsoft Entra ID への同期を確認後、再度 [Automatic-Device-Join] を実行します。(3 から 4 の手順を参考)
 8. コマンド プロンプトを起動し次のコマンドを実行し `AzureAdJoined : YES` となっていることを確認します。
 
     ```
     dsregcmd /status
     ```
 
-9. [Azure Portal (portal.azure.com)] > [Azure Active Directory] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトの [登録済み] の項目が「保留中」から現在の日付に遷移したことを確認します。
+9. [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトの [登録済み] の項目が「保留中」から現在の日付に遷移したことを確認します。
 
     ![](./haadj-re-registration/haadj-re-registration5-9.png)
 
@@ -165,8 +165,8 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
 **この手順は Intune 登録しなければ不要です。** また、反映に時間がかかることがあります。
 
-1.  [Azure Portal (portal.azure.com)] > [Azure Active Directory] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトの [MDM] の項目に値が入り [準拠している] が「はい」となっていることを確認します。
-2. [Microsoft Intune admin center (endpoint.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し対象デバイスの [対応] の項目が「準拠している」となっていることを確認します。
+1.  [Azure Portal (portal.azure.com)] > [Microsoft Entra ID] > [デバイス] > [すべてのデバイス] で対象のデバイス オブジェクトの [MDM] の項目に値が入り [準拠している] が「はい」となっていることを確認します。
+2. [Microsoft Intune 管理センター (intune.microsoft.com)] > [デバイス] > [すべてのデバイス] から該当デバイスを検索し対象デバイスの [対応] の項目が「準拠している」となっていることを確認します。
 
 <h2 id="anchor7">7. 事後作業: WHfB の再プロビジョニング</h2>
 
@@ -177,4 +177,4 @@ HAADJ を構成完了後、たとえばなんらか Azure AD 上から誤って�
 
 ## おわりに
 
-以上、HAADJ の再構成手順が運用の助けになると嬉しく思います。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。
+以上、MEHJ の再構成手順が運用の助けになると嬉しく思います。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。
