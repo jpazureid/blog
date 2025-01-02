@@ -1,5 +1,5 @@
 ---
-title: 多要素認証 (MFA) のリセット手順 2025 年版
+title: 多要素認証 (MFA) のリセット手順 - 2025 年版
 date: 2025-01-06 09:00
 tags:
   - Microsoft Entra ID
@@ -7,9 +7,9 @@ tags:
 ---
 
 > [!NOTE]
-> 本記事は 2022 年に公開した [多要素認証 (MFA) のリセット手順 2022 年版](../azure-active-directory/mfa-reset-2022.md) の内容を更新したものです。
+> 本記事は 2022 年に公開した [多要素認証 (MFA) のリセット手順 - 2022 年版](../azure-active-directory/mfa-reset-2022.md) の内容を更新したものです。
 >
-> # 多要素認証 (MFA) のリセット手順 2025 年版
+> # 多要素認証 (MFA) のリセット手順 - 2025 年版
 
 こんにちは、Azure & Identity サポート チームの長谷川です。
 
