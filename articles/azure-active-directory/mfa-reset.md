@@ -1,5 +1,5 @@
 ---
-title: 多要素認証 (MFA) のリセット手順
+title: 多要素認証 (MFA) のリセット手順 - 2018 年版
 date: 2018-10-15
 tags:
   - Azure AD
@@ -7,10 +7,10 @@ tags:
 ---
 
 > [!NOTE]
-> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。
-> 元の記事の最新の更新情報については、本内容をご参照ください。
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。
+> 現在では 2022 年版から GUI やコマンドなどが変更されているため、最新の記事は [多要素認証 (MFA) のリセット手順 2025 年版](./mfa-reset-2025/) をご覧ください。
 
-# 多要素認証 (MFA) のリセット手順
+# 多要素認証 (MFA) のリセット手順 - 2018 年版
 
 こんにちは、Azure & Identity サポート チームの小野です。
 
