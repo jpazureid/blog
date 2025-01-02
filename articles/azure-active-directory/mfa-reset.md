@@ -1,16 +1,15 @@
 ---
-title: 多要素認証 (MFA) のリセット手順
-date: 2018-10-15
+title: 多要素認証 (MFA) のリセット手順 - 2018 年版
+date: 2018-10-15 09:00
 tags:
   - Azure AD
   - MFA
 ---
 
 > [!NOTE]
-> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。
-> 元の記事の最新の更新情報については、本内容をご参照ください。
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。現在では 2018 年版から GUI やコマンドなどが変更されているため、最新の記事は [多要素認証 (MFA) のリセット手順 - 2025 年版](../azure-active-directory/mfa-reset-2025.md) をご覧ください。
 
-# 多要素認証 (MFA) のリセット手順
+# 多要素認証 (MFA) のリセット手順 - 2018 年版
 
 こんにちは、Azure & Identity サポート チームの小野です。
 
@@ -62,8 +61,7 @@ foreach ($user in $users) {
 }
 ```
 
-![](./mfa-reset/csv.png)  
-図: 用意する CSV の例
+![用意する CSV の例](./mfa-reset/csv.png)  
 
 以下のコマンドで、MFA の設定がされていない（リセット済み）であるユーザーの一覧を確認することができます。
 
