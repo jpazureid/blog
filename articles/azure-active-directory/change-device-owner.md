@@ -14,7 +14,7 @@ tags:
 
 なお、Microsoft Entra registered デバイスの所有者は変更できませんのでご注意ください。
 
-## デバイスが　Microsoft Intune に登録されている場合の手順
+## デバイスが Microsoft Intune に登録されている場合の手順
 
 Microsoft Intune に登録している場合、以下の手順で Microsoft Intune デバイスのプライマリ ユーザーを変更することで Microsoft Entra ID 上に登録されたデバイス オブジェクトの所有者を変更することができます。
  
