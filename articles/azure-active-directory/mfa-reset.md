@@ -1,16 +1,15 @@
 ---
-title: 多要素認証 (MFA) のリセット手順
-date: 2018-10-15
+title: 多要素認証 (MFA) のリセット手順 - 2018 年版
+date: 2018-10-15 09:00
 tags:
   - Azure AD
   - MFA
 ---
 
 > [!NOTE]
-> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。
-> 元の記事の最新の更新情報については、本内容をご参照ください。
+> 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。現在では 2018 年版から GUI やコマンドなどが変更されているため、最新の記事は [多要素認証 (MFA) のリセット手順 - 2025 年版](../azure-active-directory/mfa-reset-2025.md) をご覧ください。
 
-# 多要素認証 (MFA) のリセット手順
+# 多要素認証 (MFA) のリセット手順 - 2018 年版
 
 こんにちは、Azure & Identity サポート チームの小野です。
 
@@ -47,29 +46,27 @@ https://blogs.technet.microsoft.com/jpazureid/2017/12/04/aad-powershell/
 
 以下コマンドを実行し、ユーザーの MFA 設定をリセットできます。 
 
-```
+```powershell
 Connect-MsolService＃Azure AD へログイン
 Set-MsolUser -UserPrincipalName "<リセットしたいユーザーのUPN>" -StrongAuthenticationMethods @()
 ```
 
 例えば、以下のように CSV からユーザーを読み込んで、一括でリセットを行うことも可能です。
 
-```
-Connect-MsolService＃Azure AD へログイン
+```powershell
+Connect-MsolService # Azure AD へログイン
 $users = Import-Csv "CSV のファイルパス"
 foreach ($user in $users) {
     Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationMethods @()
 }
 ```
 
-![](./mfa-reset/csv.png)  
-図: 用意する CSV の例
+![用意する CSV の例](./mfa-reset/csv.png)  
 
 以下のコマンドで、MFA の設定がされていない（リセット済み）であるユーザーの一覧を確認することができます。
 
-```
+```powershell
 Get-MsolUser  -all | ?{ !$_.StrongAuthenticationMethods }
 ```
 
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。上記内容が少しでも皆様の参考となりますと幸いです。
-
