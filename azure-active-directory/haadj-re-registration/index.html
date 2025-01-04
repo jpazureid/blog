@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/haadj-re-registration/haadj-re-registration5-6.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/haadj-re-registration/haadj-re-registration5-9.png">
 <meta property="article:published_time" content="2023-04-24T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-04T14:47:57.140Z">
+<meta property="article:modified_time" content="2025-01-04T15:03:23.328Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="Troubleshooting">
@@ -166,7 +166,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f44e27ef-0e3d-50f9-9fea-820dca4b5829%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+%E3%83%8F%E3%82%A4%E3%83%96%E3%83%AA%E3%83%83%E3%83%89%E5%8F%82%E5%8A%A0%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E5%86%8D%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhaadj-re-registration%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhaadj-re-registration.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhaadj-re-registration.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/haadj-re-registration/" data-id="cm5iatiuv00cb0npe6zqz37dn" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/haadj-re-registration/" data-id="cm5ibddkv00cb0nmg779z9rn1" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -202,7 +202,7 @@
 </li>
 <li><p>対象のデバイス上で、[PowerShell] を <strong>管理者権限</strong> で実行します。</p>
 </li>
-<li><p>以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します **<span style="color: red; ">(表示されない場合は以下の 4. から 7. の手順は実施しないでください)</span>**。</p>
+<li><p>以下のコマンドを実行し、Enrollment ID (GUID の形式となる想定) が表示されるかを確認します <span style="color: red; ">(表示されない場合は以下の 4. から 7. の手順は実施しないでください)</span>。</p>
  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-ChildItem HKLM:\Software\Microsoft\Enrollments | ForEach-Object &#123;Get-ItemProperty $_.pspath&#125; | where-object &#123;$_.DiscoveryServiceFullURL&#125; | Foreach-Object &#123;$_.PSChildName&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>以下のコマンドを実行し、Enrollment ID を変数に格納します。</p>
  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$EnrollmentGUID = Get-ChildItem HKLM:\Software\Microsoft\Enrollments | ForEach-Object &#123;Get-ItemProperty $_.pspath&#125; | where-object &#123;$_.DiscoveryServiceFullURL&#125; | Foreach-Object &#123;$_.PSChildName&#125;</span><br></pre></td></tr></table></figure></li>
@@ -211,7 +211,7 @@
 </li>
 <li><p>以下のコマンドを実行し、デバイス登録情報に関するレジストリを削除します。</p>
  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">foreach ($Key in $RegistryKeys) &#123;if (Test-Path -Path $Key) &#123;Get-ChildItem -Path $Key | Where-Object &#123;$_.Name -match $EnrollmentGUID&#125; | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue&#125;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>以下のコマンドを実行し、デバイス登録のタスクを削除します。**<span style="color: red; ">変数 $EnrollmentGUID がブランクの状態で以下のコマンドを実行すると必要なタスクが削除される恐れがありますので注意ください (念のため IF 文で誤削除を予防しています)。</span>**</p>
+<li><p>以下のコマンドを実行し、デバイス登録のタスクを削除します。<span style="color: red; ">変数 $EnrollmentGUID がブランクの状態で以下のコマンドを実行すると必要なタスクが削除される恐れがありますので注意ください (念のため if 文で誤削除を予防しています)。</span></p>
  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ($EnrollmentGUID -eq $null) &#123;Write-Warning &quot;EnrollmentGUID is NULL&quot;&#125; elseif ($EnrollmentGUID -eq &quot;&quot;) &#123;Write-Warning &quot;EnrollmentGUID is BLANK (but it is not NULL)&quot;&#125; else &#123;Get-ScheduledTask | Where-Object &#123;$_.Taskpath -match $EnrollmentGUID&#125; | Unregister-ScheduledTask -Confirm:$false&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="3-MEHJ-の再構成-再構成前の既存情報のクリア"><a href="#3-MEHJ-の再構成-再構成前の既存情報のクリア" class="headerlink" title="3. MEHJ の再構成: 再構成前の既存情報のクリア"></a>3. MEHJ の再構成: 再構成前の既存情報のクリア</h2><p>MEHJ の再登録を行うに際して既存の情報をクリアしておきます。</p>
