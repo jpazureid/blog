@@ -14,7 +14,7 @@ tags:
 
 なお、Microsoft Entra registered デバイスの所有者は変更できませんのでご注意ください。
 
-## デバイスが　Microsoft Intune に登録されている場合の手順
+## デバイスが Microsoft Intune に登録されている場合の手順
 
 Microsoft Intune に登録している場合、以下の手順で Microsoft Intune デバイスのプライマリ ユーザーを変更することで Microsoft Entra ID 上に登録されたデバイス オブジェクトの所有者を変更することができます。
  
@@ -23,7 +23,7 @@ Microsoft Intune に登録している場合、以下の手順で Microsoft Intu
 3. 対象のデバイスを選択します。
 4. [管理] から [プロパティ] を押下します。
 
-  ![](./change-device-owner/change-device-owner1.jpg)
+    ![](./change-device-owner/change-device-owner1.jpg)
 
 5. [プライマリ ユーザーの変更] を押下して、新たにそのデバイスの所有者にする Entra ユーザーに変更します。
 6. [保存] を押下します。
@@ -35,35 +35,35 @@ Microsoft Intune に登録している場合、以下の手順で Microsoft Intu
 1. PowerShell を管理者権限で起動します。
 2. 以下のコマンドを実行し、Microsoft Graph PowerShell モジュールを作業端末にインストールします。
 
-  ```powershell
-  Install-Module Microsoft.Graph -Force
-  ```
+    ```powershell
+    Install-Module Microsoft.Graph -Force
+    ```
  
 3. 以下のコマンドを実行し、表示されるユーザー認証画面で、テナントのグローバル管理者のユーザーで認証を行います ([要求されているアクセス許可] という画面が表示された場合は、[承諾] を押下します)。もしグローバル管理者を利用しない場合は、実行するユーザーに二つのロール (クラウド アプリケーション管理者と Intune 管理者) が付与されていれば実行可能です。
 
-  ```powershell
-  Connect-MgGraph -Scopes "Directory.AccessAsUser.All"
-  ```
+    ```powershell
+    Connect-MgGraph -Scopes "Directory.AccessAsUser.All"
+    ```
 
 4. 以下のコマンドを順番に実行して、対象のデバイス オブジェクトから所有者情報を変更します。
 
-  ```powershell
-  $userId="新たに所有者にしたいユーザーの ObjectId を指定"
-  $deviceObjectId="対象のデバイスの ObjectId を指定"
-  $params = @{
-      "@odata.id" = "https://graph.microsoft.com/v1.0/directoryObjects/" + $userId
-  }
-  Get-MgDeviceRegisteredOwner -DeviceId $deviceObjectId | %{Remove-MgDeviceRegisteredOwnerByRef -DeviceId $deviceObjectId -DirectoryObjectId $_.Id}
-  New-MgDeviceRegisteredOwnerByRef -DeviceId $deviceObjectId -BodyParameter $params
-  ```
+    ```powershell
+    $userId="新たに所有者にしたいユーザーの ObjectId を指定"
+    $deviceObjectId="対象のデバイスの ObjectId を指定"
+    $params = @{
+        "@odata.id" = "https://graph.microsoft.com/v1.0/directoryObjects/" + $userId
+    }
+    Get-MgDeviceRegisteredOwner -DeviceId $deviceObjectId | %{Remove-MgDeviceRegisteredOwnerByRef -DeviceId $deviceObjectId -DirectoryObjectId $_.Id}
+    New-MgDeviceRegisteredOwnerByRef -DeviceId $deviceObjectId -BodyParameter $params
+    ```
 
-  ![実行時の参考画像](./change-device-owner/change-device-owner2.jpg)
+    ![実行時の参考画像](./change-device-owner/change-device-owner2.jpg)
 
 5. 作業が終わりましたら以下のコマンドで PowerShell セッションを切断します。
 
-  ```powershell
-  Disconnect-MgGraph
-  ```
+    ```powershell
+    Disconnect-MgGraph
+    ```
 
 ## 免責事項
 
