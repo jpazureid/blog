@@ -56,7 +56,7 @@ Azure AD Module (MSOnline) の PowerShell モジュールを利用すること�
 
 後述の手順を実行する前に、下記コマンドによる MSOnline モジュールのインストールが必要となります。
 
-```
+```powershell
 Install-Module MSOnline
 ```
 
@@ -64,8 +64,8 @@ Install-Module MSOnline
 
 以下コマンドを実行し、ユーザーの MFA 設定をリセットできます。 
 
-```
-Connect-MsolService＃Azure AD へログイン
+```powershell
+Connect-MsolService # Azure AD へログイン
 Set-MsolUser -UserPrincipalName "<リセットしたいユーザーのUPN>" -StrongAuthenticationMethods @()
 ```
 
@@ -73,8 +73,8 @@ Set-MsolUser -UserPrincipalName "<リセットしたいユーザーのUPN>" -Str
 
 以下のように CSV からユーザーを読み込んで、一括でリセットを行うことも可能です。
 
-```
-Connect-MsolService＃Azure AD へログイン
+```powershell
+Connect-MsolService # Azure AD へログイン
 $users = Import-Csv "CSV のファイルパス"
 foreach ($user in $users) {
     Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationMethods @()
@@ -87,21 +87,20 @@ foreach ($user in $users) {
 
 以下のコマンドで、該当のユーザーのMFA の設定がされていない（= リセット済み）であるかどうかを確認することができます。
 
-```
+```powershell
 Get-MsolUser  -UserPrincipalName "<ユーザーのUPN>" | Select UserPrincipalName, DisplayName, StrongAuthenticationMethods | fl*
 ```
 
 すべてのユーザーの情報を一括で取る場合、下記コマンドをご利用ください。
 
-```
+```powershell
 Get-MsolUser -all | Select UserPrincipalName, DisplayName, StrongAuthenticationMethods
 ```
 
 リセットが成功している場合、StrongAuthenticationMethods 属性が {} と表示されます。
 
-```
-PS C:\Users\mikurii> Get-MsolUser  -UserPrincipalName "user@test.onmicrosoft.com" | Select UserPrincipalName, DisplayName, StrongAuthenticationMethods | fl *
-
+```powershell
+Get-MsolUser  -UserPrincipalName "user@test.onmicrosoft.com" | Select UserPrincipalName, DisplayName, StrongAuthenticationMethods | fl *
 
 UserPrincipalName           : user@test.onmicrosoft.com
 DisplayName                 : 舞黒 太郎
@@ -110,8 +109,8 @@ StrongAuthenticationMethods : {}
 
 何らかの MFA の方法が登録されている (= リセットされていない) 場合は、StrongAuthenticationMethods 属性に "Microsoft.Online.Administration.StrongAuthenticationMethod" といった値が入ります。
 
-```
-PS C:\Users\mikurii> Get-MsolUser  -UserPrincipalName "user@test.onmicrosoft.com" | Select UserPrincipalName, DisplayName, StrongAuthenticationMethods | fl *
+```powershell
+Get-MsolUser  -UserPrincipalName "user@test.onmicrosoft.com" | Select UserPrincipalName, DisplayName, StrongAuthenticationMethods | fl *
 
 UserPrincipalName           : user@test.onmicrosoft.com
 DisplayName                 : 舞黒 太郎
