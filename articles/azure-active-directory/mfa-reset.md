@@ -46,15 +46,15 @@ https://blogs.technet.microsoft.com/jpazureid/2017/12/04/aad-powershell/
 
 以下コマンドを実行し、ユーザーの MFA 設定をリセットできます。 
 
-```
+```powershell
 Connect-MsolService＃Azure AD へログイン
 Set-MsolUser -UserPrincipalName "<リセットしたいユーザーのUPN>" -StrongAuthenticationMethods @()
 ```
 
 例えば、以下のように CSV からユーザーを読み込んで、一括でリセットを行うことも可能です。
 
-```
-Connect-MsolService＃Azure AD へログイン
+```powershell
+Connect-MsolService # Azure AD へログイン
 $users = Import-Csv "CSV のファイルパス"
 foreach ($user in $users) {
     Set-MsolUser -UserPrincipalName $user.UserPrincipalName -StrongAuthenticationMethods @()
@@ -65,9 +65,8 @@ foreach ($user in $users) {
 
 以下のコマンドで、MFA の設定がされていない（リセット済み）であるユーザーの一覧を確認することができます。
 
-```
+```powershell
 Get-MsolUser  -all | ?{ !$_.StrongAuthenticationMethods }
 ```
 
 ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。上記内容が少しでも皆様の参考となりますと幸いです。
-
