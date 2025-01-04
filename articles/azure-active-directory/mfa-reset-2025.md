@@ -1,6 +1,6 @@
 ---
 title: 多要素認証 (MFA) のリセット手順 - 2025 年版
-date: 2025-01-06 09:00
+date: 2025-01-05 09:00
 tags:
   - Microsoft Entra ID
   - MFA
@@ -47,7 +47,7 @@ Microsoft Graph PowerShell のスクリプトと CSV を利用して、複数ユ
 
 3. 以下の内容をコピーし、MFA_reset_script.ps1 の名前で任意の場所に保存します (この例では C:\temp に保存したとします)。もし手順 1 で CSV の保存先を C:\temp 以外にした場合は、1 行目の CSV のファイル パスを変更ください。
 
-    ```powerShell
+    ```powershell
     $users = Import-Csv -Path "C:\temp\MFA_reset_users.csv"
 
     foreach ($user in $users) {
@@ -106,25 +106,25 @@ Microsoft Graph PowerShell のスクリプトと CSV を利用して、複数ユ
 
 5. 以下のコマンドを実行しその PowerShell ウインドウ上でスクリプトを実行できるようにします。
 
-    ```PowerShell
+    ```powershell
     Set-ExecutionPolicy RemoteSigned -Scope Process
     ```
 
 6. 以下のコマンドを実行し、Microsoft Graph PowerShell モジュールをインストールします (既にモジュールがインストールされている場合はスキップください)。「今すぐ PowerShellGet で NuGet プロバイダーをインストールしてインポートしますか?」が表示されたら Y (はい) を選択します。
 
-    ```powerShell
+    ```powershell
     Install-Module Microsoft.Graph -Force
     ```
 
 7. 以下のコマンドを実行し、グローバル管理者でサインインします ([要求されているアクセス許可] という画面が表示された場合は、[承諾] を押下します)。もしグローバル管理者を利用しない場合は、実行するユーザーに二つのロール (クラウド アプリケーション管理者と (特権) 認証管理者) が付与されていれば実行可能です。管理者ユーザーの MFA の認証方法を削除する場合は特権認証管理者ロールが必要です。
 
-    ```powerShell
+    ```powershell
     Connect-MgGraph -Scopes "UserAuthenticationMethod.ReadWrite.All" 
     ```
 
 8. スクリプトと CSV が保存されたフォルダに移動し、CSV と スクリプトが存在することを確認しておきます。
 
-    ```PowerShell
+    ```powershell
     cd C:\temp
     dir
     ```
@@ -143,7 +143,7 @@ Microsoft Graph PowerShell のスクリプトと CSV を利用して、複数ユ
 
 11. 作業が終わりましたら、以下のコマンドを実行し、セッションを切断します。
 
-    ```PowerShell
+    ```powershell
     Disconnect-MgGraph
     ```
 
