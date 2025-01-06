@@ -77,12 +77,12 @@ Azure AD Connect では、 Azure AD Connect 用のサーバーを一般的に構
  2-2. 起動した PowerShell にて、Connect-MgGraph -Scopes “Organization.ReadWrite.All” を実行します。サインイン画面が表示されたらグローバル管理者のユーザー名とパスワードを入力します。
   
  2-3. 以下のコマンドを実行し、onPremisesSyncStatus の state を確認します。 
-  (Get-MgOrganization -OrganizationId <テナント ID>).AdditionalProperties.onPremisesSyncStatus
+   (Get-MgOrganization -OrganizationId <テナント ID>).AdditionalProperties.onPremisesSyncStatus
 
  2-4. enabledの場合は、以下のコマンドを実行し、ディレクトリ同期を無効にします。  
   Update-MgBetaOrganization -OnPremisesSyncEnabled:$false -OrganizationId <テナント ID>
 
- 2-5. 再度 2-3 のコマンドを実行し、 onPremisesSyncStatus の stateが enabled や pendingDisabledDraining から disabled に変化しましたら、同期の解除は完了です。
+ 2-5. 再度 2-3 のコマンドを実行し、 onPremisesSyncStatus の state が enabled や pendingDisabledDraining から disabled に変化しましたら、同期の解除は完了です。
 
 **3. Azure 管理ポータルの設定を確認します**
 
