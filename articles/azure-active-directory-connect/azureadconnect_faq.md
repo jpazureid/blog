@@ -75,9 +75,9 @@ Azure AD Connect では、 Azure AD Connect 用のサーバーを一般的に構
  2-1. PowerShell を管理者として実行します。
 
  2-2. 起動した PowerShell にて、Connect-MgGraph -Scopes “Organization.ReadWrite.All” を実行します。サインイン画面が表示されたらグローバル管理者のユーザー名とパスワードを入力します。
-  
- 2-3. 以下のコマンドを実行し、onPremisesSyncStatus の state を確認します。 
-   (Get-MgOrganization -OrganizationId <テナント ID>).AdditionalProperties.onPremisesSyncStatus
+     
+ 2-3. 以下のコマンドを実行し、onPremisesSyncStatus の state を確認します。  
+  (Get-MgOrganization -OrganizationId <テナント ID>).AdditionalProperties.onPremisesSyncStatus
 
  2-4. enabledの場合は、以下のコマンドを実行し、ディレクトリ同期を無効にします。  
   Update-MgBetaOrganization -OnPremisesSyncEnabled:$false -OrganizationId <テナント ID>
@@ -95,7 +95,7 @@ Azure の管理ポータルの [Azure AD Connect] の画面にて、[シーム�
 グループの場合、 [ソース] 列が全て “クラウド” になっていることで、クラウド グループに変更されていることを確認可能です。
 
 なお、同期の無効化を実施後、切り戻しを実施する必要がある可能性に備え、手順 2 完了後、Azure AD Connect をステージング モードとし、定期同期を停止する方法をとることも可能です。
-この場合、手順 2 のディレクトリ同期の無効化を実施後、切り戻し (Update-MgBetaOrganization -OnPremisesSyncEnabled:$true -OrganizationId <テナント ID> を実施する) までには、少なくとも 72 時間必要な点に注意が必要です。
+この場合、手順 2 のディレクトリ同期の無効化を実施後、切り戻し ( Update-MgBetaOrganization -OnPremisesSyncEnabled:$true -OrganizationId <テナント ID> を実施する) までには、少なくとも 72 時間必要な点に注意が必要です。
 クリーンアップをしない場合は、手順 1, 2 まででディレクトリ同期の無効化自体は完了です。
 
 無効化が完了したら、必要に応じて下記を実施ください。
