@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/defeating-adversary-in-the-middle-phishing-attacks3.gif">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/defeating-adversary-in-the-middle-phishing-attacks4.png">
 <meta property="article:published_time" content="2024-12-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-06T08:33:26.438Z">
+<meta property="article:modified_time" content="2025-01-16T21:52:48.071Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta property="article:tag" content="Microsoft Entra">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+1ab27a51-671a-5b83-8f39-f7b9258f859f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAdversary-in-the-Middle+%E3%83%95%E3%82%A3%E3%83%83%E3%82%B7%E3%83%B3%E3%82%B0%E6%94%BB%E6%92%83%E3%81%B8%E3%81%AE%E5%AF%BE%E7%AD%96%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fdefeating-adversary-in-the-middle-phishing-attacks%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fdefeating-adversary-in-the-middle-phishing-attacks.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fdefeating-adversary-in-the-middle-phishing-attacks.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/" data-id="cm5ksbm2b01710nqt4d514jb4" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/" data-id="cm5zva3y701710npe42ud7e1c" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -210,6 +210,7 @@
 <p><img src="/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/defeating-adversary-in-the-middle-phishing-attacks4.png" alt="図 4: Microsoft Authenticator の追加のコンテキスト"></p>
 <p>「No, it’s not me」の選択肢を押したユーザーは、Entra ID Protection にリスク シグナルとして情報が送信され、リスク ポリシーによりユーザーに即座に何らかの対応を求めることが可能です。さらに、当社の ID セキュリティ アルゴリズムが、異常な IP アドレスや既知の悪質な IP アドレスからのサインイン試行を検出した場合は、MFA 通知も抑制されます。</p>
 <p>Microsoft Authenticator を使用したパスワードレス認証の設定方法については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-authentication-passwordless-phone">ドキュメント</a> を参照ください。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>サポート チームによる補足: Microsoft Authenticator を使用したパスワードなしの電話によるサインイン (Passwordless phone sign-in) は、パスキーとは異なり AiTM 攻撃への直接的なフィッシング耐性はありません。しかし、上記のような追加の情報を提供することで AiTM 攻撃を困難にする追加の安全策が提供されます。</p></div>
 <h2 id="攻撃者の活動を制限するアクセス-ポリシーの設定"><a href="#攻撃者の活動を制限するアクセス-ポリシーの設定" class="headerlink" title="攻撃者の活動を制限するアクセス ポリシーの設定"></a>攻撃者の活動を制限するアクセス ポリシーの設定</h2><p>AiTM 攻撃はユーザーを騙して悪質な Web サイトに誘導することが必要なため、ユーザーがそういったサイトに誘導されないようにできるだけ多くのバリケードを設ける必要があります。例えば、ポリシーによる制限を設けることで、攻撃者は活動が制限され、攻撃者の移動範囲を大幅に制限するとともに攻撃者の活動を特定してブロックすることも容易になります。</p>
 <h3 id="マネージドおよび準拠済みデバイスを要求する"><a href="#マネージドおよび準拠済みデバイスを要求する" class="headerlink" title="マネージドおよび準拠済みデバイスを要求する"></a>マネージドおよび準拠済みデバイスを要求する</h3><p>Microsoft Entra ID のポリシーで、マネージドおよび準拠済みデバイスを使用しているユーザーにのみトークンを発行するという構成にしていた場合はどうなるでしょう。攻撃者がユーザーに代わってトークンを要求するには、まずユーザーが使用するマネージドおよび準拠済みデバイス上にフィッシング サイトを構成し、デバイスの電源は常にオンにした状態でエンドポイント保護も回避する必要があります。さらには発行されたトークンをポリシーで指定された更新期間内に使用しながら、トークンの自動失効につながるリスクのしきい値はトリガーしないようにするということも必要です。これらのハードルはかなり高いと言えるでしょう。</p>
 <p>攻撃者が AiTM フィッシング攻撃を仕掛けるにあたり使用するマルウェアへの感染を防ぐには、ポリシーを構成してすべてのデバイスを準拠済みとすること、最新のエンドポイント保護を実行していること、そしてすべての Windows ユーザーがデバイスの管理者権限ではなく標準ユーザーとして実行されていることを強制ください。</p>
