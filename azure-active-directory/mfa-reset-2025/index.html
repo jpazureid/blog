@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset-2025/mfa-reset-2025-4.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset-2025/mfa-reset-2025-5.jpg">
 <meta property="article:published_time" content="2025-01-05T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-18T15:00:47.511Z">
+<meta property="article:modified_time" content="2025-01-21T19:10:11.707Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="MFA">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4775325a-b75a-5143-bb5e-c16c73070d99%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%A4%9A%E8%A6%81%E7%B4%A0%E8%AA%8D%E8%A8%BC+%28MFA%29+%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E6%89%8B%E9%A0%86+-+2025+%E5%B9%B4%E7%89%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmfa-reset-2025%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmfa-reset-2025.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmfa-reset-2025.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset-2025/" data-id="cm62bfyc900fg0np53qgl2g1e" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset-2025/" data-id="cm66uo8vr00fg0nmk9r9khmno" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -186,6 +186,7 @@
 </li>
 </ol>
 <h2 id="コマンド-Microsoft-Graph-PowerShell-で-MFA-用の認証方法をリセットする手順-複数ユーザーに対して一括実施"><a href="#コマンド-Microsoft-Graph-PowerShell-で-MFA-用の認証方法をリセットする手順-複数ユーザーに対して一括実施" class="headerlink" title="コマンド (Microsoft Graph PowerShell) で MFA 用の認証方法をリセットする手順 (複数ユーザーに対して一括実施)"></a>コマンド (Microsoft Graph PowerShell) で MFA 用の認証方法をリセットする手順 (複数ユーザーに対して一括実施)</h2><p>Microsoft Graph PowerShell のスクリプトと CSV を利用して、複数ユーザーに対して設定済みの MFA 用の認証方法を一括で削除する手順です。このスクリプトでは、GUI (Azure Portal および Microsoft Entra 管理センター) で [多要素認証の再登録を要求する] のボタンを押下したときに削除される「電話番号、Microsoft Authenticator アプリ、ソフトウェア OATH トークン」を削除します。「電話番号、Microsoft Authenticator アプリ、ソフトウェア OATH トークン」以外の認証方法 (例: FIDO2 セキュリティ キー) は、この手順では削除されません。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>既定のサインイン方法に代替電話 (音声通話 (代替モバイル)) が設定されているユーザーにおいては、事前に既定のサインイン方法を GUI 等から代替電話以外のものに変更したうえで本スクリプトを実行ください。既定のサインイン方法が代替電話のままのユーザーに本スクリプトを実行した場合、 そのユーザーの MFA のリセットに失敗します。</p></div>
 <ol>
 <li><p>MFA 用の認証方法をすべて削除 (リセット) したいユーザーの UPN を記載した CSV を作成し、MFA_reset_users.csv という名前で任意の場所に保存します。(この例では C:\temp に保存したとします)</p>
 </li>
