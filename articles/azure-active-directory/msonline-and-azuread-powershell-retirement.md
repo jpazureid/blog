@@ -30,8 +30,7 @@ Microsoft Entra の [新着情報](https://entra.microsoft.com/#view/Microsoft_A
 MSOnline の使用を [Microsoft Graph PowerShell SDK](https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0) または [Microsoft Entra PowerShell](https://learn.microsoft.com/en-us/powershell/entra-powershell/installation?view=entra-powershell&tabs=powershell&pivots=windows) にできるだけ早く移行することを計画ください。MSOnline PowerShell からの移行が完了した後は、AzureAD PowerShell からの移行に取り組むようご対応ください。
 
 ## タイムラインの概要
-
-
+![](./msonline-and-azuread-powershell-retirement/1.png)
 
 ## MSOnline PowerShell
 
