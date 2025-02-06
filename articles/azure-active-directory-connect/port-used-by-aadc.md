@@ -39,7 +39,7 @@ Azure AD Connect の通信要件に関しては、弊社サポートにもよく
 
 また、 Azure AD Connect をご利用いただくにあたって、許可いただく必要のある URL は下記の通りです。[本公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/tshoot-connect-connectivity#troubleshoot-connectivity-issues-in-the-installation-wizard) に記載がございます。
 
-![aadc-port-0626-3](./port-used-by-aadc/aadc-port-0626-3.png)
+![aadc-port-0626-3](./port-used-by-aadc/mec-port-3.png)
 
 もし上記 URL を許可してもエラーが発生する、正しく動作しない場合などは、まず [本公開情報](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?redirectSourcePath=%252farticle%252fOffice-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2&view=o365-worldwide) に記載されている ID 56、ID 59、ID 125 に記載の URL を許可して様子を確認してください。
 
