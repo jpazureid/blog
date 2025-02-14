@@ -1,10 +1,11 @@
 ---
 title: "Microsoft Entra PowerShell モジュールが一般提供 (GA) されました"
-date: 2025-02-13 09:00
+date: 2025-02-14 09:00
 tags:
     - Microsoft Entra
     - US Identity Blog
 ---
+
 # Microsoft Entra PowerShell モジュールが一般提供 (GA) されました
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
@@ -15,7 +16,7 @@ tags:
 
 ## シナリオに特化した Microsoft Entra PowerShell モジュールを用いて Microsoft Entra のリソースをプログラム的に管理および自動化しましょう
 
-Microsoft Entra PowerShell モジュールは、Microsoft Entra の管理と自動化を効率化するために設計された、シナリオに特化した新しい PowerShell モジュールです。2021 年に、弊社は将来の PowerShell への投資はすべて Microsoft Graph PowerShell SDK に対して行われると発表しました。今回の GA というマイルストーンは、この取り組みの大きな一歩を反映したものです。
+本日、[Microsoft Entra PowerShell モジュール](https://aka.ms/entra/ps/docs) の一般適用を発表いたします。これは、Microsoft Entra の管理と自動化を効率化するために設計された、シナリオに特化した新しい PowerShell モジュールです。2021 年に、弊社は将来の PowerShell への投資はすべて Microsoft Graph PowerShell SDK に対して行われると [発表](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/automate-and-manage-azure-ad-tasks-at-scale-with-the-microsoft/ba-p/1942489) しました。今回の GA というマイルストーンは、この取り組みの大きな一歩を反映したものです。
 
 Microsoft Entra のお客様から、PowerShell の使用感について多くのフィードバックをいただき、感謝しております。今後も Microsoft Entra PowerShell モジュールへの投資を続け、より多くのリソースとシナリオをカバーできるよう拡大していきます。
 
@@ -34,19 +35,19 @@ Microsoft Entra PowerShell モジュールは、管理者や開発者が Microso
 
 **インストール**: 次のコマンドを実行して、[PowerShell Gallery](https://www.powershellgallery.com/packages/Microsoft.Entra/1.0.1) から "/v1.0" API バージョンを使用して Microsoft Graph リソースを管理する Microsoft Entra PowerShell をインストールします。
 
-```PowerShell
+```powerShell
 Install-Module -Name Microsoft.Entra -Repository PSGallery -Scope CurrentUser -Force -AllowClobber
 ```
 
 または、次のコマンドを実行して、"/beta" API バージョンを使用して Microsoft Graph リソースを管理する [Beta モジュール](https://www.powershellgallery.com/packages/Microsoft.Entra.Beta/1.0.1) をインストールします。
 
-```PowerShell
+```powerShell
 Install-Module -Name Microsoft.Entra.Beta -Repository PSGallery -Scope CurrentUser -Force -AllowClobber
 ```
 
 **認証**: Connect-Entra コマンドを使用して、委任されたアクセス (対話型) またはアプリケーションのみのアクセス (非対話型) で Microsoft Entra ID にサインインします。
 
-```PowerShell
+```powerShell
 Connect-Entra -Scopes 'User.Read.All'
 ```
 
@@ -54,19 +55,19 @@ Connect-Entra -Scopes 'User.Read.All'
 
 **利用可能なすべてのコマンドを検索**: 次のコマンドを使用して、Microsoft Entra PowerShell モジュールで使用可能なすべてのコマンドを一覧表示できます。
 
-```PowerShell
+```powerShell
 Get-Command -Module Microsoft.Entra*
 ```
 
 **ヘルプを取得**: 構文、パラメーター、説明、例など、特定のコマンドレットに関する詳細情報を表示するには、Get-Help コマンドを使用します。たとえば、Get-EntraUser コマンドレットについて確認するには、次のコマンドを実行します。
 
-```PowerShell
+```powerShell
 Get-Help Get-EntraUser -Full
 ```
 
 **AzureAD PowerShell モジュールからの移行**: Enable-EntraAzureADAlias コマンドを使用することで、Microsoft Entra PowerShell を使用して、最小限の変更で既存の AzureAD PowerShell モジュール スクリプトを実行できます。たとえば、次のようになります。
 
-```PowerShell
+```powerShell
 Import-Module -Name Microsoft.Entra.Users
 Connect-Entra #Replaces Connect-AzureAD for auth
 Enable-EntraAzureADAlias #enable aliasing
@@ -81,7 +82,7 @@ Get-AzureADUser -Top 1
 
 Microsoft Entra PowerShell モジュールのインストール方法、使用可能な認証方法、特定のシナリオに使用するコマンドレット、ハウツー ガイドなどについては、[公開情報](https://learn.microsoft.com/ja-jp/powershell/entra-powershell/?view=entra-powershell) を参照ください。
 
-また、[よくある質問 (FAQ)](https://learn.microsoft.com/en-us/powershell/entra-powershell/entra-powershell-faqs?view=entra-powershell) も参照してください。
+また、[よくある質問 (FAQ)](https://learn.microsoft.com/en-us/powershell/entra-powershell/entra-powershell-faqs?view=entra-powershell) も参照ください。
 
 ## ありがとうございます！
 
