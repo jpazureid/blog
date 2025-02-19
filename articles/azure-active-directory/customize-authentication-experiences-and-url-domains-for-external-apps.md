@@ -1,5 +1,5 @@
 ---
-title: 顔チェックが一般提供されました
+title: 外部向けアプリの認証体験と URL ドメインのカスタマイズ
 date: 2025-02-25 09:00
 tags:
     - Azure AD
@@ -18,7 +18,9 @@ tags:
 以前のブログで [セキュリティ既定値群](https://jpazureid.github.io/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/)と[ブランド強化](https://jpazureid.github.io/blog/azure-active-directory/enhance-end-user-experiences-with-custom-otp-email-provider-support/)についてお伝えしましたが、今回はシームレスな IAM 体験を提供すとともに侵害の可能性を減らし、セキュリティ レベルを大幅に向上させる方法についてお話しします。このブログでは、Microsoft Entra 製品チームのプリンシパル プロダクト マネージャーである Mihai Popa より、[Microsoft Entra External ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-external-id?msockid=1da3b11f9fdc65802aeaa21c9e906454) で利用可能になった OpenID Connect とカスタム URL ドメインのリリースについて説明してもらいます。
 
 
-![図 1: すべてのアプリケーションに対するエンドツーエンドのセキュリティ](./customize-authentication-experiences-and-url-domains-for-external-apps/customize-authentication-experiences-and-url-domains-for-external-apps1.png)
+![図 1 すべてのアプリケーションに対するエンドツーエンドのセキュリティ](./customize-authentication-experiences-and-url-domains-for-external-apps/customize-authentication-experiences-and-url-domains-for-external-apps1.png)
+
+図 1 すべてのアプリケーションに対するエンドツーエンドのセキュリティ
 
 ---
 
@@ -84,4 +86,5 @@ Microsoft Entra の全体の機能について詳しく知りたい場合やテ�
 次回のブログでは、外部向けアプリケーションにおける Web アプリケーション ファイアウォールの詳細な解説を行い、ベストプラクティス、実装戦略などについて探りますので、お楽しみに。
 
 Mihai Popa
+
 Principal Product Manager
