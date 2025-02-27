@@ -12,6 +12,8 @@ tags:
 
 本記事は、2025 年 2 月 21 日に米国の Microsoft Entra Blog で公開された [New Microsoft-managed policies to raise your identity security posture](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/new-microsoft-managed-policies-to-raise-your-identity-security-posture/4286758) の抄訳です。ご不明点はサポート チームまでお問い合わせください。
 
+---
+
 ## 新しい Microsoft マネージド ポリシーで ID のセキュリティを強化ください
 
 セキュリティを強化し、進化するサイバー攻撃からお客様を保護するための継続的な取り組みの一環として、デバイス コード フローとレガシー認証フローを制限する 2 つの新しい Microsoft マネージド ポリシーの展開を発表いたします。これらのポリシーは、当社の [Secure Future Initiative](https://www.microsoft.com/trust-center/security/secure-future-initiative) に基づく Secure by Default の原則に沿ったものであり、お客様の組織を既定の状態で保護するための堅牢なセキュリティ対策を提供することを目的としています。
