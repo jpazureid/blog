@@ -6,6 +6,8 @@ tags:
     - US Identity Blog
 ---
 
+# 外部向けアプリの認証体験と URL ドメインのカスタマイズ
+
 こんにちは、Azure Identity サポートチームの 張替 です。
 
 本記事は、2025 年 1 月 24 日に米国の Azure Active Directory Identity Blog で公開された [Customize authentication experiences and URL domains for external apps | Microsoft Community Hub](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/customize-authentication-experiences-and-url-domains-for-external-apps/3627347) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
