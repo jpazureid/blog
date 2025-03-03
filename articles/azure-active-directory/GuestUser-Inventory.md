@@ -19,7 +19,7 @@ tags:
  
 上記のような不安を解消するために、今回は、ゲスト ユーザーを棚卸するための機能として、アクセス レビューとゲスト ユーザーの最終サインイン日時を取得する方法の 2 つを紹介します。
 
-なお、アクセス レビューをご利用いただくためには、Azure AD Premium P2 ライセンスが必要となります。少なくとも、レビュー担当者として割り当てられているユーザーに P2 ライセンスの割り当てが必要です。詳細については、[こちらの資料](https://learn.microsoft.com/ja-jp/azure/active-directory/governance/access-reviews-overview#how-many-licenses-must-you-have) をご覧ください。
+なお、アクセス レビューをご利用いただくためには、Microsoft Entra ID Premium P2 ライセンスが必要となります。どのユーザーにライセンスを用意すべきかは、 [こちらの資料](https://learn.microsoft.com/ja-jp/entra/id-governance/licensing-fundamentals#access-reviews) でシナリオ別にご案内しています。導入を検討される際には併せてご覧ください。
 
 <!-- more -->
 
@@ -45,7 +45,7 @@ tags:
 
 <h3 id="idx1-1">アクセス レビューの作成手順</h3>
 
-1. Azure ポータルにサインインし、 [Azure Active Directory] - [Identity Governance] を開きます。もしくは、ポータル上の検索ボックスより、[Identity Governance] を開きます。
+1. Azure ポータルにサインインし、 [Microsoft Entra ID] - [Identity Governance] を開きます。もしくは、ポータル上の検索ボックスより、[Identity Governance] を開きます。
 
     ![](./GuestUser-Inventory/1_access_IdentityGovernance.png)
 
