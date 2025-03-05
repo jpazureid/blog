@@ -8,9 +8,9 @@ tags:
 
 # Entra ID における ゲスト ユーザー招待 (B2B) のよくある質問
 
-こんにちは。 Azure Identity サポート チームです。こちらのブログでは、Azure における ゲスト ユーザー招待 (B2B) のよくある質問をお纏めいたしました。
+こんにちは。 Azure Identity サポート チームです。こちらのブログでは、Azure における ゲスト ユーザー招待 (B2B) のよくある質問をおまとめいたしました。
 
-招待操作をするリソース テナント側（管理者側） と 招待されたホーム テナント側（ユーザー側） にわけて記載をしておりますので、それぞれ参照いただけますと幸いです。
+招待操作をするリソース テナント側（管理者側） と 招待されたホーム テナント側（ユーザー側） に分けて記載をしておりますので、それぞれ参照いただけますと幸いです。
 
 なお、B2B についてのご説明は以下のブログにもおまとめしておりますので、機能のご紹介は以下を参照ください。
 
@@ -57,21 +57,25 @@ A. ゲスト ユーザーであっても、サインインはホーム ディレ
 
 ゲスト ユーザーのよくある サインインができない問題については、[2.招待された側のよくある質問](#2-招待された側のよくある質問) に記載しています。
 
+もしお客様自身で解決ができない状況の場合には、上記切り分けをもとに「サインインできない」事象が発生しているテナントを紐づけてお問い合わせを発行してください。
+
+
 ### Q. 招待したいユーザーが E メールを受信できないアカウントです。E メールを受信できなければゲスト ユーザーとして招待できませんか？
 
-A. E メールを受信できないユーザーであっても招待することが可能です。(E メールを受信できないユーザーとは xxx@contso.onmicrosoft.com のような Entra ID 上のユーザーも含みます)。E メールを受信できないアカウントの場合、招待 E メールを受け取ることができないため、直接リンクを利用して招待に承諾します。以下の URL をゲスト ユーザーに送付し、招待への承諾を依頼ください。
+A. いいえ、 E メールを受信できないユーザーであっても招待することが可能です。(E メールを受信できないユーザーとは xxx@contso.onmicrosoft.com のような Entra ID 上のユーザーも含みます)。E メールを受信できないアカウントの場合、招待 E メールを受け取ることができないため、直接リンクを利用して招待に承諾します。以下の URL をゲスト ユーザーに送付し、招待への承諾を依頼ください。
 
 ```
 https://portal.azure.com/<招待先ディレクトリのテナントID>
 ```
 
-E メールを利用しない招待については、[B2B コラボレーションの招待の利用 - Azure AD | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/active-directory/external-identities/redemption-experience#redemption-through-a-direct-link) を参照ください。(直接リンクによる利用の項に記載があります)
+E メールを利用しない招待については、 [B2B コラボレーションの招待の利用](https://learn.microsoft.com/ja-jp/entra/external-id/redemption-experience#redemption-process-through-a-direct-link) を参照ください。(直接リンクによる引き換えプロセスの項目に記載があります)
 
 ### Q. 招待するユーザーの UPN と Mail 属性の値が違います。どちらを利用するべきですか?
 
-A.UPN を指定して招待ください。
+A. UPN を指定して招待してください。
 
 [Q. 招待したいユーザーがメールを受信できないアカウントです。](#Q-招待したいユーザーがメールを受信できないアカウントです。メールを受信できなければ、ゲスト-ユーザーとして招待できませんか) の項のとおり、E メールを受信できないユーザーであっても招待が可能です。Mail 属性にて招待をした場合も招待に承諾することができ、ゲスト ユーザーとしてアクセスできますが、一部で 正常にサービスが利用できないという過去事例があります。そのため、より安全に機能をご利用いただくためには、UPN を指定し招待ください。
+
 
 ### Q. ゲスト ユーザー招待時に E メールを送信したくありません。E メールを送らずに招待する方法はありますか？
 
@@ -79,13 +83,14 @@ A. Azure Portal の画面でも E メールを送らずに招待することが�
 
 ```powershell
 # コマンドのインストール
-Install-Module AzureAD
+Import-Module Microsoft.Graph.Identity.SignIns, Microsoft.Graph.Users
 
 # ユーザーで認証
-Connect-AzureAD
+Connect-MgGraph -Scopes 'User.ReadWrite.All'
 
 # メールを送らずに招待
-New-AzureADMSInvitation -InvitedUserEmailAddress <招待するユーザーのUPN(メールアドレス形式)> -InvitedUserDisplayName <ゲスト ユーザーの表示名> -InviteRedirectUrl <招待へ承諾後、アクセスするURL>  -SendInvitationMessage $false
+New-MgInvitation -InvitedUserDisplayName <ゲスト ユーザーの表示名> -InvitedUserEmailAddress <招待するユーザーのUPN(メールアドレス形式)> -InviteRedirectUrl  <招待へ承諾後、アクセスするURL> -SendInvitationMessage:$false
+
 ```
 
 > [!NOTE]
@@ -192,7 +197,7 @@ A. 原因として、ゲスト ユーザーのアカウントにてリスクが�
 > 補足: こちらは Microsoft Entra ID Protection という機能にて制限しています。
 > アクセスをブロックするかはそれぞれのテナント毎の設定になるため、このエラーが表示された場合には招待先ディレクトリ にてブロックの設定がされています。
 
-なお、リスクの検出はそれぞれのホーム ディレクトリで行われます。ホーム ディレクトリで検出されたリスクが、招待先ディレクトリ の Identity Protection で検知される仕組みとなります。[[こちらの公開情報](https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks) の資料もご覧ください。
+なお、リスクの検出はそれぞれのホーム ディレクトリで行われます。ホーム ディレクトリで検出されたリスクが、招待先ディレクトリ の Identity Protection で検知される仕組みとなります。[こちらの公開情報](https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks) の資料もご覧ください。
 
 ### Q. "これに対するアクセス権がありません / サインインは完了しましたが、このリソースへのアクセス許可がありません。" と表示されアクセスできない
 
