@@ -16,7 +16,7 @@ tags:
 
 - [Azure AD B2B とは | Japan Azure Identity Support Blog](../azure-active-directory/what-is-b2b.md)
 
-また、本ブログでは ユーザーが元々所属している Entra ID  を "ホーム ディレクトリ（ホーム テナント）"、そのユーザーが招待された先の Entra ID を "招待先ディレクトリ（リソース テナント）" と記載します。
+また、本ブログでは ユーザーが元々所属している Entra ID を "ホーム ディレクトリ（ホーム テナント）"、そのユーザーが招待された先の Entra ID を "招待先ディレクトリ（リソース テナント）" と記載します。
 
 ![](./b2bfaq/b2bfaq2023-1.png)
 
@@ -83,7 +83,7 @@ A. Azure Portal の画面でも E メールを送らずに招待することが�
 
 ```powershell
 # コマンドのインストール
-Import-Module Microsoft.Graph.Identity.SignIns, Microsoft.Graph.Users
+Install-Module Microsoft.Graph.Identity.SignIns, Microsoft.Graph.Users
 
 # ユーザーで認証
 Connect-MgGraph -Scopes 'User.ReadWrite.All'
