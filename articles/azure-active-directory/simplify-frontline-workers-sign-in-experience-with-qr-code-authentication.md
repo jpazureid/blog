@@ -7,6 +7,12 @@ tags:
 
 # QR コード認証でフロントライン ワーカーのサインイン体験をシンプルに
 
+こんにちは、Azure & Identity サポート チームの高田です。
+
+本記事は、2025 年 2 月 25 日に米国の Microsoft Entra Blog で公開された [Simplify frontline workers’ sign-in experience with QR code authentication](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/simplify-frontline-workers%E2%80%99-sign-in-experience-with-qr-code-authentication/3822034)) の抄訳です。ご不明点はサポート チームまでお問い合わせください。
+
+---
+
 ## 長いユーザー名とパスワードを使わずとも QR コードをスキャンして PIN を打ちこむことで共有デバイスに簡単にサインイン
 
 皆様こんにちは。
