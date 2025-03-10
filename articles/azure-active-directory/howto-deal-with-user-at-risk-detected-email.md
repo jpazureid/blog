@@ -300,7 +300,7 @@ https://docs.microsoft.com/ja-jp/azure/active-directory/identity-protection/howt
 **▼ メール通知の設定手順**
 
 1. Azure ポータルにサインインします。
-2. [Microsoft Entra ID Protection]] を開きます。
+2. [Microsoft Entra ID Protection] を開きます。
 3. [リスクのあるユーザーが検出された警告] をクリックします。
 4. メール通知が設定されているユーザー一覧が表示されることを確認します。  
 5. 一覧の各ユーザーごとに記載がございます、右側の [アクション] にて、該当するユーザーへの通知設定を変更いただくことが可能です。通知が不要なユーザーの場合は [無効] に設定します。
