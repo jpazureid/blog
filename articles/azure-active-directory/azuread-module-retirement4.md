@@ -149,7 +149,7 @@ ExtensionAttribute1 などの属性は、ユーザーの onpremisesExtensionAttr
 - [ユーザーを一覧表示する - オプションのクエリ パラメーター](https://learn.microsoft.com/ja-jp/graph/api/user-list?view=graph-rest-1.0&tabs=powershell#optional-query-parameters)
 
 
-> [TIP]
+> [!TIP]
 > 
 >（2025/3/10 更新）
 > 
