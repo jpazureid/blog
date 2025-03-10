@@ -148,6 +148,17 @@ ExtensionAttribute1 などの属性は、ユーザーの onpremisesExtensionAttr
 - [user リソースの種類 - プロパティ](https://learn.microsoft.com/ja-jp/graph/api/resources/user?view=graph-rest-1.0#properties)
 - [ユーザーを一覧表示する - オプションのクエリ パラメーター](https://learn.microsoft.com/ja-jp/graph/api/user-list?view=graph-rest-1.0&tabs=powershell#optional-query-parameters)
 
+
+> [TIP]
+> 
+>（2025/3/10 更新）
+> 
+> もしくは、より分かりやすいコマンドとして現在は Get-MgDirectoryDeletedItemAsUser も利用できます。このコマンドを利用すると、削除済みのユーザーが一覧で返されるため上記よりも簡単に利用でき、ユーザーの DisplayName なども表示されるため、どのユーザーかも分かりやすいかと存じます。
+> 
+> ユーザーについては Get-MgDirectoryDeletedItemAsUser になりますが、 As の後ろを変更することで、その他の削除済みオブジェクトを取得することも可能です。たとえば削除済みグループを取得したい場合には、 Get-MgDirectoryDeletedItemAsGroup コマンドを利用できます。
+
+
+
 <h2 id="idx2">2. ユーザーの作成</h2>
 
 下記のように必要なパラメーターを記載して、 New-Mguser を使用すると新しいユーザーを作成できます。
