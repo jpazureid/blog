@@ -2,7 +2,7 @@
 title: MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 3_インストール・接続編
 date: 2022-9-20 09:00
 tags:
-    - Azure AD
+    - Entra ID
     - PowerShell
 ---
 
@@ -60,7 +60,8 @@ API の公開情報には、組織アカウント、個人用アカウント、�
 
 
 ## よくある質問
-Q. Get-MgUser 等を使用した後、 Powershell プロンプトを閉じてから再度開くと、 Connect-Mggraph 実行時にパスワード入力画面にならずにサインインできてしまいます。動作の詳細をもう少し詳しく教えてください。
+
+### Q. Get-MgUser 等を使用した後、 Powershell プロンプトを閉じてから再度開くと、 Connect-Mggraph 実行時にパスワード入力画面にならずにサインインできてしまいます。動作の詳細をもう少し詳しく教えてください。
 
 A. Connect-MgGraph コマンドを実行すると、実行した端末にキャッシュが保持されます。
 具体的には、実行端末の C:\Users\＜User＞\.graph 内に、以下のように .bin3 ファイルが作成されます。
@@ -77,3 +78,10 @@ Connect-MgGraph コマンドでは、PowerShell をいったん終了した場�
 
 Get-Mgdomain コマンドや Get-MgOrganization コマンドを実行して、現在接続しているテナントを確認したり、 Get-MgContext コマンドを実行し、接続ユーザーの情報を確認したりすることも可能ですので、必要に応じてご利用ください。
 
+
+### Q. beta バージョンのコマンドがあると聞きましたが、beta を利用したい場合にはどのようにインストールや利用をしたらいいですか？
+
+A. モジュールをインストールするときに、 Microsoft.Graph.Beta を指定してインストールするか、利用したいコマンドにあわせて、Microsoft.Graph.Beta.Users のように個別に指定してインストールしてください。接続時には Connect-MgGraph コマンドを同様に利用しますが、その後のコマンドは Get-MgBetaUser のように beta が含まれるコマンドを実行してください。
+
+以前は、通常の一般公開バージョンと同じようにインストール・接続した後、 Select-MgProfile beta というコマンドを利用して beta への切り替えを行っていたのですが、Microsoft Graph PowerShell v2.0 にて動作が変更されております。
+詳細は[こちらの弊社ブログ](https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-v2.0/) にてご案内しておりますので、併せて参考になりますと幸いです。
