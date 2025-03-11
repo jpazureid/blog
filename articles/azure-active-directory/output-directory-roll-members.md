@@ -2,7 +2,7 @@
 title: Azure AD の ディレクトリロールが割り当てられたメンバーの一覧を取得したい
 date: 2018-09-13
 tags:
-  - Azure AD Directory Rolls
+  - Entra ID Directory Roles
 ---
 
 > [!NOTE]
