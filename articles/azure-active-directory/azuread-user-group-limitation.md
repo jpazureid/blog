@@ -1,5 +1,5 @@
 ---
-title: Azure AD の文字数や上限に関するよくある質問
+title: Entra ID の文字数や上限に関するよくある質問
 date: 2022-5-16 09:00
 tags:
     - Entra ID
@@ -48,9 +48,9 @@ Entra ID には、テナントに作成できるオブジェクト数に制限�
 
 ## ユーザー オブジェクトに関する各種上限
 
-### <span style="color: blue; ">Q: Azure AD に作成できるユーザーの数に上限はありますか？</span>
+### <span style="color: blue; ">Q: Entra ID に作成できるユーザーの数に上限はありますか？</span>
 
-<span style="color: red; ">A.</span> いいえ、作成できるユーザーの数に上限はありません。ただし、Azure AD に作成できるオブジェクト数である "オブジェクト クォータ" を超える数のユーザーは作成できません。
+<span style="color: red; ">A.</span> いいえ、作成できるユーザーの数に上限はありません。ただし、Entra ID に作成できるオブジェクト数である "オブジェクト クォータ" を超える数のユーザーは作成できません。
 
 ### <span style="color: blue; ">Q. Azure ポータルに CSV を読み込んで、一括でユーザーを作成したいです。制限はありますか？</span>
 
@@ -58,7 +58,7 @@ Entra ID には、テナントに作成できるオブジェクト数に制限�
 
 > ユーザー作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最小で 5 万ユーザーを一括作成できます。
 
-### <span style="color: blue; ">Q. Azure AD ユーザーに登録できる各種属性の文字数制限を教えてください。</span> 
+### <span style="color: blue; ">Q. Entra ID ユーザーに登録できる各種属性の文字数制限を教えてください。</span> 
 
 <span style="color: red; ">A.</span> 下記の表を参考資料としてご利用ください。正式な公開情報に記載されていない属性のサイズは、変更される可能性がある点にご留意ください。
 
@@ -95,22 +95,21 @@ Entra ID には、テナントに作成できるオブジェクト数に制限�
 | userPrincipalName            | String            | 64 文字 (@ の前部分)                                                                        | 
 | userType                     | String            | Member or Guest のいずれかの値                                                             | 
 
-### <span style="color: blue; ">Q. Azure AD ユーザーのパスワードの文字数制限を教えてください。</span> 
+### <span style="color: blue; ">Q. Entra ID ユーザーのパスワードの文字数制限を教えてください。</span> 
 
 <span style="color: red; ">A.</span> クラウド ユーザーの場合、全テナント共通で、8 文字から 256 文字までとなります (現時点ではこのポリシーを変更することはできません。)
 
 ### <span style="color: blue; ">Q. ユーザーに Azure ロール (RBAC) を割り当てたいです。カスタム ロールを作りたいのですが、いくつまで作れますか。</span>
 
-<span style="color: red; ">A.</span> 5000 個まで作ることができます
+<span style="color: red; ">A.</span> 5000 個まで作ることができます。
 
 ### <span style="color: blue; ">Q. ユーザーに Azure ロール (RBAC) を割り当てたいです。ロール割り当ての最大数はいくつですか？</span>
 
-<span style="color: red; ">A.</span> 2000 まで割り当てることができます。現在、割り当ての上限は 2000 から 4000 に段階的に引き上げられています。
-4000 を超えてしまう場合は、グループでの付与などを行い、割り当て数を減らすことを検討してください。
-現在 2000 の状態のお客様で 4000 に引き上げが必要な場合は、弊社までお問い合わせください (引き上げまでには、4 週間から 6 週間ほど時間がかかります。)
-割り当て上限の引き上げについては、[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/ja-jp/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit) の下記記載を参照ください。
+<span style="color: red; ">A.</span> ロール割り当ての最大数は 4000 です。
+4000 を超えてしまう場合、現状割り当ての制限を緩和することができないため、グループでの付与などを行い、割り当て数を減らすことを検討してください。
+割り当て上限については、[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/ja-jp/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit) の下記記載を参照ください。
 
-> すべての Azure サブスクリプションのロールの割り当て制限は、2021 年 11 月以降、2000 から 4000 に自動的に増やされていきます。 サブスクリプションに対して実行する必要があるアクションはありません。 制限の引き上げには数か月かかります。
+> 4,000 のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
 
 ### <span style="color: blue; ">Q. ユーザーに条件付きアクセスを割り当てたいです。いくつまで正しく動作しますか？</span>
 
@@ -118,7 +117,7 @@ Entra ID には、テナントに作成できるオブジェクト数に制限�
 
 ## ゲスト ユーザーに関する各種上限
 
-### <span style="color: blue; ">Q. Azure AD には何人までゲスト ユーザーを招待できますか？</span>
+### <span style="color: blue; ">Q. Entra ID には何人までゲスト ユーザーを招待できますか？</span>
 
 <span style="color: red; ">A.</span> 特に制限はありません。ただし、ユーザー作成と同様にオブジェクト クォータを超えると招待できなくなります。
 
@@ -142,7 +141,7 @@ Entra ID には、テナントに作成できるオブジェクト数に制限�
 
 ## グループ オブジェクトに関する各種上限
 
-### <span style="color: blue; ">Q. Azure AD に登録できるグループの最大数はいくつですか？</span>
+### <span style="color: blue; ">Q. Entra ID に登録できるグループの最大数はいくつですか？</span>
 
 <span style="color: red; ">A.</span> 特に制限はありません。オブジェクト クォータを超えた数は登録できません。
 
