@@ -107,7 +107,7 @@ Entra ID には、テナントに作成できるオブジェクト数に制限�
 
 <span style="color: red; ">A.</span> ロール割り当ての最大数は 4000 です。
 4000 を超えてしまう場合、現状割り当ての制限を緩和することができないため、グループでの付与などを行い、割り当て数を減らすことを検討してください。
-割り当て上限については、[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/ja-jp/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit) の下記記載を参照ください。
+割り当て上限については、[Azure RBAC の制限をトラブルシューティングする](https://learn.microsoft.com/ja-jp/azure/role-based-access-control/troubleshoot-limits?tabs=default) の下記記載を参照ください。
 
 > 4,000 のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
 
