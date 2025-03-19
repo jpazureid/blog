@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/mc1028312-info1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/mc1028312-info2.png">
 <meta property="article:published_time" content="2025-03-18T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-19T00:11:14.486Z">
+<meta property="article:modified_time" content="2025-03-19T01:52:59.309Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Entra ID">
 <meta property="article:tag" content="Microsoft Entra Connect">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+aa753d77-ccd9-5933-99f9-c0bfa4436b3e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMC1028312+%E3%81%AE%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmc1028312-info%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmc1028312-info.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmc1028312-info.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/" data-id="cm8f633p000dq0npjfy706mg7" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/" data-id="cm8f9pxu200dq0nqq9hfy99x1" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -167,8 +167,7 @@
 <p>2025/3/11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025/4/7 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。<br>この通知に関する内容について、多くのお問い合わせをいただいており、今回は、本通知に関する概要と必要な対応について、よくある質問形式でおまとめして紹介します。</p>
 <div class="alert is-important"><p class="alert-title">重要</p><p>本情報は 2025/3/18 時点の情報を基に執筆しております。</p></div>
 <hr>
-<h2 id="MC1028312-の概要"><a href="#MC1028312-の概要" class="headerlink" title="MC1028312 の概要"></a>MC1028312 の概要</h2><p>まず、本通知により、ご心配、お手数をおかけすることとなり、申し訳ございません。</p>
-<p>MC1028312 ではサービスの強化と 2025 年 4 月の MSOnline PowerShell の廃止に向けた準備のためのバックエンド サービスの変更が行われることをお知らせしております。<br>この廃止と変更の対応にあたり、MEC において影響を受ける機能、影響を受けない機能を以下におまとめしました。</p>
+<h2 id="MC1028312-の概要"><a href="#MC1028312-の概要" class="headerlink" title="MC1028312 の概要"></a>MC1028312 の概要</h2><p>MC1028312 ではサービスの強化と 2025 年 4 月の MSOnline PowerShell の廃止に向けた準備のためのバックエンド サービスの変更が行われることをお知らせしております。<br>この廃止と変更の対応にあたり、MEC において影響を受ける機能、影響を受けない機能を以下におまとめしました。</p>
 <p> 影響を受ける機能</p>
 <ul>
 <li>MEC の構成ウィザードで AD FS シナリオの構成ができなくなります。</li>
@@ -196,7 +195,7 @@
 <p><strong>Q. パススルー認証への影響はありますか？</strong></p>
 <p>A. いいえ、影響ありません。</p>
 <p><strong>Q. MC906491 との関連性</strong></p>
-<p>A. MC906491 では MEC の構成ウィザードで AD FS / PingFederate シナリオを構成することへの影響についてを通知いたしておりましたが、確認を行った結果、影響範囲が更にあることが確認されました。<br>混乱をお招きしてしまい申し訳ございませんが、 MC1028312 に記載の影響範囲が正しい内容となります。</p>
+<p>A. MC906491 では MEC の構成ウィザードで AD FS / PingFederate シナリオを構成することへの影響についてを通知いたしておりましたが、確認を行った結果、影響範囲が更にあることが確認されました。<br>MC1028312 に記載の影響範囲が正しい内容となります。</p>
 <p><strong>Q. アップグレード手順を教えてください。</strong></p>
 <p>A. 通常時のアップグレード手順と相違ありません。アップグレード手順につきましては、以下の弊社技術ブログをご参考ください。</p>
 <p><a href="https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/">Azure AD Connect アップグレード手順詳細 | Japan Azure Identity Support Blog</a></p>
