@@ -1,46 +1,53 @@
 ---
 title: Microsoft Intune Enrollment を登録する
-date: 2025-03-20 09:00
+date: 2025-03-25 09:00
 tags:
   - Microsoft Entra
   - Conditional Access
   - Device
 ---
-# Microsoft Intune Enrollment を登録する
-こんにちは、Azure & Identity サポート チームの長谷川です。
-本記事では Microsoft Intune Enrollment のサービス プリンシパル (アプリ) を登録する方法を紹介します。
+
+# Microsoft Intune Enrollment を Entra ID に登録する
+
+こんにちは、Azure & Identity サポート チームの長谷川です。本記事では Microsoft Intune Enrollment のサービス プリンシパル (アプリ) を登録する方法を紹介します。
+
+今回紹介しているコマンドは、Microsoft Intune Enrollment に限らず、テナントにまだないアプリを登録する際に利用可能ですので、他のシナリオでもご活用いただければ幸いです。その際は、登録したいアプリのアプリケーション ID をご用意ください。
 
 ## はじめに
-Microsoft Intune へのデバイス登録を条件付きアクセスの対象 (もしくは対象外) にしたい場合は、ターゲット リソースに Microsoft Intune Enrollment アプリを指定して条件付きアクセス ポリシーを構成します。
-しかしながら、新規に作成したテナントでは既定では Microsoft Intune Enrollment が登録されていません。
-こういった場合、次の手順で Microsoft Intune Enrollment のサービス プリンシパル (アプリ) をテナントに登録することで、条件付きアクセスで利用できるようになります。
+
+Microsoft Intune へのデバイス登録を条件付きアクセスの対象 (もしくは対象外) にしたい場合は、ターゲット リソースに Microsoft Intune Enrollment アプリを指定して条件付きアクセス ポリシーを構成します。しかしながら、新規に作成したテナントでは既定では Microsoft Intune Enrollment が登録されていません。こういった場合、次の手順で Microsoft Intune Enrollment のサービス プリンシパル (アプリ) をテナントに登録することで、条件付きアクセスで利用できるようになります。
 
 なお、一度登録した Microsoft Intune Enrollment のサービス プリンシパル (アプリ) は削除することはできないこと、あらかじめご承知おきください。
 
 ## Microsoft Intune Enrollment を登録する手順
+
 Microsoft Graph PowerShell を利用した次の手順で Microsoft Intune Enrollment サービス プリンシパル (アプリ) を登録することができます。
  
 1. PowerShell を管理者権限で起動します。
-
 2. 以下のコマンドを実行し、Microsoft Graph PowerShell モジュールを作業端末にインストールします。
+   
 ```powershell
 Install-Module Microsoft.Graph -Force
 ```
  
 3. 以下のコマンドを実行し、グローバル管理者で認証します。([要求されているアクセス許可] という画面が表示された場合は、[承諾] を押下します)
+4. 
 ```powershell
 Connect-MgGraph -Scopes "Application.ReadWrite.All"
 ```
 
 4. 以下のコマンドを順番に実行して、"Microsoft Intune Enrollment" のサービス プリンシパル (アプリ) を作成します。
+
 ```powershell
 New-MgServicePrincipal -AppId "d4ebce55-015a-49b5-a083-c84d1797ae8c"
 ```
 
 5. 作業が終わりましたら以下のコマンドで PowerShell セッションを切断します。
+   
 ```powershell
 Disconnect-MgGraph
 ```
+
 ## 免責事項
 本サンプル コードは、あくまでも説明のためのサンプルとして提供されるものであり、製品の実運用環境で使用されることを前提に提供されるものではありません。本サンプル コードおよびそれに関連するあらゆる情報は、「現状のまま」で提供されるものであり、商品性や特定の目的への適合性に関する黙示の保証も含め、明示・黙示を問わずいかなる保証も付されるものではありません。マイクロソフトは、お客様に対し、本サンプル コードを使用および改変するための非排他的かつ無償の権利ならびに本サンプル コードをオブジェクト コードの形式で複製および頒布するための非排他的かつ無償の権利を許諾します。
 但し、お客様は以下の 3 点に同意するものとします。
