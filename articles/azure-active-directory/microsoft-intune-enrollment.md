@@ -24,7 +24,7 @@ Microsoft Intune へのデバイス登録を条件付きアクセスの対象 (�
 Microsoft Graph PowerShell を利用した次の手順で Microsoft Intune Enrollment サービス プリンシパル (アプリ) を登録することができます。
  
 1. PowerShell を管理者権限で起動します。
-2. 以下のコマンドを実行し、Microsoft Graph PowerShell モジュールを作業端末にインストールします。
+2. 以下のコマンドを実行し、Microsoft Graph PowerShell モジュールを作業端末にインストールします (インストール済みの場合はスキップ)。
    
 ```powershell
 Install-Module Microsoft.Graph -Force
