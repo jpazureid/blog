@@ -31,7 +31,7 @@ Install-Module Microsoft.Graph -Force
 ```
  
 3. 以下のコマンドを実行し、グローバル管理者で認証します。([要求されているアクセス許可] という画面が表示された場合は、[承諾] を押下します)
-4. 
+   
 ```powershell
 Connect-MgGraph -Scopes "Application.ReadWrite.All"
 ```
