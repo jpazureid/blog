@@ -98,6 +98,9 @@ MFA およびパスワードレス認証に Microsoft Authenticator アプリを
 
 Microsoft Authenticator を使用したパスワードレス認証の設定方法については、[ドキュメント](https://learn.microsoft.com/ja-jp/entra/identity/authentication/howto-authentication-passwordless-phone) を参照ください。
 
+> [!NOTE]
+> サポート チームによる補足: Microsoft Authenticator を使用したパスワードなしの電話によるサインイン (Passwordless phone sign-in) は、パスキーとは異なり AiTM 攻撃への直接的なフィッシング耐性はありません。しかし、上記のような追加の情報を提供することで AiTM 攻撃を困難にする追加の安全策が提供されます。
+
 ## 攻撃者の活動を制限するアクセス ポリシーの設定
 
 AiTM 攻撃はユーザーを騙して悪質な Web サイトに誘導することが必要なため、ユーザーがそういったサイトに誘導されないようにできるだけ多くのバリケードを設ける必要があります。例えば、ポリシーによる制限を設けることで、攻撃者は活動が制限され、攻撃者の移動範囲を大幅に制限するとともに攻撃者の活動を特定してブロックすることも容易になります。
