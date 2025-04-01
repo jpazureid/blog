@@ -40,7 +40,7 @@ tags:
 > [Microsoft Entra Connect: バージョン リリース履歴 - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-version-history#24180)
 >
 > その他プロキシを使用されている環境では、2.4.18.0 以降、構成ウィザードが machine.config ではなく Internet Options の設定を参照します。
-> このため、Windows の [検索] で "Internet Options" で検索し、[接続] タブにある LAN settings にプロキシの設定があることをご確認ください。
+> このため、Windows の [検索] で "Internet Options" で検索し、[接続] タブにある [LAN の設定] にプロキシの設定があることをご確認ください。
 > 
 >![](./how-to-upgrade-details/InternetOptions.png)
 >
