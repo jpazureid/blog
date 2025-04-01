@@ -39,11 +39,11 @@ tags:
 > 
 > [Microsoft Entra Connect: バージョン リリース履歴 - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-version-history#24180)
 >
-> その他プロキシを使用されている環境では、2.4.18.0 以降では、構成ウィザードが machine.config ではなく Internet Options の設定を参照するため、Windows の [検索] で "Internet options" で検索し、[接続] タブにある Lan Settings にプロキシの設定があることを併せてご確認ください。
+> その他プロキシを使用されている環境では、2.4.18.0 以降では、構成ウィザードが machine.config ではなく Internet Options の設定を参照するため、Windows の [検索] で "Internet options" で検索し、[接続] タブにある Lan Settings にプロキシの設定があることをご確認ください。
 > 
 >![](./how-to-upgrade-details/InternetOptions.png)
 >
-> また、プロキシ使用環境では、graph.microsoft.com への通信も必要となりますので、併せて graph.microsoft.com のエンドポイントへの通信も許可いただきますようお願いします。
+> また、プロキシ使用環境では graph.microsoft.com への通信も必要となりますので、併せて graph.microsoft.com のエンドポイントへの通信も許可いただきますようお願いします。
 
 
 ## A. Azure AD Connect 2 台構成によるスウィング アップグレード
