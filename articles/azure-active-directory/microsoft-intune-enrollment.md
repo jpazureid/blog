@@ -17,7 +17,7 @@ tags:
 
 Microsoft Intune へのデバイス登録を条件付きアクセスの対象 (もしくは対象外) にしたい場合は、ターゲット リソースに Microsoft Intune Enrollment アプリを指定して条件付きアクセス ポリシーを構成します。しかしながら、新規に作成したテナントでは既定では Microsoft Intune Enrollment が登録されていません。こういった場合、次の手順で Microsoft Intune Enrollment のサービス プリンシパル (アプリ) を Entra ID のテナントに登録することで、条件付きアクセスで利用できるようになります。
 
-なお、一度登録した Microsoft Intune Enrollment のサービス プリンシパル (アプリ) は削除することはできないこと、あらかじめご承知おきください。
+なお、一度登録した Microsoft Intune Enrollment のサービス プリンシパル (アプリ) は削除することはできないことを、あらかじめご承知おきください。
 
 ## Microsoft Intune Enrollment を登録する手順
 
@@ -49,4 +49,5 @@ Disconnect-MgGraph
 ```
 
 ## おわりに
+
 本記事では Microsoft Intune Enrollment のサービス プリンシパル (アプリ) を Entra ID のテナントに登録する方法を紹介しました。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。
