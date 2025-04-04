@@ -89,7 +89,7 @@ Windows Hello for Business の機能は既定で無効となっています。�
 
 ハイブ: HKEY_LOCAL_MACHINE or HKEY_CURRENT_USER  
 キーのパス (GPO): SOFTWARE\Policies\Microsoft\PassportForWork  
-キーのパス (Intune): SOFTWARE\Microsoft\Policies\PassportForWork\<Tenant-ID>\Device\Policies  
+キーのパス (Intune): SOFTWARE\Microsoft\Policies\PassportForWork\\\<Tenant-ID>\Device\Policies  
 値の名前: Enabled  
 値の種類: REG_DWORD  
 値のデータ: 00000001
@@ -98,7 +98,7 @@ Windows Hello for Business の機能は既定で無効となっています。�
 
 ハイブ: HKEY_LOCAL_MACHINE  
 キーのパス (GPO): SOFTWARE\Policies\Microsoft\PassportForWork  
-キーのパス (Intune): SOFTWARE\Microsoft\Policies\PassportForWork\<Tenant-ID>\Device\Policies  
+キーのパス (Intune): SOFTWARE\Microsoft\Policies\PassportForWork\\\<Tenant-ID>\Device\Policies  
 値の名前: UseCloudTrustForOnPremAuth  
 値の種類: REG_DWORD  
 値のデータ: 00000001
