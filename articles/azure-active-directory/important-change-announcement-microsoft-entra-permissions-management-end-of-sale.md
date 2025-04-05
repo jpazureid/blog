@@ -1,5 +1,5 @@
 ---
-title: 重要な変更のお知らせ: Microsoft Entra Permissions Management の販売終了と廃止
+title: "重要な変更のお知らせ: Microsoft Entra Permissions Management の販売終了と廃止"
 date: 2025-04-06 08:00
 tags:
   - US Identity Blog
