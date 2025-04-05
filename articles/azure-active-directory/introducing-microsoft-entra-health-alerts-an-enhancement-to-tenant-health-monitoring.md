@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Entra Halth アラートのご紹介: テナントの監視機能の強化"
+title: "Microsoft Entra Health アラートのご紹介: テナントの監視機能の強化"
 date: 2025-04-06 01:00
 tags:
     - US Identity Blog
 ---
 
-# Microsoft Entra Halth アラートのご紹介: テナントの監視機能の強化
+# Microsoft Entra Health アラートのご紹介: テナントの監視機能の強化
 
 こんにちは、Azure & Identity サポート チームの高田です。
 
