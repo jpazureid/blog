@@ -30,21 +30,25 @@ tags:
 
 > [!TIP]
 > なお、旧バージョンからのバージョンアップの場合には、大きく以下の点にご留意ください。
+>
 > 
-> ・2.3.20.0 以降では TLS 1.2 の有効化を明示的にレジストリへ設定する必要があります。
+> ・2.3.20.0 から 2.4.129.0 TLS 1.2 の有効化を明示的にレジストリへ設定する必要があります。
 > 
 > [Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する際の対応方法 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/)
+>
 > 
 > ・2.4.18.0 以降では .NET Framework 4.7.2 以上が必要となります。
 > 
 > [Microsoft Entra Connect: バージョン リリース履歴 - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/reference-connect-version-history#24180)
 >
+> 
 > その他プロキシを使用されている環境では、2.4.18.0 以降、構成ウィザードが machine.config ではなく Internet Options の設定を参照します。
 > このため、Windows の [検索] で "Internet Options" を検索し、[接続] タブにある [LAN の設定] にプロキシの設定があることをご確認ください。
 > 
 >![](./how-to-upgrade-details/InternetOptions.png)
 >
-> また、プロキシ使用環境では graph.microsoft.com への通信も必要となりますので、併せて graph.microsoft.com のエンドポイントへの通信も許可いただきますようお願いします。
+> 
+> また、プロキシ使用環境等、通信を制限している環境では graph.microsoft.com への通信も必要となりますので、併せて graph.microsoft.com のエンドポイントへの通信も許可いただきますようお願いします。
 
 
 ## A. Azure AD Connect 2 台構成によるスウィング アップグレード
