@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの 姚 ( ヨウ ) です。 今回は Windows Hello for Business (以下 WHfB) の構成の種類について整理し、簡単に解説したいと思います。あくまで、どういう種類の構成があるのかを整理する目的で、それぞれの構成の詳細な手順や動作については今回はカバーしません。 今後 WHfB の構成の把握と利用の検討">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-08-30T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-07T04:24:27.072Z">
+<meta property="article:modified_time" content="2025-04-07T06:24:54.666Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Windows Hello for Business">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+728673e2-f5db-5dcc-858b-a7c103acff58%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BWindows+Hello+for+Business+%E3%81%AE%E6%A7%8B%E6%88%90%E8%A7%A3%E8%AA%AC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fwhfb-configuration-explanation%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fwhfb-configuration-explanation.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fwhfb-configuration-explanation.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/whfb-configuration-explanation/" data-id="cm96khwil00nt0npe3y3hbsjg" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/whfb-configuration-explanation/" data-id="cm96ostgr00nt0nrk57io2kg1" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -197,9 +197,9 @@
 <h2 id="信頼モデルとは"><a href="#信頼モデルとは" class="headerlink" title="信頼モデルとは"></a>信頼モデルとは</h2><p>信頼モデルは、 WHfB (PIN または生体認証) を使用して Windows へサインインをおこなったクライアントが、ドメイン コントローラーに対してどのように認証をおこなうかを定義したものとなり、(a) キー信頼と (b) 証明書信頼、そして (c) クラウド Kerberos 信頼の 3 つの種類が存在します。</p>
 <p>クラウド アプリへの SSO は Microsoft Entra ID から発行されるトークンにより実現され、オンプレミス環境のリソース (ファイル サーバー等) への SSO はドメイン コントローラーから発行される Kerberos チケットにより実現されます。</p>
 <p>Microsoft Entra ID へ同期されたユーザーアカウントの場合、パスワードを使用して Windows へサインインをおこなうと、Microsoft Entra 参加済みであっても、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/devices/device-sso-to-on-premises-resources">こちら</a>の公開情報に記載の通り、Microsoft Entra ID から連携される資格情報を使用してオンプレミスのリソースへの SSO をおこなうことができます。</p>
-<p>一方で、パスワードではなく WHfB で Windows へサインインをした場合、Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスは信頼モデルを構成するまでドメイン コントローラーから Kerberos チケットを取得することができません。これは既定でドメイン コントローラーが WHfB による証明書ベースの Kerberos チケット取得に対応していないためです。</p>
-<p> WHfB で Windows へサインインをした場合、いずれかの信頼モデルを構成することでドメイン コントローラーにて WHfB による証明書ベースの Kerberos チケットの取得要求が可能となり、 Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスにてオンプレミス環境のリソースへ SSO をおこなうことが可能となります。</p>
-<p>各信頼モデルまた Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みであるかによっても必要となるインフラストラクチャと展開方法が異なってきます。<br>下表に信頼モデルの概要および展開方法に関するドキュメントをお纏めします。</p>
+<p>一方で、パスワードではなく WHfB で Windows へサインインをした場合、Microsoft Entra 参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスは信頼モデルを構成するまでドメイン コントローラーから Kerberos チケットを取得することができません。これは既定でドメイン コントローラーが WHfB による証明書ベースの Kerberos チケット取得に対応していないためです。</p>
+<p>WHfB で Windows へサインインをした場合、いずれかの信頼モデルを構成することでドメイン コントローラーにて WHfB による証明書ベースの Kerberos チケットの取得要求が可能となり、 Microsoft Entra 参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスにてオンプレミス環境のリソースへ SSO をおこなうことが可能となります。</p>
+<p>各信頼モデルや Microsoft Entra 参加済みおよび Microsoft Entra ハイブリッド参加済みであるかによっても必要となるインフラストラクチャと展開方法が異なってきます。<br>下表に信頼モデルの概要および展開方法に関するドキュメントをお纏めします。</p>
 <table>
 <thead>
 <tr>
