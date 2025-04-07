@@ -32,7 +32,7 @@ tags:
 > なお、旧バージョンからのバージョンアップの場合には、大きく以下の点にご留意ください。
 >
 > 
-> ・2.3.20.0 から 2.4.129.0 TLS 1.2 の有効化を明示的にレジストリへ設定する必要があります。
+> ・2.3.20.0 から 2.4.129.0 では TLS 1.2 の有効化を明示的にレジストリへ設定する必要があります。
 > 
 > [Microsoft Entra Connect 2.3.20 のインストールおよびアップグレードに失敗する際の対応方法 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-2-3-20/)
 >
