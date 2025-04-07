@@ -48,11 +48,11 @@ list_number: false
 
 Microsoft Entra ID へ同期されたユーザーアカウントの場合、パスワードを使用して Windows へサインインをおこなうと、Microsoft Entra 参加済みであっても、[こちら](https://learn.microsoft.com/ja-jp/entra/identity/devices/device-sso-to-on-premises-resources)の公開情報に記載の通り、Microsoft Entra ID から連携される資格情報を使用してオンプレミスのリソースへの SSO をおこなうことができます。
 
-一方で、パスワードではなく WHfB で Windows へサインインをした場合、Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスは信頼モデルを構成するまでドメイン コントローラーから Kerberos チケットを取得することができません。これは既定でドメイン コントローラーが WHfB による証明書ベースの Kerberos チケット取得に対応していないためです。
+一方で、パスワードではなく WHfB で Windows へサインインをした場合、Microsoft Entra 参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスは信頼モデルを構成するまでドメイン コントローラーから Kerberos チケットを取得することができません。これは既定でドメイン コントローラーが WHfB による証明書ベースの Kerberos チケット取得に対応していないためです。
 
- WHfB で Windows へサインインをした場合、いずれかの信頼モデルを構成することでドメイン コントローラーにて WHfB による証明書ベースの Kerberos チケットの取得要求が可能となり、 Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスにてオンプレミス環境のリソースへ SSO をおこなうことが可能となります。
+WHfB で Windows へサインインをした場合、いずれかの信頼モデルを構成することでドメイン コントローラーにて WHfB による証明書ベースの Kerberos チケットの取得要求が可能となり、 Microsoft Entra 参加済みおよび Microsoft Entra ハイブリッド参加済みのデバイスにてオンプレミス環境のリソースへ SSO をおこなうことが可能となります。
 
-各信頼モデルまた Microsoft Entra ハイブリッド参加済みおよび Microsoft Entra ハイブリッド参加済みであるかによっても必要となるインフラストラクチャと展開方法が異なってきます。
+各信頼モデルや Microsoft Entra 参加済みおよび Microsoft Entra ハイブリッド参加済みであるかによっても必要となるインフラストラクチャと展開方法が異なってきます。
 下表に信頼モデルの概要および展開方法に関するドキュメントをお纏めします。
 
 |信頼モデル | 概要                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 
