@@ -6,17 +6,17 @@
   
   <title>MC1028312 のよくある質問 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Identity チームの張替です。 2025&#x2F;3&#x2F;11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025&#x2F;4&#x2F;7 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。この通知に関する内容について、多くのお問い合わ">
+  <meta name="description" content="こんにちは、Azure Identity チームの張替です。 2025&#x2F;3&#x2F;11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025&#x2F;4&#x2F;30 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。この通知に関する内容について、多くのお問い合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MC1028312 のよくある質問">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure Identity チームの張替です。 2025&#x2F;3&#x2F;11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025&#x2F;4&#x2F;7 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。この通知に関する内容について、多くのお問い合わ">
+<meta property="og:description" content="こんにちは、Azure Identity チームの張替です。 2025&#x2F;3&#x2F;11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025&#x2F;4&#x2F;30 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。この通知に関する内容について、多くのお問い合">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/mc1028312-info1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/mc1028312-info2.png">
 <meta property="article:published_time" content="2025-03-18T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-05T23:39:57.938Z">
+<meta property="article:modified_time" content="2025-04-07T04:24:26.692Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra Connect">
 <meta property="article:tag" content="Entra ID">
@@ -158,30 +158,31 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+aa753d77-ccd9-5933-99f9-c0bfa4436b3e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMC1028312+%E3%81%AE%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmc1028312-info%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmc1028312-info.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmc1028312-info.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/" data-id="cm94uw7h800fd0nl96t1o6rpw" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc1028312-info/" data-id="cm96khwfs00fd0npeag677u8i" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、Azure Identity チームの張替です。</p>
-<p>2025/3/11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025/4/7 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。<br>この通知に関する内容について、多くのお問い合わせをいただいており、今回は、本通知に関する概要と必要な対応について、よくある質問形式でおまとめして紹介します。</p>
-<div class="alert is-important"><p class="alert-title">重要</p><p>本情報は 2025/3/18 時点の情報を基に執筆しております。</p></div>
+<p>2025/3/11 に MC1028312 の通知が行われ、Microsoft Entra Connect Sync (以下、MEC) 2.4.18.0 未満を利用するお客様向けに、2025/4/30 までに 2.4.18.0 以降のバージョンにアップグレードを推奨する旨の通知がされています。<br>この通知に関する内容について、多くのお問い合わせをいただいており、今回は、本通知に関する概要と必要な対応について、よくある質問形式でおまとめして紹介します。</p>
+<div class="alert is-important"><p class="alert-title">重要</p><p>本情報は 2025/4/7 時点の情報を基に執筆しております。</p>
+<p>構成ウィザード上での認証に失敗してしまう影響につきましては、当初の 2025/4/7 から 2025/4/30 に延長されました。</p></div>
 <hr>
 <h2 id="MC1028312-の概要"><a href="#MC1028312-の概要" class="headerlink" title="MC1028312 の概要"></a>MC1028312 の概要</h2><p>MC1028312 ではサービスの強化と 2025 年 4 月の MSOnline PowerShell の廃止に向けた準備のためのバックエンド サービスの変更が行われることをお知らせしております。<br>この廃止と変更の対応にあたり、MEC において影響を受ける機能、影響を受けない機能を以下におまとめしました。</p>
 <p> 影響を受ける機能</p>
 <ul>
-<li>MEC の構成ウィザードで AD FS シナリオの構成ができなくなります。</li>
-<li>MEC の構成ウィザードで PingFederate シナリオの構成ができなくなります。</li>
-<li>MEC の構成ウィザード上で認証を行った場合に失敗します。これにより、スキーマ更新、ステージング モードの設定、ユーザー サインインなどの変更が行えなくなります。</li>
+<li>2025/4/7 以降、MEC の構成ウィザードで AD FS シナリオの構成ができなくなります。</li>
+<li>2025/4/7 以降、MEC の構成ウィザードで PingFederate シナリオの構成ができなくなります。</li>
+<li>2025/4/30 以降、MEC の構成ウィザード上で認証を行った場合に失敗します。これにより、スキーマ更新、ステージング モードの設定、ユーザー サインインなどの変更が行えなくなります。</li>
 </ul>
 <p> 影響を受けない機能</p>
 <ul>
 <li>MEC の同期サービスは通常通り動作し、同期処理は停止しません。</li>
-<li>MEC のアップグレードは可能で、2025/4/7 以降もアップグレードは実施可能です。</li>
+<li>MEC のアップグレードは可能で、2025/4/30 以降もアップグレードは実施可能です。</li>
 </ul>
 <p> 以下の公開情報でも詳細をご案内していますので、合わせてご参照ください。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/harden-update-ad-fs-pingfederate">Hardening update to Microsoft Entra Connect Sync AD FS and PingFederate configuration - Microsoft Entra ID | Microsoft Learn</a></p>
-<h2 id="実施いただきたいこと"><a href="#実施いただきたいこと" class="headerlink" title="実施いただきたいこと"></a>実施いただきたいこと</h2><p>MEC 2.4.18.0 未満を利用するすべてのお客様は、2025/4/7 までに 2.4.18.0 以降のバージョンへアップグレードを推奨しております。<br>現時点 (2025/3/18) の最新バージョンは 2.4.129.0 となり、<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=47594">こちら</a> からダウンロードいただけますので、アップグレードについてご検討くださいますようお願いいたします。</p>
+<h2 id="実施いただきたいこと"><a href="#実施いただきたいこと" class="headerlink" title="実施いただきたいこと"></a>実施いただきたいこと</h2><p>MEC 2.4.18.0 未満を利用するすべてのお客様は、2025/4/30 までに 2.4.18.0 以降のバージョンへアップグレードを推奨しております。<br>現時点 (2025/4/7) の最新バージョンは 2.4.131.0 となり、<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=47594">こちら</a> からダウンロードいただけますので、アップグレードについてご検討くださいますようお願いいたします。</p>
 <p>アップグレードを行わない場合、 MEC 上での構成ウィザードで管理者の認証を行おうとすると、以下のエラーが表示され Entra ID への接続が不可となる動作が想定されます。</p>
 <p><img src="/blog/azure-active-directory/mc1028312-info/mc1028312-info1.png"></p>
 <p>エラー メッセージ</p>
@@ -211,8 +212,8 @@
 <p>A. 恐縮ながら、アップグレードを実施する以外の方法はございません。</p>
 <p><strong>Q. 延期は可能ですか？</strong></p>
 <p>A. 恐縮ながら、延期は困難な状況です。</p>
-<p><strong>Q. 2025/4/7 までにバージョンアップができなくなった場合、サポートは受け付けてもらえますか？</strong></p>
-<p>A. はい、2025/4/7 を過ぎた場合に何らかの問題が発生した場合、サポート窓口にお問い合わせいただき、調査を行うことは可能です。<br>しかしながら、調査の結果、サポートされる構成 (サポート内のバージョンへのアップグレードなど) への変更をお願いさせていただく場合もございますので、こちらの点についてご理解ください。</p>
+<p><strong>Q. 2025/4/30 までにバージョンアップができなくなった場合、サポートは受け付けてもらえますか？</strong></p>
+<p>A. はい、2025/4/30 を過ぎた場合に何らかの問題が発生した場合、サポート窓口にお問い合わせいただき、調査を行うことは可能です。<br>しかしながら、調査の結果、サポートされる構成 (サポート内のバージョンへのアップグレードなど) への変更をお願いさせていただく場合もございますので、こちらの点についてご理解ください。</p>
 
       
       

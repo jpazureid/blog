@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/announcement-of-otp/image02.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/announcement-of-otp/image03.png">
 <meta property="article:published_time" content="2021-08-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-05T23:39:57.503Z">
+<meta property="article:modified_time" content="2025-04-07T04:24:26.256Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="OTP">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+0db89a24-828b-59b5-a1b4-7b6f96cb6474%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B2021+%E5%B9%B4+10+%E6%9C%88%E3%81%AB%E4%BA%88%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8B%E3%82%B2%E3%82%B9%E3%83%88+%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%8B%9B%E5%BE%85%E6%99%82%E3%81%AE%E5%8B%95%E4%BD%9C%E5%A4%89%E6%9B%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fannouncement-of-otp%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fannouncement-of-otp.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fannouncement-of-otp.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/announcement-of-otp/" data-id="cm94uw7dt00540nl91957h7lx" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/announcement-of-otp/" data-id="cm96khwcd00540npe2l0i64ol" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -179,18 +179,18 @@
 <p>影響の詳細について、ゲストユーザーの招待フローをベースにご紹介します。<br>以下が現在のゲストユーザーの招待フローです。</p>
 <p><img src="/blog/azure-active-directory/announcement-of-otp/image01.png"></p>
 <p>今回の影響は、フローの 9 において セルフサービスサインアップアカウントが作成される場合においてユーザーのホーム テナントが存在しない場合、あるいは検証済みのテナントではない場合に生じます。</p>
-<p>フロー 9 について abc.onmicrosoft.com というテナントに <a href="mailto:&#117;&#x73;&#x65;&#x72;&#x31;&#x40;&#x63;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#x63;&#111;&#x6d;">&#117;&#x73;&#x65;&#x72;&#x31;&#x40;&#x63;&#111;&#110;&#x74;&#111;&#x73;&#x6f;&#x2e;&#x63;&#111;&#x6d;</a> というユーザーを招待しようとしたときを例に説明します。</p>
+<p>フロー 9 について abc.onmicrosoft.com というテナントに <a href="mailto:&#x75;&#115;&#101;&#114;&#x31;&#64;&#x63;&#111;&#x6e;&#x74;&#111;&#x73;&#111;&#46;&#99;&#x6f;&#x6d;">&#x75;&#115;&#101;&#114;&#x31;&#64;&#x63;&#111;&#x6e;&#x74;&#111;&#x73;&#111;&#46;&#99;&#x6f;&#x6d;</a> というユーザーを招待しようとしたときを例に説明します。</p>
 <h3 id="パターン-1"><a href="#パターン-1" class="headerlink" title="パターン 1 :"></a>パターン 1 :</h3><ul>
 <li>＜前提条件＞</li>
 </ul>
-<p>Azure AD にカスタム ドメインとして contoso.com というドメイン名を登録したテナントがすでに存在している。<br>contoso.com ドメイン名を登録したテナントには <a href="mailto:&#117;&#x73;&#x65;&#114;&#x31;&#x40;&#x63;&#x6f;&#x6e;&#116;&#111;&#115;&#111;&#46;&#x63;&#111;&#109;">&#117;&#x73;&#x65;&#114;&#x31;&#x40;&#x63;&#x6f;&#x6e;&#116;&#111;&#115;&#111;&#46;&#x63;&#111;&#109;</a> は存在しない。</p>
+<p>Azure AD にカスタム ドメインとして contoso.com というドメイン名を登録したテナントがすでに存在している。<br>contoso.com ドメイン名を登録したテナントには <a href="mailto:&#x75;&#x73;&#x65;&#114;&#x31;&#x40;&#99;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#99;&#111;&#109;">&#x75;&#x73;&#x65;&#114;&#x31;&#x40;&#99;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#99;&#111;&#109;</a> は存在しない。</p>
 <ul>
-<li>＜動作＞<br>contoso.com が紐づいている Azure AD 上に <a href="mailto:&#x75;&#115;&#x65;&#114;&#x31;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#x63;&#111;&#109;">&#x75;&#115;&#x65;&#114;&#x31;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#x73;&#x6f;&#x2e;&#x63;&#111;&#109;</a> が自動で作成されます。この動作は 2021 年 10 月以降も変わりません。</li>
+<li>＜動作＞<br>contoso.com が紐づいている Azure AD 上に <a href="mailto:&#x75;&#x73;&#x65;&#x72;&#x31;&#64;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#x2e;&#x63;&#x6f;&#x6d;">&#x75;&#x73;&#x65;&#x72;&#x31;&#64;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#x2e;&#x63;&#x6f;&#x6d;</a> が自動で作成されます。この動作は 2021 年 10 月以降も変わりません。</li>
 </ul>
 <h3 id="パターン-2"><a href="#パターン-2" class="headerlink" title="パターン 2 :"></a>パターン 2 :</h3><ul>
-<li><p>＜前提条件＞<br>Azure AD にカスタム ドメインとして contoso.com というドメイン名を登録したテナントが存在していない。<br><a href="mailto:&#x75;&#x73;&#x65;&#x72;&#49;&#x40;&#x63;&#111;&#x6e;&#x74;&#111;&#x73;&#x6f;&#46;&#99;&#111;&#109;">&#x75;&#x73;&#x65;&#x72;&#49;&#x40;&#x63;&#111;&#x6e;&#x74;&#111;&#x73;&#x6f;&#46;&#99;&#111;&#109;</a> は Azure AD のアカウントとして Azure AD のどのテナントにも存在しない。</p>
+<li><p>＜前提条件＞<br>Azure AD にカスタム ドメインとして contoso.com というドメイン名を登録したテナントが存在していない。<br><a href="mailto:&#x75;&#x73;&#101;&#x72;&#x31;&#64;&#x63;&#x6f;&#x6e;&#116;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#111;&#109;">&#x75;&#x73;&#101;&#x72;&#x31;&#64;&#x63;&#x6f;&#x6e;&#116;&#x6f;&#115;&#x6f;&#x2e;&#x63;&#111;&#109;</a> は Azure AD のアカウントとして Azure AD のどのテナントにも存在しない。</p>
 </li>
-<li><p>＜動作＞<br>現状は contoso.com が紐づくセルフ サインアップ テナントが自動で作成され、その自動で作成されたテナントに <a href="mailto:&#x75;&#115;&#101;&#114;&#49;&#x40;&#x63;&#x6f;&#x6e;&#x74;&#x6f;&#x73;&#111;&#x2e;&#x63;&#x6f;&#x6d;">&#x75;&#115;&#101;&#114;&#49;&#x40;&#x63;&#x6f;&#x6e;&#x74;&#x6f;&#x73;&#111;&#x2e;&#x63;&#x6f;&#x6d;</a> が自動で作成されます。2021 年 10 月以降は、このパターンでの自動テナント作成が行われなくなり、結果的にゲスト ユーザーの招待は失敗する見込みです。</p>
+<li><p>＜動作＞<br>現状は contoso.com が紐づくセルフ サインアップ テナントが自動で作成され、その自動で作成されたテナントに <a href="mailto:&#x75;&#x73;&#x65;&#114;&#49;&#64;&#99;&#111;&#x6e;&#x74;&#x6f;&#x73;&#111;&#x2e;&#99;&#111;&#109;">&#x75;&#x73;&#x65;&#114;&#49;&#64;&#99;&#111;&#x6e;&#x74;&#x6f;&#x73;&#111;&#x2e;&#99;&#111;&#109;</a> が自動で作成されます。2021 年 10 月以降は、このパターンでの自動テナント作成が行われなくなり、結果的にゲスト ユーザーの招待は失敗する見込みです。</p>
 </li>
 </ul>
 <p>なお、セルフサービス サインアップとは、電子メール ドメインに基づいた ID がどの Azure AD にも存在しない場合に自動でユーザーが作成されることを指します。<br>後述に関連する公開情報もございますので、必要に応じご確認いただけると幸いです。</p>
