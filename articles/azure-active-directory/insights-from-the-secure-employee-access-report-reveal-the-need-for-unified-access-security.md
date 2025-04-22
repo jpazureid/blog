@@ -19,7 +19,7 @@ date: 2025-03-24 09:00
 
 1. 現代の職場環境はますます複雑化しており、新たなセキュリティ課題が生じている。
 2. 攻撃対象の範囲が拡大しており、個別管理されている ID やネットワーク アクセスの利用を続けることで、セキュリティ責任者の負担が大きくなる。
-3. ID とネットワークお担当チームが密に連携することで、より高いセキュリティ効果と作業効率がもたらされる。
+3. ID とネットワーク担当チームが密に連携することで、より高いセキュリティ効果と作業効率がもたらされる。
 
 [![](insights-from-the-secure-employee-access-report-reveal-the-need-for-unified-access-security/img01.png)](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/final/en-us/microsoft-brand/documents/639917-secure-employee-access-report-2025-final.pdf)
 
