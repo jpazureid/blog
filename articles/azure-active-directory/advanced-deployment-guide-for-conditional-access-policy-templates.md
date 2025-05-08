@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセス ポリシー テンプレートの高度な展開ガイド
-date: 2025-05-10 01:00
+date: 2025-05-09 09:00
 tags:
   - Azure AD
   - US Identity Blog
