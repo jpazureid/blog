@@ -38,6 +38,7 @@ Azure AD Connect の通信要件に関しては、弊社サポートにもよく
 ![aadc-port-0626-2](./port-used-by-aadc/aadc-port-0626-2.png)
 
 また、 Azure AD Connect をご利用いただくにあたって、許可いただく必要のある URL は下記の通りです。[本公開情報](https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/tshoot-connect-connectivity#troubleshoot-connectivity-issues-in-the-installation-wizard) に記載がございます。
+Entra Connect v2.4 以降では下記に加えて graph.microsoft.com への通信を許可いただく必要があります。
 
 ![aadc-port-0626-3](./port-used-by-aadc/mec-port-3.png)
 
