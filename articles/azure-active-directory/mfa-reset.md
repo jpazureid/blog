@@ -11,8 +11,8 @@ tags:
 
 > [!WARNING]
 > 本ブログのコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
-> 詳細は、以下のブログをご確認ください。
-> [MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md)
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) をご確認ください。
+> 
 
 # 多要素認証 (MFA) のリセット手順 - 2018 年版
 
