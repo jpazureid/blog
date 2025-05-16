@@ -9,6 +9,11 @@ tags:
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。現在では 2018 年版から GUI やコマンドなどが変更されているため、最新の記事は [多要素認証 (MFA) のリセット手順 - 2025 年版](../azure-active-directory/mfa-reset-2025.md) をご覧ください。
 
+> [!WARNING]
+> 本ブログのコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、以下のブログをご確認ください。
+> [MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md)
+
 # 多要素認証 (MFA) のリセット手順 - 2018 年版
 
 こんにちは、Azure & Identity サポート チームの小野です。
@@ -46,12 +51,18 @@ https://blogs.technet.microsoft.com/jpazureid/2017/12/04/aad-powershell/
 
 以下コマンドを実行し、ユーザーの MFA 設定をリセットできます。 
 
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+
 ```powershell
 Connect-MsolService＃Azure AD へログイン
 Set-MsolUser -UserPrincipalName "<リセットしたいユーザーのUPN>" -StrongAuthenticationMethods @()
 ```
 
 例えば、以下のように CSV からユーザーを読み込んで、一括でリセットを行うことも可能です。
+
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 ```powershell
 Connect-MsolService # Azure AD へログイン
@@ -64,6 +75,9 @@ foreach ($user in $users) {
 ![用意する CSV の例](./mfa-reset/csv.png)  
 
 以下のコマンドで、MFA の設定がされていない（リセット済み）であるユーザーの一覧を確認することができます。
+
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 ```powershell
 Get-MsolUser  -all | ?{ !$_.StrongAuthenticationMethods }
