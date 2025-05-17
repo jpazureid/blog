@@ -83,6 +83,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-azure-active-directory/get-certificates-secrets-expirydateandtime" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/get-certificates-secrets-expirydateandtime/" class="article-date">
+  <time datetime="2023-07-04T00:00:00.000Z" itemprop="datePublished">2023-07-04</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/get-certificates-secrets-expirydateandtime/">Azure AD に連携している各種証明書、クライアント シークレットの有効期限の抽出方法</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは。Azure Identity チームの栗井です。
+Azure AD の [アプリの登録] から各アプリに連携している証明書・クライアント シークレット、ならびに [エンタープライズ アプリケーション] で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限があります。
+Azure Portal の画面上では、有効期限を一覧で確認できないため、Microsoft Graph などの API を利用する必要がございます。
+本記事では、下記公開情報内の Azure AD PowerShell を使用したサンプルをもとに、Microsoft Graph PowerShell を使用して各種証明書・シークレットの有効期限を CSV ファイルに出力する手順を紹介いたします。
+
+アプリの登録用にシークレットと証明書をエクスポートする
+エンタープ...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/get-certificates-secrets-expirydateandtime/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/get-certificates-secrets-expirydateandtime/" data-id="cmarhqei1011q0nqla8r2guj4" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-azure-active-directory/the-false-identifier-anti-pattern" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -123,7 +177,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/the-false-identifier-anti-pattern/" data-id="cmaq1i8id013y0npkbv73auph" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/the-false-identifier-anti-pattern/" data-id="cmarhqej201410nqlhkqdgzvv" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -176,7 +230,7 @@ TRv2 の利用により、データ流出リスクを抑えつつ、安全で生
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction-v2-is-now-public-preview/" data-id="cmaq1i8e000ma0npk2c8jb0hs" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction-v2-is-now-public-preview/" data-id="cmarhqeem00md0nqlcbyyfrm3" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -228,7 +282,7 @@ Azure AD Connect Sync Configuration Documenter とは2 台の Azure AD Connect �
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-AADConnectConfigDocumenter/" data-id="cmaq1i874001i0npkdjraho78" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-AADConnectConfigDocumenter/" data-id="cmarhqe7f001i0nql0qkwh9x0" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li></ul>
@@ -279,7 +333,7 @@ Azure AD Connect Sync Configuration Documenter とは2 台の Azure AD Connect �
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/" data-id="cmaq1i87e002h0npkficb9b68" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/" data-id="cmarhqe7q002h0nqlg8w05dlf" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li></ul>
@@ -331,7 +385,7 @@ Azure AD へのユーザー招待は、明...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-b2b-troubleshooting/" data-id="cmaq1i894007e0npk5lu5dh4q" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-b2b-troubleshooting/" data-id="cmarhqe9h007e0nql5tvd9l28" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li></ul>
@@ -383,7 +437,7 @@ Note2018-08-23: 本記事の初版を投稿2023-06-26: Azure ポータル上の�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/roles-and-administrators/" data-id="cmaq1i8dm00l40npk4vhafxft" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/roles-and-administrators/" data-id="cmarhqee600l40nql5xfw8iqr" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
@@ -434,7 +488,7 @@ Note2017-12-12: 本記事の初版を投稿2023-04-01: Azure ポータル上の�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-is-b2b/" data-id="cmaq1i8ef00nl0npkfxkp74i9" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-is-b2b/" data-id="cmarhqef100no0nql57k2d23v" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/RBAC/" rel="tag">RBAC</a></li></ul>
@@ -484,7 +538,7 @@ Azure AD (AAD) は、Microsoft 365 をはじめ様々なクラウド サービ�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/" data-id="cmaq1i8ie01400npk3j4a3h8x" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/" data-id="cmarhqej601430nqlakxv73vy" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Token/" rel="tag">Token</a></li></ul>
@@ -534,67 +588,10 @@ Azure AD (AAD) は、Microsoft 365 をはじめ様々なクラウド サービ�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/" data-id="cmaq1i8he011p0npkdfhw4w0a" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/" data-id="cmarhqei2011s0nql36qig3u3" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SSPR/" rel="tag">SSPR</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/MFA_configuration_scenarios" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/MFA_configuration_scenarios/" class="article-date">
-  <time datetime="2023-06-22T23:00:00.000Z" itemprop="datePublished">2023-06-23</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/MFA_configuration_scenarios/">Azure MFA 導入パターンを網羅的にご紹介！</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        Note本記事は 2020 年に公開したものですが、サポートへのお問い合わせ状況などをふまえ、2023 年 6 月時点での最新の情報にアップデートいたしました。
-こんにちは。Azure Identity チームの金森です。
-弊社をはじめ、セキュリティに対する新しい考え方が次々と公開されており、おそらく [ユーザー名とパスワードだけで認証は安全！] とは考えない方がほとんどになってきたものと思います。最近の弊社の考え方をご紹介する以下のような Blog の内容も、弊社に限らず広まってきたように感じます。
-
-ゼロ ハイプ
-レガシー認証をブロックするための新しいツール
-
-また、リモート ワークを安全に実現したい！というご要望が高まっている昨今の状況に呼応した以下のような Blog も公開しておりますので、ぜひこちらもご参照ください。
-
-安全なリモート アクセスを実現するための条件付きアクセスに関...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/MFA_configuration_scenarios/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/MFA_configuration_scenarios/" data-id="cmaq1i8gm00zv0npkfuupc0lv" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li></ul>
 
     </footer>
   </div>
@@ -620,6 +617,10 @@ Azure AD (AAD) は、Microsoft 365 をはじめ様々なクラウド サービ�
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/service-principal-required-for-microsoft-entra-id/">Microsoft Entra ID でサービス プリンシパルが必須に</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory/advanced-deployment-guide-for-conditional-access-policy-templates/">条件付きアクセス ポリシー テンプレートの高度な展開ガイド</a>
           </li>
         
@@ -633,10 +634,6 @@ Azure AD (AAD) は、Microsoft 365 をはじめ様々なクラウド サービ�
         
           <li>
             <a href="../../azure-active-directory/whats-new-in-microsoft-entra-march-2025/">Microsoft Entra の新着情報 – 2025 年 3 月</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/important-change-announcement-microsoft-entra-permissions-management-end-of-sale/">重要な変更のお知らせ: Microsoft Entra Permissions Management の販売終了と廃止</a>
           </li>
         
       </ul>
