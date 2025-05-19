@@ -27,7 +27,7 @@ tags:
 >
 > イシュー：We have identified that this domain is using TLS 1.0 or 1.1, which is currently deprecated and scheduled for retirement on August 31, 2025. You are required to migrate to TLS 1.2 to avoid service interruption.
 
-
+![](entrads-aadds600/entrads-aadds600.png)
 
 
 ## アラート内容の説明
