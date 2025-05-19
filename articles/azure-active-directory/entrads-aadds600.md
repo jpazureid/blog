@@ -57,7 +57,7 @@ Microsoft Azure ポータルから、Entra DS で [TLS 1.2 専用モード] を�
 
 以下の公開情報には、この対応方法および PowerShell による [TLS 1.2 専用モード] を有効に設定する手順をご案内していますので、合わせてご参照ください。
 
-https://learn.microsoft.com/ja-jp/entra/identity/domain-services/reference-domain-services-tls-enforcement#how-to-migrate-to-tls-12-only-mode-in-domain-services
+[Microsoft Entra Domain Services のトランスポート層セキュリティ (TLS) 1.2 の適用](https://learn.microsoft.com/ja-jp/entra/identity/domain-services/reference-domain-services-tls-enforcement#how-to-migrate-to-tls-12-only-mode-in-domain-services)
 
 ### 対応方法における影響
 
@@ -112,7 +112,7 @@ Update-AzADDomainService -Name "<Entra DS インスタンス名>" -ResourceGroup
 
 以下の公開情報では、PowerShell を使用して [TLS 1.2 専用モード] を [有効化] に設定する方法が案内されています。
 
-https://learn.microsoft.com/ja-jp/entra/identity/domain-services/reference-domain-services-tls-enforcement#how-to-migrate-to-tls-12-only-mode-in-domain-services
+[Domain Services で TLS 1.2 のみのモードに移行する方法](https://learn.microsoft.com/ja-jp/entra/identity/domain-services/reference-domain-services-tls-enforcement#how-to-migrate-to-tls-12-only-mode-in-domain-services)
 
 <span style="color:blue">Q.</span> Entra DS へ TLS 1.0 または TLS 1.1 を使用した通信があるか確認できますか？
 
