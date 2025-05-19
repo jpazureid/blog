@@ -11,15 +11,22 @@ tags:
 
 弊社サポート チームでは、Microsoft Entra Domain Services (以下、Entra DS) をご利用されている環境において、AADDS600 アラートが表示される状況について、お問い合わせをいただいております。本記事では、このアラートの内容と対処方法をご紹介します。
 
-アラート内容
+**アラート内容**
 
-名前：The managed domain has detected usage of a deprecated TLS version, which is scheduled for retirement.
-重要度：重大
-ID：AADDS600
-発生日時：-
-最終検出日時：-
-レプリカ セット：-
-イシュー：We have identified that this domain is using TLS 1.0 or 1.1, which is currently deprecated and scheduled for retirement on August 31, 2025. You are required to migrate to TLS 1.2 to avoid service interruption.
+> 名前：The managed domain has detected usage of a deprecated TLS version, which is scheduled for retirement.
+>
+> 重要度：重大
+>
+> ID：AADDS600
+>
+> 発生日時：-
+>
+> 最終検出日時：-
+>
+> レプリカ セット：-
+>
+> イシュー：We have identified that this domain is using TLS 1.0 or 1.1, which is currently deprecated and scheduled for retirement on August 31, 2025. You are required to migrate to TLS 1.2 to avoid service interruption.
+
 
 
 
@@ -91,7 +98,8 @@ PowerShell "Update-AzADDomainService" コマンドレットを使用すること
 
 Get-AzADDomainService
 
-    表示結果から "DomainSecuritySettingTlsV1" の値を確認します。
+表示結果から "DomainSecuritySettingTlsV1" の値を確認します。
+
     Disabled : [TLS 1.2 専用モード] は [有効にする] に設定されています
     Enabled  : [TLS 1.2 専用モード] は [無効化] に設定されています
 
