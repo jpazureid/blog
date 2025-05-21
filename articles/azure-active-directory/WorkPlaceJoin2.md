@@ -79,7 +79,7 @@ Windows 10 1803 以降であればレジストリを追加することで制御�
 Windows 10 のバージョン 1809 以降の場合、上記のレジストリ キー値を設定し、再起動することで Microsoft Entra 登録状態にならない様に構成することが可能です。
 
 Windows 10 1803 では上述のレジストリ設定に加え、下記の更新プログラムの適用が必要です。
-仮に既に KB4489894 以降の更新プログラムを適用している場合、レジストリの設定、および再起動のみでご要望を満たすことが可能です。
+既に KB4489894 以降の更新プログラムを適用している場合、レジストリの設定、および再起動のみでご要望を満たすことが可能です。
 
 <対象の更新プログラム>  
   March 19, 2019 - KB4489894 (OS Build 17134.677) 
@@ -119,7 +119,7 @@ https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700
 ### **Q. Microsoft Entra ID にデバイスが登録されたまま放置しても問題ないか？** 
 
 **A.**　デバイスの管理方法の変更が組織で行われない限り、特別問題が生じることはありません。
-組織にてデバイスの管理を Microsoft Entra ハイブリッド参加構成に変更を行った場合に、Microsoft Entra 登録 と Microsoft Entra ハイブリッド参加の状態の 2 つのデバイスが Microsoft Entra ID に重複登録されてしまう可能性があります。  
+組織にてデバイスの管理を Microsoft Entra ハイブリッド参加構成に変更を行った場合に、その事前に Microsoft Entra 登録を構成していた場合、Microsoft Entra 登録 と Microsoft Entra ハイブリッド参加の状態の 2 つのデバイスが Microsoft Entra ID に重複登録されてしまう可能性があります。  
 構成変更をする場合には、予め下記をご参照ください。  
   
 Microsoft Entra 登録済み状態のデバイスの処理
