@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin3.png">
 <meta property="article:published_time" content="2025-05-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-25T01:25:25.131Z">
+<meta property="article:modified_time" content="2025-05-25T01:43:34.955Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="WorkPlace Join">
@@ -161,62 +161,77 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+30dde1ba-fdfa-529c-a883-fff6dc75ab8b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%81%93%E3%81%AE%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E4%B8%8A%E3%81%AE%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97+%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A8+Web+%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AB%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%B3%E3%81%97%E3%81%BE%E3%81%99%E3%81%8B%3F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2FWorkPlaceJoin2%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2FWorkPlaceJoin2.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2FWorkPlaceJoin2.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/WorkPlaceJoin2/" data-id="cmb2z8kls003y0nrz2pbxg9ff" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/WorkPlaceJoin2/" data-id="cmb2zvxpe003y0nqme7r58ejm" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2020 年に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin/">すべてのアプリにサインインしたままにする</a> を 2025 年 5 月時点での最新の情報で再作成した記事です。</p></div>
 <p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。</p>
-<p>Windows 10 以降のデバイスで Office のライセンス認証時やサインインが求められる際に表示される下記「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」の画面について、お問い合わせを多くいただいています。<br>この画面の動作および制御方法について、本記事ではお纏めいたしました。  </p>
+<p>Windows 10 以降のデバイスで Office のライセンス認証時やサインインが求められる際に表示される下記「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」の画面について、お問い合わせを多くいただいています。この画面の動作および制御方法について、本記事ではお纏めいたしました。  </p>
 <p><img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin.png">
   </p>
 <h2 id="なぜ表示されるのか？"><a href="#なぜ表示されるのか？" class="headerlink" title="なぜ表示されるのか？"></a>なぜ表示されるのか？</h2><p>Windows 10 の 1703 (Build 15063.138) 以後のバージョンにて Office のバージョン 16.0.7967 以後のバージョンを利用する場合、Office は Web Account Manager (WAM) と呼ばれる認証フレームワークを利用します。  </p>
-<p>「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のダイアログ メッセージは、認証に WAM が使用された際、資格情報 (ID/Password) を入力してユーザー認証が終了した後、続けて Microsoft Entra ID にデバイスを登録するかどうかを確認する動作により表示されています。  (Microsoft Entra ID にデバイス登録するとシングル サインオンが利用でき利便性が向上します)</p>
-<h2 id="各選択肢の意味は？"><a href="#各選択肢の意味は？" class="headerlink" title="各選択肢の意味は？"></a>各選択肢の意味は？</h2><p>以下の通りです。</p>
+<p>「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のダイアログ メッセージは、認証に WAM が使用された際、資格情報 (ID/Password) を入力してユーザー認証が終了した後、続けて Microsoft Entra ID にデバイスを登録するかどうかを確認する動作により表示されています (Microsoft Entra ID にデバイス登録するとシングル サインオンが利用でき利便性が向上します)。</p>
+<h2 id="各選択肢の意味は？"><a href="#各選択肢の意味は？" class="headerlink" title="各選択肢の意味は？"></a>各選択肢の意味は？</h2><p>それぞれ以下のとおりです。</p>
 <ul>
-<li><p>[はい、すべてのアプリ] : Microsoft Entra ID に [Microsoft Entra 登録] の方式でデバイスを登録 (Registered) します。</p>
-</li>
-<li><p>[組織がデバイスを管理できるようにする] : このチェックボックスをチェックした状態で下段の [OK] を選択すると (Intune 利用環境の場合) Intune にもデバイスを登録します。この選択肢は Intune への自動登録の対象となっているユーザーでのみ表示されます。</p>
-</li>
-<li><p>[いいえ、このアプリのみ] : Microsoft Entra ID / Intune 関わらずクラウドへのデバイス登録を行いません ([組織がデバイスを管理できるようにする] のチェックの有無は影響しません)。</p>
-</li>
+<li>[はい、すべてのアプリ]: Microsoft Entra ID に [Microsoft Entra 登録] の方式でデバイスを登録 (Registered) します。</li>
+<li>[組織がデバイスを管理できるようにする]: このチェックボックスをチェックした状態で下段の [OK] を選択すると (Intune 利用環境の場合) Intune にもデバイスを登録します。この選択肢は Intune への自動登録の対象となっているユーザーでのみ表示されます。</li>
+<li>[いいえ、このアプリのみ]: Microsoft Entra ID / Intune 関わらずクラウドへのデバイス登録を行いません ([組織がデバイスを管理できるようにする] のチェックの有無は影響しません)。</li>
 </ul>
 <p>希望される状態によって選択肢を変更ください。</p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>Intune ライセンスを保持していないユーザーや管理者権限のないユーザーで [組織がデバイスを管理できるようにする] にチェックをいれて [OK] を選択した場合、エラー CAA50024 が発生し Intune 登録のみならず Microsoft Entra 登録も失敗します。この場合に Microsoft Entra 登録だけを実施したい場合は、 [組織がデバイスを管理できるようにする] のチェックを外して [OK] を選択します。</p></div>
 <h2 id="「このデバイス上のすべてのデスクトップ-アプリと-Web-サイトに自動的にサインインしますか-」の画面を表示させたくない場合"><a href="#「このデバイス上のすべてのデスクトップ-アプリと-Web-サイトに自動的にサインインしますか-」の画面を表示させたくない場合" class="headerlink" title="「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」の画面を表示させたくない場合"></a>「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」の画面を表示させたくない場合</h2><p>Windows 10 1803 以降であればレジストリを追加することで制御することが可能です。</p>
-<h3 id="表示させなくするレジストリ"><a href="#表示させなくするレジストリ" class="headerlink" title="表示させなくするレジストリ"></a>表示させなくするレジストリ</h3><p> レジストリ キーパス : HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin<br> レジストリ名 : BlockAADWorkplaceJoin<br> 形式 : DWORD<br> 値 : 00000001</p>
+<h3 id="表示させなくするレジストリ"><a href="#表示させなくするレジストリ" class="headerlink" title="表示させなくするレジストリ"></a>表示させなくするレジストリ</h3><pre><code>レジストリ キーパス: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin
+レジストリ名: BlockAADWorkplaceJoin
+形式: DWORD
+値: 00000001
+</code></pre>
 <h3 id="上記レジストリをグループ-ポリシーで配布する方法"><a href="#上記レジストリをグループ-ポリシーで配布する方法" class="headerlink" title="上記レジストリをグループ ポリシーで配布する方法"></a>上記レジストリをグループ ポリシーで配布する方法</h3><p>上述の BlockAADWorkplaceJoin レジストリ値を 0x1 として設定するグループポリシーに関して、下記の手順をご紹介いたします。</p>
 <ol>
-<li>グループ ポリシーの管理画面より対象クライアント コンピューターに適用させる前提の GPO の編集画面を表示します。</li>
-<li>以下のポリシーを展開します。<br>　–コンピューターの構成<br>　—-基本設定<br>　——Windows の設定<br>　——–レジストリ</li>
-<li>上記 [レジストリ] を右クリックし [新規作成] - [レジストリ項目] を選択します。</li>
-<li>下記のように設定を追加します。<br>アクション : 更新<br>ハイブ : HKEY_LOCAL_MACHINE<br>キーのパス : SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin<br>値の名前 : BlockAADWorkplaceJoin<br>値の種類 : REG_DWORD<br>値のデータ : 00000001  </li>
+<li><p>グループ ポリシーの管理画面より対象クライアント コンピューターに適用させる前提の GPO の編集画面を表示します。</p>
+</li>
+<li><p>以下のポリシーを展開します。</p>
+<p> –コンピューターの構成<br> —-基本設定<br> ——Windows の設定<br> ——–レジストリ</p>
+</li>
+<li><p>上記 [レジストリ] を右クリックし [新規作成] - [レジストリ項目] を選択します。</p>
+</li>
+<li><p>下記のように設定を追加します。</p>
+<p> アクション: 更新<br> ハイブ: HKEY_LOCAL_MACHINE<br> キーのパス: SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin<br> 値の名前: BlockAADWorkplaceJoin<br> 値の種類: REG_DWORD<br> 値のデータ: 00000001  </p>
+</li>
 </ol>
-<p> <br>上記の設定をポリシーで配布することでクライアントに目的のレジストリ値が反映するかご確認いただけますと幸いです。
- </p>
-<h3 id="Windows-10-1803-で上記レジストリを利用する際の注意事項"><a href="#Windows-10-1803-で上記レジストリを利用する際の注意事項" class="headerlink" title="Windows 10 1803 で上記レジストリを利用する際の注意事項"></a>Windows 10 1803 で上記レジストリを利用する際の注意事項</h3><p>Windows 10 のバージョン 1809 以降の場合、上記のレジストリ キー値を設定し、再起動することで Microsoft Entra 登録状態にならない様に構成することが可能です。</p>
-<p>Windows 10 1803 では上述のレジストリ設定に加え、下記の更新プログラムの適用が必要です。<br>既に KB4489894 以降の更新プログラムを適用している場合、レジストリの設定、および再起動のみでご要望を満たすことが可能です。</p>
-<p>&lt;対象の更新プログラム&gt;<br>  March 19, 2019 - KB4489894 (OS Build 17134.677)<br>  <a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4489894/windows-10-update-kb4489894">https://support.microsoft.com/en-us/help/4489894/windows-10-update-kb4489894</a> </p>
+<p>上記の設定をポリシーで配布することでクライアントに目的のレジストリ値が反映するかご確認いただけますと幸いです。</p>
+<h3 id="Windows-10-1803-で上記レジストリを利用する際の注意事項"><a href="#Windows-10-1803-で上記レジストリを利用する際の注意事項" class="headerlink" title="Windows 10 1803 で上記レジストリを利用する際の注意事項"></a>Windows 10 1803 で上記レジストリを利用する際の注意事項</h3><p>Windows 10 のバージョン 1809 以降の場合、上記のレジストリ キー値を設定し、再起動することで Microsoft Entra 登録状態にならない様に構成することが可能です。Windows 10 1803 では上述のレジストリ設定に加え、下記の更新プログラムの適用が必要です。既に KB4489894 以降の更新プログラムを適用している場合、レジストリの設定、および再起動のみでご要望を満たすことが可能です。</p>
+<p>March 19, 2019 - KB4489894 (OS Build 17134.677)<br><a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4489894/windows-10-update-kb4489894">https://support.microsoft.com/en-us/help/4489894/windows-10-update-kb4489894</a> </p>
 <h3 id="その他、上記レジストリ利用にあたる注意事項"><a href="#その他、上記レジストリ利用にあたる注意事項" class="headerlink" title="その他、上記レジストリ利用にあたる注意事項"></a>その他、上記レジストリ利用にあたる注意事項</h3><p>このレジストリを適用した場合、「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」の画面が表示されなくなることに加え、そのデバイスでの Microsoft Entra 登録自体が「エラー コード: CAA50101」でブロックされ実施できなくなります。</p>
 <h2 id="すでに意図せず-Microsoft-Entra-登録してしまった場合の切断方法"><a href="#すでに意図せず-Microsoft-Entra-登録してしまった場合の切断方法" class="headerlink" title="すでに意図せず Microsoft Entra 登録してしまった場合の切断方法"></a>すでに意図せず Microsoft Entra 登録してしまった場合の切断方法</h2><ol>
 <li><p>通常クライアント PC を利用するユーザーで Windows にログオンします。  </p>
 </li>
 <li><p>[スタート] - [設定] (歯車のマーク) - [アカウント] - [職場または学校にアクセスする] を開きます。  </p>
 </li>
-<li><p>以下のように、[職場または学校アカウント] のエントリが存在する場合、エントリを選択し、[切断] をクリックします。<br> <img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin1.png">  </p>
+<li><p>以下のように、[職場または学校アカウント] のエントリが存在する場合、エントリを選択し、[切断] をクリックします。</p>
+<p> <img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin1.png">  </p>
 </li>
-<li><p>ポップアップが表示されますので、[はい] をクリックします。 <br> <img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin2.png">  </p>
+<li><p>ポップアップが表示されますので、[はい] をクリックします。 </p>
+<p> <img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin2.png">  </p>
 </li>
-<li><p>職場または学校にアクセスするの画面にて”職場または学校アカウント” の情報が消えれば、削除が完了します。<br>  <img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin3.png"></p>
+<li><p>職場または学校にアクセスするの画面にて”職場または学校アカウント” の情報が消えれば、削除が完了します。</p>
+<p> <img src="/blog/azure-active-directory/WorkPlaceJoin2/WorkPlaceJoin3.png"></p>
 </li>
 </ol>
-<h2 id="よくご質問いただく内容"><a href="#よくご質問いただく内容" class="headerlink" title="よくご質問いただく内容"></a>よくご質問いただく内容</h2><h3 id="Q-登録済みのデバイスを-Azure-ポータルから管理者の操作のみで切断可能か？"><a href="#Q-登録済みのデバイスを-Azure-ポータルから管理者の操作のみで切断可能か？" class="headerlink" title="Q. 登録済みのデバイスを Azure ポータルから管理者の操作のみで切断可能か？"></a><strong>Q. 登録済みのデバイスを Azure ポータルから管理者の操作のみで切断可能か？</strong></h3><p><strong>A.</strong>　Microsoft Entra ID 上からデバイスの削除を行うことは可能ですが、対象のデバイスで上述の切断方法を実施しない場合には下記の問題が発生します。<br>そのため、デバイス側で手動で切断を実施するようにしてください。<br>エラーコード 700003 の対処策について<br><a href="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/">https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/</a>  </p>
-<h3 id="Q-Microsoft-Entra-ID-にデバイスが登録されたまま放置しても問題ないか？"><a href="#Q-Microsoft-Entra-ID-にデバイスが登録されたまま放置しても問題ないか？" class="headerlink" title="Q. Microsoft Entra ID にデバイスが登録されたまま放置しても問題ないか？"></a><strong>Q. Microsoft Entra ID にデバイスが登録されたまま放置しても問題ないか？</strong></h3><p><strong>A.</strong>　デバイスの管理方法の変更が組織で行われない限り、特別問題が生じることはありません。<br>組織にてデバイスの管理を Microsoft Entra ハイブリッド参加構成に変更を行った場合に、その事前に Microsoft Entra 登録を構成していた場合、Microsoft Entra 登録 と Microsoft Entra ハイブリッド参加の状態の 2 つのデバイスが Microsoft Entra ID に重複登録されてしまう可能性があります。<br>構成変更をする場合には、予め下記をご参照ください。  </p>
+<h2 id="よくご質問いただく内容"><a href="#よくご質問いただく内容" class="headerlink" title="よくご質問いただく内容"></a>よくご質問いただく内容</h2><p><strong>Q. 登録済みのデバイスを Azure ポータルから管理者の操作のみで切断可能か？</strong>  </p>
+<p><strong>A.</strong> Microsoft Entra ID 上からデバイスの削除を行うことは可能ですが、対象のデバイスで上述の切断方法を実施しない場合には下記の問題が発生します。そのため、デバイス側で手動で切断を実施するようにしてください。</p>
+<p>エラーコード 700003 の対処策について<br><a href="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/">https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/</a>  </p>
+<p><strong>Q. Microsoft Entra ID にデバイスが登録されたまま放置しても問題ないか？</strong> </p>
+<p><strong>A.</strong> デバイスの管理方法の変更が組織で行われない限り、特別問題が生じることはありません。組織にてデバイスの管理を Microsoft Entra ハイブリッド参加構成に変更を行った場合に、その事前に Microsoft Entra 登録を構成していた場合、Microsoft Entra 登録 と Microsoft Entra ハイブリッド参加の状態の 2 つのデバイスが Microsoft Entra ID に重複登録されてしまう可能性があります。構成変更をする場合には、予め下記をご参照ください。  </p>
 <p>Microsoft Entra 登録済み状態のデバイスの処理<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-plan#handling-devices-with-azure-ad-registered-state">https://learn.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-plan#handling-devices-with-azure-ad-registered-state</a></p>
-<h3 id="Q-「このデバイス上のすべてのデスクトップ-アプリと-Web-サイトに自動的にサインインしますか-」のメッセージはどのタイミングで表示されるのか？"><a href="#Q-「このデバイス上のすべてのデスクトップ-アプリと-Web-サイトに自動的にサインインしますか-」のメッセージはどのタイミングで表示されるのか？" class="headerlink" title="Q. 「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のメッセージはどのタイミングで表示されるのか？"></a><strong>Q. 「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のメッセージはどのタイミングで表示されるのか？</strong></h3><p><strong>A.</strong>　上述させていただきましたとおり、Office 365 インストール時や Teams 、Outlook などの Office 製品での認証時に表示されます。<br>その他には Edge ブラウザーへサインインする際や、Azure Virtual Desktop に接続する際に利用される Windows 用リモート デスクトップ クライアントでのサインイン時にも表示されます。<br>つまり、WAM を認証ブローカーとして使用するアプリで (WAM を用いた) サインインを行った際に表示されます。</p>
-<h3 id="Q-「このデバイス上のすべてのデスクトップ-アプリと-Web-サイトに自動的にサインインしますか-」のメッセージを非表示にするように制御した場合の影響は"><a href="#Q-「このデバイス上のすべてのデスクトップ-アプリと-Web-サイトに自動的にサインインしますか-」のメッセージを非表示にするように制御した場合の影響は" class="headerlink" title="Q. 「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のメッセージを非表示にするように制御した場合の影響は?"></a><strong>Q. 「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のメッセージを非表示にするように制御した場合の影響は?</strong></h3><p><strong>A.</strong>　WAM による Microsoft Entra ID へのデバイス登録が行われなくなるだけで、Windows 10 以降のデバイス 、Office 製品、Microsoft Entra ID の利用上に制限や問題となるような影響は特にありません。  </p>
-<h3 id="Q-Microsoft-Entra-ID-でのデバイス管理方法について"><a href="#Q-Microsoft-Entra-ID-でのデバイス管理方法について" class="headerlink" title="Q. Microsoft Entra ID でのデバイス管理方法について"></a><strong>Q. Microsoft Entra ID でのデバイス管理方法について</strong></h3><p><strong>A.</strong>　本記事のメッセージを契機に Microsoft Entra ID でのデバイス管理方法についてご質問を多くいただきます。<br>弊社製品開発チームにて開催させていただいている Webinar にてご紹介させていただいておりますので、参考にしていただければ幸いです。<br><a target="_blank" rel="noopener" href="https://github.com/yusukekodama/PMActivities/blob/master/Webinar/Schedule.md">https://github.com/yusukekodama/PMActivities/blob/master/Webinar/Schedule.md</a></p>
+<p><strong>Q. 「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のメッセージはどのタイミングで表示されるのか？</strong>  </p>
+<p><strong>A.</strong> 上述させていただきましたとおり、Office 365 インストール時や Teams 、Outlook などの Office 製品での認証時に表示されます。その他には Edge ブラウザーへサインインする際や、Azure Virtual Desktop に接続する際に利用される Windows 用リモート デスクトップ クライアントでのサインイン時にも表示されます。つまり、WAM を認証ブローカーとして使用するアプリで (WAM を用いた) サインインを行った際に表示されます。</p>
+<p><strong>Q. 「このデバイス上のすべてのデスクトップ アプリと Web サイトに自動的にサインインしますか?」のメッセージを非表示にするように制御した場合の影響は?</strong>  </p>
+<p><strong>A.</strong> WAM による Microsoft Entra ID へのデバイス登録が行われなくなるだけで、Windows 10 以降のデバイス、Office 製品、Microsoft Entra ID の利用上に制限や問題となるような影響は特にありません。</p>
+<p><strong>Q. Microsoft Entra ID でのデバイス管理方法について</strong>  </p>
+<p><strong>A.</strong> 本記事のメッセージを契機に Microsoft Entra ID でのデバイス管理方法についてご質問を多くいただきます。弊社製品開発チームにて開催させていただいている Webinar にてご紹介させていただいておりますので、参考にしていただければ幸いです。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yusukekodama/PMActivities/blob/master/Webinar/Schedule.md">https://github.com/yusukekodama/PMActivities/blob/master/Webinar/Schedule.md</a></p>
 <p>関連する回としては下記となります。  </p>
 <ul>
 <li>COVID-19 でリモート対応に成功した企業と失敗した企業の違いとは？  </li>
