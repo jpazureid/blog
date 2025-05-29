@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 金子 です。今回は Microsoft Entra External ID &#x2F; Azure AD B2C のお問い合わせを発行いただく際の注意点についてご説明します。 Microsoft Entra External ID または Azure AD B2C テナントは、組織の Microsoft Entra ID テナントに紐づく Az">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2025-05-27T10:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-27T18:10:32.138Z">
+<meta property="article:modified_time" content="2025-05-29T01:36:23.579Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD B2C">
 <meta property="article:tag" content="Microsoft Entra External ID">
@@ -155,24 +155,24 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+dd841e50-f18a-514b-8802-d85620a46605%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+External+ID+%2F+Azure+AD+B2C+%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88+%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E7%99%BA%E8%A1%8C%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-issue-a-request-4-ciam-b2c%2Fhow-to-issue-a-request-4-ciam-b2c%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-issue-a-request-4-ciam-b2c%2Fhow-to-issue-a-request-4-ciam-b2c.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-issue-a-request-4-ciam-b2c%2Fhow-to-issue-a-request-4-ciam-b2c.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-issue-a-request-4-ciam-b2c/how-to-issue-a-request-4-ciam-b2c/" data-id="cmb6u0v1900oe0no02l0jbpmf" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-issue-a-request-4-ciam-b2c/how-to-issue-a-request-4-ciam-b2c/" data-id="cmb8pe3ri00oe0nphgghj5tbr" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、Azure Identity サポート チームの 金子 です。今回は Microsoft Entra External ID / Azure AD B2C のお問い合わせを発行いただく際の注意点についてご説明します。</p>
-<p>Microsoft Entra External ID または Azure AD B2C テナントは、組織の Microsoft Entra ID テナントに紐づく Azure サブスクリプションのリソースとなりますため、起票はサブスクリプションが紐づくテナント (従業員テナント) にて行う必要がございます。<br>しかしながら、弊社サポートでは起票いただいたテナントの情報以外を閲覧することができません。これは、弊社 Microsoft 側で顧客データを保護するための制限となります。</p>
-<p>従いまして、Entra External ID または Azure AD B2C テナントに関する調査をご希望される際は、公開情報の<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory-b2c/find-help-open-support-ticket#how-to-open-a-support-ticket-for-azure-ad-b2c-in-the-azure-portal">手順</a>でお問い合わせを起票いただいた上で以下の 2 点が対応済みであるか事前にご確認いただけますと幸いです。<br>未対応の場合は、弊社サポートより改めて対応のお願いやお問い合わせ起票をお願いさせていただく場合がございますので予めご了承ください。</p>
-<h2 id="必要事項"><a href="#必要事項" class="headerlink" title="必要事項"></a>必要事項</h2><pre><code>1. お問い合わせを起票したユーザーが問題が発生した Entra External ID または Azure AD B2C テナントへのゲスト登録が完了していること。
-
-2. ゲスト登録したアカウントに、以下のいずれかの Entra ID 管理者ロールが付与されていること。
-
- ・グローバル管理者（Global Administrator）
- ・サービス サポート管理者（Service Support Administrator）
- 
-  注意: Entra External ID または Azure AD B2C テナント側でロールを付与する必要があります。
-</code></pre>
-<p>また、下記の公開情報に記載しておりますが、エラーの原因調査等のお問い合わせを発行いただく際には「高度な診断情報」を「はい」に設定いただく必要がありますので、こちらも合わせてご認識いただきますようお願いいたします。</p>
+<p>Microsoft Entra External ID または Azure AD B2C テナントは、組織の Microsoft Entra ID テナントに紐づく Azure サブスクリプションのリソースとなりますため、起票はサブスクリプションが紐づくテナント (従業員テナント) にて行う必要がございます。しかしながら、弊社サポートでは起票いただいたテナントの情報以外を閲覧することができません。これは、弊社 Microsoft 側で顧客データを保護するための制限となります。</p>
+<p>従いまして、Entra External ID または Azure AD B2C テナントに関する調査をご希望される際は、公開情報の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory-b2c/find-help-open-support-ticket#how-to-open-a-support-ticket-for-azure-ad-b2c-in-the-azure-portal">手順</a> でお問い合わせを起票いただいた上で以下の 2 点が対応済みであるか事前にご確認いただけますと幸いです。未対応の場合は、弊社サポートより改めて対応のお願いやお問い合わせ起票をお願いさせていただく場合がございますので予めご了承ください。</p>
+<h2 id="必要事項"><a href="#必要事項" class="headerlink" title="必要事項"></a>必要事項</h2><ol>
+<li>お問い合わせを起票したユーザーが問題が発生した Entra External ID または Azure AD B2C テナントへのゲスト登録が完了していること。</li>
+<li>ゲスト登録したアカウントに、以下のいずれかの Entra ID 管理者ロールが付与されていること。<ul>
+<li>グローバル管理者（Global Administrator）</li>
+<li>サービス サポート管理者（Service Support Administrator）</li>
+</ul>
+</li>
+</ol>
+<div class="alert is-info"><p class="alert-title">Note</p><p>これらのロールは Entra External ID または Azure AD B2C テナント側にて付与する必要があります。</p></div>
+<p>また、下記の公開情報に記載しておりますが、エラーの原因調査等のお問い合わせを発行いただく際には「高度な診断情報」を「はい」に設定いただく必要がありますので、こちらも合わせてご認識くださいますようお願いいたします。</p>
 <p>参考: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/azure-portal/supportability/how-to-manage-azure-support-request#allow-collection-of-advanced-diagnostic-information">Azure サポートと診断情報を共有する</a></p>
 
       
