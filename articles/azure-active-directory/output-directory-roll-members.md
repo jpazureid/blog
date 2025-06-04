@@ -13,8 +13,8 @@ tags:
 >
 > (2025/3/11 更新)
 >
-> 本記事にてご案内しておりますスクリプトでは、すでに非推奨となっている MSOL のコマンドレットが利用されております。
-> 
+> 本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) の記事をご確認ください。
 > Entra ID のディレクトリ ロールが割り当てられているユーザーの一覧を取得したい場合、現在はコマンドを利用しなくても、 Azure ポータルの [Microsoft Entra ID] - [ロールと管理者] - [割り当てのダウンロード] ボタンを利用することで簡単に一覧をダウンロードすることが可能ですので、併せて利用をご検討ください。
 
 
@@ -33,6 +33,9 @@ Azure AD PowerShell のインストールなどについては、以下の公開
 [Azure Active Directory の PowerShell モジュール](./powershell-module.md)
 
 ## PowerShell スクリプト
+
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 ```powershell
 Import-Module MSOnline

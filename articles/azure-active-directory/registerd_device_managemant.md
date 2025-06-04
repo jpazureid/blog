@@ -6,6 +6,10 @@ tags:
   - Device
 ---
 
+> [!WARNING]
+> 本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) の記事をご確認ください。
+
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/11/27/registerd_device_managemant/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
@@ -48,6 +52,9 @@ Connect-MsolService
 
 4. 下記のコマンドを入力し、ユーザーを指定して、ユーザーに紐づくデバイス情報の詳細を確認します。
 
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+
 ```
 Get-MsolDevice -RegisteredOwnerUpn <UPN> | ft Displayname, DeviceId,ApproximateLastLogonTimestamp
 ```
@@ -59,17 +66,26 @@ Get-MsolDevice -RegisteredOwnerUpn <UPN> | ft Displayname, DeviceId,ApproximateL
 
 5. 下記のコマンドを実行して、デバイスを指定して削除します。
 
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+
 ```
 Remove-MsolDevice  -DeviceId <4. で確認した DeviceId> -force
 ```
 
 ６．上記のコマンドを応用して、例えば、特定ユーザーの ApproximateLastLogonTimestam  が 1 年以上前のデバイスを一括削除する場合、次のような構文を使用します。
 
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+
 ```
 Get-MsolDevice -RegisteredOwnerUpn <UPN> | where {$_.ApproximateLastLogonTimestamp.AddYears(1) -lt (Get-Date)} | foreach{Remove-MsolDevice -DeviceId $_.DeviceId} -force
 ```
 
 ７．また、ディレクトリ内のすべての ApproximateLastLogonTimestam  が 1 年以上前のデバイスを一括削除する場合は、次のような構文を使用します。
+
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 ```
 Get-MsolDevice -All | where {$_.ApproximateLastLogonTimestamp.AddYears(1) -lt (Get-Date)} | foreach{Remove-MsolDevice -DeviceId $_.DeviceId} -force
