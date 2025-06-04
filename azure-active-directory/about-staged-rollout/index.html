@@ -6,19 +6,19 @@
   
   <title>Staged Rollout について | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Identity サポート チームの田中です。 今回は、先日 Public Preview として利用可能になった、フェデレーション ドメインに属しているユーザーの一部のみをマネージド 認証に変更できる Staged Rollout 機能についてご紹介します。  更新履歴 2023&#x2F;6&#x2F;19 プレビュー記載の削除。画面ショットの更新  Staged Rollout とは？フ">
+  <meta name="description" content="こんにちは、Azure Identity サポート チームです。 今回は、フェデレーション ドメインに属しているユーザーの一部のみをマネージド認証に変更できる Staged Rollout (段階的ロールアウト) 機能についてご紹介します。 Note2023&#x2F;06&#x2F;19 プレビュー記載の削除。画面ショットの更新2025&#x2F;06&#x2F;03 古い表記やリンクなどを修正。 Staged Rollout とは？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Staged Rollout について">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure Identity サポート チームの田中です。 今回は、先日 Public Preview として利用可能になった、フェデレーション ドメインに属しているユーザーの一部のみをマネージド 認証に変更できる Staged Rollout 機能についてご紹介します。  更新履歴 2023&#x2F;6&#x2F;19 プレビュー記載の削除。画面ショットの更新  Staged Rollout とは？フ">
+<meta property="og:description" content="こんにちは、Azure Identity サポート チームです。 今回は、フェデレーション ドメインに属しているユーザーの一部のみをマネージド認証に変更できる Staged Rollout (段階的ロールアウト) 機能についてご紹介します。 Note2023&#x2F;06&#x2F;19 プレビュー記載の削除。画面ショットの更新2025&#x2F;06&#x2F;03 古い表記やリンクなどを修正。 Staged Rollout とは？">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/apply-phs1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/apply-phs2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/input-password.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/adfs-signinpage.png">
 <meta property="article:published_time" content="2023-06-18T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-31T22:14:46.042Z">
+<meta property="article:modified_time" content="2025-06-04T17:55:19.673Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Staged Rollout">
@@ -161,111 +161,72 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+67d562b5-7ded-5901-a72c-a1e117c8fc2f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BStaged+Rollout+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fabout-staged-rollout%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fabout-staged-rollout.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fabout-staged-rollout.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/" data-id="cmbcsidky004c0no0d4xy3p1t" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/about-staged-rollout/" data-id="cmbi904lv004c0nql5sfa60s2" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>こんにちは、Azure Identity サポート チームの田中です。</p>
-<p>今回は、先日 Public Preview として利用可能になった、フェデレーション ドメインに属しているユーザーの一部のみをマネージド 認証に変更できる Staged Rollout 機能についてご紹介します。</p>
-<blockquote>
-<p>更新履歴</p>
-<p>2023/6/19 プレビュー記載の削除。画面ショットの更新</p>
-</blockquote>
-<h1 id="Staged-Rollout-とは？"><a href="#Staged-Rollout-とは？" class="headerlink" title="Staged Rollout とは？"></a>Staged Rollout とは？</h1><p>フェデレーションによる認証からマネージド認証 (パスワードハッシュ同期 / パススルー認証) への認証方式の変更に伴うユーザー影響を軽減するための機能を指します。<br>これにより、少しずつユーザーの認証方式を変更できるというメリットがあります。</p>
-<p>例えば、以下のようなシナリオが挙げられます。</p>
+        <p>こんにちは、Azure Identity サポート チームです。</p>
+<p>今回は、フェデレーション ドメインに属しているユーザーの一部のみをマネージド認証に変更できる Staged Rollout (段階的ロールアウト) 機能についてご紹介します。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>2023/06/19 プレビュー記載の削除。画面ショットの更新</p><p>2025/06/03 古い表記やリンクなどを修正。</p></div>
+<h2 id="Staged-Rollout-とは？"><a href="#Staged-Rollout-とは？" class="headerlink" title="Staged Rollout とは？"></a>Staged Rollout とは？</h2><p>フェデレーションによる認証からマネージド認証 (パスワードハッシュ同期 / パススルー認証) への認証方式の変更に伴うユーザー影響を軽減するための機能を指します。これにより、少しずつユーザーの認証方式を変更できるというメリットがあります。</p>
+<p>例えば、同じ <code>contoso.com</code> というフェデレーション ドメインに属するユーザーとして、ユーザー A およびユーザー B が存在するとします。</p>
 <ul>
-<li>シナリオ<br>ユーザー A および ユーザー B は、共に同じ <code>contoso.com</code> というフェデレーション ドメインを持つユーザーである。</li>
+<li>ユーザー A の UPN: <code>test.user0001@contoso.com</code>  </li>
+<li>ユーザー B の UPN: <code>adfstestuser01@contoso.com</code></li>
 </ul>
-<p>ユーザー A の UPN : <code>test.user0001@contoso.com</code><br>ユーザー B の UPN : <code>adfstestuser01@contoso.com</code></p>
-<p>Staged Rollout 機能が割り当てられているユーザー A : マネージド認証 (パスワード ハッシュ同期 / パススルー認証)<br>Staged Rollout 機能が割り当てられていないユーザー B : フェデレーションによる認証</p>
-<p>詳細については、後述いたします。</p>
-<h1 id="Staged-Rollout-の構成手順"><a href="#Staged-Rollout-の構成手順" class="headerlink" title="Staged Rollout の構成手順"></a>Staged Rollout の構成手順</h1><p>Staged Rollout の構成手順につきましては、以下の公開情報でもご紹介しております。<br>そのため、まずは以下の公開情報をご参照いただき、ご不明点などございましたら、弊社サポート チームにお問い合わせいただければ幸いです。</p>
-<p>Title : 段階的なロールアウトを使用してクラウド認証に移行する</p>
-<p>URL : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-staged-rollout">https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-staged-rollout</a></p>
-<p>以下では、上述のシナリオに基づいて、実際の構成手順を一部抜粋して、ご案内します。</p>
-<p>[ドメイン状態]</p>
-<ul>
-<li><code>contoso.com</code> : Federated</li>
-</ul>
-<p>[グループおよびグループに含まれるユーザーの構成情報]</p>
+<p>ここで、Staged Rollout 機能が割り当てられているユーザー A はマネージド認証 (パスワード ハッシュ同期 / パススルー認証) を利用するようになりますが、Staged Rollout 機能が割り当てられていないユーザー B は従来通りフェデレーションによる認証となります。詳細について後述いたします。</p>
+<h2 id="Staged-Rollout-の構成手順"><a href="#Staged-Rollout-の構成手順" class="headerlink" title="Staged Rollout の構成手順"></a>Staged Rollout の構成手順</h2><p>Staged Rollout の構成手順につきましては、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/how-to-connect-staged-rollout">公開情報</a> でもご紹介しております。そのため、まずは以下の公開情報をご参照いただき、ご不明点などございましたら、弊社サポート チームにお問い合わせいただければ幸いです。以下では、上述のシナリオに基づいて、実際の構成手順を一部抜粋して、ご案内します。</p>
+<p>まず、グループおよびグループに含まれるユーザーの構成は以下のとおりです。</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>グループ名<br>TEST0602</th>
+<th>ユーザー</th>
+<th>グループ名 TEST0602</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>ユーザー A <br><code>test.user0001@contoso.com</code></td>
+<td>ユーザー A: <code>test.user0001@contoso.com</code></td>
 <td><font color="Red">〇</font> (含まれる)</td>
 </tr>
 <tr>
-<td>ユーザー B <br><code>adfstestuser01@contoso.com</code></td>
+<td>ユーザー B: <code>adfstestuser01@contoso.com</code></td>
 <td>x  (含まれていない)</td>
 </tr>
 </tbody></table>
 <p>TEST0602 のグループに対して、以下のように、Staged Rollout 機能におけるパスワード ハッシュ同期を割り当てます。</p>
 <p><img src="/blog/azure-active-directory/about-staged-rollout/apply-phs1.png"></p>
 <p><img src="/blog/azure-active-directory/about-staged-rollout/apply-phs2.png"></p>
-<p>[認証方式]</p>
-<ul>
-<li><code>test.user0001@contoso.com</code> のユーザーで認証を試みます。(グループに <strong>含まれる</strong> ユーザー)<br>⇒ フェデレーション認証の場合だとリダイレクトされますが、リダイレクトされておらず、パスワード ハッシュ同期による認証方式が適用されていることが、以下の画面キャプチャからもご確認いただけます。<br>※なお、[グループおよびグループに含まれるユーザーの構成情報] において、Staged Rollout 機能におけるパススルー認証を割り当てても、以下の画面キャプチャと同様のサインイン画面が表示されます。</li>
-</ul>
+<p>この状況で、<code>test.user0001@contoso.com</code> のユーザーで認証を試みます (グループに <strong>含まれる</strong> ユーザー)。フェデレーション認証の場合だと外部 IdP にリダイレクトされますが、リダイレクトされておらず、パスワード ハッシュ同期による認証方式が適用されていることが以下の画面キャプチャからもご確認いただけます。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>[グループおよびグループに含まれるユーザーの構成情報] において、Staged Rollout 機能におけるパススルー認証を割り当てても、以下の画面キャプチャと同様のサインイン画面が表示されます。</p></div>
 <p><img src="/blog/azure-active-directory/about-staged-rollout/input-password.png"></p>
-<ul>
-<li><code>adfstestuser01@contoso.com</code> のユーザーで認証を試みます。 (グループに <strong>含まれていない</strong> ユーザー)<br>⇒ AD FS による認証方式が適用されていることが、以下の画面キャプチャからもご確認いただけます。</li>
-</ul>
+<p>次に、<code>adfstestuser01@contoso.com</code> のユーザーで認証を試みます (グループに <strong>含まれていない</strong> ユーザー)。AD FS による認証方式が適用されていることが以下の画面キャプチャからもご確認いただけます。</p>
 <p><img src="/blog/azure-active-directory/about-staged-rollout/adfs-signinpage.png"></p>
-<p>このように、上記の 2 ユーザー共に、同じフェデレーション ドメイン (例 : <code>contoso.com</code>) を使用しているにも関わらず、Staged Rollout 機能を割り当てたグループに含まれるユーザーは、マネージド 認証が適用されます。</p>
-<h1 id="Staged-Rollout-に関してよくある-Q-amp-A-集"><a href="#Staged-Rollout-に関してよくある-Q-amp-A-集" class="headerlink" title="Staged Rollout に関してよくある Q&amp;A 集"></a>Staged Rollout に関してよくある Q&amp;A 集</h1><p><strong>Q. 認証方式の切替を行う際、ユーザー単位での認証方式の変更は必要なく (全ユーザーに対する認証方式を行う想定)、認証方式の変更に要する時間として、ドメイン単位でフェデレーション解除するよりも Staged Rollout 機能を用いた方が、反映時間は短く済むのでしょうか？</strong></p>
-<p>A. いいえ、ドメイン単位でフェデレーション解除をご実施いただいた方が反映時間が短く済みます。<br>なお、ドメイン単位でフェデレーション解除するコマンドとして、<code>Convert-MSOLDomainToStandard</code> または <code>Set-MsolDomainAuthentication</code> がありますが、ユーザーのパスワード リセットを行うような要件がない場合、<code>Set-MsolDomainAuthentication</code> をご利用ください。※</p>
-<p>※<br><code>Convert-MSOLDomainToStandard</code> コマンドは、ユーザーのパスワード リセットを行う要件がある場合に利用します。このコマンドを実行すると、それぞれのユーザー単位での処理を試行するため、ユーザー数に比例して認証方式の切り替えに時間を要します。</p>
-<p>一方、<code>Set-MsolDomainAuthentication</code> コマンドは、ドメイン単位で認証方式の切り替えのみを行うコマンドであるため、即時的に認証方式の切り替えを行うことができます。なお、過去の事例では、<code>Set-MsolDomainAuthentication</code> コマンドによる認証方式の切り替えに伴い一時的に問題が生じる可能性があります。切り替えに要する時間は、 下記の公開情報でご案内しておりますとおり、最大でも 4 時間ですが、この間に一時的にユーザー認証にも問題が発生する可能性がある点についてはご注意ください。</p>
-<ul>
-<li>参考情報<br>Title : メンテナンス期間の計画<br>URL : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync#plan-deployment-and-support">https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync#plan-deployment-and-support</a></li>
-</ul>
-<div class="alert is-warning"><p class="alert-title">警告</p><p>2023/6/30 以降、 上記にて案内しております Set-MsolDomainAuthentication や Convert-MSOLDomainToStandard コマンドは、 MSOL コマンドのため廃止される予定です。</p><p>代替として、現在は New-MgDomainFederationConfiguration と Remove-MgDomainFederationConfiguration コマンドを利用します。</p></div>
-<blockquote>
-<p>Remove コマンドでは、フェデレーションからマネージドへの切り替えを行います。実行例は下記の通りです。</p>
-</blockquote>
+<p>このように、上記の 2 ユーザー共に、同じフェデレーション ドメイン (例: <code>contoso.com</code>) を使用しているにも関わらず、Staged Rollout 機能を割り当てたグループに含まれるユーザーはマネージド認証が適用されます。</p>
+<h2 id="Staged-Rollout-に関してよくある-Q-amp-A-集"><a href="#Staged-Rollout-に関してよくある-Q-amp-A-集" class="headerlink" title="Staged Rollout に関してよくある Q&amp;A 集"></a>Staged Rollout に関してよくある Q&amp;A 集</h2><h3 id="Q-認証方式の切替を行う際、ユーザー単位での認証方式の変更は必要なく-全ユーザーに対する認証方式を行う想定-、認証方式の変更に要する時間として、ドメイン単位でフェデレーション解除するよりも-Staged-Rollout-機能を用いた方が、反映時間は短く済むのでしょうか？"><a href="#Q-認証方式の切替を行う際、ユーザー単位での認証方式の変更は必要なく-全ユーザーに対する認証方式を行う想定-、認証方式の変更に要する時間として、ドメイン単位でフェデレーション解除するよりも-Staged-Rollout-機能を用いた方が、反映時間は短く済むのでしょうか？" class="headerlink" title="Q. 認証方式の切替を行う際、ユーザー単位での認証方式の変更は必要なく (全ユーザーに対する認証方式を行う想定)、認証方式の変更に要する時間として、ドメイン単位でフェデレーション解除するよりも Staged Rollout 機能を用いた方が、反映時間は短く済むのでしょうか？"></a>Q. 認証方式の切替を行う際、ユーザー単位での認証方式の変更は必要なく (全ユーザーに対する認証方式を行う想定)、認証方式の変更に要する時間として、ドメイン単位でフェデレーション解除するよりも Staged Rollout 機能を用いた方が、反映時間は短く済むのでしょうか？</h3><p>A. いいえ、ドメイン単位でフェデレーション解除をご実施いただいた方が反映時間が短く済みます。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>現在 MSOL PowerShell は廃止されましたが、ドメイン単位でフェデレーションを解除するコマンドとして、<code>Convert-MsolDomainToStandard</code> または <code>Set-MsolDomainAuthentication</code> が存在しました。ユーザーのパスワード リセットを行うような要件がない場合は、<code>Set-MsolDomainAuthentication</code> の利用をお勧めしておりました。<code>Convert-MSOLDomainToStandard</code> コマンドは、ユーザーのパスワード リセットを行う要件がある場合に利用していました。このコマンドを実行すると、それぞれのユーザー単位での処理を試行するため、ユーザー数に比例して認証方式の切り替えに時間を要します。一方、<code>Set-MsolDomainAuthentication</code> コマンドは、ドメイン単位で認証方式の切り替えのみを行うコマンドであるため、即時的に認証方式の切り替えを行うことができました。なお、過去の事例では、<code>Set-MsolDomainAuthentication</code> コマンドによる認証方式の切り替えに伴い一時的に問題が生じる可能性がありました。</p></div>
+<p>参考情報としては、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication#plan-the-maintenance-window">メンテナンス期間の計画</a> をご覧ください。</p>
+<p>フェデレーションを解除するコマンドとして、現在は New-MgDomainFederationConfiguration と Remove-MgDomainFederationConfiguration コマンドを利用します。Remove コマンドでは、フェデレーションからマネージドへの切り替えを行います。実行例は下記のとおりです。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MgDomainFederationConfiguration</span> <span class="literal">-DomainId</span> &lt;カスタム ドメイン名&gt; | <span class="built_in">fl</span></span><br><span class="line"><span class="built_in">Remove-MgDomainFederationConfiguration</span> <span class="literal">-DomainId</span> &lt;カスタムドメイン名&gt; <span class="literal">-InternalDomainFederationId</span> &lt;<span class="built_in">Get-MgDomainFederationConfiguration</span> コマンドの Id を入力&gt;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>New コマンドでは、各種パラメータを指定することでマネージド ドメインからフェデレーション ドメインへの切り替えが可能です。実行例は下記の通りです。</p>
-</blockquote>
+<p>New コマンドでは、各種パラメータを指定することでマネージド ドメインからフェデレーション ドメインへの切り替えが可能です。実行例は下記のとおりです。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">New-MgDomainFederationConfiguration</span> <span class="literal">-DomainId</span> <span class="string">&quot;&lt;カスタム ドメイン名&gt;&quot;</span> <span class="literal">-PreferredAuthenticationProtocol</span> <span class="string">&quot;wsFed&quot;</span> <span class="literal">-ActiveSignInUri</span> <span class="variable">$Active</span> <span class="literal">-DisplayName</span> <span class="variable">$display</span> <span class="literal">-IssuerUri</span> <span class="variable">$issuer</span> <span class="literal">-MetadataExchangeUri</span> <span class="variable">$Meta</span> <span class="literal">-NextSigningCertificate</span> <span class="variable">$NextCert</span> <span class="literal">-PassiveSignInUri</span> <span class="variable">$Passive</span> <span class="literal">-SignOutUri</span> <span class="variable">$SignOUt</span> <span class="literal">-SigningCertificate</span> <span class="variable">$SignCert</span> <span class="literal">-FederatedIdpMfaBehavior</span> <span class="variable">$MFA</span> | <span class="built_in">Format-List</span></span><br></pre></td></tr></table></figure>
 
-
-<p><strong>Q. Staged Rollout 機能を対象グループに割り当てたときの反映時間について、教えてください。</strong></p>
-<p>A. ユーザーが段階的ロールアウトの対象になりますと Azure AD の監査イベントが記録され、実際のユーザーの認証方式変更は、その後にバックグラウンドで実施されます。<br>この認証方式の変更が有効になるまでに最大 24 時間かかることがあります。</p>
-<p>そのため、すべてのユーザーに対する監査イベントが記録されたことを確認後、バックグラウンドの処理が完了するまで約 4 時間をお待ちいただく必要があります。</p>
-<p>過去事例におきましては、17,000 ユーザーを Staged Rollout 対象グループに追加した後、最初のユーザーに対して監査イベントが記録されてから、最後のユーザーのイベントが記録されるまでに 1 時間 30 分ほどの時間を要したという情報がございます。</p>
+<h3 id="Q-Staged-Rollout-機能を対象グループに割り当てたときの反映時間について教えてください。"><a href="#Q-Staged-Rollout-機能を対象グループに割り当てたときの反映時間について教えてください。" class="headerlink" title="Q. Staged Rollout 機能を対象グループに割り当てたときの反映時間について教えてください。"></a>Q. Staged Rollout 機能を対象グループに割り当てたときの反映時間について教えてください。</h3><p>A. ユーザーが段階的ロールアウトの対象になりますと Microsoft Entra ID の監査イベントが記録され、実際のユーザーの認証方式変更は、その後にバックグラウンドで実施されます。この認証方式の変更が有効になるまでに最大 24 時間かかることがあります。</p>
+<h3 id="Q-Staged-Rollout-機能を割り当てている状態において-Microsoft-Entra-ハイブリッド参加の構成を行おうとしていますがこのような構成は可能でしょうか。"><a href="#Q-Staged-Rollout-機能を割り当てている状態において-Microsoft-Entra-ハイブリッド参加の構成を行おうとしていますがこのような構成は可能でしょうか。" class="headerlink" title="Q. Staged Rollout 機能を割り当てている状態において Microsoft Entra ハイブリッド参加の構成を行おうとしていますがこのような構成は可能でしょうか。"></a>Q. Staged Rollout 機能を割り当てている状態において Microsoft Entra ハイブリッド参加の構成を行おうとしていますがこのような構成は可能でしょうか。</h3><p>A. Windows 10 version 1903 以降であれば、Microsoft Entra ハイブリッド参加構成を有効にした状態で、Staged Rollout 機能をご利用いただくことができます。これは、Windows 10 version 1903 より前のバージョンでは、フェデレーション認証の場合、必ず AD FS との通信が発生するのに対し、Windows 10 version 1903 以降では、ユーザーごとにフェデレーション認証を行うかどうかを識別する機能が実装されているためです。</p>
+<h3 id="Q-検証用に-Staged-Rollout-を有効化しますが検証完了後は無効化する予定です。無効化した際に正常に戻っていることを確認したいですがどのように確認すればよいでしょうか。"><a href="#Q-検証用に-Staged-Rollout-を有効化しますが検証完了後は無効化する予定です。無効化した際に正常に戻っていることを確認したいですがどのように確認すればよいでしょうか。" class="headerlink" title="Q. 検証用に Staged Rollout を有効化しますが検証完了後は無効化する予定です。無効化した際に正常に戻っていることを確認したいですがどのように確認すればよいでしょうか。"></a>Q. 検証用に Staged Rollout を有効化しますが検証完了後は無効化する予定です。無効化した際に正常に戻っていることを確認したいですがどのように確認すればよいでしょうか。</h3><p>A. ロールバックの手順で無効化した後は、同期ユーザーにて Microsoft 365 ポータルや Azure ポータル、マイ アプリ ポータル等にブラウザーでアクセスし、フェデレーション認証方式でサインインができれば正常に戻っているとご判断ください。​</p>
+<h3 id="Q-Staged-Rollout-はいつ頃-GA-一般提供-されますか。"><a href="#Q-Staged-Rollout-はいつ頃-GA-一般提供-されますか。" class="headerlink" title="Q. Staged Rollout はいつ頃 GA (一般提供) されますか。"></a>Q. Staged Rollout はいつ頃 GA (一般提供) されますか。</h3><p>A. 2020 年 4 月末時点ではパブリック プレビュー状態でしたが、2023 年 6 月現在、本機能はすでに GA (一般提供) が開始されております。これまでプレビュー機能の利用が難しく利用できなかったお客様も、ぜひご利用ください。</p>
+<h3 id="Q-Staged-Rollout-機能を利用するとき事前に-Microsoft-Entra-Connect-のユーザーのサインイン方式として何が選択されていればいいでしょうか。"><a href="#Q-Staged-Rollout-機能を利用するとき事前に-Microsoft-Entra-Connect-のユーザーのサインイン方式として何が選択されていればいいでしょうか。" class="headerlink" title="Q. Staged Rollout 機能を利用するとき事前に Microsoft Entra Connect のユーザーのサインイン方式として何が選択されていればいいでしょうか。"></a>Q. Staged Rollout 機能を利用するとき事前に Microsoft Entra Connect のユーザーのサインイン方式として何が選択されていればいいでしょうか。</h3><p>A. [構成しない] または [AD FS とのフェデレーション] のいずれかが選択されている必要があります。</p>
+<h3 id="Q-以前にシームレス-SSO-を構成していた、またはパススルー認証を構成していた場合は、コンピューターアカウントを削除し、パススルー認証エージェントも削除しておく必要があるでしょうか。"><a href="#Q-以前にシームレス-SSO-を構成していた、またはパススルー認証を構成していた場合は、コンピューターアカウントを削除し、パススルー認証エージェントも削除しておく必要があるでしょうか。" class="headerlink" title="Q. 以前にシームレス SSO を構成していた、またはパススルー認証を構成していた場合は、コンピューターアカウントを削除し、パススルー認証エージェントも削除しておく必要があるでしょうか。"></a>Q. 以前にシームレス SSO を構成していた、またはパススルー認証を構成していた場合は、コンピューターアカウントを削除し、パススルー認証エージェントも削除しておく必要があるでしょうか。</h3><p>A. はい、コンピューター アカウントの削除およびパススルー認証エージェントの削除を事前に行う必要があります。</p>
+<h3 id="Q-最終的にマネージド認証に移行する場合の手順について教えてください。"><a href="#Q-最終的にマネージド認証に移行する場合の手順について教えてください。" class="headerlink" title="Q. 最終的にマネージド認証に移行する場合の手順について教えてください。"></a>Q. 最終的にマネージド認証に移行する場合の手順について教えてください。</h3><p>A. PowerShell コマンド <code>New-MgDomainFederationConfiguration</code> を用いて、該当ドメインをマネージド ドメインに変更、あるいは Microsoft Entra Connect 構成ウィザードにてユーザーのサインイン方式を [パススルー認証] または [パスワード ハッシュの同期] に設定する (自動的にマネージド ドメインに変更される) 必要があります。</p>
+<h3 id="Q-AD-FS-とのフェデレーション認証への切り戻し方法について教えてください。"><a href="#Q-AD-FS-とのフェデレーション認証への切り戻し方法について教えてください。" class="headerlink" title="Q. AD FS とのフェデレーション認証への切り戻し方法について教えてください。"></a>Q. AD FS とのフェデレーション認証への切り戻し方法について教えてください。</h3><p>A. Microsoft Entra Connect にて AD FS を管理する場合と、Microsoft Entra Connect にて AD FS 管理しない場合で、切り戻し方法が異なります。</p>
 <ul>
-<li>参考情報<br>監査イベントの記録につきましては、下記の公開情報をご参照ください。<br>Title : 監査<br>URL : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-staged-rollout#auditing">https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-staged-rollout#auditing</a></li>
-</ul>
-<p><strong>Q. Staged Rollout 機能を割り当てている状態において、Hybrid Azure AD Join の構成を行おうとしていますが、このような構成は可能でしょうか。</strong></p>
-<p>A. Windows 10 version 1903 以降であれば、Hybrid Azure AD Join 構成を有効にした状態で、Staged Rollout 機能をご利用いただくことができます。</p>
-<p>理由といたしましては、Windows 10 version 1903 より前のバージョンでは、フェデレーション認証の場合、必ず AD FS との通信が発生するのに対し、Windows 10 version 1903 以降では、ユーザーごとにフェデレーション認証を行うかどうかを識別する機能が実装されているためです。</p>
-<p><strong>Q. 検証用にステージロールアウトを有効化しますが、検証完了後は無効化する予定です。無効化した際に正常に戻っていることを確認したいですが、どのように確認すればよいでしょうか。</strong></p>
-<p>A. ロールバックの手順で無効化した後は、同期ユーザーにて Microsoft 365 ポータルや Azure ポータル、マイ アプリ ポータル等にブラウザーでアクセスし、フェデレーション認証方式でサインインができれば正常に戻っているとご判断ください。​</p>
-<p><strong>Q. Staged Rollout はいつ頃 GA されますか。</strong></p>
-<p>A. 2020 年 4 月末時点ではパブリック プレビュー状態でしたが、2023 年 6 月現在、本機能はすでに一般提供が開始されております。<br>これまでプレビュー機能の利用が難しく利用できなかったお客様も、ぜひご利用ください。</p>
-<p><strong>Q. Staged Rollout 機能を利用するとき、事前に Azure AD Connect のユーザーのサインイン方式として、何が選択されていればいいでしょうか。</strong></p>
-<p>A. [構成しない] または [AD FS とのフェデレーション] のいずれかが選択されている必要があります。</p>
-<p><strong>Q. 以前にシームレス SSO を構成していた、または PTA を構成していた場合は、コンピューターアカウントを削除し、PTA エージェントも削除しておく必要があるでしょうか。</strong></p>
-<p>A. はい、コンピューター アカウントの削除および PTA エージェントの削除を事前に行う必要があります。</p>
-<p><strong>Q. 最終的にマネージド認証に移行する場合の手順について教えてください。</strong></p>
-<p>A. PowerShell コマンド <code>New-MgDomainFederationConfiguration</code> を用いて、該当ドメインをマネージド ドメインに変更、あるいは Azure AD Connect 構成ウィザードにてユーザーのサインイン方式を [パススルー認証] または [パスワード ハッシュの同期] に設定する (自動的にマネージド ドメインに変更される) 必要があります。</p>
-<p><strong>Q. AD FS とのフェデレーション認証への切り戻し方法について教えてください。</strong></p>
-<p>A. Azure AD Connect にて AD FS を管理する場合と、Azure AD Conneect にて AD FS 管理しない場合で、切り戻し方法が異なります。</p>
-<ul>
-<li><p>Azure AD Connect にて AD FS を管理する場合<br>  Azure AD Connect のユーザー のサインイン方式として、[AD FS とのフェデレーション] を選択します。</p>
+<li><p>Microsoft Entra Connect にて AD FS を管理する場合:<br>  Microsoft Entra Connect のユーザー のサインイン方式として、[AD FS とのフェデレーション] を選択します。</p>
 </li>
-<li><p>Azure AD Conneect にて AD FS を管理しない場合<br>  Azure AD Connect のユーザーのサインイン方式として、[構成しない] を選択します。<br>  その後、 <code>New-MgDomainFederationConfiguration</code>を PowerShell にて実行します。</p>
+<li><p>Microsoft Entra Connect にて AD FS を管理しない場合:<br>  Microsoft Entra Connect のユーザーのサインイン方式として、[構成しない] を選択します。その後、 <code>New-MgDomainFederationConfiguration</code>を PowerShell にて実行します。</p>
 </li>
 </ul>
-<p>上記内容が少しでも参考となりますと幸いです。<br>なお、製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>
+<p>上記内容が少しでも参考となりますと幸いです。なお、製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>
 
       
       
