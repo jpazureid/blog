@@ -9,6 +9,11 @@ tags:
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2017/10/03/ad-fs-tokencert/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
 
+> [!WARNING]
+> 本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) の記事をご確認ください。
+> Microsoft Graph PowerShell を利用する手順は [こちら](../../active-directory-federation-service/migrate-msol-update-federation-domain.md)をご覧ください。
+
 # AD FS の証明書更新手順（トークン署名証明書、トークン暗号化解除証明書）
 
 皆様、こんにちは。Azure & Identity サポート担当の竹村です。

@@ -8,6 +8,11 @@ tags:
   - Federated Domain
   - AD FS
 ---
+
+> [!WARNING]
+> 本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) の記事をご確認ください。
+
 # フェデレーション ドメイン用 (AD FS あり) Hybrid Azure AD Join を一から構成する
 こんにちは、 Azure Identity の山口です。
 今回は AD FS を利用するフェデレーション ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。
@@ -34,6 +39,9 @@ Connect-MsolService コマンド レットを実行します。
 ![](./how-to-create-hybridazureadjoin-federated/003.jpg)
 
 PowerShell にて「get-msoldomain」と実行すると、下記のとおり、カスタム ドメインがフェデレーション ドメインであることが確認できます。
+
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 ![](./how-to-create-hybridazureadjoin-federated/004.jpg)
 

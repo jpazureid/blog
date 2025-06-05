@@ -5,6 +5,10 @@ tags:
   - Azure AD
 ---
 
+> [!WARNING]
+> 本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) の記事をご確認ください。
+
 > [!NOTE]
 > 本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/04/03/device-management-hybrid-azuread-joined-devices-setup/ の内容を移行したものです。
 > 元の記事の最新の更新情報については、本内容をご参照ください。
@@ -219,6 +223,9 @@ $oneOfVerifiedDomainNames = 'example.com'
 
 AD FS を構成する際に Federated ドメインの設定をする際に以下のコマンドを実行している場合は $false を指定します。
 
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+
 ```powershell
 Convert-MsolDomainToFederated -DomainName xxx
 ```
@@ -231,6 +238,9 @@ Convert-MsolDomainToFederated -DomainName xxx -SupportMultipleDomain
 
 厳密に $false と $true のどちらを指定するかの確認方法を以下に記載します。
 (Federated ドメインが 1 つの場合も、-SupportMultipleDomain を指定して作成されている場合があるためです)
+
+> [!WARNING]
+> 以降の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 1. 以下の弊社公開情報に沿って MSOnline (Azure AD v1) をインストールする
 
