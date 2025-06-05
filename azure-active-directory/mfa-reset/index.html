@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/mfa-config-2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/csv.png">
 <meta property="article:published_time" content="2018-10-15T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-04T17:55:20.168Z">
+<meta property="article:modified_time" content="2025-06-05T04:32:58.626Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="MFA">
@@ -159,12 +159,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ffc95461-3b9a-5083-8df3-22b83fe169bf%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%A4%9A%E8%A6%81%E7%B4%A0%E8%AA%8D%E8%A8%BC+%28MFA%29+%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E6%89%8B%E9%A0%86+-+2018+%E5%B9%B4%E7%89%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmfa-reset%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmfa-reset.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmfa-reset.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/" data-id="cmbi904pw00g30nql8arw8287" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/" data-id="cmbivs51200g30nqt0ojs6ej5" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/">https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/</a> の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。現在では 2018 年版から GUI やコマンドなどが変更されているため、最新の記事は <a href="/blog/azure-active-directory/mfa-reset-2025/">多要素認証 (MFA) のリセット手順 - 2025 年版</a> をご覧ください。</p></div>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p><p>詳細は、<a href="/blog/azure-active-directory/msonline-and-azuread-powershell-retirement/">MSOnline および AzureAD PowerShell の廃止 - 2025 年版</a> の記事をご確認ください。</p></div>
 <p>こんにちは、Azure &amp; Identity サポート チームの小野です。</p>
 <p>今回は、Azure AD における多要素認証 (Multi-Factor Authentication = MFA) のリセット手順についてご紹介します。</p>
 <p>Azure AD では、ログイン時の追加認証方式として電話・スマートフォンアプリなどを使った多要素認証 (Multi-Factor Authentication = MFA) を利用することができ、パスワードのセルフサービス リセット時にも同様の認証方式を利用させることが可能です。MFA の設定を有効にしている場合、Azure AD にログインをするためには認証方法に指定したスマートフォンなどを利用できる必要がありますが、スマートフォンを紛失してしまった場合や電話番号が無効になった場合などには、MFA で設定していた認証を利用できない状況となり、ユーザー認証を完了することができずサービスを利用することができなくなります。<br>このような場合は、Azure AD  の管理者による対象ユーザーの MFA 設定のリセットを実施します。</p>
@@ -185,13 +186,16 @@
 <h2 id="PowerShell-での手順"><a href="#PowerShell-での手順" class="headerlink" title="PowerShell での手順"></a>PowerShell での手順</h2><p>コマンドを実行する前に、MSOnline モジュールのインストールが必要となります。MSOnline モジュールのインストール方法は、下記ブログをご参照ください。</p>
 <p><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2017/12/04/aad-powershell/">https://blogs.technet.microsoft.com/jpazureid/2017/12/04/aad-powershell/</a></p>
 <p>以下コマンドを実行し、ユーザーの MFA 設定をリセットできます。 </p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Connect-MsolService</span>＃Azure AD へログイン</span><br><span class="line"><span class="built_in">Set-MsolUser</span> <span class="literal">-UserPrincipalName</span> <span class="string">&quot;&lt;リセットしたいユーザーのUPN&gt;&quot;</span> <span class="literal">-StrongAuthenticationMethods</span> <span class="selector-tag">@</span>()</span><br></pre></td></tr></table></figure>
 
 <p>例えば、以下のように CSV からユーザーを読み込んで、一括でリセットを行うことも可能です。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Connect-MsolService</span> <span class="comment"># Azure AD へログイン</span></span><br><span class="line"><span class="variable">$users</span> = <span class="built_in">Import-Csv</span> <span class="string">&quot;CSV のファイルパス&quot;</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$user</span> <span class="keyword">in</span> <span class="variable">$users</span>) &#123;</span><br><span class="line">    <span class="built_in">Set-MsolUser</span> <span class="literal">-UserPrincipalName</span> <span class="variable">$user</span>.UserPrincipalName <span class="literal">-StrongAuthenticationMethods</span> <span class="selector-tag">@</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/blog/azure-active-directory/mfa-reset/csv.png" alt="用意する CSV の例">  </p>
 <p>以下のコマンドで、MFA の設定がされていない（リセット済み）であるユーザーの一覧を確認することができます。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MsolUser</span>  <span class="literal">-all</span> | ?&#123; !<span class="variable">$_</span>.StrongAuthenticationMethods &#125;</span><br></pre></td></tr></table></figure>
 
 <p>ご不明な点がございましたら弊社サポートまでお気軽にお問い合わせください。上記内容が少しでも皆様の参考となりますと幸いです。</p>

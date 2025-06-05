@@ -6,16 +6,16 @@
   
   <title>AADSTS50107 The requested federation realm object &#39;xxx&#39; does not exist. (Issuer ID/Issuer URI と SupportMultipleDomain) | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure &amp; Identitiy サポートチームの竹村です。今回は、多くのお客様からお問合せをいただく AADSTS50107 のエラーについて、その意味や対応方法をご紹介します。 1. ADSTS50107  と  Issuer ID、 Issuer URI最初に、AADSTS50107 のエラーの内容と、その背景にある Issuer ID、および Issuer URI と">
+  <meta name="description" content="警告本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。詳細は、MSOnline および AzureAD PowerShell の廃止 - 2025 年版 の記事をご確認ください。 こんにちは、Azure &amp; Identitiy サポー">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AADSTS50107 The requested federation realm object &#39;xxx&#39; does not exist. (Issuer ID&#x2F;Issuer URI と SupportMultipleDomain)">
 <meta property="og:url" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-AADSTS50107/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure &amp; Identitiy サポートチームの竹村です。今回は、多くのお客様からお問合せをいただく AADSTS50107 のエラーについて、その意味や対応方法をご紹介します。 1. ADSTS50107  と  Issuer ID、 Issuer URI最初に、AADSTS50107 のエラーの内容と、その背景にある Issuer ID、および Issuer URI と">
+<meta property="og:description" content="警告本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。詳細は、MSOnline および AzureAD PowerShell の廃止 - 2025 年版 の記事をご確認ください。 こんにちは、Azure &amp; Identitiy サポー">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-AADSTS50107/adfs_AADSTS50107_01.png">
 <meta property="article:published_time" content="2020-02-19T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-04T17:55:19.431Z">
+<meta property="article:modified_time" content="2025-06-05T04:32:57.893Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="AADSTS50107">
@@ -160,17 +160,19 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5097668d-4f83-5460-83dc-3aae2df01cc5%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAADSTS50107+The+requested+federation+realm+object+%27xxx%27+does+not+exist.+%28Issuer+ID%2FIssuer+URI+%E3%81%A8+SupportMultipleDomain%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Factive-directory-federation-service%2Fadfs-AADSTS50107%2F%29%0A*+Content+Source%3A+%5Barticles%2Factive-directory-federation-service%2Fadfs-AADSTS50107.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Factive-directory-federation-service%2Fadfs-AADSTS50107.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-AADSTS50107/" data-id="cmbi904ul01050nql0tqn2f7r" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-AADSTS50107/" data-id="cmbivs55k01050nqt59zfcp2t" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>こんにちは、Azure &amp; Identitiy サポートチームの竹村です。<br>今回は、多くのお客様からお問合せをいただく AADSTS50107 のエラーについて、その意味や対応方法をご紹介します。</p>
+        <div class="alert is-warning"><p class="alert-title">警告</p><p>本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p><p>詳細は、<a href="/blog/azure-active-directory/msonline-and-azuread-powershell-retirement/">MSOnline および AzureAD PowerShell の廃止 - 2025 年版</a> の記事をご確認ください。</p></div>
+<p>こんにちは、Azure &amp; Identitiy サポートチームの竹村です。<br>今回は、多くのお客様からお問合せをいただく AADSTS50107 のエラーについて、その意味や対応方法をご紹介します。</p>
 <h2 id="1-ADSTS50107-と-Issuer-ID、-Issuer-URI"><a href="#1-ADSTS50107-と-Issuer-ID、-Issuer-URI" class="headerlink" title="1. ADSTS50107  と  Issuer ID、 Issuer URI"></a>1. ADSTS50107  と  Issuer ID、 Issuer URI</h2><p>最初に、AADSTS50107 のエラーの内容と、その背景にある Issuer ID、および Issuer URI と呼ばれるものについて説明します。<br><br><br><br>Issuer ID は、Azure AD と連携する IdP (例えば AD FS など) が発行するクレームです。<br>AD FS (WS-Federation) の場合は、具体的には以下のクレームになります。<br></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid</span><br></pre></td></tr></table></figure>
 <p>一方、Azure AD のカスタムドメインには、フェデレーションの設定を行う際に Issuer URI というものが設定されます。<br>AD FS の場合、通常は  Convert-MsolDomainToFederated コマンドレットや、Update-MsolFederatedDomain コマンドレットを使用してフェデレーションの設定を行いますが、この Powershell の処理で Issuer URI が設定されます。<br><br><br><br>Azure AD でのフェデレーション認証の要件として、IdP が発行する Issuer ID が、認証されたユーザーのドメインに設定されている Issuer URI と合致している必要があります。<br>AADSTS50107 は、IdP が発行した Issuer ID と、Azure AD のカスタムドメインにセットされている Issuer URI とが、合致しなかったことを示すエラーです。<br></p>
 <p><img src="/blog/active-directory-federation-service/adfs-AADSTS50107/adfs_AADSTS50107_01.png"> </p>
 <p>上記のように、エラー画面には “realm object” と “does not exist.” の間に文字列が表示されますが、これが IdP が発行した Issuer ID になります。<br>そして、Azure AD のカスタムドメインには、ここに表示されている文字列の Issuer URI が存在していないことを示しています。<br>Azure AD のカスタムドメインに設定されている Issuer URI を確認するためには、Get-MsolDomainFederationSettings コマンドレットなどを使用します。<br></p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-MsolDomainFederationSettings -DomainName &quot;test.com&quot;</span><br></pre></td></tr></table></figure>
 <p>上記コマンドを実行した結果の IssuerUri の値を確認してください。</p>
 <h2 id="2-supportMultipleDomain-オプションについて"><a href="#2-supportMultipleDomain-オプションについて" class="headerlink" title="2. -supportMultipleDomain オプションについて"></a>2. -supportMultipleDomain オプションについて</h2><p>次に、AADSTS50107 のエラーと密接に関わり合う -supportMultipleDomain オプションについて説明します。<br>AD FS で Convert-MsolDomainToFederated コマンドレットや、Update-MsolFederatedDomain コマンドレットを使用してフェデレーションの設定を行う時に、-supportMultipleDomain というオプションを指定することがあります。<br>これは、1 つの AD FS ファームと、複数のカスタムドメインとの間でフェデレーションの設定を行う場合に必要となるオプションです。<br>この背景には、カスタムドメインに設定する Issuer URI は、重複が許可されず必ず一意にする必要がある、という Azure AD の要件があります。<br><br><br><br>AD FS と Azure AD のカスタムドメインが 1 対 1 の場合には、-supportMultipleDomain オプションは必要ありません。<br>-supportMultipleDomain オプションを指定しない場合、 Convert-MsolDomainToFederated コマンドレットや、Update-MsolFederatedDomain コマンドレットは、AD FS の識別子 (<code>http://&lt;フェデレーションサービス名&gt;/services/trust</code>) を Issuer URI としてカスタムドメインに設定します。<br><br>AD FS 側では Issuer URI を発行するクレームルールは作成されません。<br>ルールがない場合、AD FS は既定で Issuer ID として AD FS の識別子 (<code>http://&lt;フェデレーションサービス名&gt;/services/trust</code>)  をクレームにセットするため、カスタムドメイン側の Issuer URI と合致し、要件を満たすことができます。<br><br><br><br>-supportMultipleDomain オプションを指定すると、Azure AD のカスタムドメイン側には、<code>http://&lt;カスタムドメイン&gt;/services/trust/</code>  という値が Issuer URI にセットされます。<br>例えば、a.com と b.com という 2 つのドメインに対して、-supportMultipleDomain オプションを指定して 1 つの AD FS ファームとフェデレーションを構成すると、それぞれのドメインには以下の Issuer URI がセットされます。<br></p>

@@ -6,12 +6,12 @@
   
   <title>フェデレーション ドメイン用(AD FS あり) Hybrid Azure AD Join を一から構成する | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、 Azure Identity の山口です。今回は AD FS を利用するフェデレーション ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。 はじめにAD FS を利用する Federation Domain 環境の Hybrid Azure AD Join の環境構築は、下記 Microsoft 公開情報を参考に行えば、構成は問題なく行えます">
+  <meta name="description" content="警告本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。詳細は、MSOnline および AzureAD PowerShell の廃止 - 2025 年版 の記事をご確認ください。 こんにちは、 Azure Identity の山口です。今回は">
 <meta property="og:type" content="article">
 <meta property="og:title" content="フェデレーション ドメイン用(AD FS あり) Hybrid Azure AD Join を一から構成する">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、 Azure Identity の山口です。今回は AD FS を利用するフェデレーション ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。 はじめにAD FS を利用する Federation Domain 環境の Hybrid Azure AD Join の環境構築は、下記 Microsoft 公開情報を参考に行えば、構成は問題なく行えます">
+<meta property="og:description" content="警告本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。詳細は、MSOnline および AzureAD PowerShell の廃止 - 2025 年版 の記事をご確認ください。 こんにちは、 Azure Identity の山口です。今回は">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/001.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/002.jpg">
@@ -65,7 +65,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/056.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg">
 <meta property="article:published_time" content="2019-09-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-04T17:55:20.022Z">
+<meta property="article:modified_time" content="2025-06-05T04:32:58.481Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="Azure AD">
@@ -210,12 +210,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e1d2c8be-bc67-5c07-bd26-7fca32574336%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%95%E3%82%A7%E3%83%87%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%94%A8%28AD+FS+%E3%81%82%E3%82%8A%29+Hybrid+Azure+AD+Join+%E3%82%92%E4%B8%80%E3%81%8B%E3%82%89%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cmbi904vn012i0nqlewir6b81" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cmbivs56m012i0nqt1cwih3dz" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>こんにちは、 Azure Identity の山口です。<br>今回は AD FS を利用するフェデレーション ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。</p>
+        <div class="alert is-warning"><p class="alert-title">警告</p><p>本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p><p>詳細は、<a href="/blog/azure-active-directory/msonline-and-azuread-powershell-retirement/">MSOnline および AzureAD PowerShell の廃止 - 2025 年版</a> の記事をご確認ください。</p></div>
+<p>こんにちは、 Azure Identity の山口です。<br>今回は AD FS を利用するフェデレーション ドメイン環境における Hybrid Azure AD Join の構成手順をご紹介します。</p>
 <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>AD FS を利用する Federation Domain 環境の Hybrid Azure AD Join の環境構築は、下記 Microsoft 公開情報を参考に行えば、構成は問題なく行えます。</p>
 <p>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成<br>URL:<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-federated-domains">https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-federated-domains</a></p>
 <p>フェデレーション ドメインはマネージド ドメイン環境とは違い、前提として、Azure AD にカスタム ドメインがフェデレーションとして登録されている必要があります。<br>具体的には、「Azure ポータル」 → 「Azure Active Directory」 → 「カスタム ドメイン」の順にクリックし、下記画面ショットのとおり、カスタム ドメインのフェデレーションにチェックが入っていることを確認します。</p>
@@ -224,6 +225,7 @@
 <p>Connect-MsolService コマンド レットを実行します。<br>フェデレーション先の Azure AD のグローバル管理者の資格情報を入力します。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/002.jpg"><br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/003.jpg"></p>
 <p>PowerShell にて「get-msoldomain」と実行すると、下記のとおり、カスタム ドメインがフェデレーション ドメインであることが確認できます。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/004.jpg"></p>
 <h2 id="環境について"><a href="#環境について" class="headerlink" title="環境について"></a>環境について</h2><p>Azure AD テナント (カスタム ドメインがフェデレーション ドメインとして登録済)<br>オンプレミス AD 兼 Azure AD Connect (1.3.21.0) on Windows Server 2019 Datacenter<br>AD FS サーバー on Windows Server 2019 Datacenter<br>Windows 10 (1809)</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
@@ -336,7 +338,7 @@
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/051.jpg"></p>
 <p>この時点で Azure AD Join は完了しているので確認します。<br>Windows 10 コンピューターにログオンし、dsregcmd /status コマンド レットを実行すると、下記のとおり、AzureAdJoined が YES になっていることが分かります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/017.jpg"></p>
-<h1 id="PRT-を取得する。"><a href="#PRT-を取得する。" class="headerlink" title="PRT を取得する。"></a>PRT を取得する。</h1><p>PRT を取得するためには、Azure AD に同期済みのオンプレミス AD ユーザーでログオンする必要があるのは、フェデレーション ドメインの場合でも同様です。<br>Azure AD に同期済みの下記「<a href="mailto:&#116;&#x65;&#x73;&#x74;&#x30;&#x30;&#49;&#x40;&#120;&#120;&#120;&#46;&#x77;&#x6f;&#x72;&#107;">&#116;&#x65;&#x73;&#x74;&#x30;&#x30;&#49;&#x40;&#120;&#120;&#120;&#46;&#x77;&#x6f;&#x72;&#107;</a>」で Windows 10 コンピューター (Windows10-18091) にログオンします。</p>
+<h1 id="PRT-を取得する。"><a href="#PRT-を取得する。" class="headerlink" title="PRT を取得する。"></a>PRT を取得する。</h1><p>PRT を取得するためには、Azure AD に同期済みのオンプレミス AD ユーザーでログオンする必要があるのは、フェデレーション ドメインの場合でも同様です。<br>Azure AD に同期済みの下記「<a href="mailto:&#116;&#x65;&#x73;&#116;&#x30;&#x30;&#x31;&#64;&#120;&#x78;&#x78;&#x2e;&#119;&#111;&#114;&#107;">&#116;&#x65;&#x73;&#116;&#x30;&#x30;&#x31;&#64;&#120;&#x78;&#x78;&#x2e;&#119;&#111;&#114;&#107;</a>」で Windows 10 コンピューター (Windows10-18091) にログオンします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/055.jpg"></p>
 <p>資格情報を入力してログオンします。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/056.jpg"></p>
 <p>コマンドプロンプトを起動し、このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg"></p>

@@ -6,17 +6,17 @@
   
   <title>登録されたデバイスの管理方法 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;11&#x2F;27&#x2F;registerd_device_managemant&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 こんにちは、Azure &amp; Identity サポート チームの石川で">
+  <meta name="description" content="警告本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。詳細は、MSOnline および AzureAD PowerShell の廃止 - 2025 年版 の記事をご確認ください。 Note本記事は Technet Blog の更新停止に伴い">
 <meta property="og:type" content="article">
 <meta property="og:title" content="登録されたデバイスの管理方法">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/registerd_device_managemant/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;11&#x2F;27&#x2F;registerd_device_managemant&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 こんにちは、Azure &amp; Identity サポート チームの石川で">
+<meta property="og:description" content="警告本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。詳細は、MSOnline および AzureAD PowerShell の廃止 - 2025 年版 の記事をご確認ください。 Note本記事は Technet Blog の更新停止に伴い">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/registerd_device_managemant/deviceList.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/registerd_device_managemant/result.jpg">
 <meta property="article:published_time" content="2017-11-26T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-04T17:55:20.546Z">
+<meta property="article:modified_time" content="2025-06-05T04:32:59.004Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Device">
@@ -158,12 +158,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+b272dcaf-6316-56b0-91e3-43df76891b8d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%99%BB%E9%8C%B2%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%AE%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fregisterd_device_managemant%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fregisterd_device_managemant.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fregisterd_device_managemant.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/registerd_device_managemant/" data-id="cmbi904rj00kw0nql615b44b3" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/registerd_device_managemant/" data-id="cmbivs52q00kw0nqt9q1mazdc" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2017/11/27/registerd_device_managemant/">https://blogs.technet.microsoft.com/jpazureid/2017/11/27/registerd_device_managemant/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
+        <div class="alert is-warning"><p class="alert-title">警告</p><p>本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p><p>詳細は、<a href="/blog/azure-active-directory/msonline-and-azuread-powershell-retirement/">MSOnline および AzureAD PowerShell の廃止 - 2025 年版</a> の記事をご確認ください。</p></div>
+<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2017/11/27/registerd_device_managemant/">https://blogs.technet.microsoft.com/jpazureid/2017/11/27/registerd_device_managemant/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
 <p>こんにちは、Azure &amp; Identity サポート チームの石川です。<br>今回は、Azure AD に登録されているデバイスの管理方法について紹介します。</p>
 <p>Azure AD にデバイスを登録しておくことで、条件付きアクセスでデバイス登録されていることを条件にアクセス制御をすることができますが、過去に使用していたデバイスを廃棄したり、別ユーザーに譲渡したりした場合、Azure AD 上のユーザーに紐づいたデバイス情報が残ったままになってしまうことがあります。</p>
 <p>Azure ポータルのデバイスの管理画面でもデバイスの削除はできますが、複数のデバイスをまとめて削除するなどの操作は、現時点では実装されておりません。</p>
@@ -187,6 +188,7 @@
 <ol start="4">
 <li>下記のコマンドを入力し、ユーザーを指定して、ユーザーに紐づくデバイス情報の詳細を確認します。</li>
 </ol>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-MsolDevice -RegisteredOwnerUpn &lt;UPN&gt; | ft Displayname, DeviceId,ApproximateLastLogonTimestamp</span><br></pre></td></tr></table></figure>
 
 <p>次のような結果が返るので、ApproximateLastLogonTimestamp 属性値を基に、長期間 Azure AD へのサインインに利用されていないデバイスを判断します。</p>
@@ -194,12 +196,15 @@
 <ol start="5">
 <li>下記のコマンドを実行して、デバイスを指定して削除します。</li>
 </ol>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Remove-MsolDevice  -DeviceId &lt;4. で確認した DeviceId&gt; -force</span><br></pre></td></tr></table></figure>
 
 <p>６．上記のコマンドを応用して、例えば、特定ユーザーの ApproximateLastLogonTimestam  が 1 年以上前のデバイスを一括削除する場合、次のような構文を使用します。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-MsolDevice -RegisteredOwnerUpn &lt;UPN&gt; | where &#123;$_.ApproximateLastLogonTimestamp.AddYears(1) -lt (Get-Date)&#125; | foreach&#123;Remove-MsolDevice -DeviceId $_.DeviceId&#125; -force</span><br></pre></td></tr></table></figure>
 
 <p>７．また、ディレクトリ内のすべての ApproximateLastLogonTimestam  が 1 年以上前のデバイスを一括削除する場合は、次のような構文を使用します。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p></div>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-MsolDevice -All | where &#123;$_.ApproximateLastLogonTimestamp.AddYears(1) -lt (Get-Date)&#125; | foreach&#123;Remove-MsolDevice -DeviceId $_.DeviceId&#125; -force</span><br></pre></td></tr></table></figure>
 
 <ul>
