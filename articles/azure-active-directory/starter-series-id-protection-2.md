@@ -47,7 +47,7 @@ Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では
 
 検出されたリスクを確認するには、Azure ポータルもしくは、Microsoft Entra 管理センターを利用します。Azure ポータル (https://portal.azure.com) にアクセスしたら、画面上部の検索ボックスに ID Protection と入力して、Microsoft Entra ID Protection を開きます。
 
-![検出されたリスクの確認](starter-series-id-protection/starter-series-id-protection-1.png)
+![検出されたリスクの確認](starter-series-id-protection-2/starter-series-id-protection-1.png)
 
 それぞれの項目の説明は以下のとおりです。
 
@@ -62,7 +62,7 @@ Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では
 
 リスクの一覧をながめて、高リスクのアカウントや役員のアカウントなど、今すぐに対処したほうがよさそうなものが確認できたら、これらに対して調査をしていきます。各項目をクリックすることで、ユーザー ID の詳細や、オフィスの場所、最近の危険なサインイン、サインインにリンクされていない検出、リスク履歴などの情報が表示されます。これらの情報を確認するとともに、必要に応じて実際のユーザーに聞き取り調査を行うことで、そのサインインやユーザーが本当にリスクのあるものかどうかを確認するという流れです。
 
-![リスクの調査](./starter-series-id-protection/starter-series-id-protection-8.png)
+![リスクの調査](./starter-series-id-protection-2/starter-series-id-protection-8.png)
 
 例えば、あり得ない移動のリスクが検出されたユーザーがいた場合に、そのユーザーが Azure VM を普段利用しない海外のリージョンに構築し、そこからサインインを試行したという場合があります。この場合は、ユーザーが意図したサインインであるため、実質的なリスクはありません。この場合は、ユーザーにその確認を取ったうえで、リスクはないと判断します。反対に、ヒアリングの結果、ユーザーがそのような操作をしていないのに、海外から突然のサインインがあったということであれば、それはアカウント侵害の可能性が高いと判断できます。
 
@@ -75,14 +75,14 @@ Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では
 
 このボタンを押すと、ID Protection は、ユーザー リスクを高に設定します。管理者がユーザーの侵害を確認したというようにマークするボタンです。ID Protection はこれを学習し、修復手順が取られるまで、サインインは危険とみなされます。
 
-![ユーザーに対するセキュリティ侵害を確認する](./starter-series-id-protection/starter-series-id-protection-3.png)
+![ユーザーに対するセキュリティ侵害を確認する](./starter-series-id-protection-2/starter-series-id-protection-3.png)
 
 次に、ユーザーが侵害されたことを確認したら、以下の対応を取ります。
 
 - \[パスワードのリセット\]: これを選択すると、ユーザーにはパスワード変更が求められ、加えてユーザーの現在のセッションが取り消されます。ユーザーは再認証が必要となります。
 - \[ユーザーのブロック\]: これを選択すると、ユーザーのサインインがブロックされます。明らかにアカウントが乗っ取られ、これ以上の被害拡大を防ぐという意味で、アカウントをいったん利用停止にしたい場合はこちらを使います。
 
-![様々なリスク対応を実施いただけます](./starter-series-id-protection/starter-series-id-protection-5.png)
+![様々なリスク対応を実施いただけます](./starter-series-id-protection-2/starter-series-id-protection-5.png)
 
 上記二つのいずれかの対応で、取り急ぎそのアカウントによる被害の拡大を防ぐことができます。ユーザーをブロックした後、再度そのアカウントを利用したいということであれば、パスワードをリセットして、ブロックを解除するという対応を取ります。
 
@@ -91,7 +91,7 @@ Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では
 - \[ユーザーの安全を確認する\]: このボタンを押すと、対象のリスクを誤検知として扱います。ユーザーのリスクと検出が削除され、ID Protection はこの結果を考慮して、再度学習モードに入ります。
 - \[ユーザー リスクを無視する\]: このボタンは、リスクが検出されたが、実質的には無害であり、一旦このリスクを無視したい場合に使用します。例えば、検証のために侵入テストを行い、リスクが検出された (実際にリスクは検出されたが、そこに悪意がない) 場合にこのボタンを押下します。この結果は学習されないため、今後も同様のリスクが検知されます。
 
-![ユーザー リスクを無視する](starter-series-id-protection/starter-series-id-protection-4.png)
+![ユーザー リスクを無視する](starter-series-id-protection-2/starter-series-id-protection-4.png)
 
 > [!NOTE]
 > \[ユーザーの安全を確認する\] および \[ユーザー リスクを無視する\] の対応を取った場合、リスクの状態は "危険" から "安全であるとの確認済み" および "破棄済み" に、リスク レベルはいずれも "-" に変更されます。危険なユーザー レポートではリスク レベルのフィルターを未選択にすることで確認いただけます。
@@ -115,13 +115,13 @@ Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では
 
 10 分から 15 分ほどでレポートに表示され、詳細情報を確認できるようになります。
 
-![リスクの確認](starter-series-id-protection/starter-series-id-protection-8.png)
+![リスクの確認](starter-series-id-protection-2/starter-series-id-protection-8.png)
 
 ### Step 3. リスクへの対応を実施する
 
 実施したいリスクへの対応を選択します。
 
-![リスク対応](starter-series-id-protection/starter-series-id-protection-5.png)
+![リスク対応](starter-series-id-protection-2/starter-series-id-protection-5.png)
 
 ## リスクの自動修復およびリスク ポリシーの導入
 
