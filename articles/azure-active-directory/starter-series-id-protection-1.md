@@ -103,12 +103,12 @@ ID Protection を使用するときの大まかな流れは、以下のような
 2. リスクの確認/調査  
     検出されたリスクは、管理者が Azure ポータルや Microsoft Entra 管理センター上で確認することができます。
    
-    ![検出されたリスクの確認](starter-series-id-protection/starter-series-id-protection-1.png)
+    ![検出されたリスクの確認](starter-series-id-protection-1/starter-series-id-protection-1.png)
    
-4. リスクへの対応  
+3. リスクへの対応  
     確認されたリスクに対してパスワード リセットやユーザーのブロックなどを実施します。
    
-    ![リスクへの対応](starter-series-id-protection/starter-series-id-protection-5.png)
+    ![リスクへの対応](starter-series-id-protection-1/starter-series-id-protection-5.png)
 
 上記の詳細については、「Entra ID 初学者向けシリーズ第 2 弾 - ID Protection 入門 」の 2 つ目の記事「[その 2: リスクの検出/確認/対応](./starter-series-id-protection-2.md)」にて解説します。また、リスクベースのポリシーを使用することによって、検知されたリスクに対して自動的に多要素認証やブロックなどの制御や、リスクに対してユーザーが自動修復をすることも可能です。こちらの詳細関しては、3 つ目の記事「[その 3: リスクベースのポリシーで自動的に管理](./starter-series-id-protection-3.md)」にて解説します。
 
