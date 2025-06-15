@@ -9,6 +9,10 @@ tags:
   - supportMultipleDomain
 ---
 
+> [!WARNING]
+> 本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
+> 詳細は、[MSOnline および AzureAD PowerShell の廃止 - 2025 年版](../azure-active-directory/msonline-and-azuread-powershell-retirement.md) の記事をご確認ください。
+
 # AADSTS50107 The requested federation realm object 'xxx' does not exist. (Issuer ID / Issuer URI と SupportMultipleDomain)
 
 こんにちは、Azure & Identitiy サポートチームの竹村です。
@@ -35,6 +39,9 @@ AADSTS50107 は、IdP が発行した Issuer ID と、Azure AD のカスタム�
 上記のように、エラー画面には "realm object" と "does not exist." の間に文字列が表示されますが、これが IdP が発行した Issuer ID になります。
 そして、Azure AD のカスタムドメインには、ここに表示されている文字列の Issuer URI が存在していないことを示しています。
 Azure AD のカスタムドメインに設定されている Issuer URI を確認するためには、Get-MsolDomainFederationSettings コマンドレットなどを使用します。<br>
+
+> [!WARNING]
+> 以下の実行例は MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。
 
 ```
 Get-MsolDomainFederationSettings -DomainName "test.com"
