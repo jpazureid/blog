@@ -1,6 +1,6 @@
 ---
 title: "Entra ID 初学者向けシリーズ第 2 弾 - ID Protection 入門 - その 2: リスクの検出/確認/対応"
-date: 2025-06-14 08:00
+date: 2025-06-18 08:00
 tags:
     - Microsoft Entra
     - Starter series
@@ -24,9 +24,9 @@ tags:
 
 Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では、全部で以下の 3 つの記事を用意しています。
 
-1. [その 1: ID Protection とは](./starter-series-id-protection-1.md)
+1. [その 1: ID Protection とは](./azure-active-directory/starter-series-id-protection-1.md)
 2. その 2: リスクの検出/確認/対応 (本記事)
-3. [その 3: リスクベースのポリシーで自動的に管理](./starter-series-id-protection-3.md)
+3. [その 3: リスクベースのポリシーで自動的に管理](./azure-active-directory/starter-series-id-protection-3.md)
 
 本記事「その 2: リスクの検出/確認/対応」では、Microsoft Entra ID Protection を初めて学習/導入する方を対象に、Azure ポータルや Microsoft Entra 管理センターにてリスクを確認する方法とリスク対応の方法について解説します。また、典型的な使用シナリオと実際にお試しいただけるサンプルも紹介していますので、是非一緒に手を動かしてみてください。IT 管理者の方々にとって日々の運用に役立ちましたら嬉しいです！
 
