@@ -35,9 +35,10 @@ Microsoft Entra Internet Access における TLS インスペクションの最�
 
 ## TLSインスペクションの実際の動作
 
-以下のデモ動画をご覧いただくと、証明書の作成方法、TLS インスペクション ポリシーの設定、セキュリティ プロファイルへの適用、そしてトラフィック ログの確認方法がわかります (元の英語記事にジャンプします)。
+以下のデモ動画をご覧いただくと、証明書の作成方法、TLS インスペクション ポリシーの設定、セキュリティ プロファイルへの適用、そしてトラフィック ログの確認方法がわかります。
 
-[![](./tls-inspection-now-in-microsoft-entra-internet-access/3.png)](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/tls-inspection-now-in-microsoft-entra-internet-access/4395972)
+[元記事にジャンプして動画を閲覧する](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/tls-inspection-now-in-microsoft-entra-internet-access/4395972)  
+![](./tls-inspection-now-in-microsoft-entra-internet-access/3.png)
 
 ![図 1: Microsoft Entra 管理センターの監査ログ](./tls-inspection-now-in-microsoft-entra-internet-access/2.png)
 
