@@ -72,7 +72,6 @@ Microsoft より推奨されているリスク ポリシーの制御は以下と
 
 ![ユーザー リスク ポリシーの作成](starter-series-id-protection-3/starter-series-id-protection-7.png)
 
-[アクセス制御] > [セッション]  内にある「サインインの頻度」の項目では、条件で設定したユーザー リスクのあるユーザーに対して再認証が求められるまでの期間を指定することができます。
 "パスワードの変更を必須とする" の制御を要求した場合、[アクセス制御] > [セッション] 内にある「サインインの頻度」の項目では「毎回」のみ選択いただけます。
 ![サインインの頻度の設定](starter-series-id-protection-3/starter-series-id-protection-12.jpg)
 
