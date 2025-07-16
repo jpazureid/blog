@@ -68,9 +68,18 @@ Microsoft より推奨されているリスク ポリシーの制御は以下と
 
 ![サインイン リスク ポリシーの作成](starter-series-id-protection-3/starter-series-id-protection-6.png)
 
+リスクの検出ごとに MFA を要求するようにサインインの頻度も併せて設定します。
+
+![サインインの頻度を[毎回]に設定](starter-series-id-protection-3/starter-series-id-protection-13.png)
+
 ユーザー リスク ポリシーを作成するには以下のようにします。ここでは、指定したユーザーに対して、リスクレベル 高、中 のユーザーのリスクを検知したときにパスワードの変更を求める条件付きアクセス ポリシーを作成しています。
 
 ![ユーザー リスク ポリシーの作成](starter-series-id-protection-3/starter-series-id-protection-7.png)
+
+"パスワードの変更を必須とする" の制御を要求した場合、[アクセス制御] > [セッション] 内にある「サインインの頻度」の項目では「毎回」のみ選択いただけます。
+画面の表記に従って[毎回]を選択します。
+
+![サインインの頻度の設定](starter-series-id-protection-3/starter-series-id-protection-14.png)
 
 以上のようにポリシーを作成することで、条件付きアクセスがサインインやユーザーのリスク状態に応じて動的に動作して、リスクに対処するようになります。P2 ライセンスをお持ちのお客様は是非この機能をご活用ください。
 
