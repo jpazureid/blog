@@ -1,10 +1,11 @@
 ---
 title: ゴールデン SAML 攻撃の理解と対策
-date: 2025-07-30 09:00
+date: 2025-07-31 08:00
 tags:
     - Microsoft Entra
     - US Identity Blog
 ---
+
 # ゴールデン SAML 攻撃の理解と対策
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
@@ -27,7 +28,9 @@ tags:
 
 まずは、[SAML 2.0](https://www.oasis-open.org/standard/saml/) の仕組みを復習しましょう。SAML (Security Assertion Markup Language) は、2005 年に公開されたインターネット標準であり、あるシステムから別のシステムへ認証処理の委任を実現するものです。
 
-SAML の最も一般的な用途は、アプリケーションのシングル サインオン (SSO) です。これは、SAML に対応したアプリケーションが、Microsoft Entra ID のような SAML に対応する ID サービスに認証処理を委任するという仕組みです。SAML の用語では、アプリケーションは「リライング パーティー (RP \[[i](#注釈)\])」、Entra ID は「ID プロバイダー (IdP)」と呼ばれます。複数の RP が 1 つの IdP を信頼できるため、ユーザーは IdP に一度サインインするだけで、複数のアプリケーション (RP) にアクセスできます。このため、たとえばユーザーが Windows にサインインすると、SharePoint、Teams、Exchange などにも再度サインインすることなくアクセスできるようなことを実現できます。
+SAML の最も一般的な用途は、アプリケーションのシングル サインオン (SSO) です。これは、SAML に対応したアプリケーションが、Microsoft Entra ID のような SAML に対応する ID サービスに認証処理を委任するという仕組みです。SAML の用語では、アプリケーションは「リライング パーティー (RP ※)」、Entra ID は「ID プロバイダー (IdP)」と呼ばれます。複数の RP が 1 つの IdP を信頼できるため、ユーザーは IdP に一度サインインするだけで、複数のアプリケーション (RP) にアクセスできます。このため、たとえばユーザーが Windows にサインインすると、SharePoint、Teams、Exchange などにも再度サインインすることなくアクセスできるようなことを実現できます。
+
+※ SAML の厳密な定義では、これは本来「SAML サービス プロバイダー (SP)」と呼ぶべきですが、本記事では過去の記事との一貫性を保つために、より分かりやすい用語である「RP (Relying Party)」を使用しています。
 
 以下の図は、このシリーズの最初のブログに掲載された図を拡張したもので、SAML 認証の流れを示しています。ユーザー エージェント (ブラウザー) がコンテンツを要求すると、RP はユーザー エージェントを IdP にリダイレクトします。IdP はユーザーに対してその ID の正規の所有者であることを示す証明を要求します。ユーザー エージェントが資格情報を提供すると、IdP はトークンを返します。このトークンをユーザー エージェントが RP に提示することで、アクセスが許可されます。
 
@@ -65,7 +68,9 @@ SSO (シングル サインオン) システムは古くから存在しており
 
 SAML による認証の委任を利用すると、この複雑さが軽減されるのです。組織は Entra ID のようなクラウド IdP を構成し、Active Directory のようなオンプレミス ディレクトリに認証を委任することで、ユーザーが一度オンプレミスでサインインすれば、SMB ファイル共有のようなレガシー リソースと、Exchange Online のような SaaS アプリの両方にアクセスできるようになりました。
 
-クラウド アプリケーションが認証のためにユーザー エージェントをクラウド IdP にリダイレクトすると、クラウド IdP は SAML を使って認証リクエストをフェデレーション サーバーにリダイレクトします。フェデレーション サーバーは、クラウド IdP (例: Entra ID) からのトークン要求をオンプレミス環境 (例: Active Directory) 用に「変換」し、その結果を SAML トークンとしてユーザー エージェント経由でクラウド IdP に返します \[[ii](#注釈)\]。 この構成は Microsoft では推奨しておらず、多くの組織がこの方式からの移行を進めていますが、依然として一般的な構成パターンです。
+クラウド アプリケーションが認証のためにユーザー エージェントをクラウド IdP にリダイレクトすると、クラウド IdP は SAML を使って認証リクエストをフェデレーション サーバーにリダイレクトします。フェデレーション サーバーは、クラウド IdP (例: Entra ID) からのトークン要求をオンプレミス環境 (例: Active Directory) 用に「変換」し、その結果を SAML トークンとしてユーザー エージェント経由でクラウド IdP に返します (※)。この構成は Microsoft では推奨しておらず、多くの組織がこの方式からの移行を進めていますが、依然として一般的な構成パターンです。
+
+※ Microsoft 以外にも、SAML 2.0 を実装しているクラウド ID プロバイダー、オンプレミス基盤、フェデレーション サーバーの代替手段は存在し、それらもゴールデン SAML 攻撃の対象となり得ますが、便宜上、本記事では Microsoft の実装に焦点を当てています。
 
 ## 遊園地の例における委任された認証権限
 
@@ -103,11 +108,15 @@ SAML による認証の委任を利用すると、この複雑さが軽減され
 
 ゴールデン SAML という用語は、[CyberArk 社が 2017 年 11 月に提唱したもの](https://www.cyberark.com/resources/threat-research-blog/golden-saml-newly-discovered-attack-technique-forges-authentication-to-cloud-apps) で、この攻撃手法を説明するために作られました。この名称は、Kerberos のゴールデン チケット攻撃に由来しています。ゴールデン チケット攻撃は、Mimikatz の開発者である Benjamin Delpy 氏が、[2014 年の Black Hat USA](https://www.slideshare.net/slideshow/abusing-microsoft-kerberos-sorry-you-guys-dont-get-it/37957800) で発表したものです。Kerberos のゴールデン チケット攻撃では、攻撃者が Kerberos の Ticket Granting Ticket (TGT) を通して Kerberos チケットを偽造できるようになり、Active Directory ドメイン内のリソースに対して広範かつ持続的にアクセスできるようになります。
 
-CyberArk 社は、もし攻撃者が SAML サーバーの署名用秘密鍵を不正に入手できた場合、同様の手法で「SAML での認証連携をサポートするあらゆるアプリケーション (例: Azure、AWS、vSphere など) に、任意の権限でアクセスし、任意のユーザーになりすますことができる」と警告しました \[[iii](#注釈)\]。CyberArk 社はさらに、SAML 2.0 がクラウド時代において Kerberos に代わる主要な SSO プロトコルとなっていることから、この攻撃手法はドメイン コントローラーの侵害よりも広範なリソースへのアクセスを可能にしてしまうと指摘しました。
+CyberArk 社は、もし攻撃者が SAML サーバーの署名用秘密鍵を不正に入手できた場合、同様の手法で「SAML での認証連携をサポートするあらゆるアプリケーション (例: Azure、AWS、vSphere など) に、任意の権限でアクセスし、任意のユーザーになりすますことができる」と警告しました (※)。CyberArk 社はさらに、SAML 2.0 がクラウド時代において Kerberos に代わる主要な SSO プロトコルとなっていることから、この攻撃手法はドメイン コントローラーの侵害よりも広範なリソースへのアクセスを可能にしてしまうと指摘しました。
+
+※ CyberArk, [Golden SAML: Newly Discovered Attack Technique Forges Authentication to Cloud Apps](https://www.cyberark.com/resources/threat-research-blog/golden-saml-newly-discovered-attack-technique-forges-authentication-to-cloud-apps) (2017 年 11 月 21 日).
 
 また、CyberArk はゴールデン SAML が脆弱性の悪用によるものではないことを明確に述べています:
 
-> この攻撃は、SAML 2.0 の脆弱性によるものではありません。AWS や AD FS、その他のサービスや IdP の脆弱性でもありません。ゴールデン チケットが脆弱性と見なされないのは、攻撃者がドメイン管理者権限を持っている必要があるからです... ゴールデン SAML も同様で、それ自体は脆弱性ではありませんが、攻撃者は SAML を使用しているフェデレーション環境内のあらゆるサービスに対して、任意の権限で不正アクセスし、その環境にステルス的に居座ることができます \[[iv](#注釈)\]。
+> この攻撃は、SAML 2.0 の脆弱性によるものではありません。AWS や AD FS、その他のサービスや IdP の脆弱性でもありません。ゴールデン チケットが脆弱性と見なされないのは、攻撃者がドメイン管理者権限を持っている必要があるからです... ゴールデン SAML も同様で、それ自体は脆弱性ではありませんが、攻撃者は SAML を使用しているフェデレーション環境内のあらゆるサービスに対して、任意の権限で不正アクセスし、その環境にステルス的に居座ることができます (※)。
+
+※ 同様に詳細は上記 CyberArk の記事をご覧ください。
 
 ゴールデン SAML は、秘密鍵をホストするシステムに対して管理者レベルの侵害を必要とする攻撃手法です。ゴールデン SAML 攻撃を実行できるレベルのアクセス権を持つ攻撃者は、すでにあらゆるリソースにアクセスできる可能性が高い状況にありますが、ゴールデン SAML の手法を使うことで、攻撃が検知される可能性を大幅に低減できるというところがポイントです。
 
@@ -117,7 +126,9 @@ CyberArk 社は、もし攻撃者が SAML サーバーの署名用秘密鍵を�
 
 ※ 以下の対策は、オンプレミスで独自に SAML IdP を運用しているお客様向けです。Microsoft が自社のインフラに対してこの攻撃をどのように防いでいるかについては、[aka.ms/securefutureinitiative](https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative) をご覧ください。
 
-トークン窃取攻撃に対する最善の対策が [トークン バインディング](https://jpazureid.github.io/blog/azure-active-directory/how-to-break-the-token-theft-cyber-attack-chain/) であり、AiTM フィッシング攻撃に対する最善の対策が [パスキー](https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/) であるのと同様に、オンプレミスのフェデレーション サーバーに対するゴールデン SAML 攻撃の最も効果的な対策は、そもそも SAML 署名証明書を自分で管理する必要のあるフェデレーション サーバーを運用しないことです。\[[v](#注釈)\]
+トークン窃取攻撃に対する最善の対策が [トークン バインディング](https://jpazureid.github.io/blog/azure-active-directory/how-to-break-the-token-theft-cyber-attack-chain/) であり、AiTM フィッシング攻撃に対する最善の対策が [パスキー](https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/) であるのと同様に、オンプレミスのフェデレーション サーバーに対するゴールデン SAML 攻撃の最も効果的な対策は、そもそも SAML 署名証明書を自分で管理する必要のあるフェデレーション サーバーを運用しないことです (※)。
+
+※ 2024 年、Semperis 社が「[Silver SAML](https://www.semperis.com/blog/meet-silver-saml/)」に関する調査結果を発表し、Entra でアプリの SSO 用に秘密鍵を自身で構成する場合は、その鍵の保護が極めて重要であることを強調しました。いずれの場合も、鍵を管理するのであれば、それを保護することがこの種の攻撃を防ぐための本質的な対策となります。
 
 Microsoft は、[Identiverse 2018](https://www.youtube.com/watch?v=Nmkeg0wPRGE) 以降、統計的な根拠をもって「クラウドベースの ID システムはオンプレミスの ID システムよりも安全である」と主張してきました。ゴールデン SAML は、オンプレミスの ID 基盤に影響を与える可能性のあるよく知られた攻撃手法の一つに過ぎません。
 
@@ -131,7 +142,7 @@ Microsoft では、[AD FS から Microsoft Entra への移行ガイド](https://
 
 AD FS のセキュリティ強化に関するベストプラクティスの詳細は、[弊社ドキュメント](https://learn.microsoft.com/ja-jp/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) を確認ください。
 
-## AD FS の署名鍵と証明書を保護する
+## AD FS の署名鍵と証明書を保護
 
 インストール済みの証明書を窃取から守るための最善の方法は、AD FS と共にハードウェア セキュリティ モジュール (HSM) を使用することです。Microsoft は、Windows Server 2012 R2 以降で HSM のサポートを提供しています。署名および暗号化に使用する X509 証明書の作成方法のガイダンスについては HSM ベンダーにご確認ください。
 
@@ -163,7 +174,7 @@ Active Directory Domain Services の最新の機能強化については、[弊�
 
 ## ゴールデン SAML 攻撃を検出および軽減するべく備える
 
-フェデレーション サーバーのセキュリティ強化はゴールデン SAML 攻撃を防ぐのに有効ですが、攻撃が発生した場合に備えて、検出ならびに軽減する手段も必要です。Microsoft では、AD FS 展開に対する攻撃を検出して封じ込めるための複数のツールを提供しています。
+フェデレーション サーバーのセキュリティ強化はゴールデン SAML 攻撃を防ぐのに有効ですが、攻撃が発生した場合に備えて、検出ならびに軽減する手段も必要です。Microsoft では、AD FS に対する攻撃を検出して封じ込めるための複数のツールを提供しています。
 
 ### ゴールデン SAML 攻撃の検出に備える
 
@@ -181,7 +192,7 @@ Defender for Identity の資格情報アクセスに関するアラートにつ�
 
   1. [信頼の委任範囲を制限](https://learn.microsoft.com/en-us/answers/questions/1339525/adfs-authenticate-users-with-selective-trust) し、必要なユーザーのみに制限することで、AD FS キーが侵害されても、そのフェデレーションで許可されたユーザーにしか影響が及ばないようにします。
   2. 対象のフェデレーション サーバーから [発行されるクレームに制限をかける](https://learn.microsoft.com/ja-jp/windows-server/identity/ad-fs/operations/create-a-rule-to-permit-or-deny-users-based-on-an-incoming-claim) ことで、攻撃者が偽造クレームを使ってアクセス権を昇格させることを防ぎます。
-  3. [Entra による多要素認証 (MFA) を常に必須とする](https://learn.microsoft.com/ja-jp/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa) ことで、トークンが偽造された場合でも、ユーザーは Entra の MFA チャレンジを完了するために本人の立ち合いが求められます。
+  3. [Entra による多要素認証 (MFA) を常に必須とする](https://learn.microsoft.com/ja-jp/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa) し、トークンが偽造された場合でも、ユーザーは Entra の MFA チャレンジを完了するために当人の立ち合いが求められるようにします。
 
 ### Microsoft Defender for Identity を使ってのゴールデン SAML 攻撃の調査および封じ込め
 
@@ -193,21 +204,9 @@ Defender for Identity のアラートへの対応方法については、[弊社
 
 | クラウド ID を採用する | フェデレーション サーバーの展開を保護する | ゴールデン SAML 攻撃を検出して軽減する準備をする |
 | ------------- | ------------- | ------------- |
-| [AD FS から Entra ID に移行する](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication)。 | [ハードウェア セキュリティ モジュールを使用して証明書を格納](https://learn.microsoft.com/ja-jp/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) する。<br>[最新の Windows Server ソフトウェアを使用していることを確認する](https://www.microsoft.com/en-us/windows-server/blog/2024/11/04/windows-server-2025-now-generally-available-with-advanced-security-improved-performance-and-cloud-agility/)。<br>[キー管理をサポートするインフラを保護および分離する](https://www.microsoft.com/en-us/windows-server/blog/2024/11/04/windows-server-2025-now-generally-available-with-advanced-security-improved-performance-and-cloud-agility/)。<br>[オンプレミスのインフラからクラウド環境を保護する](https://aka.ms/protectm365)。 | [Entra ID Protection を使用して、ゴールデン SAML 攻撃を示す可能性のある異常を検出する](https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks)。<br>[Defender for Identity を使用して、ゴールデン SAML 攻撃を検出、調査、封じ込める](https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks)。 |
+| [AD FS から Entra ID に移行する](https://learn.microsoft.com/ja-jp/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication)。 | [ハードウェア セキュリティ モジュールを使用して証明書を格納](https://learn.microsoft.com/ja-jp/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) する。<br/><br/>[最新の Windows Server ソフトウェアを使用していることを確認する](https://www.microsoft.com/en-us/windows-server/blog/2024/11/04/windows-server-2025-now-generally-available-with-advanced-security-improved-performance-and-cloud-agility/)。<br/><br/>[キー管理をサポートするインフラを保護および分離する](https://www.microsoft.com/en-us/windows-server/blog/2024/11/04/windows-server-2025-now-generally-available-with-advanced-security-improved-performance-and-cloud-agility/)。<br/><br/>[オンプレミスのインフラからクラウド環境を保護する](https://aka.ms/protectm365)。 | [Entra ID Protection を使用して、ゴールデン SAML 攻撃を示す可能性のある異常を検出する](https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks)。<br/><br/>[Defender for Identity を使用して、ゴールデン SAML 攻撃を検出、調査、封じ込める](https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-risks)。 |
 
 ここまで読んでくださった方であれば、すでに MFA やゼロ トラストの原則を導入しようと取り組まれていることと思います。素晴らしい！ MFA を突破するような高度な攻撃、特にゴールデン SAML を含む攻撃に備えることは、攻撃者の一歩先を行くために非常に重要となります。フェデレーション環境の堅牢性を高めること、あるいは可能であればフェデレーション サーバーからクラウド認証への移行は、まれではあるものの壊滅的な影響を及ぼす可能性のあるゴールデン SAML 攻撃への有効な対策となります。この記事で紹介した知見が、皆さまの ID セキュリティの取り組みに役立つことを願っております。
 
-Nitika Gupta – Partner Group Product Manager
+Nitika Gupta – Partner Group Product Manager  
 Yaron Paryanty – Principal Group Product Manager
-
-#### 注釈
-
-\[[i](#saml-を用いた認証)\] SAML の厳密な定義にこだわる方は、これは本来「SAML サービス プロバイダー (SP)」と呼ぶべきだと指摘するかもしれませんが、本記事では過去の公開物との一貫性を保つために、より分かりやすい用語である「RP (信頼先)」を使用しています。
-
-\[[ii](#ゴールデン-saml-が-saml-の一連の流れに与える影響)\] Microsoft 以外にも、SAML 2.0 を実装しているクラウド ID プロバイダー、オンプレミス基盤、フェデレーション サーバーの代替手段は存在し、それらもゴールデン SAML 攻撃の対象となり得ますが、便宜上、本記事では Microsoft の実装に焦点を当てています。
-
-\[[iii](#ハイブリッド-id-環境におけるゴールデン-saml-を用いた攻撃の流れ)\] CyberArk, [Golden SAML: Newly Discovered Attack Technique Forges Authentication to Cloud Apps](https://www.cyberark.com/resources/threat-research-blog/golden-saml-newly-discovered-attack-technique-forges-authentication-to-cloud-apps) (2017 年 11 月 21 日).
-
-\[[iv](#ハイブリッド-id-環境におけるゴールデン-saml-を用いた攻撃の流れ)\] 同上。
-
-\[[v](#クラウド-id-に移行してゴールデン-saml-攻撃を軽減)\] 2024 年、Semperis は「[Silver SAML](https://www.semperis.com/blog/meet-silver-saml/)」に関する調査結果を発表し、Entra でアプリの SSO 用に秘密鍵を自分で構成する場合は、その鍵の保護が極めて重要であることを強調しました。いずれの場合も、鍵を管理するのであれば、それを保護することがこの種の攻撃を防ぐための本質的な対策となります。
