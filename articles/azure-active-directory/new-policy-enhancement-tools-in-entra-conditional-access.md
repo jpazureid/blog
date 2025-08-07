@@ -1,6 +1,6 @@
 ---
 title: Entra 条件付きアクセスにおける新しいポリシー強化ツール
-date: 2025-08-07 09:00
+date: 2025-08-08 09:00
 tags:
     - US Identity Blog
     - Conditional Access
@@ -91,4 +91,5 @@ API はそれぞれのシナリオに対して、どのポリシーが適用さ�
 
 
 Swaroop Krishnamurthy  
+
 Principal Product Manager 
