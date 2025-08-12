@@ -1,6 +1,6 @@
 ---
 title: 紐づけ可能なトークンの識別子を用いて ID にまつわる脅威の検出と対応を強化
-date: 2025-08-10 09:00
+date: 2025-08-13 05:00
 tags:
     - US Identity Blog
     - Conditional Access
@@ -53,3 +53,4 @@ Microsoft Security Research が調査した事例 (**図 A** を参照) では�
 -- Eric Sachs
 
 Contributor: Alex Kolmann, Senior Security Researcher, Microsoft
+
