@@ -3,10 +3,15 @@ title: 紐づけ可能なトークンの識別子を用いて ID にまつわる
 date: 2025-08-13 05:00
 tags:
     - US Identity Blog
-    - Conditional Access
 ---
 
 # 紐づけ可能なトークンの識別子を用いて ID にまつわる脅威の検出と対応を強化
+
+こんにちは、Azure & Identity サポート チームの 高田 です。
+
+本記事は、2025 年 7 月 21 日に米国の Microsoft Entra Blog で公開された [Strengthen identity threat detection and response with linkable token identifiers](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/strengthen-identity-threat-detection-and-response-with-linkable-token-identifier/4434615) を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+
+----
 
 ## 紐づけ可能なトークン識別子の機能が一般提供となり様々な Microsoft 365 および Microsoft Graph ワークロードにわたってユーザー セッションを追跡して調査できるようになりました
 
@@ -53,4 +58,5 @@ Microsoft Security Research が調査した事例 (**図 A** を参照) では�
 -- Eric Sachs
 
 Contributor: Alex Kolmann, Senior Security Researcher, Microsoft
+
 
