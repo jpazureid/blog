@@ -13,6 +13,8 @@ tags:
 
 本記事は、2025 年 8 月 13 日に米国の Microsoft Entra Blog で公開された [Now Generally Available: Platform SSO for macOS with Microsoft Entra ID](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/now-generally-available-platform-sso-for-macos-with-microsoft-entra-id/4437424) を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。
 
+----
+
 ## macOS 向けプラットフォーム SSO は Microsoft Enterprise SSO プラグインを基盤としてより簡単で安全なサインインを実現
 
 Microsoft は、macOS 向け [**プラットフォーム シングル サインオン**](https://learn.microsoft.com/ja-jp/entra/identity/devices/macos-psso) (プラットフォーム SSO) の **一般提供 (GA)** を発表しました。この機能は、Apple デバイスにおいて、統合された、安全で先進的なシングル サインオン体験を提供するものです。
@@ -69,3 +71,4 @@ Principal Product Manager, Microsoft
 
 Veena Soman  
 Senior Software Engineer, Microsoft
+
