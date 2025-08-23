@@ -5,23 +5,22 @@ tags:
     - MFA
     - Microsoft Entra
 ---
+
 # MFA を義務付けるフェーズ 2 の開始
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
 
-2025 年 9 月 15 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Code (IaC) ツールなどを対象とした MFA 義務付けのフェーズ 2 が開始し、すべてのテナントに順次展開されることが予定されています。
+2025 年 9 月 15 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Code (IaC) ツールなどを対象とした MFA 義務付けのフェーズ 2 が開始し、すべてのテナントに順次展開されることが予定されています。このフェーズ 2 について、既に多くのお問い合わせをいただいており、今回のブログではその概要と必要な対応、よくあるご質問について Q&A 形式でおまとめいたしました。既存のドキュメントではカバーされていない動作やご質問について今後も適宜内容を拡充していきますので、参考となりましたら幸いです。
 
-このフェーズ 2 について、既に多くのお問い合わせをいただいており、今回のブログではその概要と必要な対応、よくあるご質問について Q&A 形式でおまとめいたしました。既存のドキュメントではカバーされていない動作やご質問について今後も適宜内容を拡充していきますので、参考となりましたら幸いです。
+これまで以下のブログで MFA 義務付けについて説明しております。フェーズ 1 を含めた概要につきましては以下のブログを参照ください。
 
-これまで、以下のブログで MFA 義務付けについて説明しております。フェーズ 1 を含めた概要につきましては以下のブログを参照ください。
+ - [Microsoft は Azure ポータル (および Azure CLI 等) を利用するユーザーに MFA を義務付けます | (2024/05/24 公開)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-will-require-mfa-for-all-azure-users/)
+ - [Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27) | (2024/07/01 公開)](https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/)
+ - [MC862873 - Azure ポータル (および Azure CLI 等) の MFA 義務付けの延長申請について | (2024/08/21 公開)](https://jpazureid.github.io/blog/azure-active-directory/MC862873-azure-portal-mfaenforcement-update-grace-period/)
 
- - [Microsoft は Azure ポータル (および Azure CLI 等) を利用するユーザーに MFA を義務付けます | Japan Azure Identity Support Blog (2024/05/24 公開)](https://jpazureid.github.io/blog/azure-active-directory/microsoft-will-require-mfa-for-all-azure-users/)
- - [Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27) | Japan Azure Identity Support Blog (2024/07/01 公開)](https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/)
- - [MC862873 - Azure ポータル (および Azure CLI 等) の MFA 義務付けの延長申請について | Japan Azure Identity Support Blog (2024/08/21 公開)](https://jpazureid.github.io/blog/azure-active-directory/MC862873-azure-portal-mfaenforcement-update-grace-period/)
+## フェーズ 2 の適用内容
 
-## フェーズ 2
-
-2025 年 9 月 15 日より、Azure CLI、Azure PowerShell、Azure mobile app、IaC ツール、REST API エンドポイントにサインインして「作成」「更新」「削除」の操作を行うユーザー アカウントに対して、段階的に多要素認証 (MFA) の強制が開始されます。なお、「読み取り」操作では MFA は強制されません。
+2025 年 9 月 15 日より、Azure CLI、Azure PowerShell、Azure mobile app、IaC ツール、REST API エンドポイントにサインインして「作成」「更新」「削除」の操作を行うユーザー アカウントに対して、段階的に多要素認証 (MFA) の強制が開始されます。「読み取り」操作では MFA は強制されません。
 
 フェーズ 2 の適用によって「作成」「更新」「削除」の操作を行う際に影響が生じる具体的なアプリケーションの例は以下のとおりです。Azure Resource Manager の REST API を利用 (読み取り以外) するアプリケーションのすべてで影響が生じるとご理解ください。
 
@@ -34,17 +33,18 @@ tags:
 
 今回の MFA 義務付けについては以下の公開情報で詳細を案内していますので、併せてご参照ください。
 
-原文: [Planning for mandatory multifactor authentication for Azure and other admin portals](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication?tabs=dotnet)
-
-日本語版: [Azure やその他の管理ポータルにおける多要素認証の義務化の計画](https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-mandatory-multifactor-authentication?tabs=dotnet)
+原文: [Planning for mandatory multifactor authentication for Azure and other admin portals](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication?tabs=dotnet)  
+日本語: [Azure やその他の管理ポータルにおける多要素認証の義務化の計画](https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-mandatory-multifactor-authentication?tabs=dotnet)
 
 ## 必要な対応
 
-お客様によっては、スクリプトやその他のタスクによる自動化を実行するために、Microsoft Entra ID のユーザー ID をサービス アカウントとして利用されているかと存じます。そのような自動化を実行するためのサービス  アカウントとしてユーザー ID を利用することは、以前からおすすめしておりません。フェーズ 2 の展開が完了し、MFA が強制されると、非対話的にサービスとして認証しているユーザー ID は、MFA の要求に対応できず、スクリプトやその他のタスクによる自動化が停止することになります。
+上記の Azure CLI などを利用するユーザー様においては、今後「作成」「更新」「削除」の操作を行う際に MFA が要求されます。
 
-スクリプトやその他のタスクによる自動化では、ユーザー ID ではなく、サービス プリンシパルやマネージド ID といった **ワークロード ID** の利用が推奨です。ユーザー ID から **ワークロード ID** に移行することで、今回の変更の影響を受けないようにするとともに、弊社の推奨事項に沿った構成になりますので、ぜひご検討ください。フェーズ 2 の MFA の強制はユーザー ID にのみ適用され、ワークロード ID には適用されません。
+またお客様によっては、スクリプトやその他のタスクによる自動化を実現するために、Microsoft Entra ID のユーザー ID をサービス アカウントとして利用されているかと存じます。このような場合にもこのフェーズ 2 の影響が及びます。フェーズ 2 の展開が完了し、MFA が強制されると、非対話的にサービスとして認証しているユーザー ID は、MFA の要求に対応できず、スクリプトやその他のタスクによる自動化が停止することになります。弊社ではこのような自動化を実行するためのサービス  アカウントとしてユーザー ID を利用することは、以前からおすすめしておりません。
 
-上記の影響を受けるアプリケーションを利用しているユーザーや、スクリプトやその他のタスクによる自動化を実行するために Microsoft Entra ID のユーザー ID をサービス アカウントとして利用せざるを得ないお客様においては、それらのユーザー ID が利用できる MFA の方法をご準備ください。例えば、認証用の電話番号や Microsoft Authenticator アプリなどです。フェーズ 2 による MFA の強制が実施されると、MFA の方法が未登録のユーザーには MFA 方法の登録が要求されます。登録画面に沿って、ご要望の MFA の方法を登録ください。
+スクリプトやその他のタスクによる自動化では、ユーザー ID ではなく、サービス プリンシパルやマネージド ID といった **ワークロード ID** の利用が推奨です。ユーザー ID から **ワークロード ID** に移行することで、今回の変更の影響を受けないようにするとともに弊社の推奨事項に沿った構成になりますので、ぜひご検討ください。フェーズ 2 の MFA の強制はユーザー ID にのみ適用され、ワークロード ID には適用されません。
+
+上記の影響を受けるアプリケーションを利用しているユーザーや、スクリプトやその他のタスクによる自動化を実行するために Microsoft Entra ID のユーザー ID をサービス アカウントとして利用せざるを得ないお客様においては、それらのユーザー ID が利用できる MFA の方法をご準備ください。例えば、認証用の電話番号や Microsoft Authenticator アプリなどです。フェーズ 2 による MFA の強制が実施されると、MFA の方法が未登録のユーザーには MFA 方法の登録が要求されます。登録画面に沿ってご要望の MFA の方法を登録ください。
 
 加えて以下の内容を参考に対応を実施ください。
 
@@ -123,7 +123,7 @@ Target: mystorageaccount
 
 A. ユーザー ID は、Azure Portal ( https://portal.azure.com) > [Microsoft Entra ID] > [ユーザー] のブレードで表示される ID を指します。[ユーザー] ブレードに表示される ID は、人間の従業員に割り当てられる ID で、人間がブラウザーやアプリから利用することを意図して作られたものです。
 
-一方で、ワークロード ID は、スクリプト、アプリケーション、サービス、コンテナーなど、システムがに割り当てられる ID を指しています。ワークロード ID は、Azure Portal ( https://portal.azure.com) > [Microsoft Entra ID] > [エンタープライズ アプリケーション] のブレードで表示されます。より具体的には "アプリケーション (サービス プリンシパル)" や "マネージド ID" というオブジェクトとして Entra ID に登録されます。
+一方で、ワークロード ID は、スクリプト、アプリケーション、サービス、コンテナーなど、システムに割り当てられる ID を指しています。ワークロード ID は、Azure Portal ( https://portal.azure.com) > [Microsoft Entra ID] > [エンタープライズ アプリケーション] のブレードで表示されます。より具体的には "アプリケーション (サービス プリンシパル)" や "マネージド ID" というオブジェクトとして Entra ID に登録されます。
 
 以下の弊社技術ブログにて、サービス プリンシパルおよびマネージド ID の概要やご利用方法などの詳細についてご紹介しておりますので、こちらの内容も併せてご参照ください。
  
