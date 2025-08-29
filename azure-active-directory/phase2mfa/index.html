@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/phase2mfa-2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/phase2mfa-3.png">
 <meta property="article:published_time" content="2025-08-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-29T01:49:43.194Z">
+<meta property="article:modified_time" content="2025-08-29T13:24:11.901Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="MFA">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+505f8cef-6a74-5bd5-8140-20bfd7be2453%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMFA+%E7%BE%A9%E5%8B%99%E4%BB%98%E3%81%91+%28%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA+2%29+%E3%81%AE%E9%96%8B%E5%A7%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fphase2mfa%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fphase2mfa.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fphase2mfa.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/" data-id="cmew6dls901500nnn7ynt4cbb" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/" data-id="cmewv6p6h01500nmxb4a14vnj" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -172,7 +172,7 @@
 <li><a href="https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/">Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27) | (2024/07/01 公開)</a></li>
 <li><a href="https://jpazureid.github.io/blog/azure-active-directory/MC862873-azure-portal-mfaenforcement-update-grace-period/">MC862873 - Azure ポータル (および Azure CLI 等) の MFA 義務付けの延長申請について | (2024/08/21 公開)</a></li>
 </ul>
-<h2 id="フェーズ-2-の適用内容"><a href="#フェーズ-2-の適用内容" class="headerlink" title="フェーズ 2 の適用内容"></a>フェーズ 2 の適用内容</h2><p>2025 年 10 月 1 日より、Azure CLI、Azure PowerShell、Azure mobile app、IaC ツール、REST API エンドポイントにサインインして「作成」「更新」「削除」の操作を行うユーザー アカウントに対して、段階的に多要素認証 (MFA) の強制が開始されます。「読み取り」操作では MFA は強制されません。</p>
+<h2 id="フェーズ-2-の適用内容"><a href="#フェーズ-2-の適用内容" class="headerlink" title="フェーズ 2 の適用内容"></a>フェーズ 2 の適用内容</h2><p>2025 年 10 月 1 日より、Azure CLI、Azure PowerShell、Azure mobile app、IaC ツール、REST API エンドポイントにサインインして「作成」「更新」「削除」の操作を行うユーザー アカウントに対して、段階的に多要素認証 (MFA) の義務付けが開始されます。「読み取り」操作では MFA は義務付けされません。</p>
 <p>フェーズ 2 の適用によって「作成」「更新」「削除」の操作を行う際に影響が生じる具体的なアプリケーションの例は以下のとおりです。Azure Resource Manager の REST API を利用 (読み取り以外) するアプリケーションのすべてで影響が生じるとご理解ください。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/cli/azure/">Azure Command Line Interface (CLI)</a></li>
@@ -184,18 +184,18 @@
 </ul>
 <p>今回の MFA 義務付けについては以下の公開情報で詳細を案内していますので、併せてご参照ください。</p>
 <p>原文: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication?tabs=dotnet">Planning for mandatory multifactor authentication for Azure and other admin portals</a><br>日本語: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-mandatory-multifactor-authentication?tabs=dotnet">Azure やその他の管理ポータルにおける多要素認証の義務化の計画</a></p>
-<h2 id="必要な対応"><a href="#必要な対応" class="headerlink" title="必要な対応"></a>必要な対応</h2><p>上記の Azure CLI などを利用するユーザー様においては、今後「作成」「更新」「削除」の操作を行う際に MFA が要求されます。</p>
-<p>またお客様によっては、スクリプトやその他のタスクによる自動化を実現するために、Microsoft Entra ID のユーザー ID をサービス アカウントとして利用されているかと存じます。このような場合にもこのフェーズ 2 の影響が及びます。フェーズ 2 の展開が完了し、MFA が強制されると、非対話的にサービスとして認証しているユーザー ID は、MFA の要求に対応できず、スクリプトやその他のタスクによる自動化が停止することになります。弊社ではこのような自動化を実行するためのサービス  アカウントとしてユーザー ID を利用することは、以前からおすすめしておりません。</p>
-<p>スクリプトやその他のタスクによる自動化では、ユーザー ID ではなく、サービス プリンシパルやマネージド ID といった <strong>ワークロード ID</strong> の利用が推奨です。ユーザー ID から <strong>ワークロード ID</strong> に移行することで、今回の変更の影響を受けないようにするとともに弊社の推奨事項に沿った構成になりますので、ぜひご検討ください。フェーズ 2 の MFA の強制はユーザー ID にのみ適用され、ワークロード ID には適用されません。</p>
-<p>上記の影響を受けるアプリケーションを利用しているユーザーや、スクリプトやその他のタスクによる自動化を実行するために Microsoft Entra ID のユーザー ID をサービス アカウントとして利用せざるを得ないお客様においては、それらのユーザー ID が利用できる MFA の方法をご準備ください。例えば、認証用の電話番号や Microsoft Authenticator アプリなどです。フェーズ 2 による MFA の強制が実施されると、MFA の方法が未登録のユーザーには MFA 方法の登録が要求されます。登録画面に沿ってご要望の MFA の方法を登録ください。</p>
+<h2 id="必要な対応"><a href="#必要な対応" class="headerlink" title="必要な対応"></a>必要な対応</h2><p>上記の Azure CLI などを利用するユーザーにおいては、今後「作成」「更新」「削除」の操作を行う際に MFA が要求されます。この「操作を行う際に MFA が要求されます」というのは、事前に MFA を実施していない場合に操作がエラーとなるということを意味します。必要な対応としては、対象の操作を行う前のサインインの際に条件付きアクセス ポリシーなどを利用して MFA を実施するように構成しておくか、操作がエラーとなった際には明示的に MFA を実施して再度目的の操作を実行するというものになります。</p>
+<p>また、そのほかの対応方法としては、ユーザー ID をスクリプトやその他のタスクによる自動化を実現する際に利用しないようにする、ということが考えられます。お客様によっては、スクリプトやその他のタスクによる自動化を実現するために、Microsoft Entra ID のユーザー ID をサービス アカウントとして利用されているかと存じます。このような場合にもこのフェーズ 2 の影響が及びます。フェーズ 2 の展開が完了し、MFA が義務付けされると、非対話的にサービスとして認証しているユーザー ID は、MFA の要求に対応できず、スクリプトやその他のタスクによる自動化が停止することになります。弊社ではこのような自動化を実行するためのサービス  アカウントとしてユーザー ID を利用することは、以前からおすすめしておりません。</p>
+<p>スクリプトやその他のタスクによる自動化では、ユーザー ID ではなく、サービス プリンシパルやマネージド ID といった <strong>ワークロード ID</strong> の利用が推奨です。ユーザー ID から <strong>ワークロード ID</strong> に移行することで、今回の変更の影響を受けないようにするとともに弊社の推奨事項に沿った構成になりますので、ぜひご検討ください。フェーズ 2 の MFA の義務付けはユーザー ID にのみ適用され、ワークロード ID には適用されません。</p>
+<p>上記の影響を受けるアプリケーションを利用しているユーザーや、スクリプトやその他のタスクによる自動化を実行するために Microsoft Entra ID のユーザー ID をサービス アカウントとして利用せざるを得ないお客様においては、それらのユーザー ID が利用できる MFA の方法をご準備ください。例えば、認証用の電話番号や Microsoft Authenticator アプリなどです。フェーズ 2 による MFA の義務付けが実施されると、MFA の方法が未登録のユーザーには MFA 方法の登録が要求されます。登録画面に沿ってご要望の MFA の方法を登録ください。</p>
 <p>加えて以下の内容を参考に対応を実施ください。</p>
-<h2 id="よくあるご質問"><a href="#よくあるご質問" class="headerlink" title="よくあるご質問"></a>よくあるご質問</h2><h3 id="Q-フェーズ-2-ではどのようなタイミングで-MFA-が求められますか？"><a href="#Q-フェーズ-2-ではどのようなタイミングで-MFA-が求められますか？" class="headerlink" title="Q. フェーズ 2 ではどのようなタイミングで MFA が求められますか？"></a>Q. フェーズ 2 ではどのようなタイミングで MFA が求められますか？</h3><p>A. フェーズ 2 では、ユーザー アカウントを使用した Azure のコントロール プレーンに対する「作成」「更新」「削除」の操作に関して、MFA を実施済みの状態で実行することが要求されます。フェーズ 2 ではコントロール プレーンに対する読み取り以外の操作で MFA が強制されることにより、特に Azure CLI、Azure PowerShell、Azure mobile app やその他 IaC ツール、Azure SDK など、Azure Resource Manager の REST API を実行するアプリケーションを利用する場合に MFA が必要となります。フェーズ 2 における制御では、「読み取り」の操作は MFA 強制化の対象には含まれません。</p>
+<h2 id="よくあるご質問"><a href="#よくあるご質問" class="headerlink" title="よくあるご質問"></a>よくあるご質問</h2><h3 id="Q-フェーズ-2-ではどのようなタイミングで-MFA-が求められますか？"><a href="#Q-フェーズ-2-ではどのようなタイミングで-MFA-が求められますか？" class="headerlink" title="Q. フェーズ 2 ではどのようなタイミングで MFA が求められますか？"></a>Q. フェーズ 2 ではどのようなタイミングで MFA が求められますか？</h3><p>A. フェーズ 2 では、ユーザー アカウントを使用した Azure のコントロール プレーンに対する「作成」「更新」「削除」の操作に関して、MFA を実施済みの状態で実行することが要求されます。フェーズ 2 ではコントロール プレーンに対する読み取り以外の操作で MFA が義務付けされることにより、特に Azure CLI、Azure PowerShell、Azure mobile app やその他 IaC ツール、Azure SDK など、Azure Resource Manager の REST API を実行するアプリケーションを利用する場合に MFA が必要となります。フェーズ 2 における制御では、「読み取り」の操作は MFA の義務付けの対象には含まれません。</p>
 <p>また、ユーザー アカウントを使用して Azure CLI などにサインインを実行した時点で即時に MFA が求められるというものではありません。そのため、Azure CLI にサインインしてリソースの一覧を取得するのみであれば、MFA は求められません。Azure Resource Manager を実行する Azure CLI や Azure PowerShell などのアプリから、Azure リソースに対して「作成」「更新」「削除」の操作を行うタイミングで MFA 実施済みかどうか評価され、MFA を実行していない場合は要求がエラーで失敗します。</p>
 <h3 id="Q-フェーズ-2-の制御によって操作がエラーとならないようにするためにはどうすればいいですか？"><a href="#Q-フェーズ-2-の制御によって操作がエラーとならないようにするためにはどうすればいいですか？" class="headerlink" title="Q. フェーズ 2 の制御によって操作がエラーとならないようにするためにはどうすればいいですか？"></a>Q. フェーズ 2 の制御によって操作がエラーとならないようにするためにはどうすればいいですか？</h3><p>A. フェーズ 2 の適用後もサインインのタイミングでは MFA は求められません。エラーなく操作を完了したい場合、サインイン時に MFA を行うように設定するのが効果的です。テナントの管理者では以下の公開情報を参考に条件付きアクセス ポリシーを設定することで、Azure リソースを管理する際のサインインに MFA を要求することができます。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/policy-old-require-mfa-azure-mgmt">条件付きアクセスを使用して Azure 管理の MFA を必須にする - Microsoft Entra ID | Microsoft Learn</a></p>
 <p>Microsoft Entra ID P1 以上のライセンスのないテナントでは、セキュリティの既定値群を利用して、Azure リソースを管理する際のサインインに MFA を要求することができます。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/fundamentals/security-defaults">Microsoft Entra ID のセキュリティの既定値を構成する - Microsoft Entra | Microsoft Learn</a></p>
-<p>また、Azure リソースを管理する際のサインインに MFA を要求するよう管理者が設定していない場合でも、Azure リソースを管理しようとしているユーザーが、サインイン時に明示的に MFA を実行するという方法も今回の変更を受けて用意されました。Azure CLI および Azure PowerShell の最新のバージョンでは、サインイン時に MFA を行うことをオプションとして指定することができるようになっています。管理者が MFA を強制していない場合に、それぞれのモジュールで以下の形式でコマンドを実行することでサインインの操作時に MFA が求められます。</p>
+<p>また、Azure リソースを管理する際のサインインに MFA を要求するよう管理者が設定していない場合でも、Azure リソースを管理しようとしているユーザーが、サインイン時に明示的に MFA を実行するという方法も今回の変更を受けて用意されました。Azure CLI および Azure PowerShell の最新のバージョンでは、サインイン時に MFA を行うことをオプションとして指定することができるようになっています。管理者が MFA を義務付けしていない場合に、それぞれのモジュールで以下の形式でコマンドを実行することでサインインの操作時に MFA が求められます。</p>
 <p>実行例 :</p>
 <p>Azure CLI の場合</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">az login --tenant &quot;tenantid-****-****-****-*******&quot; --scope &quot;https://management.core.windows.net//.default&quot; --claims-challenge &quot;eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19&quot;</span><br></pre></td></tr></table></figure>
