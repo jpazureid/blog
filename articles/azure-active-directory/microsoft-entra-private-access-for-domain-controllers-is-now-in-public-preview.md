@@ -1,6 +1,6 @@
 ---
 title: "パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access"
-date: 2025-09-01 09:00
+date: 2025-09-05 06:00
 tags:
     - Microsoft Entra
     - US Identity Blog
@@ -13,7 +13,9 @@ tags:
 
 ## Microsoft Entra はオンプレミス インフラの中心であるドメイン コントローラーに対して ID 中心のゼロ トラスト アクセス制御を提供します
 
-[Microsoft Entra の Active Directory ドメイン コントローラー用の Microsoft Entra Private Access](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-domain-controllers) がパブリック プレビューになりました。この機能は Microsoft の Security Service Edge (SSE) の一部であり、Kerberos を通じて認証される内部リソースに対して条件付きアクセスや多要素認証 (MFA) を利用できるようになります。これらは Global Secure Access によって管理されます。ドメイン コントローラーに対して制御を強制することで、オンプレミスのリソースを二重のレイヤーで保護する、ID を中心としたゼロ トラストの保護が実現されます。これにより、社内にいるユーザーも含めて、ユーザーとドメイン コントローラーの両方のアクセスが保護されます。
+[Microsoft Entra の Active Directory ドメイン コントローラー用の Microsoft Entra Private Access](https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-domain-controllers) がパブリック プレビューになりました。この機能は Microsoft の Security Service Edge (SSE) の一部であり、Kerberos を通じて認証される内部リソースに対して条件付きアクセスや多要素認証 (MFA) を利用できるようになります。これらは Global Secure Access によって管理されます。
+
+ドメイン コントローラーに対して制御を強制することで、オンプレミスのリソースを二重のレイヤーで保護する、ID を中心としたゼロ トラストの保護が実現されます。これにより、社内にいるユーザーも含めて、ユーザーとドメイン コントローラーの両方のアクセスが保護されます。
 
 ## ハイブリッド環境全体で ID の制御をシームレスに適用
 
@@ -37,7 +39,7 @@ Microsoft Entra Private Access は、重要なオンプレミス リソースに
 
 管理インターフェースは Microsoft Entra 管理センター内の Global Secure Access に統合されており、ドメイン コントローラーの登録、アプリケーション セグメント (SPN) の構成、条件付きアクセス ポリシーの割り当てを一元的に行えます。ポリシーは Private Access センサーに動的に配布され、再起動を必要とせず、効率的かつ一貫した適用が可能です。
 
-このアーキテクチャは、リモート デスクトップ プロトコル (RDP) のセッション内から起動された RDP セッションなど、入れ子状の RDP セッションにおけるラテラル ムーブメント (横方向の侵害拡大) を防ぐのにも有効です。高価なオンプレミス アプライアンスの導入やアプリケーション データのクラウド経由ルーティングは必要ありません。
+このアーキテクチャは、リモート デスクトップ プロトコル (RDP) のセッション内から起動された RDP セッションなど、入れ子状の RDP セッションにおけるラテラル ムーブメント (横方向の侵害拡大) を防ぐのにも有効です。高価なオンプレミス アプライアンスの導入やアプリケーション データのクラウド経由のルーティングは必要ありません。
 
 ## 柔軟性と耐障害性を備えた設計
 
@@ -52,7 +54,7 @@ Microsoft Entra Private Access は、重要なオンプレミス リソースに
 
 ## 着目ポイント
 
-ドメイン コントローラー用の Microsoft Entra Private Access は、サード パーティ製ハードウェアや複雑なネットワーク変更なしで、オンプレミス環境に対して MFA の導入を実現します。軽量なセンサーが Kerberos 認証を傍受し、条件付きアクセスを適用することで、レガシ アプリにも対応可能です。
+ドメイン コントローラー用の Microsoft Entra Private Access は、サードパーティ製ハードウェアや複雑なネットワーク変更なしで、オンプレミス環境に対して MFA の導入を実現します。軽量なセンサーが Kerberos 認証を傍受し、条件付きアクセスを適用することでレガシ アプリにも対応可能です。
 
 この ID 中心の ZTNA モデルにより、機密リソースごとに明示的に再認証を要求するなどきめ細かなアクセス制御が Entra ポータル上で構成可能となり、ラテラル ムーブメント (横方向の侵害拡大) に対する防御が強化されます。ネットワークの設計を見直すことなくハイブリッド ワークや ITDR (Identity Threat Detection and Response) に対応したオンプレミス セキュリティの刷新が可能となるのです。
 
