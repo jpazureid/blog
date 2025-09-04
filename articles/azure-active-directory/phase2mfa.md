@@ -88,13 +88,13 @@ ClaimsChallenge オプションの引数は以下で固定です。
 “eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19"
 ```
 
-利用可能なバージョンは Azure CLI 2.76 および Azure PowerShell 14.4 以降となります。上記の ClaimsChallenge オプションの文字列などは、Azure CLI や Azure PowerShell モジュールが必要に応じて画面にも表示しますので、ユーザーはエラー メッセージに従って操作することも可能です。
+利用可能なバージョンは Azure CLI 2.76 および Azure PowerShell 14.3 以降となります。上記の ClaimsChallenge オプションの文字列などは、Azure CLI や Azure PowerShell モジュールが必要に応じて画面にも表示しますので、ユーザーはエラー メッセージに従って操作することも可能です。
 
 ### Q. フェーズ 2 の制御によって操作がエラーとなった場合はどのようなエラーが表示されますか？
 
 A. フェーズ 2 では、Azure Resource Manager を実行する Azure CLI や Azure PowerShell などのアプリから「作成」「更新」「削除」の操作を行うタイミングで MFA を実施済みの状態が求められます。MFA を実行していなかった場合は要求がエラーで失敗します。エラーが生じた際には以下のようなメッセージが表示されます。Azure CLI や Azure PowerShell モジュールを最新のバージョンに更新いただくと、以下のようによりわかりやすいメッセージが表示されますので、可能な限り最新のモジュールを利用いただくことをお勧めします。
 
-Azure PowerShell 14.4 および Az.Accounts 5.3 の例:
+Azure PowerShell 14.3 および Az.Accounts 5.2 の例:
 
 ```
 PS C:\test > New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -MinimumTlsVersion TLS1_2
