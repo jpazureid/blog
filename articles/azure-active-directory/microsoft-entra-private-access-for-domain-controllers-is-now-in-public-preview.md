@@ -5,6 +5,7 @@ tags:
     - Microsoft Entra
     - US Identity Blog
 ---
+
 # パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access
 
 こんにちは、Azure Identity サポート チームの 五十嵐 です。
