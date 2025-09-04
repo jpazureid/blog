@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/phase2mfa-2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/phase2mfa-3.png">
 <meta property="article:published_time" content="2025-08-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-29T13:24:11.901Z">
+<meta property="article:modified_time" content="2025-09-04T09:35:45.279Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="MFA">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+505f8cef-6a74-5bd5-8140-20bfd7be2453%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMFA+%E7%BE%A9%E5%8B%99%E4%BB%98%E3%81%91+%28%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA+2%29+%E3%81%AE%E9%96%8B%E5%A7%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fphase2mfa%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fphase2mfa.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fphase2mfa.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/" data-id="cmewv6p6h01500nmxb4a14vnj" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/phase2mfa/" data-id="cmf57o1h401500nt6hel477qn" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -206,9 +206,9 @@
 <p>ClaimsChallenge オプションの引数は以下で固定です。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">“eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19&quot;</span><br></pre></td></tr></table></figure>
 
-<p>利用可能なバージョンは Azure CLI 2.76 および Azure PowerShell 14.4 以降となります。上記の ClaimsChallenge オプションの文字列などは、Azure CLI や Azure PowerShell モジュールが必要に応じて画面にも表示しますので、ユーザーはエラー メッセージに従って操作することも可能です。</p>
+<p>利用可能なバージョンは Azure CLI 2.76 および Azure PowerShell 14.3 以降となります。上記の ClaimsChallenge オプションの文字列などは、Azure CLI や Azure PowerShell モジュールが必要に応じて画面にも表示しますので、ユーザーはエラー メッセージに従って操作することも可能です。</p>
 <h3 id="Q-フェーズ-2-の制御によって操作がエラーとなった場合はどのようなエラーが表示されますか？"><a href="#Q-フェーズ-2-の制御によって操作がエラーとなった場合はどのようなエラーが表示されますか？" class="headerlink" title="Q. フェーズ 2 の制御によって操作がエラーとなった場合はどのようなエラーが表示されますか？"></a>Q. フェーズ 2 の制御によって操作がエラーとなった場合はどのようなエラーが表示されますか？</h3><p>A. フェーズ 2 では、Azure Resource Manager を実行する Azure CLI や Azure PowerShell などのアプリから「作成」「更新」「削除」の操作を行うタイミングで MFA を実施済みの状態が求められます。MFA を実行していなかった場合は要求がエラーで失敗します。エラーが生じた際には以下のようなメッセージが表示されます。Azure CLI や Azure PowerShell モジュールを最新のバージョンに更新いただくと、以下のようによりわかりやすいメッセージが表示されますので、可能な限り最新のモジュールを利用いただくことをお勧めします。</p>
-<p>Azure PowerShell 14.4 および Az.Accounts 5.3 の例:</p>
+<p>Azure PowerShell 14.3 および Az.Accounts 5.2 の例:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\test &gt; New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -MinimumTlsVersion TLS1_2</span><br><span class="line">New-AzStorageAccount: Resource &#x27;mystorageaccount&#x27; was disallowed by policy. Reasons: &#x27;Sample Text: To resolve this error, set up MFA at aka.ms/setupMFA. If you set up MFA and are still receiving this error, reach out to your Entra administrator to restore your Azure security default.&#x27;. See error details for policy resource IDs.</span><br><span class="line"></span><br><span class="line">Run the cmdlet below to authenticate interactively; additional parameters may be added as needed.</span><br><span class="line"></span><br><span class="line">Connect-AzAccount -Tenant (Get-AzContext).Tenant.Id -ClaimsChallenge &quot;eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19&quot;</span><br></pre></td></tr></table></figure>
 <p>Azure CLI 2.76 の例:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\test&gt; az storage account create -n mystorageaccount -g MyResourceGroup -l westus --sku Standard_LRS</span><br><span class="line">Run the command below to authenticate interactively; additional arguments may be added as needed:</span><br><span class="line">az logout</span><br><span class="line">az login --tenant &quot;f9800b67-61ea-4627-80e5-e7fc741e2497&quot; --scope &quot;https://management.core.windows.net//.default&quot; --claims-challenge &quot;eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19&quot;</span><br><span class="line">(RequestDisallowedByPolicy) Resource &#x27;mystorageaccount&#x27; was disallowed by policy. Reasons: &#x27;Sample Text: To resolve this error, set up MFA at aka.ms/setupMFA. If you set up MFA and are still receiving this error, reach out to your Entra administrator to restore your Azure security default.&#x27;. See error details for policy resource IDs.</span><br><span class="line">Code: RequestDisallowedByPolicy</span><br><span class="line">Message: Resource &#x27;mystorageaccount&#x27; was disallowed by policy. Reasons: &#x27;Sample Text: To resolve this error, set up MFA at aka.ms/setupMFA. If you set up MFA and are still receiving this error, reach out to your Entra administrator to restore your Azure security default.&#x27;. See error details for policy resource IDs.</span><br><span class="line">Target: mystorageaccount</span><br></pre></td></tr></table></figure>
