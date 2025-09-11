@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/basic-points-directory-synchronization/select-upnsource.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/basic-points-directory-synchronization/sync-image-1024x566.jpg">
 <meta property="article:published_time" content="2018-05-08T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T15:19:14.238Z">
+<meta property="article:modified_time" content="2025-09-11T04:59:51.676Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2f1bf0c6-4ce4-5953-afd5-348e3c23ac7d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+-+%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8C%E6%9C%9F%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fbasic-points-directory-synchronization%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fbasic-points-directory-synchronization.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fbasic-points-directory-synchronization.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/basic-points-directory-synchronization/" data-id="cmf5jxs1y001u0nmzc16r4h26" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/basic-points-directory-synchronization/" data-id="cmfexw7fq001u0noch9r29on9" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -190,7 +190,7 @@
 <p>なお、ImmutableId 属性値は、直接 AAD 上に作成したユーザーの場合、既定で null になっています。<br>つまり、オンプレミス AD ユーザーの [SourceAnchor に指定した属性値] と AAD 同期ユーザーの ImmutableId 属性値が一致することで、2 つのオブジェクトが同期元/先として紐づいた状態になります。</p>
 <h3 id="UPNSource-と、この-Blog-では呼称します"><a href="#UPNSource-と、この-Blog-では呼称します" class="headerlink" title="UPNSource (と、この Blog では呼称します)"></a>UPNSource (と、この Blog では呼称します)</h3><p>構成ウィザードの設定項目ではこのような呼称ではないのですが、同期先である AAD 同期ユーザーの UserPrincipalName (UPN、名前) を決定する、同期元オンプレミス AD ユーザーの属性の指定を UPNSource と、この Blog では呼称します。<br>デフォルトではオンプレミス AD ユーザーの UPN 属性の値が選択され、この値が AAD 同期ユーザー側の UPN の値になります。</p>
 <p>オンプレミス AD ユーザーの UPN と AAD ユーザーの UPN を同じ値にすることができないようなご都合があるケースもあるかと思います。<br>例えば、元々オンプレミス AD のドメイン名を contoso.local としており、これからご利用になる AAD に登録するカスタム ドメインを contoso.com にするようなケースにおいては、オンプレミス AD 側のドメイン名を contoso.com に変えることができない、というような場合です。</p>
-<p>このような場合においても、オンプレミス AD の [代替 UPN サフィックス] の機能を使用して、contoso.com を代替 UPN として登録してオンプレミス AD ユーザーの UPN を <a href="mailto:&#117;&#x73;&#101;&#114;&#x6e;&#97;&#109;&#x65;&#x40;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#x63;&#x6f;&#x6d;">&#117;&#x73;&#101;&#114;&#x6e;&#97;&#109;&#x65;&#x40;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#x63;&#x6f;&#x6d;</a> にすることは可能です。<br>しかし、オンプレミス AD ユーザーの UPN 値に依存した他のシステムがあり、AD ユーザーの UPN を変えられない、という場合もあるかと思います。</p>
+<p>このような場合においても、オンプレミス AD の [代替 UPN サフィックス] の機能を使用して、contoso.com を代替 UPN として登録してオンプレミス AD ユーザーの UPN を <a href="mailto:&#117;&#x73;&#x65;&#114;&#110;&#97;&#109;&#101;&#x40;&#99;&#111;&#x6e;&#116;&#111;&#115;&#x6f;&#x2e;&#99;&#x6f;&#x6d;">&#117;&#x73;&#x65;&#114;&#110;&#97;&#109;&#101;&#x40;&#99;&#111;&#x6e;&#116;&#111;&#115;&#x6f;&#x2e;&#99;&#x6f;&#x6d;</a> にすることは可能です。<br>しかし、オンプレミス AD ユーザーの UPN 値に依存した他のシステムがあり、AD ユーザーの UPN を変えられない、という場合もあるかと思います。</p>
 <p>このようなケースでは、UPNSource の設定として UPN 属性を選択できず、例えば mail 属性などを選択される場合もありますが、このような [UPNSource として UPN 属性以外を選択する] 構成を一般的に [(UPN 以外の属性を UPN の代わりに指定する) 代替 ID 構成] と呼びます。</p>
 <p>AADC 構成ウィザードにて、SourceAnchor と UPNSource それぞれの設定値を選択する画面を以下にご紹介します。</p>
 <h4 id="SourceAnchor-1"><a href="#SourceAnchor-1" class="headerlink" title="SourceAnchor"></a>SourceAnchor</h4><p><img src="/blog/azure-active-directory-connect/basic-points-directory-synchronization/select-sourceanchor.jpg"></p>
