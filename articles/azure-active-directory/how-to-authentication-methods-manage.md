@@ -93,20 +93,16 @@ MFA で利用可能な認証方法の設定について確認します。
 
 1. Azure Portal (https://portal.azure.com) > [Microsoft Entra ID] > [ユーザー] > [ユーザーごとの MFA] に移動します。
 
-
-   
-   ![](./how-to-authentication-methods-manage/legacy-mfa1.png)
+   ![](./how-to-authentication-methods-manage/legacy-mfa-1.png)
 
 2. [サービス設定] に移動します。
-   
 
-
-   ![](./how-to-authentication-methods-manage/legacy-mfa2.png)
+   ![](./how-to-authentication-methods-manage/legacy-mfa-2.png)
 
 3. [検証オプション] 項目からどの項目にチェックが入っているかを控えます。これがレガシー MFA ポリシーの設定です。
    
+   ![](./how-to-authentication-methods-manage/legacy-mfa-3.png)
 
-   ![](how-to-authentication-methods-manage/legacy-mfa3.png)
 
 上記のスクリーンショットでは、ユーザーが利用可能な MFA の方法として、3 つがチェックされていることがわかります。これは、ユーザーが MFA を要求された際に、これらいずれかの方法を利用して (登録済みであれば) 認証を行えるということを意味します。
 
@@ -127,7 +123,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 新しい認証方法ポリシーについては、Azure Portal (https://portal.azure.com) > [Microsoft Entra ID] > [セキュリティ] > [認証方法] > [ポリシー] から確認します。
 
-   ![](./how-to-authentication-methods-manage/new1.png)
+   ![](./how-to-authentication-methods-manage/new-1.png)
 
 既定ではほとんどの設定の有効状態が [いいえ] となっているはずです。
 
@@ -141,7 +137,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 2. [移行の状態] の状態の右側にある [変更] を選択します。
       
-   ![](how-to-authentication-methods-manage/new2.png)
+   ![](how-to-authentication-methods-manage/new-2.png)
 
 3. 画面右に表示される項目から、現在は [移行前] または [移行が進行中] の状態にあることを確認します。
 
@@ -177,7 +173,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 ### レガシー MFA ポリシーの認証方法ポリシーへの移行
 
-それでは、まずレガシー MFA ポリシーの設定内容を認証方法ポリシーに設定する作業を開始しましょう。下表を参照し、[1. 開始する前の確認事項](#1-開始する前の確認事項) で確認した レガシー MFA ポリシーの設定内容に対応する認証方法ポリシーを有効にします。
+それでは、まずレガシー MFA ポリシーの設定内容を認証方法ポリシーに設定する作業を開始しましょう。下表を参照し、[B-1. 開始する前の確認事項](#B-1-開始する前の確認事項) で確認した レガシー MFA ポリシーの設定内容に対応する認証方法ポリシーを有効にします。
 
 |レガシー MFA ポリシー | 対応する認証方法ポリシー |
 |---|---|
@@ -231,11 +227,6 @@ MFA で利用可能な認証方法の設定について確認します。
 
 ![](how-to-authentication-methods-manage/after-migration.png)
 
-[移行が完了済み] に変更すると、レガシー ポリシーについては以下のような表示となり、新しい認証方法ポリシーによって管理されていることが明記されます。
-
-![\[移行が完了済み\] に移行後のレガシー MFA ポリシー (\[検証オプション\])](./how-to-authentication-methods-manage/mfa-after.png)
-
-![\[移行が完了済み\] に移行後のレガシー SSPR ポリシー (\[パスワード リセット\] > \[認証方法\])](how-to-authentication-methods-manage/sspr-after.png)
 [移行が完了済み] になりましたら、一連の移行作業はすべて完了です。今後はレガシー ポリシーではなく、新しい認証ポリシーの画面にて認証方法の構成を実施ください。
 
 ## 参考: 各認証方法の設定の詳細
@@ -383,6 +374,7 @@ MFA で利用可能な認証方法の設定について確認します。
 
 **A7.** 
 比較的新しく作成されたテナントでは、以下の画像のように、移行の管理の状態がない場合がございます。こちらは [移行が完了済み] のステータスと同じものとご認識ください。移行対応の必要はございません。
+![](./how-to-authentication-methods-manage/migration-state-2.png)
 
 **Q8.** 
 これまで MFA の認証方法としてのみ SMS を利用しています。認証方法ポリシーに移行後も、SMS のみを使えるようにするにはどのようにすればよいでしょうか。
