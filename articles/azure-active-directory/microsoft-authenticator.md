@@ -89,8 +89,7 @@ MFA を設定しないよりは安全ですが、SMS や音声通話は最も広
 ### Better：ソフトウェア OATH トークンによる MFA
 
 Microsoft Authenticator アプリは、OATH トークン（ワンタイムパスワード）としても利用可能です。この方式では、アプリに表示される 6 桁の「ワンタイム パスワード コード」をサインイン画面に入力することで認証を完了します。
-<img src="./microsoft-authenticator/blog3_otp1.png" width="50%">
-
+![画像3](./microsoft-authenticator/blog3_otp1.png)
 
 この方式は、Microsoft Authenticator アプリ側の通信を伴わないため、Microsoft Authenticator アプリを利用している端末がオフライン環境であっても使用できるという利点があります。これにより、インターネット接続が不安定な状況でも安定した認証が可能となります。ただし、この方法はフィッシング耐性がありませんので、プッシュ通知やパスワードレス認証が利用可能であれば、この方法は利用しないことがおすすめです。
 
@@ -131,4 +130,5 @@ Microsoft Authenticator アプリは、プッシュ通知や OATH トークン�
 
 SMS や音声通話による認証をご利用中の方は、ぜひこの機会に Microsoft Authenticator アプリの導入をご検討ください。  
 パスキーなどのパスワードレス認証も活用し、より安全にアカウントを保護していきましょう。
+
 
