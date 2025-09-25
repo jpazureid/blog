@@ -1,5 +1,5 @@
 ---
-title: " Entra ID 初学者向けシリーズ 第 4 弾 - Microsoft Authenticator アプリ入門 "
+title: "Entra ID 初学者向けシリーズ 第 4 弾 - Microsoft Authenticator アプリ入門"
 date: 2025-09-25 09:00
 tags:
     - Microsoft Entra
@@ -126,3 +126,4 @@ Microsoft Authenticator アプリは、認証時にパスワードを利用し�
 MFA の導入は、現代のセキュリティ対策において不可欠です。Microsoft Authenticator アプリは、SMS や音声通話よりも安全な認証方法であり、さらに数値一致やパスワードレス認証、パスキー対応など、さまざまな攻撃に対応して進化を続けています。
 
 SMS や音声通話による認証をご利用中の方は、ぜひこの機会に Microsoft Authenticator アプリの導入をご検討ください。パスキーなどのパスワードレス認証も活用し、より安全にアカウントを保護していきましょう。
+
