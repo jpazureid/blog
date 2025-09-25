@@ -44,7 +44,7 @@ Microsoft Authenticator アプリは、Microsoft が提供している認証用�
 
 認証方式にはさまざまな種類があり、Microsoft は以下のようにそれをレベル分けしています。
 
-![](./microsoft-authenticator/blog1.png)
+![](./starter-series-microsoft-authenticator/blog1.png)
 
 - **Good** : SMS や音声通話など  
 - **Better** : Microsoft Authenticator アプリのプッシュ通知、ソフトウェアトークン OTP など  
@@ -81,7 +81,7 @@ SMS や音声通話を MFA で利用されているお客様に置かれまし�
 
 例えば、ユーザーが画面の前にいない状態で、見知らぬ MFA 要求がスマートフォンに通知されたとしても、ユーザーは正しい数字を知らないため、通知に応答することができません。またユーザーが PC の画面の前にいたとしても、サインインしようとしているアプリとは異なるアプリ名が Microsoft Authenticator アプリに表示されていたり、ユーザーが存在しない場所 (外国など) が Microsoft Authenticator アプリに表示されていたりする場合は、それが自分自身の意図したサインインではないということに気づくことができます。これにより、ユーザーがフィッシングに気づきやすくなります。
 
-![](./microsoft-authenticator/blog2_push.png)
+![](./starter-series-microsoft-authenticator/blog2_push.png)
 
 プッシュ通知による MFA は、Microsoft が多くのお客様に推奨している方法であり、まだパスワードのみの認証を利用しているお客様や、電話ベースの MFA を利用しているお客様はぜひこのプッシュ通知による MFA をご検討ください。繰り返しとなりますが、Microsoft Authenticator アプリは私物デバイスにインストールしても問題ありません。仕事用デバイスでも、私物デバイスにでも、同等のセキュリティが提供されますので是非お手元のデバイスでのご利用を検討ください。
 
@@ -89,11 +89,11 @@ SMS や音声通話を MFA で利用されているお客様に置かれまし�
 
 Microsoft Authenticator アプリは、OATH トークン (ワンタイム パスワードの生成器) としても利用可能です。この方式では、アプリに表示される 6 桁の「ワンタイム パスワード コード」をサインイン画面に入力することで認証を完了します。
 
-![](./microsoft-authenticator/blog3_otp1.png)
+![](./starter-series-microsoft-authenticator/blog3_otp1.png)
 
 この方式は、Microsoft Authenticator アプリ側の通信を伴わないため、Microsoft Authenticator アプリを利用している端末がオフライン環境であっても使用できるという利点があります。これにより、インターネット接続が不安定な状況でも安定した認証が可能となります。ただし、この方法はフィッシングに対する対策がありませんので、プッシュ通知やパスワードレス認証が利用可能であれば、この方法は利用しないことがおすすめです。
 
-![](./microsoft-authenticator/blog4_otp2.png)
+![](./starter-series-microsoft-authenticator/blog4_otp2.png)
 
 ### Best: プッシュ通知によるパスワードレス認証
 
@@ -101,23 +101,23 @@ Microsoft Authenticator アプリは、認証時にパスワードを利用し�
 
 このプッシュ通知によるパスワードレス認証では、ユーザー名を入力した後にパスワードを打たずに Microsoft Authenticator アプリにプッシュ通知が届きます。アプリ側に表示された番号を入力し、承認した後、PIN や生体認証 (指紋や顔) を使ってデバイスの所有者を確認します。プッシュ通知による MFA と比較して、パスワードを入力することなく認証を完了する点が異なります。パスワードの入力を必要としないことで、利便性を向上させながらセキュリティも改善できます。この方式を利用するには、Microsoft Authenticator アプリがインストールされたデバイスを事前に Entra ID に登録しておく必要があります。
 
-![](./microsoft-authenticator/blog5_pwdlesspush.png)
+![](./starter-series-microsoft-authenticator/blog5_pwdlesspush.png)
 
 ### Best: パスキーによるパスワードレス認証 (最も推奨されています)
 
 この方法が現在最もセキュリティが高く推奨されている認証方法です。Microsoft Authenticator アプリは「パスキー (Passkey)」による認証にも対応しています。
 
-この方式では、プッシュ通知が Microsoft Authenticator アプリに来ることはなく、番号の入力も不要です。Microsoft Authetnicator アプリがデバイスにインストールされており、パスキーが構成されていること、そのデバイスに構成された PIN や生体認証を突破するという二つの要素で認証が完了します。パスキーはフィッシング耐性に優れており、最も推奨される認証方式です。
+この方式では、プッシュ通知が Microsoft Authenticator アプリに来ることはなく、番号の入力も不要です。Microsoft Authetnicator アプリがデバイスにインストールされており、パスキーが構成されていること、そのデバイスに構成された PIN や生体認証を行うという二つの要素で認証が完了します。パスキーはフィッシング耐性に優れており、最も推奨される認証方式です。
 
 [Android および iOS デバイス用 Authenticator のパスキーを使用してサインインする - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-sign-in-passkey-authenticator?tabs=iOS)
 
 別のデバイス (PC など) でサインインするとき:
 
-![](./microsoft-authenticator/blog6_passkey1.png)
+![](./starter-series-microsoft-authenticator/blog6_passkey1.png)
  
 パスキーを登録したモバイル デバイス上でサインインするとき:
 
-![](./microsoft-authenticator/blog7_passkey2.png)
+![](./starter-series-microsoft-authenticator/blog7_passkey2.png)
 
 ## まとめ
 
