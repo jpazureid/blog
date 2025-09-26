@@ -1,5 +1,5 @@
 ---
-title: "Entra ID 初学者向けシリーズ 第 4 弾 - Microsoft Authenticator アプリ入門"
+title: "Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門"
 date: 2025-09-25 09:00
 tags:
     - Microsoft Entra
@@ -8,11 +8,11 @@ tags:
     - Microsoft Authenticator
 ---
 
-# Entra ID 初学者向けシリーズ 第 4 弾 - Microsoft Authenticator アプリ入門
+# Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門
 
 こんにちは。Azure Identity サポート チームの 喜多 です。  
 
-Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 4 弾として、「Microsoft Authenticator アプリ入門」をお届けします。
+Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Microsoft Authenticator アプリ入門」をお届けします。
 
 **本記事の対象者**
 
@@ -30,7 +30,7 @@ MFA の導入は、現代のセキュリティ対策において不可欠です�
 
 Microsoft Authenticator アプリは、Microsoft が提供している認証用のアプリです。Microsoft Entra ID や Microsoft アカウントを利用しているお客様は、まずそのサービスの利用にあたりサインインが必要になります。このサインインの体験をよりスムーズかつ安全にするために Microsoft Authenticator アプリが開発されました。Microsoft Authenticator アプリはサインインの流れの中で、特に多要素認証 (MFA) をより簡単かつ安全にするためにデザインされています。
 
-ここで、ご存じかとは思いますが、MFA とは、異なる認証要素を複数組み合わせて本人確認を行う仕組みです。たとえば、パスワード (知識の要素) に加えて、スマートフォンの通知やワンタイム パスワード (所持の要素) などを用いることで、サインイン時に複数の認証要素を提示するよう求めることで、単一の要素 (パスワード) だけの場合よりもセキュリティを強化することが可能です。
+ここで、ご存じかとは思いますが、MFA とは、異なる認証要素を複数組み合わせて本人確認を行う仕組みです。例えば、パスワード (知識の要素) に加えて、スマートフォンの通知やワンタイム パスワード (所持の要素) などを用いて、サインイン時に複数の認証要素を提示するよう求めることで、単一の要素 (パスワード) だけの場合よりもセキュリティを強化することが可能です。
 
 パスワードはどれほど強固に設定しても、フィッシングや情報漏洩などによりパスワードが第三者に知られてしまうリスクを排除することはできません。しかし MFA を導入することで、仮にパスワードが漏洩し一つの要素が突破されたとしても、攻撃者は追加の認証要素の認証を満たすことができないため、不正アクセスのリスクを大幅に低減できます。例えば、ユーザーが MFA の要素として Microsoft Authenticator アプリを構成していたとします。この場合、ユーザー名とパスワードが悪意のある第三者に知られたとしても、その第三者が Microsoft Authenticator アプリのインストールされたユーザーのデバイスを奪うという状況が同時に起こる可能性は低いと言えます。このため、第三者による不正なサインインを防ぐことが可能です。
 
@@ -46,9 +46,9 @@ Microsoft Authenticator アプリは、Microsoft が提供している認証用�
 
 ![](./starter-series-microsoft-authenticator/blog1.png)
 
-- **Good** : SMS や音声通話など  
-- **Better** : Microsoft Authenticator アプリのプッシュ通知、ソフトウェアトークン OTP など  
-- **Best** : Microsoft Authenticator アプリのパスワードレス サインイン、Windows Hello、FIDO2 セキュリティキー（パスキーなど） 
+- **Good** : SMS や音声通話など
+- **Better** : Microsoft Authenticator アプリのプッシュ通知、ソフトウェアトークン OTP など
+- **Best** : Microsoft Authenticator アプリのパスワードレス サインイン、Windows Hello、FIDO2 セキュリティキー（パスキーなど）
 
 Microsoft Authenticator アプリではいろいろな種類の認証方法を利用でき、Microsoft Authenticator アプリを使用した各認証方式は上記の「Better」および「Best」のレベルに対応しています。Microsoft では、より安全な認証手段として パスワードレス認証 (Best) を推奨していますが、まずは Better な認証方式である Microsoft Authenticator アプリのプッシュ通知をご利用いただくだけでもサインインの安全性を高めることが可能です。
 
