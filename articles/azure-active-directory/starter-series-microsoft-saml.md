@@ -86,7 +86,7 @@ IdP (Entra ID) が SAML 応答を発行した後に、それを送信する先�
 
 **サインオン URL**
 
-SP (Service Provider) によって開始されるシングル サインオン フローにおいて、ユーザーがアプリにサインインするためのサインイン URL を指定します。SP-Initiated の SAML 連携の場合にのみ必要であり、入力しなかった場合は IdP-initiated の SAML フローとして動作します。
+ユーザーがアプリにサインインするためのサインイン URL を指定します。My Apps のダッシュボードから対象の SAML アプリにアクセスする場合、ユーザーはこのサインオン URL に誘導され、SP-initiated の SAML 連携としてアプリにアクセスすることになります。このサインオン URL を入力しなかった場合は My Apps からの当該アプリへのアクセスは IdP-initiated の SAML フローとして動作します。
 
 **リレー状態 (省略可能)**
 
@@ -170,3 +170,4 @@ Microsoft Entra ID 上で SAML 連携を構成する際には、基本的に以�
 
 - [SAML リクエスト / SAML トークンの詳細：シングル サインオン SAML プロトコル - Microsoft identity platform | Microsoft Learn](https://learn.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol)
 - [各アプリと Microsoft Entra ID を統合するためのチュートリアル：Microsoft Entra ID の SaaS アプリ構成ガイド - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
