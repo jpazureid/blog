@@ -12,13 +12,15 @@ tags:
 
 Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面などもあるかと思います。多くの Microsoft Graph PowerShell コマンドの利用には、管理者によるアクセス許可への同意が必要となりますが、対象ユーザーが自身でアクセス許可に同意できない場合には、管理者（クラウド アプリケーション管理者、特権ロール管理者、グローバル管理者 等）の操作により予め特定のユーザーにアクセス許可を付与しておくことが可能です。具体的な操作例を以下にご紹介いたします。
 
+   
+
 ## 操作手順例
 1. PowerShell を開きます。
 2. Connect-MgGraph -Scopes "DelegatedPermissionGrant.ReadWrite.All,Directory.ReadWrite.All" コマンドを実行します。
-コマンドレットが PC 環境にない場合には、以下のコマンドレットを管理者権限にて実行し、Microsoft Graph PowerShell SDK をインストールします。
+コマンドレットが PC 環境にない場合には、以下のコマンドレットを管理者権限にて実行し、Microsoft Graph PowerShell SDK をインストールします。   
 Install-module Microsoft.Graph
-3. サインイン画面が表示された際には、管理者（クラウド アプリケーション管理者、特権ロール管理者、グローバル管理者 等）のユーザー名とパスワードを入力してサインインします。
-※[組織の代理として同意する] はオフのままで問題ありません。
+3. サインイン画面が表示された際には、管理者（クラウド アプリケーション管理者、特権ロール管理者、グローバル管理者 等）のユーザー名とパスワードを入力してサインインします。   
+※[組織の代理として同意する] が表示された場合、こちらはオフのままで問題ありません。
 4. 下記のコマンドを実行します。
 
 ### 事前準備
@@ -61,6 +63,7 @@ Update-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId
 [サインイン レポート中の Microsoft ファースト パーティー アプリケーションを検証する | Microsoft Learn](https://learn.microsoft.com/ja-jp/troubleshoot/entra/entra-id/governance/verify-first-party-apps-sign-in#application-ids-of-microsoft-tenant-owned-applications)
 
 
+   
 ### Graph Explorer のアクセス許可を付与するコマンド例
 ```
 Connect-MgGraph -Scopes "DelegatedPermissionGrant.ReadWrite.All,Directory.ReadWrite.All"
@@ -88,6 +91,7 @@ Update-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId
 ```
 
 
+   
 ## 付与したアクセス許可の削除
 特定のユーザーに対して付与したアクセス許可をすべて削除したい場合には、以下の形式で削除用のコマンドを実行します。
 ```
@@ -97,4 +101,5 @@ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId
 
 一部のアクセス許可を残したい場合には、残したいアクセス許可をすべて指定し、『既にアクセス許可が付与されている場合』の方のコマンドを実行します。   
 ご紹介したコマンドの oAuth2PermissionGrant リソースにつきましては、必要に応じて以下公開情報もご参照ください。   
+
 [oAuth2PermissionGrant リソースの種類 - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)
