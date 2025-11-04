@@ -91,7 +91,7 @@ $OAuth2PermissionGrantId = (Get-MgOauth2PermissionGrant -filter "PrincipalId eq 
 Update-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId -Scope $scopes
 ```
 <br>
-   
+
 ## 付与したアクセス許可の削除
 特定のユーザーに対して付与したアクセス許可をすべて削除したい場合には、以下の形式で削除用のコマンドを実行します。
 ```
@@ -105,4 +105,5 @@ Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId
    
 ご紹介したコマンドの oAuth2PermissionGrant リソースにつきましては、必要に応じて以下公開情報もご参照ください。   
 [oAuth2PermissionGrant リソースの種類 - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)
+
 
