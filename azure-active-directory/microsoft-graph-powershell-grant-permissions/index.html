@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、 Azure Identity サポート チームの三輪です。 Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面などもあるかと思います。多くの Microsoft Graph PowerShell コマンドの利用には、管理者によるアクセス許可への同意が">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2025-10-17T06:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-17T10:30:10.961Z">
+<meta property="article:modified_time" content="2025-11-04T04:48:22.086Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="PowerShell">
 <meta property="article:tag" content="Microsoft Graph">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+18e45299-744c-5c40-aecc-d1454e8069d7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Graph+PowerShell+%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E8%A8%B1%E5%8F%AF%E3%81%AE%E4%BB%98%E4%B8%8E%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-graph-powershell-grant-permissions%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-graph-powershell-grant-permissions.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-graph-powershell-grant-permissions.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/" data-id="cmgupjnmq00hp0nnxfxsi00mx" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/" data-id="cmhk39f6j00hp0np4geaoeuy7" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -183,9 +183,8 @@
 <h2 id="Graph-Explorer-のアクセス許可付与"><a href="#Graph-Explorer-のアクセス許可付与" class="headerlink" title="Graph Explorer のアクセス許可付与"></a>Graph Explorer のアクセス許可付与</h2><p>尚、Graph Explorer のアクセス許可を管理したい場合には、Graph Explorer のアプリケーション識別子（ de8bc8b5-d9f9-48b1-a8ad-b748da725064 ）を TargetServicePrincipalId  のフィルター部分で指定します。<br>ご参考までに、アプリケーション識別子は以下の公開情報に記載の通りです。<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/troubleshoot/entra/entra-id/governance/verify-first-party-apps-sign-in#application-ids-of-microsoft-tenant-owned-applications">サインイン レポート中の Microsoft ファースト パーティー アプリケーションを検証する | Microsoft Learn</a></p>
 <h3 id="Graph-Explorer-のアクセス許可を付与するコマンド例"><a href="#Graph-Explorer-のアクセス許可を付与するコマンド例" class="headerlink" title="Graph Explorer のアクセス許可を付与するコマンド例"></a>Graph Explorer のアクセス許可を付与するコマンド例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Connect-MgGraph -Scopes &quot;DelegatedPermissionGrant.ReadWrite.All,Directory.ReadWrite.All&quot;</span><br><span class="line"></span><br><span class="line">#付与したいアクセス許可を指定 (User.ReadWrite.All と Group.ReadWrite.All の 2 つを付与する例)</span><br><span class="line">$scopes = &quot;User.ReadWrite.All Group.ReadWrite.All&quot;</span><br><span class="line"></span><br><span class="line">#対象ユーザーを指定</span><br><span class="line">$targetUserObjectId = &quot;&lt;アクセス許可を付与したいユーザーのオブジェクトID&gt;&quot;</span><br><span class="line"></span><br><span class="line">#アプリの指定</span><br><span class="line">$TargetServicePrincipalId = (Get-MgServicePrincipal -Filter &quot;appId eq &#x27;de8bc8b5-d9f9-48b1-a8ad-b748da725064&#x27;&quot;).Id</span><br><span class="line">$GraphResourceId = (Get-MgServicePrincipal -Filter &quot;appId eq &#x27;00000003-0000-0000-c000-000000000000&#x27;&quot;).Id</span><br><span class="line"> </span><br><span class="line">#初めてアクセス許可を付与する場合</span><br><span class="line">New-MgOauth2PermissionGrant -ClientId $TargetServicePrincipalId -ConsentType &quot;Principal&quot; -PrincipalId $targetUserObjectId -ResourceId $GraphResourceId -Scope $scopes</span><br><span class="line"></span><br><span class="line">#付与されているアクセス許可の確認</span><br><span class="line">Get-MgOauth2PermissionGrant -filter &quot;PrincipalId eq &#x27;$targetUserObjectId&#x27; and ResourceId eq &#x27;$GraphResourceId&#x27; and ClientId eq &#x27;$TargetServicePrincipalId&#x27;&quot; |fl</span><br><span class="line"></span><br><span class="line">#既に Graph Explorer のアクセス許可がユーザーに付与されている場合、2 回目以降は New-MgOauth2PermissionGrant の代わりに以下のコマンドをご利用ください。</span><br><span class="line">#以前付与していたアクセス許可は引き継がれない点にもご注意ください。</span><br><span class="line">$OAuth2PermissionGrantId = (Get-MgOauth2PermissionGrant -filter &quot;PrincipalId eq &#x27;$targetUserObjectId&#x27; and ResourceId eq &#x27;$GraphResourceId&#x27; and ClientId eq &#x27;$TargetServicePrincipalId&#x27;&quot;).Id</span><br><span class="line">Update-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId -Scope $scopes</span><br></pre></td></tr></table></figure>
 <br>
-   
-## 付与したアクセス許可の削除
-特定のユーザーに対して付与したアクセス許可をすべて削除したい場合には、以下の形式で削除用のコマンドを実行します。
+
+<h2 id="付与したアクセス許可の削除"><a href="#付与したアクセス許可の削除" class="headerlink" title="付与したアクセス許可の削除"></a>付与したアクセス許可の削除</h2><p>特定のユーザーに対して付与したアクセス許可をすべて削除したい場合には、以下の形式で削除用のコマンドを実行します。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$OAuth2PermissionGrantId = (Get-MgOauth2PermissionGrant -filter &quot;PrincipalId eq &#x27;$targetUserObjectId&#x27; and ResourceId eq &#x27;$GraphResourceId&#x27; and ClientId eq &#x27;$TargetServicePrincipalId&#x27;&quot;).Id</span><br><span class="line">Remove-MgOauth2PermissionGrant -OAuth2PermissionGrantId $OAuth2PermissionGrantId</span><br></pre></td></tr></table></figure>
 
 <p>一部のアクセス許可を残したい場合には、残したいアクセス許可をすべて指定し、『既にアクセス許可が付与されている場合』の方のコマンドを実行します。   </p>

@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch031.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch032.jpg">
 <meta property="article:published_time" content="2019-10-13T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-17T10:30:10.170Z">
+<meta property="article:modified_time" content="2025-11-04T04:48:21.298Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8b80e616-3530-5c26-911b-cbae1ac6f472%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%8F%E3%83%BC%E3%83%89%E3%83%9E%E3%83%83%E3%83%81%E3%81%AB%E3%82%88%E3%82%8B%E5%90%8C%E6%9C%9F%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E6%96%B9%E6%B3%95+%28AD+%E3%83%95%E3%82%A9%E3%83%AC%E3%82%B9%E3%83%88%E7%A7%BB%E8%A1%8C+%E7%B7%A8%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Faadc_hardmatch%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Faadc_hardmatch.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Faadc_hardmatch.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc_hardmatch/" data-id="cmgupjnh200160nnxarajhzx7" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc_hardmatch/" data-id="cmhk39f0t00160np4100deyjf" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -204,7 +204,7 @@
 <p>② [現在の構成を表示] を選択し、[次へ] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch003.jpg">  </p>
 <p>③ [ソースアンカー] に属性が表示されます。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch004.jpg">  </p>
 <p>ソースアンカーが objectGUID に設定されている場合は、事前に mS-DS-ConsistencyGuid に変更しておく必要があります。  </p>
-<p><strong>・なぜ変更する必要があるの？</strong><br>objectGUID はオブジェクト (ここではユーザーのこと) ごとに一意の変更不可の値で、別のユーザー (上図でいうと移行先のフォレストの <a href="mailto:&#x31;&#50;&#51;&#52;&#53;&#x40;&#x63;&#111;&#110;&#116;&#x6f;&#115;&#x6f;&#x2e;&#99;&#x6f;&#x6d;">&#x31;&#50;&#51;&#52;&#53;&#x40;&#x63;&#111;&#110;&#116;&#x6f;&#115;&#x6f;&#x2e;&#99;&#x6f;&#x6d;</a>) には同じ値を設定できません。<br>よって、ハードマッチで切り替えを行うことができません。(ハードマッチについては後述します。)<br>一方、mS-DS-ConsistencyGUID 属性値は変更が可能なので、移行元の旧同期ユーザー (上図で言うと <a href="mailto:&#49;&#50;&#51;&#x34;&#53;&#64;&#x63;&#111;&#110;&#116;&#x6f;&#x73;&#x6f;&#x2e;&#x6c;&#111;&#99;&#97;&#108;">&#49;&#50;&#51;&#x34;&#53;&#64;&#x63;&#111;&#110;&#116;&#x6f;&#x73;&#x6f;&#x2e;&#x6c;&#111;&#99;&#97;&#108;</a>) で使用している値と同じ値を移行先の新同期ユーザー (上図で言うと移行先のフォレストの <a href="mailto:&#x31;&#50;&#x33;&#x34;&#x35;&#64;&#x63;&#x6f;&#x6e;&#116;&#111;&#x73;&#111;&#x2e;&#99;&#x6f;&#109;">&#x31;&#50;&#x33;&#x34;&#x35;&#64;&#x63;&#x6f;&#x6e;&#116;&#111;&#x73;&#111;&#x2e;&#99;&#x6f;&#109;</a>) でも保持させることができるため、ハードマッチによる切り替えを行うことができます。  </p>
+<p><strong>・なぜ変更する必要があるの？</strong><br>objectGUID はオブジェクト (ここではユーザーのこと) ごとに一意の変更不可の値で、別のユーザー (上図でいうと移行先のフォレストの <a href="mailto:&#49;&#50;&#51;&#x34;&#53;&#64;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#99;&#111;&#109;">&#49;&#50;&#51;&#x34;&#53;&#64;&#x63;&#111;&#x6e;&#116;&#x6f;&#115;&#111;&#46;&#99;&#111;&#109;</a>) には同じ値を設定できません。<br>よって、ハードマッチで切り替えを行うことができません。(ハードマッチについては後述します。)<br>一方、mS-DS-ConsistencyGUID 属性値は変更が可能なので、移行元の旧同期ユーザー (上図で言うと <a href="mailto:&#x31;&#50;&#x33;&#52;&#x35;&#x40;&#99;&#x6f;&#110;&#116;&#111;&#x73;&#x6f;&#x2e;&#x6c;&#x6f;&#99;&#97;&#x6c;">&#x31;&#50;&#x33;&#52;&#x35;&#x40;&#99;&#x6f;&#110;&#116;&#111;&#x73;&#x6f;&#x2e;&#x6c;&#x6f;&#99;&#97;&#x6c;</a>) で使用している値と同じ値を移行先の新同期ユーザー (上図で言うと移行先のフォレストの <a href="mailto:&#x31;&#x32;&#x33;&#52;&#x35;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#111;&#46;&#x63;&#x6f;&#x6d;">&#x31;&#x32;&#x33;&#52;&#x35;&#64;&#99;&#111;&#110;&#x74;&#x6f;&#115;&#111;&#46;&#x63;&#x6f;&#x6d;</a>) でも保持させることができるため、ハードマッチによる切り替えを行うことができます。  </p>
 <p><strong>・ソースアンカーを変更するリスクは？</strong><br>ソースアンカーを変更する場合のリスクを気にされる方も多いと思いますが、AADC は通常 objectGUID の値を Base64 でエンコードし、初回の同期処理で Azure AD の ImmutableID の値にセットします。<br>つまり、ソースアンカーを mS-DS-ConsistencyGuid に変更しても、ImmutableID の値は元の objectGUID をエンコードした値のまま変わりません。<br>したがって、同じ ImmutableID の値が mS-DS-ConsistencyGuid に書き戻されるため、既存の同期ユーザーが同期できなくなるといった影響は生じません。</p>
 <h3 id="ソースアンカーの変更"><a href="#ソースアンカーの変更" class="headerlink" title="ソースアンカーの変更"></a>ソースアンカーの変更</h3><p>では、以下の手順でソースアンカーを mS-DS-ConsistencyGuid に変更します。<br>既にソースアンカーを mS-DS-ConsistencyGuid または objectGUID 以外に設定されている方は、この項目はスキップして次に進んでください。  </p>
 <p>① 構成ウィザードを起動し、 [追加のタスク] で [ソースアンカーの構成] を選択し、[次へ] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch005.jpg">  </p>
@@ -229,11 +229,11 @@
 <h3 id="Step-３：-ソースアンカーの値がコピーされていることを確認する"><a href="#Step-３：-ソースアンカーの値がコピーされていることを確認する" class="headerlink" title="Step ３： ソースアンカーの値がコピーされていることを確認する"></a>Step ３： ソースアンカーの値がコピーされていることを確認する</h3><p>既存の AD フォレストのユーザーの mS-DS-ConsistencyGuid の値が、新 AD フォレストのユーザーの mS-DS-ConsistencyGuid にコピーされていることを確認します。  </p>
 <p>もしコピーができていない場合は、以下の手順で値をコピーします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch017.jpg">  </p>
 <p>① contoso.local の サーバー マネージャーで、[ツール] ＞ [Active Directory ユーザーとコンピューター] を開きます。  </p>
-<p>②  同期対象のユーザー (<a href="mailto:&#49;&#50;&#51;&#52;&#53;&#64;&#99;&#x6f;&#110;&#116;&#111;&#115;&#x6f;&#46;&#x6c;&#111;&#99;&#97;&#108;">&#49;&#50;&#51;&#52;&#53;&#64;&#99;&#x6f;&#110;&#116;&#111;&#115;&#x6f;&#46;&#x6c;&#111;&#99;&#97;&#108;</a>) の[属性エディター] で、 mS-DS-ConsistencyGuid を選択し、[編集] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch018.jpg">  </p>
+<p>②  同期対象のユーザー (<a href="mailto:&#x31;&#50;&#x33;&#x34;&#53;&#64;&#99;&#111;&#110;&#116;&#111;&#x73;&#111;&#x2e;&#x6c;&#x6f;&#99;&#97;&#x6c;">&#x31;&#50;&#x33;&#x34;&#53;&#64;&#99;&#111;&#110;&#116;&#111;&#x73;&#111;&#x2e;&#x6c;&#x6f;&#99;&#97;&#x6c;</a>) の[属性エディター] で、 mS-DS-ConsistencyGuid を選択し、[編集] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch018.jpg">  </p>
 <p>③ 値をコピーし、[OK] をクリックします。  </p>
 <p>④ メモ帳にコピーした値を貼り付けます。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch019.jpg">  </p>
 <p>⑤  移行先フォレストの contoso.com の サーバー マネージャーで、[ツール] ＞ [Active Directory ユーザーとコンピューター] を開きます。  </p>
-<p>⑥ 同期対象のユーザー (<a href="mailto:&#49;&#x32;&#x33;&#52;&#x35;&#64;&#99;&#x6f;&#110;&#116;&#111;&#x73;&#111;&#x2e;&#x63;&#x6f;&#109;">&#49;&#x32;&#x33;&#52;&#x35;&#64;&#99;&#x6f;&#110;&#116;&#111;&#x73;&#111;&#x2e;&#x63;&#x6f;&#109;</a>) の[属性エディター] で、 mS-DS-ConsistencyGuid を選択し、[編集] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch020.jpg">  </p>
+<p>⑥ 同期対象のユーザー (<a href="mailto:&#49;&#x32;&#51;&#52;&#x35;&#64;&#x63;&#111;&#110;&#x74;&#x6f;&#x73;&#111;&#46;&#x63;&#111;&#109;">&#49;&#x32;&#51;&#52;&#x35;&#64;&#x63;&#111;&#110;&#x74;&#x6f;&#x73;&#111;&#46;&#x63;&#111;&#109;</a>) の[属性エディター] で、 mS-DS-ConsistencyGuid を選択し、[編集] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch020.jpg">  </p>
 <p>⑦ 値を入れ、[OK] をクリックします。<br><img src="/blog/azure-active-directory-connect/aadc_hardmatch/aadc_hardmatch021.jpg">  </p>
 <p>⑧ [OK] を押して、プロパティ画面を閉じます。  </p>
 <p>すべての同期ユーザーが同様に値がコピーされていることを確認します。  </p>
