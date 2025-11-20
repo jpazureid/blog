@@ -19,7 +19,8 @@ tags:
 
 ## Microsoft Entra ID で基本的に利用されるエンドポイント
 
-まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、[Office 365 の URL と IP アドレスの範囲](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) に記載されている ID 56 , ID 59 , ID 97 そして ID 125 になります。こちらは Microsoft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。また、Windows を利用される場合は ctldl.windowsupdate.com および *.windowsupdate.com への許可も実施ください。
+まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、[Office 365 の URL と IP アドレスの範囲](https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online) に記載されている ID 56 , ID 59 , ID 97 そして ID 125 になります。こちらは Microsoft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。また、Windows を利用される場合は ctldl.windowsupdate.com および *.windowsupdate.com への許可も実施ください。
+
 
 ## Microsoft Entra ID でデバイス管理に利用するエンドポイント
 
@@ -52,10 +53,11 @@ Microsoft Entra Private Access 用にアプリ プロキシ コネクタにつ�
 
 ## Azure ポータルに利用されるエンドポイント
 
-Microsoft Entra ID の認証ではないですが、Azure ポータルに必要となるエンドポイントは、[ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する](https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud) のページに記載されているエンドポイントを許可ください。
+Microsoft Entra ID の認証ではないですが、Azure ポータルに必要となるエンドポイントは、[ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する](https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud) のページに記載されているエンドポイントを許可ください。また、Microsoft Entra 管理センターで必要となるエンドポイントについては [Microsoft Entra ID に関してよく寄せられる質問](https://learn.microsoft.com/ja-jp/entra/fundamentals/faq) の「ファイアウォールまたはプロキシ サーバーで Microsoft Entra 管理センターの URL を許可するにはどうすればよいですか?」に記載されております。
 
 ## Microsoft Entra の証明書ベースの認証 (CBA) に利用されるエンドポイント
 
 Microsoft Entra の証明書ベースの認証 (CBA) をご利用いただいている場合は、[Microsoft Entra の証明書ベースの認証に関する技術的な詳細情報](https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-certificate-based-authentication-technical-deep-dive#how-does-microsoft-entra-certificate-based-authentication-work) に記載されているエンドポイントを許可ください。
 
 今後、Microsoft Entra ID をご利用いただく際に本ブログの内容が少しでも参考となりますと幸いです。
+
