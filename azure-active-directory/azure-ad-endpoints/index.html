@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの大庭です。 今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL&#x2F;IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能によってアク">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-12-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-04T04:48:21.591Z">
+<meta property="article:modified_time" content="2025-11-21T07:41:02.343Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Entra ID">
 <meta property="article:tag" content="Network">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ab646d0a-0022-58ef-a0b0-c1174a2f2d47%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+ID+%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E9%80%9A%E4%BF%A1%E5%85%88%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-endpoints%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-endpoints.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-endpoints.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-endpoints/" data-id="cmhk39f2p006k0np406y8bpe5" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-endpoints/" data-id="cmi8jwyz1006l0nlq8th3bzya" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -173,7 +173,7 @@
 <h2 id="Microsoft-Entra-プロビジョニング-サービスを利用する-IP-アドレスの範囲"><a href="#Microsoft-Entra-プロビジョニング-サービスを利用する-IP-アドレスの範囲" class="headerlink" title="Microsoft Entra プロビジョニング サービスを利用する IP アドレスの範囲"></a>Microsoft Entra プロビジョニング サービスを利用する IP アドレスの範囲</h2><p>Microsoft Entra プロビジョニング サービスを利用する場合は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges">チュートリアル: Microsoft Entra ID の SCIM エンドポイントのプロビジョニング</a> に記載されている IP アドレスの範囲を参照ください。</p>
 <h2 id="Microsoft-Private-Access-用にアプリケーション-プロキシ-コネクタにて利用されるエンドポイント"><a href="#Microsoft-Private-Access-用にアプリケーション-プロキシ-コネクタにて利用されるエンドポイント" class="headerlink" title="Microsoft Private Access 用にアプリケーション プロキシ コネクタにて利用されるエンドポイント"></a>Microsoft Private Access 用にアプリケーション プロキシ コネクタにて利用されるエンドポイント</h2><p>Microsoft Entra Private Access 用にアプリ プロキシ コネクタについては、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls">Microsoft Entra Private Access 用にアプリ プロキシ コネクタを構成する方法
 </a> に記載されているエンドポイントを許可ください。</p>
-<h2 id="Azure-ポータルに利用されるエンドポイント"><a href="#Azure-ポータルに利用されるエンドポイント" class="headerlink" title="Azure ポータルに利用されるエンドポイント"></a>Azure ポータルに利用されるエンドポイント</h2><p>Microsoft Entra ID の認証ではないですが、Azure ポータルに必要となるエンドポイントは、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud">ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する</a> のページに記載されているエンドポイントを許可ください。</p>
+<h2 id="Azure-ポータルに利用されるエンドポイント"><a href="#Azure-ポータルに利用されるエンドポイント" class="headerlink" title="Azure ポータルに利用されるエンドポイント"></a>Azure ポータルに利用されるエンドポイント</h2><p>Microsoft Entra ID の認証ではないですが、Azure ポータルに必要となるエンドポイントは、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud">ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する</a> のページに記載されているエンドポイントを許可ください。また、Microsoft Entra 管理センターで必要となるエンドポイントについては <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/fundamentals/faq">Microsoft Entra ID に関してよく寄せられる質問</a> の「ファイアウォールまたはプロキシ サーバーで Microsoft Entra 管理センターの URL を許可するにはどうすればよいですか?」に記載されております。</p>
 <h2 id="Microsoft-Entra-の証明書ベースの認証-CBA-に利用されるエンドポイント"><a href="#Microsoft-Entra-の証明書ベースの認証-CBA-に利用されるエンドポイント" class="headerlink" title="Microsoft Entra の証明書ベースの認証 (CBA) に利用されるエンドポイント"></a>Microsoft Entra の証明書ベースの認証 (CBA) に利用されるエンドポイント</h2><p>Microsoft Entra の証明書ベースの認証 (CBA) をご利用いただいている場合は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-certificate-based-authentication-technical-deep-dive#how-does-microsoft-entra-certificate-based-authentication-work">Microsoft Entra の証明書ベースの認証に関する技術的な詳細情報</a> に記載されているエンドポイントを許可ください。</p>
 <p>今後、Microsoft Entra ID をご利用いただく際に本ブログの内容が少しでも参考となりますと幸いです。</p>
 
