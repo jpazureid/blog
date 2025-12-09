@@ -1,9 +1,9 @@
 ---
-title: クラウド ファーストの ID 管理: ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に
+title: クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に
 date: 2025-12-10 15:00
 tags:
-    - Microsoft Entra
-    - US Identity Blog
+  - Microsoft Entra
+  - US Identity Blog
 ---
 
 # クラウド ファーストの ID 管理: ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に
@@ -56,3 +56,4 @@ Active Directory (AD) とクラウドの両方で ID を管理する煩雑さは
 また、Micorosft Ignite に直接参加するかオンラインで参加いただき、ディープダイブやデモ、ディスカッションなど Microsoft Entra ID に関わる全てについて是非エキスパートとつながりをお持ちください。
 
 Joe Dadzie – VP Product Management
+
