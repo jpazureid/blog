@@ -9,6 +9,8 @@ tags:
 # クラウド ファーストの ID 管理: ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に
 
 こんにちは、Azure Identity サポート チームの三輪です。
+
+
 本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された [Driving cloud-first identity: User SOA is now Public Preview and Group SOA is Generally Available](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/driving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen/4462425) の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。
 
 ----
@@ -20,6 +22,7 @@ tags:
 - グループの SOA 変換が一般公開されました。
 - ユーザーの SOA 変換がパブリック プレビューとなりました。
 
+<br>
 
 ## このアップデートが重要な理由
 Active Directory (AD) とクラウドの両方で ID を管理する煩雑さは長年の悩みの種でした。以下の新しい機能により、その煩わしさが解消されます。
@@ -28,6 +31,7 @@ Active Directory (AD) とクラウドの両方で ID を管理する煩雑さは
     
 これらの機能を組み合わせて利用することで、組織は AD への投資を最小限に抑えるとともに、ライフサイクル管理がよりシンプルになり、ゼロトラストのセキュリティ体制を強化することができます。
 
+<br>
 
 ## シナリオ - ユーザーの SOA とグループの SOA を用いたハイブリッド ID のセキュリティ強化
 とある組織がクラウド ファーストの ID のモデルへ移行しようとしているとしましょう。しかしその組織は依然として重要なオンプレミスのアプリケーションに依存しています。この組織の ID 担当チームは、クラウドへの完全移行を待つ代わりに、まずリスクの高いユーザーの一部をユーザーの SOA 変換を使ってクラウドで編集可能なユーザー ID に変換することにしました。同時に、それらオンプレミスのアプリケーションに関連する AD 上のセキュリティ グループをグループの SOA 変換を利用してクラウドへ移行し、Microsoft Entra ID 上で完全に管理できるようにすることで、セキュリティとガバナンス機能を強化することが可能となりました。
@@ -56,4 +60,5 @@ Active Directory (AD) とクラウドの両方で ID を管理する煩雑さは
 また、Micorosft Ignite に直接参加するかオンラインで参加いただき、ディープダイブやデモ、ディスカッションなど Microsoft Entra ID に関わる全てについて是非エキスパートとつながりをお持ちください。
 
 Joe Dadzie – VP Product Management
+
 
