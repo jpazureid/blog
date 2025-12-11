@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://img.youtube.com/vi/otxp_KIqU4Y/0.jpg">
 <meta property="article:published_time" content="2025-12-10T06:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-11T04:03:45.202Z">
+<meta property="article:modified_time" content="2025-12-11T18:26:02.109Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="US Identity Blog">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+509a8be4-5900-5a72-9a39-5edd394dc53e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89+%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%81%AE+ID+%E7%AE%A1%E7%90%86+-+%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC+SOA+%E3%81%8C%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF+%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%8B%E3%81%A4%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97+SOA+%E3%82%82%E4%B8%80%E8%88%AC%E5%85%AC%E9%96%8B%E3%81%AB%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fdriving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fdriving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fdriving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/driving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen/" data-id="cmj0wykjj00270nnjh6hu56pc" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/driving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen/" data-id="cmj1rrgs900270nmd20qveuqy" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -165,24 +165,20 @@
         <p>こんにちは、Azure Identity サポート チームの三輪です。</p>
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/driving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen/4462425">Driving cloud-first identity: User SOA is now Public Preview and Group SOA is Generally Available</a> の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。</p>
 <hr>
-<h3 id="ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを簡素化し、セキュリティ体制を強化しましょう。"><a href="#ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを簡素化し、セキュリティ体制を強化しましょう。" class="headerlink" title="ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを簡素化し、セキュリティ体制を強化しましょう。"></a>ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを簡素化し、セキュリティ体制を強化しましょう。</h3><p>8 月に、グループの Source of Authority（SOA）変換の機能を使用することで、組織がクラウド上でレガシー グループを管理できるようになりました。この機能により、オンプレミス環境をより簡素化でき、Active Directory（AD）に依存するアプリにもガバナンスを拡張できることを紹介しました。本日、ハイブリッド環境のセキュリティ体制の強化に役立つ以下の 2 つの重要なアップデートを発表いたします。</p>
+<h2 id="ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを省きセキュリティ体制を強化しましょう。"><a href="#ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを省きセキュリティ体制を強化しましょう。" class="headerlink" title="ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを省きセキュリティ体制を強化しましょう。"></a>ユーザーやグループをクラウドでの管理に移行することで、ハイブリッド管理の複雑さを省きセキュリティ体制を強化しましょう。</h2><p>8 月に、グループの Source of Authority（SOA）変換の機能を使用することで、組織がクラウド上でレガシー グループを管理できるようになりました。この機能により、オンプレミス環境をより簡素化でき、Active Directory（AD）に依存するアプリにもガバナンスを拡張できることを紹介しました。本日、ハイブリッド環境のセキュリティ体制の強化に役立つ以下の 2 つの重要なアップデートを発表いたします。</p>
 <ul>
 <li>グループの SOA 変換が一般公開されました。</li>
 <li>ユーザーの SOA 変換がパブリック プレビューとなりました。</li>
 </ul>
-<br>
-
 <h2 id="このアップデートが重要な理由"><a href="#このアップデートが重要な理由" class="headerlink" title="このアップデートが重要な理由"></a>このアップデートが重要な理由</h2><p>Active Directory (AD) とクラウドの両方で ID を管理する煩雑さは長年の悩みの種でした。以下の新しい機能により、その煩わしさが解消されます。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/user-source-of-authority-overview">ユーザーの Source of Authority (SOA)</a> 変換を利用すると、AD から同期されたユーザーをクラウド上で編集可能なオブジェクトに変換することができます。この機能により、組織の運用上の負荷が軽減され、クラウド上でのユーザー管理、条件付きアクセス、MFA、パスワードレス認証などの高度な ID の機能が利用できるようになります。</li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/concept-source-of-authority-overview">グループの Source of Authority(SOA)</a> 変換を利用すると、AD から同期されたセキュリティ グループを Microsoft Entra ID で編集可能なクラウド オブジェクトに変換することができます。また、この機能を利用しながらも、オプションとしてクラウド同期のライトバックの機能を追加で設定することで、オンプレミスのアプリとの互換性を維持することも可能です。グループの SOA では、メールが有効なセキュリティ グループや配布リストをクラウド上の Exchange で管理されるグループに変換することもでき、不要になったグループを AD から削除するのにも役立ちます。</li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/hybrid/concept-source-of-authority-overview">グループの Source of Authority (SOA)</a> 変換を利用すると、AD から同期されたセキュリティ グループを Microsoft Entra ID で編集可能なクラウド オブジェクトに変換することができます。またこの機能を利用しながらも、オプションとしてクラウド同期のライトバックの機能を追加で設定することで、オンプレミスのアプリとの互換性を維持することも可能です。グループの SOA では、メールが有効なセキュリティ グループや配布リストをクラウド上の Exchange で管理されるグループに変換することもでき、不要になったグループを AD から削除するのにも役立ちます。</li>
 </ul>
 <p>これらの機能を組み合わせて利用することで、組織は AD への投資を最小限に抑えるとともに、ライフサイクル管理がよりシンプルになり、ゼロトラストのセキュリティ体制を強化することができます。</p>
-<br>
-
 <h2 id="シナリオ-ユーザーの-SOA-とグループの-SOA-を用いたハイブリッド-ID-のセキュリティ強化"><a href="#シナリオ-ユーザーの-SOA-とグループの-SOA-を用いたハイブリッド-ID-のセキュリティ強化" class="headerlink" title="シナリオ - ユーザーの SOA とグループの SOA を用いたハイブリッド ID のセキュリティ強化"></a>シナリオ - ユーザーの SOA とグループの SOA を用いたハイブリッド ID のセキュリティ強化</h2><p>とある組織がクラウド ファーストの ID のモデルへ移行しようとしているとしましょう。しかしその組織は依然として重要なオンプレミスのアプリケーションに依存しています。この組織の ID 担当チームは、クラウドへの完全移行を待つ代わりに、まずリスクの高いユーザーの一部をユーザーの SOA 変換を使ってクラウドで編集可能なユーザー ID に変換することにしました。同時に、それらオンプレミスのアプリケーションに関連する AD 上のセキュリティ グループをグループの SOA 変換を利用してクラウドへ移行し、Microsoft Entra ID 上で完全に管理できるようにすることで、セキュリティとガバナンス機能を強化することが可能となりました。</p>
 <p>このユーザーの SOA とグループの SOA を組み合わせたアプローチは、組織に対して即時に利益をもたらします。IT 管理者は Microsoft Entra 管理センターや Microsoft Graph API を用いて、ユーザー ID、グループ、アクセス ポリシーを一元管理でき、運用をシンプルにして複雑さを軽減できます。これまで手動のプロセスによって行われていたガバナンスは、エンタイトルメント管理、アクセス レビュー、ライフサイクル ワークフローによって自動化され、これにより重要なアプリケーションのコンプライアンスがより強化されます。</p>
-<p>セキュリティは劇的に向上します。従業員はクラウドとオンプレミスの両方のアプリに対して、Microsoft Entra ID の資格情報（パスワードレス オプションを含む）でサインインできるようになります。リスクベースの条件付きアクセス ポリシーがシームレスに適用されることで、パスワード疲労攻撃や資格情報の乱立を減らし、ゼロトラストの原則が強化されます。</p>
+<p>セキュリティは劇的に向上します。従業員はクラウドとオンプレミスの両方のアプリに対して、Microsoft Entra ID の資格情報 (パスワードレス オプションを含む) でサインインできるようになります。リスクベースの条件付きアクセス ポリシーがシームレスに適用されることで、パスワード疲労攻撃や資格情報の乱立を減らし、ゼロトラストの原則が強化されます。</p>
 <p>移行は柔軟に進めることができます。一部のユーザーとグループから変換を開始することで、業務が中断されることなく、既存の同期フローも維持できます。時間をかけて独自のペースで Microsoft Graph API や Microsoft Entra 管理センターを使用しながらクラウドへの変換対象を拡大していくことが可能です。</p>
 <p>その結果、お客様はレガシーなアプリを意図せず停止させたり、完全な移行を待ったりすることなく、クラウドでの一元管理および自動化されたガバナンス、そしてより強力なセキュリティを手に入れることができるのです。</p>
 <p>以下の動画では、詳細な仕組みや実際の動作をご紹介しています。</p>
@@ -191,7 +187,7 @@
 <ul>
 <li>詳細はこちら: <a target="_blank" rel="noopener" href="https://aka.ms/usersoadocs">https://aka.ms/usersoadocs</a> | <a target="_blank" rel="noopener" href="https://aka.ms/groupsoadocs">https://aka.ms/groupsoadocs</a></li>
 <li>解説動画を見る: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=otxp_KIqU4Y">Source of Authority</a> | <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=AcBMPgpIsw4">Get to cloud-first model with Group Source of Authority: Deep Dive</a></li>
-<li>ITアーキテクトへのガイダンス: <a target="_blank" rel="noopener" href="https://aka.ms/SOAITArchitectsGuidance">https://aka.ms/SOAITArchitectsGuidance</a></li>
+<li>IT アーキテクトへのガイダンス: <a target="_blank" rel="noopener" href="https://aka.ms/SOAITArchitectsGuidance">https://aka.ms/SOAITArchitectsGuidance</a></li>
 </ul>
 <p>また、Micorosft Ignite に直接参加するかオンラインで参加いただき、ディープダイブやデモ、ディスカッションなど Microsoft Entra ID に関わる全てについて是非エキスパートとつながりをお持ちください。</p>
 <p>Joe Dadzie – VP Product Management</p>
