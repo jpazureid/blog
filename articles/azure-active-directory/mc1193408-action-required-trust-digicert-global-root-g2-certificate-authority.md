@@ -74,7 +74,8 @@ A. お客様の環境で特殊な制御を実施していない場合は、今�
 
 A. 以下の公開情報に記載のルート証明機関、およびその下位証明機関をすべて信頼するように設定ください。
 
-[Azure 証明機関の詳細](https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list)
+Azure 証明機関の詳細
+<https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list>
 
 ### Q.  対応しなかった場合どうなりますか？
 
