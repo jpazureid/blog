@@ -3,7 +3,6 @@ title: "MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Roo
 date: 2025-12-12 10:00
 tags:
     - Microsoft Entra
-    - US Identity Blog
 ---
 # MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください
 
