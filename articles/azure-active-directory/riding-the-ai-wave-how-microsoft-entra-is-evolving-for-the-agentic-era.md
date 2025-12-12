@@ -112,7 +112,7 @@ Microsoft BUILD で、[AI エージェントを Microsoft Entra に統合する�
 
 ## エージェント時代に向けた標準の進化
 
-Microsoft Entra は、幅広いパートナーやアプリケーションのエコシステムを支えています。私たちは業界全体で協力し、すべてのエージェント型 ID システムとの統合を可能にし、セキュリティ リスクを低減し、専門家、学術機関、標準化団体ｄえ合意したベスト プラクティスに沿った共通標準を採用できるよう取り組んでいます。
+Microsoft Entra は、幅広いパートナーやアプリケーションのエコシステムを支えています。私たちは業界全体で協力し、すべてのエージェント型 ID システムとの統合を可能にし、セキュリティ リスクを低減し、専門家、学術機関、標準化団体で合意したベスト プラクティスに沿った共通標準を採用できるよう取り組んでいます。
 
 そのために、OAuth 2.0 標準グループで次の重要な変更に取り組んでいます:
 
@@ -123,7 +123,7 @@ Microsoft Entra は、幅広いパートナーやアプリケーションのエ�
 
 これらの [OAuth への提案](https://jpazureid.github.io/blog/azure-active-directory/the-future-of-ai-agents%E2%80%94and-why-oauth-must-evolve/) により、エージェントが自分自身の代理として、ユーザーの代理として、または別のエージェントの代理として動作していることを識別できるようになります。
 
-さらに、全体的な連鎖についても考えています。下流のエージェントが必要な権限をどのように発見し要求するのか？これらの機能は MCP に組み込まれ、エージェント間プロトコルを実現します。
+さらに、全体的な連鎖についても考えています。下流のエージェントが必要な権限をどのように発見し要求するのか、これらの機能は MCP に組み込まれ、エージェント間プロトコルを実現します。
 
 また、エージェントに広範なクラウド全体ではなく、特定のフォルダーなどのリソースへのきめ細かなアクセスを付与する方法にも取り組んでいます。エージェントに必要なアクセス権だけを与えるというゼロ トラストの原則を守ることは、リスクを減らす優れた方法です。
 
@@ -131,7 +131,7 @@ Microsoft Entra は、幅広いパートナーやアプリケーションのエ�
 
 OAuth の取り組みに加えて、エージェント対応を可能にするため、[オープンな SCIM 標準への一連の変更](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/beyond-oauth-why-scim-must-evolve-for-the-ai-agent-revolution/4433036) を提案しています。
 
-現在の SCIM の仕組みでは、HR システムからユーザーを Entra に登録し、Entra でユーザーのレコードを作成し、その後ガバナンス システムを通じて他のアプリにユーザーがプロビジョニングされますす。
+現在の SCIM の仕組みでは、HR システムからユーザーを Entra に登録し、Entra でユーザーのレコードを作成し、その後ガバナンス システムを通じて他のアプリにユーザーがプロビジョニングされます。
 
 エージェントにも同じ仕組みが必要です。あらゆるエージェント ビルダー (エージェントを作成する仕組み) は、SCIM を使ってエージェントのレコードを Entra に登録できる必要があります。そして Entra は、そのエージェント レコードを取得し、すべての SaaS アプリに対して正しく構成できるようにするという流れです。
 
@@ -141,11 +141,11 @@ OAuth の取り組みに加えて、エージェント対応を可能にする�
 
 ## 今すぐやるべきこと
 
-まず、AI エージェントを使っていロイロと実験してみることをお勧めします。そして、自社にとってどのように役立つかを確認ください。[Microsoft Entra エージェント](https://learn.microsoft.com/ja-jp/entra/security-copilot/entra-agents) を試すか、[Copilot Studio](https://learn.microsoft.com/ja-jp/microsoft-copilot-studio/) で独自のエージェントを構築してみましょう。いろいろなことができてきっと驚くはずです。私のプロダクト管理チームでは、以前は 3 ～ 4 週間かかっていた作業が、エージェントを使うことで 2 ～ 3 日で完了するようになりました。まずはパイロット導入の [計画を立てることをお勧めします](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/how-to-deploy-transformational-enterprise-wide-agents-microsoft-as-customer-zero/)。
+まず、AI エージェントを使って色々と実験してみることをお勧めします。そして、自社にとってどのように役立つかを確認ください。[Microsoft Entra エージェント](https://learn.microsoft.com/ja-jp/entra/security-copilot/entra-agents) を試すか、[Copilot Studio](https://learn.microsoft.com/ja-jp/microsoft-copilot-studio/) で独自のエージェントを構築してみましょう。様々なことができてきっと驚くはずです。私のプロダクト管理チームでは、以前は 3 ～ 4 週間かかっていた作業が、エージェントを使うことで 2 ～ 3 日で完了するようになりました。まずはパイロット導入の [計画を立てることをお勧めします](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/how-to-deploy-transformational-enterprise-wide-agents-microsoft-as-customer-zero/)。
 
 次に、エージェントの分類 (タクソノミー) を検討ください。先ほど説明した 3 種類のエージェントから始めるのがお勧めです。どんなエージェントを構築するか？どのようなデータが必要か？アクセスをどうガバナンスし、高い権限が必要なデータを信頼できるエージェントだけが扱えるようにするか？など、構築、管理、ガバナンスを検討する際に [役立つリソース](https://adoption.microsoft.com/ja-jp/ai-agents/copilot-studio/) が Copilot Studio チームから提供されています。
 
-最後に、Ignite のライブ配信を視聴ください。11 月 18 日の Microsoft Ignite 2025 で開催される [Secure Access for AI Agents with Microsoft Entra](https://ignite.microsoft.com/en-US/sessions/BRK265) セッションに参加ください。ここで、ひとしきりの仕組みについて詳しく解説する予定です。
+最後に、Ignite のライブ配信を視聴ください。11 月 18 日の Microsoft Ignite 2025 で開催される [Secure Access for AI Agents with Microsoft Entra](https://ignite.microsoft.com/en-US/sessions/BRK265) セッションに参加ください。ここで仕組みについて詳しく解説する予定です。
 
 弊社は、皆さんのため、そして皆さんと共に、この難しい課題に取り組んでいます。Microsoft Entra の AI エージェント対応は、企業で AI エージェントを安全に活用するための優れたツールを提供します。Satya が BUILD で言ったとおりです: 私たちの目標はシンプルです ―― 従業員 ID に適用している保護と制御を、AI エージェントにも提供することなのです。
 
