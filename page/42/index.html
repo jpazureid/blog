@@ -83,6 +83,112 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-azure-active-directory/control-ios-nativemailapp-by-conditionalaccess" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/control-ios-nativemailapp-by-conditionalaccess/" class="article-date">
+  <time datetime="2019-11-12T15:00:00.000Z" itemprop="datePublished">2019-11-13</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/control-ios-nativemailapp-by-conditionalaccess/">条件付きアクセスによる iOS 標準メール アプリの制御</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは、Azure &amp; Identity サポート チームの倉本です。
+ 
+今回は、Azure AD ユーザーの iOS 標準メール アプリへサインイン時の条件付きアクセスを利用した制御方法について紹介します。 
+条件付きアクセスではアクセス元のクライアント アプリケーションを条件として設定することができますが、このとき [先進認証クライアント] [Exchange ActiveSync クライアント] [他のクライアント] の 3 種の認証方式毎にアクセス制御を設定することができます。 
+iOS 標準メール アプリでは iOS 11 から先進認証に対応していますが、アカウントの設定手順によって、記 3 つのどの認証方式で Exchange Online に接続するか変わります。 
+設定手順により、どの認証方式を利用するか、説明します。 
+ 
+&lt;先進認証クライアント&gt...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/control-ios-nativemailapp-by-conditionalaccess/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/control-ios-nativemailapp-by-conditionalaccess/" data-id="cmj2lsnbv009t0nnrej9baf04" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-azure-active-directory-connect/aadc_hardmatch" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory-connect/aadc_hardmatch/" class="article-date">
+  <time datetime="2019-10-13T15:00:00.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory-connect/aadc_hardmatch/">ハードマッチによる同期ユーザーの切り替え方法 (AD フォレスト移行 編)</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        皆さん、こんにちは。日本マイクロソフト Azure Identity サポートの金子です。  
+今回は、オンプレミス AD フォレストの移行を検討されている方々に向けて、既存の AD フォレストと同期している Azure AD ユーザーを新しい AD フォレストに紐付け替える方法についてご紹介したいと思います。
+図にすると、このようなイメージです。  
+既存の AD フォレスト contoso.local は既に Azure AD と同期しています。この図では一つのドメインにしていますが、マルチフォレスト環境の場合、contoso.local や abc.local など複数の AD フォレストがオンプレミスに存在している場合があります。そのようなマルチフォレスト環境で、会社間の合併などにより複数のドメインを contoso.com などの一つのドメインに統合する、といったような移行作業で...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory-connect/aadc_hardmatch/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc_hardmatch/" data-id="cmj2lsn8t00160nnr6z705vhx" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-azure-active-directory/your-password-doesnt-matter" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -123,7 +229,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/your-password-doesnt-matter/" data-id="cmj1rrh4b016s0nmd88jb45yy" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/your-password-doesnt-matter/" data-id="cmj2lsnlm016w0nnradrd79hx" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li></ul>
@@ -174,7 +280,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/User-at-risk-detected/" data-id="cmj1rrgsu003w0nmd7ub9erll" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/User-at-risk-detected/" data-id="cmj2lsn9u003w0nnr3sa1c2oi" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li></ul>
@@ -224,7 +330,7 @@ Action Required: Evaluate and update Conditional Access policies after ne...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/evaluate-and-update-any-ca-policies-for-ipados/" data-id="cmj1rrgvi00bl0nmd9vf64cuv" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/evaluate-and-update-any-ca-policies-for-ipados/" data-id="cmj2lsnci00bl0nnr0n63fx6m" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li></ul>
@@ -276,7 +382,7 @@ Action Required: Evaluate and update Conditional Access policies after ne...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/" data-id="cmj1rrgzx00p30nmdfhtogkhv" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/" data-id="cmj2lsnh300p60nnr5a566d5y" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PRT/" rel="tag">PRT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Primary-Refresh-Token/" rel="tag">Primary Refresh Token</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" rel="tag">トラブルシューティング</a></li></ul>
@@ -327,7 +433,7 @@ Action Required: Evaluate and update Conditional Access policies after ne...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cmj1rrh2x013v0nmd8o3nd8sd" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cmj2lsnk6013x0nnrceay4ne1" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Federated-Domain/" rel="tag">Federated Domain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li></ul>
@@ -381,7 +487,7 @@ Action Required: Evaluate and update Conditional Access policies after ne...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/" data-id="cmj1rrh3s015n0nmdch4r3pey" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/" data-id="cmj2lsnl2015p0nnr0myfegvo" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li></ul>
@@ -432,7 +538,7 @@ Action Required: Evaluate and update Conditional Access policies after ne...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports/" data-id="cmj1rrgxo00hp0nmdcggkcgmo" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports/" data-id="cmj2lsnep00hr0nnrdk24h4k9" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li></ul>
@@ -483,120 +589,10 @@ Action Required: Evaluate and update Conditional Access policies after ne...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="cmj1rrh2y013x0nmdevhl2n7f" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="cmj2lsnk7013z0nnrg83i0byo" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/how-to-get-sign-in-logs" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/how-to-get-sign-in-logs/" class="article-date">
-  <time datetime="2019-02-03T15:00:00.000Z" itemprop="datePublished">2019-02-04</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/how-to-get-sign-in-logs/">Azure AD サインイン ログ取得方法まとめ</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        Note本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2019/02/04/signin-log-summary/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。
-こんにちは。Azure Identity チームの三浦です。
-Azure AD のサインイン ログは Azure ポータルで確認するほかに次のような方法で確認することができます。
-
-ポータルから CSV/JSON 形式のファイルをダウンロード
-Azure Monitor に統合する
-API を利用して JSON 形式のファイルを取得する
-データをエクスポートし、 PowerBI で解析する
-
-それぞれ簡単に概要を紹介します。
-なお、 Azure ポータルのサインインからログを確認することを含...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/how-to-get-sign-in-logs/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-get-sign-in-logs/" data-id="cmj1rrgw200dd0nmdextjaqu3" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-active-directory-federation-service/azure-traffic-manager" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../active-directory-federation-service/azure-traffic-manager/" class="article-date">
-  <time datetime="2018-12-26T15:00:00.000Z" itemprop="datePublished">2018-12-27</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../active-directory-federation-service/azure-traffic-manager/">Azure VM 上の AD FS 構成と Azure トラフィック マネージャーとの構成での非推奨設定について</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        Note本記事は Technet Blog の更新停止に伴い https://blogs.technet.microsoft.com/jpazureid/2018/12/27/adfstrafficmanager/ の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。
-こんにちは、Azure &amp; Identity サポート チームの 姚 (ヨウ) です。
-Azure VM 上に AD FS を構成し、 Azure トラフィック マネージャーと組み合わせることで WAP サーバーと AD FS サーバーのセットを丸ごと冗長化できるメリットがあります。
-この具体的な手順を含む詳細な情報を以下で公開しています。
-High availability cross-geographic AD FS deployment in Azure with Azure ...
-        <p class="article-readmore">
-          <a href="../../active-directory-federation-service/azure-traffic-manager/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/azure-traffic-manager/" data-id="cmj1rrgrb00090nmddm8zfvs0" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li></ul>
 
     </footer>
   </div>
@@ -622,6 +618,14 @@ High availability cross-geographic AD FS deployment in Azure with Azure ...
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/mc1193408-action-required-trust-digicert-global-root-g2-certificate-authority/">MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory/riding-the-ai-wave-how-microsoft-entra-is-evolving-for-the-agentic-era/">AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory-connect/driving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen/">クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</a>
           </li>
         
@@ -631,14 +635,6 @@ High availability cross-geographic AD FS deployment in Azure with Azure ...
         
           <li>
             <a href="../../azure-active-directory/microsoft-graph-powershell-grant-permissions/">Microsoft Graph PowerShell アクセス許可の付与</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory-connect/entra-connect-msis7612/">Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/starter-series-microsoft-saml/">Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</a>
           </li>
         
       </ul>

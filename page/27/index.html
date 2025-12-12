@@ -83,6 +83,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-azure-active-directory/howto-deal-with-aadsts1002016" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/howto-deal-with-aadsts1002016/" class="article-date">
+  <time datetime="2022-07-28T00:00:00.000Z" itemprop="datePublished">2022-07-28</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/howto-deal-with-aadsts1002016/">Azure AD への認証が失敗する (エラー コード AADSTS1002016) 際の対処策について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは、 Azure Identity サポート チームの小出です。
+現在 (2022 年 7 月現在) Azure AD の認証サービスにおける TLS 1.0 /1.1 の無効化の処理を進めています。TLS 1.0/1.1 による接続ができなくなることは、以前より Microsoft 365 のメッセージセンター、 Azure ポータルの Azure Active Directory ブレードでアナウンスをしており、 2022 年 1 月 31 日までに対策を実施するよう通知をしておりました。無効化の処理は段階的におこなわれており、 TLS1.0 /1.1 が利用されているために Azure AD の認証サービスが接続を受け付けない場合には Azure AD は AADSTS1002016 のエラーを返します。
+AADSTS1002016: You are using TLS ve...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/howto-deal-with-aadsts1002016/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-aadsts1002016/" data-id="cmj2lsnk801420nnrd1d793lm" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-azure-active-directory/use-cloud-groups-in-on-premises-active-directory-with-group" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/use-cloud-groups-in-on-premises-active-directory-with-group/" class="article-date">
+  <time datetime="2022-07-27T01:00:00.000Z" itemprop="datePublished">2022-07-27</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/use-cloud-groups-in-on-premises-active-directory-with-group/">オンプレミス AD でクラウド上のグループを使用するグループ ライトバック機能のご紹介</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは、Azure Identity サポート チームの 村上 です。
+本記事は、2022 年 7 月 6 日に米国の Azure Active Directory Identity Blog で公開された Use cloud groups in on-premises Active Directory with group writeback を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
+
+グループ ライトバックの大幅な機能強化がパブリック プレビューで発表でき、とても嬉しく思っています。Azure AD Connect を使用して、セキュリティ グループを含むクラウド グループをオンプレミスの Active Directory に書き戻すことができます。このプレビューにより、クラウドで管理されているグループを使用して、オンプレミスのリ...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/use-cloud-groups-in-on-premises-active-directory-with-group/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/use-cloud-groups-in-on-premises-active-directory-with-group/" data-id="cmj2lsngw00om0nnr7dspfx8v" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-azure-active-directory/capolicy-for-csp-account" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -122,7 +223,7 @@ Note追記 :
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/capolicy-for-csp-account/" data-id="cmj1rrh2h012z0nmd0o973n07" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/capolicy-for-csp-account/" data-id="cmj2lsnjp01310nnrghbpbfn2" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" rel="tag">条件付きアクセス</a></li></ul>
@@ -174,7 +275,7 @@ Note追記 :
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-permissions-management-is-now-generally/" data-id="cmj1rrgxe00h00nmd2e6f0e54" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-permissions-management-is-now-generally/" data-id="cmj2lsnee00h20nnr6sb31bv1" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -227,7 +328,7 @@ Note追記 :
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/secure-authentication-method-provisioning-with-temporary-access/" data-id="cmj1rrgz100m50nmd16t423ft" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/secure-authentication-method-provisioning-with-temporary-access/" data-id="cmj2lsng400m70nnr33xeatjv" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -295,7 +396,7 @@ Azure...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/" data-id="cmj1rrgw100d80nmdhizba866" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-determine-depreacated-azuread-msol/" data-id="cmj2lsnd100d80nnr0x14f7rq" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li></ul>
@@ -348,7 +449,7 @@ Azure...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-June-2022-train/" data-id="cmj1rrgsr003n0nmdezynfiyp" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/Microsoft-Entra-change-announcements-June-2022-train/" data-id="cmj2lsn9r003n0nnrbill93pq" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -400,7 +501,7 @@ Azure...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/managing-governing-and-securing-identities-for-apps-and-services/" data-id="cmj1rrgww00fr0nmdebph25lx" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/managing-governing-and-securing-identities-for-apps-and-services/" data-id="cmj2lsndz00fr0nnrhoy2gx2q" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -454,7 +555,7 @@ Azure...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/access-management-with-access-package/" data-id="cmj1rrh22011z0nmd6pke0tn9" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/access-management-with-access-package/" data-id="cmj2lsnj901210nnr1ohg4h2f" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Access-Package/" rel="tag">Access Package</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Entitlement-Management/" rel="tag">Entitlement Management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Entra-ID/" rel="tag">Entra ID</a></li></ul>
@@ -506,111 +607,7 @@ Azure...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/create-nested-groups-with-azure-ad-dynamic-groups/" data-id="cmj1rrgut009v0nmd58bvbz1t" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/publisher-domain" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/publisher-domain/" class="article-date">
-  <time datetime="2022-06-16T15:00:00.000Z" itemprop="datePublished">2022-06-17</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/publisher-domain/">パブリッシャー ドメイン (発行元ドメイン) と発行者確認</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        こんにちは、Azure &amp; Identity サポート チームの鶴巻です。
-今回はしばしばお問い合わせをいただく「パブリッシャー ドメイン (発行元ドメイン)」と「発行者確認」についてまとめます。なお、今回の記事は、アプリケーションを普段利用する人ではなく、Azure AD と連携するアプリケーションを開発している人向けとなります。 
-パブリッシャー ドメイン (発行元ドメイン) とはアプリケーションと Azure AD を連携し、ユーザーが初めてアプリケーションにアクセスすると Azure AD 認証時に以下のような画面が表示される場合があります。
-
-ここで表示されている “demo.〇〇〇.com” と表示されている部分がパブリッシャー ドメイン (発行元ドメイン) を表しています。 
-この情報は、ユーザーがサインインしようとしているアプリケーションがどのような組織によって開発...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/publisher-domain/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/publisher-domain/" data-id="cmj1rrgyo00l20nmdcalr3wmr" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/strengthen-your-security-posture-with-new-azure-ad-partner" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/strengthen-your-security-posture-with-new-azure-ad-partner/" class="article-date">
-  <time datetime="2022-06-08T01:00:00.000Z" itemprop="datePublished">2022-06-08</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/strengthen-your-security-posture-with-new-azure-ad-partner/">新たな Azure AD パートナーとの統合でセキュリティ体制を強化</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        こんにちは、Azure Identity サポート チームの 村上 です。
-本記事は、2022 年 5 月 9 日に米国の Azure Active Directory Identity Blog で公開された Strengthen your security posture with new Azure AD partner integrations を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。
-
-本日は、新たな Azure Active Directory (Azure AD) 製品の統合ソリューションをご紹介します。これらのソリューションは、Azure AD の機能を活用することで、ID へのアクセス、ガバナンス、および認証を合理化し、企業全体にわたる ゼロ トラスト セキュリティを強化するのに役立ちます。以下では、パートナー各社が弊社...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/strengthen-your-security-posture-with-new-azure-ad-partner/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/strengthen-your-security-posture-with-new-azure-ad-partner/" data-id="cmj1rrgzb00n10nmd9g8iboew" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/create-nested-groups-with-azure-ad-dynamic-groups/" data-id="cmj2lsnbw009v0nnr7493bjwr" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li></ul>
@@ -639,6 +636,14 @@ Azure...
       <ul>
         
           <li>
+            <a href="../../azure-active-directory/mc1193408-action-required-trust-digicert-global-root-g2-certificate-authority/">MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory/riding-the-ai-wave-how-microsoft-entra-is-evolving-for-the-agentic-era/">AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</a>
+          </li>
+        
+          <li>
             <a href="../../azure-active-directory-connect/driving-cloud-first-identity-user-soa-is-now-public-preview-and-group-soa-is-gen/">クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</a>
           </li>
         
@@ -648,14 +653,6 @@ Azure...
         
           <li>
             <a href="../../azure-active-directory/microsoft-graph-powershell-grant-permissions/">Microsoft Graph PowerShell アクセス許可の付与</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory-connect/entra-connect-msis7612/">Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</a>
-          </li>
-        
-          <li>
-            <a href="../../azure-active-directory/starter-series-microsoft-saml/">Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</a>
           </li>
         
       </ul>
