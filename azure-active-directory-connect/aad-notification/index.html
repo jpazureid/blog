@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/aad-notification/0418_AADC_mail-627x1024.png">
 <meta property="article:published_time" content="2018-04-17T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-14T00:12:49.635Z">
+<meta property="article:modified_time" content="2025-12-16T09:43:40.356Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -156,14 +156,14 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+502136d6-50fb-596e-8793-5c00d0a10fce%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E2%80%9CAAD+Notification%E2%80%9D+%E3%81%8B%E3%82%89%E9%80%81%E3%82%89%E3%82%8C%E3%81%9F+DirSync+%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Faad-notification%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Faad-notification.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Faad-notification.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aad-notification/" data-id="cmj4z15z1000y0no3heh5axk3" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aad-notification/" data-id="cmj8eaz2h000y0nnu1hrg3k66" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/04/18/aad-notification/">https://blogs.technet.microsoft.com/jpazureid/2018/04/18/aad-notification/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
 <p>Azure Identity サポートの橋本です。</p>
-<p>日本時間の 4 月 18 日に、一部の Azure AD Connect のご利用者様  (テナント管理者) 宛に、以下のような、”Action required: your sync solution is no longer supported and you need to upgrade to a newer version “ という件名のメールが AAD Notification <a href="mailto:&#x61;&#97;&#100;&#45;&#110;&#x6f;&#116;&#x69;&#102;&#x69;&#99;&#97;&#116;&#105;&#x6f;&#110;&#45;&#x6e;&#x6f;&#114;&#x65;&#112;&#x6c;&#x79;&#64;&#97;&#122;&#x75;&#114;&#x65;&#x65;&#109;&#x61;&#x69;&#x6c;&#46;&#109;&#x69;&#x63;&#114;&#111;&#115;&#111;&#x66;&#116;&#46;&#x63;&#x6f;&#109;">&#x61;&#97;&#100;&#45;&#110;&#x6f;&#116;&#x69;&#102;&#x69;&#99;&#97;&#116;&#105;&#x6f;&#110;&#45;&#x6e;&#x6f;&#114;&#x65;&#112;&#x6c;&#x79;&#64;&#97;&#122;&#x75;&#114;&#x65;&#x65;&#109;&#x61;&#x69;&#x6c;&#46;&#109;&#x69;&#x63;&#114;&#111;&#115;&#111;&#x66;&#116;&#46;&#x63;&#x6f;&#109;</a> より配信されました。</p>
+<p>日本時間の 4 月 18 日に、一部の Azure AD Connect のご利用者様  (テナント管理者) 宛に、以下のような、”Action required: your sync solution is no longer supported and you need to upgrade to a newer version “ という件名のメールが AAD Notification <a href="mailto:&#x61;&#97;&#x64;&#45;&#110;&#111;&#x74;&#105;&#102;&#x69;&#99;&#x61;&#x74;&#105;&#x6f;&#x6e;&#x2d;&#110;&#x6f;&#114;&#x65;&#x70;&#x6c;&#x79;&#64;&#x61;&#122;&#x75;&#114;&#101;&#x65;&#x6d;&#x61;&#x69;&#108;&#46;&#x6d;&#105;&#99;&#x72;&#111;&#x73;&#111;&#x66;&#116;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#97;&#x64;&#45;&#110;&#111;&#x74;&#105;&#102;&#x69;&#99;&#x61;&#x74;&#105;&#x6f;&#x6e;&#x2d;&#110;&#x6f;&#114;&#x65;&#x70;&#x6c;&#x79;&#64;&#x61;&#122;&#x75;&#114;&#101;&#x65;&#x6d;&#x61;&#x69;&#108;&#46;&#x6d;&#105;&#99;&#x72;&#111;&#x73;&#111;&#x66;&#116;&#x2e;&#99;&#x6f;&#x6d;</a> より配信されました。</p>
 <p><img src="/blog/azure-active-directory-connect/aad-notification/0418_AADC_mail-627x1024.png"></p>
 <p>本メールは弊社システムにより誤って配信されてしまったメールであることが確認できました。</p>
 <p>DirSync や ADSync をご利用の場合はアップグレードいただく必要がございますが、Azure AD Connect をすでにご利用の場合は必要ございません。</p>

@@ -15,11 +15,13 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-10.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-6.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-16.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-13.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-7.png">
+<meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-15.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-14.png">
 <meta property="article:published_time" content="2025-06-18T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-14T00:12:50.834Z">
+<meta property="article:modified_time" content="2025-12-16T09:43:41.555Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Starter series">
@@ -162,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ad9dccab-e5ab-5789-a43d-2a6b0dd6cb9b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BEntra+ID+%E5%88%9D%E5%AD%A6%E8%80%85%E5%90%91%E3%81%91%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA%E7%AC%AC+2+%E5%BC%BE+-+ID+Protection+%E5%85%A5%E9%96%80+-+%E3%81%9D%E3%81%AE+3%3A+%E3%83%AA%E3%82%B9%E3%82%AF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%A7%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E7%AE%A1%E7%90%86%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fstarter-series-id-protection-3%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fstarter-series-id-protection-3.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fstarter-series-id-protection-3.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/" data-id="cmj4z166n00mr0no3c59cb5m0" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-3/" data-id="cmj8eazad00mr0nnug2o42dm3" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -201,13 +203,17 @@
 <li>画面左側のメニューから [保護] &gt; [条件付きアクセス] に移動します。</li>
 <li>[+ 新しいポリシーの作成] を選択します。</li>
 </ol>
-<p>サインイン リスク ポリシーを作成するには以下のようにします。ここでは、指定したユーザーに対して、リスクレベル 高、中、低 のサインインのリスクを検知したときに多要素認証を求める条件付きアクセス ポリシーを作成しています。</p>
-<p><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-6.png" alt="サインイン リスク ポリシーの作成"></p>
+<h3 id="サインイン-リスク-ポリシーの作成"><a href="#サインイン-リスク-ポリシーの作成" class="headerlink" title="サインイン リスク ポリシーの作成"></a>サインイン リスク ポリシーの作成</h3><p>サインイン リスク ポリシーを作成するには以下のようにします。ここでは、指定したユーザーに対して、リスクレベル 高、中、低 のサインインのリスクを検知したときに [多要素認証] を求める条件付きアクセス ポリシーを作成しています。</p>
+<p><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-6.png" alt="サインイン リスク ポリシーの作成"><br><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-16.png" alt="アクセス制御にて多要素認証を要求"></p>
 <p>リスクの検出ごとに MFA を要求するようにサインインの頻度も併せて設定します。</p>
 <p><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-13.png" alt="サインインの頻度を[毎回]に設定"></p>
-<p>ユーザー リスク ポリシーを作成するには以下のようにします。ここでは、指定したユーザーに対して、リスクレベル 高、中 のユーザーのリスクを検知したときにパスワードの変更を求める条件付きアクセス ポリシーを作成しています。</p>
-<p><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-7.png" alt="ユーザー リスク ポリシーの作成"></p>
-<p>“パスワードの変更を必須とする” の制御を要求した場合、[アクセス制御] &gt; [セッション] 内にある「サインインの頻度」の項目では「毎回」のみ選択いただけます。<br>画面の表記に従って[毎回]を選択します。</p>
+<h3 id="ユーザー-リスク-ポリシーの作成"><a href="#ユーザー-リスク-ポリシーの作成" class="headerlink" title="ユーザー リスク ポリシーの作成"></a>ユーザー リスク ポリシーの作成</h3><p>ユーザー リスク ポリシーを作成するには以下のようにします。ここでは、指定したユーザーに対して、リスクレベル 高、中 のユーザーのリスクを検知したときに [リスクの修復が必要] を求める条件付きアクセス ポリシーを作成しています。<br>これまでは ”パスワードを変更する” のアクセス制御のみでしたが、2025 年 11 月に ”リスクの修復が必要” のアクセス制御が追加されました。<br>”リスクの修復が必要” のアクセス制御を使用すると、検出された脅威とユーザーの認証方法に基づいて適切な修復フローを管理します。 ”リスクの修復が必要” を要求した際のユーザーの認証方法ごとの修復シナリオの例について次の公開情報より抜粋いたします。</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/id-protection/concept-identity-protection-policies#require-risk-remediation-with-microsoft-managed-remediation-preview">リスクベースのアクセス ポリシー</a></p>
+<p>パスワード認証の場合: 危険なユーザーには、漏洩した資格情報、パスワード スプレー、侵害されたパスワードを含むセッション履歴など、アクティブなリスク検出があります。 ユーザーは、セキュリティで保護されたパスワードの変更を実行するように求められます。</p>
+<p>パスワードレス認証の場合: 危険なユーザーはアクティブなリスク検出を行いますが、パスワードが侵害されることはありません。 考えられるリスク検出には、異常なトークン、あり得ない移動、または未知のサインイン プロパティが含まれます。 ユーザーのセッションは取り消され、もう一度サインインするように求められます。</p>
+<p>本ブログでは、”リスクの修復が必要” のアクセス制御を使用した場合の設定例について紹介いたします。</p>
+<p><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-7.png" alt="ユーザー リスク ポリシーの作成"><br><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-15.png" alt="アクセス制御にてリスクの修復が必要を設定"></p>
+<p>“リスクの修復が必要” の制御を要求した場合、[アクセス制御] &gt; [セッション] 内にある「サインインの頻度」の項目では「毎回」のみ選択いただけます。<br>画面の表記に従って[毎回]を選択します。</p>
 <p><img src="/blog/azure-active-directory/starter-series-id-protection-3/starter-series-id-protection-14.png" alt="サインインの頻度の設定"></p>
 <p>以上のようにポリシーを作成することで、条件付きアクセスがサインインやユーザーのリスク状態に応じて動的に動作して、リスクに対処するようになります。P2 ライセンスをお持ちのお客様は是非この機能をご活用ください。</p>
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回の初学者向けシリーズ第 2 弾の 3 つ目の記事では「その 3: リスクベースのポリシーで自動的に管理」について解説しました。特にご注目いただきたい点をまとめると以下のとおりです。</p>
