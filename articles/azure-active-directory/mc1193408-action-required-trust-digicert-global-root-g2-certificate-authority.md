@@ -31,15 +31,17 @@ tags:
 >
 > 影響を受けるドメインの例:
 >
-> - login.microsoftonline.com
 > - login.live.com
 > - login.windows.net
 > - autologon.microsoftazuread-sso.com
 > - graph.windows.net
+> 
+>> [!NOTE]
+>> 2025/12/17 更新: login.microsoftonline.com ドメインは 2025 年 2 月に DigiCert G2 ルートに既に移行されているため、今回影響を受けるドメインの例には含まれません。
 >
 > 準備のためにできること:
 >
-> -  Azure 証明機関の詳細 ドキュメントに記載されている すべてのルートおよび下位 CA を信頼してください。
+> - Azure 証明機関の詳細 ドキュメントに記載されている すべてのルートおよび下位 CA を信頼してください。
 > - 「DigiCert Global Root G2」ルートおよびその下位証明機関 (2025 年 9 月以降ドキュメント化) を信頼する設定になっていることを確認してください。
 > - クライアント側の DigiCert Global Root CA へのピン留め設定がある場合はすべて削除してください。
 > - サービス中断を回避するため、今すぐ設定を更新してください。
