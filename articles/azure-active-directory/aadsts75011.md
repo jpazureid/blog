@@ -67,11 +67,12 @@ SP 側で認証方法を指定するのが先であり、Microsoft Entra ID 側�
 
 対処案としては以下 2 つです。
 - SAML リクエスト内の "RequestedAuthnContext" 要素 を省略する
+- SAML リクエスト内の "RequestedAuthnContext" 要素を Unspecified に変更する
 - SAML リクエスト内の "ForceAuthn" 要素を true に変更する
 
 それぞれ説明します。
 
-### SAML リクエスト内の "RequestedAuthnContext" 要素 を省略する
+### SAML リクエスト内の "RequestedAuthnContext" 要素を省略する
 
 SAML リクエストは前項の通り、一般的にはアプリケーション側で生成されます。
 
@@ -97,6 +98,11 @@ SP の管理者または利用者からの "RequestedAuthnContext" 要素の変�
 一般的にパスワード ベースの認証よりも証明書ベースの認証の方が認証強度が高いとされています。
 
 認証強度が高い認証方法を使用中のユーザーをブロックする理由がなければ、"RequestedAuthnContext" の省略について前向きに検討いただくのが良いかと存じます。
+
+### SAML リクエスト内の "RequestedAuthnContext" 要素を Unspecified に変更する
+
+もし SAML リクエスト内の "RequestedAuthnContext" 要素を省略できない場合は、"RequestedAuthnContext" 要素を Unspecified に設定します。
+これにより、Entra ID はユーザーが使用した任意の認証方法を受け入れられるようになり、AADSTS75011 エラーを回避できます。
 
 ### SAML リクエスト内の "ForceAuthn" 要素を true に変更する
 
