@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 五十嵐 です。 2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Microsoft Entra が DigiCert のルート証明書を G1 から G2 に移行する旨が発表されました。この通知に関する内容について既">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2025-12-12T01:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-19T01:04:29.468Z">
+<meta property="article:modified_time" content="2025-12-20T14:48:47.470Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta name="twitter:card" content="summary">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+1ae4017d-80a5-562a-9c3f-6de69c5e51da%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMC1193408+-+%E8%A6%81%E5%AF%BE%E5%BF%9C%3A+2026+%E5%B9%B4+1+%E6%9C%88+7+%E6%97%A5%E3%81%BE%E3%81%A7%E3%81%AB+DigiCert+Global+Root+G2+%E8%A8%BC%E6%98%8E%E6%A9%9F%E9%96%A2%E3%82%92%E4%BF%A1%E9%A0%BC%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmc1193408-action-required-trust-digicert-global-root-g2-certificate-authority%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmc1193408-action-required-trust-digicert-global-root-g2-certificate-authority.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmc1193408-action-required-trust-digicert-global-root-g2-certificate-authority.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc1193408-action-required-trust-digicert-global-root-g2-certificate-authority/" data-id="cmjc62url00fz0nqkajp03h0h" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc1193408-action-required-trust-digicert-global-root-g2-certificate-authority/" data-id="cmjeeyq1v00fz0np9fv4nbrfg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -196,9 +196,9 @@
 <p>なお、Windows OS では既定で「ルート証明書更新プログラム」という機能が有効になっており、これにより既に必要なルート証明書がインストール済みであることが想定されます。この仕組みについては、以下の Windows サポートによる技術ブログに詳細があります。たとえば、この動作を無効にするポリシーやレジストリを設定していないかどうかの確認手順についても記載がありますため、参考となりましたら幸いです。</p>
 <p><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/blog/2021/12/14/PublicKeyInfrastructure/CertificateManagement/about-windows-root-certificate-program/">ルート証明書更新プログラムの仕組みについて | Microsoft Japan Windows Technology Support Blog</a></p>
 <blockquote>
-<p>Windows OS では、端末にルート証明書を自動できる仕組みとして「ルート証明書更新プログラム」という機能があります。<br>この機能は既定で有効になっており、必要に応じてルート証明書をダウンロードして [信頼されたルート証明機関] のストアに自動でインストールしております。</p>
+<p>Windows OS では、端末にルート証明書を自動できる仕組みとして「ルート証明書更新プログラム」という機能があります。この機能は既定で有効になっており、必要に応じてルート証明書をダウンロードして [信頼されたルート証明機関] のストアに自動でインストールしております。</p>
 </blockquote>
-<div class="alert is-info"><p class="alert-title">Note</p><p>2021 年 8 月以降のルート証明書更新プログラムには DigiCert Global Root G2 ルート証明書が含まれております。</p><p>そのため、2021 年 8 月以降に一度でもルート証明書更新プログラムが動作していましたら、既に信頼する証明機関として DigiCert Global Root G2 が含まれていることが想定されます。</p></div>
+<div class="alert is-info"><p class="alert-title">Note</p><p>2021 年 8 月以降のルート証明書更新プログラムには DigiCert Global Root G2 ルート証明書が含まれております。そのため、2021 年 8 月以降に一度でもルート証明書更新プログラムが動作していましたら、既に信頼する証明機関として DigiCert Global Root G2 が含まれていることが想定されます。</p></div>
 <h3 id="Q-どのように対応すればよいですか？"><a href="#Q-どのように対応すればよいですか？" class="headerlink" title="Q. どのように対応すればよいですか？"></a>Q. どのように対応すればよいですか？</h3><p>A. 以下の公開情報に記載のルート証明機関、およびその下位証明機関をすべて信頼するように設定ください。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list">Azure 証明機関の詳細</a></p>
 <h3 id="Q-対応しなかった場合どうなりますか？"><a href="#Q-対応しなかった場合どうなりますか？" class="headerlink" title="Q. 対応しなかった場合どうなりますか？"></a>Q. 対応しなかった場合どうなりますか？</h3><p>A. 2026 年 1 月 7 日以降、DigiCert Global Root G2 を信頼していない環境や G1 をピン留めしている環境では、Microsoft Entra ID へのサインインや関連サービスで認証が失敗するようになります。</p>
@@ -206,6 +206,8 @@
 <h3 id="Q-影響がないかどうか事前にテストする方法はありますか？"><a href="#Q-影響がないかどうか事前にテストする方法はありますか？" class="headerlink" title="Q. 影響がないかどうか事前にテストする方法はありますか？"></a>Q. 影響がないかどうか事前にテストする方法はありますか？</h3><p>A. DigiCert 社が公開している以下のデモサイトは、次に Entra ID が利用するサーバー証明書と同じルート証明書が利用されています。</p>
 <p>DigiCert Global Root G2<br><a target="_blank" rel="noopener" href="https://global-root-g2.chain-demos.digicert.com/">https://global-root-g2.chain-demos.digicert.com/</a></p>
 <p>そのため、現時点で上記の Web サイトを証明書のエラーが発生することなく閲覧できる環境であれば、影響を受ける可能性は極めて低いと判断いただけます。</p>
+<h3 id="Q-login-microsoftonline-com-にアクセスすると-DigiCert-Global-Root-G1-にチェーンする証明書が返されることもありますがどういうことですか？"><a href="#Q-login-microsoftonline-com-にアクセスすると-DigiCert-Global-Root-G1-にチェーンする証明書が返されることもありますがどういうことですか？" class="headerlink" title="Q. login.microsoftonline.com にアクセスすると DigiCert Global Root G1 にチェーンする証明書が返されることもありますがどういうことですか？"></a>Q. login.microsoftonline.com にアクセスすると DigiCert Global Root G1 にチェーンする証明書が返されることもありますがどういうことですか？</h3><p>A. login.microsoftonline.com では、DigiCert のルート証明書の G1 と G2 が両方使用されており、実際のアクセスを受け取るインスタンスに応じて、G1 と G2 のどちらかが応答される状況となっています。このため、タイミングによって G1 が返される場合や、G2 が返される場合があります。 MC が更新され、login.microsoftonline.com ドメインは DigiCert G2 ルートに既に移行されていると追記されたのは、この動作を反映したものです。現在 login.microsoftonline.com ドメインに正常にアクセスできているクライアントはすでに DigiCert G2 ルートを利用できていると想定されるため、今回影響を受けることはないと判断いただけます。</p>
+<h3 id="Q-2026-年-1-月-7-日以降になると即座に移行されるのでしょうか？"><a href="#Q-2026-年-1-月-7-日以降になると即座に移行されるのでしょうか？" class="headerlink" title="Q. 2026 年 1 月 7 日以降になると即座に移行されるのでしょうか？"></a>Q. 2026 年 1 月 7 日以降になると即座に移行されるのでしょうか？</h3><p>A. いいえ、2026 年 1 月 7 日以降に徐々に移行を実施する予定です。影響を受けるドメインはグローバルなエンドポイントであるため、特定のお客様やテナントに対して具体的にいつ移行が行われるかを予測したり弊社から案内したりすることはできません。</p>
 
       
       
