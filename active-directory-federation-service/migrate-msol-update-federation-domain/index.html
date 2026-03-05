@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/migrate-msol-update-federation-domain/migrate-msol-update-federation-domain-01.png">
 <meta property="article:published_time" content="2023-06-15T12:00:00.000Z">
-<meta property="article:modified_time" content="2026-02-19T21:20:57.986Z">
+<meta property="article:modified_time" content="2026-03-05T00:33:07.937Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta name="twitter:card" content="summary">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+70918b2a-cfef-578e-8d91-33b407e71931%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAD+FS+%E3%81%AE%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%BD%B2%E5%90%8D%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E6%89%8B%E5%8B%95%E3%81%A7%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Factive-directory-federation-service%2Fmigrate-msol-update-federation-domain%2F%29%0A*+Content+Source%3A+%5Barticles%2Factive-directory-federation-service%2Fmigrate-msol-update-federation-domain.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Factive-directory-federation-service%2Fmigrate-msol-update-federation-domain.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/migrate-msol-update-federation-domain/" data-id="cmltyu2xx000k0nqvd798gj66" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/migrate-msol-update-federation-domain/" data-id="cmmcqf9yn000k0nlr99ivgw3u" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -218,6 +218,7 @@
 
 <h2 id="4-AD-FS-で新しいセカンダリ証明書をプライマリに変更する"><a href="#4-AD-FS-で新しいセカンダリ証明書をプライマリに変更する" class="headerlink" title="4. AD FS で新しいセカンダリ証明書をプライマリに変更する"></a>4. AD FS で新しいセカンダリ証明書をプライマリに変更する</h2><p>AD FS 側にはプライマリとセカンダリの証明書があり、プライマリの証明書を使用してトークンに署名を付与します。<br>Azure AD 側では、その署名を検証するために SigningCertificate と NextSigningCertificate が使用されますが、プライマリ/セカンダリ という概念はなく、どちらか一方が AD FS のプライマリ証明書と合致していれば検証に成功します。<br>したがって、上記の手順「3. Azure AD のフェデレーションドメインに、新しいセカンダリ証明書をアップデートする」を実施した時点で、AD FS のプライマリ証明書とセカンダリ証明書の両方に対応できる状態になっています。</p>
 <p>この状態で、AD FS 側でセカンダリの新しい証明書をプライマリに変更します。<br>AD FS 管理ツールで証明書の一覧を開き、セカンダリのトークン署名証明書を選択して右クリックし、「プライマリとして設定」を選択します。<br>警告ダイアログが表示されますので「はい」を選択し、プライマリに変更します。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>「プライマリとして設定」を選択するためには、AD FS のトークン署名証明書/トークン暗号化解除証明書の、自動ロールオーバー機能が無効になっている必要があります。</p><p>自動ロールオーバー機能の無効化 / 有効化する方法に関しては次の弊社ブログ <a href="../ad-fs-auto-rollover/#e-%E5%AF%BE%E5%87%A6%E7%AD%96">AD FS の自動証明書ロールオーバー機能について</a> をご参照ください。</p></div>
 <p>併せてトークン暗号化解除証明書も同様の手順でセカンダリをプライマリに変更しておきます。<br>Azure AD (証明書利用者信頼) との認証連携には関係しませんが、トークン暗号化解除証明書の有効期限が切れることで、AD FS サービスが起動することができなくなります。<br>また、要求プロバイダー信頼として、ローカルの Active Directory 以外に他の IdP と連携している場合には、新しいトークン暗号化解除証明書をその IdP 側で更新を行う必要がございます。<br>通常はメタデータを介して更新を行いますが、詳細は IdP の開発元ベンダー様にお問合せください。</p>
 <p>手順は以上の通りとなります。<br>参考となれば幸いです。</p>
 
