@@ -11,6 +11,9 @@ tags:
 
 こんにちは、Azure & Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された [Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925) を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。
 
+> [!NOTE]
+> 2026/03/18 更新: 原文が更新された点を反映しました。展開開始日が 2026 年 3 月 27 日から 2026 年 5 月 13 日に変更されました。
+
 ---
 
 ## Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。
@@ -24,7 +27,7 @@ tags:
 
 ## この変更はいつ反映されるか
 
-Microsoft Entra ID は、この変更の適用を 2026 年 3 月 27 日から開始します。すべてのクラウド環境に段階的に展開され、2026 年 6 月まで数週間かけてロールアウトされる予定です。
+展開スケジュールが調整され、展開は 2026 年 5 月 13 日から開始されます。円滑な移行を支援するため、**Microsoft 365 メッセージセンター**のメッセージを通じて追加情報やガイダンスが提供されます。
 
 ## この変更の影響を受けるのは誰か
 
