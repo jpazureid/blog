@@ -426,8 +426,6 @@ body {
   height: 56px;
   float: left;
   background: url("images/logo.png") center #fff;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
 }
 .nav-icon {

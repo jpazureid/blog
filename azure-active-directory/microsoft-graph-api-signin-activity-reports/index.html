@@ -14,11 +14,11 @@
 <meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2018&#x2F;08&#x2F;09&#x2F;microsoft-graph-api-signin-activity-reports&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 重要本手順は、廃止予定の ADAL ライブラリ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2019-05-22T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.647Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.584Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="signin log">
 <meta property="article:tag" content="graph api">
+<meta property="article:tag" content="signin log">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4e664434-a1ee-5af6-af76-28a5b9c80394%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Graph+API+%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6+Azure+AD+%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%B3+%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3+%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%82%92%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B+PowerShell+%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-graph-api-signin-activity-reports%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-graph-api-signin-activity-reports.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-graph-api-signin-activity-reports.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports/" data-id="cmmketdup00hz0nqp36lb9jna" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports/" data-id="cuidfh9sDgwDSs7Yow5At4zpB" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -164,7 +164,7 @@
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/08/09/microsoft-graph-api-signin-activity-reports/">https://blogs.technet.microsoft.com/jpazureid/2018/08/09/microsoft-graph-api-signin-activity-reports/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
 <div class="alert is-important"><p class="alert-title">重要</p><p><strong>本手順は、廃止予定の ADAL ライブラリを利用した手順となっております。</strong> 新規にスクリプトを構成いただく場合には、MSAL ライブラリを利用いただくことを推奨いたします。</p><p>MSAL ライブラリを利用する手順については <a target="_blank" rel="noopener" href="https://github.com/jpazureid/get-signin-activity-reports-with-certificate">GitHub にてサンプル スクリプト</a> として紹介しておりますので参照ください。</p></div>
 <blockquote>
-<p>2019/05/22: サインインアクティビティレポートを取得するための Graph API エンドポイントが beta から v1.0 に移動したため、サンプルコードの一部を変更しました。また、アプリ登録の手順も変更されたため併せて記載内容を変更しています。</p>
+<p>2019&#x2F;05&#x2F;22: サインインアクティビティレポートを取得するための Graph API エンドポイントが beta から v1.0 に移動したため、サンプルコードの一部を変更しました。また、アプリ登録の手順も変更されたため併せて記載内容を変更しています。</p>
 </blockquote>
 <p>こんにちは Azure &amp; Identity サポート チームの 姚 ヨウ です。</p>
 <p>前回、Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを Azure AD Graph API を経緯し、PowerShell で JSON 形式で取得できるスクリプトを紹介しました。</p>

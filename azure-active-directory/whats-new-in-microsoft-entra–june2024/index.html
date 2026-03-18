@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 夏木 です。 本記事は、2024 年 7 月 1 日に米国の Microsoft Entra (Azure AD) Blog で公開された What’s new in Microsoft Entra – June 2024 の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。  Microsoft Entra">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2024-07-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.168Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.102Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f4bc9891-59de-5d2f-b3f5-fbeae21180fa%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD+%E2%80%93+2024%E5%B9%B46%E6%9C%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fwhats-new-in-microsoft-entra%E2%80%93june2024%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fwhats-new-in-microsoft-entra%E2%80%93june2024.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fwhats-new-in-microsoft-entra%E2%80%93june2024.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/whats-new-in-microsoft-entra%E2%80%93june2024/" data-id="cmmkete1h017c0nqphr61eqk3" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/whats-new-in-microsoft-entra%E2%80%93june2024/" data-id="cuid7huJTo4H-qa2bp01__pLd" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -198,7 +198,7 @@
 <p><strong>この変更が展開された場合、サポートされていない Windows デバイスのユーザー エクスペリエンスはどうなりますか？</strong></p>
 <p>2021 年 7 月以降のパッチが適用されていない Windows デバイスのユーザーは、Entra ID ユーザー アカウントでサインインに失敗する可能性があります。サインイン ログに表示されるエラー コードは「AADSTS5000611: Symmetric Key Derivation Function version ‘KDFV1’ is invalid. Update the device for the latest updates.」です。上記状況に該当する場合、このエラーから診断できます。</p>
 <h3 id="エンタープライズにおける-Apple-デバイスのセキュリティ強化-2026-年-6-月開始"><a href="#エンタープライズにおける-Apple-デバイスのセキュリティ強化-2026-年-6-月開始" class="headerlink" title="エンタープライズにおける Apple デバイスのセキュリティ強化 - 2026 年 6 月開始"></a>エンタープライズにおける Apple デバイスのセキュリティ強化 - 2026 年 6 月開始</h3><p>[対応が必要な場合があります]</p>
-<p>デバイス ID は、Entra ID の基本概念の 1 つであり、デバイスのコンプライアンス ポリシー、アプリの保護ポリシー、PRT ベースの SSO など、複数の Entra ID および MDM/MAM セキュリティ機能を可能にします。セキュリティを強化するために、Entra ID はデバイス ID キーを Apple の Secure Enclave ハードウェアにhることをサポートする作業を行いました。これにより、以前のキーチェーン ベースのメカニズムが置き換わります。</p>
+<p>デバイス ID は、Entra ID の基本概念の 1 つであり、デバイスのコンプライアンス ポリシー、アプリの保護ポリシー、PRT ベースの SSO など、複数の Entra ID および MDM&#x2F;MAM セキュリティ機能を可能にします。セキュリティを強化するために、Entra ID はデバイス ID キーを Apple の Secure Enclave ハードウェアにhることをサポートする作業を行いました。これにより、以前のキーチェーン ベースのメカニズムが置き換わります。</p>
 <p>2026 年 6 月以降、新しい Entra ID 登録はすべて Secure Enclave にバインドされます。その結果、すべての顧客は Microsoft Enterprise SSO プラグインを採用する必要があり、一部のアプリは新しい Secure Enclave ベースのデバイス アイデンティティを採用するためにコード変更を行う必要があるかもしれません。</p>
 <p><strong>オプトインしてフィードバックを提供ください</strong></p>
 <p>Entra が新しいデバイス登録において既定で Secure Enclave を有効にする前に、learn.microsoft.com のドキュメントを使用して早期にテストを行うことをお勧めします。これにより、アプリや MDM ベンダーにコード変更を依頼する必要がある互換性の問題を特定できます。問題の報告、質問、懸念事項については、サポート チケットを開くか、Microsoft アカウント チームに連絡ください。</p>
@@ -254,7 +254,7 @@
 <p>弊社は、Entra の管理のための PowerShell エクスペリエンスに多大な新規投資と将来の投資を行っています。<a target="_blank" rel="noopener" href="https://aka.ms/EntraPSPreview">Microsoft Entra PowerShell モジュールのパブリック プレビュー</a> が最近開始されました。この新しいモジュールは Microsoft Graph PowerShell SDK の一部であり、すべてのコマンドレットと完全に互換性があります。これにより、簡単でよく文書化されたコマンドで複雑な操作を実行できます。このモジュールは、非推奨となる AzureAD モジュールからの移行を簡素化するための後方互換オプションも提供しています。また、一部のお客様が MSOnline からユーザーごとの MFA を管理するスクリプトへ完全に移行できていないことも認識しています。Microsoft Graph API では最近、ユーザーごとの MFA 設定を読み取りおよび構成することが <a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/graph/changelog?search=e22b3741-9f9a-4d25-af9d-e935018a8b68">可能</a> になり、Microsoft Graph PowerShell SDK コマンドレットでの利用もまもなく可能となります。</p>
 <h3 id="プライベート-プレビュー-–-QR-コード-サインイン、フロントライン-ワーカー向けの新しい認証方法"><a href="#プライベート-プレビュー-–-QR-コード-サインイン、フロントライン-ワーカー向けの新しい認証方法" class="headerlink" title="プライベート プレビュー – QR コード サインイン、フロントライン ワーカー向けの新しい認証方法"></a>プライベート プレビュー – QR コード サインイン、フロントライン ワーカー向けの新しい認証方法</h3><p>[対応が必要な場合があります]</p>
 <p>Microsoft Entra ID において、フロントライン ワーカー が QR コードと PIN で認証する新しい簡単な方法を導入します。これにより、シフト中に長い UPN や英数字のパスワードを何度も入力する必要がなくなります。</p>
-<p>この機能のプライベート プレビュー リリースは 2024 年 8 月であり、すべてのユーザーが <a target="_blank" rel="noopener" href="https://login.microsoftonline.com/">https://login.microsoftonline.com</a> の「サインインオプション」 &gt; 「組織にサインイン」ページに移動すると「QR コードでサインイン」という新しいリンクが表示されます。この「QR コードでサインイン」というリンクは、モバイル デバイス (Android/iOS/iPadOS) のみで表示されます。プライベート プレビューに参加していない場合、プライベート プレビュー中はテナントのユーザーはこの方法でサインインできず、サインインを試みるとエラーメッセージが表示されます。</p>
+<p>この機能のプライベート プレビュー リリースは 2024 年 8 月であり、すべてのユーザーが <a target="_blank" rel="noopener" href="https://login.microsoftonline.com/">https://login.microsoftonline.com</a> の「サインインオプション」 &gt; 「組織にサインイン」ページに移動すると「QR コードでサインイン」という新しいリンクが表示されます。この「QR コードでサインイン」というリンクは、モバイル デバイス (Android&#x2F;iOS&#x2F;iPadOS) のみで表示されます。プライベート プレビューに参加していない場合、プライベート プレビュー中はテナントのユーザーはこの方法でサインインできず、サインインを試みるとエラーメッセージが表示されます。</p>
 <p>この機能には「プレビュー」タグが付いており、一般提供されるまでその状態が続きます。お使いの組織はこの機能をテストするために有効化する必要があります。広範なテストはパブリック プレビューで利用可能となり、後日発表します。</p>
 <p>プライベート プレビュー中は技術サポートは提供されません。プレビュー中のサポートについての詳細は、こちらをご覧ください：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/fundamentals/licensing-preview-info">Microsoft Entra ID プレビュー プログラム情報 - Microsoft Entra | Microsoft Learn</a>.</p>
 <h3 id="電話設定の変更-カスタム-グリーティングと発信者-ID"><a href="#電話設定の変更-カスタム-グリーティングと発信者-ID" class="headerlink" title="電話設定の変更: カスタム グリーティングと発信者 ID"></a>電話設定の変更: カスタム グリーティングと発信者 ID</h3><p>[対応が必要な場合があります]</p>

@@ -40,11 +40,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk26.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk27.png">
 <meta property="article:published_time" content="2021-11-04T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.462Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.399Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Security">
 <meta property="article:tag" content="Identity Protection">
+<meta property="article:tag" content="Security">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk1.png">
   
@@ -66,7 +66,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -183,7 +183,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+0e518979-5886-5ae9-8a79-372ad5df422d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BUser+at+risk+detected+%E3%81%AE%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%92%E5%8F%97%E3%81%91%E5%8F%96%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E5%AF%BE%E5%BF%9C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhowto-deal-with-user-at-risk-detected-email%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhowto-deal-with-user-at-risk-detected-email.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhowto-deal-with-user-at-risk-detected-email.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/" data-id="cmmkete07014o0nqp0mfkdige" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/" data-id="cuidZiAXX_E7nf4FxLF3I1hNg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -257,9 +257,8 @@
 </li>
 <li><p>以下のように、正常に処理が完了することを確認します。<br> <img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk7.png">  </p>
 </li>
-</ol>
-<ol start="7">
-<li>リスクの状態に [セキュリティ侵害を確認しました] と表示され、リスク レベルが “高” になることを確認します。<br> <img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk8.png">  </li>
+<li><p>リスクの状態に [セキュリティ侵害を確認しました] と表示され、リスク レベルが “高” になることを確認します。<br> <img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk8.png"></p>
+</li>
 </ol>
 <div class="alert is-success"><p class="alert-title">ヒント</p><p>リスクレベルが中だった場合は、このように明示的にセキュリティ侵害を確認した旨をマークすることで、リスクレベルを最上位の高に変更することが可能です。</p><p>リスクレベルが高だった場合もマークを行うことで監査ログに対処記録が残りますので、この意味でも本オペレーションは必ず実施します。  </p></div>
 <p><strong>▼ 管理者がユーザーのパスワードをリセットする手順</strong></p>
@@ -276,11 +275,12 @@
 </li>
 <li><p>以下のように表示されるので、 [パスワードのリセット] をクリックします。<br><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk11.png">  </p>
 </li>
-</ol>
-<ol start="7">
-<li>一時パスワードが表示されるので、内容を控え、安全な方法でユーザー通知します。</li>
-<li>一時パスワードを使用して、ユーザーがサインインすると、新しいパスワードへの変更画面が表示されるので、新しいパスワードを設定します。</li>
-<li>[危険なユーザー] や [リスク検出] の画面から、ユーザーの記載が消えることを確認します。以下のようにフィルターですべてを選択すると、管理者がパスワードをリセットしたことで、ユーザー リスクが修復されたことが確認できます。<br><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk12.png">  </li>
+<li><p>一時パスワードが表示されるので、内容を控え、安全な方法でユーザー通知します。</p>
+</li>
+<li><p>一時パスワードを使用して、ユーザーがサインインすると、新しいパスワードへの変更画面が表示されるので、新しいパスワードを設定します。</p>
+</li>
+<li><p>[危険なユーザー] や [リスク検出] の画面から、ユーザーの記載が消えることを確認します。以下のようにフィルターですべてを選択すると、管理者がパスワードをリセットしたことで、ユーザー リスクが修復されたことが確認できます。<br><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk12.png"></p>
+</li>
 </ol>
 <p><strong>▼ ユーザーからのサインインをブロックする方法</strong></p>
 <p>実際に攻撃を受けている可能性がある場合など、一時的にアカウントへのサインイン自体をブロックしたい場合には、以下の手順でサインインを行えないようにすることも可能です。<br>ただし、この設定を行うと、攻撃者・本来のユーザーを問わずサインインができなくなる点にご留意ください。  </p>
@@ -306,7 +306,7 @@
 </ol>
 <p><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk13.png">  </p>
 <ol start="2">
-<li>パスワードをリセットするよう依頼されたユーザーは、パスワード リセット ポータルからリセットを実施します。<br>最も簡単な方法は、aka.ms/sspr にアクセスする方法です。サインインの際に [パスワードを忘れた場合] をクリックすることでもリセットが可能です。</li>
+<li>パスワードをリセットするよう依頼されたユーザーは、パスワード リセット ポータルからリセットを実施します。<br>最も簡単な方法は、aka.ms&#x2F;sspr にアクセスする方法です。サインインの際に [パスワードを忘れた場合] をクリックすることでもリセットが可能です。</li>
 </ol>
 <p><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk14.png">  </p>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>パスワード変更ではなく、明示的に SSPR を実行する必要がある点にご留意ください。</p></div>
@@ -331,17 +331,20 @@
 <li>[Microsoft Entra ID Protection]] を選択します。</li>
 <li>[危険なユーザー] を選択します。</li>
 <li>該当するユーザーを選択し、 [ユーザー リスクを無視する] を選択します。</li>
-<li><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk18.png"></li>
+<li></li>
 </ol>
+<p><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk18.png"></p>
 <ol start="6">
 <li>以下のように警告が表示されるので、[はい] をクリックします。</li>
-<li><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk19.png"></li>
+<li></li>
 </ol>
+<p><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk19.png"></p>
 <ol start="8">
 <li>リスクがクローズされるまでに、数分程度かかるので待機します。</li>
 <li>[危険なユーザー] や [リスク検出] の画面からユーザーの記載が消えることを確認します。以下のようにフィルターですべて選択すると、ユーザー リスクが破棄されたことが確認できます。</li>
-<li><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk20.png"></li>
+<li></li>
 </ol>
+<p><img src="/blog/azure-active-directory/howto-deal-with-user-at-risk-detected-email/UserRisk20.png"></p>
 <h2 id="C-補足情報について"><a href="#C-補足情報について" class="headerlink" title="C. 補足情報について"></a>C. 補足情報について</h2><p>最後に、 以下補足情報についてご案内します。  </p>
 <h3 id="1-メール通知の設定方法"><a href="#1-メール通知の設定方法" class="headerlink" title="1. メール通知の設定方法"></a>1. メール通知の設定方法</h3><p>冒頭に紹介したメールは、特定の管理者ロールを持つユーザーにのみ送信されるメールです。<br>グローバル管理者、セキュリティ管理者、セキュリティ閲覧者をもつユーザーのうち、各ロールごとに最大 20 人（3 ロール併せて最大 60 人）のみに送付されています。  </p>
 <p>通知が行われるタイミングは、おおよそ以下の 3 種類となります。  </p>

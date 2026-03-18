@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/InternetOptions.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/which-step-is-best-for-the-upgdrade.png">
 <meta property="article:published_time" content="2023-07-13T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.889Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.826Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD Connect">
 <meta name="twitter:card" content="summary">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ed8f499f-a732-5966-8507-89a18fcea477%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E6%89%8B%E9%A0%86%E8%A9%B3%E7%B4%B0%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fhow-to-upgrade-details%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fhow-to-upgrade-details.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fhow-to-upgrade-details.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/" data-id="cmmketdpf002h0nqp3czud673" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade-details/" data-id="cuidq-IZSRbZ0n-CG1nBXd8FS" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -181,7 +181,7 @@
 <p>その他プロキシを使用されている環境では、2.4.18.0 以降、構成ウィザードが machine.config ではなく Internet Options の設定を参照します。</p><p>このため、Windows の [検索] で “Internet Options” を検索し、[接続] タブにある [LAN の設定] にプロキシの設定があることをご確認ください。</p>
 <p><img src="/blog/azure-active-directory-connect/how-to-upgrade-details/InternetOptions.png"></p>
 <p>また、プロキシ使用環境等、通信を制限している環境では graph.microsoft.com への通信も必要となりますので、併せて graph.microsoft.com のエンドポイントへの通信も許可いただきますようお願いします。</p></div>
-<h2 id="A-Azure-AD-Connect-2-台構成によるスウィング-アップグレード"><a href="#A-Azure-AD-Connect-2-台構成によるスウィング-アップグレード" class="headerlink" title="A. Azure AD Connect 2 台構成によるスウィング アップグレード"></a>A. Azure AD Connect 2 台構成によるスウィング アップグレード</h2><h3 id="lt-手順概要-gt"><a href="#lt-手順概要-gt" class="headerlink" title="&lt;手順概要&gt;"></a>&lt;手順概要&gt;</h3><ol>
+<h2 id="A-Azure-AD-Connect-2-台構成によるスウィング-アップグレード"><a href="#A-Azure-AD-Connect-2-台構成によるスウィング-アップグレード" class="headerlink" title="A. Azure AD Connect 2 台構成によるスウィング アップグレード"></a>A. Azure AD Connect 2 台構成によるスウィング アップグレード</h2><h3 id=""><a href="#" class="headerlink" title="&lt;手順概要&gt;"></a>&lt;手順概要&gt;</h3><ol>
 <li>既存環境の各サーバーにて、動作状況の確認などアップグレード前の事前確認を行います。</li>
 <li>カスタム同期ルールをはじめ、設定内容を保存します。</li>
 <li>Server B の Azure AD Connect のインプレース アップグレードを行います。</li>
@@ -191,8 +191,8 @@
 <li>Server A の Azure AD Connect のインプレース アップグレードを行います。</li>
 <li>Server A にて、アップグレード後の動作状況を確認します。</li>
 </ol>
-<h3 id="lt-手順詳細-gt"><a href="#lt-手順詳細-gt" class="headerlink" title="&lt;手順詳細&gt;"></a>&lt;手順詳細&gt;</h3><p><a href="/blog/azure-active-directory-connect/how-to-upgrade-details/aadc-upgrade-a-2023v2.pptx">アップグレード手順詳細 A</a></p>
-<h2 id="B-Azure-AD-Connect-1-台構成に-1-台追加で構成し、アップグレード"><a href="#B-Azure-AD-Connect-1-台構成に-1-台追加で構成し、アップグレード" class="headerlink" title="B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード"></a>B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード</h2><h3 id="lt-手順概要-gt-1"><a href="#lt-手順概要-gt-1" class="headerlink" title="&lt;手順概要&gt;"></a>&lt;手順概要&gt;</h3><ol>
+<h3 id="-1"><a href="#-1" class="headerlink" title="&lt;手順詳細&gt;"></a>&lt;手順詳細&gt;</h3><p><a href="/blog/azure-active-directory-connect/how-to-upgrade-details/aadc-upgrade-a-2023v2.pptx">アップグレード手順詳細 A</a></p>
+<h2 id="B-Azure-AD-Connect-1-台構成に-1-台追加で構成し、アップグレード"><a href="#B-Azure-AD-Connect-1-台構成に-1-台追加で構成し、アップグレード" class="headerlink" title="B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード"></a>B. Azure AD Connect 1 台構成に 1 台追加で構成し、アップグレード</h2><h3 id="-2"><a href="#-2" class="headerlink" title="&lt;手順概要&gt;"></a>&lt;手順概要&gt;</h3><ol>
 <li>既存環境の ServerA にて、動作状況の確認などアップグレード前の事前確認を行います。</li>
 <li>カスタム同期ルールをはじめ、設定内容を保存します。</li>
 <li>Server B となる新しいサーバーを用意します。</li>
@@ -203,14 +203,14 @@
 <li>Server A の Azure AD Connect のインプレース アップグレードを行います。</li>
 <li>Server A で動作状況を確認します。</li>
 </ol>
-<h3 id="lt-手順詳細-gt-1"><a href="#lt-手順詳細-gt-1" class="headerlink" title="&lt;手順詳細&gt;"></a>&lt;手順詳細&gt;</h3><p><a href="/blog/azure-active-directory-connect/how-to-upgrade-details/aadc-upgrade-b-2023v2.pptx">アップグレード手順詳細 B</a></p>
-<h2 id="C-Azure-AD-Connect-1-台構成によるインプレースアップグレード"><a href="#C-Azure-AD-Connect-1-台構成によるインプレースアップグレード" class="headerlink" title="C. Azure AD Connect 1 台構成によるインプレースアップグレード"></a>C. Azure AD Connect 1 台構成によるインプレースアップグレード</h2><h3 id="lt-手順概要-gt-2"><a href="#lt-手順概要-gt-2" class="headerlink" title="&lt;手順概要&gt;"></a>&lt;手順概要&gt;</h3><ol>
+<h3 id="-3"><a href="#-3" class="headerlink" title="&lt;手順詳細&gt;"></a>&lt;手順詳細&gt;</h3><p><a href="/blog/azure-active-directory-connect/how-to-upgrade-details/aadc-upgrade-b-2023v2.pptx">アップグレード手順詳細 B</a></p>
+<h2 id="C-Azure-AD-Connect-1-台構成によるインプレースアップグレード"><a href="#C-Azure-AD-Connect-1-台構成によるインプレースアップグレード" class="headerlink" title="C. Azure AD Connect 1 台構成によるインプレースアップグレード"></a>C. Azure AD Connect 1 台構成によるインプレースアップグレード</h2><h3 id="-4"><a href="#-4" class="headerlink" title="&lt;手順概要&gt;"></a>&lt;手順概要&gt;</h3><ol>
 <li>既存環境の動作状況の確認</li>
 <li>設定内容の保存</li>
 <li>アップグレード</li>
 <li>アップグレードの動作確認 (手順1. と同じ)</li>
 </ol>
-<h3 id="lt-手順詳細-gt-2"><a href="#lt-手順詳細-gt-2" class="headerlink" title="&lt;手順詳細&gt;"></a>&lt;手順詳細&gt;</h3><p><a href="/blog/azure-active-directory-connect/how-to-upgrade-details/aadc-upgrade-c-2023v2.pptx">アップグレード手順詳細 C</a></p>
+<h3 id="-5"><a href="#-5" class="headerlink" title="&lt;手順詳細&gt;"></a>&lt;手順詳細&gt;</h3><p><a href="/blog/azure-active-directory-connect/how-to-upgrade-details/aadc-upgrade-c-2023v2.pptx">アップグレード手順詳細 C</a></p>
 <h2 id="資料の選び方について"><a href="#資料の選び方について" class="headerlink" title="資料の選び方について"></a>資料の選び方について</h2><p>どの資料が適切な手順が分からない場合には、下記フローも参考にしてください。<br><img src="/blog/azure-active-directory-connect/how-to-upgrade-details/which-step-is-best-for-the-upgdrade.png"></p>
 
       

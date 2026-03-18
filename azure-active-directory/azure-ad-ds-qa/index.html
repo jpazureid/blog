@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの平形です。最近 Windows Virtual Desktop や Azure Files などと合わせて導入されることも増えている Azure AD Domain Services のよくある質問につきまして Q&amp;A 形式でおまとめいたしました。 これから Azure AD Domain Services の導入を検">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-08-17T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.142Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.079Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Azure AD Domain Services">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6e9cf627-04ad-59cc-ba5d-e562001860b2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Domain+Services+%E3%81%AE%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%81%94%E8%B3%AA%E5%95%8F%E3%81%A8%E5%AF%BE%E5%87%A6%E7%AD%96%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-ds-qa%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-ds-qa.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-ds-qa.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-ds-qa/" data-id="cmmketdqy006n0nqp4w5hbo15" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-ds-qa/" data-id="cuidkJj4FYKwbbU5AKuLKDS9y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -163,7 +163,7 @@
         <p>こんにちは、Azure &amp; Identity サポート チームの平形です。<br>最近 Windows Virtual Desktop や Azure Files などと合わせて導入されることも増えている Azure AD Domain Services のよくある質問につきまして Q&amp;A 形式でおまとめいたしました。</p>
 <p>これから Azure AD Domain Services の導入を検討される場合には先に公開しております下記ブログをご覧ください。</p>
 <p><a href="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-ds-scenario/">Azure AD Domain Services の利用シナリオ</a></p>
-<h2 id="Q-amp-A-タイトル"><a href="#Q-amp-A-タイトル" class="headerlink" title="Q&amp;A タイトル"></a>Q&amp;A タイトル</h2><ol>
+<h2 id="Q-A-タイトル"><a href="#Q-A-タイトル" class="headerlink" title="Q&amp;A タイトル"></a>Q&amp;A タイトル</h2><ol>
 <li><a href="#anchor1">Azure AD Domain Services を構築し、 Windows をドメイン参加させようとしたがエラーが発生してサインインできません。</a></li>
 <li><a href="#anchor2">Azure AD Domain Services にサインインする際に NetBIOS ドメイン名と UPN どちらでサインインすればよいですか。</a></li>
 <li><a href="#anchor3">Azure AD Domain Services への同期スコープをグループに設定しています。入れ子のグループに対応していますか。</a></li>
@@ -187,15 +187,15 @@
 <p>以下それぞれの詳細です。</p>
 <p><em><strong>1. ユーザー名・パスワードが誤っている</strong></em></p>
 <p>ドメイン参加時に指定したアカウントが Azure AD Domain Services に同期されているアカウントであるか、並びにパスワードが正しいかをご確認ください。<br>いずれも問題がない場合には一度 Azure AD 上でパスワードの変更・リセットをご実施ください。</p>
-<p>また、 Azure AD Domain Services に Azure AD から同期したユーザーでサインインを試行する場合には、 NetBIOS 形式 (contoso\user) ではなく、 UPN 形式 (<a href="mailto:&#117;&#x73;&#101;&#x72;&#x40;&#x63;&#x6f;&#110;&#x74;&#111;&#115;&#x6f;&#x2e;&#x6f;&#110;&#109;&#x69;&#x63;&#114;&#111;&#115;&#111;&#102;&#116;&#x2e;&#x63;&#111;&#x6d;">&#117;&#x73;&#101;&#x72;&#x40;&#x63;&#x6f;&#110;&#x74;&#111;&#115;&#x6f;&#x2e;&#x6f;&#110;&#109;&#x69;&#x63;&#114;&#111;&#115;&#111;&#102;&#116;&#x2e;&#x63;&#111;&#x6d;</a> 等) でサインインしてください。<br>Azure AD から Azure AD Domain Services に同期したユーザーは Azure AD の UPN と同じ UPN を持ちます。<br>NetBIOS 名の場合、名前の長さなどが要因で Azure AD 上のユーザー名と異なる名前が設定されている可能性があります。</p>
+<p>また、 Azure AD Domain Services に Azure AD から同期したユーザーでサインインを試行する場合には、 NetBIOS 形式 (contoso\user) ではなく、 UPN 形式 (<a href="mailto:&#x75;&#x73;&#101;&#114;&#x40;&#99;&#x6f;&#110;&#116;&#111;&#x73;&#x6f;&#46;&#111;&#110;&#x6d;&#x69;&#x63;&#114;&#111;&#x73;&#111;&#102;&#x74;&#x2e;&#x63;&#111;&#109;">user@contoso.onmicrosoft.com</a> 等) でサインインしてください。<br>Azure AD から Azure AD Domain Services に同期したユーザーは Azure AD の UPN と同じ UPN を持ちます。<br>NetBIOS 名の場合、名前の長さなどが要因で Azure AD 上のユーザー名と異なる名前が設定されている可能性があります。</p>
 <p>Azure AD から Azure AD Domain Services に同期される属性や内容は次のリンクの情報を参照ください。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/synchronization#attribute-synchronization-and-mapping-to-azure-ad-ds">属性の同期と Azure AD DS へのマッピング</a></p>
 <p><em><strong>2. Azure AD Domain Services を構築する前から Azure AD 上に存在するユーザーを利用している (そしてパスワード ハッシュが Azure AD Domain Services に同期されていない)</strong></em></p>
 <p>Azure AD Domain Services 構築しても Azure AD Domain Services 上に同期された既存アカウントについては Azure AD が保持するパスワード情報が同期されません。</p>
-<p>Azure AD Domain Services 構築後に Azure AD 側でパスワードを変更・リセットすることで Azure AD 上に Kerberos/NTLM 認証で利用するパスワード ハッシュが生成・格納されるようになります。<br>Kerberos/NTLM 認証で利用するパスワード ハッシュが Azure AD に格納された後、 Azure AD から Azure AD Domain Services にパスワード ハッシュが同期され、 Azure AD Domain Services 上でサインインできるようになります。</p>
+<p>Azure AD Domain Services 構築後に Azure AD 側でパスワードを変更・リセットすることで Azure AD 上に Kerberos&#x2F;NTLM 認証で利用するパスワード ハッシュが生成・格納されるようになります。<br>Kerberos&#x2F;NTLM 認証で利用するパスワード ハッシュが Azure AD に格納された後、 Azure AD から Azure AD Domain Services にパスワード ハッシュが同期され、 Azure AD Domain Services 上でサインインできるようになります。</p>
 <p>Azure AD Connect を用いて同期しているアカウントの場合には Azure AD Domain Services を構築後、オンプレミス AD 上でパスワード変更を行い Azure AD 上のパスワード ハッシュを更新ください。<br>もしくは下記公開情報記載の手順に従って Azure AD Connect 上で同期対象のユーザーのパスワード ハッシュを再同期するよう強制することでも、 Azure AD 上のパスワード ハッシュが更新されます。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory-domain-services/tutorial-configure-password-hash-sync">チュートリアル:ハイブリッド環境の Azure Active Directory Domain Services でパスワード同期を有効にする</a></p>
-<p>こちらは 1 回のみの実施で問題ございません。<br>Azure AD Domain Services 構築後は Azure AD 上でパスワード更新が発生すると自動で Kebreros/NTLM 認証で利用可能なパスワード ハッシュが Azure AD 上に格納されるようになります。</p>
+<p>こちらは 1 回のみの実施で問題ございません。<br>Azure AD Domain Services 構築後は Azure AD 上でパスワード更新が発生すると自動で Kebreros&#x2F;NTLM 認証で利用可能なパスワード ハッシュが Azure AD 上に格納されるようになります。</p>
 <p><em><strong>アカウント ロックアウトが発生している。</strong></em></p>
 <p>Azure AD Domain Services は既定で 2 分で 5 回のパスワード入力に失敗すると 30 分間ロックアウトされます。<br>連続で間違えた場合にはアカウント ロックアウトが発生している可能性があるため、 30 分経過するのを待ち、サインインをお試しください。</p>
 <p><a id="anchor2"></a></p>

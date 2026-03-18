@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook11.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook12.png">
 <meta property="article:published_time" content="2022-03-24T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.948Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.883Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -51,7 +51,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -168,7 +168,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+948c356c-9c3e-576f-8264-d3083ef1ee6e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E8%AA%8D%E8%A8%BC%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E5%88%86%E6%9E%90%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%96%E3%83%83%E3%82%AF%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E4%BD%99%E5%88%86%E3%81%AA%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%92%E5%89%8A%E6%B8%9B%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Freducing-extra-prompts-with-authentication-prompt-analysis-workbook%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Freducing-extra-prompts-with-authentication-prompt-analysis-workbook.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Freducing-extra-prompts-with-authentication-prompt-analysis-workbook.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/" data-id="cmmketdvu00lj0nqpffem0yxn" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/" data-id="cuidyo0yPB3CMhdPmjv4TqMfo" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -205,7 +205,7 @@
 <p><img src="/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook7.png"></p>
 <h3 id="認証プロセスの詳細"><a href="#認証プロセスの詳細" class="headerlink" title="認証プロセスの詳細"></a>認証プロセスの詳細</h3><p>サインインごとに、OAUTH のスコープ、認証ライブラリの種類、IP アドレス、レガシー TLS の有無、CAE (継続的アクセス評価) など、認証プロセスの詳細が記載されています。また、1 つのサインインに複数のプロセスが含まれる場合があることにも注意が必要です。</p>
 <p><img src="/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook8.png"></p>
-<p>このデータは、TLS 1.0/1.1 および 3DES が廃止された際に、レガシー TLS のトラブルシューティングや環境内の検索に役立つはずです。詳しく知りたい方は <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor&WT.mc_id=Portal-fx">Azure AD TLS 1.1 および 1.0 の非推奨の環境で TLS 1.2 のサポートを有効にする</a> をご確認ください。</p>
+<p>このデータは、TLS 1.0&#x2F;1.1 および 3DES が廃止された際に、レガシー TLS のトラブルシューティングや環境内の検索に役立つはずです。詳しく知りたい方は <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor&WT.mc_id=Portal-fx">Azure AD TLS 1.1 および 1.0 の非推奨の環境で TLS 1.2 のサポートを有効にする</a> をご確認ください。</p>
 <h3 id="認証ポリシー"><a href="#認証ポリシー" class="headerlink" title="認証ポリシー"></a>認証ポリシー</h3><p>Azure AD には、ユーザーに MFA を要求できる複数のポリシーがあります。例えば、条件付きアクセス、ユーザーごとの MFA、セキュリティの既定値群からユーザーに MFA の実行を要求することができます。ユーザーが MFA を要求されるあまり知られていない方法としては、アクセスのためにアプリが MFA を要求する場合です (ID プロバイダーではなく、Relying party によって強制される)。例えば、ユーザーがセキュリティ情報を更新しに行く場合、毎回 MFA が要求されます。以下のグラフは、テナントでユーザーに MFA を強制する想定外のポリシーがあるかどうかを確認するのに役立ちます。</p>
 <p><img src="/blog/azure-active-directory/reducing-extra-prompts-with-authentication-prompt-analysis-workbook/reducing-extra-prompts-with-authentication-prompt-analysis-workbook9.png"></p>
 <h3 id="推薦事項とワークブックのヒント"><a href="#推薦事項とワークブックのヒント" class="headerlink" title="推薦事項とワークブックのヒント"></a>推薦事項とワークブックのヒント</h3><p>最後に、ユーザー体験を向上させ、プロンプトを減らすための 4 つの方法を以下に示します。例えば、Authenticator アプリ以外の方法を使用しているモバイル デバイスの認証プロンプトを特定することが可能です。</p>

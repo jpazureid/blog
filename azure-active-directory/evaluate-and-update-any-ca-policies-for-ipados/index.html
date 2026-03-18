@@ -6,15 +6,15 @@
   
   <title>iPad 上の iOS13 の挙動変更により Azure AD 条件付きアクセス ポリシーの動作に影響が生じる | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="更新情報 (2019&#x2F;11&#x2F;22)マイクロソフトではこの問題に対応するため条件付きアクセスの動作を更新しました。現在、条件付きアクセスは iPadOS を macOS としてではなく、iOS として認識します。このため、iOS に対して適用した条件付きアクセス ポリシーは iPadOS の更新前と同じように適用されます。 Safari と Apple のネイティブ メール アプリで依然として挙動が">
+  <meta name="description" content="更新情報 (2019&#x2F;11&#x2F;22)マイクロソフトではこの問題に対応するため条件付きアクセスの動作を更新しました。現在、条件付きアクセスは iPadOS を macOS としてではなく、iOS として認識します。このため、iOS に対して適用した条件付きアクセス ポリシーは iPadOS の更新前と同じように適用されます。 Safari と Apple のネイティブ メール アプ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iPad 上の iOS13 の挙動変更により Azure AD 条件付きアクセス ポリシーの動作に影響が生じる">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/evaluate-and-update-any-ca-policies-for-ipados/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="更新情報 (2019&#x2F;11&#x2F;22)マイクロソフトではこの問題に対応するため条件付きアクセスの動作を更新しました。現在、条件付きアクセスは iPadOS を macOS としてではなく、iOS として認識します。このため、iOS に対して適用した条件付きアクセス ポリシーは iPadOS の更新前と同じように適用されます。 Safari と Apple のネイティブ メール アプリで依然として挙動が">
+<meta property="og:description" content="更新情報 (2019&#x2F;11&#x2F;22)マイクロソフトではこの問題に対応するため条件付きアクセスの動作を更新しました。現在、条件付きアクセスは iPadOS を macOS としてではなく、iOS として認識します。このため、iOS に対して適用した条件付きアクセス ポリシーは iPadOS の更新前と同じように適用されます。 Safari と Apple のネイティブ メール アプ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2019-09-12T05:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.347Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.285Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Conditional Access">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,18 +155,18 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9b9bee3e-3d4c-5a85-b246-5443f78e6e8f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BiPad+%E4%B8%8A%E3%81%AE+iOS13+%E3%81%AE%E6%8C%99%E5%8B%95%E5%A4%89%E6%9B%B4%E3%81%AB%E3%82%88%E3%82%8A+Azure+AD+%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AB%E5%BD%B1%E9%9F%BF%E3%81%8C%E7%94%9F%E3%81%98%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fevaluate-and-update-any-ca-policies-for-ipados%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fevaluate-and-update-any-ca-policies-for-ipados.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fevaluate-and-update-any-ca-policies-for-ipados.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/evaluate-and-update-any-ca-policies-for-ipados/" data-id="cmmketdsn00bq0nqp8sijg57a" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/evaluate-and-update-any-ca-policies-for-ipados/" data-id="cuidqc19tKBfKaOxz828A6Z5_" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="更新情報-2019-11-22"><a href="#更新情報-2019-11-22" class="headerlink" title="更新情報 (2019/11/22)"></a>更新情報 (2019/11/22)</h2><p>マイクロソフトではこの問題に対応するため条件付きアクセスの動作を更新しました。現在、条件付きアクセスは iPadOS を macOS としてではなく、iOS として認識します。このため、iOS に対して適用した条件付きアクセス ポリシーは iPadOS の更新前と同じように適用されます。</p>
+        <h2 id="更新情報-2019-11-22"><a href="#更新情報-2019-11-22" class="headerlink" title="更新情報 (2019&#x2F;11&#x2F;22)"></a>更新情報 (2019&#x2F;11&#x2F;22)</h2><p>マイクロソフトではこの問題に対応するため条件付きアクセスの動作を更新しました。現在、条件付きアクセスは iPadOS を macOS としてではなく、iOS として認識します。このため、iOS に対して適用した条件付きアクセス ポリシーは iPadOS の更新前と同じように適用されます。</p>
 <p>Safari と Apple のネイティブ メール アプリで依然として挙動が異なる場合は、一度ネイティブ メール アプリからサインアウトおよびサインインしなおして動作をご確認ください。また下記資料に記載のとおり、条件付きアクセスの認証セッション管理をご利用いただくことも可能です。その他の詳細については以下の資料をご覧ください。</p>
 <p>Action Required: Evaluate and update Conditional Access policies after new iPadOS release<br><a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4521038/action-required-update-conditional-access-policies-for-ipados">https://support.microsoft.com/en-us/help/4521038/action-required-update-conditional-access-policies-for-ipados</a></p>
 <h2 id="当初の公開内容"><a href="#当初の公開内容" class="headerlink" title="当初の公開内容"></a>当初の公開内容</h2><p>皆さんこんにちは、Azure AD サポート チームの高田です。</p>
 <p>本日は、iPad を iOS13 にアップグレードした際に生じる、Azure AD 条件付きアクセス ポリシーへの影響についてお知らせいたします。詳細については、上記の資料にも公開されておりますが、機械翻訳となりますので本ブログでも概要について案内させていただきます。</p>
 <h3 id="変更内容の概要"><a href="#変更内容の概要" class="headerlink" title="変更内容の概要"></a>変更内容の概要</h3><p>Apple 社では 9 月 30 日に iPadOS (iPad 用の新 OS) のリリースを予定しています。本リリースにより新しい iPadOS にアップデートされた iPad では、Safari ブラウザーやネイティブのメール アプリが自身の OS を iOS ではなく、macOS として通知 (User Agent を提示) するようになります。つまり、新しい iPadOS にアップグレードした iPad は、iOS ではなく、macOS として認識されることとなります。</p>
-<h3 id="変更により生じうる影響"><a href="#変更により生じうる影響" class="headerlink" title="変更により生じうる影響"></a>変更により生じうる影響</h3><p>これにより、これまで Azure AD 条件付きアクセス ポリシーにて “デバイス プラットフォーム” を iOS として選択していても、新しい iPadOS にアップデートした iPad ではこの “デバイス プラットフォーム” = iOS の条件に合致しなくなります。結果として、iOS 用に定義した多要素認証などのアクセス制御が動作しなくなます。</p>
+<h3 id="変更により生じうる影響"><a href="#変更により生じうる影響" class="headerlink" title="変更により生じうる影響"></a>変更により生じうる影響</h3><p>これにより、これまで Azure AD 条件付きアクセス ポリシーにて “デバイス プラットフォーム” を iOS として選択していても、新しい iPadOS にアップデートした iPad ではこの “デバイス プラットフォーム” &#x3D; iOS の条件に合致しなくなります。結果として、iOS 用に定義した多要素認証などのアクセス制御が動作しなくなます。</p>
 <p>条件付きアクセス ポリシーにおいて、デバイス プラットフォームとして iOS と macOS とで異なるアクセス制御を実施している場合、iPad が macOS として認識されることで予期せぬ動作を招く可能性があります。このため、上述の動作を考慮の上、macOS に対しても適切なポリシー設定をご検討ください。恐れ入りますが、Apple 社の本動作変更により、条件付きアクセス ポリシーでは iPad と macOS を区別することは困難となります。</p>
 <p>なお、より詳細な影響範囲や影響が発生しうるシナリオの例などは上記サポート技術情報のページにまとめられておりますのでご参照ください。また本内容についてより詳細の確認が必要な際は Azure ポータルから Azure AD サポートチームまでお問い合わせを頂戴できればと思います。</p>
 

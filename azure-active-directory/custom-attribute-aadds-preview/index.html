@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/custom-attribute-aadds-preview/custom-attribute-aadds-preview1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/custom-attribute-aadds-preview/custom-attribute-aadds-preview2.png">
 <meta property="article:published_time" content="2023-04-17T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.302Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.239Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+850534f7-5b03-508c-aa3a-4ce7c1fc3a1e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+DS+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E5%B1%9E%E6%80%A7%E3%81%8C%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF+%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fcustom-attribute-aadds-preview%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fcustom-attribute-aadds-preview.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fcustom-attribute-aadds-preview.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/custom-attribute-aadds-preview/" data-id="cmmketds500aa0nqp061t9tf5" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/custom-attribute-aadds-preview/" data-id="cuidkFCm2v82BpC92_jSHUKCZ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -171,7 +171,7 @@
 <p><img src="/blog/azure-active-directory/custom-attribute-aadds-preview/custom-attribute-aadds-preview1.png"></p>
 <p>この新機能により、Azure AD DS マネージド ドメインで、カスタム属性を使用することができるようになります。 </p>
 <h2 id="カスタム属性-パブリック-プレビュー"><a href="#カスタム属性-パブリック-プレビュー" class="headerlink" title="カスタム属性 (パブリック プレビュー)"></a>カスタム属性 (パブリック プレビュー)</h2><p>様々な理由から、企業はレガシー アプリのコードを修正しない、または修正できないことがよくあります。これらのレガシー アプリでは、ディレクトリのカスタム従業員 ID などのカスタム属性を利用し、アプリの LDAP 呼び出しでこれらの属性を活用している場合もあると思います。Azure Active Directory (Azure AD) は、これらの拡張ユーザー属性を onPremisesExtensionAttributes という属性セットに格納し (Azure AD Connect 経由で構成した場合)、拡張アプリ属性を Directory Extensions という機能に格納しています。しかしながら、これら 2 つの拡張セットはどちらも、以前は Azure AD Domain Services に同期されていませんでした。  </p>
-<p>Azure AD DS で Azure AD からカスタム属性/拡張機能を同期できるようにすることで、これまで移行できなかったカスタム属性/拡張機能に依存するアプリをすべて移行できるようになり、より多くのお客様に Azure AD DS をご利用いただけるようになりました。</p>
+<p>Azure AD DS で Azure AD からカスタム属性&#x2F;拡張機能を同期できるようにすることで、これまで移行できなかったカスタム属性&#x2F;拡張機能に依存するアプリをすべて移行できるようになり、より多くのお客様に Azure AD DS をご利用いただけるようになりました。</p>
 <p><img src="/blog/azure-active-directory/custom-attribute-aadds-preview/custom-attribute-aadds-preview2.png"></p>
 <p>カスタム属性の詳細については、こちらのドキュメントを参照ください: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory-domain-services/concepts-custom-attributes">Azure AD Domain Services のカスタム属性の作成と管理</a></p>
 <p>Azure AD DS は、今後も多くの発表を控えています！Azure ADですべてのアプリをよりシンプルに管理できるようにするため、最新のアップデートにご注目ください。</p>

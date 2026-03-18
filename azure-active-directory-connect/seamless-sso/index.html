@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/seamless-sso/sSSO20180528.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/seamless-sso/sSSO20180528.png">
 <meta property="article:published_time" content="2017-10-24T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.948Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.885Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta property="article:tag" content="SSO">
@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ea173dea-1f67-5779-a22b-1731ebe69b39%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%81%A7%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AB+%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%AA%E3%83%B3%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fseamless-sso%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fseamless-sso.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fseamless-sso.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/seamless-sso/" data-id="cmmketdpj002p0nqp2k7q9a0e" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/seamless-sso/" data-id="cuid0vAph7uDufcTEjvlFrQUg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -185,7 +185,7 @@
 <p>どちらの組み合わせを選択すべきかはご要件に依存します。例えば、ハッシュ値であり暗号化された経路を使用した場合もパスワードをインターネット通信に乗せたくない、という方はパススルー認証の方が向いています。もしくは、認証基盤を構成するサーバー数を増やしたくない方がメリットが大きい、という方はパスワード同期の方が向いていると言えそうです。</p>
 <p>これにより、ユーザーが社内で、ドメインに参加している端末にサインインし、IE や Chrome で、例えば <a target="_blank" rel="noopener" href="https://portal.office.com/">https://portal.office.com/</a> など Azure AD と連携しているサービスを開くと、パスワードは求められずにサインインが完了します。こんな感じ ↓ で、ADFS 無しで SSO ができてしまいます。</p>
 <p><a href="/blog/azure-active-directory-connect/seamless-sso/sSSO20180528.mp4"><img src="/blog/azure-active-directory-connect/seamless-sso/sSSO20180528.png" alt="IMAGE ALT TEXT HERE"></a></p>
-<p>また、前述の<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-sso-faq">よく寄せられる質問</a>にもあるように、パスワードだけではなくユーザー名の指定もせずにサインインが行えるサービス/URL もあります。以下は outlook.office365.com/customdomain.name にアクセスした時の動作です。 (カスタム ドメイン名はご利用の環境に即したドメイン名を指定します)</p>
+<p>また、前述の<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/connect/active-directory-aadconnect-sso-faq">よく寄せられる質問</a>にもあるように、パスワードだけではなくユーザー名の指定もせずにサインインが行えるサービス&#x2F;URL もあります。以下は outlook.office365.com&#x2F;customdomain.name にアクセスした時の動作です。 (カスタム ドメイン名はご利用の環境に即したドメイン名を指定します)</p>
 <p><a href="/blog/azure-active-directory-connect/seamless-sso/sSSO2-20180528.mp4"><img src="/blog/azure-active-directory-connect/seamless-sso/sSSO20180528.png" alt="IMAGE ALT TEXT HERE"></a></p>
 <p>これは社内のドメイン参加済み端末からアクセスした場合のシナリオです。社外からの場合は ID とパスワードが要求されます。</p>
 <p>ぜひお試しください！</p>
@@ -195,7 +195,7 @@
 <li><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/office365-tech-japan/2017/03/08/aadconnect-sso-and-pass-through-authentication/">Azure AD Connect のシングル サインオン &amp; パススルー認証 (プレビュー) によるクラウド完結のユーザー認証インフラの実現</a></li>
 <li><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/office365-tech-japan/2017/10/31/aadc-sso-and-passthrough-auth-ga/">“シームレス SSO” と “パススルー認証” の一般提供開始</a></li>
 </ul>
-<p>ただ、きめ細やかなアクセス制御を行いたいというご要件がある場合は、シームレス SSO にはアクセス制御の機能は実装されていないため、Azure AD Premium の条件付きアクセスや AD FS の併用をご検討ください。個人的には、現時点 (2017 年 10 月) では、クレーム ルールを用いたアクセス制御やユーザー証明書認証も行える AD FS のほうが制御条件のきめ細やかさには軍配が上がるのでは！？と考えます (メリット/デメリットや設計指針に依存するため、個人の感想です)。</p>
+<p>ただ、きめ細やかなアクセス制御を行いたいというご要件がある場合は、シームレス SSO にはアクセス制御の機能は実装されていないため、Azure AD Premium の条件付きアクセスや AD FS の併用をご検討ください。個人的には、現時点 (2017 年 10 月) では、クレーム ルールを用いたアクセス制御やユーザー証明書認証も行える AD FS のほうが制御条件のきめ細やかさには軍配が上がるのでは！？と考えます (メリット&#x2F;デメリットや設計指針に依存するため、個人の感想です)。</p>
 <p>製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>
 
       

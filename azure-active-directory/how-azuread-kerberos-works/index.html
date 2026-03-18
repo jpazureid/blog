@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works7.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works8.png">
 <meta property="article:published_time" content="2022-02-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.388Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.325Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3be8396b-f68f-5b19-a718-0d47a5ffb7fd%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BDeep+dive+-+Azure+AD+Kerberos+%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-azuread-kerberos-works%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-azuread-kerberos-works.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-azuread-kerberos-works.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-azuread-kerberos-works/" data-id="cmmketdt400d90nqphij33bjc" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-azuread-kerberos-works/" data-id="cuidNA6fyKCp0KBfu_-NLG8ng" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -191,12 +191,12 @@
 <h2 id="Titkcet-Granting-Ticket-と-Realm"><a href="#Titkcet-Granting-Ticket-と-Realm" class="headerlink" title="Titkcet Granting Ticket と Realm"></a>Titkcet Granting Ticket と Realm</h2><p>Kerberos は PRT を使用せず、TGT (Ticket Granting Tickets - 特に krbtgt) を使用します。  </p>
 <p>Microsoft は、<a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/itops-talk-blog/deep-dive-windows-hybrid-join-single-sign-on-to-azure-active/ba-p/2602107">FIDO セキュリティ キーの認証プロセスに、クラウドが発行した特別な Kerberos TGT</a> を使用する機能を追加しました。しかし、この機能では依然としてオンプレミスのサーバーを参照して、クラウドから発行された kerberos TGT を完全なオンプレミス TGT と交換する必要があります。必要とするすべてのコンポーネントが用意されているわけではないため、チームはクラウド TGT を開発したというわけです。</p>
 <h2 id="Azure-AD-の-Kerberos-認証プロセス"><a href="#Azure-AD-の-Kerberos-認証プロセス" class="headerlink" title="Azure AD の Kerberos 認証プロセス"></a>Azure AD の Kerberos 認証プロセス</h2><p>Windows は Azure AD と認証し、PRT と クラウド TGT (FIDO キーでログオンした場合は、さらに Patrtial TGT) を取得します。 ここでの課題は、プライマリ TGT は、1 つのレルム (オンプレミス AD) に対して 1 つだけ持つことになっていることです。そこでこのプロセスでは、クライアントに対しクラウドのリソースについては別のレルムにマッピングするよう指示し、Azure AD のテナントの詳細についても併せて取得します。  </p>
-<p>*.windows.net = KERBEROS.MICROSOFTONLINE.COM  </p>
+<p>*.windows.net &#x3D; KERBEROS.MICROSOFTONLINE.COM  </p>
 <p><img src="/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works3.png" alt="Azure AD から Kerberos のクラウド TGT、レルム マッピング、Azure テナント情報を取得している Windows LSASS">  </p>
-<p>Azure Virtual Desktop にログインし、認証して PRT と クラウド TGT を取得すると、Azure Virtual Desktop は FSLogix を呼び出して Azure Files 共有 (例: \mystuff.file.core.windows.net) からユーザー プロファイルを読み込もうとします。これは実体として SMB ファイル共有として参照されるので、SMB は cifs/mystuff.file.core.windows.net の Kerberos チケットを探しに行くのです。</p>
+<p>Azure Virtual Desktop にログインし、認証して PRT と クラウド TGT を取得すると、Azure Virtual Desktop は FSLogix を呼び出して Azure Files 共有 (例: \mystuff.file.core.windows.net) からユーザー プロファイルを読み込もうとします。これは実体として SMB ファイル共有として参照されるので、SMB は cifs&#x2F;mystuff.file.core.windows.net の Kerberos チケットを探しに行くのです。</p>
 <p>Azure AD 認証プロセスで、Windows にマッピング情報を与えているので、Windows は *.windows.net リソースのために Active Directory ドメインコントローラーに問い合わせるということはしません。その代わり、Kerberos スタックはクラウド TGT を realm マッピングと一緒にキャッシュに配置し、realm マッピングと Azure AD テナントの詳細情報の間で「KDC Proxy」マップを構成します。</p>
 <p><img src="/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works4.png" alt="Azure AD に TGS-REQ を送信する Kerberos">  </p>
-<p>これにより、チケット要求に対して、Kerberos は cifs/mystuff.file.core.windows.net を参照し、*.windows.net は KERBEROS.MICROSOFTONLINE.COM にマッピングされ、その realm から <a target="_blank" rel="noopener" href="https://login.microsoftonline.com/tenantid/kerberos">https://login.microsoftonline.com/tenantid/kerberos</a> にマッピングする KDC Proxy が出来上がることになります。</p>
+<p>これにより、チケット要求に対して、Kerberos は cifs&#x2F;mystuff.file.core.windows.net を参照し、*.windows.net は KERBEROS.MICROSOFTONLINE.COM にマッピングされ、その realm から <a target="_blank" rel="noopener" href="https://login.microsoftonline.com/tenantid/kerberos">https://login.microsoftonline.com/tenantid/kerberos</a> にマッピングする KDC Proxy が出来上がることになります。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/openspecs/windows_protocols/ms-kkdcp/5bcebb8d-b747-4ee5-9453-428aec1c5c38?WT.mc_id=modinfra-54539-socuff">KDC Proxy protocol</a> は、インターネット上で Kerberos をやり取りする仕組みです。そして、Azure AD は Ticket Granting Service-Request (TGS-REQ) を受け取ることになります。  </p>
 <p><img src="/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works5.png" alt="Ticket Granting Service - 要求">  </p>
 <p>次に Azure AD は:</p>
@@ -206,14 +206,14 @@
 <li>要求されたサービス プリンシパル名 (Azure AD にアプリケーションとして登録された Azure Files リソース) を検索します。  </li>
 <li>チケットを生成します。  </li>
 <li>チケットを、そのサービス プリンシパル名に格納されている Azure Files ストレージ キーで暗号化します。  </li>
-<li>そしてそれをすべて TGS-REP にまとめて返します。 </li>
+<li>そしてそれをすべて TGS-REP にまとめて返します。</li>
 </ol>
 <p><img src="/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works6.png" alt="TGT 要求の送信と受信を行う際の Kerberos の動作">  </p>
 <p>Kerberos スタックが TGT 応答 (TGS-REP) を取り戻すと、Kerberos スタックは:</p>
 <ol>
 <li>チケットを開封します。</li>
 <li>アプリケーション リクエスト (AP-REQ) を生成し、SMB にそれを渡します。  </li>
-<li>SMB プロトコルは AP-REQ をヘッダーに詰め込み、SMB Hello を Azure Files に送信します。  </li>
+<li>SMB プロトコルは AP-REQ をヘッダーに詰め込み、SMB Hello を Azure Files に送信します。</li>
 </ol>
 <p><img src="/blog/azure-active-directory/how-azuread-kerberos-works/how-azuread-kerberos-works7.png" alt="AP-REQ と暗号化されたチケットを受信する際の SMB の動作">  </p>
 <p>Azure Files は hello を受け取り、チケットを復号化 (ストレージ キーを使用) して完了です。FSLogix は、Azure File Share のユーザー プロファイルを読み込んで、Azure Virtual Desktop セッションをロードします。</p>

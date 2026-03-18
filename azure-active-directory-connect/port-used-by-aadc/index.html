@@ -6,12 +6,12 @@
   
   <title>Azure AD Connect の通信要件 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Note本記事は Technet Blog の更新停止に伴い こちらの記事 の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 なお、本記事は 2018 年 7 月 3 日に「Azure AD Connect サーバー - ウィルス対策ソフト除外項目 &#x2F; 使用する通信ポート」 として公開しておりましたが、情報が古くなってまいりましたので、最新情報として改めて更新">
+  <meta name="description" content="Note本記事は Technet Blog の更新停止に伴い こちらの記事 の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 なお、本記事は 2018 年 7 月 3 日に「Azure AD Connect サーバー - ウィルス対策ソフト除外項目 &#x2F; 使用する通信ポート」 として公開しておりましたが、情報が古くなってまいりましたので、最新情報として">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure AD Connect の通信要件">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い こちらの記事 の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 なお、本記事は 2018 年 7 月 3 日に「Azure AD Connect サーバー - ウィルス対策ソフト除外項目 &#x2F; 使用する通信ポート」 として公開しておりましたが、情報が古くなってまいりましたので、最新情報として改めて更新">
+<meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い こちらの記事 の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 なお、本記事は 2018 年 7 月 3 日に「Azure AD Connect サーバー - ウィルス対策ソフト除外項目 &#x2F; 使用する通信ポート」 として公開しておりましたが、情報が古くなってまいりましたので、最新情報として">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-2.png">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-5.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-6.png">
 <meta property="article:published_time" content="2023-06-28T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.944Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.881Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,13 +161,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3668d38f-e94e-5c97-94af-51404462947f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%81%AE%E9%80%9A%E4%BF%A1%E8%A6%81%E4%BB%B6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fport-used-by-aadc%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fport-used-by-aadc.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fport-used-by-aadc.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/" data-id="cmmketdph002k0nqp6rtz4u4w" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/port-used-by-aadc/" data-id="cuidzQB28FHdfMp_R_trjCBA2" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/07/03/azure-ad-connect-requirement/">こちらの記事</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p>
-<p>なお、本記事は 2018 年 7 月 3 日に「Azure AD Connect サーバー - ウィルス対策ソフト除外項目 / 使用する通信ポート」 として公開しておりましたが、情報が古くなってまいりましたので、最新情報として改めて更新のうえ公開しております。</p></div>
+<p>なお、本記事は 2018 年 7 月 3 日に「Azure AD Connect サーバー - ウィルス対策ソフト除外項目 &#x2F; 使用する通信ポート」 として公開しておりましたが、情報が古くなってまいりましたので、最新情報として改めて更新のうえ公開しております。</p></div>
 <p>こんにちは！ Azure Identity サポートの小出です。<br>今回は、 Azure AD Connect の通信要件についてのまとめをご案内します。</p>
 <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>Azure AD Connect は、オンプレミス AD と Azure AD のアカウントを連携するために使われているサービスです。<br>すでに多くのお客様にご利用いただき、ハイブリッド環境を構築されている企業様も多いと思いますが、これから Azure AD Connect を利用したいと検討されているお客様のなかには、どのような通信を許可すればよいか確認されたい方もいらっしゃるかと思います。</p>
 <p>Azure AD Connect の通信要件に関しては、弊社サポートにもよくお問い合わせをいただいておりますが、公開情報の記載が複数にまたがっており、どこのページを見ればよいか分かりにくい状況でした。</p>
@@ -180,7 +180,7 @@
 <p>もし上記 URL を許可してもエラーが発生する、正しく動作しない場合などは、まず <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?redirectSourcePath=%252farticle%252fOffice-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2&view=o365-worldwide">本公開情報</a> に記載されている ID 56、ID 59、ID 125 に記載の URL を許可して様子を確認してください。</p>
 <h3 id="Azure-AD-Connect-Health-を利用するための要件"><a href="#Azure-AD-Connect-Health-を利用するための要件" class="headerlink" title="Azure AD Connect Health を利用するための要件"></a>Azure AD Connect Health を利用するための要件</h3><p>Azure AD Connect Health を利用するにあたって必要なポートにつきましては、まず<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/reference-connect-ports#table-1---azure-ad-connect-and-on-premises-ad">本公開情報</a> の表 7 をご確認ください。</p>
 <p>また、以下の URL についても許可リストに追加してください。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.blob.core.windows.net</span><br><span class="line">*.aadconnecthealth.azure.com</span><br><span class="line">**.servicebus.windows.net - ポート: (5671 がブロックされている場合、エージェントは 443 にフォールバックしますが、5671を使用することをお勧めします。 このエンドポイントは、エージェントの最新バージョンでは必要ありません。)</span><br><span class="line">*.adhybridhealth.azure.com/</span><br><span class="line">https://management.azure.com</span><br><span class="line">https://policykeyservice.dc.ad.msft.net/</span><br><span class="line">https://login.windows.net</span><br><span class="line">https://login.microsoftonline.com</span><br><span class="line">https://secure.aadcdn.microsoftonline-p.com</span><br><span class="line">https://www.office.com (このエンドポイントは、登録時の検出目的でのみ使用されます。)</span><br><span class="line">https://aadcdn.msftauth.net</span><br><span class="line">https://aadcdn.msauth.net</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">*.blob.core.windows.net</span><br><span class="line">*.aadconnecthealth.azure.com</span><br><span class="line">**.servicebus.windows.net - ポート: (5671 がブロックされている場合、エージェントは 443 にフォールバックしますが、5671を使用することをお勧めします。 このエンドポイントは、エージェントの最新バージョンでは必要ありません。)</span><br><span class="line">*.adhybridhealth.azure.com/</span><br><span class="line">https://management.azure.com</span><br><span class="line">https://policykeyservice.dc.ad.msft.net/</span><br><span class="line">https://login.windows.net</span><br><span class="line">https://login.microsoftonline.com</span><br><span class="line">https://secure.aadcdn.microsoftonline-p.com</span><br><span class="line">https://www.office.com (このエンドポイントは、登録時の検出目的でのみ使用されます。)</span><br><span class="line">https://aadcdn.msftauth.net</span><br><span class="line">https://aadcdn.msauth.net</span><br></pre></td></tr></table></figure>
 
 <p>Azure AD Connect Health でエラーが発生するお問い合わせには、上記の URL が許可されていない、プロキシ環境などで TLS 終端機能が使用されている場合などが多く見受けられます。<br>Azure AD Connect Health をご利用の際には、上記を含めた前提条件を満たすかご確認ください。<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/how-to-connect-health-agent-install#outbound-connectivity-to-the-azure-service-endpoints">こちらの公開情報</a>に記載があります。</p>
 <h3 id="Azure-AD-クラウド同期（Cloud-Sync）を利用するために必要な要件"><a href="#Azure-AD-クラウド同期（Cloud-Sync）を利用するために必要な要件" class="headerlink" title="Azure AD クラウド同期（Cloud Sync）を利用するために必要な要件"></a>Azure AD クラウド同期（Cloud Sync）を利用するために必要な要件</h3><p>Azure AD Connect ではなく、新しい Azure AD Cloud Sync をご利用のお客様は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/cloud-sync/how-to-prerequisites?tabs=public-cloud#firewall-and-proxy-requirements">こちらの要件</a>をご確認ください。</p>
@@ -189,32 +189,32 @@
 <p>また、必要に応じて以下の URL を追加し、エージェントと Azure AD が通信できるように設定してください。</p>
 <p><img src="/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-5.png" alt="aadc-port-0626-5"></p>
 <h2 id="B-要望や環境に応じて許可してほしい通信"><a href="#B-要望や環境に応じて許可してほしい通信" class="headerlink" title="B. 要望や環境に応じて許可してほしい通信"></a>B. 要望や環境に応じて許可してほしい通信</h2><h3 id="Azure-ポータルにアクセスするための要件"><a href="#Azure-ポータルにアクセスするための要件" class="headerlink" title="Azure ポータルにアクセスするための要件"></a>Azure ポータルにアクセスするための要件</h3><p>プロキシ環境で Azure ポータルにアクセスできない時は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud#azure-portal-urls-for-proxy-bypass">こちらの公開情報</a>の URL が許可されていないことが原因である可能性があります。<br>そのため、プロキシ環境でご利用のお客様は、上記必ず必要な通信のほかに、下記 URL も許可リストに追加してください。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.aadcdn.microsoftonline-p.com</span><br><span class="line">*.aka.ms</span><br><span class="line">*.applicationinsights.io</span><br><span class="line">*.azure.com</span><br><span class="line">*.azure.net</span><br><span class="line">*.azure-api.net</span><br><span class="line">*.azuredatalakestore.net</span><br><span class="line">*.azureedge.net</span><br><span class="line">*.loganalytics.io</span><br><span class="line">*.microsoft.com</span><br><span class="line">*.microsoftonline.com</span><br><span class="line">*.microsoftonline-p.com</span><br><span class="line">*.msauth.net</span><br><span class="line">*.msftauth.net</span><br><span class="line">*.trafficmanager.net</span><br><span class="line">*.visualstudio.com</span><br><span class="line">*.asazure.windows.net (Analysis Services)</span><br><span class="line">*.core.windows.net (Azure Storage)</span><br><span class="line">*.database.windows.net (SQL Server) </span><br><span class="line">*.graph.windows.net (Azure AD Graph)</span><br><span class="line">*.kusto.windows.net (Azure Data Explorer/Kusto)</span><br><span class="line">*.search.windows.net (search)</span><br><span class="line">*.servicebus.windows.net (Azure Service Bus)</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">*.aadcdn.microsoftonline-p.com</span><br><span class="line">*.aka.ms</span><br><span class="line">*.applicationinsights.io</span><br><span class="line">*.azure.com</span><br><span class="line">*.azure.net</span><br><span class="line">*.azure-api.net</span><br><span class="line">*.azuredatalakestore.net</span><br><span class="line">*.azureedge.net</span><br><span class="line">*.loganalytics.io</span><br><span class="line">*.microsoft.com</span><br><span class="line">*.microsoftonline.com</span><br><span class="line">*.microsoftonline-p.com</span><br><span class="line">*.msauth.net</span><br><span class="line">*.msftauth.net</span><br><span class="line">*.trafficmanager.net</span><br><span class="line">*.visualstudio.com</span><br><span class="line">*.asazure.windows.net (Analysis Services)</span><br><span class="line">*.core.windows.net (Azure Storage)</span><br><span class="line">*.database.windows.net (SQL Server) </span><br><span class="line">*.graph.windows.net (Azure AD Graph)</span><br><span class="line">*.kusto.windows.net (Azure Data Explorer/Kusto)</span><br><span class="line">*.search.windows.net (search)</span><br><span class="line">*.servicebus.windows.net (Azure Service Bus)</span><br></pre></td></tr></table></figure>
 
 <h3 id="シームレス-SSO-に必要な要件"><a href="#シームレス-SSO-に必要な要件" class="headerlink" title="シームレス SSO に必要な要件"></a>シームレス SSO に必要な要件</h3><p>ファイアウォールまたはプロキシで許可している場合は、*.msappproxy.net もしくは tenantid.registration.msappproxy.net の URL に対するポート 443 での許可リストへの接続を追加します。<br>詳細につきましては、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/how-to-connect-sso-quick-start#step-1-check-the-prerequisites">本公開情報</a>の前提条件をご確認ください。</p>
 <h3 id="パスワード-ライトバックに必要な要件"><a href="#パスワード-ライトバックに必要な要件" class="headerlink" title="パスワード ライトバックに必要な要件"></a>パスワード ライトバックに必要な要件</h3><p>パスワードライトバックは以下に対し接続を行いますので、利用される場合は下記への通信も許可してください。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.passwordreset.microsoftonline.com</span><br><span class="line">*.servicebus.windows.net</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">*.passwordreset.microsoftonline.com</span><br><span class="line">*.servicebus.windows.net</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="パススルー認証を使う際に必要な通信要件"><a href="#パススルー認証を使う際に必要な通信要件" class="headerlink" title="パススルー認証を使う際に必要な通信要件"></a>パススルー認証を使う際に必要な通信要件</h3><p>パススルー認証に必要な通信要件は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/connect/how-to-connect-pta-quick-start">こちらの公開情報</a>に記載があります。<br>まずは下記のポートを使用して通信ができるよう、ファイアウォールなどの設定をご確認ください。</p>
 <p><img src="/blog/azure-active-directory-connect/port-used-by-aadc/aadc-port-0626-6.png" alt="aadc-port-0626-6"></p>
 <p>また、公開情報に記載の通り、下記 URL への通信も許可してください。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.msappproxy.net </span><br><span class="line">*.servicebus.windows.net </span><br><span class="line">autologon.microsoftazuread-sso.com （発信 HTTP プロキシを利用している場合）</span><br><span class="line">login.windows.net</span><br><span class="line">login.microsoftonline.com</span><br><span class="line">crl3.digicert.com:80</span><br><span class="line">crl4.digicert.com:80</span><br><span class="line">ocsp.digicert.com:80</span><br><span class="line">www.d-trust.net:80</span><br><span class="line">root-c3-ca2-2009.ocsp.d-trust.net:80</span><br><span class="line">crl.microsoft.com:80</span><br><span class="line">oneocsp.microsoft.com:80</span><br><span class="line">ocsp.msocsp.com:80</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">*.msappproxy.net </span><br><span class="line">*.servicebus.windows.net </span><br><span class="line">autologon.microsoftazuread-sso.com （発信 HTTP プロキシを利用している場合）</span><br><span class="line">login.windows.net</span><br><span class="line">login.microsoftonline.com</span><br><span class="line">crl3.digicert.com:80</span><br><span class="line">crl4.digicert.com:80</span><br><span class="line">ocsp.digicert.com:80</span><br><span class="line">www.d-trust.net:80</span><br><span class="line">root-c3-ca2-2009.ocsp.d-trust.net:80</span><br><span class="line">crl.microsoft.com:80</span><br><span class="line">oneocsp.microsoft.com:80</span><br><span class="line">ocsp.msocsp.com:80</span><br></pre></td></tr></table></figure>
 
 <h2 id="ウィルス対策ソフトでのスキャン除外項目"><a href="#ウィルス対策ソフトでのスキャン除外項目" class="headerlink" title="ウィルス対策ソフトでのスキャン除外項目"></a>ウィルス対策ソフトでのスキャン除外項目</h2><p>基本的には SQL Server 2012 Express LocalDB としての除外をご考慮いただければと存じますので、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-JP/troubleshoot/sql/database-engine/security/antivirus-and-sql-server">こちらの公開情報</a>をまずは参考としてご参照いただければと存じます。</p>
 <p>上記技術情報を踏まえ、AADC 製品を添付の SQL Server 2012 Express LocalDB をご利用いただいた状態で、既定でセットアップされた際の除外対象は以下となります。</p>
 <ul>
 <li>SQL Server データ ファイル格納先</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Microsoft Azure AD Sync\Data</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Microsoft Azure AD Sync\Data</span><br></pre></td></tr></table></figure>
 
 <p>※ 一時的に利用される場合があるため、[C:\Program Files\Microsoft Azure AD Sync\MaData] も併せて除外していただければと存じます。</p>
 <ul>
 <li>ウイルス スキャンから除外するプロセス</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Microsoft SQL Server\110\LocalDB\Binn\sqlservr.exe</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">C:\Program Files\Microsoft SQL Server\110\LocalDB\Binn\sqlservr.exe</span><br></pre></td></tr></table></figure>
 
-<p>上記に加え、SQL Server 観点として技術情報にございます [.bak / .trn / .trc / .sql] の拡張子を持つファイルの除外も念のためご検討ください。</p>
+<p>上記に加え、SQL Server 観点として技術情報にございます [.bak &#x2F; .trn &#x2F; .trc &#x2F; .sql] の拡張子を持つファイルの除外も念のためご検討ください。</p>
 <h2 id="よくある質問"><a href="#よくある質問" class="headerlink" title="よくある質問"></a>よくある質問</h2><p><strong>Q. 許可すべき通信が多すぎます。公開情報に記載の URL の中には、実際には通信していない URL もありそうでした。最低限しか許可したくないのですが、どの URL を許可すればいいですか？</strong></p>
 <p><strong>A.</strong> 公開情報に記載されているものにつきましては、基本的に許可することを推奨しています。もしお客様環境の要件などにより、上記より絞り込む必要がある場合は、ツールなどで実際の通信を取得し、許可する通信先をお客様側で判断してください。<br>トラブル シューティングなどの際には、まずは上記 URL を許可するようご案内する場合があります。</p>
 <p><strong>Q. 通信を許可するにあたり、どちら向きの通信を許可すればよいのでしょうか。</strong></p>

@@ -21,11 +21,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/authenticator-screen1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/authenticator-screen2.png">
 <meta property="article:published_time" content="2021-02-18T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.263Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.201Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Conditional Access">
 <meta property="article:tag" content="Compliant">
+<meta property="article:tag" content="Conditional Access">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/deviceid-not-displayed.png">
   
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d7bb9e78-c4bc-5f9c-9635-79be2a5a6dc4%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%A7+%E3%80%8C%E6%BA%96%E6%8B%A0%E6%B8%88%E3%81%BF%E3%80%8D+%E3%81%A7%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%81%95%E3%82%8C%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%B3%95+%28iOS+%2F+Android+%E7%B7%A8%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fconditional-access-compliant-ios-android%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fconditional-access-compliant-ios-android.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fconditional-access-compliant-ios-android.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/" data-id="cmmketdry009j0nqpb8ska65k" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/" data-id="cuid9ghAGJFRzg64wX0EvV0gD" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -180,7 +180,7 @@
 </blockquote>
 <br>
 
-<h2 id="lt-なぜブロックされるのか？-gt"><a href="#lt-なぜブロックされるのか？-gt" class="headerlink" title="&lt;なぜブロックされるのか？&gt;"></a>&lt;なぜブロックされるのか？&gt;</h2><p>条件付きアクセスの「準拠済み」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。</p>
+<h2 id=""><a href="#" class="headerlink" title="&lt;なぜブロックされるのか？&gt;"></a>&lt;なぜブロックされるのか？&gt;</h2><p>条件付きアクセスの「準拠済み」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。</p>
 <p>ご利用の端末がデバイス情報を Azure AD に提示できない場合、Azure AD は ”どの端末からのアクセスか？” を判断することができません。つまり「準拠済み」であるかも判断することができず、ブロックされてしまいます。<br>ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。</p>
 <p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android/deviceid-not-displayed.png"></p>
 <br>
@@ -189,7 +189,7 @@
 <p><strong>”デバイス情報を提示できているかどうか”</strong><br><strong>”デバイス情報を提示できていない場合は、なぜ提示できていないのか”</strong></p>
 <br>
 
-<h2 id="lt-対処方法-gt"><a href="#lt-対処方法-gt" class="headerlink" title="&lt;対処方法&gt;"></a>&lt;対処方法&gt;</h2><p>iOS / Android でデバイス情報が提示できない原因としては、以下が挙げられます。<br>それぞれの項目ごとに解説します。</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="&lt;対処方法&gt;"></a>&lt;対処方法&gt;</h2><p>iOS &#x2F; Android でデバイス情報が提示できない原因としては、以下が挙げられます。<br>それぞれの項目ごとに解説します。</p>
 <table>
 <thead>
 <tr>
@@ -252,7 +252,7 @@
 <h2 id="D-旧-Edge-を利用している場合"><a href="#D-旧-Edge-を利用している場合" class="headerlink" title="D. 旧 Edge を利用している場合"></a>D. 旧 Edge を利用している場合</h2><p>旧 Edge (Microsoft Edge HTML) を使用している場合、デバイス情報を Azure AD に適切に提示できない場合があることを確認しています。残念ながら、Microsoft Edge HTML は既に開発が終了しており、2021 年 3 月 9 日 にサポートが終了することが予定されているため、Microsoft Edge Chromium を利用いただくことを推奨しています。</p>
 <br>
 
-<h2 id="E-証明書を提示できていない"><a href="#E-証明書を提示できていない" class="headerlink" title="E. 証明書を提示できていない"></a>E. 証明書を提示できていない</h2><p>iOS / Android がデバイス情報を提示する仕組みは、ブラウザー アクセスの場合と、クライアント アプリの場合で異なります。</p>
+<h2 id="E-証明書を提示できていない"><a href="#E-証明書を提示できていない" class="headerlink" title="E. 証明書を提示できていない"></a>E. 証明書を提示できていない</h2><p>iOS &#x2F; Android がデバイス情報を提示する仕組みは、ブラウザー アクセスの場合と、クライアント アプリの場合で異なります。</p>
 <p>ブラウザー アクセスの場合は、iOS も Android も Azure AD に証明書を提示することでデバイス情報を渡します。<br>Android の場合、以下のように端末内に保持している証明書一覧が表示されて、どの証明書を使用するのか促されます。(既に使用する証明書が決まっていると判断されれば促されない場合もあります)<br>ここで適切な証明書を選択すれば、証明書の中に保存されているデバイス情報を提示し、Azure AD でデバイス ベースの条件付きアクセスの制御が可能となります。</p>
 <p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android/device-cert.png"></p>
 <p>なお、ここで使用する証明書 (上記画面の証明書) は、Microsoft Endpoint Manager (Intune) ポータル サイトからインストール可能です。以下の公開情報をご参照の上、記載された画面と同様のメッセージが表示されている状況であれば、本公開情報の「ブラウザー アクセスを有効にする」手順をお試しください。</p>
@@ -260,11 +260,11 @@
 <p>iOS の場合、Intune によるプロファイル設定が行われる際に証明書もあわせてインストールされるはずです。<br>iOS の [プロファイルとデバイス管理] から、Intune 用のプロファイルが既に設定されているかご確認ください。</p>
 <p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android/device-profile1.png"></p>
 <p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android/device-profile2.png"></p>
-<p>iOS / Android を使用したブラウザー アクセスは、上記のように証明書を使用したデバイス情報の提示が可能となります。</p>
+<p>iOS &#x2F; Android を使用したブラウザー アクセスは、上記のように証明書を使用したデバイス情報の提示が可能となります。</p>
 <p>一方で、モバイル アプリ (クライアント アプリ) の場合は、Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。詳細は 「F. Microsoft Authenticator をインストールしていない」で説明します。</p>
 <br>
 
-<h2 id="F-Microsoft-Authenticator-をインストールしていない"><a href="#F-Microsoft-Authenticator-をインストールしていない" class="headerlink" title="F. Microsoft Authenticator をインストールしていない"></a>F. Microsoft Authenticator をインストールしていない</h2><p>iOS / Android を使用してモバイル アプリ (ネイティブ アプリ) にアクセスする際は、基本的に Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。アプリの実装によっては、ブラウザーを経由してデバイス情報を提示する場合もあるため、その場合は Microsoft Authenticator  を用いずにデバイス情報を提示可能です。</p>
+<h2 id="F-Microsoft-Authenticator-をインストールしていない"><a href="#F-Microsoft-Authenticator-をインストールしていない" class="headerlink" title="F. Microsoft Authenticator をインストールしていない"></a>F. Microsoft Authenticator をインストールしていない</h2><p>iOS &#x2F; Android を使用してモバイル アプリ (ネイティブ アプリ) にアクセスする際は、基本的に Microsoft Authenticator を使用して PRT を Azure AD に提示する必要があります。アプリの実装によっては、ブラウザーを経由してデバイス情報を提示する場合もあるため、その場合は Microsoft Authenticator  を用いずにデバイス情報を提示可能です。</p>
 <p>以下は iPad を使用した動作サンプルとなりますが、こちらを見ていただくと Microsoft Authenticator を使用してデバイス情報を提示するシナリオのイメージが湧くかと思います。</p>
 <p>Microsoft Teams のモバイル アプリにサインインするために資格情報を入力すると、パスワード入力画面に遷移しています。画面左上に Teams の表示がありますが、これは Microsoft Teams が呼び出した画面ではないことがわかります。なぜなら、このパスワード入力画面が Microsoft Teams が呼び出した画面であれば、画面左側に Teams への切り替えを促す表示は出ないからです。</p>
 <p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android/authenticator-screen1.png"></p>
@@ -278,7 +278,7 @@
 <p>基本的に、Microsoft 製のアプリケーションは Microsoft Authenticator を使用してデバイス情報を提示するとお考え下さい。(Outlook などは Microsoft Authenticator を使用しなくてもデバイス情報を提示できるシナリオがあることを確認していますが、基本的には Microsoft Authenticator が使用されるとお考えください)</p>
 <p>なお、モバイル デバイスに Microsoft Authenticator をインストールするだけでは不十分で、アプリケーション側が Microsoft Authenticator を使用するように実装がされている必要があります。上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/develop/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker">ブローカーを使用するようにアプリケーションを構成する - Azure Active Directory | Microsoft Docs</a></p>
-<p>こちらは iOS / Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。</p>
+<p>こちらは iOS &#x2F; Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。</p>
 <p>Microsoft のアプリケーションは基本的に WAM に対応しているため問題ありませんが、3rd Party 製のアプリケーションは WAM に対応した実装となっていないことが考えられ、PRT を提示できないことが想定されます。こちらも正確な実装はアプリケーション ベンダーに確認いただく必要がありますが、このような動作処理が行われるために、Azure AD 側でデバイスを判断できない結果になることがあります。</p>
 <br>
 
@@ -313,11 +313,11 @@
     
 <nav id="article-nav">
   
-    <a href="../support-q-and-a/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../support-sevA/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure AD サポートが提供する [ご支援に関する Q&amp;A]
+          Azure AD サポートが提供する [深刻度 A の対応について]
         
       </div>
     </a>

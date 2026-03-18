@@ -6,12 +6,12 @@
   
   <title>Entra ID 初学者向けシリーズ第 2 弾 - ID Protection 入門 - その 2: リスクの検出/確認/対応 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Identity サポート チームの 夏木 です。 この度、Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に初学者向けのブログ シリーズを作成しております。本記事は、その Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」の「その 2: リスクの検出&#x2F;確認&#x2F;対応」です。 本記事の対象者">
+  <meta name="description" content="こんにちは、Azure Identity サポート チームの 夏木 です。 この度、Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に初学者向けのブログ シリーズを作成しております。本記事は、その Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」の「その 2: リスクの検出&#x2F;確認&#x2F;対応」です。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Entra ID 初学者向けシリーズ第 2 弾 - ID Protection 入門 - その 2: リスクの検出&#x2F;確認&#x2F;対応">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure Identity サポート チームの 夏木 です。 この度、Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に初学者向けのブログ シリーズを作成しております。本記事は、その Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」の「その 2: リスクの検出&#x2F;確認&#x2F;対応」です。 本記事の対象者">
+<meta property="og:description" content="こんにちは、Azure Identity サポート チームの 夏木 です。 この度、Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に初学者向けのブログ シリーズを作成しております。本記事は、その Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」の「その 2: リスクの検出&#x2F;確認&#x2F;対応」です。">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/starter-series-id-protection-1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/starter-series-id-protection-8.png">
@@ -21,11 +21,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/starter-series-id-protection-8.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/starter-series-id-protection-5.png">
 <meta property="article:published_time" content="2025-06-17T23:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.046Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.980Z">
 <meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="ID Protection">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Starter series">
-<meta property="article:tag" content="ID Protection">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/starter-series-id-protection-1.png">
   
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,13 +164,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3cd85765-367d-58ed-af61-5eb3ce57d067%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BEntra+ID+%E5%88%9D%E5%AD%A6%E8%80%85%E5%90%91%E3%81%91%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA%E7%AC%AC+2+%E5%BC%BE+-+ID+Protection+%E5%85%A5%E9%96%80+-+%E3%81%9D%E3%81%AE+2%3A+%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%AE%E6%A4%9C%E5%87%BA%2F%E7%A2%BA%E8%AA%8D%2F%E5%AF%BE%E5%BF%9C%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fstarter-series-id-protection-2%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fstarter-series-id-protection-2.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fstarter-series-id-protection-2.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/" data-id="cmmketdw900mw0nqp7uaj5gjg" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-2/" data-id="cuidcAMzlgOXqBnMsSzhCaFAF" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、Azure Identity サポート チームの 夏木 です。</p>
-<p>この度、Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に初学者向けのブログ シリーズを作成しております。本記事は、その Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」の「その 2: リスクの検出/確認/対応」です。</p>
+<p>この度、Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に初学者向けのブログ シリーズを作成しております。本記事は、その Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」の「その 2: リスクの検出&#x2F;確認&#x2F;対応」です。</p>
 <p><strong>本記事の対象者</strong></p>
 <ul>
 <li>Entra P2 ライセンスの購入を検討中のお客様</li>
@@ -182,10 +182,10 @@
 <p>Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では、全部で以下の 3 つの記事を用意しています。</p>
 <ol>
 <li><a href="/blog/azure-active-directory/starter-series-id-protection-1/">その 1: ID Protection とは</a></li>
-<li>その 2: リスクの検出/確認/対応 (本記事)</li>
+<li>その 2: リスクの検出&#x2F;確認&#x2F;対応 (本記事)</li>
 <li><a href="/blog/azure-active-directory/starter-series-id-protection-3/">その 3: リスクベースのポリシーで自動的に管理</a></li>
 </ol>
-<p>本記事「その 2: リスクの検出/確認/対応」では、Microsoft Entra ID Protection を初めて学習/導入する方を対象に、Azure ポータルや Microsoft Entra 管理センターにてリスクを確認する方法とリスク対応の方法について解説します。また、典型的な使用シナリオと実際にお試しいただけるサンプルも紹介していますので、是非一緒に手を動かしてみてください。IT 管理者の方々にとって日々の運用に役立ちましたら嬉しいです！</p>
+<p>本記事「その 2: リスクの検出&#x2F;確認&#x2F;対応」では、Microsoft Entra ID Protection を初めて学習&#x2F;導入する方を対象に、Azure ポータルや Microsoft Entra 管理センターにてリスクを確認する方法とリスク対応の方法について解説します。また、典型的な使用シナリオと実際にお試しいただけるサンプルも紹介していますので、是非一緒に手を動かしてみてください。IT 管理者の方々にとって日々の運用に役立ちましたら嬉しいです！</p>
 <hr>
 <h2 id="ID-Protection-を使ってリスクを確認して調査および修復する"><a href="#ID-Protection-を使ってリスクを確認して調査および修復する" class="headerlink" title="ID Protection を使ってリスクを確認して調査および修復する"></a>ID Protection を使ってリスクを確認して調査および修復する</h2><p>ここでは実際に ID Protection の画面を見て、検出されたリスクを確認し、その調査と修復を手動で行う流れを見ていきます。詳細については、以下の公開情報もご覧ください。  </p>
 <ul>
@@ -227,7 +227,7 @@
 <div class="alert is-info"><p class="alert-title">Note</p><p>[ユーザーの安全を確認する] および [ユーザー リスクを無視する] の対応を取った場合、リスクの状態は “危険” から “安全であるとの確認済み” および “破棄済み” に、リスク レベルはいずれも “-“ に変更されます。危険なユーザー レポートではリスク レベルのフィルターを未選択にすることで確認いただけます。</p></div>
 <p>他にも、[Microsoft 365 Defender で調査する] というボタンがありますが、こちらは、お客様が M365 Defender をご利用の場合にぜひご利用ください。</p>
 <div class="alert is-important"><p class="alert-title">重要</p><p>リスクが検出された際に、お客様によっては弊社サポートにお問い合わせいただき、リスクの詳細について相談いただくことが多くございます。この場合、お問い合わせ前に、まずはすぐにでも対象のアカウントのパスワード リセットやブロックを実施ください。弊社に問い合わせ中に、攻撃者によるアカウント侵害が継続し、被害が拡大している可能性があります。また Entra ID サポートチームではそのリスクの内容や一般的な対応方法について支援はいたしますが、そのリスクが本当に攻撃者によるものなのか、アカウントが侵害されたのかを確認することは致しかねます。そのようなご質問は外部のセキュリティ ベンダーか、弊社が提供する特別な診断サービスの利用を検討ください。</p></div>
-<h2 id="リスクの-検出-確認-対応-を実際に試してみましょう"><a href="#リスクの-検出-確認-対応-を実際に試してみましょう" class="headerlink" title="リスクの 検出/確認/対応 を実際に試してみましょう"></a>リスクの 検出/確認/対応 を実際に試してみましょう</h2><p>このセクションでは、Tor ブラウザーを使用して「匿名 IP アドレスからのアクセス (Tor ブラウザーなどの接続元を隠蔽するツールを利用してサインインされた)」のリスクを発生させ、Azure ポータルまたは Microsot Entra 管理センターより、リスクの確認および対応を実施する流れをシミュレーションする方法を紹介します。</p>
+<h2 id="リスクの-検出-確認-対応-を実際に試してみましょう"><a href="#リスクの-検出-確認-対応-を実際に試してみましょう" class="headerlink" title="リスクの 検出&#x2F;確認&#x2F;対応 を実際に試してみましょう"></a>リスクの 検出&#x2F;確認&#x2F;対応 を実際に試してみましょう</h2><p>このセクションでは、Tor ブラウザーを使用して「匿名 IP アドレスからのアクセス (Tor ブラウザーなどの接続元を隠蔽するツールを利用してサインインされた)」のリスクを発生させ、Azure ポータルまたは Microsot Entra 管理センターより、リスクの確認および対応を実施する流れをシミュレーションする方法を紹介します。</p>
 <h3 id="Step-1-疑似的にリスクを発生させる"><a href="#Step-1-疑似的にリスクを発生させる" class="headerlink" title="Step 1. 疑似的にリスクを発生させる"></a>Step 1. 疑似的にリスクを発生させる</h3><ol>
 <li><a target="_blank" rel="noopener" href="https://www.torproject.org/download/">Tor ブラウザー</a> とテスト アカウントを用意します。</li>
 <li>Tor Browser を使用して、<a target="_blank" rel="noopener" href="https://myapps.microsoft.com/">My Apps</a> に移動します。</li>
@@ -240,7 +240,7 @@
 <h2 id="リスクの自動修復およびリスク-ポリシーの導入"><a href="#リスクの自動修復およびリスク-ポリシーの導入" class="headerlink" title="リスクの自動修復およびリスク ポリシーの導入"></a>リスクの自動修復およびリスク ポリシーの導入</h2><p>ここまで手動でのリスク確認や修復について説明してきましたが、改めまして、この方法は人力によるものであり、現在の自動化や AI を使った攻撃にはスピードが追い付かず対応できません。そこで弊社では、<strong>P2 ライセンスの機能である <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/id-protection/howto-identity-protection-configure-risk-policies">リスクベースの条件付きアクセス ポリシー</a> を有効にすることを強くお勧めしています</strong>。</p>
 <p>この機能を利用することで、検出されたリスクに対して、より強力な認証方法をすぐに要求したり、検出されたリスク レベルに基づいて安全にパスワード リセットを実施させたりすることができます。つまり、<strong>リスクが検出されたら、人力による対処ではなく、システムが自動的にそれに対応し、ユーザーの操作を起点にしてリスクをすぐさま修復するということが可能になります</strong>。</p>
 <p>リスク ポリシーの詳細については、初学者向けシリーズ第 2 弾の 3 つ目の記事「<a href="/blog/./starter-series-id-protection-3/">その 3: リスクベースのポリシーで自動的に管理</a>」にてご紹介します。</p>
-<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回の初学者向けシリーズ第 2 弾の「その 2:リスクの検出/確認/対応」について解説しました。特にご注目いただきたい点をまとめると以下のとおりです。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回の初学者向けシリーズ第 2 弾の「その 2:リスクの検出&#x2F;確認&#x2F;対応」について解説しました。特にご注目いただきたい点をまとめると以下のとおりです。</p>
 <ul>
 <li>Azure ポータルや Microsoft Entra 管理センターにて検出されたリスクの一覧を確認することが可能です。</li>
 <li>検出された各リスクを選択することで詳細情報も確認することができます。</li>

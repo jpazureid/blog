@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 村上 です。 本記事は、2022 年 1 月 31 日に米国の Azure Active Directory Identity Blog で公開された Access Azure resources from software workload in different environments, no secrets necessary">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-02-08T19:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.053Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.990Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+df52a22b-e61b-59b2-acc3-3c2a8dc65503%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E3%81%AA%E3%81%97%E3%81%A7%E7%95%B0%E3%81%AA%E3%82%8B%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2+%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%81%8B%E3%82%89+Azure+%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Faccess-azure-resources-from-software-workload-in-different%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Faccess-azure-resources-from-software-workload-in-different.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Faccess-azure-resources-from-software-workload-in-different.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/access-azure-resources-from-software-workload-in-different/" data-id="cmmketdqa004k0nqp9f4q0ukh" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/access-azure-resources-from-software-workload-in-different/" data-id="cuidgy00RnJlYFOntQBDTvk-l" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -169,17 +169,17 @@
 <p>そこで私たちは、認証におけるシークレットの必要性を最小限に抑えるために、Azure AD にワークロード ID フェデレーションという新しいパブリック プレビューの機能を追加しました。これは、ソフトウェア ワークロードが Azure のマネージド ID を使用できない環境で動作している場合に特に有用です。この機能により、Azure や Microsoft Graph など Azure AD で保護されたリソースに、シークレットなしでアクセスできるようになります。他の ID プロバイダーからソフトウェア ワークロードに発行されたトークンを信頼するように Azure AD を構成することができます。ソフトウェア ワークロードは、これらのトークンを使用して Azure AD からトークンを取得し、Azure と Graph リソースにアクセスできます。</p>
 <p>以下に、ワークロード ID フェデレーションの機能を利用できるシナリオをいくつか紹介します。 </p>
 <ul>
-<li><strong>GitHub Actions ワークフローで Azure による CI/CD を実現</strong>: GitHub リポジトリに Azure AD シークレットを保存するのではなく、GitHub トークンを使用してサービスを認証し、Azure にデプロイすることが可能です。(詳細は <a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure">GitHub のドキュメント</a> をご覧ください) </li>
+<li><strong>GitHub Actions ワークフローで Azure による CI&#x2F;CD を実現</strong>: GitHub リポジトリに Azure AD シークレットを保存するのではなく、GitHub トークンを使用してサービスを認証し、Azure にデプロイすることが可能です。(詳細は <a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure">GitHub のドキュメント</a> をご覧ください) </li>
 <li><strong>Kubernetes クラスタで動作するサービス</strong>: Kubernetes クラスタによりサービス アカウントに発行されるトークンを使用して、Azure リソースにアクセスすることができます。<a target="_blank" rel="noopener" href="https://github.com/Azure/azure-workload-identity">Azure AD workload identity for Kubernetes</a> は、この機能の利用を案内しているオープンソース プロジェクトで、実行場所にかかわらずこの機能を利用いただけます。</li>
-<li><strong>ワークロード ID に SPIFFE/SPIRE を使用しているサービス</strong>: ソフトウェア ワークロードで利用している ID に SPIFFE/SPIRE を使用している場合、SPIFFE トークンを使用して Azure リソースにアクセスすることができます。 </li>
+<li><strong>ワークロード ID に SPIFFE&#x2F;SPIRE を使用しているサービス</strong>: ソフトウェア ワークロードで利用している ID に SPIFFE&#x2F;SPIRE を使用している場合、SPIFFE トークンを使用して Azure リソースにアクセスすることができます。 </li>
 <li><strong>Google Cloud Platform で動作するサービス</strong>: Google サービス アカウントに発行された ID トークンを使用すると、GCP (Google Cloud Platform) で動作するソフトウェア ワークロードは追加のシークレットなしで Azure リソースにアクセスできます。</li>
 </ul>
 <p>私のチーム メンバーである <a target="_blank" rel="noopener" href="https://twitter.com/udayxhegde">Uday Hegde</a> のブログにて、それぞれのシナリオについて説明しています。 </p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-github-actions/">GitHub Actions CI/CD to Azure</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-github-actions/">GitHub Actions CI&#x2F;CD to Azure</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-k8s/">Services running in Kubernetes clusters</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-spiffe/">Services using SPIFFE/SPIRE for their workload identities</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-gcp/">Services running in Google Cloud Platform</a> </li>
+<li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-spiffe/">Services using SPIFFE&#x2F;SPIRE for their workload identities</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.identitydigest.com/azuread-federate-gcp/">Services running in Google Cloud Platform</a></li>
 </ul>
 <p>私たちは今後も、このようなシークレットの必要ない認証を実現できるシナリオを拡大していく予定です。</p>
 <p>Azure AD ワークロード ID フェデレーションについては、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/develop/workload-identity-federation">こちらの公開情報</a> で詳しく説明していますので併せてご覧ください。</p>

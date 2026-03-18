@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/introducing-azuread-custom-security-attributes/5_abac.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/introducing-azuread-custom-security-attributes/6_roleassignmentcondition.png">
 <meta property="article:published_time" content="2021-12-26T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.507Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.443Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2a867489-8534-56fa-9258-fc58df52dc6e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0+%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E5%B1%9E%E6%80%A7%E3%81%AE%E7%B4%B9%E4%BB%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fintroducing-azuread-custom-security-attributes%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fintroducing-azuread-custom-security-attributes.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fintroducing-azuread-custom-security-attributes.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-azuread-custom-security-attributes/" data-id="cmmketdti00ej0nqp6rbk45yf" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-azuread-custom-security-attributes/" data-id="cuidwra8eup19g726QktgqA3B" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -170,7 +170,7 @@
         <p>こんにちは、 Azure ID チームの小出です。</p>
 <p>本記事は、2021 年 12 月 1 日に米国の Azure Active Directory Identity Blog で公開された <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-azure-ad-custom-security-attributes/ba-p/2147068">Introducing Azure AD custom security attributes</a> を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。</p>
 <hr>
-<p>今回の Microsoft Azure Active Directory (Azure AD) のカスタム セキュリティ属性と、ABAC (Attribute Based Access Control / 属性ベースのアクセス制御) 条件におけるユーザー属性のパブリック プレビューは、前回の Azure Storage における ABAC 条件の <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-attribute-based-access-control-abac-in-azure/ba-p/2147069">パブリック プレビュー</a> を踏まえたものです。Azure AD のカスタム セキュリティ属性 (以下、カスタム属性) は、Azure AD で定義できるキーと値のペアで、ユーザーやサービス プリンシパル (エンタープライズ アプリケーション)、マネージド ID などの Azure AD オブジェクトに割り当てることができます。カスタム属性を使用すると、ユーザーのコスト センターやエンタープライズ アプリケーションを所有するビジネス ユニットなどのビジネス固有の情報を追加し、特定のユーザーがそれらの属性を管理できるようになります。ユーザー属性は、Azure ロール割り当ての ABAC 条件で使用することができ、リソース属性だけの場合よりも、さらにきめ細かいアクセス制御が可能になります。Azure AD のカスタム セキュリティ属性の利用には、Azure AD Premium ライセンスが必要です。</p>
+<p>今回の Microsoft Azure Active Directory (Azure AD) のカスタム セキュリティ属性と、ABAC (Attribute Based Access Control &#x2F; 属性ベースのアクセス制御) 条件におけるユーザー属性のパブリック プレビューは、前回の Azure Storage における ABAC 条件の <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-attribute-based-access-control-abac-in-azure/ba-p/2147069">パブリック プレビュー</a> を踏まえたものです。Azure AD のカスタム セキュリティ属性 (以下、カスタム属性) は、Azure AD で定義できるキーと値のペアで、ユーザーやサービス プリンシパル (エンタープライズ アプリケーション)、マネージド ID などの Azure AD オブジェクトに割り当てることができます。カスタム属性を使用すると、ユーザーのコスト センターやエンタープライズ アプリケーションを所有するビジネス ユニットなどのビジネス固有の情報を追加し、特定のユーザーがそれらの属性を管理できるようになります。ユーザー属性は、Azure ロール割り当ての ABAC 条件で使用することができ、リソース属性だけの場合よりも、さらにきめ細かいアクセス制御が可能になります。Azure AD のカスタム セキュリティ属性の利用には、Azure AD Premium ライセンスが必要です。</p>
 <p>カスタム属性機能は、Azure AD での属性の管理や Azure ロール割り当てでの ABAC 条件について寄せられたフィードバックにもとづいて開発されました。</p>
 <ul>
 <li>いくつかのシナリオでは、ユーザーに関する機密情報を Azure AD に保存し、許可されたユーザーのみがこの情報を読み取ったり管理したりできるようにする必要があります。たとえば、各従業員の職位を保存し、人事部の特定のユーザーのみがその属性を読み取り、管理できるようにします。</li>
@@ -253,7 +253,7 @@
 <li>マーケティング部門では、Bob が属性の定義と割り当てを担当しています。Xia は、マーケティング属性セットを作成し、属性定義管理者と属性割り当て管理者のロールを Bob に割り当てます。</li>
 </ol>
 <h2 id="ステップ-4-少ない-Azure-ロール割り当てできめ細かなアクセス制御を実現する"><a href="#ステップ-4-少ない-Azure-ロール割り当てできめ細かなアクセス制御を実現する" class="headerlink" title="ステップ 4: 少ない Azure ロール割り当てできめ細かなアクセス制御を実現する"></a>ステップ 4: 少ない Azure ロール割り当てできめ細かなアクセス制御を実現する</h2><p>前回のブログ記事 <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-attribute-based-access-control-abac-in-azure/ba-p/2147069">Azure ロール割り当てでの ABAC 条件</a> で紹介した架空の例をもとに考えてみましょう。 Bob は、照明や家電など何千ものカテゴリの商品を販売するホームセンター チェーンである Contoso 株式会社営業チームの Azure サブスクリプション所有者です。これらのカテゴリの日次売上レポートは、その日 (たとえば 2021-03-24) の Azure ストレージ コンテナに保存されており、中央の財務チームのメンバーは、より簡単にレポートにアクセスできます。Charlie は照明カテゴリのセールス マネージャーで、照明カテゴリの売上レポートをどのストレージコンテナでも読めるようにする必要がありますが、他のカテゴリーのレポートを読むことはできません。</p>
-<p>リソース属性（例えば、blob インデックス タグ）だけでは、Bob は Charlie のロール割り当てを 1 つ作成し、blob インデックス タグが「category = lighting」となっている blob への読み取りアクセスを制限する条件を追加する必要があります。Bob は Charlie のようなユーザーの数だけ、多くのロール割り当てを作成する必要があります。リソース属性と併用してユーザー属性を使用すると、Bob は Azure AD グループ内のすべてのユーザーを対象とした 1 つのロール割り当てを作成し、”ユーザーの category 属性値が blob の category タグ値と一致する” ように要求する ABAC 条件を追加することができます。Azure AD 管理者の Xia は、「contosocentralfinance」という属性セットを作成し、Bob に属性セットの Azure AD 属性定義管理者と属性割り当て管理者のロールを割り当て、Bob が自分の仕事をするのに最低限必要な権限を与えます。以下の図は、このシナリオを示しています。</p>
+<p>リソース属性（例えば、blob インデックス タグ）だけでは、Bob は Charlie のロール割り当てを 1 つ作成し、blob インデックス タグが「category &#x3D; lighting」となっている blob への読み取りアクセスを制限する条件を追加する必要があります。Bob は Charlie のようなユーザーの数だけ、多くのロール割り当てを作成する必要があります。リソース属性と併用してユーザー属性を使用すると、Bob は Azure AD グループ内のすべてのユーザーを対象とした 1 つのロール割り当てを作成し、”ユーザーの category 属性値が blob の category タグ値と一致する” ように要求する ABAC 条件を追加することができます。Azure AD 管理者の Xia は、「contosocentralfinance」という属性セットを作成し、Bob に属性セットの Azure AD 属性定義管理者と属性割り当て管理者のロールを割り当て、Bob が自分の仕事をするのに最低限必要な権限を与えます。以下の図は、このシナリオを示しています。</p>
 <p><img src="/blog/azure-active-directory/introducing-azuread-custom-security-attributes/5_abac.png"></p>
 <p>Bob は、ユーザー属性とリソース属性を使って、ABAC 条件ビルダーで次のような条件を書きます。</p>
 <p><img src="/blog/azure-active-directory/introducing-azuread-custom-security-attributes/6_roleassignmentcondition.png"></p>

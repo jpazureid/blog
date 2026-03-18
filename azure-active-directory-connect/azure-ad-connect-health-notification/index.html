@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-health-notification/notification1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-health-notification/notification2.png">
 <meta property="article:published_time" content="2023-07-24T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.870Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.807Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD Connect">
 <meta name="twitter:card" content="summary">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+b276c002-6c68-5d70-9ea8-25218a7f2d19%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BHealth+service+data+is+not+up+to+date.+%E3%81%AE%E9%80%9A%E7%9F%A5%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fazure-ad-connect-health-notification%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fazure-ad-connect-health-notification.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fazure-ad-connect-health-notification.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-health-notification/" data-id="cmmketdp7001n0nqpfvis6ops" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-health-notification/" data-id="cuidSVW2Ma5kw04GaoAg8FDdZ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -178,7 +178,7 @@
 <h2 id="Q-監視通信を使用していないので、無効化する手順は？"><a href="#Q-監視通信を使用していないので、無効化する手順は？" class="headerlink" title="Q. 監視通信を使用していないので、無効化する手順は？"></a>Q. 監視通信を使用していないので、無効化する手順は？</h2><p>A. 下記のサービスを停止することで無効化することが可能です。</p>
 <ul>
 <li>Azure AD Connect Health Sync Insights Service  </li>
-<li>Azure AD Connect Health Sync Monitoring Service  </li>
+<li>Azure AD Connect Health Sync Monitoring Service</li>
 </ul>
 <h2 id="Q-監視通信が正常に行えているか確認する方法は？"><a href="#Q-監視通信が正常に行えているか確認する方法は？" class="headerlink" title="Q. 監視通信が正常に行えているか確認する方法は？"></a>Q. 監視通信が正常に行えているか確認する方法は？</h2><p>A. Azure AD Connect サーバーにて、上述の 2 つのサービスが稼働していることを確認します。<br>Azure AD Connect サーバーにて、下記のコマンドを実行します。  </p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Test-AzureADConnectHealthConnectivity</span> <span class="literal">-Role</span> Sync <span class="literal">-ShowResult</span>  </span><br></pre></td></tr></table></figure>
@@ -187,7 +187,7 @@
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="built_in">Test-AzureADConnectHealthConnectivity</span> <span class="literal">-Role</span> Sync <span class="literal">-ShowResult</span>  <span class="built_in">Test-AzureADConnectHealthConnectivity</span><span class="string">&#x27;s execution in details are as follows:  </span></span><br><span class="line"><span class="string">Starting Test-AzureADConnectHealthConnectivity ...  </span></span><br><span class="line"><span class="string">Connectivity Test Step 1 of 3: Testing dependent service endpoints begins ...  </span></span><br><span class="line"><span class="string">AAD CDN connectivity is skipped.  </span></span><br><span class="line"><span class="string">Connecting to endpoint https://login.microsoftonline.com  Endpoint validation for https://login.microsoftonline.com is Successful.  </span></span><br><span class="line"><span class="string">Connecting to endpoint https://login.windows.net  Endpoint validation for https://login.windows.net is Successful.  </span></span><br><span class="line"><span class="string">Connecting to endpoint https://policykeyservice.dc.ad.msft.net/clientregistrationmanager.svc  </span></span><br><span class="line"><span class="string">Endpoint validation for https://policykeyservice.dc.ad.msft.net/clientregistrationmanager.svc is Successful.  </span></span><br><span class="line"><span class="string">Connecting to endpoint https://policykeyservice.dc.ad.msft.net/policymanager.svc  </span></span><br><span class="line"><span class="string">Endpoint validation for https://policykeyservice.dc.ad.msft.net/policymanager.svc is Successful.  </span></span><br><span class="line"><span class="string">Connectivity Test Step 1 of 3 - Testing dependent service endpoints completed successfully.  </span></span><br><span class="line"><span class="string">Connectivity Test Step 2 of 3 - Blob data upload procedure begins ...  </span></span><br><span class="line"><span class="string">Tenant Id is successfully collected during agent registration.  </span></span><br><span class="line"><span class="string">Connectivity Test Step 2 of 3 - Blob data upload procedure completed successfully.  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Connectivity Test Step 3 of 3 - EventHub data upload procedure begins ...  </span></span><br><span class="line"><span class="string">Tenant Id is successfully collected during agent registration.  </span></span><br><span class="line"><span class="string">Connectivity Test Step 3 of 3 - EventHub data upload procedure completed successfully.  </span></span><br><span class="line"><span class="string">Test-AzureADConnectHealthConnectivity completed successfully...  </span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>3 つの確認ステップが実行されますので、それぞれ “completed successfully” となるかを確認ください。  </li>
+<li>3 つの確認ステップが実行されますので、それぞれ “completed successfully” となるかを確認ください。</li>
 </ul>
 <p>Title : Azure AD Connect Health サービスへの接続テスト<br>URL:<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service">https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service</a></p>
 <h2 id="Q-監視通信の通知メールの宛先を変更方法は？"><a href="#Q-監視通信の通知メールの宛先を変更方法は？" class="headerlink" title="Q. 監視通信の通知メールの宛先を変更方法は？"></a>Q. 監視通信の通知メールの宛先を変更方法は？</h2><p>A. Azure Portal 画面より変更、無効化することが可能です。  </p>
@@ -197,8 +197,8 @@
 <li>[正常性と分析] の下にある [Azure AD Connect Health] をクリックします。  </li>
 <li>[Azure Active Directory Connect (Sync)] の枠内にある [同期サービス] をクリックし、対象テナントをクリックします。  </li>
 <li>[操作] の枠内をクリックします。  </li>
-<li>[通知設定] をクリックします。<br>通知を無効化する場合 : “新しいアラートの通知を電子メールで受け取ります。” 項目のチェックをオフに設定します。<br>通知先を変更する場合 : 変更を行うメールアドレス欄を選択し、変更後のアドレスを入力します。  </li>
-<li>[保存] をクリックします。  </li>
+<li>[通知設定] をクリックします。<br>  通知を無効化する場合 : “新しいアラートの通知を電子メールで受け取ります。” 項目のチェックをオフに設定します。<br>  通知先を変更する場合 : 変更を行うメールアドレス欄を選択し、変更後のアドレスを入力します。  </li>
+<li>[保存] をクリックします。</li>
 </ol>
 <p>Title : Azure Active Directory Connect Health の操作<br>URL:<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-operations">https://docs.microsoft.com/ja-jp/azure/active-directory/connect-health/active-directory-aadconnect-health-operations</a></p>
 

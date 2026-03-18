@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 高田 です。 本記事は、2022 年 4 月 28 日に米国の Azure Active Directory Identity Blog で公開された Permissions Management Terms and their Impact in Multicloud Environments を意訳したものになります。 不明点があり">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-04-30T23:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.901Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.837Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+76d56ddd-c627-525a-a69e-ae1276b87178%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E8%A8%B1%E5%8F%AF%E3%81%AE%E7%AE%A1%E7%90%86%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E7%94%A8%E8%AA%9E%E3%81%A8%E3%83%9E%E3%83%AB%E3%83%81%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%A4%E3%83%B3%E3%83%91%E3%82%AF%E3%83%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fpermissions-management-terms-and-their-impact-in-multicloud%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fpermissions-management-terms-and-their-impact-in-multicloud.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fpermissions-management-terms-and-their-impact-in-multicloud.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/permissions-management-terms-and-their-impact-in-multicloud/" data-id="cmmketdvg00kb0nqpflqw3jwl" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/permissions-management-terms-and-their-impact-in-multicloud/" data-id="cuid1Uq4ovDwnQq5CeRq9eHGU" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -173,7 +173,7 @@
 <p>アクセス許可は、リソースに対して操作を実行するための権限を ID に与えるものです。マルチクラウド基盤の普及に伴い、アクセス許可を効果的に管理することがますます困難になっています。主要なクラウドでは、何千ものアクセス許可を付与することが可能であり、その半分以上は、不適切に使用された場合にサービスの中断、サービス品質の低下、データ漏洩を引き起こす可能性のある高リスクのアクセス許可です (※)。マルチクラウド戦略を進め、偶発的または悪意ある誤用を回避するためには、アクセス許可の管理を効率的に行うことが不可欠です。</p>
 <p><strong>リソース (Resources)</strong></p>
 <p>リソースとは、仮想マシン、サーバーレス機能、ネットワーク、ストレージ オブジェクトなど、コンピューティング機能を使用する実体を指します。リソースはお客様の基盤にとって非常に重要であるため、リソースに対して誰がどのような操作を実行できるかを完全に可視化しておくことが重要です。</p>
-<p><strong>スーパー ユーザー / スーパー ID (Super User / Super Identity)</strong></p>
+<p><strong>スーパー ユーザー &#x2F; スーパー ID (Super User &#x2F; Super Identity)</strong></p>
 <p>スーパー ユーザーまたはスーパー ID は、クラウド基盤全体のすべてのリソースに対して任意の操作を実行できる強力な ID です。これらの ID は、もともと強力で必要以上の権限を持つため、適切に管理にすることが特に重要です。悪意のある、または偶発的な権限の誤用は、組織のセキュリティにとって大きなリスクとなります。</p>
 <p><strong>ワークロード ID (Workload Identities)</strong></p>
 <p>ワークロード ID (しばしば非人間の ID とも呼ばれる) は、コンテナ、VM、アプリケーション、サービスなどのソフトウェア ワークロードを想定したもので、認証した後に他のサービスやリソースにアクセスできるようにするために使用されます。人間用の ID と同様に、ワークロード用の ID もマルチクラウド環境で指数関数的に増加しており、人間用の ID の増加率を圧倒的に上回ると予想されています。ワークロード ID は増え続け、自動化されることも多いため、組織にとってますます重要になるとともに管理するのが難しくなってきています。</p>

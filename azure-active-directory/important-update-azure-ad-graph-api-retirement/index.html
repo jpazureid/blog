@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/pic.png">
 <meta property="article:published_time" content="2024-04-07T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.491Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.428Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+31f35e0c-6d7c-5b13-95a1-799b9f698c07%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E9%87%8D%E8%A6%81%E3%81%AA%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%3A+Azure+AD+Graph+API+%E3%81%AE%E5%BB%83%E6%AD%A2%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fimportant-update-azure-ad-graph-api-retirement%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fimportant-update-azure-ad-graph-api-retirement.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fimportant-update-azure-ad-graph-api-retirement.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/" data-id="cmmketdte00e50nqp56lwfeag" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/important-update-azure-ad-graph-api-retirement/" data-id="cuidp7piT1b_-9aKNxyb2plCo" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -182,16 +182,16 @@
 <tbody><tr>
 <td>2024 年 6 月 30 日以降</td>
 <td>この日以降に作成された新しいアプリケーションについて、Azure AD Graph API (<a target="_blank" rel="noopener" href="https://graph.windows.net/">https://graph.windows.net</a>) への API リクエストでエラー (HTTP 403) が発生し、応答が返されなくなる。それまでに作成された既存のアプリケーションは引き続き利用できる。</td>
-<td>インストールやセットアップの一環で、アプリケーションを新しく作成するようなアプリを開発している場合には、Graph API に移行するか、 引き続き 1 年間 Azure AD Graph API を利用できるようにするオプション (blockAzureADGraphAccess  = false) を設定する。</td>
+<td>インストールやセットアップの一環で、アプリケーションを新しく作成するようなアプリを開発している場合には、Graph API に移行するか、 引き続き 1 年間 Azure AD Graph API を利用できるようにするオプション (blockAzureADGraphAccess  &#x3D; false) を設定する。</td>
 </tr>
 <tr>
 <td>2024 年後半 (具体的な日付は未定だが、実施する最低 3 か月前には発表します)</td>
 <td>既存の作成済みアプリケーションについて、 Azure AD Graph API (<a target="_blank" rel="noopener" href="https://graph.windows.net/">https://graph.windows.net</a>) への API リクエストでエラー (HTTP 403) が発生し、応答が返されなくなる。</td>
-<td>Graph API に移行するか、引き続き Azure AD Graph API を利用できるようにするオプション (blockAzureADGraphAccess  = false) を設定する。</td>
+<td>Graph API に移行するか、引き続き Azure AD Graph API を利用できるようにするオプション (blockAzureADGraphAccess  &#x3D; false) を設定する。</td>
 </tr>
 <tr>
 <td>未定 (最終状態)</td>
-<td>すべてのアプリケーションについて、 Azure AD Graph API (<a target="_blank" rel="noopener" href="https://graph.windows.net/">https://graph.windows.net</a>) への API リクエストでエラーが発生し、応答が返されなくなる。blockAzureADGraphAccess = false を設定しても使えなくなります。</td>
+<td>すべてのアプリケーションについて、 Azure AD Graph API (<a target="_blank" rel="noopener" href="https://graph.windows.net/">https://graph.windows.net</a>) への API リクエストでエラーが発生し、応答が返されなくなる。blockAzureADGraphAccess &#x3D; false を設定しても使えなくなります。</td>
 <td>Graph API に移行する。</td>
 </tr>
 </tbody></table>
@@ -204,7 +204,7 @@
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line">PATCH https://graph.microsoft.com/beta/applications/afe88638-df6f-4d2a-905e-40f2a2d451bf/authenticationBehaviors   </span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json  </span><br><span class="line"></span><br><span class="line">&#123;  </span><br><span class="line">    &quot;blockAzureADGraphAccess&quot;: false  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
 
 <h3 id="Microsoft-Graph-PowerShell-の例"><a href="#Microsoft-Graph-PowerShell-の例" class="headerlink" title="Microsoft Graph PowerShell の例"></a>Microsoft Graph PowerShell の例</h3><p><em><strong>個別のアプリケーションの authenticationBehaviors プロパティを読み込む:</strong></em></p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> Microsoft.Graph.Beta.Applications  </span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Application.Read.All&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-MgBetaApplication</span> <span class="literal">-ApplicationId</span> afe88638<span class="literal">-df6f</span><span class="literal">-4d2a</span><span class="literal">-905e</span><span class="literal">-40f2a2d451bf</span> <span class="literal">-Property</span> <span class="string">&quot;id,displayName,appId,authenticationBehaviors&quot;</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> Microsoft.Graph.Beta.Applications  </span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Application.Read.All&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-MgBetaApplication</span> <span class="literal">-ApplicationId</span> afe88638<span class="literal">-df6f-4d2a-905e-40f2a2d451bf</span> <span class="literal">-Property</span> <span class="string">&quot;id,displayName,appId,authenticationBehaviors&quot;</span> </span><br></pre></td></tr></table></figure>
 
 <p><strong>authenticationBehaviorsプロパティを設定して、新しいアプリケーションに対して拡張Azure AD Graphアクセスを許可する:</strong></p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> Microsoft.Graph.Beta.Applications  </span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Application.ReadWrite.All&quot;</span>  </span><br><span class="line"></span><br><span class="line">params = <span class="selector-tag">@</span>&#123; </span><br><span class="line">  authenticationBehaviors = <span class="selector-tag">@</span>&#123; </span><br><span class="line">    blockAzureADGraphAccess = <span class="variable">$false</span>  </span><br><span class="line">  &#125; </span><br><span class="line">&#125;  </span><br><span class="line"><span class="built_in">Update-MgBetaApplication</span> <span class="literal">-ApplicationId</span> <span class="variable">$applicationId</span> <span class="literal">-BodyParameter</span> <span class="variable">$params</span> </span><br></pre></td></tr></table></figure>
@@ -228,7 +228,7 @@
 <p>A. Microsoft Entra サービスや Microsoft Teams、Microsoft Intune などの Microsoft 365 サービスにアクセスするためのエンドポイントを提供します。Microsoft Graph は、Azure AD Graphで利用可能だったすべての機能と、ID 保護や認証方法などの新しい API を備えています。Microsoft Graph は、Azure AD Graph で利用できなかった新しい機能が搭載されているほか、従来の Azure AD Graph よりも安全ですので、ぜひ移行を実施ください。</p>
 <hr>
 <p>Q. Azure AD と Microsoft Online PowerShell モジュールについてはどうなりますか？ </p>
-<p>A. 2024 年 3 月 30 日をもって、AzureAD、AzureADPreview、Microsoft Online (MSOL) の PowerShell モジュールは非推奨となり、セキュリティ修正のサポートのみとなります。Microsoft Graph PowerShell への移行が必要です。詳しくは <a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要</a> をご覧ください。  </p>
+<p>A. 2024 年 3 月 30 日をもって、AzureAD、AzureADPreview、Microsoft Online (MSOL) の PowerShell モジュールは非推奨となり、セキュリティ修正のサポートのみとなります。Microsoft Graph PowerShell への移行が必要です。詳しくは <a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">MSOnline &#x2F; AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要</a> をご覧ください。  </p>
 <p>以下の資料についてもご活用いただければ幸いです。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/migrate-azure-ad-graph-overview">Azure AD Graph から Microsoft Graph にアプリを移行する</a></li>

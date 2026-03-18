@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの村上です。 本記事は、2021 年 6 月 23 日に米国の Azure Active Directory Identity Blog で公開された Guidance on using Azure AD to meet Zero Trust Architecture and MFA requirements を意訳したものになります。ご不">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2021-07-03T09:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.377Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.315Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+10f447b7-014a-55f1-860f-8d1f7cba900e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6+Zero+Trust+%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%A8+MFA+%E3%81%AE%E8%A6%81%E4%BB%B6%E3%82%92%E6%BA%80%E3%81%9F%E3%81%99%E3%81%9F%E3%82%81%E3%81%AE%E3%82%AC%E3%82%A4%E3%83%80%E3%83%B3%E3%82%B9%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fguidance-on-using-azure-ad-to-meet-zero-trust-architecture-and%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fguidance-on-using-azure-ad-to-meet-zero-trust-architecture-and.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fguidance-on-using-azure-ad-to-meet-zero-trust-architecture-and.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/guidance-on-using-azure-ad-to-meet-zero-trust-architecture-and/" data-id="cmmketdsz00cu0nqpdif62jjn" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/guidance-on-using-azure-ad-to-meet-zero-trust-architecture-and/" data-id="cuidAU1spdsdAVoLxUE4jjgkg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -169,7 +169,7 @@
 <p>例として、FedRAMP High controls IA-2 (1-4) の要件を満たすことを考えてみましょう。これらの要件を理解するには、<a target="_blank" rel="noopener" href="https://www.fedramp.gov/assets/resources/documents/FedRAMP_Security_Controls_Baseline.xlsx">FedRAMP セキュリティ コントロール ベースライン</a> に始まり、<a target="_blank" rel="noopener" href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final">NIST SP 800-53 Rev.4</a> から、このベースとなっている <a target="_blank" rel="noopener" href="https://pages.nist.gov/800-63-3/sp800-63-3.html">NIST SP 800-63 Rev.3</a>、さらにこの基盤となる <a target="_blank" rel="noopener" href="https://csrc.nist.gov/publications/detail/fips/140/2/final">NIST FIPS 140-2</a> にまで踏み込まなければなりません。お分かりのとおり… とてつもない量の読解が必要です。他には、<a target="_blank" rel="noopener" href="https://aka.ms/AzureADStandards">スタンダードとコンプライアンスのセクション</a> を活用することもできます。このセクションでは、以下の方法でこの管理を満たすためのガイダンスを提供しています。</p>
 <ol>
 <li>MFA を必要とするように Conditional Access (CA) ポリシーを設定する。</li>
-<li>デバイス管理ポリシーと CA ポリシーを設定し、これらの管理対象デバイスへのサインインに MFA を必要とするようにする。    </li>
+<li>デバイス管理ポリシーと CA ポリシーを設定し、これらの管理対象デバイスへのサインインに MFA を必要とするようにする。	</li>
 <li>FedRAMP High で要求される <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/10-reasons-to-love-passwordless-2-nist-compliance/ba-p/2115725">NIST 認証保証レベル</a> (AAL) 3 を満たす実行可能な MFA オプション。</li>
 <li>PIM を使用して、PIM のアクティブ化なしに特権的なローカル アクセスを行わないようにする。</li>
 </ol>

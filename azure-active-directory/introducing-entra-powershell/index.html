@@ -14,10 +14,10 @@
 <meta property="og:description" content="こんにちは！ Azure ID チームの小出です。 今回は、2024 年 6 月 27 日に米国の Microsoft Entra (Azure AD) Blog で公開された Introducing the Microsoft Entra PowerShell module を分かりやすく日本語におまとめしなおしたものになります。ご不明点などございましたらお気軽にサポートへお問い合わせをいただけ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2024-07-31T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.515Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.453Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="US Identity Blog">
 <meta property="article:tag" content="PowerShell">
+<meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+66480dac-165e-54f4-8dda-3d51d16df057%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+PowerShell+%E3%81%AE%E7%B4%B9%E4%BB%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fintroducing-entra-powershell%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fintroducing-entra-powershell.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fintroducing-entra-powershell.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-entra-powershell/" data-id="cmmkete0g01570nqp7dg57fks" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-entra-powershell/" data-id="cuid0IfN0pKRZRhhFVb6vbWAX" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -164,7 +164,7 @@
 <p>今回は、2024 年 6 月 27 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-blog/introducing-the-microsoft-entra-powershell-module/ba-p/4173546">Introducing the Microsoft Entra PowerShell module</a> を分かりやすく日本語におまとめしなおしたものになります。ご不明点などございましたらお気軽にサポートへお問い合わせをいただけますと幸いです。</p>
 <hr>
 <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>Microsoft Entra PowerShell モジュールのパブリック プレビューが開始されました。このモジュールは、Microsoft Entra 製品の合理的な管理と自動化のために設計された、高品質でシナリオに特化した新しい PowerShell モジュールです。</p>
-<p>2021 年、今後の PowerShell への投資はすべて Microsoft Graph PowerShell SDK で行うと発表しました。これにより、MSOL や AzureAD モジュールといった以前の古いモジュールは非推奨となり、以前日本語のブログでもシリーズとしてご案内いたしました <a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要</a> でも、 Microsoft Graph PowerShell SDK への移行について案内いたしました。</p>
+<p>2021 年、今後の PowerShell への投資はすべて Microsoft Graph PowerShell SDK で行うと発表しました。これにより、MSOL や AzureAD モジュールといった以前の古いモジュールは非推奨となり、以前日本語のブログでもシリーズとしてご案内いたしました <a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">MSOnline &#x2F; AzureAD PowerShell から Graph PowerShell SDK への移行について 1_概要</a> でも、 Microsoft Graph PowerShell SDK への移行について案内いたしました。</p>
 <p>今回パブリック プレビューが開始された新しい Microsoft Entra PowerShell は、Microsoft Entra を利用したお客様のエクスペリエンスを向上させ、自動化を強化するモジュールとなっています。</p>
 <h2 id="Microsoft-Entra-PowerShell-とは？"><a href="#Microsoft-Entra-PowerShell-とは？" class="headerlink" title="Microsoft Entra PowerShell とは？"></a>Microsoft Entra PowerShell とは？</h2><p>Microsoft Entra PowerShell モジュールは、管理者が Microsoft Entra をプログラムで管理し、自動化するためのコマンド ライン ツールです。ユーザー、グループ、アプリケーション、サービス プリンシパル、ポリシーなど Entra ID に関するリソースを効率的に管理するコマンドが含まれています。このモジュールは、Microsoft Graph PowerShell SDK をベースにしており、Microsoft Graph PowerShell SDK のすべてのコマンドレットと完全に相互運用が可能です。シンプルで、ドキュメントもよくまとめられていますので、これらのコマンドで複雑な操作を実行できます。具体的なコマンドの使用例などを下記にてご紹介しておりますので併せてご確認ください。</p>
 <h2 id="サポートされる-PowerShell-のバージョン"><a href="#サポートされる-PowerShell-のバージョン" class="headerlink" title="サポートされる PowerShell のバージョン"></a>サポートされる PowerShell のバージョン</h2><p>Microsoft Entra PowerShell は、PowerShell バージョン 5.1 とバージョン 7 以降をサポートしています。Microsoft Entra PowerShell モジュールでは、Windows、Linux、macOS を含むすべてのプラットフォームで PowerShell バージョン 7 以上を使用することをお勧めします。</p>
@@ -229,7 +229,7 @@
 <h3 id="Q-フィードバックはどのように提供したらいいですか？"><a href="#Q-フィードバックはどのように提供したらいいですか？" class="headerlink" title="Q. フィードバックはどのように提供したらいいですか？"></a>Q. フィードバックはどのように提供したらいいですか？</h3><p>A. フィードバックを提供するには、GitHub リポジトリの issues セクションにアクセスください。フィードバック、提案、遭遇した問題などを新しい課題として作成ください。</p>
 <h3 id="Q-このモジュールをより発展させていくにあたりユーザーはどのような貢献ができますか？"><a href="#Q-このモジュールをより発展させていくにあたりユーザーはどのような貢献ができますか？" class="headerlink" title="Q. このモジュールをより発展させていくにあたりユーザーはどのような貢献ができますか？"></a>Q. このモジュールをより発展させていくにあたりユーザーはどのような貢献ができますか？</h3><p>A. バグ レポートの提出、新機能の提案、シナリオやサンプルの改善など、コミュニティからの貢献を歓迎します。まずは GitHub リポジトリにアクセスし、コントリビューション ガイドラインをご確認の上、変更を加えたプル リクエストを作成ください。</p>
 <h2 id="参考情報"><a href="#参考情報" class="headerlink" title="参考情報"></a>参考情報</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/microsoftgraph/entra-powershell">microsoftgraph/entra-powershell: Microsoft Entra PowerShell (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoftgraph/entra-powershell">microsoftgraph&#x2F;entra-powershell: Microsoft Entra PowerShell (github.com)</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/powershell/entra-powershell/?view=entra-powershell">Microsoft Entra PowerShell documentation - Microsoft Entra PowerShell | Microsoft Learn</a></li>
 </ul>
 

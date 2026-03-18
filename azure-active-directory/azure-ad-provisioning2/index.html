@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-04.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-05.png">
 <meta property="article:published_time" content="2023-05-30T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.147Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.084Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Provisioning">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+0ed8ba18-8b84-509b-8592-ea7cac840461%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B+2%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-provisioning2%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-provisioning2.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-provisioning2.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-provisioning2/" data-id="cmmketdr600740nqp5ibz1qgb" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-provisioning2/" data-id="cuidbV1o_6SNmO5MjiRRZfaXf" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -179,7 +179,7 @@
 <p>例えば Azure AD よりプロビジョニング同期を行っているアカウントを SaaS 側にて情報変更 (アカウント削除等) し同期に問題が出るお問い合わせが多く寄せられております。</p>
 <p>SaaS の仕様で制限されていない場合であっても、同期をとっているアカウントは基本的に同期元で管理を行うという原則にご留意ください。</p>
 <h4 id="Q-対象のSaaS-がAzure-AD-自動プロビジョニングをサポートしているかわかりません。"><a href="#Q-対象のSaaS-がAzure-AD-自動プロビジョニングをサポートしているかわかりません。" class="headerlink" title="Q. 対象のSaaS がAzure AD 自動プロビジョニングをサポートしているかわかりません。"></a><span style="color: #ff0000; ">Q.</span> 対象のSaaS がAzure AD 自動プロビジョニングをサポートしているかわかりません。</h4><h4 id="A-エンタープライズアプリケーションのギャラリーより自動プロビジョニングの対象アプリをご参照いただけます。"><a href="#A-エンタープライズアプリケーションのギャラリーより自動プロビジョニングの対象アプリをご参照いただけます。" class="headerlink" title="A. エンタープライズアプリケーションのギャラリーより自動プロビジョニングの対象アプリをご参照いただけます。"></a><span style="color: #3366ff; ">A.</span> エンタープライズアプリケーションのギャラリーより自動プロビジョニングの対象アプリをご参照いただけます。</h4><p>Azure AD にて用意されたエンタープライズアプリケーションでは基本的に自動プロビジョニングがサポートされていますが、アプリケーションによっては、自動プロビジョニングがサポートされておりません。</p>
-<p>// 自動プロビジョニングがサポートされていない例<br><img src="/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-01.png"></p>
+<p>&#x2F;&#x2F; 自動プロビジョニングがサポートされていない例<br><img src="/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-01.png"></p>
 <p>この場合はプロビジョニングを構成するために、カスタムアプリケーションを別途作成する必要があります。<br>※カスタムアプリケーションは Azure AD ポータルより [Azure Active Directory] -&gt; [エンタープライズアプリケーション] -&gt; [独自のアプリケーションの作成] で作成します。<br>以下のように [テナントの URL] には SaaS アプリケーション側の SCIM API エンドポイント URL を登録し、[シークレット トークン] には本 API にアクセスするための Bearer トークンを登録します。</p>
 <p><img src="/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-02.png"></p>
 <h4 id="Q-同期したいオブジェクトの数が大規模-10-万程度-になる予定です。ベストプラクティスはありますか。"><a href="#Q-同期したいオブジェクトの数が大規模-10-万程度-になる予定です。ベストプラクティスはありますか。" class="headerlink" title="Q. 同期したいオブジェクトの数が大規模 (10 万程度) になる予定です。ベストプラクティスはありますか。"></a><span style="color: #ff0000; ">Q.</span> 同期したいオブジェクトの数が大規模 (10 万程度) になる予定です。ベストプラクティスはありますか。</h4><h4 id="A-グループ割り当てでの管理がおすすめです。"><a href="#A-グループ割り当てでの管理がおすすめです。" class="headerlink" title="A. グループ割り当てでの管理がおすすめです。"></a><span style="color: #3366ff; ">A.</span> グループ割り当てでの管理がおすすめです。</h4><p>プロビジョニングの対象範囲として「割り当てられたユーザーとグループのみ同期」に設定のうえ、ユーザーを直接割り当てるのではなく、ユーザーをまとめたグループをいくつか割り当てる方式がおすすめです。※ グループの割り当ては Azure AD Premium ライセンス プランが必要です。詳しくはこちらをご覧ください。</p>
@@ -193,13 +193,9 @@
 <h4 id="マッピング追加手順"><a href="#マッピング追加手順" class="headerlink" title="マッピング追加手順"></a>マッピング追加手順</h4><ol>
 <li>以下のパラメーター付き URL を使用して Azure Active Directory ポータルにサインインします。</li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true">https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true</a></p>
-<ol start="2">
-<li><p>[Azure AD] -[エンタープライズアプリケーション] - [任意のアプリケーション] - [プロビジョニング] - [プロビジョニングの編集] -[Provision Azure Active Directory Users] - [詳細オプションの表示] にチェックを選択します。</p>
-</li>
-<li><p>[Azure AD の属性リストを編集します] をクリックします。</p>
-</li>
-<li><p> 属性リストの下部にあるフィールドに、追加したい属性に関する情報を入力します。<br><img src="/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-04.png"></p>
+<p><a target="_blank" rel="noopener" href="https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true">https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true</a><br>	<br>2. [Azure AD] -[エンタープライズアプリケーション] - [任意のアプリケーション] - [プロビジョニング] - [プロビジョニングの編集] -[Provision Azure Active Directory Users] - [詳細オプションの表示] にチェックを選択します。<br>	<br>3. [Azure AD の属性リストを編集します] をクリックします。</p>
+<ol start="4">
+<li><p>属性リストの下部にあるフィールドに、追加したい属性に関する情報を入力します。<br><img src="/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-04.png"></p>
 </li>
 <li><p>［保存］を選択し変更を保存します。マッピング設定に戻り、4 で追加した属性を使用して SaaS 側の任意の属性とマッピングを設定します。その後問題なく追加した属性が SaaS 側の設定した属性にて問題なく同期されているかご確認ください。</p>
 </li>
@@ -208,9 +204,9 @@
 <h3 id="プロビジョニング開始後"><a href="#プロビジョニング開始後" class="headerlink" title="プロビジョニング開始後"></a>プロビジョニング開始後</h3><h4 id="Q-ログを確認していると、エンタープライズアプリへ割り当てていないユーザーに対して処理が実行されていました（結果は-Skipと判定-。"><a href="#Q-ログを確認していると、エンタープライズアプリへ割り当てていないユーザーに対して処理が実行されていました（結果は-Skipと判定-。" class="headerlink" title="Q. ログを確認していると、エンタープライズアプリへ割り当てていないユーザーに対して処理が実行されていました（結果は Skipと判定)。"></a><span style="color: #ff0000; ">Q.</span> ログを確認していると、エンタープライズアプリへ割り当てていないユーザーに対して処理が実行されていました（結果は Skipと判定)。</h4><h4 id="A-想定された動作となります。"><a href="#A-想定された動作となります。" class="headerlink" title="A. 想定された動作となります。"></a><span style="color: #3366ff; ">A.</span> 想定された動作となります。</h4><p>Azure AD プロビジョニング機能では、テナント上で情報変更が発生した全てのユーザー（プロビジョニングの範囲外であっても）の情報をトレースする動作があります。その結果監査ログにはエンタープライズアプリへ割り当てていないユーザーに対して処理が実行されたようなログが記録されます。</p>
 <p>トレースして検知したユーザー情報の変更について、もし該当のユーザーがプロビジョニングの対象であった場合は、実際の同期処理 (Export など) を進めます。一方で、スコープ外のユーザーは Skip されエクスポートはされませんため、実影響はありません。</p>
 <p>本事象は後続の増分同期だけでなく初回同期でも同様に発生することが報告されており、よくあるお問い合わせとして「<a href="/blog/azure-active-directory/azure-ad-provisioning/">Azure AD のプロビジョニング機能について</a>」のブログ記事内にて解説されています。</p>
-<h4 id="Q-ユーザーの変更を即時で反映したいです。"><a href="#Q-ユーザーの変更を即時で反映したいです。" class="headerlink" title="Q. ユーザーの変更を即時で反映したいです。"></a><span style="color: #ff0000; ">Q.</span> ユーザーの変更を即時で反映したいです。</h4><h4 id="A-「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー-グループを同期できます。"><a href="#A-「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー-グループを同期できます。" class="headerlink" title="A. 「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー/ グループを同期できます。"></a><span style="color: #3366ff; ">A.</span> 「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー/ グループを同期できます。</h4><p>自動プロビジョニングを設定しているエンタープライズ アプリケーションでは、画面キャプチャの赤枠に [要求時にプロビジョニングする] ボタンが表示されます。</p>
+<h4 id="Q-ユーザーの変更を即時で反映したいです。"><a href="#Q-ユーザーの変更を即時で反映したいです。" class="headerlink" title="Q. ユーザーの変更を即時で反映したいです。"></a><span style="color: #ff0000; ">Q.</span> ユーザーの変更を即時で反映したいです。</h4><h4 id="A-「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー-グループを同期できます。"><a href="#A-「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー-グループを同期できます。" class="headerlink" title="A. 「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー&#x2F; グループを同期できます。"></a><span style="color: #3366ff; ">A.</span> 「要求時にプロビジョニングする」をクリックし、オンデマンドで任意のユーザー&#x2F; グループを同期できます。</h4><p>自動プロビジョニングを設定しているエンタープライズ アプリケーションでは、画面キャプチャの赤枠に [要求時にプロビジョニングする] ボタンが表示されます。</p>
 <p><img src="/blog/azure-active-directory/azure-ad-provisioning2/azure-ad-provisioning2-05.png"></p>
-<p>こちらを実行することで、現在実行されているプロビジョニングサイクルの完了を待たずに適宜手動でプロビジョニングを実施可能です。<br>※ 一度に複数のユーザー/ グループは選択できません。</p>
+<p>こちらを実行することで、現在実行されているプロビジョニングサイクルの完了を待たずに適宜手動でプロビジョニングを実施可能です。<br>※ 一度に複数のユーザー&#x2F; グループは選択できません。</p>
 <h4 id="Q-プロビジョニング対象外としたユーザーが-SaaS-からアカウントが削除されません。"><a href="#Q-プロビジョニング対象外としたユーザーが-SaaS-からアカウントが削除されません。" class="headerlink" title="Q. プロビジョニング対象外としたユーザーが SaaS からアカウントが削除されません。"></a><span style="color: #ff0000; ">Q.</span> プロビジョニング対象外としたユーザーが SaaS からアカウントが削除されません。</h4><h4 id="A-SaaS-側にてアカウントが非有効化されていないかご確認ください。"><a href="#A-SaaS-側にてアカウントが非有効化されていないかご確認ください。" class="headerlink" title="A. SaaS 側にてアカウントが非有効化されていないかご確認ください。"></a><span style="color: #3366ff; ">A.</span> SaaS 側にてアカウントが非有効化されていないかご確認ください。</h4><p>Azure AD にてアカウントが [削除済みユーザー一覧] に移ったり、プロビジョニングの割り当て対象から解除された場合、アカウントは論理的な削除状態として扱われます。</p>
 <p>ユーザーが論理的な削除状態に移ると、Azure AD より SaaS へアカウントが非有効化された旨をアップデートするためのリクエストがへ送信されます。</p>
 <p>ただし、Azure AD から該当ユーザーに対する変更リクエストを、ターゲットシステムがどのように受け取るかはターゲットシステム側の動作に依存します。</p>

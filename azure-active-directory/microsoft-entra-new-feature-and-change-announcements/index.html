@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 高田 です。 本記事は、2023 年 6 月 30 日に米国の Azure Active Directory Identity Blog で公開された Microsoft Entra new feature and change announcements を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-07-11T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.625Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.562Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8a7ec81d-c140-5344-bc84-6b702e9e7efd%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%A8%E5%A4%89%E6%9B%B4%E3%81%AE%E3%82%A2%E3%83%8A%E3%82%A6%E3%83%B3%E3%82%B9%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-entra-new-feature-and-change-announcements%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-entra-new-feature-and-change-announcements.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-entra-new-feature-and-change-announcements.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-new-feature-and-change-announcements/" data-id="cmmkete0o015l0nqp40w27ant" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-new-feature-and-change-announcements/" data-id="cuidotDLnt2mPgdOvjuTqWg5-" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -202,9 +202,9 @@
 <p>テナントの名前付きロケーションに設定されていない IPv6 範囲からエンドユーザーが接続していることが原因でこのような影響が生じている可能性があります。この問題に対処するには、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#identifying-ipv6-traffic-with-azure-ad-sign-in-activity-reports">このページ</a> で説明されている手順に従って、テナントの環境で IPv6 の範囲を特定し、必要な設定を構成ください。</p>
 <p>以下のガイダンスを IT 管理チームの関連メンバーと共有することも検討ください: </p>
 <ul>
-<li><p><strong>IT / セキュリティ管理者</strong>: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#identifying-ipv6-traffic-with-azure-ad-sign-in-activity-reports">Azure AD のサインイン アクティビティ レポートでの IPv6 トラフィックを特定する</a> で説明したサインイン レポートを使用します。結果として取得したアドレスの一覧を使用して、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#ipv4-and-ipv6-address-ranges">こちら</a> の手順に従って、IPv6 範囲を Azure AD の ネームド ロケーションに追加する必要があるかどうかを判断ください。また、必要に応じて、社内のネットワーク チームと協力して、組織の IPv6 範囲を確認することも重要です。</p>
+<li><p><strong>IT &#x2F; セキュリティ管理者</strong>: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#identifying-ipv6-traffic-with-azure-ad-sign-in-activity-reports">Azure AD のサインイン アクティビティ レポートでの IPv6 トラフィックを特定する</a> で説明したサインイン レポートを使用します。結果として取得したアドレスの一覧を使用して、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#ipv4-and-ipv6-address-ranges">こちら</a> の手順に従って、IPv6 範囲を Azure AD の ネームド ロケーションに追加する必要があるかどうかを判断ください。また、必要に応じて、社内のネットワーク チームと協力して、組織の IPv6 範囲を確認することも重要です。</p>
 </li>
-<li><p><strong>ネットワーク管理者</strong>: IT / セキュリティ管理者と協力して、ネットワーク基盤の IPv6 範囲を特定ください。<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#ipv4-and-ipv6-address-ranges">こちら</a> の手順に従って、テナントの既存の Azure AD ネームド ロケーションにこれらの範囲を追加します。</p>
+<li><p><strong>ネットワーク管理者</strong>: IT &#x2F; セキュリティ管理者と協力して、ネットワーク基盤の IPv6 範囲を特定ください。<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/location-condition#ipv4-and-ipv6-address-ranges">こちら</a> の手順に従って、テナントの既存の Azure AD ネームド ロケーションにこれらの範囲を追加します。</p>
 </li>
 </ul>
 <h4 id="My-Account-が従来のプロフィール-ページに置き換わる"><a href="#My-Account-が従来のプロフィール-ページに置き換わる" class="headerlink" title="My Account が従来のプロフィール ページに置き換わる"></a>My Account が従来のプロフィール ページに置き換わる</h4><p>[お客様側での対応は必要なし]</p>
@@ -242,7 +242,7 @@
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/privileged-identity-management/pim-resource-roles-configure-alerts">Azure でアクティブな永続的ロールの割り当てもしくは PIM 外での割り当てでアラートを発生</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/active-directory/authentication/concept-sspr-policy#administrator-reset-policy-differences">セルフ サービス パスワード リセット (SSPR) で PIM の資格ある割り当てと間接的なグループ ロール割り当てをサポート</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/active-directory/governance/entitlement-management-logic-apps-integration">エンタイトルメント管理のカスタム拡張属性</a></li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-external-users#review-your-conditional-access-policies">条件付きアクセス ポリシーでエンタイトルメント管理を対象/除外可能に</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-external-users#review-your-conditional-access-policies">条件付きアクセス ポリシーでエンタイトルメント管理を対象&#x2F;除外可能に</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/cloud-sync/custom-attribute-mapping">Azure AD Cloud Sync を使用したディレクトリ拡張のサポート</a></li>
 </ul>
 <p>2023 年 7 月 11 日 (火) に開催されるデジタル イベント <a target="_blank" rel="noopener" href="https://aka.ms/MSFTEntra">Reimagine secure access with Microsoft Entra</a> をお見逃しなく。ぜひご参加ください！</p>

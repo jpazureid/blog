@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;10&#x2F;03&#x2F;ad-fs-sslcert&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 皆様、こんにちは。Azure &amp; Identity サポート担当の竹村です。 今回は、比較的多くの">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2017-10-02T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.837Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.774Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3ebff85e-6da3-57a8-a48c-0521ae9fa369%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAD+FS+%E3%81%AE%E8%A8%BC%E6%98%8E%E6%9B%B8%E6%9B%B4%E6%96%B0%E6%89%8B%E9%A0%86+%28SSL%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E8%A8%BC%E6%98%8E%E6%9B%B8%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Factive-directory-federation-service%2Fupdate-ssl-server-certificate%2F%29%0A*+Content+Source%3A+%5Barticles%2Factive-directory-federation-service%2Fupdate-ssl-server-certificate.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Factive-directory-federation-service%2Fupdate-ssl-server-certificate.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate/" data-id="cmmketdou000w0nqp9vv08coa" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/update-ssl-server-certificate/" data-id="cuidYaVanvs2o9DA_dxsgqySM" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -205,7 +205,8 @@
 </li>
 <li><p>中央から、手順 2. でインストールした SSL サーバー証明書を右クリックして、[すべてのタスク] - [秘密キーの管理] をクリックします。</p>
 <p> ※ もし [秘密キーの管理] を実行できない場合は、次のコマンドを実行してください。    このコマンドを実行することにより、個人ストアのすべての証明書のキーの関連付けの修復、または証明書プロパティやキーのセキュリティ記述子の更新を行います。</p>
- <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">certutil -repairstore my *</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">certutil -repairstore my *</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>NT SERVICE\ADFSSRV と NT SERVICE\DRS (場所はローカルを指定します) を [追加] して、各アカウントには、少なくとも読み取りアクセス許可を付与します。</p>
 <p> ※ NT SERVICE\DRS アカウントが存在しない場合には、NT SERVICE\ADFSSRV にのみアクセス許可を付与します。</p>
 </li>

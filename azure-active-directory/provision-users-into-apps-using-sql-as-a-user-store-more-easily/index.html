@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/provision-users-into-apps-using-sql-as-a-user-store-more-easily/Woodgrove.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/provision-users-into-apps-using-sql-as-a-user-store-more-easily/Expressionbuilder.png">
 <meta property="article:published_time" content="2021-07-11T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.919Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.855Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e46e7e69-6cea-5cb1-ab96-a29a481e257a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC+%E3%82%B9%E3%83%88%E3%82%A2%E3%81%A8%E3%81%97%E3%81%A6+SQL+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E3%81%B8%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC+%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%80%81%E8%A4%87%E9%9B%91%E3%81%AA%E5%A4%89%E6%8F%9B%E5%BC%8F%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E6%A7%8B%E7%AF%89%E3%80%81%E3%81%AA%E3%81%A9%E3%81%AA%E3%81%A9%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fprovision-users-into-apps-using-sql-as-a-user-store-more-easily%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fprovision-users-into-apps-using-sql-as-a-user-store-more-easily.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fprovision-users-into-apps-using-sql-as-a-user-store-more-easily.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/provision-users-into-apps-using-sql-as-a-user-store-more-easily/" data-id="cmmketdvl00ks0nqp8caq0f1t" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/provision-users-into-apps-using-sql-as-a-user-store-more-easily/" data-id="cuidB1RpSCyI5c_KBMMhhCcz0" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -186,7 +186,7 @@
 <h2 id="海外赴任、ギグ-ワーカー、AD-ドメインをまたぐマネージャーに対応した-HR-システムからのプロビジョニングのアップデート"><a href="#海外赴任、ギグ-ワーカー、AD-ドメインをまたぐマネージャーに対応した-HR-システムからのプロビジョニングのアップデート" class="headerlink" title="海外赴任、ギグ ワーカー、AD ドメインをまたぐマネージャーに対応した HR システムからのプロビジョニングのアップデート"></a>海外赴任、ギグ ワーカー、AD ドメインをまたぐマネージャーに対応した HR システムからのプロビジョニングのアップデート</h2><ul>
 <li>大規模な多国籍企業では、従業員が一時的に海外の拠点で働き、赴任終了後に本拠地に戻ることがあります。通常、人事部はこの海外勤務に対応した新しいユーザー プロファイルを作成します。このようなケースに対応するために、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/workday-integration-reference#retrieving-international-job-assignments-and-secondary-job-details">Workday</a> および <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/sap-successfactors-integration-reference#handling-global-assignment-scenario">Success Factors</a> とのユーザー プロビジョニング統合をアップデートし、海外勤務データの検索をサポートしました。</li>
 <li>近年のギグ エコノミー (短期、臨時や単発での仕事を受注する働き方やその経済形態) では、正社員が臨時従業員に変わったり、もしくはその逆になるシナリオが増加しています。このような場合、Workday を導入することで、以前の雇用記録を無効にし、以前の従業員 ID を保持したまま新しい雇用記録を作成することができます。従来では、正社員と臨時従業員、それぞれの Workday プロビジョニング ジョブを作成する必要がありました。最新の Workday 統合の <a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/active-directory/app-provisioning/workday-integration-reference#support-for-worker-conversions">アップデート</a> により、このシナリオを円滑に処理できるようになり、Workday 雇用記録を利用して、 ID の所有権を引き継ぐことができるようになりました。</li>
-<li>HR プロビジョニングを複数のオンプレミス Active Directory (AD) ドメインと統合している場合、ユーザーとマネージャーが別の AD ドメインに所属しているというケースがあります。このようなドメインをまたいだマネージャーの参照が、最新のアップデートで可能となりました。また、複数のドメインにまたがる UPN/sAMAccountName の値の重複を検索することもできます。詳しくは、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/active-directory/app-provisioning/plan-cloud-hr-provision#design-hr-provisioning-app-deployment-topology">クラウド HR 計画ガイド</a> をご覧ください。</li>
+<li>HR プロビジョニングを複数のオンプレミス Active Directory (AD) ドメインと統合している場合、ユーザーとマネージャーが別の AD ドメインに所属しているというケースがあります。このようなドメインをまたいだマネージャーの参照が、最新のアップデートで可能となりました。また、複数のドメインにまたがる UPN&#x2F;sAMAccountName の値の重複を検索することもできます。詳しくは、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/active-directory/app-provisioning/plan-cloud-hr-provision#design-hr-provisioning-app-deployment-topology">クラウド HR 計画ガイド</a> をご覧ください。</li>
 </ul>
 <h2 id="Azure-AD-Connect-sync-の最新版を公開"><a href="#Azure-AD-Connect-sync-の最新版を公開" class="headerlink" title="Azure AD Connect sync の最新版を公開"></a>Azure AD Connect sync の最新版を公開</h2><p>最新版では、以下の機能が追加されています。</p>
 <ul>

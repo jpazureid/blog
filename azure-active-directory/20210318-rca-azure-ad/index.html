@@ -6,15 +6,15 @@
   
   <title>3/18 (日本語抄訳) RCA - 複数の Microsoft サービスで発生した認証エラー (Tracking ID LN01-P8Z) | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 日本時間の 3&#x2F;16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の PDF に">
+  <meta name="description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 日本時間の 3&#x2F;16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3&#x2F;18 (日本語抄訳) RCA - 複数の Microsoft サービスで発生した認証エラー (Tracking ID LN01-P8Z)">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/20210318-rca-azure-ad/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 日本時間の 3&#x2F;16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の PDF に">
+<meta property="og:description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 日本時間の 3&#x2F;16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2021-03-17T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.012Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.949Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,22 +154,22 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+fc5201b6-569c-5fec-b4bd-c10cb25fcffe%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B3%2F18+%28%E6%97%A5%E6%9C%AC%E8%AA%9E%E6%8A%84%E8%A8%B3%29+RCA+-+%E8%A4%87%E6%95%B0%E3%81%AE+Microsoft+%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A7%E7%99%BA%E7%94%9F%E3%81%97%E3%81%9F%E8%AA%8D%E8%A8%BC%E3%82%A8%E3%83%A9%E3%83%BC+%28Tracking+ID+LN01-P8Z%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2F20210318-rca-azure-ad%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2F20210318-rca-azure-ad.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2F20210318-rca-azure-ad.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/20210318-rca-azure-ad/" data-id="cmmketdpm002y0nqpfwox7jay" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/20210318-rca-azure-ad/" data-id="cuidwP0awhYMoHsDDcjAVV2t_" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。</p>
-<p>今回は 日本時間の 3/16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は <a target="_blank" rel="noopener" href="https://status.azure.com/ja-jp/status/history/">状態の履歴および根本原因分析 (RCA)</a> を確認ください。</p>
+<p>今回は 日本時間の 3&#x2F;16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は <a target="_blank" rel="noopener" href="https://status.azure.com/ja-jp/status/history/">状態の履歴および根本原因分析 (RCA)</a> を確認ください。</p>
 <p>日本語版の抄訳の PDF については、以下のリンクよりダウンロード頂けます。</p>
 <p><a href="/blog/azure-active-directory/20210318-rca-azure-ad/LN01-P8Z_JP.pdf">LN01-P8Z _JP.pdf</a></p>
 <p>本障害では Azure および Office 365 へのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。改めて、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。</p>
 <div class="alert is-important"><p class="alert-title">重要</p><p>下記内容において 2021 年半ばに対応が予定されていた「第 2 フェーズ」は既に展開が完了しております。</p></div>
 <hr>
-<h2 id="3-18-日本語抄訳-RCA-–-複数の-Microsoft-サービスで発生した認証エラー-Tracking-ID-LN01-P8Z"><a href="#3-18-日本語抄訳-RCA-–-複数の-Microsoft-サービスで発生した認証エラー-Tracking-ID-LN01-P8Z" class="headerlink" title="3/18 (日本語抄訳) RCA – 複数の Microsoft サービスで発生した認証エラー (Tracking ID LN01-P8Z)"></a>3/18 (日本語抄訳) RCA – 複数の Microsoft サービスで発生した認証エラー (Tracking ID LN01-P8Z)</h2><h3 id="影響の概要"><a href="#影響の概要" class="headerlink" title="影響の概要"></a>影響の概要</h3><p>2021 年 3 月 15 日の 19:00 UTC (日本時間 3 月 16 日 AM 4:00) から 2021 年 3 月 16 日の 09:37 UTC (日本時間 3 月 16 日 18:37) の間で、認証を Azure Active Directory (Azure AD) に依存する Microsoft サービスおよびサードパーティ アプリケーションにおいて、認証処理を行う際にエラーが発生した可能性があります。Azure AD サービスに対する対処策は、2021 年 3 月 15 日 21:05 UTC (日本時間 3 月 16 日 6:05) に完了しました。これにより各サービスへのトラフィックが順次回復しました。以下に、主なサービスとその回復までの時間を示します。</p>
+<h2 id="3-18-日本語抄訳-RCA-–-複数の-Microsoft-サービスで発生した認証エラー-Tracking-ID-LN01-P8Z"><a href="#3-18-日本語抄訳-RCA-–-複数の-Microsoft-サービスで発生した認証エラー-Tracking-ID-LN01-P8Z" class="headerlink" title="3&#x2F;18 (日本語抄訳) RCA – 複数の Microsoft サービスで発生した認証エラー (Tracking ID LN01-P8Z)"></a>3&#x2F;18 (日本語抄訳) RCA – 複数の Microsoft サービスで発生した認証エラー (Tracking ID LN01-P8Z)</h2><h3 id="影響の概要"><a href="#影響の概要" class="headerlink" title="影響の概要"></a>影響の概要</h3><p>2021 年 3 月 15 日の 19:00 UTC (日本時間 3 月 16 日 AM 4:00) から 2021 年 3 月 16 日の 09:37 UTC (日本時間 3 月 16 日 18:37) の間で、認証を Azure Active Directory (Azure AD) に依存する Microsoft サービスおよびサードパーティ アプリケーションにおいて、認証処理を行う際にエラーが発生した可能性があります。Azure AD サービスに対する対処策は、2021 年 3 月 15 日 21:05 UTC (日本時間 3 月 16 日 6:05) に完了しました。これにより各サービスへのトラフィックが順次回復しました。以下に、主なサービスとその回復までの時間を示します。</p>
 <p>2021 年 3 月 15 日 22:39 UTC (日本時間 3 月 16 日 07:39): Azure Resource Manager が回復しました。<br>2021 年 3 月 16 日 01:00 UTC (日本時間 3 月 16 日 10:00): Azure Key Vault (ほとんどのリージョン) が回復しました。<br>2021 年 3 月 16 日 01:18 UTC (日本時間 3 月 16 日 10:18): セーフ デプロイメント プロセス (SDP) の一環として、Azure Storage の構成アップデートを最初の運用テナントに適用しました。<br>2021 年 3 月 16 日 01:50 UTC (日本時間 3 月 16 日 10:50): Azure Portal の機能が完全に回復しました。<br>2021 年 3 月 16 日 04:04 UTC (日本時間 3 月 16 日 13:04): Azure Storage の構成変更がほとんどのリージョンに適用されました。<br>2021 年 3 月 16 日 04:30 UTC (日本時間 3 月 16 日 13:30): 残りの Azure Key Vault リージョン (West US、Central US、East US 2) が回復しました。<br>2021 年 3 月 16 日 09:25 UTC (日本時間 3 月 16 日 18:25): Azure Storage が復旧を完了し、障害が完全に解消したことを報告しました。</p>
 <h3 id="根本原因と緩和策"><a href="#根本原因と緩和策" class="headerlink" title="根本原因と緩和策"></a>根本原因と緩和策</h3><p>Azure AD は、OpenID およびその他の ID 標準プロトコルの利用をサポートするために、暗号鍵を使用して暗号的な署名処理を行います。セキュリティを高める標準的な対策の一環として、自動化されたシステムが、スケジュールに従い使用されなくなった鍵を自動的に削除します。過去数週間にわたり、複雑な複数のクラウドにまたがる移行を行うために、特定の鍵を通常よりも長い期間にわたり「保持」とマークしていました。この対応において、自動化処理がその「保持」状態を誤って無視してしまう不具合が顕在化し、その特定の鍵が削除される状態が生じました。</p>
-<p>署名鍵に関するメタデータは、インターネットの ID 標準プロトコルに沿い、Azure AD によってインターネット上でアクセス可能な場所に公開されます。この公開されたメタデータが 2021 年 3 月 15 日 19:00 UTC (日本時間 3 月 16 日 AM 4:00) に変更されたことにより、Azure AD と連携してこれらのプロトコルを使用するアプリケーションは、順次新しいメタデータを取得し始めました。結果として、削除された鍵で署名されたトークン/アサーションが信頼されなくなりました。この時点で、エンド ユーザーはこれらのアプリケーションにアクセスすることができなくなりました。</p>
+<p>署名鍵に関するメタデータは、インターネットの ID 標準プロトコルに沿い、Azure AD によってインターネット上でアクセス可能な場所に公開されます。この公開されたメタデータが 2021 年 3 月 15 日 19:00 UTC (日本時間 3 月 16 日 AM 4:00) に変更されたことにより、Azure AD と連携してこれらのプロトコルを使用するアプリケーションは、順次新しいメタデータを取得し始めました。結果として、削除された鍵で署名されたトークン&#x2F;アサーションが信頼されなくなりました。この時点で、エンド ユーザーはこれらのアプリケーションにアクセスすることができなくなりました。</p>
 <p>サービスのテレメトリによって問題が検知され、エンジニアリング チームが問題の対応を開始しました。2021 年 3 月 15 日 19:35 UTC (日本時間 3 月 16 日 AM 4:35) に、進行中だった直近のバックエンドの基盤変更を元の状態に戻しました。鍵の削除処理が根本的な原因であることが判明したため、21:05 UTC (日本時間 AM 6:05) に鍵のメタデータを以前の状態にロールバックしました。</p>
 <p>アプリケーションはロールバックされたメタデータを取得し、正しいメタデータでキャッシュを更新する必要があります。キャッシュの処理方法が様々なサーバーでそれぞれ異なって実装されているため、個々のアプリケーションが復旧するまでの時間もそれぞれ異なるものとなりました。一部のストレージ リソースでは、キャッシュされたメタデータによる影響が長く続きました。このため、これらのキャッシュを無効化して更新するための更新プログラムを展開しました。このプロセスが完了し、2021 年 3 月 16 日 9:37 UTC (日本時間 3 月 16 日 18:37) に、残存する影響を受けたお客様に対しても問題の解消が報告されました。</p>
 <p>Azure AD は、この問題を含む一連のリスクを防ぐため、バックエンドのセーフ デプロイメント プロセス (SDP) システムに追加の保護を適用するという複数フェーズの取り組みを進めていました。第 1 フェーズでは、新しい鍵の追加を保護する対応を行いましたが、鍵の削除への対応は第 2 フェーズにあり、今年半ばまでに完了する予定でした。以前の Azure AD の障害は 2020 年 9 月 28 日に発生しており、複数フェーズの SDP の取り組みが完了すれば、どちらの障害も再発を防止できる類いのリスクとなります。</p>
@@ -219,9 +219,9 @@
     </a>
   
   
-    <a href="../support-sevA/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../support-q-and-a/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure AD サポートが提供する [深刻度 A の対応について]</div>
+      <div class="article-nav-title">Azure AD サポートが提供する [ご支援に関する Q&amp;A]</div>
     </a>
   
 </nav>

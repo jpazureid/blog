@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-now-in-public-preview/Image02_MethodManagement.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-now-in-public-preview/Image03_UserSignin.png">
 <meta property="article:published_time" content="2022-02-22T21:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.131Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.068Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+07ec2997-80a1-5c13-ab2a-502374957df5%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%83%99%E3%83%BC%E3%82%B9%E8%AA%8D%E8%A8%BC+%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF+%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-certificate-based-authentication-now-in-public-preview%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-certificate-based-authentication-now-in-public-preview.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-certificate-based-authentication-now-in-public-preview.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-now-in-public-preview/" data-id="cmmketdqx006i0nqp1hqo9v7m" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-now-in-public-preview/" data-id="cuidsQwIQ-mh-H4o6xiIB45OI" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,14 +174,14 @@
 <blockquote>
 <p>「段階的な改善では、必要なセキュリティを確保できません。その代わりに、連邦政府は、アメリカの生活様式を支える重要な組織を守るため、大胆な改革と大規模な投資を行う必要があるのです。」<br>バイデン大統領、大統領令 14028 号</p>
 </blockquote>
-<p>当社は政府と連携した経験をもとに、PIV/CAC カードは連邦政府内で使用される最も一般的な認証方法であると理解しています。</p>
-<p>すべてのお客様にとって重要なことですが、<strong>Azure AD に対して直接 X.509 証明書を使用して認証できる</strong> ことは、<strong>PIV / CAC カード</strong> を使用している連邦政府組織や、大統領令 14028 の要件に準拠しようとしている組織にとっても特に重要です。</p>
+<p>当社は政府と連携した経験をもとに、PIV&#x2F;CAC カードは連邦政府内で使用される最も一般的な認証方法であると理解しています。</p>
+<p>すべてのお客様にとって重要なことですが、<strong>Azure AD に対して直接 X.509 証明書を使用して認証できる</strong> ことは、<strong>PIV &#x2F; CAC カード</strong> を使用している連邦政府組織や、大統領令 14028 の要件に準拠しようとしている組織にとっても特に重要です。</p>
 <p>以下では、当社 ID セキュリティ チームのプロダクト マネージャーである Vimala Ranganathan より、詳細を説明いたします。</p>
 <p>Alex Simons (Twitter: <a target="_blank" rel="noopener" href="https://twitter.com/alex_a_simons">@Alex_A_Simons</a><br>Corporate Vice President Program Management<br>Microsoft Identity Division </p>
 <hr>
 <p>皆さん、こんにちは。</p>
 <p>アイデンティティ PM チームの Vimala です。以下に、Azure AD CBA (Azure AD 証明書ベース認証) について説明させていただきます。</p>
-<p>Azure AD CBA は、米国のサイバー セキュリティに関する大統領令へのコミットメントの一環として、政府機関のお客様が PIV / CAC カードを使用してフィッシング防止の MFA 認証を容易に満たすことができるよう支援します。Azure AD のユーザーは、スマート カードやデバイスの X.509 証明書を使用して、ブラウザやアプリケーションのサインインの際、Azure AD に対して直接認証することができます。</p>
+<p>Azure AD CBA は、米国のサイバー セキュリティに関する大統領令へのコミットメントの一環として、政府機関のお客様が PIV &#x2F; CAC カードを使用してフィッシング防止の MFA 認証を容易に満たすことができるよう支援します。Azure AD のユーザーは、スマート カードやデバイスの X.509 証明書を使用して、ブラウザやアプリケーションのサインインの際、Azure AD に対して直接認証することができます。</p>
 <p>主なメリットは、以下のとおりです。</p>
 <ul>
 <li>フィッシングに強い証明書ベースの認証により、より高いセキュリティを実現 (ID 攻撃の大半はパスワードに関連している)</li>

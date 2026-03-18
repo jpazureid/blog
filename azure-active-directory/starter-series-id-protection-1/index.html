@@ -16,11 +16,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-1/starter-series-id-protection-1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-1/starter-series-id-protection-5.png">
 <meta property="article:published_time" content="2025-06-17T22:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.044Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.978Z">
 <meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="ID Protection">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Starter series">
-<meta property="article:tag" content="ID Protection">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-1/starter-series-id-protection-1.png">
   
@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2c9780aa-0563-5a42-a57c-7c116683eb2f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BEntra+ID+%E5%88%9D%E5%AD%A6%E8%80%85%E5%90%91%E3%81%91%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA%E7%AC%AC+2+%E5%BC%BE+-+ID+Protection+%E5%85%A5%E9%96%80+-+%E3%81%9D%E3%81%AE+1%3A+ID+Protection+%E3%81%A8%E3%81%AF%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fstarter-series-id-protection-1%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fstarter-series-id-protection-1.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fstarter-series-id-protection-1.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-1/" data-id="cmmketdw900mu0nqp6iek0cja" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-id-protection-1/" data-id="cuid_HaWHonosMxVca6qXM0mV" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -177,10 +177,10 @@
 <p>Entra ID 初学者向けシリーズの第 2 弾「ID Protection 入門」では、全部で以下の 3 つの記事を用意しています。</p>
 <ul>
 <li>その 1: ID Protection とは (本記事)</li>
-<li><a href="/blog/azure-active-directory/starter-series-id-protection-2/">その 2: リスクの検出/確認/対応</a></li>
+<li><a href="/blog/azure-active-directory/starter-series-id-protection-2/">その 2: リスクの検出&#x2F;確認&#x2F;対応</a></li>
 <li><a href="/blog/azure-active-directory/starter-series-id-protection-3/">その 3: リスクベースのポリシーで自動的に管理</a></li>
 </ul>
-<p>本記事「その 1: ID Protection とは」では、Microsoft Entra ID Protection を初めて学習/導入する方を対象に、基礎的な概念や ID Protection でできることを分かりやすく解説します。また、「その 2」および「その 3」の記事では設定方法や、現場でよくある質問や課題を例に典型的な使用シナリオと実際にお試しいただけるサンプルも紹介します。IT 管理者の方々にとって日々の運用に役立ちましたら嬉しいです！</p>
+<p>本記事「その 1: ID Protection とは」では、Microsoft Entra ID Protection を初めて学習&#x2F;導入する方を対象に、基礎的な概念や ID Protection でできることを分かりやすく解説します。また、「その 2」および「その 3」の記事では設定方法や、現場でよくある質問や課題を例に典型的な使用シナリオと実際にお試しいただけるサンプルも紹介します。IT 管理者の方々にとって日々の運用に役立ちましたら嬉しいです！</p>
 <hr>
 <h2 id="ID-Protection-とは"><a href="#ID-Protection-とは" class="headerlink" title="ID Protection とは"></a>ID Protection とは</h2><p>Microsoft Entra ID Protection は、ユーザー ID に対して発生する様々な危険な挙動を動的に検知して、その調査と修復を支援する機能です。ここで言う危険な挙動は ID Protection では「リスク」と呼ばれ、例えば以下のようなものが挙げられます。</p>
 <ul>
@@ -219,20 +219,20 @@
 <p>お客様テナントを含め、Microsoft Entra ID は普段から様々な攻撃にさらされており、そういった未成功の攻撃までを全てリスクとして扱うと、膨大な数のリスクがお客様に対して提示されることとなりますので、ID Protection ではそのような検出およびレポートはしておりません。そういった未成功のサインイン試行については、サインイン ログから傾向をご確認ください。</p>
 <h2 id="ID-Protection-を利用する際の全体的な流れ"><a href="#ID-Protection-を利用する際の全体的な流れ" class="headerlink" title="ID Protection を利用する際の全体的な流れ"></a>ID Protection を利用する際の全体的な流れ</h2><p>ID Protection を使用するときの大まかな流れは、以下のようなステップとなっております。</p>
 <ol>
-<li><p>リスクの発生/検知<br> ユーザーやサインインに対して、異常や不審な動きが検出されると、リスクが発生および検知されます。</p>
+<li><p>リスクの発生&#x2F;検知<br> ユーザーやサインインに対して、異常や不審な動きが検出されると、リスクが発生および検知されます。</p>
 </li>
-<li><p>リスクの確認/調査<br> 検出されたリスクは、管理者が Azure ポータルや Microsoft Entra 管理センター上で確認することができます。</p>
+<li><p>リスクの確認&#x2F;調査<br> 検出されたリスクは、管理者が Azure ポータルや Microsoft Entra 管理センター上で確認することができます。</p>
 <p> <img src="/blog/azure-active-directory/starter-series-id-protection-1/starter-series-id-protection-1.png" alt="検出されたリスクの確認"></p>
 </li>
 <li><p>リスクへの対応<br> 確認されたリスクに対してパスワード リセットやユーザーのブロックなどを実施します。</p>
 <p> <img src="/blog/azure-active-directory/starter-series-id-protection-1/starter-series-id-protection-5.png" alt="リスクへの対応"></p>
 </li>
 </ol>
-<p>上記の詳細については、「Entra ID 初学者向けシリーズ第 2 弾 - ID Protection 入門 」の 2 つ目の記事「<a href="/blog/./starter-series-id-protection-2/">その 2: リスクの検出/確認/対応</a>」にて解説します。また、リスクベースのポリシーを使用することによって、検知されたリスクに対して自動的に多要素認証やブロックなどの制御や、リスクに対してユーザーが自動修復をすることも可能です。こちらの詳細関しては、3 つ目の記事「<a href="/blog/./starter-series-id-protection-3/">その 3: リスクベースのポリシーで自動的に管理</a>」にて解説します。</p>
+<p>上記の詳細については、「Entra ID 初学者向けシリーズ第 2 弾 - ID Protection 入門 」の 2 つ目の記事「<a href="/blog/./starter-series-id-protection-2/">その 2: リスクの検出&#x2F;確認&#x2F;対応</a>」にて解説します。また、リスクベースのポリシーを使用することによって、検知されたリスクに対して自動的に多要素認証やブロックなどの制御や、リスクに対してユーザーが自動修復をすることも可能です。こちらの詳細関しては、3 つ目の記事「<a href="/blog/./starter-series-id-protection-3/">その 3: リスクベースのポリシーで自動的に管理</a>」にて解説します。</p>
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回の初学者向けシリーズ第 2 弾では、「その 1: ID Protection とは」について解説しました。特にご注目いただきたい点をまとめると以下のとおりです。</p>
 <ul>
 <li>ID Protection は、ユーザーのサインインに潜むリスクを動的に検出し、調査および修復を支援する非常に強力なセキュリティ機能です。</li>
-<li>リスクは「リアルタイム」と「オフライン」の 2 つのタイミングで検出され、リスクレベル (低/中/高) に応じたラベル付けが行われます。</li>
+<li>リスクは「リアルタイム」と「オフライン」の 2 つのタイミングで検出され、リスクレベル (低&#x2F;中&#x2F;高) に応じたラベル付けが行われます。</li>
 <li>ID Protection を使用したときの大まかな流れは「リスクの検知 → 調査 → 修復」です。リスクベースの条件付きアクセス ポリシーを利用すると、自動的なリスク対応や自動修復が可能となり、より迅速かつ安全な運用が実現できます。</li>
 </ul>
 

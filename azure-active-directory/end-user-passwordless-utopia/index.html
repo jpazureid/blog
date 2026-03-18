@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/end-user-passwordless-utopia/1.png">
 <meta property="article:published_time" content="2023-01-07T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.328Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.266Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+faab4416-72fe-59f1-92f4-fd4607de3c93%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%99%E3%82%8B%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%83%AC%E3%82%B9%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E4%BD%93%E9%A8%93%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fend-user-passwordless-utopia%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fend-user-passwordless-utopia.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fend-user-passwordless-utopia.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/end-user-passwordless-utopia/" data-id="cmmketdse00b10nqp6vpm39z6" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/end-user-passwordless-utopia/" data-id="cuidpY5x91dS_Cpdn2XpLs1L4" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,7 +174,7 @@
 <li>条件付きアクセスおよび認証強度</li>
 <li>デバイス登録</li>
 <li>プライマリ更新トークン (PRT: Primary Refresh Token)</li>
-<li>エンタープライズ アプリ / シングル サインオン (SSO)</li>
+<li>エンタープライズ アプリ &#x2F; シングル サインオン (SSO)</li>
 <li>Intune</li>
 <li>Autopilot</li>
 <li>一時アクセス パス</li>
@@ -229,9 +229,9 @@
 <p>ステップ B の詳細: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token#prt-issuance-during-first-sign-in">初回サインイン中の PRT 発行</a></p>
 <p>ステップ C の詳細: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token#browser-sso-using-prt">PRT を使用したブラウザー SSO</a>  </p>
 <h2 id="動作の詳細"><a href="#動作の詳細" class="headerlink" title="動作の詳細"></a>動作の詳細</h2><h3 id="デバイスの登録"><a href="#デバイスの登録" class="headerlink" title="デバイスの登録"></a>デバイスの登録</h3><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/devices/device-registration-how-it-works">ハイブリッド Azure AD 参加または Azure AD 参加 (デバイス登録)</a> が、Windows Hello for Business または FIDO キーを使用するための前提条件です。デバイスを Azure AD に登録するのに、様々な方法で登録プロセスを開始するようにポリシーを適用することができます。</p>
-<h3 id="パスワードレス-MFA"><a href="#パスワードレス-MFA" class="headerlink" title="パスワードレス/MFA"></a>パスワードレス/MFA</h3><p>Windows Hello for Business や FIDO2 キーは、パスワードの代わりに、デバイス上で強力な二要素認証を行います。この認証は、デバイスに紐づけられたユーザーの資格情報で構成されており、生体認証または PIN が使用されます。Windows Hello for Business の詳細については <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-overview#how-windows-hello-for-business-works-key-points">このリンク</a> を、FIDO2 のログオンについては <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/howto-authentication-passwordless-security-key-windows">このリンク</a> をご参照ください。</p>
+<h3 id="パスワードレス-MFA"><a href="#パスワードレス-MFA" class="headerlink" title="パスワードレス&#x2F;MFA"></a>パスワードレス&#x2F;MFA</h3><p>Windows Hello for Business や FIDO2 キーは、パスワードの代わりに、デバイス上で強力な二要素認証を行います。この認証は、デバイスに紐づけられたユーザーの資格情報で構成されており、生体認証または PIN が使用されます。Windows Hello for Business の詳細については <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-overview#how-windows-hello-for-business-works-key-points">このリンク</a> を、FIDO2 のログオンについては <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/howto-authentication-passwordless-security-key-windows">このリンク</a> をご参照ください。</p>
 <p>ログオンを完了するためには、キーのデータを含む実際のデバイスと、そのキーへのアクセスを解除するための PIN または生体認証の 2 つの要素が必要です。この処理には、私たちが持っているもの (コンピューター)、私たちが知っているもの (PIN) または私たち自身 (生体認証) という複数要素が必要となります。なぜパスワードより PIN の方が優れているかについては、詳しくは <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows/security/identity-protection/hello-for-business/hello-why-pin-is-better-than-password">こちらの公開情報</a> をご覧ください。</p>
-<h3 id="エンタープライズ-アプリ-SSO"><a href="#エンタープライズ-アプリ-SSO" class="headerlink" title="エンタープライズ アプリ/SSO"></a>エンタープライズ アプリ/SSO</h3><p>デバイスが Azure AD に参加すると、いくつかの URL がレジストリに追加されます。これらの Azure AD の URL がサインインの際に使用されます。ブラウザーから Azure AD に登録されたアプリケーションにアクセスし、<strong>さらに</strong> そのブラウザーが Azure AD SSO をサポートしており (Edge、Office 用の拡張機能付きの Chrome, Firefox v91 以上)、<strong>かつ</strong> 誘導された Azure AD の URL がレジストリ内の URL と一致する場合、ブラウザ－はデバイスへのサインイン時に取得したプライマリ更新トークンを使用して、ユーザー操作を必要とせずに認証を試行します。これについては、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token#browser-sso-using-prt">PRT を使用したブラウザー SSO</a> で詳しく説明しています。</p>
+<h3 id="エンタープライズ-アプリ-SSO"><a href="#エンタープライズ-アプリ-SSO" class="headerlink" title="エンタープライズ アプリ&#x2F;SSO"></a>エンタープライズ アプリ&#x2F;SSO</h3><p>デバイスが Azure AD に参加すると、いくつかの URL がレジストリに追加されます。これらの Azure AD の URL がサインインの際に使用されます。ブラウザーから Azure AD に登録されたアプリケーションにアクセスし、<strong>さらに</strong> そのブラウザーが Azure AD SSO をサポートしており (Edge、Office 用の拡張機能付きの Chrome, Firefox v91 以上)、<strong>かつ</strong> 誘導された Azure AD の URL がレジストリ内の URL と一致する場合、ブラウザ－はデバイスへのサインイン時に取得したプライマリ更新トークンを使用して、ユーザー操作を必要とせずに認証を試行します。これについては、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token#browser-sso-using-prt">PRT を使用したブラウザー SSO</a> で詳しく説明しています。</p>
 <p>この場合、ユーザーには、サインイン時にプロンプトは表示され<strong>ません</strong>。</p>
 <p>ユーザーが Azure AD に似た偽のウェブサイトに誘導され、ユーザー名とパスワードの入力プロンプトが表示されたとしても、この URL はレジストリに保存されている URL とは異なるため、SSO の処理は開始されません。偽のウェブページには SSO を受け入れるために必要なエンドポイントがないため、SSO の処理が開始されることはありません。本物の Azure AD のサインイン ページでは、パスワード プロンプトは表示されません。</p>
 <h3 id="条件付きアクセス"><a href="#条件付きアクセス" class="headerlink" title="条件付きアクセス"></a>条件付きアクセス</h3><p>次に、条件付きアクセスが認可の要求を評価します。ユーザーやアプリに対して構成された条件付きアクセス ポリシーのアクセス制御に従って、MFA、ハイブリッド Azure AD 参加、および準拠しているデバイスなど、複数のアクセス権付与の要件 (コントロール) を設定することができます。MFA やハイブリッド Azure AD 参加など、 1 つまたは複数のコントロールを必要とすることもできます。Azure AD に登録されているデバイスは、ハイブリッド Azure AD 参加の条件を満たし、プライマリ更新トークンに存在する MFA クレームは MFA の条件を満たすことができます。</p>

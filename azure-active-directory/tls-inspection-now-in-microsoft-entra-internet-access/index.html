@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/tls-inspection-now-in-microsoft-entra-internet-access/2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/tls-inspection-now-in-microsoft-entra-internet-access/1.png">
 <meta property="article:published_time" content="2025-06-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.098Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.032Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5c6088b6-31dd-52c4-b60b-1020fdc9b72a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+Internet+Access+%E3%81%A7+TLS+%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%9A%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8C%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AB%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Ftls-inspection-now-in-microsoft-entra-internet-access%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Ftls-inspection-now-in-microsoft-entra-internet-access.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Ftls-inspection-now-in-microsoft-entra-internet-access.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/tls-inspection-now-in-microsoft-entra-internet-access/" data-id="cmmketdwm00o20nqpcm4e8bym" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/tls-inspection-now-in-microsoft-entra-internet-access/" data-id="cuideRE-SFZoT5ETm94Mu2pxH" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -179,7 +179,7 @@
 <h2 id="可視化がすべてを変える"><a href="#可視化がすべてを変える" class="headerlink" title="可視化がすべてを変える"></a>可視化がすべてを変える</h2><p>トラフィックの内容を評価することで、TLS インスペクションはより強力かつ効果的なセキュリティを実現するその基礎を提供します。この可視化機能により、これまでにない精度で、なおかつ文脈も考慮してポリシーを強制できるようになり、以下のような主要なセキュリティ シナリオにも対応できるようになります。</p>
 <p>• <strong>詳細なウェブ フィルタリング</strong>: ドメインのカテゴリーという広い分類にとどまらず、特定の URL に基づいてアクセスの許可およびブロックを細かく制御できるようになり、より高度なウェブ アクセスの管理が可能になります。<br>• <strong>暗号化された脅威へのプロアクティブな防御</strong>：マルウェア、ランサムウェア、フィッシング攻撃などの脅威を、ユーザーの端末に被害が及ぶ前に検出および無効化します。<br>• <strong>包括的なデータ損失防止 (DLP)</strong>: すべての通信にわたって一貫した DLP ポリシーを適用し、管理外のデバイスや公共 Wi-Fi 経由でのアクセス時でも企業の機密データを保護します。<br>• <strong>許可されていない AI 利用の抑制</strong>: 生成 AI ツールの使用状況を可視化および制御し、機密データの不正な持ち出しを防ぎます。<br>• <strong>コンプライアンスと監査の効率化</strong>：クラウド上で一元管理されるログを活用することで、PCI や HIPAA などの規制、地域ごとのデータ保存要件への準拠を簡単かつ明確に証明できます。</p>
 <p><img src="/blog/azure-active-directory/tls-inspection-now-in-microsoft-entra-internet-access/1.png" alt="図 2: Global Secure Access によるエンドツーエンドの TLS フロー"></p>
-<p>まとめると、「暗号化されている = 見えない」ではなくなるのです。TLS インスペクションを使えば、HTTPS 通信にもゼロトラストの制御を適用できるようになり、プライバシーを損なうことなく、ユーザーやデータをしっかり守ることができます。詳細は<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-transport-layer-security">ドキュメント</a>でご確認ください。</p>
+<p>まとめると、「暗号化されている &#x3D; 見えない」ではなくなるのです。TLS インスペクションを使えば、HTTPS 通信にもゼロトラストの制御を適用できるようになり、プライバシーを損なうことなく、ユーザーやデータをしっかり守ることができます。詳細は<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-transport-layer-security">ドキュメント</a>でご確認ください。</p>
 <p>さらに深く知りたい方は、John Savill による Microsoft Entra Internet Access の TLS インスペクション解説動画もぜひご覧ください！</p>
 <p><a target="_blank" rel="noopener" href="https://youtu.be/WxxHH_4vKh4">TLS Inspection in Microsoft Entra Internet Access Deep Dive</a></p>
 <h2 id="今後について"><a href="#今後について" class="headerlink" title="今後について"></a>今後について</h2><p>TLS インスペクションは基盤となる重要な機能であり、これはまだ始まりに過ぎません。この発表は、<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-internet-access">Microsoft Entra Internet Access</a> と <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-private-access">Microsoft Entra Private Access</a> をさらに強化するための今後のアップデートの土台を築くものです。弊社は ID を中心とした SSE ソリューションを継続して構築してまいります。</p>

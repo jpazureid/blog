@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/figure4.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/figure5.png">
 <meta property="article:published_time" content="2023-09-03T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.498Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.434Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e49e5de7-9937-5663-99df-e706fccbddea%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%81%82%E3%82%89%E3%82%86%E3%82%8B%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89+Microsoft+Entra+ID+%E3%81%AB+ID+%E3%82%92%E5%90%8C%E6%9C%9F%E3%81%99%E3%82%8B%E6%96%B0%E3%81%97%E3%81%84%E6%96%B9%E6%B3%95%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fintroducing-a-new-flexible-way-of-bringing-identities-from-any%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fintroducing-a-new-flexible-way-of-bringing-identities-from-any.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fintroducing-a-new-flexible-way-of-bringing-identities-from-any.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/" data-id="cmmkete0e01520nqp7o30hgw0" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/" data-id="cuidbMnzl88yH3el7UOYFVoIn" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -183,11 +183,11 @@
 <h2 id="わずか-3-ステップであらゆるデータソースから-ID-を同期"><a href="#わずか-3-ステップであらゆるデータソースから-ID-を同期" class="headerlink" title="わずか 3 ステップであらゆるデータソースから ID を同期"></a>わずか 3 ステップであらゆるデータソースから ID を同期</h2><h3 id="ステップ-1-API-ベースのプロビジョニング-アプリの構成"><a href="#ステップ-1-API-ベースのプロビジョニング-アプリの構成" class="headerlink" title="ステップ 1 - API ベースのプロビジョニング アプリの構成"></a>ステップ 1 - API ベースのプロビジョニング アプリの構成</h3><p>Microsoft Entra ポータルに、アプリケーション管理者もしくはハイブリッド ID の管理者ロールを持つユーザとしてサインインします。エンタープライズ アプリのギャラリーに 2 つの新しいプロビジョニング アプリケーションが表示されるはずです:</p>
 <ul>
 <li>API-driven Inbound User Provisioning to Azure AD: 信頼できるデータ ソースからクラウド専用のユーザー アカウントをプロビジョニングする場合に <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/app-provisioning/inbound-provisioning-api-configure-app">このアプリを構成</a> します。</li>
-<li>API-driven Inbound User Provisioning to On-Premises AD: まずオンプレミスの Active Directory にユーザー アカウントをプロビジョニングしてから、Microsoft Entra Cloud Sync / Connect Sync を使用して Microsoft Entra ID に同期したい場合は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/app-provisioning/inbound-provisioning-api-configure-app">このアプリを構成</a> します。</li>
+<li>API-driven Inbound User Provisioning to On-Premises AD: まずオンプレミスの Active Directory にユーザー アカウントをプロビジョニングしてから、Microsoft Entra Cloud Sync &#x2F; Connect Sync を使用して Microsoft Entra ID に同期したい場合は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/app-provisioning/inbound-provisioning-api-configure-app">このアプリを構成</a> します。</li>
 </ul>
 <p>プロビジョニングの対象がオンプレミスの Active Directory ドメインの場合は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/hybrid/cloud-sync/how-to-install">Microsoft Entra プロビジョニング エージェント</a> をダウンロードして設定ください。設定後に、プロビジョニング アプリで Active Directory ドメインを選択できます。</p>
 <p><img src="/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/figure2.png" alt="図 2: オンプレミス Active Directory ドメインに接続する"></p>
-<p>既定では、プロビジョニング アプリは、標準の <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc7643.html#section-4.1">SCIM Core User スキーマ</a> と <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc7643.html#section-4.3">SCIM Enterprise User スキーマ拡張</a> を、対応する Microsoft Entra ID / オンプレミス Active Directory ユーザー属性にマッピングします。</p>
+<p>既定では、プロビジョニング アプリは、標準の <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc7643.html#section-4.1">SCIM Core User スキーマ</a> と <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc7643.html#section-4.3">SCIM Enterprise User スキーマ拡張</a> を、対応する Microsoft Entra ID &#x2F; オンプレミス Active Directory ユーザー属性にマッピングします。</p>
 <p><img src="/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/figure3.png" alt="図 3: SCIM のスキーマ属性マッピングをオンプレミスの AD 属性に対して行う"></p>
 <p>Microsoft Entra のプロビジョニング サービスにより、プロビジョニング アプリ用に固有の API エンドポイントが作成されます。この API エンドポイントの値を “概要” ブレードからコピーいただけます。[プロビジョニングの開始] を選択すると、この API エンドポイントでインバウンド プロビジョニングの要求を受け付けるようになります。</p>
 <p><img src="/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/figure4.png" alt="図 4: プロビジョニング アプリ用の API エンドポイント"></p>
@@ -205,7 +205,7 @@
 <li>AuditLog.Read.All</li>
 </ul>
 <p><img src="/blog/azure-active-directory/introducing-a-new-flexible-way-of-bringing-identities-from-any/figure5.png" alt="図 5: API ベースのプロビジョニングを行うために必要なアクセス許可"></p>
-<h3 id="ステップ-3-お好みの自動化ツールを使用して-ID-データをアップロード"><a href="#ステップ-3-お好みの自動化ツールを使用して-ID-データをアップロード" class="headerlink" title="ステップ 3 - お好みの自動化ツールを使用して ID データをアップロード"></a>ステップ 3 - お好みの自動化ツールを使用して ID データをアップロード</h3><p>これで、プロビジョニング (/bulkUpload) API エンドポイントに ID データを安全にアップロードする準備が整いました。API ベースのプロビジョニングの優れた点は、ユーザー データが存在するシステム側において、ID の作成もしくは更新のどちらが必要かを判断するカスタム ロジックの実装が必要ないことです。同期元のシステムからデータをアップロードするだけで、IAM 管理者によって設定されたマッピングルールに基づいて Microsoft Entra のプロビジョニング サービスが各ユーザー レコードに対する適切な操作を自動的に決定および実行します。</p>
+<h3 id="ステップ-3-お好みの自動化ツールを使用して-ID-データをアップロード"><a href="#ステップ-3-お好みの自動化ツールを使用して-ID-データをアップロード" class="headerlink" title="ステップ 3 - お好みの自動化ツールを使用して ID データをアップロード"></a>ステップ 3 - お好みの自動化ツールを使用して ID データをアップロード</h3><p>これで、プロビジョニング (&#x2F;bulkUpload) API エンドポイントに ID データを安全にアップロードする準備が整いました。API ベースのプロビジョニングの優れた点は、ユーザー データが存在するシステム側において、ID の作成もしくは更新のどちらが必要かを判断するカスタム ロジックの実装が必要ないことです。同期元のシステムからデータをアップロードするだけで、IAM 管理者によって設定されたマッピングルールに基づいて Microsoft Entra のプロビジョニング サービスが各ユーザー レコードに対する適切な操作を自動的に決定および実行します。</p>
 <h2 id="その他の統合シナリオ"><a href="#その他の統合シナリオ" class="headerlink" title="その他の統合シナリオ"></a>その他の統合シナリオ</h2><p>上記のステップでは、クラウド上の Microsoft Entra ID とオンプレミスの Active Directory にプロビジョニングする方法を紹介しました。これらの手順を適用して、さらにいくつかエンタープライズの人事統合シナリオを実現することができます。</p>
 <h3 id="シナリオ-1-IT-チームがあらゆるソースから人事データの抽出結果をインポート"><a href="#シナリオ-1-IT-チームがあらゆるソースから人事データの抽出結果をインポート" class="headerlink" title="シナリオ 1: IT チームがあらゆるソースから人事データの抽出結果をインポート"></a>シナリオ 1: IT チームがあらゆるソースから人事データの抽出結果をインポート</h3><p>エンタープライズの統合シナリオでは、単純なテキスト ファイル、CSV ファイル、SQL の一時テーブルが一般的に使用されます。従業員、請負業者、およびベンダー情報は、定期的にこれらのフォーマットのいずれかにエクスポートされ、自動化ツールを使用して Microsoft Entra ID と同期されます。API ベースのプロビジョニングにより、IT チームは任意の自動化ツール (例: PowerShell スクリプトまたは Azure Logic Apps) を使用して、このようなデータ統合をよりシンプルに実現できます。</p>
 <h3 id="シナリオ-2-人事情報を扱うソフトウェア-ベンダーが-Microsoft-Entra-ID-と直接インバウンド同期を構築"><a href="#シナリオ-2-人事情報を扱うソフトウェア-ベンダーが-Microsoft-Entra-ID-と直接インバウンド同期を構築" class="headerlink" title="シナリオ 2: 人事情報を扱うソフトウェア ベンダーが Microsoft Entra ID と直接インバウンド同期を構築"></a>シナリオ 2: 人事情報を扱うソフトウェア ベンダーが Microsoft Entra ID と直接インバウンド同期を構築</h3><p>API ベースのプロビジョニングにより、人事情報を扱うソフトウェア ベンダーはネイティブな同期処理を提供し、人事データベースの変更を自動的に Microsoft Entra ID およびオンプレミスの Active Directory ドメインに取り込むようにすることが可能となります。例えば、人事アプリや学生情報システムのアプリでは、トランザクションが完了するとすぐに、または一日の終わりに一括更新として Microsoft Entra ID にデータを送信するということもできます。</p>
@@ -216,7 +216,7 @@
 <p><strong>Microsoft Entra の API ベースのインバウンド プロビジョニングは、既存の技術により制約を受けている顧客にとって非常に有用な機能であり、あらゆる顧客が入社、異動、離職の処理を自動化出来る、そのきっかけとなるものです。</strong><br>Kocho 社 シニア アーキテクト兼チーム リーダー Martyn Gill 氏</p>
 <p><strong>API ベースのプロビジョニングにより、弊社のお客様は SmartHR の従業員情報と Microsoft Entra ID を紐づけできるようになります。これにより、従業員の入社、異動、離職に伴うアカウント管理に必要な時間と労力が削減されます。SmartHR は、この統合の構築においてマイクロソフトと提携できることをうれしく思います！</strong><br>SmartHR 社 プロダクト エンジニア Takumi Kanzaki 氏</p>
 <p><strong>Rippling は、給与、経費、および福利厚生を 1 つの統合プラットフォームで自動化することで、人事、IT、および財務を一括して管理できるようお客様を支援しています。Microsoft Entra の API ベースのプロビジョニングにより、この自動化をさらに広げ、クラウドかオンプレミスかに関係なく、より多くの業務アプリへスムーズにアクセス出来るようになります。マイクロソフトと提携することで、顧客にこのシームレスな体験を提供できることを楽しみにしています！</strong><br>Rippling 社 プロダクト リード Sam Gnesin 氏</p>
-<h2 id="是非お試しください"><a href="#是非お試しください" class="headerlink" title="是非お試しください"></a>是非お試しください</h2><p>この新しい機能により、クラウドまたはオンプレミスのどちらでホストされているかに関係なく、より柔軟にデータ ソースと ID データを同期することが可能となりました。HR/IT チームと連携し、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/logic-apps/logic-apps-overview">Azure Logic Apps</a>、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/power-automate/getting-started">Power Automate</a>、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-overview?pivots=programming-language-csharp">Azure Functions</a>、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/data-factory/introduction">Azure Data Factory</a> などの自動化ツールを用いて、人事データを取得、変換、マージして、新しいプロビジョニング API エンドポイントにデータをアップロード出来るようになります。</p>
+<h2 id="是非お試しください"><a href="#是非お試しください" class="headerlink" title="是非お試しください"></a>是非お試しください</h2><p>この新しい機能により、クラウドまたはオンプレミスのどちらでホストされているかに関係なく、より柔軟にデータ ソースと ID データを同期することが可能となりました。HR&#x2F;IT チームと連携し、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/logic-apps/logic-apps-overview">Azure Logic Apps</a>、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/power-automate/getting-started">Power Automate</a>、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-overview?pivots=programming-language-csharp">Azure Functions</a>、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/data-factory/introduction">Azure Data Factory</a> などの自動化ツールを用いて、人事データを取得、変換、マージして、新しいプロビジョニング API エンドポイントにデータをアップロード出来るようになります。</p>
 <p>お好みの API テスト ツールを用いて API ベースのプロビジョニングを構成し、評価できますので、その際は以下のチュートリアルのいずれかを参照ください:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/app-provisioning/inbound-provisioning-api-curl-tutorial">cURLを使ったクイック スタート</a></li>

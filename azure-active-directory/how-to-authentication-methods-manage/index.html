@@ -37,10 +37,10 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/Office.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/migration-state-2.png">
 <meta property="article:published_time" content="2025-09-17T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.394Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.331Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="MFA">
+<meta property="article:tag" content="Microsoft Entra ID">
 <meta property="article:tag" content="SSPR">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/migration-image.png">
@@ -63,7 +63,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -180,7 +180,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c98364a0-1423-5258-ab1f-a7a3a7ff97ec%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMFA+%E3%81%A8+SSPR+%E3%82%92%E6%96%B0%E3%81%97%E3%81%84%E8%AA%8D%E8%A8%BC%E6%96%B9%E6%B3%95%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-authentication-methods-manage%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-authentication-methods-manage.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-authentication-methods-manage.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/" data-id="cmmkete2c01b80nqp98jbbbgm" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/" data-id="cuidDicIFcAoKIbeOYuVvjY0y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -249,8 +249,11 @@
 <p>なお、Microsoft Entra ID Premium ライセンスを保有されている場合は、 [Microsoft Entra ID] &gt; [セキュリティ] &gt; [多要素認証] &gt; [クラウドベースの多要素認証の追加設定] でも上記画面に遷移可能です。</p>
 <h3 id="レガシー-SSPR-ポリシーの設定の確認"><a href="#レガシー-SSPR-ポリシーの設定の確認" class="headerlink" title="レガシー SSPR ポリシーの設定の確認"></a>レガシー SSPR ポリシーの設定の確認</h3><p>次に、SSPR で利用可能な認証方法の設定について確認します。</p>
 <ol>
-<li>Azure Portal (<a target="_blank" rel="noopener" href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [パスワード リセット] &gt; [認証方法] に移動します。</li>
-<li>以下の [ユーザーが使用できる方法] でどの項目にチェックが入っているかを確認します。これがレガシー SSPR ポリシーの設定です。<img src="/blog/azure-active-directory/how-to-authentication-methods-manage/legacy-sspr1.png"></li>
+<li><p>Azure Portal (<a target="_blank" rel="noopener" href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [パスワード リセット] &gt; [認証方法] に移動します。</p>
+</li>
+<li><p>以下の [ユーザーが使用できる方法] でどの項目にチェックが入っているかを確認します。これがレガシー SSPR ポリシーの設定です。</p>
+<p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/legacy-sspr1.png"></p>
+</li>
 </ol>
 <p>例えば、上記のスクリーンショットでは、ユーザーが利用可能な SSPR の方法として、[電子メール] または [携帯電話] にチェックされていることがわかります。これは、レガシー MFA ポリシーと同様に、ユーザーが上記のいずれかの方法を利用して SSPR を行うことができるということを意味しています。</p>
 <h3 id="新しい認証方法ポリシーの確認"><a href="#新しい認証方法ポリシーの確認" class="headerlink" title="新しい認証方法ポリシーの確認"></a>新しい認証方法ポリシーの確認</h3><p>新しい認証方法ポリシーについては、Azure Portal (<a target="_blank" rel="noopener" href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] から確認します。</p>
@@ -307,7 +310,7 @@
 <td>認証方法ポリシーのみ</td>
 </tr>
 </tbody></table>
-<p>例えば、移行前の状態では、MFA においては「認証方法ポリシーとレガシー MFA ポリシー」が両方参照されます。これは認証方法の有効状態は、認証方法ポリシーとレガシー MFA/SSPR ポリシーの有効状態の <strong>和 (OR)</strong> で行われるという意味です。つまり、あるユーザーに対しいずれかのポリシーで認証方法が有効になっている場合、ユーザーはその認証方法が使用可能な状態となります。これまでの例ですと、認証方法ポリシーはほぼすべてが [いいえ] であり、レガシー MFA ポリシーは以下の 3 つにチェックが入っていた状況でした。この場合、認証方法ポリシーがすべてが [いいえ] であっても、レガシー MFA ポリシーで有効な認証方法が 3 つありますので、引き続きこれら 3 つのポリシーが有効になるという結果になります。</p>
+<p>例えば、移行前の状態では、MFA においては「認証方法ポリシーとレガシー MFA ポリシー」が両方参照されます。これは認証方法の有効状態は、認証方法ポリシーとレガシー MFA&#x2F;SSPR ポリシーの有効状態の <strong>和 (OR)</strong> で行われるという意味です。つまり、あるユーザーに対しいずれかのポリシーで認証方法が有効になっている場合、ユーザーはその認証方法が使用可能な状態となります。これまでの例ですと、認証方法ポリシーはほぼすべてが [いいえ] であり、レガシー MFA ポリシーは以下の 3 つにチェックが入っていた状況でした。この場合、認証方法ポリシーがすべてが [いいえ] であっても、レガシー MFA ポリシーで有効な認証方法が 3 つありますので、引き続きこれら 3 つのポリシーが有効になるという結果になります。</p>
 <ul>
 <li>電話へのテキスト メッセージ</li>
 <li>モバイル アプリによる通知</li>
@@ -388,7 +391,7 @@
 <p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/manage-after-sspr.png"></p>
 <h2 id="B-3-移行が進行中での状態の確認"><a href="#B-3-移行が進行中での状態の確認" class="headerlink" title="B-3. 移行が進行中での状態の確認"></a>B-3. 移行が進行中での状態の確認</h2><p>以上の手順が完了したら、まずはユーザー影響が生じていないかなどを念のためご確認ください。特段影響がなければ、しばらくそのまま運用いただいてもかまいません。しばらく上記状態で運用いただき、移行を完了する準備が整ったら、以下の作業を進めます。</p>
 <h2 id="B-4-移行の完了"><a href="#B-4-移行の完了" class="headerlink" title="B-4. 移行の完了"></a>B-4. 移行の完了</h2><p>[移行が進行中] の状態にてご要望の認証方法が使用可能となるよう新しい認証方法ポリシーを設定できたら、次のステップとして、レガシー MFA および SSPR ポリシーのチェックをすべて外して無効にします (全て一度に外すのが不安な場合は、一つずつ時間をかけてチェックを外していただいてもかまいません)。</p>
-<p>上述のとおり、各認証方法の有効状態は、認証方法ポリシーとレガシー MFA/SSPR ポリシーの有効状態の和 (OR) で評価されます。このため、認証方法ポリシーにおいて各認証方法が適切に有効になっていれば、レガシー MFA/SSPR ポリシーのチェックをすべて外しても、引き続き認証方法ポリシーの設定が評価され各認証方法は有効状態となります。</p>
+<p>上述のとおり、各認証方法の有効状態は、認証方法ポリシーとレガシー MFA&#x2F;SSPR ポリシーの有効状態の和 (OR) で評価されます。このため、認証方法ポリシーにおいて各認証方法が適切に有効になっていれば、レガシー MFA&#x2F;SSPR ポリシーのチェックをすべて外しても、引き続き認証方法ポリシーの設定が評価され各認証方法は有効状態となります。</p>
 <p>レガシー MFA および SSPR ポリシーのチェックをすべて外して無効にした後、念のため、テナントにてご要望の認証方法が MFA と SSPR の双方で利用可能かご確認ください。ユーザー影響を確認するため、しばらくその状態で運用いただいてもかまいません。</p>
 <p>動作確認が完了したら、移行のステップを [移行が進行中] から [移行が完了済み] に変更します。</p>
 <p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/after-migration.png"></p>
@@ -421,7 +424,7 @@
 <li>[保存] をクリックします。</li>
 </ol>
 <h3 id="サード-パーティ製のソフトウェア-OATH-トークン"><a href="#サード-パーティ製のソフトウェア-OATH-トークン" class="headerlink" title="サード パーティ製のソフトウェア OATH トークン"></a>サード パーティ製のソフトウェア OATH トークン</h3><h4 id="移行の条件-2"><a href="#移行の条件-2" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul>
-<li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効または Microsoft Authenticator 以外のサードパーティー製のソフトウェア OATH トークンを許可したい場合、認証方法ポリシーで [サード パーティ製のソフトウェア OATH トークン] を有効にします。 </li>
+<li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効または Microsoft Authenticator 以外のサードパーティー製のソフトウェア OATH トークンを許可したい場合、認証方法ポリシーで [サード パーティ製のソフトウェア OATH トークン] を有効にします。</li>
 </ul>
 <h4 id="手順-2"><a href="#手順-2" class="headerlink" title="手順"></a>手順</h4><ol>
 <li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [サード パーティ製のソフトウェア OATH トークン] に移動します。</li>
@@ -444,7 +447,7 @@
 </li>
 </ol>
 <h3 id="メール-OTP"><a href="#メール-OTP" class="headerlink" title="メール OTP"></a>メール OTP</h3><h4 id="移行の条件-4"><a href="#移行の条件-4" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul>
-<li>レガシー SSPR ポリシーで [メール] を有効にしている場合、認証方法ポリシーで [メール OTP] を有効にします。 </li>
+<li>レガシー SSPR ポリシーで [メール] を有効にしている場合、認証方法ポリシーで [メール OTP] を有効にします。</li>
 </ul>
 <h4 id="手順-4"><a href="#手順-4" class="headerlink" title="手順"></a>手順</h4><ol>
 <li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [メール OTP] に移動します。</li>
@@ -453,7 +456,7 @@
 </ol>
 <p>認証方法ポリシーの [メール OTP] の設定はゲストのメール ワンタイム パスコード (OTP) の設定にも影響します。[構成] タブの [外部ユーザーに電子メールの OTP の使用を許可する] コントロールが有効な場合、認証方法ポリシーの [メール OTP] を無効にすることはできません。</p>
 <h3 id="ハードウェア-OATH-トークン"><a href="#ハードウェア-OATH-トークン" class="headerlink" title="ハードウェア OATH トークン"></a>ハードウェア OATH トークン</h3><h4 id="移行の条件-5"><a href="#移行の条件-5" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul>
-<li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効にしているか、ハードウェア OATH トークンの利用を許可したい場合、認証方法ポリシーで [ハードウェア OATH トークン] を有効にします。 </li>
+<li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効にしているか、ハードウェア OATH トークンの利用を許可したい場合、認証方法ポリシーで [ハードウェア OATH トークン] を有効にします。</li>
 </ul>
 <h4 id="手順-5"><a href="#手順-5" class="headerlink" title="手順"></a>手順</h4><ol>
 <li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [ハードウェア OATH トークン] に移動します。</li>

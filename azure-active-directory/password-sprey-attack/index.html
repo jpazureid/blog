@@ -17,12 +17,12 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/password-sprey-attack/fig2-risk-based-mfa.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/password-sprey-attack/fig3-banned-password.jpg">
 <meta property="article:published_time" content="2018-03-18T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.901Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.836Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Security">
 <meta property="article:tag" content="MFA">
+<meta property="article:tag" content="Security">
 <meta property="article:tag" content="Smart lockout">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/password-sprey-attack/fig1-attack-simulator.jpg">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2b6bdfac-5b2a-5c3a-a64e-f99398589978%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%A8+AD+FS+%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88+%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9+-+%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89+%E3%82%B9%E3%83%97%E3%83%AC%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AE%E9%98%B2%E5%BE%A1%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fpassword-sprey-attack%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fpassword-sprey-attack.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fpassword-sprey-attack.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/password-sprey-attack/" data-id="cmmkete0w01620nqp25owgold" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/password-sprey-attack/" data-id="cuidspLjBCdDtLV_WtzZTP7nT" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -182,19 +182,19 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><a href="mailto:&#x55;&#115;&#x65;&#114;&#x31;&#64;&#111;&#114;&#103;&#x31;&#46;&#99;&#x6f;&#109;">&#x55;&#115;&#x65;&#114;&#x31;&#64;&#111;&#114;&#103;&#x31;&#46;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x55;&#115;&#x65;&#x72;&#49;&#x40;&#x6f;&#x72;&#x67;&#x31;&#x2e;&#99;&#x6f;&#x6d;">User1@org1.com</a></td>
 <td>Password1</td>
 </tr>
 <tr>
-<td><a href="mailto:&#x55;&#115;&#x65;&#x72;&#50;&#64;&#111;&#114;&#103;&#x31;&#46;&#99;&#111;&#x6d;">&#x55;&#115;&#x65;&#x72;&#50;&#64;&#111;&#114;&#103;&#x31;&#46;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#x55;&#x73;&#x65;&#114;&#x32;&#x40;&#111;&#x72;&#103;&#49;&#x2e;&#99;&#111;&#x6d;">User2@org1.com</a></td>
 <td>Password1</td>
 </tr>
 <tr>
-<td><a href="mailto:&#x55;&#x73;&#x65;&#114;&#x31;&#64;&#x6f;&#x72;&#103;&#x32;&#x2e;&#99;&#111;&#x6d;">&#x55;&#x73;&#x65;&#114;&#x31;&#64;&#x6f;&#x72;&#103;&#x32;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#85;&#x73;&#x65;&#114;&#x31;&#64;&#x6f;&#114;&#x67;&#x32;&#46;&#99;&#111;&#109;">User1@org2.com</a></td>
 <td>Password1</td>
 </tr>
 <tr>
-<td><a href="mailto:&#85;&#115;&#101;&#114;&#x32;&#x40;&#x6f;&#x72;&#103;&#x32;&#46;&#x63;&#111;&#109;">&#85;&#115;&#101;&#114;&#x32;&#x40;&#x6f;&#x72;&#103;&#x32;&#46;&#x63;&#111;&#109;</a></td>
+<td><a href="mailto:&#85;&#115;&#101;&#x72;&#50;&#64;&#111;&#x72;&#x67;&#x32;&#x2e;&#99;&#111;&#109;">User2@org2.com</a></td>
 <td>Password1</td>
 </tr>
 <tr>
@@ -206,19 +206,19 @@
 <td>…</td>
 </tr>
 <tr>
-<td><a href="mailto:&#85;&#115;&#101;&#114;&#x31;&#64;&#x6f;&#x72;&#103;&#49;&#x2e;&#99;&#x6f;&#x6d;">&#85;&#115;&#101;&#114;&#x31;&#64;&#x6f;&#x72;&#103;&#49;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#85;&#115;&#x65;&#x72;&#x31;&#64;&#x6f;&#x72;&#103;&#x31;&#x2e;&#x63;&#x6f;&#109;">User1@org1.com</a></td>
 <td>P@$$w0rd</td>
 </tr>
 <tr>
-<td><a href="mailto:&#x55;&#115;&#x65;&#114;&#x32;&#64;&#111;&#x72;&#103;&#49;&#x2e;&#x63;&#x6f;&#109;">&#x55;&#115;&#x65;&#114;&#x32;&#64;&#111;&#x72;&#103;&#49;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x55;&#x73;&#x65;&#x72;&#50;&#64;&#111;&#x72;&#103;&#x31;&#46;&#x63;&#111;&#x6d;">User2@org1.com</a></td>
 <td>P@$$w0rd</td>
 </tr>
 <tr>
-<td><a href="mailto:&#85;&#115;&#x65;&#x72;&#x31;&#64;&#111;&#x72;&#x67;&#x32;&#x2e;&#x63;&#111;&#109;">&#85;&#115;&#x65;&#x72;&#x31;&#64;&#111;&#x72;&#x67;&#x32;&#x2e;&#x63;&#111;&#109;</a></td>
+<td><a href="mailto:&#x55;&#x73;&#101;&#x72;&#x31;&#x40;&#111;&#114;&#103;&#50;&#46;&#x63;&#111;&#x6d;">User1@org2.com</a></td>
 <td>P@$$w0rd</td>
 </tr>
 <tr>
-<td><a href="mailto:&#85;&#x73;&#x65;&#114;&#50;&#64;&#x6f;&#x72;&#103;&#x32;&#x2e;&#x63;&#111;&#109;">&#85;&#x73;&#x65;&#114;&#50;&#64;&#x6f;&#x72;&#103;&#x32;&#x2e;&#x63;&#111;&#109;</a></td>
+<td><a href="mailto:&#85;&#x73;&#101;&#114;&#x32;&#x40;&#x6f;&#x72;&#103;&#50;&#x2e;&#99;&#x6f;&#109;">User2@org2.com</a></td>
 <td>P@$$w0rd</td>
 </tr>
 </tbody></table>
@@ -265,11 +265,11 @@
 <p>まず、AD FS 2.0 または Windows Server 2012 をご利用の組織では、できるだけ早く Windows Server 2016 の AD FS への移行を検討ください。最新バージョンは、外部ネットワークのロックアウト (Extranet lockout) など、より豊富な機能があり、より頻繁にアップデートが提供されます。なお、Windows Server 2012 R2 からであれば 2016 へのアップグレードは非常に簡単です。</p>
 <h4 id="外部ネットワークからのレガシー認証のブロック"><a href="#外部ネットワークからのレガシー認証のブロック" class="headerlink" title="外部ネットワークからのレガシー認証のブロック"></a>外部ネットワークからのレガシー認証のブロック</h4><p>レガシー認証のプロトコルには多要素認証を強制する機能がないため、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-no-modern-authentication">外部ネットワークからレガシー認証でのアクセスをブロックする</a> のが最善の方法です。これにより、MFA を利用できないプロトコル上の穴をついてパスワード スプレー攻撃を仕掛けてくることを防ぐことができます。</p>
 <h4 id="AD-FS-Web-アプリケーション-プロキシでの-Extranet-Lockout-機能の有効化"><a href="#AD-FS-Web-アプリケーション-プロキシでの-Extranet-Lockout-機能の有効化" class="headerlink" title="AD FS Web アプリケーション プロキシでの Extranet Lockout 機能の有効化"></a>AD FS Web アプリケーション プロキシでの Extranet Lockout 機能の有効化</h4><p>AD FS Web アプリケーションプロキシで Extranet Lockout 機能を実行していない場合は、<a target="_blank" rel="noopener" href="https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-extranet-lockout">可能な限り早く有効</a> にして、今後発生する可能性のあるブルートフォース攻撃からユーザーを保護ください。</p>
-<h4 id="Azure-AD-Connect-Health-の展開"><a href="#Azure-AD-Connect-Health-の展開" class="headerlink" title="Azure AD Connect Health の展開"></a>Azure AD Connect Health の展開</h4><p>Azure AD Connect Health は、AD FS ログに記録された不正なユーザー名/パスワードによるログイン試行の IP アドレスを記録します。これにより様々なシナリオに関する追加情報を提供するとともに、サポートのお問い合わせを発行いただいた際にはサポート エンジニアに対して追加の知見を提供します。</p>
+<h4 id="Azure-AD-Connect-Health-の展開"><a href="#Azure-AD-Connect-Health-の展開" class="headerlink" title="Azure AD Connect Health の展開"></a>Azure AD Connect Health の展開</h4><p>Azure AD Connect Health は、AD FS ログに記録された不正なユーザー名&#x2F;パスワードによるログイン試行の IP アドレスを記録します。これにより様々なシナリオに関する追加情報を提供するとともに、サポートのお問い合わせを発行いただいた際にはサポート エンジニアに対して追加の知見を提供します。</p>
 <p>展開するには、すべての AD FS サーバーに最新バージョンの <a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?linkid=518973">AD FS 用 Azure AD Connect Health Agent</a> をダウンロードします。AD FS サーバーは、<a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/3134787/ad-fs-logs-don-t-contain-client-ip-address-for-account-lockout-scenarios-in-windows-server-2012-r2">KB3134222</a> がインストールされた Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。</p>
 <h4 id="非パスワード-ベースの認証方法の採用"><a href="#非パスワード-ベースの認証方法の採用" class="headerlink" title="非パスワード ベースの認証方法の採用"></a>非パスワード ベースの認証方法の採用</h4><p>パスワードがなければ、パスワードは推測されません。次のような非パスワード ベースの認証方法が、AD FS および Web アプリケーション プロキシで使用できます。</p>
 <ol>
-<li>証明書ベースの認証により、ユーザー名/パスワードの認証で利用するエンドポイントをファイアウォールで完全にブロックすることができます。証明書ベースの認証についての詳細は、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication">AD FS での証明書ベース認証</a> で確認ください。</li>
+<li>証明書ベースの認証により、ユーザー名&#x2F;パスワードの認証で利用するエンドポイントをファイアウォールで完全にブロックすることができます。証明書ベースの認証についての詳細は、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication">AD FS での証明書ベース認証</a> で確認ください。</li>
 <li>Azure の多要素認証は、上述のとおり、クラウド認証と AD FS 2012 R2 および 2016 の第二要素として使用できますが、パスワード スプレーの可能性を完全に排除するために AD FS 2016 の第一要素としても使用できます。 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa">AD FS を使用して Azure MFA を設定する方法についてはこちら</a> をご覧ください。</li>
 <li>Windows 10 のクライアント、Windows Server 2016 の AD FS で利用できる Windows Hello for Business は、ユーザーとデバイスの両方に紐付けられた強力な暗号化キーに基づいて、外部ネットワークも含めた完全な非パスワードベースの認証を可能にします。これは、Azure AD 参加および Hybrid Azure AD 参加している組織で管理されるデバイスに加え、設定アプリから「職場や学校のアカウントを追加」を介して登録したパーソナル デバイスでも利用できます。<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello for Business の詳細についてはこちら</a> をご覧ください。</li>
 </ol>

@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/5_setting.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/6_heatmap.png">
 <meta property="article:published_time" content="2021-12-18T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.653Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.591Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f65654ed-83a6-571d-9686-7f737d1cd154%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%BC%E3%83%AD+%E3%83%88%E3%83%A9%E3%82%B9%E3%83%88%E5%B1%95%E9%96%8B%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%82%88%E3%82%8A%E3%82%88%E3%81%84%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%A8%E3%82%A4%E3%83%B3%E3%82%B5%E3%82%A4%E3%83%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmore-control-and-better-insights-for-your-zero-trust-deployments%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmore-control-and-better-insights-for-your-zero-trust-deployments.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmore-control-and-better-insights-for-your-zero-trust-deployments.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/" data-id="cmmketduw00il0nqpgc31g8c9" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/" data-id="cuidkmxJE-kXMgdImZoi9fXWN" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -171,7 +171,7 @@
 <p>本記事は、 2021 年 11 月 30 日に米国の Azure Active Directory Identity Blog で公開された <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/more-control-and-better-insights-for-your-zero-trust-deployments/ba-p/2365684">More control and better insights for your Zero Trust deployments</a> を意訳したものになります。ご不明点などございましたら、サポート チームまでお問い合わせください。</p>
 <hr>
 <p>Ignite 2021 はお楽しみいただけましたか？ユーザーやアプリケーションを脅威から保護するため、ゼロ トラストを展開するうえでどのように Azure Active Directory を使っているか、皆様からのご意見を伺うことができました。多くの方から、ID 環境の保護と調査のために、より強力で使いやすいツールを求める声をいただいています。そこで本日は、Azure AD の条件付きアクセスと Identity Protection の新機能について詳しくご紹介します。新しい機能を使うと、ID の保護を強化するとともに、業務をより簡単に進めることができるようになります。</p>
-<h2 id="Azure-AD-の条件付きアクセスと-Identity-Protection-の新機能"><a href="#Azure-AD-の条件付きアクセスと-Identity-Protection-の新機能" class="headerlink" title="Azure AD の条件付きアクセスと Identity Protection の新機能"></a>Azure AD の条件付きアクセスと Identity Protection の新機能</h2><p>Ignite では、複数の強力な機能を発表しました。より使いやすくなった条件付きアクセスに加え、ゼロ トラストの展開を加速させるインサイトの提供、さらに主要なシナリオについてより包括的な保護を行えるようになりました。<strong>条件付きアクセスの概要を示すダッシュボード</strong> (パブリック プレビュー版) では、ポリシーの適用範囲におけるギャップを素早く見つけることができ、テンプレートを使用することで推奨されるポリシーをより簡単に導入することができます。また、デバイス用のフィルターやアプリ用のフィルター (一般公開 / GA) では、特権操作を行うワークステーションへ管理者のみがアクセスできるよう制限するなど新たなシナリオが追加され、主要なシナリオをより包括的にカバーできるようになりました。最後に、<strong>リスク データのエクスポート</strong> (新しいトークン シグナルを含む) がより簡単になり、素晴らしいワークブックも追加されたので、お客様側でリスクについての詳細 (およびその対処法) を得ることもできるようになりました。</p>
+<h2 id="Azure-AD-の条件付きアクセスと-Identity-Protection-の新機能"><a href="#Azure-AD-の条件付きアクセスと-Identity-Protection-の新機能" class="headerlink" title="Azure AD の条件付きアクセスと Identity Protection の新機能"></a>Azure AD の条件付きアクセスと Identity Protection の新機能</h2><p>Ignite では、複数の強力な機能を発表しました。より使いやすくなった条件付きアクセスに加え、ゼロ トラストの展開を加速させるインサイトの提供、さらに主要なシナリオについてより包括的な保護を行えるようになりました。<strong>条件付きアクセスの概要を示すダッシュボード</strong> (パブリック プレビュー版) では、ポリシーの適用範囲におけるギャップを素早く見つけることができ、テンプレートを使用することで推奨されるポリシーをより簡単に導入することができます。また、デバイス用のフィルターやアプリ用のフィルター (一般公開 &#x2F; GA) では、特権操作を行うワークステーションへ管理者のみがアクセスできるよう制限するなど新たなシナリオが追加され、主要なシナリオをより包括的にカバーできるようになりました。最後に、<strong>リスク データのエクスポート</strong> (新しいトークン シグナルを含む) がより簡単になり、素晴らしいワークブックも追加されたので、お客様側でリスクについての詳細 (およびその対処法) を得ることもできるようになりました。</p>
 <h3 id="条件付きアクセスの概要ダッシュボード"><a href="#条件付きアクセスの概要ダッシュボード" class="headerlink" title="条件付きアクセスの概要ダッシュボード"></a>条件付きアクセスの概要ダッシュボード</h3><p>まず、<strong>条件付きアクセスの概要ダッシュボード</strong> を見てみましょう。ポリシーの数が増えてくると、管理者はそのポリシーが本当に組織全体を保護しているかどうか把握する必要があります。条件付きアクセスの新しい概要ダッシュボードでは、ポリシーの適用範囲内にあるユーザ、アプリ、デバイスをまとめ、ポリシーの適用範囲にあるギャップを明らかにすることで、包括的なポリシーの展開がこれまで以上に容易になります。</p>
 <p><img src="/blog/azure-active-directory/more-control-and-better-insights-for-your-zero-trust-deployments/1_CAdashboard.png"></p>
 <p>ダッシュボードは 4 つのメインタブで構成されています。</p>
@@ -180,7 +180,7 @@
 <li>概要: 条件付きアクセスで保護されているユーザー、デバイス、アプリケーションの概要を確認できます。また、テナント内のサインイン アクティビティ データに基づいて推奨されるポリシーを表示したり、ポリシー テンプレートからすばやくポリシーを展開したりすることができます。  </li>
 <li>カバレッジ:  テナント内で最も頻繁にアクセスされるアプリケーションが、条件付きアクセスによって保護されていることを確認できます。  </li>
 <li>監視: テナント内の各ポリシーの影響を視覚化し、フィルターを追加してゲスト アクセスやレガシー認証、危険なサインイン、管理外のデバイスなどの傾向を確認できます。 </li>
-<li>チュートリアル: 一般的に導入されている条件付きアクセス ポリシーとそのベスト プラクティスについて学べます。  </li>
+<li>チュートリアル: 一般的に導入されている条件付きアクセス ポリシーとそのベスト プラクティスについて学べます。</li>
 </ul>
 <h3 id="条件付きアクセス-テンプレート"><a href="#条件付きアクセス-テンプレート" class="headerlink" title="条件付きアクセス テンプレート"></a>条件付きアクセス テンプレート</h3><p>さらに、マイクロソフトが推奨するベスト プラクティスに沿った新しいポリシーを展開する際、簡単にサンプルとして利用できる方法を提供し、進化する脅威への対応を支援するため、<strong>条件付きアクセス テンプレート</strong> を発表しました。これらのテンプレートは、ユーザーやデバイスを最大限に保護し、さまざまなユーザーの種類や場所で共通して使用可能なポリシーを作成するのに役立ちます。</p>
 <p>14 種類の組み込みテンプレートから、新しいポリシーをすばやく作成できます (今後、お客様のご意見や新しい機能、新しい攻撃タイプへの対応に基づいてテンプレートを追加していきます)。テンプレートからポリシーを展開するのは簡単です。テンプレートを使用するだけでもよいかもしれませんが、テンプレートから始めて、ビジネス ニーズに合わせてカスタマイズしていくこともできます。  </p>

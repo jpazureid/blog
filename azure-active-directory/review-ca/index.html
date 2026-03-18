@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/review-ca/1%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%8C%E7%84%A1%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E6%B5%81%E3%82%8C.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/review-ca/2%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E9%81%A9%E7%94%A8%E6%99%82%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E6%B5%81%E3%82%8C.png">
 <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.961Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.897Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Conditional Access">
 <meta property="article:tag" content="Microsoft Entra">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+71b607e8-3a98-5af5-bcfc-d5ff3e839e92%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E6%94%B9%E3%82%81%E3%81%A6%E7%9F%A5%E3%82%8B+Microsoft+Entra+%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Freview-ca%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Freview-ca.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Freview-ca.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/review-ca/" data-id="cmmkete12016d0nqp1qklgrhm" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/review-ca/" data-id="cuidjZabyvGDAg0T6wMO4M1Jd" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -168,7 +168,7 @@
 <p>そこで本記事では、条件付きアクセスとはどういったものであるか、またどのようなコンセプトで提供されているかをイメージできるような情報をお届けします。後半では簡単なシナリオをベースに条件付きアクセスの動作を説明していきますので、本記事が条件付きアクセスへの理解の助けとなればうれしく思います。</p>
 <h2 id="条件付きアクセスとはどんな機能か"><a href="#条件付きアクセスとはどんな機能か" class="headerlink" title="条件付きアクセスとはどんな機能か"></a>条件付きアクセスとはどんな機能か</h2><p>条件付きアクセスを一言でいうと、Microsoft 365 のサービスや Salesforce など、クラウド上で提供されているサービスへのアクセスを制御する機能です。条件付きアクセスには明示的に許可するという機能や制御はありません。「指定した条件に合ったサインインに対してポリシーを適用し、制御を適用する」という仕組みであり、ポリシーの条件に合わないサインインに対しては、何らの制御も適用されません。そのような条件に合わないサインインについては、結果としてアクセスが許可されるということになります。一例をあげると、「多要素認証を要求する」という条件付きアクセスの制御は、言い換えれば「多要素認証の要求に応えられなければサインインをブロックする」という制御に相当します。</p>
 <h2 id="条件付きアクセスのよくある利用例-シナリオ"><a href="#条件付きアクセスのよくある利用例-シナリオ" class="headerlink" title="条件付きアクセスのよくある利用例 (シナリオ)"></a>条件付きアクセスのよくある利用例 (シナリオ)</h2><p>条件付きアクセスのよくある利用例 (シナリオ) を以下にいくつか紹介します。</p>
-<h3 id="ID-およびパスワードの認証だけでなく多要素認証でユーザーを保護する"><a href="#ID-およびパスワードの認証だけでなく多要素認証でユーザーを保護する" class="headerlink" title="ID およびパスワードの認証だけでなく多要素認証でユーザーを保護する"></a>ID およびパスワードの認証だけでなく多要素認証でユーザーを保護する</h3><p>ユーザーの資格情報 (ID/パスワードなど) が攻撃者により推測されたり外部に流出したりすると、それを入手した攻撃者は流出した資格情報を使用して Microsoft 365 などにサインインすることができます。これによりアカウントの乗っ取りが成功し、そのユーザーしか知りえない情報が漏洩したり、アカウントが悪用されたりします。</p>
+<h3 id="ID-およびパスワードの認証だけでなく多要素認証でユーザーを保護する"><a href="#ID-およびパスワードの認証だけでなく多要素認証でユーザーを保護する" class="headerlink" title="ID およびパスワードの認証だけでなく多要素認証でユーザーを保護する"></a>ID およびパスワードの認証だけでなく多要素認証でユーザーを保護する</h3><p>ユーザーの資格情報 (ID&#x2F;パスワードなど) が攻撃者により推測されたり外部に流出したりすると、それを入手した攻撃者は流出した資格情報を使用して Microsoft 365 などにサインインすることができます。これによりアカウントの乗っ取りが成功し、そのユーザーしか知りえない情報が漏洩したり、アカウントが悪用されたりします。</p>
 <p>条件付きアクセスを利用している場合、Microsoft 365 や Salesforce などクラウド上のサービスへのアクセス時に、ID およびパスワードといった資格情報に加えて多要素認証を要求することができます。これにより、電話番号を用いた認証や Microsoft Authenticator を用いた認証、さらにはハードウェア トークンを用いた追加認証などパスワード以外の認証要素 (多要素認証) を求めることができるようになります。こうなることで、仮に ID およびパスワードが攻撃者の手に渡っても、多要素認証を突破できない場合は、条件付きアクセスが Microsoft 365 へのアクセスをブロックしてくれます。つまり、ID およびパスワードが窃取されただけではサインインできなくなるため、セキュリティの強化につながります。この多要素認証の要求が、条件付きアクセスのもっとも一般的な利用シナリオです。</p>
 <h3 id="社外など特定の場所からのアクセスに制限を掛ける"><a href="#社外など特定の場所からのアクセスに制限を掛ける" class="headerlink" title="社外など特定の場所からのアクセスに制限を掛ける"></a>社外など特定の場所からのアクセスに制限を掛ける</h3><p>重要な機密情報へのアクセスは、多要素認証を要求するだけでなく、そのユーザーが社内ネットワークにいる場合のみアクセスさせたいというご要望もあると思います。多要素認証だけでなく、このような場所の制御も条件付きアクセスで実現が可能です。例えば、社内ネットワークの出口となるパブリック IP アドレスを Microsoft Entra ID に登録しておけば、その IP アドレスが送信元のアクセスだけを条件付きアクセスでブロックしないように構成できます。これにより、ユーザーが特定のネットワークからのみアクセスできる構成を取ることが可能です。このように場所によるアクセス制御も条件付きアクセスでよく利用されています。</p>
 <div class="alert is-success"><p class="alert-title">ヒント</p><p>社外からのアクセスの場合は多要素認証を要求し、社内ネットワークからのアクセスの場合は多要素認証を要求しないというように、社内からのアクセスの場合は制限を緩めるような構成を取る例をよく見受けられます。しかしながら、このような構成はお勧めできません。というのも、攻撃者が社内ネットワークへの侵入に成功してしまうと、多要素認証が強制されず攻撃者がより行動しやすい状況となるためです。このため、多要素認証は最低限の保護として場所を選ばず強制することをお勧めします。</p></div>
@@ -200,7 +200,7 @@
 <li>この結果として、Microsoft Entra ID からユーザーに対して多要素認証が要求されます。</li>
 <li>多要素認証に応えられない場合は処理を中断し、アクセス トークンは Outlook に発行されません。多要素認証に応えられればサインイン成功と判断し、Outlook に対してアクセス トークンを発行します。</li>
 <li>Outlook はそのアクセス トークンを Office 365 Exchange Online に提示することで E メールのデータをダウンロードします。 </li>
-<li>Outlook は取得したデータを画面に表示します。 </li>
+<li>Outlook は取得したデータを画面に表示します。</li>
 </ol>
 <p><img src="/blog/azure-active-directory/review-ca/2%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E9%81%A9%E7%94%A8%E6%99%82%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E6%B5%81%E3%82%8C.png"></p>
 <p>上述の流れのように、条件付きアクセスの処理の中では、クライアント アプリ (Outlook) ではなく、そのクライアント アプリがアクセスしようとしている先のクラウド上のサービス (Exchange Online) を意識することが重要です。</p>

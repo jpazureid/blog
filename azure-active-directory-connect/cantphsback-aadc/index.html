@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/cantphsback-aadc/ACSretire.jpg">
 <meta property="article:published_time" content="2018-10-08T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.881Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.819Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -156,15 +156,15 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+70512c43-e347-528b-be78-1d454eac124a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+-+2018%2F11%2F7+%E4%BB%A5%E9%99%8D+AADC+1.0.8641.0+%E4%BB%A5%E5%89%8D%E3%81%A7%E3%81%AF+Password+Writeback+%E3%81%8C%E5%88%A9%E7%94%A8%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fcantphsback-aadc%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fcantphsback-aadc.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fcantphsback-aadc.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/cantphsback-aadc/" data-id="cmmketdp9001x0nqp2prsctvi" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/cantphsback-aadc/" data-id="cuidhfAyeCdIeajX0z5bVeuwM" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/10/09/20171107cantphsback-aadc108641/">https://blogs.technet.microsoft.com/jpazureid/2018/10/09/20171107cantphsback-aadc108641/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
 <p>こんにちは。Azure Identity チームの金森です。<br>今回は Azure AD Connect (AADC) をご利用いただいている皆様に急ぎお伝えしたい情報がございます。  </p>
-<p>先に結論ですが、表題の通り <strong>AADC 1.0.8641.0 とそれ以前のバージョンをご利用の環境において 2018/11/7 以降は  Password Writeback が機能しなくなります</strong>。</p>
-<p>理由として、AADC 1.0.8641.0 以前のバージョンでは、Password Writeback を実現するために ACS (Access Control Service) を利用していました。<br><strong>ACS が 2018/11/7 に完全リタイア</strong>するのですが、ACS の機能が提供されなくなることで、AADC 1.0.8641.0 以前をご利用の環境で Password Writeback が動作しなくなります。なお、それ以降のバージョンについては特に影響はありませんのでご安心ください。</p>
+<p>先に結論ですが、表題の通り <strong>AADC 1.0.8641.0 とそれ以前のバージョンをご利用の環境において 2018&#x2F;11&#x2F;7 以降は  Password Writeback が機能しなくなります</strong>。</p>
+<p>理由として、AADC 1.0.8641.0 以前のバージョンでは、Password Writeback を実現するために ACS (Access Control Service) を利用していました。<br><strong>ACS が 2018&#x2F;11&#x2F;7 に完全リタイア</strong>するのですが、ACS の機能が提供されなくなることで、AADC 1.0.8641.0 以前をご利用の環境で Password Writeback が動作しなくなります。なお、それ以降のバージョンについては特に影響はありませんのでご安心ください。</p>
 <p>How-to: Configure password writeback<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-sspr-writeback">https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-sspr-writeback</a></p>
 <p><img src="/blog/azure-active-directory-connect/cantphsback-aadc/ACSretire.jpg"></p>
 <p>ACS のリタイアに関しては、昨年から情報を公開しておりましたので準備を進めていただいている方も多いかもしれませんが、今回は ACS 対応のアプリケーションを他に利用しているか否かは関係しません。</p>
@@ -172,7 +172,7 @@
 <p>AADC のバージョン 1.0.8641.0 は 2015 年 6 月に公開されており、<strong>すでに公開から 3 年以上が経過</strong>しています。<br>AADC のバージョン情報は以下のとおりですが、本 Blog 執筆時点 (2018 年 10 月) の最新バージョンは 1.1.882.0 となります。</p>
 <p>Azure AD Connect: Version release history<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/hybrid/reference-connect-version-history">https://docs.microsoft.com/en-us/azure/active-directory/hybrid/reference-connect-version-history</a></p>
 <p>AADC はディレクトリ同期ツールとしては 3 代目の製品となります。<br>DirSync, ADSync ツールを経て AADC へと進化し、機能追加と修正は現在までほぼ 1 ～ 2 カ月に 1 回のペースで行われ、最新バージョンを提供してきています。</p>
-<p>DirSync &amp; ADSync – 2017/12/31 で終了のお知らせ<br><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2017/11/02/dirsync-adsync-20171231-%E3%81%A7%E7%B5%82%E4%BA%86%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">https://blogs.technet.microsoft.com/jpazureid/2017/11/02/dirsync-adsync-20171231-で終了のお知らせ/</a></p>
+<p>DirSync &amp; ADSync – 2017&#x2F;12&#x2F;31 で終了のお知らせ<br><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2017/11/02/dirsync-adsync-20171231-%E3%81%A7%E7%B5%82%E4%BA%86%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">https://blogs.technet.microsoft.com/jpazureid/2017/11/02/dirsync-adsync-20171231-で終了のお知らせ/</a></p>
 <p>AADC のどのバージョンをご利用いただいていても、2018 年 10 月時点ではサポート対象となりますが、Password Writeback をご利用いただくためには 1.0.8641.0 よりも後のバージョンが必須となりますのでご注意ください。<br>なお、AADC は前述の通りすべてのバージョンがサポート対象ですが、弊社としては<strong>半年以内のバージョンのご利用</strong>を強く推奨します。機能追加と修正を 1 ～ 2 カ月に 1 回程度のペースで行っていますので Windows OS のマンスリー修正のようにお考えいただければと思います。</p>
 <p>AADC のアップグレード手順に関しても、Blog にて紹介しておりますのでこちらも参考としていただけると幸いです。</p>
 <p>Azure AD Connect アップグレード手順<br><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/">https://blogs.technet.microsoft.com/jpazureid/2018/08/10/azure-ad-connect-upgrade/</a></p>
@@ -193,14 +193,14 @@
 <li>photo 属性がオンプレ AD オブジェクトに定義されていても同期対象外になる : 1.1.524.0 の機能変更  </li>
 <li>userCertificate, userSMIMECertificate 属性に 15 個以上の値が定義されている場合、同期対象外になる : 1.1.524.0 の機能変更  </li>
 <li>OnPremisesDistinguishedName 属性が AAD に同期されるようになる : 1.1.553.0 の機能変更  </li>
-<li>altRecipient 属性が (オンプレ AD オブジェクトに定義されている場合) 同期対象になる : 1.1.553.0 の機能変更  </li>
+<li>altRecipient 属性が (オンプレ AD オブジェクトに定義されている場合) 同期対象になる : 1.1.553.0 の機能変更</li>
 </ul>
 <p>グループ オブジェクト </p>
 <ul>
 <li>msExchBypassModerationLink 属性が (オンプレ AD オブジェクトに定義されている場合) 同期対象になる : 1.1.524.0 の機能変更  </li>
 <li>OnPremisesSamAccountName 属性が AAD に同期されるようになる : 1.1.553.0 の機能変更  </li>
 <li>NetBiosName 属性が AAD に同期されるようになる : 1.1.553.0 の機能変更  </li>
-<li>DnsDomainName 属性が AAD に同期されるようになる : 1.1.553.0 の機能変更  </li>
+<li>DnsDomainName 属性が AAD に同期されるようになる : 1.1.553.0 の機能変更</li>
 </ul>
 <p>連絡先オブジェクト</p>
 <ul>

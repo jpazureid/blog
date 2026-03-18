@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/SHDriggers_4-1667344126905.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/SHDriggers_5-1667344126908.png">
 <meta property="article:published_time" content="2022-11-06T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.130Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.067Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4b2dcdfd-a3e0-5e7f-a599-16247ae58571%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E7%AB%AF%E6%9C%AB%E3%81%A7%E3%81%AE+Azure+AD+%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%83%99%E3%83%BC%E3%82%B9%E8%AA%8D%E8%A8%BC+%28CBA%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-certificate-based-authentication-cba-on-mobile%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-certificate-based-authentication-cba-on-mobile.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-certificate-based-authentication-cba-on-mobile.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/" data-id="cmmketdqw006f0nqpdjjv1exo" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/" data-id="cuidO6qtq5BLsAHHgHL4ESXh9" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -179,7 +179,7 @@
 <p><img src="/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/SHDriggers_0-1667344126894.png"></p>
 <p>米国のサイバー セキュリティに関する <a target="_blank" rel="noopener" href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/">大統領令 14028</a> は、すべてのデバイス プラットフォームでフィッシング耐性のある MFA を使用することを要求しています。モバイルでは、顧客が個人のモバイル デバイスにユーザー証明書をプロビジョニングして認証に使用することができますが、これは主に管理されたモバイル デバイスで実現可能なものです。しかし、今回のパブリック プレビューでは、BYOD のサポートが可能になりました。お客様は、ハードウェア セキュリティ キーに証明書をプロビジョニングし、iOS および Android デバイスの Azure AD による認証に使用できるようになりました。</p>
 <p>Microsoft のモバイルにおける証明書ベースのソリューションは、ハードウェア セキュリティ キーと併せて利用することで、シンプルで便利、なおかつ FIPS (Federal Information Processing Standards) 認定のフィッシング耐性のある MFA 方式です。</p>
-<p>すべてのブラウザベースの Web アプリとネイティブ アプリ (最新の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/msal-overview">Microsoft Authentication Library</a> (MSAL) を使用する Microsoft 製ファーストパーティ アプリを含む) において、モバイル デバイス上で <a target="_blank" rel="noopener" href="https://www.yubico.com/products/">YubiKey</a> を用いた Azure AD CBA がサポートされます。また、最新の MSAL を利用していないすべてのアプリにおいても、最新の Microsoft Authenticator (<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.azure.authenticator&gl=US">Android</a> または <a target="_blank" rel="noopener" href="https://apps.apple.com/app/microsoft-authenticator/id983156458">iOS/iPadOS</a>) を利用したブローカー認証フローで Yubikey を用いた Azure AD CBA がサポートされます。</p>
+<p>すべてのブラウザベースの Web アプリとネイティブ アプリ (最新の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/msal-overview">Microsoft Authentication Library</a> (MSAL) を使用する Microsoft 製ファーストパーティ アプリを含む) において、モバイル デバイス上で <a target="_blank" rel="noopener" href="https://www.yubico.com/products/">YubiKey</a> を用いた Azure AD CBA がサポートされます。また、最新の MSAL を利用していないすべてのアプリにおいても、最新の Microsoft Authenticator (<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.azure.authenticator&gl=US">Android</a> または <a target="_blank" rel="noopener" href="https://apps.apple.com/app/microsoft-authenticator/id983156458">iOS&#x2F;iPadOS</a>) を利用したブローカー認証フローで Yubikey を用いた Azure AD CBA がサポートされます。</p>
 <h2 id="Yubikey-を用いた-iOS-上での-Azure-AD-CBA-の動作"><a href="#Yubikey-を用いた-iOS-上での-Azure-AD-CBA-の動作" class="headerlink" title="Yubikey を用いた iOS 上での Azure AD CBA の動作"></a>Yubikey を用いた iOS 上での Azure AD CBA の動作</h2><p>使用に当たり、最初の登録として、ユーザーは <a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/yubico-authenticator/id1476679808">Yubico Authenticator for iOS</a> アプリを使用して YubiKey の公開証明書を iOS キーチェーンにコピーする必要があります (スマートカード証明書の秘密情報が YubiKey の外に漏れることはありません)。</p>
 <p>サインインするには、ユーザーは証明書の選択画面から YubiKey の証明書を選択し、YubiKey を挿入するか NFC 対応の YubiKey をタップし、YubiKey Authenticator 経由で PIN を入力して、認証フローを終了します。</p>
 <p><img src="/blog/azure-active-directory/azure-ad-certificate-based-authentication-cba-on-mobile/SHDriggers_1-1667344126898.png"></p>

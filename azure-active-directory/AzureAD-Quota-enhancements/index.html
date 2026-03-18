@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/AzureAD-Quota-enhancements/2-Sample2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/AzureAD-Quota-enhancements/3-Response-Value-directorySizeQuota2.png">
 <meta property="article:published_time" content="2020-05-26T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.015Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.952Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9af55842-5fba-516a-b44d-f03626c004de%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA+%E3%82%AF%E3%82%A9%E3%83%BC%E3%82%BF%E3%81%AE%E6%8B%A1%E5%BC%B5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2FAzureAD-Quota-enhancements%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2FAzureAD-Quota-enhancements.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2FAzureAD-Quota-enhancements.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/AzureAD-Quota-enhancements/" data-id="cmmketdpr003a0nqpagh33qz7" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/AzureAD-Quota-enhancements/" data-id="cuidjrHaLrhnua_vsxm8bhuw5" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -166,8 +166,9 @@
         <p>こんにちは、Azure Identity サポート チームの小田です。<br>今回は、Azure AD オブジェクト数の拡張と、その確認方法についてご案内いたします。</p>
 <h1 id="Azure-AD-オブジェクト数の制限値"><a href="#Azure-AD-オブジェクト数の制限値" class="headerlink" title="Azure AD オブジェクト数の制限値"></a>Azure AD オブジェクト数の制限値</h1><p>Azure AD では、既定で最大 50,000 個の Azure AD オブジェクトを作成することが可能です。<br>そこに検証済みドメイン (カスタム ドメイン) を 1 つ以上追加した場合、この Azure AD オブジェクト数の上限は 300,000 個に拡張されます。</p>
 <ul>
-<li>参考情報<br>Azure AD サービスの制限と制約<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/directory-service-limits-restrictions">https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/directory-service-limits-restrictions</a></li>
+<li>参考情報<br>Azure AD サービスの制限と制約</li>
 </ul>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/directory-service-limits-restrictions">https://docs.microsoft.com/ja-jp/azure/active-directory/users-groups-roles/directory-service-limits-restrictions</a></p>
 <p>Azure AD リソースとは、下記のようなオブジェクトの総数を指します。</p>
 <ul>
 <li>ユーザー</li>
@@ -181,7 +182,7 @@
 <h1 id="Azure-AD-の最大オブジェクト数を拡張する方法"><a href="#Azure-AD-の最大オブジェクト数を拡張する方法" class="headerlink" title="Azure AD の最大オブジェクト数を拡張する方法"></a>Azure AD の最大オブジェクト数を拡張する方法</h1><p>Azure AD に検証済みドメインを追加すると、Azure AD のオブジェクト数は 300,000 個に拡張されますが、これ以上にはそのままでは増えません。<br>300,000 個以上の Azure AD オブジェクトを作成して使用する場合には、下記の弊社サポート窓口にて拡張リクエストをお受けしています。</p>
 <ul>
 <li>Microsoft 365 サポート窓口</li>
-<li>Azure サポート窓口 (課金サポート / 技術サポート)</li>
+<li>Azure サポート窓口 (課金サポート &#x2F; 技術サポート)</li>
 </ul>
 <p>ユーザーやグループ、デバイス数など、どれくらいのオブジェクト量が見込まれるか (どれくらい拡張したいか) 概算を添えてお問い合わせください。<br>お問い合わせを受け、弊社内で検討を進めます。<br>検討の結果が出て、拡張の作業が完了するまでには 5 営業日以上かかる場合もございますため、拡張を計画される際はスケジュールに余裕をもってご相談いただけますと幸いです。</p>
 <h1 id="現在の上限と使用量を確認する方法"><a href="#現在の上限と使用量を確認する方法" class="headerlink" title="現在の上限と使用量を確認する方法"></a>現在の上限と使用量を確認する方法</h1><p>Azure リソースを操作可能な Microsoft Graph を使用して、現在の Azure AD のオブジェクト数上限と登録済オブジェクトの総数を確認することができます。<br>手順は、下記の通りです。</p>
@@ -195,18 +196,18 @@
 <li><a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/graph/graph-explorer">https://developer.microsoft.com/en-us/graph/graph-explorer</a></li>
 </ul>
 <ol start="2">
-<li>下記のメニューより調査対象の Azure AD のグローバル管理者ユーザーにてサインインを行います。 </li>
+<li>下記のメニューより調査対象の Azure AD のグローバル管理者ユーザーにてサインインを行います。</li>
 </ol>
 <p><img src="/blog/azure-active-directory/AzureAD-Quota-enhancements/1-SigninGraphExplorer.png"></p>
 <ol start="3">
-<li>次のリクエストに書き換え、[Run query] をクリックします。  </li>
+<li>次のリクエストに書き換え、[Run query] をクリックします。</li>
 </ol>
 <p><code>https://graph.microsoft.com/beta/organization?$select=directorySizeQuota</code> </p>
 <p><img src="/blog/azure-active-directory/AzureAD-Quota-enhancements/2-Sample2.png"></p>
 <ol start="4">
 <li>下部の実行結果にて ”directorySizeQuota” の項目を確認します。</li>
 </ol>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;@odata.context&quot;</span>: <span class="string">&quot;https://graph.microsoft.com/beta/$metadata#organization(directorySizeQuota)&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;value&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;directorySizeQuota&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;used&quot;</span>: <span class="number">515</span>,        <span class="comment">// 現在の使用数</span></span><br><span class="line">                <span class="attr">&quot;total&quot;</span>: <span class="number">300000</span>    <span class="comment">// オブジェクト数の上限</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@odata.context&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://graph.microsoft.com/beta/$metadata#organization(directorySizeQuota)&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;directorySizeQuota&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;used&quot;</span><span class="punctuation">:</span> <span class="number">515</span><span class="punctuation">,</span>        <span class="comment">// 現在の使用数</span></span><br><span class="line">                <span class="attr">&quot;total&quot;</span><span class="punctuation">:</span> <span class="number">300000</span>    <span class="comment">// オブジェクト数の上限</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/blog/azure-active-directory/AzureAD-Quota-enhancements/3-Response-Value-directorySizeQuota2.png" alt="確認例"></p>
 <p>上記内容が少しでも参考となりますと幸いです。</p>

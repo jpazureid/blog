@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/041.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/042.jpg">
 <meta property="article:published_time" content="2019-05-08T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.437Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.374Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Azure AD Connect">
@@ -83,7 +83,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -200,7 +200,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9c246849-b5aa-5003-aa60-29db273ae05c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%94%A8%28AD+FS+%E3%81%AA%E3%81%97%29+Hybrid+Azure+AD+Join+%E3%82%92%E4%B8%80%E3%81%8B%E3%82%89%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-managed.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="cmmkete05014j0nqp7zngho6a" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/" data-id="cuidN_318wWwUvAJd3Imv2WD7" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -288,9 +288,9 @@
 </ul>
 <p>という形で格納されています。下記手順で確認が可能です。<br>ADSI エディターを起動し「接続」をクリックします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/026.jpg"></p>
-<p>接続ポイントとして、「識別名または名前付けコンテキストを選択または入力する」を選択し、CN=Configuration,DC=fabrikam,DC=com (ドメイン名が fabrikan.com である場合) 左記のように設定し「OK」ボタンをクリックします。</p>
+<p>接続ポイントとして、「識別名または名前付けコンテキストを選択または入力する」を選択し、CN&#x3D;Configuration,DC&#x3D;fabrikam,DC&#x3D;com (ドメイン名が fabrikan.com である場合) 左記のように設定し「OK」ボタンをクリックします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/027.jpg"></p>
-<p>[CN=Services]→[CN=Device Registration Configuration] の中にある「CN=62a0ff2e-97b9-4513-943f-0d221bd30080」が SCP オブジェクトの実態になります。</p>
+<p>[CN&#x3D;Services]→[CN&#x3D;Device Registration Configuration] の中にある「CN&#x3D;62a0ff2e-97b9-4513-943f-0d221bd30080」が SCP オブジェクトの実態になります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/028.jpg"></p>
 <p>また、 Azure AD Connect で構成した SCP が正しく構成されているかについては、以下のコマンドレットで確認することができます。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$scp</span> = <span class="built_in">New-Object</span> System.DirectoryServices.DirectoryEntry;</span><br><span class="line"><span class="variable">$scp</span>.Path = <span class="string">&quot;LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=xxx,DC=work&quot;</span>;</span><br><span class="line"><span class="variable">$scp</span>.Keywords;</span><br></pre></td></tr></table></figure>
@@ -306,9 +306,9 @@
 </li>
 <li><p>オンプレミス AD 上のコンピューター オブジェクトの userCertificate 属性値に証明書が追加されると、Azure AD Connect がコンピューター オブジェクトを Azure AD に同期します。 (通常は 30 分間隔)</p>
 </li>
-<li><p>当該コンピューター上のタスク スケジューラにより証明書を使用して、 Azure Active Directory 上にデバイスが登録します。 <br>(このタイミングで  dsregcmd /status のコマンドレットをたたくと AzureADJoined の値が YES になります)</p>
+<li><p>当該コンピューター上のタスク スケジューラにより証明書を使用して、 Azure Active Directory 上にデバイスが登録します。 <br> (このタイミングで  dsregcmd &#x2F;status のコマンドレットをたたくと AzureADJoined の値が YES になります)</p>
 </li>
-<li><p>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、Azure AD による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。 <br>(このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になります)</p>
+<li><p>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、Azure AD による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。 <br>(このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADPrt の値が YES になります)</p>
 </li>
 </ol>
 <h2 id="userCertificate-属性について"><a href="#userCertificate-属性について" class="headerlink" title="userCertificate 属性について"></a>userCertificate 属性について</h2><p>userCertificate 属性に証明書が設定されるまでのプロセスは以下のとおりです。</p>
@@ -339,14 +339,14 @@
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/037.jpg"></p>
 <p>すると、 userCertificate を含む、 Windows 10 コンピューターの属性が、 Azure AD に同期されていることが確認できます。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/038.jpg"></p>
-<p>このタイミングで、 Windows 10 コンピューター上のコマンド プロンプトで dsregcmd /status のコマンドレットをたたくと下記のとおり、 AzureADJoined の値が 「YES」 になっていることが分かります。</p>
+<p>このタイミングで、 Windows 10 コンピューター上のコマンド プロンプトで dsregcmd &#x2F;status のコマンドレットをたたくと下記のとおり、 AzureADJoined の値が 「YES」 になっていることが分かります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/039.jpg"></p>
 <h2 id="PRT-Primary-Refresh-Token-の取得"><a href="#PRT-Primary-Refresh-Token-の取得" class="headerlink" title="PRT (Primary Refresh Token) の取得"></a>PRT (Primary Refresh Token) の取得</h2><p>現在、目次の「1. ～ 6.」までの作業が完了しています。<br>Azure AD にデバイスは登録されましたが、まだ Hybrid Azure AD Join の構成は完了してません。<br>最後の工程として、 Azure AD に同期済みの Azure AD ユーザーにて、対象の Windows 10 コンピューターにサインインし認証が成功したあとに、 Azure AD から PRT (Primary Refresh Token) を取得する必要があります。</p>
-<p>オンプレミス AD から Azure AD に同期済みの test001 から test003 のユーザーがいますので、対象の Windows 10 コンピューターに <a href="mailto:&#x74;&#x65;&#115;&#x74;&#48;&#48;&#49;&#x40;&#x78;&#x78;&#120;&#x2e;&#119;&#111;&#x72;&#x6b;">&#x74;&#x65;&#115;&#x74;&#48;&#48;&#49;&#x40;&#x78;&#x78;&#120;&#x2e;&#119;&#111;&#x72;&#x6b;</a> ユーザーでサインインします。</p>
+<p>オンプレミス AD から Azure AD に同期済みの test001 から test003 のユーザーがいますので、対象の Windows 10 コンピューターに <a href="mailto:&#116;&#x65;&#115;&#x74;&#48;&#x30;&#x31;&#x40;&#120;&#120;&#x78;&#x2e;&#119;&#111;&#x72;&#107;">test001@xxx.work</a> ユーザーでサインインします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/040.jpg"></p>
 <p>資格情報を入力し、サインインします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/041.jpg"></p>
-<p>コマンドプロンプトを起動し、このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。</p>
+<p>コマンドプロンプトを起動し、このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-managed/042.jpg"></p>
 <h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>Azure AD Connect を使うことで、比較的容易に Hybrid Azure AD Join の構成を行うことができるようになっています。反面、容易に構成できるようになったがために、構成がうまくいかなかった場合に、どこを確認すれば良いかが判断が難しくなっているかと思います。</p>
 <p>本 Blog で言及しましたとおり、 以下のポイントをおさえることで、構成が失敗してしまった場合のトラブルシュートをスムースに行えるのではないかと思います。</p>

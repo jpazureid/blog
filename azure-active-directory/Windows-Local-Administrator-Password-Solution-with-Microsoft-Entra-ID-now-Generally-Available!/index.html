@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_2.png">
 <meta property="article:published_time" content="2023-11-09T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.032Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.969Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+362c7737-ad80-54a0-a532-17391f375477%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+ID+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F+Windows+%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E7%AE%A1%E7%90%86%E8%80%85%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%B8%80%E8%88%AC%E6%8F%90%E4%BE%9B%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%81%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2FWindows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available%21%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2FWindows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available%21.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2FWindows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available%21.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/" data-id="cmmketdpz003y0nqp2e6f0smy" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/" data-id="cuidx4xuIZyKDSs784ISFqMVh" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,21 +174,21 @@
 <li>Windows 11 21H2 </li>
 <li>Windows 10 20H2, 21H2 and 22H2 </li>
 <li>Windows Server 2022 </li>
-<li>Windows Server 2019 </li>
+<li>Windows Server 2019</li>
 </ul>
 <p>Windows LAPS のクライアント側設定を管理するには以下を使用します:</p>
 <ul>
-<li>MDM 管理された Microsoft Entra 参加/ハイブリッド参加デバイス用の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows/client-management/mdm/laps-csp">Windows LAPS 構成サービス プロバイダー (CSP)</a></li>
+<li>MDM 管理された Microsoft Entra 参加&#x2F;ハイブリッド参加デバイス用の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows/client-management/mdm/laps-csp">Windows LAPS 構成サービス プロバイダー (CSP)</a></li>
 <li>Microsoft Entra ハイブリッド参加デバイス用の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows-server/identity/laps/laps-management-policy-settings#windows-laps-group-policy">Windows LAPS グループ ポリシー オブジェクト (GPO)</a></li>
 </ul>
 <p>お客様からのフィードバックに基づいて、さらに多くの機能のサポートを追加しています。現在は以下のようなことが可能です:</p>
 <ul>
 <li><strong>Windows LAPS を有効にする</strong> には、テナント全体のポリシーとクライアント側のポリシーを使用します。これによりローカル管理者パスワードが Microsoft Entra ID にバックアップされます。</li>
 <li><strong>クライアント ポリシーを構成する</strong> には Microsoft Intune ポータルを使用し、ローカル管理者のパスワード管理用にアカウント名、パスワードの有効期限、長さ、複雑さ、パスワードの手動リセットなどを設定できます。</li>
-<li><strong>パスワードを回復する</strong> 際は、Microsoft Entra/Microsoft Intune ポータルまたは Microsoft Graph API/PSH を利用できます。</li>
-<li><strong>すべての LAPS 対応デバイスを列挙する</strong> には、Microsoft Entra ポータルまたは Microsoft Graph API/PSH を利用できます。</li>
+<li><strong>パスワードを回復する</strong> 際は、Microsoft Entra&#x2F;Microsoft Intune ポータルまたは Microsoft Graph API&#x2F;PSH を利用できます。</li>
+<li><strong>すべての LAPS 対応デバイスを列挙する</strong> には、Microsoft Entra ポータルまたは Microsoft Graph API&#x2F;PSH を利用できます。</li>
 <li><strong>Microsoft Entra ID のロールベースのアクセス制御 (RBAC) ポリシーを作成する</strong> ことで、カスタム ロールと管理単位を使用してパスワード回復の権限を付与できます。</li>
-<li><strong>監査ログを確認する</strong> ことで、Microsoft Entra ポータルまたは Microsoft Graph API/PSH 経由で、パスワードの更新および取得イベントを監視できます。</li>
+<li><strong>監査ログを確認する</strong> ことで、Microsoft Entra ポータルまたは Microsoft Graph API&#x2F;PSH 経由で、パスワードの更新および取得イベントを監視できます。</li>
 <li><strong>条件付きアクセス ポリシーを構成する</strong> ことでパスワード回復の権限を持つディレクトリ ロールを保護できます。</li>
 </ul>
 <p><img src="/blog/azure-active-directory/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available!/Windows-Local-Administrator-Password-Solution-with-Microsoft-Entra-ID-now-Generally-Available_1.png"></p>

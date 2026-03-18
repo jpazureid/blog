@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 五十嵐 です。 Microsoft では Secure Future Initiative の取り組みのひとつとして、ID とシークレットの保護を継続的に強化するために取り組みを進めています。今回、取り組みの一環として 2024 年 11 月 11 日に以下のブログにて発表を行い、続けて Microsoft 365 管理センターのメッセ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2024-11-21T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.555Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.492Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+50d22e60-d74f-52b1-a438-67f95f5be18b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMC933540+-+Microsoft+365+admin+center+multifactor+authentication+enforcement+%E3%81%AE%E9%80%9A%E7%9F%A5%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmc933540-microsoft-365-admin-center-mfa-enforcement%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmc933540-microsoft-365-admin-center-mfa-enforcement.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmc933540-microsoft-365-admin-center-mfa-enforcement.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc933540-microsoft-365-admin-center-mfa-enforcement/" data-id="cmmketdu400g90nqpah7ee73m" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc933540-microsoft-365-admin-center-mfa-enforcement/" data-id="cuidGTh_ynYs5UDNKVTic5r9L" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -168,16 +168,16 @@
 <p>Microsoft 365 管理センターへのアクセスに対して多要素認証 (MFA) を実装することにより、管理アカウントの侵害リスクを大幅に軽減し、不正なアクセスを防ぎ、機密データを保護します。 標準のユーザー名とパスワード認証に加えて、追加の認証を要求する MFA の制御を有効化することで、攻撃者によるデータの盗難を困難にし、フィッシング、クレデンシャル スタッフィング攻撃、ブルートフォース攻撃、パスワード再利用攻撃などの不正なアクセスを防ぎます。当社および製品全体でサイバー セキュリティを向上させるための継続的な取り組みの一環として、2025 年 2 月 3 日から、Microsoft は Microsoft 365 管理センターへのサインイン時にすべてのユーザーに MFA の使用を求めるようになります。この要件は、今後数週間のうちにテナントレベルで段階的に展開されます。</p>
 <p>今すぐ実施いただきたいこと:</p>
 <ul>
-<li>グローバル管理者: 組織内における MFA の設定を完了ください。組織での MFA 設定は、aka.ms/MFAWizard の MFA 設定ガイドを参照するか、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide">Microsoft 365 Business Premium の多要素認証を設定する</a> を参照ください。</li>
-<li>Microsoft 365 管理センターにアクセスするユーザー: aka.ms/mfasetup にアクセスして、MFA に利用可能な認証方法が登録されているか確認ください。</li>
+<li>グローバル管理者: 組織内における MFA の設定を完了ください。組織での MFA 設定は、aka.ms&#x2F;MFAWizard の MFA 設定ガイドを参照するか、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide">Microsoft 365 Business Premium の多要素認証を設定する</a> を参照ください。</li>
+<li>Microsoft 365 管理センターにアクセスするユーザー: aka.ms&#x2F;mfasetup にアクセスして、MFA に利用可能な認証方法が登録されているか確認ください。</li>
 </ul>
 <p>本通知の変更が組織に与える影響:<br>Microsoft 365 管理センターにサインインできるようにするために、管理者に対して MFA の方法を追加し、必要に応じてテナントに対して MFA を有効にする必要があります。</p>
 <p>準備のためにできること: </p>
 <ul>
 <li>MFA の方法を設定していない場合は、2025 年 2 月 3 日までに MFA を設定ください。 </li>
 <li>既に MFA を設定している場合は、特に追加の操作は必要ありません。Microsoft 365 管理センターにアクセスするすべてのユーザーが MFA 用の認証方法を追加していることを確認することをお勧めします。 </li>
-<li>グローバル管理者：組織内における MFA の設定を完了ください。組織での MFA 設定は、aka.ms/MFAWizard の MFA 設定ガイドを参照するか、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide">Microsoft 365 Business Premium の多要素認証を設定する</a> を参照ください。</li>
-<li>Microsoft 365 管理センターにアクセスするユーザー: aka.ms/mfasetup にアクセスして、MFA に利用可能な認証方法が登録されているか確認ください。</li>
+<li>グローバル管理者：組織内における MFA の設定を完了ください。組織での MFA 設定は、aka.ms&#x2F;MFAWizard の MFA 設定ガイドを参照するか、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide">Microsoft 365 Business Premium の多要素認証を設定する</a> を参照ください。</li>
+<li>Microsoft 365 管理センターにアクセスするユーザー: aka.ms&#x2F;mfasetup にアクセスして、MFA に利用可能な認証方法が登録されているか確認ください。</li>
 <li>2025 年 2 月 3 日までに MFA 要件の準備が整わない場合、管理者は <a target="_blank" rel="noopener" href="https://aka.ms/managemfaforazure">https://aka.ms/managemfaforazure</a> のページから施行日の延期を申請することができます。Azure ポータルの MFA 施行延期は Microsoft 365 管理センターにも適用されることに注意ください。</li>
 </ul>
 <p>詳細については、<a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-will-require-mfa-to-access-the-microsoft-365-admin/ba-p/4232568">こちら</a>のブログ記事の FAQ を参照ください。</p>
@@ -186,7 +186,7 @@
 <p>なお、以下の弊社サポート ブログでお伝えした Azure Portal へのサインインに対して MFA を義務付ける取り組みとは、ロールアウトの開始日が異なります。</p>
 <ul>
 <li><a href="https://jpazureid.github.io/blog/azure-active-directory/microsoft-will-require-mfa-for-all-azure-users/">Microsoft は Azure ポータル(および Azure CLI 等) を利用するユーザーに MFA を義務付けます | Japan Azure Identity Support Blog</a></li>
-<li><a href="https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/">Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024/6/27) | Japan Azure Identity Support Blog</a></li>
+<li><a href="https://jpazureid.github.io/blog/azure-active-directory/update-on-mfa-requirements-for-azure-sign-in/">Azure ポータル (および Azure CLI 等) の MFA 義務付けに関する更新情報 (2024&#x2F;6&#x2F;27) | Japan Azure Identity Support Blog</a></li>
 </ul>
 <p>Azure Portal などのリソースに対する MFA の要求は、フェーズ 1 が 2024 年 10 月 15 日より順次ロールアウトしており、各テナントへの展開を開始しておりますが、本ブログの対象となる Microsoft 365 管理センターに対する MFA の要求は、2025 年 2 月 3 日がロールアウトの開始日です。一方で、ロールアウトの開始日を延期するための申請は同じ仕組みを利用しております。そのため、Azure Portal などのリソースに対する MFA の要求 (フェーズ 1) に関して延長申請を既に実施いただいているお客様は、Microsoft 365 管理センターに対する MFA 要求も併せて延期が適用された状態となります。</p>
 <p>なお、Microsoft 365 管理センターに対する MFA 要求を延長申請した場合のロールアウト開始日は 2025 年 3 月 15 日です。これは、Azure Portal などのリソースに対する MFA の要求を延長した場合と同じ日程となります。</p>

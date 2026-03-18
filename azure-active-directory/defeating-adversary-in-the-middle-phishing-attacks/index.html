@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/defeating-adversary-in-the-middle-phishing-attacks3.gif">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/defeating-adversary-in-the-middle-phishing-attacks4.png">
 <meta property="article:published_time" content="2024-12-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.309Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.247Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="US Identity Blog">
@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+1ab27a51-671a-5b83-8f39-f7b9258f859f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAdversary-in-the-Middle+%E3%83%95%E3%82%A3%E3%83%83%E3%82%B7%E3%83%B3%E3%82%B0%E6%94%BB%E6%92%83%E3%81%B8%E3%81%AE%E5%AF%BE%E7%AD%96%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fdefeating-adversary-in-the-middle-phishing-attacks%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fdefeating-adversary-in-the-middle-phishing-attacks.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fdefeating-adversary-in-the-middle-phishing-attacks.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/" data-id="cmmkete2b01b60nqp6wvpgnsj" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/defeating-adversary-in-the-middle-phishing-attacks/" data-id="cuidkA5IyjMpcuaXc4XaUqTQZ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -220,7 +220,7 @@
 <p>条件付きアクセスを使用して準拠ネットワークの境界を定義するための詳細な手順は、こちらの <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/policy-block-by-location">ドキュメント</a> を参照ください。</p>
 <p>また、条件付きアクセスを使用して準拠ネットワークのチェックを有効にするための詳細な手順は、こちらの <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-compliant-network">ドキュメント</a> を参照ください。</p>
 <h3 id="ユーザーがアクセスできる-URL-を制限する"><a href="#ユーザーがアクセスできる-URL-を制限する" class="headerlink" title="ユーザーがアクセスできる URL を制限する"></a>ユーザーがアクセスできる URL を制限する</h3><p>ユーザーがフィッシング リンクをクリックすると、Windows と Microsoft Edge に統合されたセキュリティ機能である <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows/security/operating-system-security/virus-and-threat-protection/microsoft-defender-smartscreen/">Microsoft Defender SmartScreen</a> が、ユーザーおよび業界から報告されているフィッシング サイトやマルウェア サイトの動的リストとその URL を照合します。一致するサイトが見つかった場合、そのサイトが安全でないと報告されていることをユーザーに警告し、そのサイトに進むには追加の手順を踏む必要が生じます。SmartScreen はまた、ダウンロードされたファイルやアプリケーションをスキャンし、悪意のあるファイルや望ましくない可能性のあるファイルをブロックします。</p>
-<p>Microsoft Defender for Endpoint のネットワーク保護は、SmartScreen の適用範囲を拡大し、信頼性の低い Web サイトに接続しようとするすべての外向きの HTTP(S) トラフィックを OS レベルでブロックします。ネットワーク保護を有効にするには、Intune、PowerShell、グループ ポリシー、または Microsoft Configuration Manager を使用いただけます。また、Microsoft Defender for Office 365 ポータルのテナント許可/ブロック リストを構成して、ユーザーがアクセスできるサイトを制限することもできます。</p>
+<p>Microsoft Defender for Endpoint のネットワーク保護は、SmartScreen の適用範囲を拡大し、信頼性の低い Web サイトに接続しようとするすべての外向きの HTTP(S) トラフィックを OS レベルでブロックします。ネットワーク保護を有効にするには、Intune、PowerShell、グループ ポリシー、または Microsoft Configuration Manager を使用いただけます。また、Microsoft Defender for Office 365 ポータルのテナント許可&#x2F;ブロック リストを構成して、ユーザーがアクセスできるサイトを制限することもできます。</p>
 <p>Microsoft Defender を使用して URL をブロックする方法については、こちらの <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/defender-office-365/tenant-allow-block-list-urls-configure">ドキュメント</a> を参照ください。</p>
 <p>また、Microsoft Defender for Endpoint のネットワーク保護を有効にする方法については、こちらの <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/defender-endpoint/enable-network-protection">ドキュメント</a> を参照ください。</p>
 <h2 id="フィッシング攻撃を示す異常を検出し対応するよう備える"><a href="#フィッシング攻撃を示す異常を検出し対応するよう備える" class="headerlink" title="フィッシング攻撃を示す異常を検出し対応するよう備える"></a>フィッシング攻撃を示す異常を検出し対応するよう備える</h2><p>万が一、上記すべての対策が失敗した場合も、異常検知の機能で攻撃のブロックと修復が可能です。</p>

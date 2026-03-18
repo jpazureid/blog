@@ -18,11 +18,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-cba-ts/adfs_cba_03.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-cba-ts/adfs_cba_04.jpg">
 <meta property="article:published_time" content="2018-10-31T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.804Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.742Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
-<meta property="article:tag" content="トラブルシューティング">
 <meta property="article:tag" content="CBA">
+<meta property="article:tag" content="トラブルシューティング">
 <meta property="article:tag" content="証明書認証">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-cba-ts/adfs_cba_01.jpg">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+79e8f171-0186-56b6-a578-8f96b11f8976%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Factive-directory-federation-service%2Fadfs-cba-ts%2F%29%0A*+Content+Source%3A+%5Barticles%2Factive-directory-federation-service%2Fadfs-cba-ts.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Factive-directory-federation-service%2Fadfs-cba-ts.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-cba-ts/" data-id="cmmketdz101250nqp417lcf7p" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-cba-ts/" data-id="cuidEOPEhM0uQeBazLEH8WtwG" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -178,19 +178,19 @@
 <p><img src="/blog/active-directory-federation-service/adfs-cba-ts/adfs_cba_01.jpg"></p>
 <p>※ 既定では、「ローカル イントラネット」ゾーンのみ有効となっていますが、念のため各ゾーンの設定をご確認ください。</p>
 <p>次に、それぞれのケースにおける代表的な問題について説明して行きます。<br>すでにクライアント側に証明書が表示されている場合には、(A) は飛ばして (B) からご確認ください。</p>
-<h2 id="A-クライアントが証明書を送信しないケース"><a href="#A-クライアントが証明書を送信しないケース" class="headerlink" title="(A) クライアントが証明書を送信しないケース"></a>(A) クライアントが証明書を送信しないケース</h2><p>このケースの問題は、CTL (Certificate Trust List) に起因していることがほとんどです。<br>CTL に関する詳細は割愛しますが、簡単に説明しますと、証明書認証では、AD FS / WAP サーバー側が信頼している証明機関のリスト (CTL) をクライアントに送信します。クライアントはそのリストに存在する証明機関から発行された証明書のみをユーザーに表示し、選択させます。<br>つまり、CTL が正常にクライアントに送信されなかったり、CTL の中にクライアント証明書を発行した証明機関が含まれない場合、クライアント側に証明書が表示されません。<br>AD FS / WAP では、この CTL を送信する機能が既定で有効です。<br>以下に、有効な確認ポイントや切り分け方法をいくつかご紹介します。</p>
+<h2 id="A-クライアントが証明書を送信しないケース"><a href="#A-クライアントが証明書を送信しないケース" class="headerlink" title="(A) クライアントが証明書を送信しないケース"></a>(A) クライアントが証明書を送信しないケース</h2><p>このケースの問題は、CTL (Certificate Trust List) に起因していることがほとんどです。<br>CTL に関する詳細は割愛しますが、簡単に説明しますと、証明書認証では、AD FS &#x2F; WAP サーバー側が信頼している証明機関のリスト (CTL) をクライアントに送信します。クライアントはそのリストに存在する証明機関から発行された証明書のみをユーザーに表示し、選択させます。<br>つまり、CTL が正常にクライアントに送信されなかったり、CTL の中にクライアント証明書を発行した証明機関が含まれない場合、クライアント側に証明書が表示されません。<br>AD FS &#x2F; WAP では、この CTL を送信する機能が既定で有効です。<br>以下に、有効な確認ポイントや切り分け方法をいくつかご紹介します。</p>
 <h3 id="1-証明書を受信するサーバー-外部接続の場合は-WAP-サーバー、社内接続の場合は-AD-FS-サーバー-で、49443-ポートが開放されていることを確認します。"><a href="#1-証明書を受信するサーバー-外部接続の場合は-WAP-サーバー、社内接続の場合は-AD-FS-サーバー-で、49443-ポートが開放されていることを確認します。" class="headerlink" title="(1) 証明書を受信するサーバー (外部接続の場合は WAP サーバー、社内接続の場合は AD FS サーバー) で、49443 ポートが開放されていることを確認します。"></a>(1) 証明書を受信するサーバー (外部接続の場合は WAP サーバー、社内接続の場合は AD FS サーバー) で、49443 ポートが開放されていることを確認します。</h3><p>稀に証明書を受信するポートが開放されておらず、ネットワーク的に証明書認証の要件を満たしていないケースがあります。<br>念のため、ご確認ください。</p>
-<h3 id="2-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。"><a href="#2-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。" class="headerlink" title="(2) AD FS / WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。"></a>(2) AD FS / WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。</h3><p>既定でサーバー側 (AD FS / WAP) は CTL に自身の「信頼されたルート証明機関」を含めます。<br>したがって、「信頼されたルート証明機関」にクライアント証明書を発行した証明機関が含まれていないと、クライアント側では証明書が表示されません。</p>
-<h3 id="3-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"><a href="#3-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。" class="headerlink" title="(3) AD FS / WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"></a>(3) AD FS / WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。</h3><p>サーバー側で CTL を作成する際に、「信頼されたルート証明機関」に含まれるものをリストしますが、その際に「ルート証明書」以外が存在することを検知すると、CTL を正常に生成できず、結果としてクライアント側で証明書が表示されないケースがあります。<br>「ルート証明書」は、「発行先 (サブジェクト)」 と「発行者」が一致している証明書ですので、それ以外の証明書が信頼されたルート証明機関ストアに含まれていないか確認します。</p>
+<h3 id="2-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。"><a href="#2-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。" class="headerlink" title="(2) AD FS &#x2F; WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。"></a>(2) AD FS &#x2F; WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、クライアント証明書を発行した証明機関の証明書が含まれることを確認します。</h3><p>既定でサーバー側 (AD FS &#x2F; WAP) は CTL に自身の「信頼されたルート証明機関」を含めます。<br>したがって、「信頼されたルート証明機関」にクライアント証明書を発行した証明機関が含まれていないと、クライアント側では証明書が表示されません。</p>
+<h3 id="3-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"><a href="#3-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。" class="headerlink" title="(3) AD FS &#x2F; WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"></a>(3) AD FS &#x2F; WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。</h3><p>サーバー側で CTL を作成する際に、「信頼されたルート証明機関」に含まれるものをリストしますが、その際に「ルート証明書」以外が存在することを検知すると、CTL を正常に生成できず、結果としてクライアント側で証明書が表示されないケースがあります。<br>「ルート証明書」は、「発行先 (サブジェクト)」 と「発行者」が一致している証明書ですので、それ以外の証明書が信頼されたルート証明機関ストアに含まれていないか確認します。</p>
 <p>ルート証明機関のストアは次の手順で確認します。</p>
 <ol>
-<li>AD FS / WAP サーバーで “ファイル名を指定して実行” から “certlm.msc” を起動します。</li>
+<li>AD FS &#x2F; WAP サーバーで “ファイル名を指定して実行” から “certlm.msc” を起動します。</li>
 <li>左ペインに [証明書 - ローカル コンピューター] と表示されていることを確認のうえ、「信頼されたルート証明機関」 - 「証明書」 を展開し、発行先と発行者が一致しないものが含まれないか確認します。</li>
 </ol>
 <h3 id="4-CTL-の送信を無効にして動作を確認してみます。"><a href="#4-CTL-の送信を無効にして動作を確認してみます。" class="headerlink" title="(4) CTL の送信を無効にして動作を確認してみます。"></a>(4) CTL の送信を無効にして動作を確認してみます。</h3><p>サーバー側の設定で、CTL の送信を無効にすることができます。<br>もし無効にすることで証明書がクライアントに表示される場合、明らかに CTL の問題に起因していることが確認でき、調査、対応をこの一点にフォーカスさせることができますので、有効な切り分けです。上記の (1) や (2) の確認を実施する前にこの切り分けを実施してしまうのも有効です。 (ただし再起動が必要なのでその点についてはご注意ください)<br>CTL の送信を無効にするには、サーバー側で以下のレジストリ値を 0 に設定し、再起動します。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">レジストリ キー : HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel</span><br><span class="line">名前: SendTrustedIssuerList</span><br><span class="line">型: REG_DWORD</span><br><span class="line">値: 0 (無効) / 1 (有効)</span><br></pre></td></tr></table></figure>
 
-<p>なお、複数の AD FS / WAP サーバーが存在する場合、切り分けの際には、hosts ファイルなどで接続先の AD FS / WAP を固定して確認することをお奨めします。<br>(接続先のサーバーを固定することができない場合には、どのサーバーに接続されるか分かりませんので、すべてのサーバーで設定する必要があります)</p>
+<p>なお、複数の AD FS &#x2F; WAP サーバーが存在する場合、切り分けの際には、hosts ファイルなどで接続先の AD FS &#x2F; WAP を固定して確認することをお奨めします。<br>(接続先のサーバーを固定することができない場合には、どのサーバーに接続されるか分かりませんので、すべてのサーバーで設定する必要があります)</p>
 <h3 id="5-CTL-ストアの設定を確認したり、固有の-CTL-ストアを作成します。"><a href="#5-CTL-ストアの設定を確認したり、固有の-CTL-ストアを作成します。" class="headerlink" title="(5) CTL ストアの設定を確認したり、固有の CTL ストアを作成します。"></a>(5) CTL ストアの設定を確認したり、固有の CTL ストアを作成します。</h3><p>既定 (CTL ストアの設定が null の状態) では、上述のとおり「信頼されたルート証明機関」に含まれる証明機関が CTL にリストされます。<br>しかし、CTL ストアは個別に設定することも可能です。<br>CTL ストアの設定状況は、以下の netsh コマンドで確認することができます。</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">netsh http show sslcert</span><br></pre></td></tr></table></figure>
 
@@ -245,15 +245,15 @@
 <p> NT Auth ストアにインポートされている証明書を確認する場合には、以下のコマンドを実行します。</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">certutil -store -enterprise ntauth</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"><a href="#4-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。" class="headerlink" title="(4) AD FS / WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"></a>(4) AD FS / WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。</h3><p>サーバー側で CTL を作成する際に、「信頼されたルート証明機関」に含まれるものをリストしますが、その際に「ルート証明書」以外が存在することを検知すると、CTL (信頼する CA のリスト) を正常に生成できず、結果として証明書認証に失敗することがございます。<br>「ルート証明書」は、「発行先 (サブジェクト)」 と「発行者」が一致している証明書ですので、それ以外の証明書が信頼されたルート証明機関ストアに含まれていないか確認します。</p>
+<h3 id="4-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"><a href="#4-AD-FS-WAP-で、ローカル-コンピューター-の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。" class="headerlink" title="(4) AD FS &#x2F; WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。"></a>(4) AD FS &#x2F; WAP で、ローカル コンピューター の「信頼されたルート証明機関」に、「ルート証明書」でないものが含まれていないかどうかを確認します。</h3><p>サーバー側で CTL を作成する際に、「信頼されたルート証明機関」に含まれるものをリストしますが、その際に「ルート証明書」以外が存在することを検知すると、CTL (信頼する CA のリスト) を正常に生成できず、結果として証明書認証に失敗することがございます。<br>「ルート証明書」は、「発行先 (サブジェクト)」 と「発行者」が一致している証明書ですので、それ以外の証明書が信頼されたルート証明機関ストアに含まれていないか確認します。</p>
 <p>ルート証明機関のストアは次の手順で確認します。</p>
 <ol>
-<li>AD FS / WAP サーバーで “ファイル名を指定して実行” から “certlm.msc” を起動します。</li>
+<li>AD FS &#x2F; WAP サーバーで “ファイル名を指定して実行” から “certlm.msc” を起動します。</li>
 <li>左ペインに [証明書 - ローカル コンピューター] と表示されていることを確認のうえ、「信頼されたルート証明機関」 - 「証明書」 を展開し、発行先と発行者が一致しないものが含まれないか確認します。</li>
 </ol>
 <h3 id="5-AD-FS-サーバー、WAP-サーバーから-CDP-失効リスト配布ポイント-にアクセスできることを確認します。"><a href="#5-AD-FS-サーバー、WAP-サーバーから-CDP-失効リスト配布ポイント-にアクセスできることを確認します。" class="headerlink" title="(5) AD FS サーバー、WAP サーバーから CDP (失効リスト配布ポイント) にアクセスできることを確認します。"></a>(5) AD FS サーバー、WAP サーバーから CDP (失効リスト配布ポイント) にアクセスできることを確認します。</h3><p>クライアント証明書の 「詳細」 タブから、証明書の CDP を確認することができます。</p>
 <p><img src="/blog/active-directory-federation-service/adfs-cba-ts/adfs_cba_02.jpg"></p>
-<p>証明書の CDP を確認し、ADFS / WAP サーバー上で IE を起動し、該当の URL にアクセスできるかどうかを確認します。<br>IE から正常にアクセスできる場合でも、実際の失効確認の動作時には WinHTTP プロキシを経由するため、 WinHTTP プロキシが構成されていないことで CDP へのアクセスに失敗している可能性があります。</p>
+<p>証明書の CDP を確認し、ADFS &#x2F; WAP サーバー上で IE を起動し、該当の URL にアクセスできるかどうかを確認します。<br>IE から正常にアクセスできる場合でも、実際の失効確認の動作時には WinHTTP プロキシを経由するため、 WinHTTP プロキシが構成されていないことで CDP へのアクセスに失敗している可能性があります。</p>
 <p>WinHTTP プロキシの設定状況については、次のコマンドで確認が可能です。</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">netsh winhttp show proxy</span><br><span class="line"></span><br><span class="line">現在の WinHTTP プロキシ設定:</span><br><span class="line">   直接アクセス (プロキシ サーバーなし)。</span><br></pre></td></tr></table></figure>
 
@@ -334,19 +334,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../azure-active-directory/create-subscription-error/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../azure-active-directory-connect/introduction-staging-server/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」
+          ステージング サーバーのすゝめ
         
       </div>
     </a>
   
   
-    <a href="../../azure-active-directory/mfa-reset/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../adfs-crule-ts/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">多要素認証 (MFA) のリセット手順 - 2018 年版</div>
+      <div class="article-nav-title">AD FS クレームルール関連のトラブルシューティング</div>
     </a>
   
 </nav>

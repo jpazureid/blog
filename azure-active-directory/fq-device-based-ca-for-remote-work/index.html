@@ -17,13 +17,13 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/fq-device-based-ca-for-remote-work/Devices1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/fq-device-based-ca-for-remote-work/Devices3.png">
 <meta property="article:published_time" content="2020-06-26T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.362Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.300Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Conditional Access">
-<meta property="article:tag" content="Hybrid Azure AD Join">
 <meta property="article:tag" content="Federated Domain">
+<meta property="article:tag" content="Hybrid Azure AD Join">
 <meta property="article:tag" content="Managed Domain">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/fq-device-based-ca-for-remote-work/Devices1.png">
@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -163,7 +163,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+a8894ccb-1f1a-58ac-b275-0bf4e3690d19%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Mailbag%EF%BC%9A%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88+%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9+%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Ffq-device-based-ca-for-remote-work%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Ffq-device-based-ca-for-remote-work.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Ffq-device-based-ca-for-remote-work.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/fq-device-based-ca-for-remote-work/" data-id="cmmkete01014a0nqpgfd02hek" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/fq-device-based-ca-for-remote-work/" data-id="cuidYgcsdtav0bOh1S2qj7qkh" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -211,11 +211,11 @@
 <li><p>この段階で、Azure ポータルの [デバイス] ブレードに [保留中] 状態のデバイスが表示されるはずです。</p>
 </li>
 <li><p>次回の Windows 10 へのユーザー ログイン時に、ハイブリッド Azure AD 参加のデバイス登録が完了します。</p>
-<p> 注意: VPN を使用しており、ログオフ/ログインによってドメインとの接続が切断された場合は、手動で登録を実行することもできます。</p>
-<p> 管理者権限で起動したプロンプトから、dsregcmd /join を実行するか、PSExec 経由でリモートから PC に接続して実行ください。<br> 例: PsExec -s \win10client01 cmd, dsregcmd /join</p>
+<p> 注意: VPN を使用しており、ログオフ&#x2F;ログインによってドメインとの接続が切断された場合は、手動で登録を実行することもできます。</p>
+<p> 管理者権限で起動したプロンプトから、dsregcmd &#x2F;join を実行するか、PSExec 経由でリモートから PC に接続して実行ください。<br> 例: PsExec -s \win10client01 cmd, dsregcmd &#x2F;join</p>
 </li>
 </ol>
-<h3 id="フェデレーション-ドメイン環境-AD-FS-またはその他の-WS-Fed-WS-Trust-に対応した-IdP-を使用"><a href="#フェデレーション-ドメイン環境-AD-FS-またはその他の-WS-Fed-WS-Trust-に対応した-IdP-を使用" class="headerlink" title="フェデレーション ドメイン環境 (AD FS またはその他の WS-Fed/WS-Trust に対応した IdP を使用)"></a>フェデレーション ドメイン環境 (AD FS またはその他の WS-Fed/WS-Trust に対応した IdP を使用)</h3><p>この登録フローは　Federataed Join とも呼ばれます。</p>
+<h3 id="フェデレーション-ドメイン環境-AD-FS-またはその他の-WS-Fed-WS-Trust-に対応した-IdP-を使用"><a href="#フェデレーション-ドメイン環境-AD-FS-またはその他の-WS-Fed-WS-Trust-に対応した-IdP-を使用" class="headerlink" title="フェデレーション ドメイン環境 (AD FS またはその他の WS-Fed&#x2F;WS-Trust に対応した IdP を使用)"></a>フェデレーション ドメイン環境 (AD FS またはその他の WS-Fed&#x2F;WS-Trust に対応した IdP を使用)</h3><p>この登録フローは　Federataed Join とも呼ばれます。</p>
 <ol>
 <li><p>Windows 10 は、ユーザーがデバイスにログインすると SCP レコードを探索します。 </p>
 <ul>
@@ -227,13 +227,14 @@
 </ul>
 </li>
 <li><p>Windows 10 は、<strong>システムのコンテキスト</strong> で Azure AD と通信し、認証を受けるために AD FS などのフェデレーション サービスの WindowsTransport エンドポイントにリダイレクトされます。この処理は、企業ネットワーク上で行われる必要があり、VPN 経由でも動作します。</p>
-<p> 警告: <strong>adfs/services/trust/2005/windowstransport</strong> と <strong>adfs/services/trust/13/windowstransport</strong> は共にイントラネットからアクセスできるエンドポイントとしてのみ有効にし、エクストラネットからアクセスできるエンドポイントとして公開しないようご注意ください。 </p>
+<p> 警告: <strong>adfs&#x2F;services&#x2F;trust&#x2F;2005&#x2F;windowstransport</strong> と <strong>adfs&#x2F;services&#x2F;trust&#x2F;13&#x2F;windowstransport</strong> は共にイントラネットからアクセスできるエンドポイントとしてのみ有効にし、エクストラネットからアクセスできるエンドポイントとして公開しないようご注意ください。 </p>
 <p> 注意: サードパーティの ID プロバイダーを使用している場合は、その製品がハイブリッド Azure AD 参加をサポートしているか製造元までご確認ください。</p>
 </li>
 <li><p>もし #2 が何らかの理由で失敗し、その際にデバイスが Windows 10 1803 以上の場合は、上記の Sync Join のフローの手順 #3-5 に記載されている登録フローにフォールバックします。</p>
 <p> 注意: デバイスを同期するように Azure AD Connect を設定していない場合、登録処理が Sync Join のフローにフォールバックしません。このため、環境に関係なく Azure AD Connect 経由でデバイスを同期することをおすすめします。詳しくは <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#organizational-unitbased-filtering">こちらの資料</a> をご参照ください。</p>
 </li>
-<li><p>AD FS への接続に関連し問題がある場合は、登録を完了するために次回の Windows 10 へのユーザー ログイン時にデバイス登録が再試行されます。<br> <br> 注意: VPN を使用しており、ログオフ/ログインによってドメインとの接続が切断された場合は、リモートから PSExec 経由でユーザーのデバイスに以下のコマンドを実行することで、手動で登録を実行することもできます。<br> 例: PsExec -s \win10client01 cmd, dsregcmd /join</p>
+<li><p>AD FS への接続に関連し問題がある場合は、登録を完了するために次回の Windows 10 へのユーザー ログイン時にデバイス登録が再試行されます。</p>
+<p> 注意: VPN を使用しており、ログオフ&#x2F;ログインによってドメインとの接続が切断された場合は、リモートから PSExec 経由でユーザーのデバイスに以下のコマンドを実行することで、手動で登録を実行することもできます。<br> 例: PsExec -s \win10client01 cmd, dsregcmd &#x2F;join</p>
 </li>
 </ol>
 <p>ヒント: リモート ユーザーに対して VPN を利用させることに問題がある場合は、ハイブリッド Azure AD 参加ではなく、Azure AD 参加を検討することもお勧めします。このオプションは、特に新しい Windows 10 デバイスに最適です。考慮事項として、例えば Azure AD に参加したデバイスの管理は、グループ ポリシーの代わりに Intune のような MDM (モバイル デバイス管理) を介して提供されます。この方法が貴社に合っているかどうか判断するには、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/azureadjoin-plan">こちらの Azure AD プランニング ガイド</a> をご参照ください。</p>
@@ -249,13 +250,13 @@
 <ol>
 <li><p>デバイス上に Azure AD PRT がない。</p>
 <p> デバイスが Azure AD プライマリ更新トークン (PRT) を保持しているか確認する必要があります。PRT の詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/concept-primary-refresh-token">こちらのドキュメント</a> を参照ください。</p>
-<p> Azure AD PRT を保持しているか確認するには、デバイスで “dsregcmd /status” コマンドを実行し、”AzureAdPrt” が “YES” であるかどうかを確認します (以下に AzureADPrt が有効な場合の dsregcmd の結果を抜粋してお知らせします)。</p>
-<p> <img src="/blog/azure-active-directory/fq-device-based-ca-for-remote-work/Devices3.png" alt="dsregcmd /status"></p>
+<p> Azure AD PRT を保持しているか確認するには、デバイスで “dsregcmd &#x2F;status” コマンドを実行し、”AzureAdPrt” が “YES” であるかどうかを確認します (以下に AzureADPrt が有効な場合の dsregcmd の結果を抜粋してお知らせします)。</p>
+<p> <img src="/blog/azure-active-directory/fq-device-based-ca-for-remote-work/Devices3.png" alt="dsregcmd &#x2F;status"></p>
 <p> AzureAdPrt が NO の場合は、次の点を確認ください。</p>
 <ul>
 <li><p>AD FS でフェデレーション環境を構築しており、ユーザーの家庭のネットワークからは AD FS へアクセスできない場合: この場合は、usernamemixed エンドポイントがエクストラネットからアクセス可能であることを確認ください。AD FS へのアクセスが VPN 越しである場合は、ユーザーが VPN に接続していることを確認し、デバイスへの再ログインをお試しください。より詳細については <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/hybrid-azuread-join-federated-domains">こちらの資料</a> を参照ください。</p>
 </li>
-<li><p>デバイスの TPM に問題があり、デバイスを認証できない場合: tpm.msc を実行し、TPM の状態が準備完了かどうかを確認ください。もし準備完了となっていない場合は、dsregcmd /leave を実行し、デバイスを Azure AD に再び参加させます。この後改めて状態を確認ください。より詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/troubleshoot-device-dsregcmd#sso-state">こちらのドキュメント</a> を参照ください。</p>
+<li><p>デバイスの TPM に問題があり、デバイスを認証できない場合: tpm.msc を実行し、TPM の状態が準備完了かどうかを確認ください。もし準備完了となっていない場合は、dsregcmd &#x2F;leave を実行し、デバイスを Azure AD に再び参加させます。この後改めて状態を確認ください。より詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/troubleshoot-device-dsregcmd#sso-state">こちらのドキュメント</a> を参照ください。</p>
 </li>
 <li><p>サードパーティの ID プロバイダーを使用しているが、WS-Trust プロトコルをサポートしていない場合: ドキュメントに記載されているように、この場合、ハイブリッド Azure AD 参加デバイスは動作しません。サポートについては、ID プロバイダーにお問い合わせください。</p>
 </li>
@@ -265,8 +266,8 @@
 <p> 拡張機能をリモートでインストールできない場合は、デバイス ベースの条件付きアクセスで保護されたアプリケーションにアクセスできるようにするため、上記のいずれかの拡張機能を手動でインストールするようにユーザーに通知ください。より詳しくは <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/require-managed-devices#prerequisites">こちらの資料</a> をご参照ください。 </p>
 </li>
 <li><p>デバイスは正しくハイブリッド Azure AD 参加しているが、Azure AD Connect または Azure ポータルからの設定変更が原因で、デバイスが誤って削除または無効にされた。このような状態となると、AzureAdJoined および PRT の状態がデバイスで有効と表示されても、デバイス オブジェクトは不完全なデバイスとして認識されます。  </p>
-<p> この問題を解決するには、影響を受けたデバイスで dsregcmd /leave を実行し、Azure AD に再度参加させます。詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/faq#q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices">こちらのドキュメント</a> を参照ください。</p>
-<p> 注意: お使いのデバイスに Windows 10 1809 アップデートが適用されており、VPN / クラウド プロキシを使用していて、AzureAdPrt の状態やアプリの SSO に問題がある (PRT を使用しているにもかかわらず Outlook がメールボックスに接続しない) 場合は、更新プログラム <a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4554354/windows-10-update-kb4554354">KB4554354</a> または 4 月の累積アップデート <a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4549949">KB4549949</a> を使用し、これらのマシンで PRT の問題が起こらないようご対応ください。</p>
+<p> この問題を解決するには、影響を受けたデバイスで dsregcmd &#x2F;leave を実行し、Azure AD に再度参加させます。詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/devices/faq#q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices">こちらのドキュメント</a> を参照ください。</p>
+<p> 注意: お使いのデバイスに Windows 10 1809 アップデートが適用されており、VPN &#x2F; クラウド プロキシを使用していて、AzureAdPrt の状態やアプリの SSO に問題がある (PRT を使用しているにもかかわらず Outlook がメールボックスに接続しない) 場合は、更新プログラム <a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4554354/windows-10-update-kb4554354">KB4554354</a> または 4 月の累積アップデート <a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/help/4549949">KB4549949</a> を使用し、これらのマシンで PRT の問題が起こらないようご対応ください。</p>
 </li>
 </ol>
 <p>皆様の従業員が安全にリモート ワークを実現できるよう、本情報が参考になれば幸いです。他にもご質問やアイデアがありましたら、Twitter (<a target="_blank" rel="noopener" href="http://twitter.com/azuread">@AzureAD</a>) でお知らせいただくか、コメントをお願いします。</p>

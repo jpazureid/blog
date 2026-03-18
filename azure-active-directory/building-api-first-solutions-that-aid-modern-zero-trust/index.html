@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 高田 です。 本記事は、2022 年 5 月 17 日に米国の Azure Active Directory Identity Blog で公開された Building API-first solutions that aid modern Zero Trust infrastructure を意訳したものになります。ご不明点等ございま">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-05-21T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.208Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.145Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2e858993-47b8-5237-81f0-29de61fb3827%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%BC%E3%83%AD+%E3%83%88%E3%83%A9%E3%82%B9%E3%83%88%E5%9F%BA%E7%9B%A4%E3%82%92%E6%94%AF%E3%81%88%E3%82%8B+API+%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%81%AA%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%A7%8B%E7%AF%89%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fbuilding-api-first-solutions-that-aid-modern-zero-trust%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fbuilding-api-first-solutions-that-aid-modern-zero-trust.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fbuilding-api-first-solutions-that-aid-modern-zero-trust.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/building-api-first-solutions-that-aid-modern-zero-trust/" data-id="cmmketdrm008d0nqpd5dmg1i2" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/building-api-first-solutions-that-aid-modern-zero-trust/" data-id="cuidR7tL9z4MnF8Z4wUctrjHm" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -166,7 +166,7 @@
 <p>こんにちは。</p>
 <p>マイクロソフトの ID とネットワーク アクセスのプログラム マネジメント担当副社長の Sue Bohn と申します。この Voice of the ISV のブログ記事では、SentinelOne 社のプロダクト マーケティング マネージャーの Jeremy Goldstein とプロダクト マネジメント担当ディレクターの David Baldwin より、SentinelOne が生み出した API ファースト開発モデルによって、<a target="_blank" rel="noopener" href="https://www.sentinelone.com/platform">Singularity XDR</a> と <a target="_blank" rel="noopener" href="https://www.microsoft.com/security/business/identity-access-management/azure-active-directory">Azure Active Directory</a> が如何に連携し、大量のアラートの管理とセキュリティ ツール間のプロセス統合という課題を解決したかを解説します。</p>
 <hr>
-<p>セキュリティ運用部門における最大の悩みの種は、大量のアラートと CTRL-C/CTRL-V の (コピー アンド ペーストに基づく) 業務フローと言われています。あるセキュリティ ツールで生成された情報を別のツールにコピー アンド ペーストして手動で連携することは、単調な繰り返し作業になり時間もかかるため、攻撃者に常に先手を取らせてしまうことになります。平均的なセキュリティ運用部門では、さまざまなベンダーが提供する数十種類のツールを使用していることを考えると、自動化と相互運用性の必要性は明らかです。SentinelOne は、組織が <a target="_blank" rel="noopener" href="https://www.microsoft.com/security/business/zero-trust">ゼロ トラスト</a> の原則 (明示的な検証、最小特権アクセスの使用、侵入の想定) を採用するよう支援しているセキュリティ プロバイダーとして、Microsoft や他のセキュリティ専門家と協力して、これらのニーズに対応しています。</p>
+<p>セキュリティ運用部門における最大の悩みの種は、大量のアラートと CTRL-C&#x2F;CTRL-V の (コピー アンド ペーストに基づく) 業務フローと言われています。あるセキュリティ ツールで生成された情報を別のツールにコピー アンド ペーストして手動で連携することは、単調な繰り返し作業になり時間もかかるため、攻撃者に常に先手を取らせてしまうことになります。平均的なセキュリティ運用部門では、さまざまなベンダーが提供する数十種類のツールを使用していることを考えると、自動化と相互運用性の必要性は明らかです。SentinelOne は、組織が <a target="_blank" rel="noopener" href="https://www.microsoft.com/security/business/zero-trust">ゼロ トラスト</a> の原則 (明示的な検証、最小特権アクセスの使用、侵入の想定) を採用するよう支援しているセキュリティ プロバイダーとして、Microsoft や他のセキュリティ専門家と協力して、これらのニーズに対応しています。</p>
 <p><a target="_blank" rel="noopener" href="https://www.microsoft.com/security/business/identity-access-management/azure-active-directory">Azure Active Directory</a> (Azure AD) と連携し、AI と自動化でリアルタイムに改善策を実行する SentinelOne <a target="_blank" rel="noopener" href="https://www.sentinelone.com/platform">Singularity XDR</a> などのソリューションを作るため、SentinelOne は API ファーストの開発モデルを採用しています。画面デザインの前に、API として機能を作成するのです。この取り組みにより、顧客やパートナーは弊社とより円滑に連携することが可能となります。Microsoft が当社の Extended Detection Response (XDR) プラットフォームに関連する新しい API をリリースしたときも、同じことが当てはまります。これにより、弊社は有益な新機能を最短期間でお客様に提供することが可能です。Azure AD のすべての危険なユーザーへプログラム的にアクセスできるようにする <a target="_blank" rel="noopener" href="https://docs.microsoft.com/graph/api/resources/riskyuser">riskyUser API</a> は、API ファースト戦略の利点の典型的な例です。</p>
 <p>Azure AD Identity Protection は、疑わしいと判別されたアカウント関連の動作を含む多くの要因を考慮して危険なユーザーを検出します。ユーザーとサインインの両方に紐づいたリスク検出を元に、ユーザー全体のリスク スコアが計算され、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks">Risky Users レポート</a> が生成されます。Azure AD の Identity Protection の詳細は <a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection">こちら</a> をご覧ください。</p>
 <h2 id="顧客が必要とするサービスを顧客が期待するよりも早く提供する"><a href="#顧客が必要とするサービスを顧客が期待するよりも早く提供する" class="headerlink" title="顧客が必要とするサービスを顧客が期待するよりも早く提供する"></a>顧客が必要とするサービスを顧客が期待するよりも早く提供する</h2><p>Microsoft が riskyUser API と、それに付随する confirmCompromised API (Azure AD でユーザーを高リスクとしてマークする) をリリースした際、お客様側での手作業をなくすことが可能ではないかということに気づきました。これらの新しい API を使用すると、ユーザーのリスク スコアと侵害済みの状態を自動的に調整でき、その結果、お客様が選択した <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/">条件付きアクセス</a> のパラメータに波及して、そのユーザーのアクセスが制限されます。この後、SentinelOne が自動的に生成されたインシデント ノートにそのユーザーの新しいリスク状態を追加します。</p>

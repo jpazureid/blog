@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-crule-ts/adfs_crule_06.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-crule-ts/adfs_crule_07.jpg">
 <meta property="article:published_time" content="2018-10-31T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.806Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.743Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="クレームルール">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+898ca9a6-f3b2-5a76-a4f9-bed1d592cc80%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAD+FS+%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB%E9%96%A2%E9%80%A3%E3%81%AE%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Factive-directory-federation-service%2Fadfs-crule-ts%2F%29%0A*+Content+Source%3A+%5Barticles%2Factive-directory-federation-service%2Fadfs-crule-ts.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Factive-directory-federation-service%2Fadfs-crule-ts.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-crule-ts/" data-id="cmmketdog00040nqpdbc3g64x" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/adfs-crule-ts/" data-id="cuidYaG1DXmIVXpwoRD2t515C" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -186,28 +186,28 @@
 <p>一連のイベントはおおよそ同じタイムスタンプに記録されますが、認証要求が多い場合などにはこの ID で判断します。<br>Instance ID が同じ値となっているイベントは、同一の認証処理内で記録されたイベントになります。</p>
 <p><img src="/blog/active-directory-federation-service/adfs-crule-ts/adfs_crule_05.jpg"></p>
 <p>イベント ID 501 には、発行されたクレームとその値が交互に出力されます。<br>例えば上記の例では、<br><code>http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-client-ip</code>  というクレームの値として、<code>192.168.5.101</code> がセットされています。<br>同様に、<code>http://schemas.microsoft.com/2012/01/requestcontext/claims/relyingpartytrustid</code> というクレームの値として、<code>https://login.microsoftonline.com/login.srf</code> がセットされています。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">クレーム</span><br><span class="line">値</span><br><span class="line"></span><br><span class="line">クレーム</span><br><span class="line">値</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">クレーム</span><br><span class="line">値</span><br><span class="line"></span><br><span class="line">クレーム</span><br><span class="line">値</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>という順番で記録されています。</p>
 <p>これらは、その量に応じて複数のイベント ID 501 にまたがって記録されます。<br>どのイベントが該当の処理のものかを判断するために、先述の Instance ID を利用します。</p>
 <h3 id="2-クレーム-ルールを確認し、イベント-ID-501-に記録されているクレームの内容と比較します。"><a href="#2-クレーム-ルールを確認し、イベント-ID-501-に記録されているクレームの内容と比較します。" class="headerlink" title="(2) クレーム ルールを確認し、イベント ID 501 に記録されているクレームの内容と比較します。"></a>(2) クレーム ルールを確認し、イベント ID 501 に記録されているクレームの内容と比較します。</h3><p>手順 (1) で、発行されているクレームを確認することができました。<br><br>次に、AD FS に設定されているクレーム ルールを確認します。</p>
 <p>クレーム ルールは、AD FS プライマリサーバー上で、以下のように Powershell を実行することで確認できます。</p>
 <p>実行例:<br>※ Identifier オプションには、先述のイベント ID 325 で確認した対象の証明書利用者信頼の識別子を指定します。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">(<span class="built_in">Get-AdfsRelyingPartyTrust</span> <span class="literal">-Identifier</span> <span class="string">&quot;urn:federation:MicrosoftOnline&quot;</span>).IssuanceAuthorizationRules</span><br><span class="line"></span><br><span class="line">@RuleTemplate = <span class="string">&quot;AllowAllAuthzRule&quot;</span></span><br><span class="line">=&gt; issue(<span class="built_in">Type</span> = <span class="string">&quot;`http://schemas.microsoft.com/authorization/claims/permit`&quot;, Value = &quot;</span>true<span class="string">&quot;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@RuleName = &quot;</span>Test<span class="string">&quot;</span></span><br><span class="line"><span class="string">NOT exists([Type == &quot;</span>`http://schemas.microsoft.com/<span class="number">2012</span>/<span class="number">01</span>/requestcontext/claims/x<span class="literal">-ms</span><span class="literal">-forwarded</span><span class="literal">-client</span><span class="literal">-ip</span>`&quot;, Value =~ <span class="string">&quot;\b192\.168\.1\.10\b|\b192\.168\.1\.11\b&quot;</span>])</span><br><span class="line">=&gt; issue(<span class="built_in">Type</span> = <span class="string">&quot;`http://schemas.microsoft.com/authorization/claims/deny`&quot;, Value = &quot;</span>true<span class="string">&quot;);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">(<span class="built_in">Get-AdfsRelyingPartyTrust</span> <span class="literal">-Identifier</span> <span class="string">&quot;urn:federation:MicrosoftOnline&quot;</span>).IssuanceAuthorizationRules</span><br><span class="line"></span><br><span class="line">@RuleTemplate = <span class="string">&quot;AllowAllAuthzRule&quot;</span></span><br><span class="line">=&gt; issue(<span class="built_in">Type</span> = <span class="string">&quot;`http://schemas.microsoft.com/authorization/claims/permit`&quot;, Value = &quot;</span>true<span class="string">&quot;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@RuleName = &quot;</span>Test<span class="string">&quot;</span></span><br><span class="line"><span class="string">NOT exists([Type == &quot;</span>`http://schemas.microsoft.com/<span class="number">2012</span>/<span class="number">01</span>/requestcontext/claims/x<span class="literal">-ms-forwarded-client-ip</span>`&quot;, Value =~ <span class="string">&quot;\b192\.168\.1\.10\b|\b192\.168\.1\.11\b&quot;</span>])</span><br><span class="line">=&gt; issue(<span class="built_in">Type</span> = <span class="string">&quot;`http://schemas.microsoft.com/authorization/claims/deny`&quot;, Value = &quot;</span>true<span class="string">&quot;);</span></span><br></pre></td></tr></table></figure>
 
 <p>クレームルールの詳細についてはここでは割愛しますが、基本的に以下のいずれかの構成になっています。</p>
-<h3 id="A-ホワイトリスト形式-許可する条件を羅列する形式"><a href="#A-ホワイトリスト形式-許可する条件を羅列する形式" class="headerlink" title="(A) ホワイトリスト形式 (許可する条件を羅列する形式)"></a>(A) ホワイトリスト形式 (許可する条件を羅列する形式)</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@ルール1</span><br><span class="line">条件1 の場合には、アクセスを許可する</span><br><span class="line"></span><br><span class="line">@ルール2</span><br><span class="line">条件2 の場合には、アクセスを許可する</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="A-ホワイトリスト形式-許可する条件を羅列する形式"><a href="#A-ホワイトリスト形式-許可する条件を羅列する形式" class="headerlink" title="(A) ホワイトリスト形式 (許可する条件を羅列する形式)"></a>(A) ホワイトリスト形式 (許可する条件を羅列する形式)</h3><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">@ルール1</span><br><span class="line">条件1 の場合には、アクセスを許可する</span><br><span class="line"></span><br><span class="line">@ルール2</span><br><span class="line">条件2 の場合には、アクセスを許可する</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>このような書き方の場合、羅列されたいずれかの許可のルール (条件) に合致しない場合、アクセスはブロックされます。</p>
-<h3 id="B-ブラックリスト形式-拒否する条件を羅列する形式"><a href="#B-ブラックリスト形式-拒否する条件を羅列する形式" class="headerlink" title="(B) ブラックリスト形式 (拒否する条件を羅列する形式)"></a>(B) ブラックリスト形式 (拒否する条件を羅列する形式)</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@ルール1</span><br><span class="line">すべての条件でアクセスを許可</span><br><span class="line"></span><br><span class="line">@ルール2</span><br><span class="line">条件1 の場合には、アクセスをブロックする</span><br><span class="line"></span><br><span class="line">@ルール3</span><br><span class="line">条件2 の場合には、アクセスをブロックする</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="B-ブラックリスト形式-拒否する条件を羅列する形式"><a href="#B-ブラックリスト形式-拒否する条件を羅列する形式" class="headerlink" title="(B) ブラックリスト形式 (拒否する条件を羅列する形式)"></a>(B) ブラックリスト形式 (拒否する条件を羅列する形式)</h3><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">@ルール1</span><br><span class="line">すべての条件でアクセスを許可</span><br><span class="line"></span><br><span class="line">@ルール2</span><br><span class="line">条件1 の場合には、アクセスをブロックする</span><br><span class="line"></span><br><span class="line">@ルール3</span><br><span class="line">条件2 の場合には、アクセスをブロックする</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>このような書き方の場合、羅列された拒否のルール (条件) のいずれかに合致した場合、アクセスはブロックされます。</p>
 <p>「アクセスを許可する」に該当する記述は、</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=&gt; issue(Type = &quot;`http://schemas.microsoft.com/authorization/claims/permit`&quot;, Value = &quot;true&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">=&gt; issue(Type = &quot;`http://schemas.microsoft.com/authorization/claims/permit`&quot;, Value = &quot;true&quot;);</span><br></pre></td></tr></table></figure>
 
 <p>です。</p>
 <p>「アクセスを拒否する」に該当する記述は、</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=&gt; issue(Type = &quot;`http://schemas.microsoft.com/authorization/claims/deny`&quot;, Value = &quot;true&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">=&gt; issue(Type = &quot;`http://schemas.microsoft.com/authorization/claims/deny`&quot;, Value = &quot;true&quot;);</span><br></pre></td></tr></table></figure>
 
 <p>です。</p>
 <p>上述の実行例ですと、<code>@RuleTemplate = &quot;AllowAllAuthzRule&quot;</code> では、何の条件も指定せずにアクセスを許可しています。<br><br>つまり、すべてのアクセスを許可しています。</p>
@@ -217,7 +217,7 @@
 <p><code>\b192\.168\.1\.10\b|\b192\.168\.1\.11\b</code></p>
 <p>という正規表現にマッチしない場合 (つまり、192.168.1.10 もしくは 192.168.1.11 ではない場合) には、アクセスを拒否しています。</p>
 <blockquote>
-<p>※ 補足1<br>Value =~ と記述した場合、正規表現を使用することができます。<br>Value == と記述した場合には、完全一致になります。</p>
+<p>※ 補足1<br>Value &#x3D;~ と記述した場合、正規表現を使用することができます。<br>Value &#x3D;&#x3D; と記述した場合には、完全一致になります。</p>
 </blockquote>
 <blockquote>
 <p>※ 補足2<br>exists と記述した場合、そのようなクレームが存在する場合、という意味になります。<br>NOT exists と記述した場合、そのようなクレームが存在しない場合、という意味になります。</p>
@@ -226,7 +226,7 @@
 <p><code>http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-forwarded-client-ip</code></p>
 <p>というクレームに 192.168.1.10 もしくは 192.168.1.11 という値がセットされていないためにアクセスが拒否されていることが分かります。</p>
 <h3 id="3-クレーム-ルールを修正します。"><a href="#3-クレーム-ルールを修正します。" class="headerlink" title="(3) クレーム ルールを修正します。"></a>(3) クレーム ルールを修正します。</h3><p>例えば、手順 (2) で確認したイベント ID 501 に、以下のような出力があったとします。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-forwarded-client-ip</span><br><span class="line">192.168.1.12</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-forwarded-client-ip</span><br><span class="line">192.168.1.12</span><br></pre></td></tr></table></figure>
 
 <p>このような場合には、192.168.1.10、192.168.1.11 に加えて、192.168.1.12 を許可するように追加します。<br>(192.168.1.12 が、お客様の環境で許可すべき IP アドレスであることが確認できている前提です。)</p>
 <p>クレーム ルールを編集するには、AD FS 管理ツールから該当の証明書利用者信頼を選択し、[要求規則の編集] ウィンドウを開いて [発行承認規則] から該当のルールを選択します。</p>
@@ -264,11 +264,11 @@
     
 <nav id="article-nav">
   
-    <a href="../../azure-active-directory-connect/introduction-staging-server/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../adfs-cba-ts/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          ステージング サーバーのすゝめ
+          証明書認証のトラブルシューティング
         
       </div>
     </a>

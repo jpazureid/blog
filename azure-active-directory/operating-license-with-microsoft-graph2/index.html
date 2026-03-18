@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/assigned-users.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/license-option.png">
 <meta property="article:published_time" content="2022-03-10T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.899Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.835Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Microsoft Graph">
@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6bc1f3be-8567-5733-b7d3-6110e67cf043%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Graph+PowerShell+SDK+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C%E3%81%AE%E7%B4%B9%E4%BB%8B+%28%E4%B8%80%E6%8B%AC%E8%A8%AD%E5%AE%9A%E7%B7%A8%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Foperating-license-with-microsoft-graph2%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Foperating-license-with-microsoft-graph2.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Foperating-license-with-microsoft-graph2.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/" data-id="cmmkete0v01600nqp8bj803cn" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph2/" data-id="cuidrjii-7RTtW_unvGxGVLy1" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -214,7 +214,7 @@
 <li>市区町村: City</li>
 <li>都道府県: State</li>
 <li>郵便番号: PostalCode</li>
-<li>国/地域: Country</li>
+<li>国&#x2F;地域: Country</li>
 </ul>
 <p>CSV ファイルの作成が完了しましたら、以下例のコマンドレットを実行し新規にユーザーを作成します。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$path</span> = <span class="string">&quot;＜作成した CSV ファイル名を含んだ保存先のパス&gt;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Import-Csv</span> <span class="literal">-Path</span> <span class="variable">$path</span> |<span class="built_in">ForEach-Object</span> &#123;<span class="built_in">New-MgUser</span> <span class="literal">-AccountEnabled</span> <span class="literal">-UsageLocation</span> <span class="string">&quot;JP&quot;</span> <span class="literal">-UserPrincipalName</span> <span class="variable">$_</span>.UserPrincipalName <span class="literal">-DisplayName</span> <span class="variable">$_</span>.DisplayName <span class="literal">-MailNickname</span> <span class="variable">$_</span>.MailNickname <span class="literal">-PasswordProfile</span> <span class="selector-tag">@</span>&#123;<span class="string">&quot;Password&quot;</span>=<span class="variable">$_</span>.Password;ForceChangePasswordNextSignIn=<span class="variable">$false</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
@@ -262,11 +262,11 @@
 <p>上記実行例では Office 365 Enterprise E5 から、[Sway] と [Yammer Enterprise] の 2 つのサービスを無効にしています。</p>
 <p>詳細なライセンス オプションのパターンは、下記のライセンス割り当てのシナリオそれぞれにおいてご紹介しておりますので、併せて参照ください。</p>
 <p>ブログ該当箇所: <a href="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/#idx4">シナリオ 1: ユーザーにライセンスを割り当てる</a></p>
-<h2 id="4-CSV-ファイルにまとめた既存ユーザーへライセンスを割り当てる"><a href="#4-CSV-ファイルにまとめた既存ユーザーへライセンスを割り当てる" class="headerlink" title="4. CSV ファイルにまとめた既存ユーザーへライセンスを割り当てる"></a>4. CSV ファイルにまとめた既存ユーザーへライセンスを割り当てる</h2><div class="alert is-info"><p class="alert-title">Note</p><p>まずは上述の手順 1 または 手順 2 にて、UserPrincipalName が列名として存在する CSV ファイルをご用意ください。</p><p>また、以後、csv ファイルのパスは変数 $path に格納しているものとします。</p><p>例) $path = “C:\temp\assignedUser.csv”</p></div>
+<h2 id="4-CSV-ファイルにまとめた既存ユーザーへライセンスを割り当てる"><a href="#4-CSV-ファイルにまとめた既存ユーザーへライセンスを割り当てる" class="headerlink" title="4. CSV ファイルにまとめた既存ユーザーへライセンスを割り当てる"></a>4. CSV ファイルにまとめた既存ユーザーへライセンスを割り当てる</h2><div class="alert is-info"><p class="alert-title">Note</p><p>まずは上述の手順 1 または 手順 2 にて、UserPrincipalName が列名として存在する CSV ファイルをご用意ください。</p><p>また、以後、csv ファイルのパスは変数 $path に格納しているものとします。</p><p>例) $path &#x3D; “C:\temp\assignedUser.csv”</p></div>
 <h3 id="PowerShell-を用いた一括割り当ての構文"><a href="#PowerShell-を用いた一括割り当ての構文" class="headerlink" title="PowerShell を用いた一括割り当ての構文"></a>PowerShell を用いた一括割り当ての構文</h3><p>さて、肝心の一括割り当て操作ですが、一括操作には以下の PowerShell コマンドレットの構文を用います。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Csv</span> &lt;csv ファイルのパス名&gt; | <span class="built_in">ForEach-Object</span> &#123; </span><br><span class="line">    &lt;各データに対するコマンドレット操作&gt; &#125;</span><br></pre></td></tr></table></figure>
 
-<p><code>Import-Csv</code> コマンド にて読み込まれた CSV ファイル内の各行データの情報を、<code>ForEach-Object &#123;&#125;</code> へパイプ（<code>|</code>）することで順次実行します。パイプにより渡されたオブジェクトは <code>$_</code> で参照します。実際に、以下の複数の例を見ながら理解を深めていただけると幸いです。</p>
+<p><code>Import-Csv</code> コマンド にて読み込まれた CSV ファイル内の各行データの情報を、<code>ForEach-Object {}</code> へパイプ（<code>|</code>）することで順次実行します。パイプにより渡されたオブジェクトは <code>$_</code> で参照します。実際に、以下の複数の例を見ながら理解を深めていただけると幸いです。</p>
 <h3 id="初めてライセンスを割り当てる場合"><a href="#初めてライセンスを割り当てる場合" class="headerlink" title="初めてライセンスを割り当てる場合"></a>初めてライセンスを割り当てる場合</h3><p>対象ユーザーについて、これまでライセンスの割り当てがなく今回初めてライセンスを割り当てる場合は、事前に以下のコマンドレットで [所在地] を設定します。以下例では、所在地として日本「JP」を設定しています。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Csv</span> <span class="variable">$path</span> | <span class="built_in">ForEach-Object</span> &#123; </span><br><span class="line">    <span class="built_in">Update-MgUser</span> <span class="literal">-UserId</span> <span class="variable">$_</span>.UserPrincipalName <span class="literal">-UsageLocation</span> <span class="string">&quot;JP&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
 
@@ -284,7 +284,7 @@
 <p>▼ 実行例</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Csv</span> <span class="variable">$path</span> | <span class="built_in">ForEach-Object</span> &#123; <span class="built_in">Set-MgUserLicense</span> <span class="literal">-UserId</span> <span class="variable">$_</span>.UserPrincipalName  <span class="literal">-AddLicenses</span> <span class="selector-tag">@</span>(<span class="variable">$License1</span>, <span class="variable">$License2</span>) <span class="literal">-RemoveLicenses</span> <span class="selector-tag">@</span>(<span class="string">&quot;b05e124f-c7cc-45a0-a6aa-8cf78c946968&quot;</span>, <span class="string">&quot;c7df2760-2c81-4ef7-b578-5b5392b571df&quot;</span>) &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="特定のライセンスを削除する場合"><a href="#特定のライセンスを削除する場合" class="headerlink" title="特定のライセンスを削除する場合"></a>特定のライセンスを削除する場合</h3><p>前回のライセンス管理操作のブログ記事 <a href="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/#idx5">シナリオ 2: ユーザーからライセンスを削除する</a> で記載した内容の、一括処理版です。「PowerShell を用いた一括割り当ての構文」のとおり、<code>Import-Csv &lt;csv ファイルのパス名&gt; | ForEach-Object &#123;&#125;</code> のブラケット内に、単体ユーザーに対する処理を埋め込みします。</p>
+<h3 id="特定のライセンスを削除する場合"><a href="#特定のライセンスを削除する場合" class="headerlink" title="特定のライセンスを削除する場合"></a>特定のライセンスを削除する場合</h3><p>前回のライセンス管理操作のブログ記事 <a href="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/#idx5">シナリオ 2: ユーザーからライセンスを削除する</a> で記載した内容の、一括処理版です。「PowerShell を用いた一括割り当ての構文」のとおり、<code>Import-Csv &lt;csv ファイルのパス名&gt; | ForEach-Object {}</code> のブラケット内に、単体ユーザーに対する処理を埋め込みします。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Csv</span> <span class="variable">$path</span> | <span class="built_in">ForEach-Object</span> &#123;</span><br><span class="line">    <span class="built_in">Set-MgUserLicense</span> <span class="literal">-UserId</span> <span class="variable">$_</span>.UserPrincipalName <span class="literal">-AddLicenses</span> <span class="selector-tag">@</span>() <span class="literal">-RemoveLicenses</span> <span class="selector-tag">@</span>(<span class="string">&quot;&lt;削除するライセンスの SkuId&gt;&quot;</span>) &#125;</span><br></pre></td></tr></table></figure>
 
 <p>ライセンス割り当て方のシナリオは多く考えられ、ここでは全てを取り上げることはできませんが、前回の記事ならびに本記事が Microsoft Graph PowerShell を用いたライセンス割り当てスクリプト作成などの一助となれば幸いです。</p>

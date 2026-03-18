@@ -21,11 +21,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/developer-tools.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/admin-consent-review.png">
 <meta property="article:published_time" content="2023-02-26T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.133Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.069Z">
 <meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="Application">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="OAuth">
-<meta property="article:tag" content="Application">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/consent-flow.png">
   
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6356a40f-471d-5c7e-baca-4c365928e08e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%AE%A1%E7%90%86%E8%80%85%E3%81%AE%E5%90%8C%E6%84%8F%E3%82%92%E5%AE%9F%E6%96%BD%E3%81%97%E3%81%9F%E3%81%AB%E3%82%82%E9%96%A2%E3%82%8F%E3%82%89%E3%81%9A%E3%80%8C%E7%AE%A1%E7%90%86%E8%80%85%E3%81%AE%E6%89%BF%E8%AA%8D%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%8D%E3%81%AE%E7%94%BB%E9%9D%A2%E3%81%8C%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-consent-framework-advance%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-consent-framework-advance.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-consent-framework-advance.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/" data-id="cmmketdze012z0nqph8qlezcg" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-consent-framework-advance/" data-id="cuidC-f4kaHVWh4nVp-izgfqZ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -185,7 +185,7 @@
 <p>アプリは 1 の Step で動作に必要な権限を指定します。以前の記事で説明した通り、権限は scope と呼ばれる単位で管理されており、たとえばメール データを取得するアプリであれば <code>Mail.Read</code> を scope に指定しユーザー同意を得る必要があります。</p>
 <h2 id="認可リクエストの詳細"><a href="#認可リクエストの詳細" class="headerlink" title="認可リクエストの詳細"></a>認可リクエストの詳細</h2><p>同意要求は Azure AD の認可 (authorize) エンドポイントを介して実施されます。具体的には、以下のエンドポイントに対し GET リクエストを送信することで、サインイン ユーザーに対し同意要求を実施することが可能です。</p>
 <ul>
-<li><code>https://login.microsoftonline.com/&#123;tenant&#125;/oauth2/v2.0/authorize</code></li>
+<li><code>https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize</code></li>
 </ul>
 <p>実際には上記の URL にアクセスするだけでは、「どのアプリ」が「どのような権限」を求めているか分かりません。オプショナルなパラメーターを除き、最低限必要なパラメーターを含めたリクエストの例は以下の通りです。</p>
 <ul>

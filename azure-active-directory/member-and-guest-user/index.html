@@ -6,12 +6,12 @@
   
   <title>Azure AD のメンバー ユーザーとゲスト ユーザー | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;12&#x2F;12&#x2F;azuread-member-guest&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 Note2017&#x2F;12&#x2F;12: 本記事の初版を投稿2018&#x2F;02&#x2F;26: Microsoft">
+  <meta name="description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;12&#x2F;12&#x2F;azuread-member-guest&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 Note2017&#x2F;12&#x2F;12: 本記事の初版を投稿2018&#x2F;0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure AD のメンバー ユーザーとゲスト ユーザー">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;12&#x2F;12&#x2F;azuread-member-guest&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 Note2017&#x2F;12&#x2F;12: 本記事の初版を投稿2018&#x2F;02&#x2F;26: Microsoft">
+<meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;12&#x2F;12&#x2F;azuread-member-guest&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 Note2017&#x2F;12&#x2F;12: 本記事の初版を投稿2018&#x2F;0">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/member-and-guest-new.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/personal-work-account.png">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/guest-users-permissions-are-limited1-new.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/guest-users-permissions-are-limited2-new.png">
 <meta property="article:published_time" content="2023-04-16T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.555Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.492Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD B2B">
 <meta name="twitter:card" content="summary">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,19 +161,19 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d747c8ee-3bf5-5eac-a51a-62df97ebb4d2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%AE%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC+%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%A8%E3%82%B2%E3%82%B9%E3%83%88+%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmember-and-guest-user%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmember-and-guest-user.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmember-and-guest-user.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/" data-id="cmmketdu500gb0nqpbngsasxe" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/member-and-guest-user/" data-id="cuidOtnP7m2uy7FTkVJn7aLg8" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2017/12/12/azuread-member-guest/">https://blogs.technet.microsoft.com/jpazureid/2017/12/12/azuread-member-guest/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
-<div class="alert is-info"><p class="alert-title">Note</p><p>2017/12/12: 本記事の初版を投稿</p><p>2018/02/26: Microsoft Connect のリタイアに伴い MSOnline モジュールのダウンロードができなくなったため記載を変更</p><p>2018/10/31: メンバーとゲストの既定のアクセス許可の比較情報のリンクを追加</p><p>2023/04/16: Msol コマンドのリタイアに伴い Microsoft Graph コマンドでの実施方法に更新  </p></div>
+<div class="alert is-info"><p class="alert-title">Note</p><p>2017&#x2F;12&#x2F;12: 本記事の初版を投稿</p><p>2018&#x2F;02&#x2F;26: Microsoft Connect のリタイアに伴い MSOnline モジュールのダウンロードができなくなったため記載を変更</p><p>2018&#x2F;10&#x2F;31: メンバーとゲストの既定のアクセス許可の比較情報のリンクを追加</p><p>2023&#x2F;04&#x2F;16: Msol コマンドのリタイアに伴い Microsoft Graph コマンドでの実施方法に更新  </p></div>
 <p>こんにちは、Azure &amp; Identity サポート チームの三輪です。</p>
 <p>Azure AD に所属しているユーザーの種類として、下記のように「メンバー」と「ゲスト」があります。今回は、こちらのユーザーの種類について説明します。</p>
 <p><img src="/blog/azure-active-directory/member-and-guest-user/member-and-guest-new.png"></p>
 <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>下記のように、個人アカウントや別テナントの職場または学校アカウント (組織アカウント) を追加した (Azure AD B2B の機能を利用した) 場合に、ユーザーの種類が「ゲスト」として追加されます。</p>
 <p><img src="/blog/azure-active-directory/member-and-guest-user/personal-work-account.png"></p>
-<p>これ以外の Azure のサブスクリプションのサインアップで利用した個人アカウントや組織内のドメイン (上記の例の場合: contso.com) をユーザー名 (例: <a href="mailto:&#116;&#x65;&#x73;&#x74;&#x40;&#x63;&#x6f;&#x6e;&#x74;&#111;&#115;&#x6f;&#46;&#x63;&#111;&#x6d;">&#116;&#x65;&#x73;&#x74;&#x40;&#x63;&#x6f;&#x6e;&#x74;&#111;&#115;&#x6f;&#46;&#x63;&#111;&#x6d;</a>) に持つユーザーは「メンバー」として登録されます。また、現在は利用できないクラシック ポータル (旧ポータル) より追加した外部ユーザーについては「メンバー」として登録されております。</p>
+<p>これ以外の Azure のサブスクリプションのサインアップで利用した個人アカウントや組織内のドメイン (上記の例の場合: contso.com) をユーザー名 (例: <a href="mailto:&#116;&#101;&#115;&#116;&#x40;&#x63;&#111;&#x6e;&#116;&#111;&#x73;&#111;&#x2e;&#99;&#x6f;&#x6d;">test@contoso.com</a>) に持つユーザーは「メンバー」として登録されます。また、現在は利用できないクラシック ポータル (旧ポータル) より追加した外部ユーザーについては「メンバー」として登録されております。</p>
 <h2 id="詳細"><a href="#詳細" class="headerlink" title="詳細"></a>詳細</h2><p>既定ではゲスト ユーザーに対しては、 Azure AD のデータへのアクセスが制限されています。このため、ゲスト ユーザーで Azure AD テナントにサインインした場合、招待された Azure AD のユーザーの一覧を参照することはできませんし、各種設定の参照および変更も制限されています。もちろん、サブスクリプションに対する権限を付与していない場合は、サブスクリプションのリソースを操作することもできません。一般ユーザーとゲスト ユーザーがそれぞれできること (アクセス許可の比較) は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/users-default-permissions#compare-member-and-guest-default-permissions">こちら</a>をご参照ください。</p>
 <p><img src="/blog/azure-active-directory/member-and-guest-user/access-denied-new.png"></p>
 <p><img src="/blog/azure-active-directory/member-and-guest-user/no-access-permission-new.png"></p>
@@ -213,12 +213,14 @@
  <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MgUser</span> <span class="literal">-All</span> <span class="literal">-Property</span> UserPrincipalName,UserType | <span class="built_in">Format-Table</span> UserPrincipalName,UserType</span><br></pre></td></tr></table></figure>
 
 <p> 出力例:</p>
- <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">UserPrincipalName                             UserType</span><br><span class="line">user_live.com<span class="comment">#EXT#@contoso.onmicrosoft.com    Guest  -&gt; 「Guest」 であることが確認できます。</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">UserPrincipalName                             UserType</span><br><span class="line">user_live.com<span class="comment">#EXT#@contoso.onmicrosoft.com    Guest  -&gt; 「Guest」 であることが確認できます。</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>以下のコマンドを実行して、対象ユーザーの UserType を 「Member」 に変更します。</p>
  <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Update-MgUser</span> <span class="literal">-UserId</span> &lt;対象ユーザーの オブジェクトID または UserPrincipalName&gt; <span class="literal">-UserType</span> Member</span><br></pre></td></tr></table></figure>
 
 <p> 実行例:</p>
- <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Update-MgUser</span> <span class="literal">-UserId</span> user_live.com<span class="comment">#EXT#@contoso.onmicrosoft.com -UserType Member</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Update-MgUser</span> <span class="literal">-UserId</span> user_live.com<span class="comment">#EXT#@contoso.onmicrosoft.com -UserType Member</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>再度以下のコマンドを実行して、対象ユーザーの UserType を確認します。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MgUser</span> <span class="literal">-All</span> <span class="literal">-Property</span> UserPrincipalName,UserType | <span class="built_in">Format-Table</span> UserPrincipalName,UserType</span><br></pre></td></tr></table></figure>
 

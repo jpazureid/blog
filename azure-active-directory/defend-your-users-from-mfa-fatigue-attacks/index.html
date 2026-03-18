@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/mfarequest.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/cannotseethenumber.png">
 <meta property="article:published_time" content="2023-02-15T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.312Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.250Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+b4234ca8-4571-5a4d-b83e-3c09243abee0%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Authenticator+%E3%81%AE+MFA+%E7%96%B2%E5%8A%B4%E6%94%BB%E6%92%83%E5%AF%BE%E7%AD%96+-+%E6%95%B0%E5%80%A4%E3%81%AE%E4%B8%80%E8%87%B4%E3%81%AB%E3%82%88%E3%82%8B+MFA+%E3%81%8C+%E6%9C%89%E5%8A%B9%E5%8C%96%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fdefend-your-users-from-mfa-fatigue-attacks%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fdefend-your-users-from-mfa-fatigue-attacks.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fdefend-your-users-from-mfa-fatigue-attacks.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/" data-id="cmmketdzx01400nqp1e3xfvic" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/" data-id="cuidGqcUZXts_3fn8F5VbwMwS" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,21 +174,22 @@
 <p><img src="/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/Karen_Walker_1-1664319621345.png"></p>
 <p>MFA 疲労攻撃とは、攻撃者が繰り返し何度も MFA 要求を発生させ、その要求を受け取ったユーザーが誤って MFA 要求を承認することを狙った手口です。</p>
 <p>なぜこのような手口が通用するのかというと、音声通話への応答やプッシュ通知の承諾といった単純な MFA 承認方法では、ユーザーが一連の認証の流れ (コンテキスト) の中にいなくても、承諾を完了できてしまえるからです。突然、何の脈絡もなくスマートフォンにプッシュ通知が来たとして、ユーザーが承諾ボタンを押してしまうと攻撃者に侵入を許してしまうことになります。</p>
-<p>例えば私の Microsoft Authenticator に、突然 MFA のプッシュ通知が発生したと仮定します。アプリには「サインインを承認しますか ? (拒否 / 承認)」という選択肢が表示されます。私はこのサインインに身に覚えがないので「拒否」を押下しますが、まだ IT リテラシーの高くない利用者や、たまたまそのタイミングでクラウド アプリにサインインを試行している人であれば、誤って「承認」を選択してしまう可能性もあります。また、攻撃者が繰り返しサインインを試行してプッシュ通知を行うと、ユーザーには複数の通知が届き、どれが自身の意図したプッシュ通知か判断できなくなります。MFA 疲労攻撃は、このような「ユーザーの誤操作」を狙った攻撃です。</p>
+<p>例えば私の Microsoft Authenticator に、突然 MFA のプッシュ通知が発生したと仮定します。アプリには「サインインを承認しますか ? (拒否 &#x2F; 承認)」という選択肢が表示されます。私はこのサインインに身に覚えがないので「拒否」を押下しますが、まだ IT リテラシーの高くない利用者や、たまたまそのタイミングでクラウド アプリにサインインを試行している人であれば、誤って「承認」を選択してしまう可能性もあります。また、攻撃者が繰り返しサインインを試行してプッシュ通知を行うと、ユーザーには複数の通知が届き、どれが自身の意図したプッシュ通知か判断できなくなります。MFA 疲労攻撃は、このような「ユーザーの誤操作」を狙った攻撃です。</p>
 <p>この攻撃が成り立つのは、一連の認証操作において、認証の流れ (コンテキスト) が考慮されていないためです。実際に画面の前でサインインをしていなくても、Microsoft Authenticator 上で「承認」を押すことが “できてしまう” という点が問題です。音声通話 MFA も仕組みは同様です (自身が認証操作をしているか否かにかかわらず、認証要求の電話に対して、シャープ “#” ボタンを押下してしまえば承認できてしまう)。</p>
 <p>本記事ではこのような「MFA の誤承認」からユーザーを保護するための、Microsoft Authenticator における MFA 強化の機能についてご紹介します。</p>
 <h2 id="1-「プッシュ通知に番号の一致が必要」機能によって-MFA-の誤承認発生を防止"><a href="#1-「プッシュ通知に番号の一致が必要」機能によって-MFA-の誤承認発生を防止" class="headerlink" title="1. 「プッシュ通知に番号の一致が必要」機能によって MFA の誤承認発生を防止"></a>1. 「プッシュ通知に番号の一致が必要」機能によって MFA の誤承認発生を防止</h2><p>Microsoft Authenticator の「プッシュ通知に番号の一致が必要」を有効化すると、MFA の際に、「サインイン画面に表示される 2 桁の数字を、Microsoft Authenticator の画面に入力する」という操作が要求されます。</p>
 <p>仮にユーザーの手元の Microsoft Authenticator に、見知らぬ MFA 要求が通知された場合であっても、ユーザーはこれを許可することができません。なぜならユーザーは画面の前におらず、Microsoft Authenticator に入力するための正しい数字を知りようがないからです。この仕組みによって、ユーザーが MFA 要求を誤承認するリスクを大幅に抑えることができます。</p>
 <p><img src="/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/number-matching.png">  </p>
-<p>「プッシュ通知に番号の一致が必要」の機能は、当ブログ公開時 (2022/10/19) 時点でプレビュー機能でしたが、現在は一般機能として公開済みです。</p>
+<p>「プッシュ通知に番号の一致が必要」の機能は、当ブログ公開時 (2022&#x2F;10&#x2F;19) 時点でプレビュー機能でしたが、現在は一般機能として公開済みです。</p>
 <p><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673">公開情報 : Advanced Microsoft Authenticator security features are now generally available!</a></p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>Update: 本機能は 2023 年の 5 月 8 日以降、すべてのユーザーに自動で有効化することを予定しています。</p></div>
 <p>本機能は 2021 年 11 月にリリースされ、すでに 1 万近くの組織に導入されています。また「番号の一致」は、Microsoft Authenticator を利用したパスワードレス サインインの手段としてもご利用いただくことができます。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-number-match">公開情報: 多要素認証 (MFA) 通知で数値の一致を使用する方法 - 認証方法ポリシー</a></p>
 <h2 id="2-ユーザーが不正アクセスを判断できるように、MFA-要求にサインイン情報を表示"><a href="#2-ユーザーが不正アクセスを判断できるように、MFA-要求にサインイン情報を表示" class="headerlink" title="2. ユーザーが不正アクセスを判断できるように、MFA 要求にサインイン情報を表示"></a>2. ユーザーが不正アクセスを判断できるように、MFA 要求にサインイン情報を表示</h2><p>「プッシュ通知とパスワードレス通知に地理的な場所を表示する」の機能を有効化すると、サインインの発生元の IP アドレスに基づいた位置情報が Microsoft Authenticator の画面に表示されます。また「プッシュ通知とパスワードレス通知にアプリケーション名を表示する」の機能を有効化すると、サインイン先のアプリケーションの名前も表示されます。</p>
-<p>例えば、ユーザー自身が名古屋にいるのに、サインイン元の位置情報が「ブラジル / リオデジャネイロ」と表示された場合、ユーザーは「この MFA 要求はおかしいかも？」と、一瞬手を止めて不正アクセスを疑うきっかけになることが期待されます。</p>
+<p>例えば、ユーザー自身が名古屋にいるのに、サインイン元の位置情報が「ブラジル &#x2F; リオデジャネイロ」と表示された場合、ユーザーは「この MFA 要求はおかしいかも？」と、一瞬手を止めて不正アクセスを疑うきっかけになることが期待されます。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/how-to-mfa-additional-context">公開情報: Microsoft Authenticator 通知で追加のコンテキストを使用する方法 - 認証方法ポリシー</a></p>
-<p>なお、上記の機能がすべて有効化の対象となっているユーザーでは、Authenticator 宛の MFA 要求は、下記画像のようになります。</p>
+<p>なお、上記の機能がすべて有効化の対象となっているユーザーでは、Authenticator 宛の MFA 要求は、下記画像のようになります。
+	 </p>
 <ul>
 <li>アクセス先のアプリケーションが表示されます。下記例では “App: Azure Portal” と表示されています。</li>
 <li>アクセス元の位置情報が “Location : Tokyo Japan” と、地図と合わせて表示されます。</li>
@@ -234,9 +235,9 @@
 <li><p>該当のユーザーに対して MFA を有効化</p>
 <p> 上記の Microsoft Authenticator の認証方法ポリシー設定は、MFA が要求された際のアプリ上での動作をカスタマイズする項目です。ユーザーに対しての MFA 要求の有効化は、別途構成する必要があります。MFA の有効化方法は複数ありますが、本記事では条件付きアクセス ポリシーによる有効化の手順を記載します。</p>
 <ul>
-<li><p> [Azure Active Directory] &gt; [セキュリティ] に進みます </p>
+<li><p>[Azure Active Directory] &gt; [セキュリティ] に進みます </p>
 </li>
-<li><p> [条件付きアクセス] &gt; [ポリシー] に進みます</p>
+<li><p>[条件付きアクセス] &gt; [ポリシー] に進みます</p>
 </li>
 <li><p>[+ 新しいポリシー] を押下し、以下の内容でポリシーを構成します</p>
 <ul>
@@ -244,8 +245,10 @@
 </li>
 <li><p>[割り当て] : </p>
 <ul>
-<li>[ユーザーまたはワークロード ID] : “Number matching test” グループを指定</li>
-<li>[クラウド アプリまたは操作] : “すべてのクラウド アプリ” もしくは何らかの特定のアプリケーションを指定</li>
+<li><p>[ユーザーまたはワークロード ID] : “Number matching test” グループを指定</p>
+</li>
+<li><p>[クラウド アプリまたは操作] : “すべてのクラウド アプリ” もしくは何らかの特定のアプリケーションを指定</p>
+</li>
 </ul>
 </li>
 <li><p>[アクセス制御] :</p>
@@ -261,18 +264,20 @@
 <p> 上記を設定後、 “Number matching test” に所属するユーザーによって何らかのアプリケーションにアクセスいただくことで、強化された Microsoft Authenticator の MFA 機能が動作することをご確認ください。設定にあたってのご不明点やご相談事項などございましたら、弊社サポート チームまでお問い合わせください。</p>
 </li>
 </ol>
-<h2 id="Q-amp-A-随時追記予定"><a href="#Q-amp-A-随時追記予定" class="headerlink" title="Q &amp; A (随時追記予定)"></a>Q &amp; A (随時追記予定)</h2><p>Q1. Microsoft Authenticator のアプリ上で発生したサインインで「数字の一致」による MFA を実施する際に、数字の表示画面 / 数字の入力プロンプト が重なってしまい、サインインの完了ができません。</p>
+<h2 id="Q-A-随時追記予定"><a href="#Q-A-随時追記予定" class="headerlink" title="Q &amp; A (随時追記予定)"></a>Q &amp; A (随時追記予定)</h2><p>Q1. Microsoft Authenticator のアプリ上で発生したサインインで「数字の一致」による MFA を実施する際に、数字の表示画面 &#x2F; 数字の入力プロンプト が重なってしまい、サインインの完了ができません。</p>
 <p>A1. 一番下の “番号が表示されません” を選択ください。3 秒間のみ数字の入力プロンプトが非表示となり、MFA 認証用の数字が表示されます。<br><img src="/blog/azure-active-directory/defend-your-users-from-mfa-fatigue-attacks/cannotseethenumber.png">  </p>
 <h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>Microsoft Authenticator の優れた点の 1 つは、今後もさらなる進化および多様化が懸念されるセキュリティ攻撃に対して、いち早く対応できるよう継続的に開発および投資を行っていることです。 Microsoft Authenticator が企業にとって、最も安全かつ便利で費用対効果の高い認証方法であり続けるために、今後もさらに多くの機能強化を続けて参ります。</p>
 <p>各種 MFA 強化の機能の一般公開 (GA) にあたって、利用者の皆様の生のご意見やフィードバックはとても重要です。MFA 疲労攻撃に関する英語記事 (後述)、もしくは <a target="_blank" rel="noopener" href="https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789">Azure フィードバック サイト</a> まで、ぜひご意見をお寄せいただけますと幸いです。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>Microsoft Tech Community の記事は、新 -&gt; 古 の順で記載しております。</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673">(再掲) Advanced Microsoft Authenticator security features are now generally available! - Microsoft Tech Community | Published Oct 25 2022</a></li>
-<li><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/defend-your-users-from-mfa-fatigue-attacks/ba-p/2365677">(再掲) Defend your users from MFA fatigue attacks - Microsoft Tech Community | Published Sep 28 2022</a></li>
-<li><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-microsoft-authenticator-security-features-are-now-available/ba-p/2464386">New Microsoft Authenticator security features are now available! - Microsoft Tech Community | Published Nov 18 2021</a></li>
-</ul>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789">Microsoft Azure  |  Share your Ideas - Azure Active Directory</a></li>
+<li><p><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/advanced-microsoft-authenticator-security-features-are-now/ba-p/2365673">(再掲) Advanced Microsoft Authenticator security features are now generally available! - Microsoft Tech Community | Published Oct 25 2022</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/defend-your-users-from-mfa-fatigue-attacks/ba-p/2365677">(再掲) Defend your users from MFA fatigue attacks - Microsoft Tech Community | Published Sep 28 2022</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/new-microsoft-authenticator-security-features-are-now-available/ba-p/2464386">New Microsoft Authenticator security features are now available! - Microsoft Tech Community | Published Nov 18 2021</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789">Microsoft Azure  |  Share your Ideas - Azure Active Directory</a></p>
+</li>
 </ul>
 
       

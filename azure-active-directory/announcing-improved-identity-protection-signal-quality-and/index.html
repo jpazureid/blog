@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/announcing-improved-identity-protection-signal-quality-and/IdentityProtection.png">
 <meta property="article:published_time" content="2021-09-26T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.100Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.037Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+999a0025-73a4-52a4-b6d2-495850723c44%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BIdentity+Protection+%E3%81%AE%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E5%93%81%E8%B3%AA%E3%81%A8%E8%A1%A8%E7%A4%BA%E3%81%AE%E5%90%91%E4%B8%8A%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fannouncing-improved-identity-protection-signal-quality-and%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fannouncing-improved-identity-protection-signal-quality-and.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fannouncing-improved-identity-protection-signal-quality-and.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/announcing-improved-identity-protection-signal-quality-and/" data-id="cmmketdql005m0nqp7pesfug6" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/announcing-improved-identity-protection-signal-quality-and/" data-id="cuidWT7MqF8u9ZaIYyrTccMqx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,7 +174,7 @@
 <p>まず、見慣れないサインインのプロパティが検出する範囲を拡大することにより、非対話型のサインインを検出することができるようになりました。見慣れないサインインのプロパティは、ユーザーの現在のサインインと過去のサインインの傾向がどれだけ異なるかをリアルタイムに評価します。以前までは、上記の検出は対話型のサインインに対してのみ行われていましたが、現在はセッション クッキーも評価に含むよう改善しました。ほとんどのテナントでは、この機能によって見慣れないサインインのプロパティの検出数が大幅に増加することはありませんが、見慣れないサインインのプロパティのフラグが立てられた非対話型のサインインは、トークンのリプレイ攻撃の可能性があるため、より慎重に確認する必要があります。</p>
 <p>非対話型の見慣れないサインインのプロパティの検出結果は、[リスク検出] および [危険なサインイン] のレポートで確認可能です。危険なサインイン レポートでは、既定で対話型および非対話型の両方を表示するようにいたしました。下図のとおり、[サインインの種類] フィルターを使用することで、表示を切り替えることができます。</p>
 <p>(Azure Active Directory &gt; セキュリティ &gt; Identity Protection &gt; 危険なサインイン)<br><img src="/blog/azure-active-directory/announcing-improved-identity-protection-signal-quality-and/IdentityProtection.png"></p>
-<p>さらに、危険なサインインのうち、低リスクに該当する信号対雑音比 (S/N 比) を大幅に改善しました。多くのお客様より、調査する際に低リスクのサインインが多すぎるというご意見をいただいておりました。管理者やセキュリティ担当者が、最も重要な検出に集中できるようにするため、シグナル品質と検出方法を改善いたしました。その結果、低リスクの危険なサインインに対するアラート数を <strong>60% 以上削減し、同時に精度を大幅に向上させました。</strong></p>
+<p>さらに、危険なサインインのうち、低リスクに該当する信号対雑音比 (S&#x2F;N 比) を大幅に改善しました。多くのお客様より、調査する際に低リスクのサインインが多すぎるというご意見をいただいておりました。管理者やセキュリティ担当者が、最も重要な検出に集中できるようにするため、シグナル品質と検出方法を改善いたしました。その結果、低リスクの危険なサインインに対するアラート数を <strong>60% 以上削減し、同時に精度を大幅に向上させました。</strong></p>
 <p>今回の変更を担当したデータ サイエンティストの Fefian Jian 氏に、どのように実現したかを聞いてみましょう。</p>
 <h2 id="変更の裏側-今回の改善を支えるデータ-サイエンス"><a href="#変更の裏側-今回の改善を支えるデータ-サイエンス" class="headerlink" title="変更の裏側: 今回の改善を支えるデータ サイエンス"></a>変更の裏側: 今回の改善を支えるデータ サイエンス</h2><p>Identity Protection の検知システムは、リアルタイム (認証時) とオフライン (認証後) の両方で実行され、サインインやユーザーが侵害されているかどうかを判断します。認証後に実行されるオフライン機械学習モデルは、サインインを複数の異なる機能とアルゴリズムで採点し、侵害されたサインインかどうかを判断します。このモデルの出力は、サインインのリスク レベルを集約したものであり、つまりサインインが侵害されているかどうかの最新の評価結果となります。</p>
 <p>今回、オフラインの機械学習モデルに変更を加えることで、精度を向上させ、リスクの低い危険なサインインのノイズ (アラート) を低減しました。この変更により、<strong>リスクが少ないサインインのアラート数が 60% 以上減少</strong>し、アラートの質を意味する精度が <strong>100％ 向上</strong>しました。つまり、お客様の環境においてリスクの低い危険なサインインのアラート数が減り、検知の質は向上するということになります。</p>

@@ -34,15 +34,15 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-error-tpm/solution_aadr_step5.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-error-tpm/solution_aadr_step7.png">
 <meta property="article:published_time" content="2020-08-23T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.156Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.091Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="トラブルシューティング">
+<meta property="article:tag" content="80090016">
+<meta property="article:tag" content="80090030">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="TPM">
 <meta property="article:tag" content="Trusted Platform Module">
 <meta property="article:tag" content="トラステッド プラットフォーム モジュール">
-<meta property="article:tag" content="80090016">
-<meta property="article:tag" content="80090030">
+<meta property="article:tag" content="トラブルシューティング">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-error-tpm/tpm-error1.png">
   
@@ -64,7 +64,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -181,7 +181,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8b497d1b-820e-5c29-aa23-f6da40738ff8%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BTPM+%E3%82%A8%E3%83%A9%E3%83%BC+80090016+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fwhat-to-do-error-tpm%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fwhat-to-do-error-tpm.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fwhat-to-do-error-tpm.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-error-tpm/" data-id="cmmketdx400pb0nqpgmvi9kzd" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-error-tpm/" data-id="cuidZlu7iwKwohfDbVaDp7yQu" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -208,7 +208,7 @@
 <p>3-1. それぞれの機能、アプリケーションごとに確認した ”TPM をクリアする前に実施する手順” を行います。<br>3-2. [ファイル名を指定して実行] で “tpm.msc” を入力し TPM 管理コンソール画面を起動します。<br>3-3. “TPM をクリア” ボタンをクリックします。<br>3-4. 画面に従ってコンピューターを再起動します。<br>3-5. 次回起動時にハードウェア側の画面が表示されますので、画面に従って TPM クリアを実行します。<br>3-6. それぞれの機能、アプリケーションごとに確認した “TPM をクリアした後に実施する手順” を行います。</p>
 </blockquote>
 <p>TPM のリセットは、BitLocker や Windows Hello など、TPM を利用している機能やアプリケーションに影響をおよぼす可能性があります。弊社製品につきましては、上記参考サイトに、それぞれ TPM のクリア前後に行うべきこと、影響範囲についてまとめています。</p>
-<p><span style="color:red;"><strong>※※※ ご注意ポイント ※※※</strong></span><br>ドメインからの離脱やアカウントを削除する手順も含まれていますため、**<u>必要なファイルやフォルダーなどの情報をユーザーに依存しないドライブやファイル サーバー上などへバックアップいただくよう何卒お願いいたします</u>**。<br>他社製品への TPM リセットの影響につきましては弊社では判断がいたしかねますため、開発ベンダー様へ TPM リセットの影響について別途ご確認をお願いいたします。</p>
+<p><span style="color:red;"><strong>※※※ ご注意ポイント ※※※</strong></span><br>ドメインからの離脱やアカウントを削除する手順も含まれていますため、<strong><u>必要なファイルやフォルダーなどの情報をユーザーに依存しないドライブやファイル サーバー上などへバックアップいただくよう何卒お願いいたします</u></strong>。<br>他社製品への TPM リセットの影響につきましては弊社では判断がいたしかねますため、開発ベンダー様へ TPM リセットの影響について別途ご確認をお願いいたします。</p>
 <h3 id="2-Azure-AD-からデバイス登録を解除し再度デバイス登録する"><a href="#2-Azure-AD-からデバイス登録を解除し再度デバイス登録する" class="headerlink" title="2) Azure AD からデバイス登録を解除し再度デバイス登録する"></a>2) Azure AD からデバイス登録を解除し再度デバイス登録する</h3><p>「Azure AD 参加」、「ハイブリッド Azure AD 参加」、「Azure AD 登録」のそれぞれのパターンについて上記の資料内に手順が記載されていますが、念のためそれぞれの手順をご確認ください。<br>なお、Windows 10 v2004 でのスクリーン ショットも掲載していますため、お手元でお試しいただく際の参考となりましたら幸いです。</p>
 <h4 id="Azure-AD-参加"><a href="#Azure-AD-参加" class="headerlink" title="Azure AD 参加"></a>Azure AD 参加</h4><p>TPM のリセット後、下記手順で Azure AD から離脱して、再度 Azure AD 参加を行います。<br>もしすでに Azure AD から離脱している場合は、手順 7. からご実施ください。</p>
 <ol>
@@ -225,7 +225,7 @@
 <h4 id="ハイブリッド-Azure-AD-参加"><a href="#ハイブリッド-Azure-AD-参加" class="headerlink" title="ハイブリッド Azure AD 参加"></a>ハイブリッド Azure AD 参加</h4><p>TPM のリセット後、下記手順でオンプレミス AD から離脱して、再度オンプレミス AD に参加します。<br>もしすでにオンプレミス AD から離脱している場合は、手順 7. からご実施ください。</p>
 <ol>
 <li>通常デバイスを利用するユーザーでデバイスにログオンします。</li>
-<li>PowerShell を [管理者として実行] より起動し、下記のコマンドを実行します。<br>dsregcmd.exe /leave</li>
+<li>PowerShell を [管理者として実行] より起動し、下記のコマンドを実行します。<br>dsregcmd.exe &#x2F;leave</li>
 <li>[スタート] - [設定] (歯車のマーク) - [アカウント] - [職場または学校にアクセスする] を開きます。</li>
 <li>以下のように、”〇〇〇 AD ドメインに接続済み” のエントリを選択し、[切断] をクリックします。<br><img src="/blog/azure-active-directory/what-to-do-error-tpm/solution_haadj_step4.png"></li>
 <li>以下のポップアップが表示されたら、内容を確認の上 [はい] および [切断] をクリックします。<br><img src="/blog/azure-active-directory/what-to-do-error-tpm/solution_haadj_step5-1.png"><br><img src="/blog/azure-active-directory/what-to-do-error-tpm/solution_haadj_step5-2.png"></li>

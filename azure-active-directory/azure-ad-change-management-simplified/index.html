@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/change-comms-timeline.png">
 <meta property="article:published_time" content="2022-03-03T21:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.133Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.069Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+10025245-2680-5bc1-b766-e1f6af4a55e3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%AE%E5%A4%89%E6%9B%B4%E7%AE%A1%E7%90%86%E3%82%92%E7%B0%A1%E7%B4%A0%E5%8C%96%E3%81%97%E3%81%BE%E3%81%99%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-change-management-simplified%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-change-management-simplified.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-change-management-simplified.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/" data-id="cmmketdqx006k0nqp5a29e3y2" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-change-management-simplified/" data-id="cuidjr2p92CPHBl3KUD-mPw3a" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,7 +174,7 @@
 <li>Azure AD Graph および MSOnline PowerShell の <a href="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/">ライセンス割り当て API</a> と PowerShell コマンドレットについては引き続き 2022 年 8 月 26 日にリタイアする予定です。Microsoft Graph からライセンス管理 API にアクセスするようアプリを移行ください。詳しくは、<a href="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/">Microsoft Graph からライセンス管理 API にアクセスするようアプリを移行する</a> をご覧ください。</li>
 <li>Azure AD の管理に Azure AD PowerShell や MSOnline PowerShell モジュールを使っている方は、ぜひ Microsoft Graph PowerShell SDK をお試しくださいとちうことを <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/automate-and-manage-azure-ad-tasks-at-scale-with-the-microsoft/ba-p/1942489">以前にお伝え</a> しました。Microsoft では現在および今後の PowerShell への投資をすべて Microsoft Graph PowerShell SDK に対して行っており、これは今後も変わりはありません。6 月 30 日に Azure AD Graph API を廃止しないという発表を受け、今後の弊社の目標は Azure AD Graph API と MSOnline モジュールに依存する既存のスクリプトならびに PowerShell プロセスを Microsoft Graph PowerShell SDK に移行するため、そのガイダンスとツールを提供することとなります。これは、 2022 年 12 月以降に <strong>2 つの PowerShell モジュール (MSOL &amp; AAD) が廃止となる予定</strong> であるためです。詳しくは <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/microsoftgraph/migration-steps?view=graph-powershell-beta">こちら</a> と <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-faq">こちら</a> をご確認ください。</li>
 <li>ADAL のサポート終了は、6 月 30 日から 2022 年 12 月に延長されます。 ADAL のアプリは引き続き動作しますが、サポートやセキュリティ修正サポート終了後は提供されません。 また、ADAL への機能追加や新しいプラットフォームへの対応などのリリースは予定されていません。詳しくは、<a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363">Update your applications to use Microsoft Authentication Library and Microsoft Graph API</a> を参照ください。</li>
-<li>パブリック クラウドのレガシーな TLS 1.0 および 1.1 プロトコルの廃止を開始し、今年中に段階的に廃止を進めていく予定です。詳しくは、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor">Azure AD TLS 1.0/1.1 は非推奨になるため TLS 1.2 サポートを有効にする - Active Directory | Microsoft Docs</a> を参照ください。</li>
+<li>パブリック クラウドのレガシーな TLS 1.0 および 1.1 プロトコルの廃止を開始し、今年中に段階的に廃止を進めていく予定です。詳しくは、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/troubleshoot/azure/active-directory/enable-support-tls-environment?tabs=azure-monitor">Azure AD TLS 1.0&#x2F;1.1 は非推奨になるため TLS 1.2 サポートを有効にする - Active Directory | Microsoft Docs</a> を参照ください。</li>
 <li>Azure AD Connect Sync の過去のバージョンは、それより新しいバージョンが出た日から 12 ヶ月後に非推奨となります。[Azure AD Connect Sync サーバーをアップグレードするには、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-upgrade-previous-version">Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする</a> をご覧ください。  </li>
 <li>2020 年 8 月以前に作成された有効なテナントについて、MFA と SSPR の統合されたセキュリティ情報登録ページを有効にする予定です。このユーザー体験の詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/concept-registration-mfa-sspr-combined">Azure Active Directory での統合されたセキュリティ情報の登録の概要</a> をご覧ください。</li>
 <li>Azure Key Vault チームは、お客様のシークレット、キー、および証明書が誤って削除されないよう保護するために、すべてのキー コンテナーにソフト デリートの保護を適用することに取り組んでいます。ソフト デリートは、削除されたキー コンテナーに加え、キー コンテナー内に保存されたシークレットを最大 90 日間復元可能にする機能で、お客様は削除されたシークレットをご自身で復元することが可能です。既存のすべてのキー コンテナーのリソースに対し、2025 年 2 月 1 日までにソフト デリートが自動的に有効になります。ソフト デリートは有効化のみが可能です。つまり一度有効にすると、この機能を無効にすることはできません。詳しくは <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/key-vault/general/soft-delete-change">すべてのキー コンテナーでの論理的な削除の有効化</a> をご覧ください。</li>

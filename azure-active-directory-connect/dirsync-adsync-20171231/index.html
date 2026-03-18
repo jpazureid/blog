@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;11&#x2F;02&#x2F;dirsync-adsync-20171231-%e3%81%a7%e7%b5%82%e4%ba%86%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b&#x2F; の内容を移行したものです。元">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2017-11-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.884Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.822Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta property="article:tag" content="ADSync">
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ea179a6b-8f8e-59b2-af26-1e0022e15784%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BDirSync+%26+ADSync+%E2%80%93+2017%2F12%2F31+%E3%81%A7%E7%B5%82%E4%BA%86%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fdirsync-adsync-20171231%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fdirsync-adsync-20171231.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fdirsync-adsync-20171231.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/dirsync-adsync-20171231/" data-id="cmmketdpc00240nqpfk96h6s4" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/dirsync-adsync-20171231/" data-id="cuidf4KY3yvTecox-1S8xhE5S" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -167,12 +167,12 @@
 <p>2017 年の 4 月 13 日にサポートが終了した旧 Azure AD 同期ツールである DirSync と ADSync ですが、今年いっぱいで遂に Azure AD への通信も行えなくなります。<br>公開情報としても 2017 年 7 月から掲載していますが、DirSync からの移行を検討中です、といった話をまだお客様から聞くことがあります。<br>Azure AD Connect への移行が完了していない皆様、移行するなら今です！  </p>
 <h1 id="Azure-AD-Connect-への移行方法"><a href="#Azure-AD-Connect-への移行方法" class="headerlink" title="Azure AD Connect への移行方法"></a>Azure AD Connect への移行方法</h1><p>移行する方法は 2 通りあります。</p>
 <ol>
-<li><strong>並列デプロイ (DirSync) / スウィング移行 (ADSync)</strong>  </li>
-<li><strong>インプレース アップグレード</strong>  </li>
+<li><strong>並列デプロイ (DirSync) &#x2F; スウィング移行 (ADSync)</strong>  </li>
+<li><strong>インプレース アップグレード</strong></li>
 </ol>
 <p>それぞれの特徴をリストアップしてみました。  </p>
 <ol>
-<li><strong>並列デプロイ/スウィング移行</strong></li>
+<li><strong>並列デプロイ&#x2F;スウィング移行</strong></li>
 </ol>
 <ul>
 <li>同期対象オブジェクトの数が 50,000 を超える場合に推奨します。  </li>
@@ -180,27 +180,27 @@
 <li>Azure AD Connect 用のサーバーが 2 台必要。(ドメイン コントローラーにインストールすることも可能ですが、運用環境における実績はあまりありません。)  </li>
 <li>同期を行えない時間を最小限に抑えることができる。  </li>
 <li>ステージングモードである程度同期処理を確認してから Azure AD Connect での同期を開始できる。  </li>
-<li>インプレース アップグレードと比較すると工数は増えます。  </li>
+<li>インプレース アップグレードと比較すると工数は増えます。</li>
 </ul>
 <ol start="2">
-<li><strong>インプレース アップグレード</strong>  </li>
+<li><strong>インプレース アップグレード</strong></li>
 </ol>
 <ul>
 <li>同期対象オブジェクトの数が 50,000 を超えない場合に推奨します。  </li>
 <li>別途サーバーを準備する必要が無い。  </li>
 <li>設定は自動的に移行され、完了後は自動的に同期を再開するため、工数が少なく済みます。  </li>
-<li>アップグレード中は同期が行われません。(一般的に 50,000 オブジェクトを同期するために約 3 時間要します)  </li>
+<li>アップグレード中は同期が行われません。(一般的に 50,000 オブジェクトを同期するために約 3 時間要します)</li>
 </ul>
 <p>以下のサイトにアップグレード手順に関する詳細がありますのでご確認ください。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-dirsync-upgrade-get-started">DirSync からのアップグレード</a>  </li>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-upgrade-previous-version">ADSync からのアップグレード</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-upgrade-previous-version">ADSync からのアップグレード</a></li>
 </ul>
 <p>移行後によくあるお問い合わせ  </p>
 <p>旧ツールから Azure AD Connect への移行後のお問い合わせとして、「読み仮名などの Exchange 関連の属性が消えた !」 というのがあります。<br>Azure AD Connect では既定の同期ルールに「Exchange 関連属性は、属性 mailNickName に値が含まれる場合にのみ同期される」という項目が追加されています。  DirSync の場合には mailNickName 属性値が空白でも Exchange 関連属性が Azure AD に同期されていましたが、Azure AD Connect へアップグレードしますと、これらの属性情報を変更しても同期されなくなります。mailnickname が空白の場合は、sAMAccoutName などの属性値をコピーするといった対処を事前に行ってください。  </p>
 <p>また、プロキシ サーバーをご利用の場合、C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config ファイルに設定を追加する必要があります。<br>詳細については以下のサイトの “接続” をご確認ください。  </p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Azure AD Connect の前提条件</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Azure AD Connect の前提条件</a></li>
 </ul>
 <p>Azure AD Connect の各情報についてはこちら： <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/whatis-hybrid-identity">Azure AD Connect とは</a>  </p>
 <p>現在、DirSync と ADSync に関するお問い合わせはお受けできませんが、Azure AD Connect に関するご質問でしたらもちろん対応させていただきますので、ご不明な点等がありましたら、ぜひ弊社サポート サービスをご利用ください。  </p>

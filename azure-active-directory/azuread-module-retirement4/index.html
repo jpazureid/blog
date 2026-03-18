@@ -6,12 +6,12 @@
   
   <title>MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 4_ユーザー管理 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、 Azure Identity サポート チームの小出です。 この記事は、この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、1. 概要編、2. 移行導入編、3. インストール・接続編 の続きとして連載しています。 4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法についてご案内し">
+  <meta name="description" content="こんにちは、 Azure Identity サポート チームの小出です。 この記事は、この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、1. 概要編、2. 移行導入編、3. インストール・接続編 の続きとして連載しています。 4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法につい">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MSOnline &#x2F; AzureAD PowerShell から Graph PowerShell SDK への移行について 4_ユーザー管理">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、 Azure Identity サポート チームの小出です。 この記事は、この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、1. 概要編、2. 移行導入編、3. インストール・接続編 の続きとして連載しています。 4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法についてご案内し">
+<meta property="og:description" content="こんにちは、 Azure Identity サポート チームの小出です。 この記事は、この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、1. 概要編、2. 移行導入編、3. インストール・接続編 の続きとして連載しています。 4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法につい">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-2.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11-2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-12-2.png">
 <meta property="article:published_time" content="2023-04-14T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.177Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.114Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="PowerShell">
 <meta property="article:tag" content="Microsoft Graph">
+<meta property="article:tag" content="PowerShell">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-1.png">
   
@@ -51,7 +51,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -168,13 +168,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d3308aac-df89-5fa4-997d-543131f5baeb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMSOnline+%2F+AzureAD+PowerShell+%E3%81%8B%E3%82%89+Graph+PowerShell+SDK+%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+4_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%AE%A1%E7%90%86%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazuread-module-retirement4%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazuread-module-retirement4.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazuread-module-retirement4.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/" data-id="cmmketdzi01390nqp36ie33vz" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/" data-id="cuidjb27arkj_95SdqvTF3oyB" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、 Azure Identity サポート チームの小出です。</p>
-<p>この記事は、この記事は、MSOnline / AzureAD モジュール廃止について、<a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">1. 概要編</a>、<a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/">2. 移行導入編</a>、<a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/">3. インストール・接続編</a> の続きとして連載しています。</p>
+<p>この記事は、この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、<a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">1. 概要編</a>、<a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/">2. 移行導入編</a>、<a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/">3. インストール・接続編</a> の続きとして連載しています。</p>
 <p>4 回目となる今回からは、具体的に、新しい Microsoft Graph PowerShell SDK を使用したユーザーの管理方法についてご案内します。以前、<a href="https://jpazureid.github.io/blog/azure-active-directory/operating-license-with-microsoft-graph/">こちらの記事</a> にて、ライセンス管理についてご案内させていただきましたが、今回はユーザー管理に特化してご紹介します。まだモジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2 と 3 をご確認ください。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><ol>
 <li><a href="#idx1">ユーザーの取得</a><ul>
@@ -263,7 +263,7 @@
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/user-list?view=graph-rest-1.0&tabs=powershell#optional-query-parameters">ユーザーを一覧表示する - オプションのクエリ パラメーター</a></li>
 </ul>
 <div class="alert is-success"><p class="alert-title">ヒント</p><p></p>
-<p>（2025/3/10 更新）</p>
+<p>（2025&#x2F;3&#x2F;10 更新）</p>
 <p>もしくは、より分かりやすいコマンドとして現在は Get-MgDirectoryDeletedItemAsUser も利用できます。このコマンドを利用すると、削除済みのユーザーが一覧で返されるため上記よりも簡単に利用でき、ユーザーの DisplayName なども表示されるため、どのユーザーかも分かりやすいかと存じます。</p>
 <p>ユーザーについては Get-MgDirectoryDeletedItemAsUser になりますが、 As の後ろを変更することで、その他の削除済みオブジェクトを取得することも可能です。たとえば削除済みグループを取得したい場合には、 Get-MgDirectoryDeletedItemAsGroup コマンドを利用できます。</p></div>
 <h2 id="idx2">2. ユーザーの作成</h2>
@@ -311,7 +311,8 @@
 <p> <img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-11-2.png"></p>
 </li>
 <li><p>以下のコマンドを実行して、たとえば ExtensionAttribute4 の値を test44 に更新します。</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Update-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6 -OnPremisesExtensionAttributes @&#123;&quot;ExtensionAttribute4&quot;=&#x27;test44&#x27;&#125;</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Update-MgBetaUser -UserId 3796e4df-bf11-4b99-9be7-c65c63dfe9a6 -OnPremisesExtensionAttributes @&#123;&quot;ExtensionAttribute4&quot;=&#x27;test44&#x27;&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>値が test44 に更新されたことを確認します。</p>
 <p> <img src="/blog/azure-active-directory/azuread-module-retirement4/azuread-module-retirement4-12-2.png"></p>
 </li>

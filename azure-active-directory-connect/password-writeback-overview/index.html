@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/password-writeback-overview/11_inheritance.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/password-writeback-overview/12_check.png">
 <meta property="article:published_time" content="2021-05-10T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.937Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.874Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD Connect">
 <meta property="article:tag" content="Password Writeback">
@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -169,13 +169,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+eec7c3f2-d769-5236-82b7-bc5484268e1c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89+%E3%83%A9%E3%82%A4%E3%83%88%E3%83%90%E3%83%83%E3%82%AF%E3%81%AE%E3%81%97%E3%81%8F%E3%81%BF%E3%81%A8%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fpassword-writeback-overview%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fpassword-writeback-overview.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fpassword-writeback-overview.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/password-writeback-overview/" data-id="cmmketdz4012c0nqp2ulxf8o6" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/password-writeback-overview/" data-id="cuidgf1t4v7H0FlXKpzt_509m" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、Azure &amp; Identity サポート チームの金子です。<br>今回はパスワード ライトバックのしくみと一般的なトラブルシューティングについてご紹介します。</p>
-<h2 id="パスワード-ハッシュ同期とパスワード-ライトバックの違いとは"><a href="#パスワード-ハッシュ同期とパスワード-ライトバックの違いとは" class="headerlink" title="パスワード ハッシュ同期とパスワード ライトバックの違いとは"></a>パスワード ハッシュ同期とパスワード ライトバックの違いとは</h2><p>まず、ユーザーは Azure AD Connect により、オンプレミス AD から Azure AD に同期されていることを前提とします。<br>パスワード ハッシュ同期についてはご存じの方が多いと思いますが、パスワード ハッシュ同期はオンプレミスの認証パスワード (厳密にはパスワード ハッシュ) を Azure AD に同期する機能です。これによりユーザーは同じ ID/パスワードで Office 365 などのクラウド上のアプリにもサインインすることができるようになります。<br>オンプレミス側でパスワードを変更した場合も同様にクラウド側へ同期されますが、逆にクラウド側からはオンプレミス側のパスワードをリセットしたり変更することはできません。なぜなら、パスワード ハッシュ同期はオンプレミスの Active Directory Domain Services (AD DS) から Azure AD への一方向の同期しかおこなわないためです。</p>
+<h2 id="パスワード-ハッシュ同期とパスワード-ライトバックの違いとは"><a href="#パスワード-ハッシュ同期とパスワード-ライトバックの違いとは" class="headerlink" title="パスワード ハッシュ同期とパスワード ライトバックの違いとは"></a>パスワード ハッシュ同期とパスワード ライトバックの違いとは</h2><p>まず、ユーザーは Azure AD Connect により、オンプレミス AD から Azure AD に同期されていることを前提とします。<br>パスワード ハッシュ同期についてはご存じの方が多いと思いますが、パスワード ハッシュ同期はオンプレミスの認証パスワード (厳密にはパスワード ハッシュ) を Azure AD に同期する機能です。これによりユーザーは同じ ID&#x2F;パスワードで Office 365 などのクラウド上のアプリにもサインインすることができるようになります。<br>オンプレミス側でパスワードを変更した場合も同様にクラウド側へ同期されますが、逆にクラウド側からはオンプレミス側のパスワードをリセットしたり変更することはできません。なぜなら、パスワード ハッシュ同期はオンプレミスの Active Directory Domain Services (AD DS) から Azure AD への一方向の同期しかおこなわないためです。</p>
 <p><img src="/blog/azure-active-directory-connect/password-writeback-overview/1_phs.png"></p>
 <p>そのため、社外で仕事をしておりオンプレミス AD に接続できないような状況で次のような要件が発生する場合はパスワード ライトバックを有効化する必要があります。</p>
 <ul>
@@ -200,22 +200,19 @@
 <li>まだ設定していない場合は、そのフォレスト内の “各ドメイン” のルート オブジェクトに対する “期限切れではないパスワード” の拡張権利があること</li>
 </ul>
 </li>
-<li>Azure AD Connect サーバーから下記の外部 URL へ HTTPS で接続できること<pre><code> *.passwordreset.microsoftonline.com
- *.servicebus.windows.net
-</code></pre>
-</li>
+<li>Azure AD Connect サーバーから下記の外部 URL へ HTTPS で接続できること<br> *.passwordreset.microsoftonline.com<br> *.servicebus.windows.net</li>
 </ol>
 <h2 id="パスワード-ライトバックのしくみ"><a href="#パスワード-ライトバックのしくみ" class="headerlink" title="パスワード ライトバックのしくみ"></a>パスワード ライトバックのしくみ</h2><p>ではパスワード ライトバックが実際にどのようなしくみで動作しているかを説明します。</p>
 <p><img src="/blog/azure-active-directory-connect/password-writeback-overview/3_password-writeback-detail.png"></p>
-<p>まず、ユーザーが Azure AD のアカウントでパスワード変更 (SSPR)  要求をおこないますと、設定したパスワードが暗号化され、テナント固有の Service Bus へ送られます。<br>Service Bus に保留中のリセット要求が届くと、パスワード リセット エンドポイントがオープンし、Azure AD Connect サーバーの Password Reset Service が処理を開始 (PasswordResetRequestStart) し Azure AD 側から暗号化されたパスワードを取得します。<br>これはオンプレミス側からクラウド側への Outbound (HTTPS / 443) の通信でおこなわれますので、クラウド側からオンプレミス側への Inbound の通信（ポート）を開放する必要はありません。</p>
+<p>まず、ユーザーが Azure AD のアカウントでパスワード変更 (SSPR)  要求をおこないますと、設定したパスワードが暗号化され、テナント固有の Service Bus へ送られます。<br>Service Bus に保留中のリセット要求が届くと、パスワード リセット エンドポイントがオープンし、Azure AD Connect サーバーの Password Reset Service が処理を開始 (PasswordResetRequestStart) し Azure AD 側から暗号化されたパスワードを取得します。<br>これはオンプレミス側からクラウド側への Outbound (HTTPS &#x2F; 443) の通信でおこなわれますので、クラウド側からオンプレミス側への Inbound の通信（ポート）を開放する必要はありません。</p>
 <p>Password Reset Service がパスワードを取得しますと、秘密鍵で複合化し、Azure AD Connect はリセット要求のあったユーザーをデータべ―ス内から探し出し、AD Sync サービスが適切な AD DS に対してパスワード リセットを要求します。この時、実際のパスワードリセットは Azure AD Connect で設定したオンプレミス AD 上の AD DS コネクタ アカウント (既定では MSOL_xxxxx) がおこないます。</p>
 <p>そして、パスワード リセット (変更) が成功しますと、Password Reset Service は成功 (PasswordResetSuccess) を Azure AD 側に通知します。<br>この通知を受け取るとパスワード変更 (SSPR)  が完了します。</p>
 <p>このパスワード ライトバックの一連の処理はログ上では次のように記録されます。</p>
-<h3 id="●-Azure-AD-Connect-サーバーのアプリケーション-イベントログ"><a href="#●-Azure-AD-Connect-サーバーのアプリケーション-イベントログ" class="headerlink" title="● Azure AD Connect サーバーのアプリケーション イベントログ"></a>● Azure AD Connect サーバーのアプリケーション イベントログ</h3><p><strong>PasswordResetService</strong><br>Event ID: 31001<br>PasswordResetRequestStart, Details: <a href="mailto:&#x75;&#x73;&#101;&#114;&#49;&#64;&#x63;&#x6f;&#110;&#116;&#x6f;&#x73;&#x6f;&#x2e;&#99;&#x6f;&#x6d;">&#x75;&#x73;&#101;&#114;&#49;&#64;&#x63;&#x6f;&#110;&#116;&#x6f;&#x73;&#x6f;&#x2e;&#99;&#x6f;&#x6d;</a></p>
-<p><strong>ADSync</strong><br>Event ID: 405<br>Call sync ldap_bind for DomainName=CONTOSO.COM, UserName=MSOL_xxxxxxxxx.</p>
-<p><strong>ADSync</strong><br>Event ID: 403<br>ImpersonationHelper call LogonUser for DomainName=CONTOSO.COM, UserName=MSOL_xxxxxxxxx.</p>
-<p><strong>ADSync</strong><br>Event ID: 405<br>Call sync ldap_bind for DomainName=CONTOSO.COM, UserName=MSOL_xxxxxxxxx.</p>
-<p><strong>PasswordResetService</strong><br>Event ID: 31002<br>TrackingId: xxxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxx, PasswordResetSuccess, Details: Context: cloudAnchor: User_xxxxxxxxx-xxxxxxxxx, SourceAnchorValue: xxxxxxxxxxxxxxxxxx, UserPrincipalName: <a href="mailto:&#x75;&#115;&#101;&#x72;&#49;&#x40;&#x63;&#111;&#110;&#116;&#111;&#115;&#111;&#x2e;&#99;&#111;&#x6d;">&#x75;&#115;&#101;&#x72;&#49;&#x40;&#x63;&#111;&#110;&#116;&#111;&#115;&#111;&#x2e;&#99;&#111;&#x6d;</a>, unblockUser: True</p>
+<h3 id="●-Azure-AD-Connect-サーバーのアプリケーション-イベントログ"><a href="#●-Azure-AD-Connect-サーバーのアプリケーション-イベントログ" class="headerlink" title="● Azure AD Connect サーバーのアプリケーション イベントログ"></a>● Azure AD Connect サーバーのアプリケーション イベントログ</h3><p><strong>PasswordResetService</strong><br>Event ID: 31001<br>PasswordResetRequestStart, Details: <a href="mailto:&#117;&#115;&#x65;&#114;&#x31;&#64;&#99;&#x6f;&#110;&#116;&#111;&#115;&#x6f;&#46;&#x63;&#x6f;&#109;">user1@contoso.com</a></p>
+<p><strong>ADSync</strong><br>Event ID: 405<br>Call sync ldap_bind for DomainName&#x3D;CONTOSO.COM, UserName&#x3D;MSOL_xxxxxxxxx.</p>
+<p><strong>ADSync</strong><br>Event ID: 403<br>ImpersonationHelper call LogonUser for DomainName&#x3D;CONTOSO.COM, UserName&#x3D;MSOL_xxxxxxxxx.</p>
+<p><strong>ADSync</strong><br>Event ID: 405<br>Call sync ldap_bind for DomainName&#x3D;CONTOSO.COM, UserName&#x3D;MSOL_xxxxxxxxx.</p>
+<p><strong>PasswordResetService</strong><br>Event ID: 31002<br>TrackingId: xxxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxx, PasswordResetSuccess, Details: Context: cloudAnchor: User_xxxxxxxxx-xxxxxxxxx, SourceAnchorValue: xxxxxxxxxxxxxxxxxx, UserPrincipalName: <a href="mailto:&#117;&#x73;&#101;&#114;&#x31;&#x40;&#x63;&#x6f;&#x6e;&#x74;&#111;&#115;&#111;&#x2e;&#x63;&#x6f;&#x6d;">user1@contoso.com</a>, unblockUser: True</p>
 <h3 id="●-Azure-AD-の監査ログ"><a href="#●-Azure-AD-の監査ログ" class="headerlink" title="● Azure AD の監査ログ"></a>● Azure AD の監査ログ</h3><p><strong>Self-service password reset flow activity progress</strong><br>User submitted a new password</p>
 <p><strong>Reset user password</strong></p>
 <p><strong>Update StsRefreshTokenValidFrom Timestamp</strong></p>
@@ -298,7 +295,7 @@
 <li>画面右に表示されたアカウントが、AD フォレストに対して同期処理時にアクセスしているアカウントとなりますので、アカウント名を控えます。</li>
 <li>任意の ドメイン コントローラー に、ドメイン管理者でサインインし、[ADSI エディタ] を開きます。</li>
 <li>左ペイン上で [ADSI エディタ] を選択し、右クリック – [接続] と選択し、「既定の名前付けコンテキスト」が選択された状態で [OK] を選択します。</li>
-<li>左ペインでドメイン名配下の [CN=System] - [CN=AdminSDHolder] と展開し、 AdminSDHolder を右クリックしてプロパティを表示します。</li>
+<li>左ペインでドメイン名配下の [CN&#x3D;System] - [CN&#x3D;AdminSDHolder] と展開し、 AdminSDHolder を右クリックしてプロパティを表示します。</li>
 <li>[セキュリティ] タブより [詳細設定] ボタンをクリックし、[アクセス許可] タブ内の [追加] ボタンをクリックします。</li>
 <li>アクセス許可エントリ画面にて上部の [プリンシパルの選択] リンクをクリックし、前の手順で確認した「AD フォレストに対して同期処理時にアクセスしているアカウント」を追加します。</li>
 <li>画面下部のアクセス許可の一覧最下部にある [すべてクリア] ボタンをクリックします。</li>
@@ -307,12 +304,12 @@
 <li>既定では 1 時間以内に、自動で adminCount 属性が 1 となっているユーザーのアクセス許可が上記で設定したアクセス許可と同じとなります。</li>
 </ol>
 <ul>
-<li>保護されたグループ メンバーに対して、ユーザー自身がパスワード リセットを行う場合の設定手順<br>「保護されたグループ メンバーに対して、パスワード変更を行う場合の設定手順」を実施し、その後更に以下の手順でパスワード リセット権限を付与します。</li>
+<li>保護されたグループ メンバーに対して、ユーザー自身がパスワード リセットを行う場合の設定手順<br> 「保護されたグループ メンバーに対して、パスワード変更を行う場合の設定手順」を実施し、その後更に以下の手順でパスワード リセット権限を付与します。</li>
 </ul>
 <ol start="14">
 <li><p>ドメイン コントローラーにドメイン管理者権限を持つユーザーでサインインし、コマンド プロンプトを起動します。</p>
 </li>
-<li><p>以下のコマンドを実行します。<br>dsacls “cn=adminsdholder,cn=system,dc=&lt;ドメイン名&gt; “ /G “&lt;ドメイン名&gt;&lt;AD DS コネクタ アカウントの sAMAccountName&gt;:CA;Reset Password”</p>
+<li><p>以下のコマンドを実行します。<br> dsacls “cn&#x3D;adminsdholder,cn&#x3D;system,dc&#x3D;&lt;ドメイン名&gt; “ &#x2F;G “&lt;ドメイン名&gt;&lt;AD DS コネクタ アカウントの sAMAccountName&gt;:CA;Reset Password”</p>
 </li>
 <li><p>実行後、既定では 1 時間以内に、自動で adminCount 属性が 1 となっているユーザーのアクセス許可に手順 15. で付与した権限が追加されます。</p>
 </li>

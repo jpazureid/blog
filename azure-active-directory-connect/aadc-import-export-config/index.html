@@ -6,15 +6,15 @@
   
   <title>Azure AD Connect 設定の Export / Import | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Identity サポート チームの田中です。今回は、先日 Public Preview 版となった、Azure AD Connect のバージョン 1.5.42.0 から利用可能な Azure AD Connect 設定の Export &#x2F; Import についてご紹介します。 Azure AD Connect 設定の Export&#x2F;Import を使うメリット下記の弊社">
+  <meta name="description" content="こんにちは、Azure Identity サポート チームの田中です。今回は、先日 Public Preview 版となった、Azure AD Connect のバージョン 1.5.42.0 から利用可能な Azure AD Connect 設定の Export &#x2F; Import についてご紹介します。 Azure AD Connect 設定の Export&#x2F;Import を使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure AD Connect 設定の Export &#x2F; Import">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure Identity サポート チームの田中です。今回は、先日 Public Preview 版となった、Azure AD Connect のバージョン 1.5.42.0 から利用可能な Azure AD Connect 設定の Export &#x2F; Import についてご紹介します。 Azure AD Connect 設定の Export&#x2F;Import を使うメリット下記の弊社">
+<meta property="og:description" content="こんにちは、Azure Identity サポート チームの田中です。今回は、先日 Public Preview 版となった、Azure AD Connect のバージョン 1.5.42.0 から利用可能な Azure AD Connect 設定の Export &#x2F; Import についてご紹介します。 Azure AD Connect 設定の Export&#x2F;Import を使">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-08-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.839Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.777Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,13 +154,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+7c9c6982-885f-533e-9d78-fc31f098ca55%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E8%A8%AD%E5%AE%9A%E3%81%AE+Export+%2F+Import%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Faadc-import-export-config%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Faadc-import-export-config.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Faadc-import-export-config.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/" data-id="cmmketdoy00130nqpam7t71vq" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/" data-id="cuidasXCEtwyByueCFyMDn4lv" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>こんにちは、Azure Identity サポート チームの田中です。<br>今回は、先日 Public Preview 版となった、Azure AD Connect のバージョン 1.5.42.0 から利用可能な Azure AD Connect 設定の Export / Import についてご紹介します。</p>
-<h2 id="Azure-AD-Connect-設定の-Export-Import-を使うメリット"><a href="#Azure-AD-Connect-設定の-Export-Import-を使うメリット" class="headerlink" title="Azure AD Connect 設定の Export/Import を使うメリット"></a><strong>Azure AD Connect 設定の Export/Import を使うメリット</strong></h2><p>下記の弊社公開情報でもご案内しているとおり、2020 年 11 月 1 日以降、18 か月以上前にリリースされた Azure AD Connect のバージョンが非推奨となる、非推薦プロセスの運用が開始されます。</p>
+        <p>こんにちは、Azure Identity サポート チームの田中です。<br>今回は、先日 Public Preview 版となった、Azure AD Connect のバージョン 1.5.42.0 から利用可能な Azure AD Connect 設定の Export &#x2F; Import についてご紹介します。</p>
+<h2 id="Azure-AD-Connect-設定の-Export-Import-を使うメリット"><a href="#Azure-AD-Connect-設定の-Export-Import-を使うメリット" class="headerlink" title="Azure AD Connect 設定の Export&#x2F;Import を使うメリット"></a><strong>Azure AD Connect 設定の Export&#x2F;Import を使うメリット</strong></h2><p>下記の弊社公開情報でもご案内しているとおり、2020 年 11 月 1 日以降、18 か月以上前にリリースされた Azure AD Connect のバージョンが非推奨となる、非推薦プロセスの運用が開始されます。</p>
 <p> Title : Azure AD Connect:バージョンのリリース履歴<br> URL : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history">https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/reference-connect-version-history</a></p>
 <p>上記の非推奨プロセスの運用開始に伴い、多くのお客様が、既存の Azure AD Connect のバージョンのアップグレードをご検討いただいているかと思います。</p>
 <p>しかし、Azure AD Connect のバージョンのアップグレードを行う際、Azure AD Connect のバージョン 1.5.30.0 までは、下記の弊社技術ブログでもご案内しているとおり、Azure AD Connect の設定情報および同期ルールについては、下記のバックアップ方法を推奨しており、両方の情報をまとめてバックアップすることができませんでした。</p>
@@ -172,14 +172,14 @@
 <p>詳細については、下記ブログもご参照ください。</p>
 <p>  Title : Azure AD Connect アップグレード手順<br>  URL : <a href="https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade/">https://jpazureid.github.io/blog/azure-active-directory-connect/how-to-upgrade/</a></p>
 <p>Azure AD Connect のバージョンのアップグレードにおいて、Azure AD Connect のバージョン 1.5.30.0 までは、Azure AD Connect の設定情報および同期ルールの両方の情報をまとめてバックアップすることができず、お客様側の作業工数が多くなってしまうため、今回の機能のご要望をお客様から多くいただいていました。</p>
-<p>そこで今回、Public Preview 版として公開されたのが、「Azure AD Connect 設定の Export/Import」です。</p>
-<p>この機能は、冒頭でご紹介したとおり、Azure AD Connect のバージョン 1.5.42.0 から利用可能となっており、Azure AD Connect 構成ウィザードからまとめて、Azure AD Connect の設定情報※1 および同期ルールの Export/Import が行えるようになりました。</p>
+<p>そこで今回、Public Preview 版として公開されたのが、「Azure AD Connect 設定の Export&#x2F;Import」です。</p>
+<p>この機能は、冒頭でご紹介したとおり、Azure AD Connect のバージョン 1.5.42.0 から利用可能となっており、Azure AD Connect 構成ウィザードからまとめて、Azure AD Connect の設定情報※1 および同期ルールの Export&#x2F;Import が行えるようになりました。</p>
 <h4 id="Azure-AD-Connect-のバージョン-1-5-42-0-から利用可能なバックアップ方法"><a href="#Azure-AD-Connect-のバージョン-1-5-42-0-から利用可能なバックアップ方法" class="headerlink" title="Azure AD Connect のバージョン 1.5.42.0 から利用可能なバックアップ方法"></a>Azure AD Connect のバージョン 1.5.42.0 から利用可能なバックアップ方法</h4><ul>
 <li>Azure AD Connect の設定情報 ※1 : Azure AD Connect 構成ウィザードからの Export</li>
 <li>Azure AD Connect の同期ルール : Azure AD Connect 構成ウィザードからの Export</li>
 </ul>
 <p>※1 ただし、Azure AD Connect 構成ウィザード上で設定する一部の項目は、Azure AD Connect 構成ウィザードからの Export が行えないため、下記の情報を参照しつつ、注意が必要です。</p>
-<h4 id="〇-Export-Import-できる情報"><a href="#〇-Export-Import-できる情報" class="headerlink" title="〇 : Export/Import できる情報"></a>〇 : Export/Import できる情報</h4><ul>
+<h4 id="〇-Export-Import-できる情報"><a href="#〇-Export-Import-できる情報" class="headerlink" title="〇 : Export&#x2F;Import できる情報"></a>〇 : Export&#x2F;Import できる情報</h4><ul>
 <li>Azure AD Connect インストール ウィザード内の設定情報<ul>
 <li>[ユーザー サインイン] 画面の情報</li>
 <li>[Azure AD に接続] 画面で入力するテナント情報 (テナントのパスワードは Export した情報には含まれません)</li>
@@ -188,7 +188,7 @@
 </li>
 <li>同期ルール (カスタム ルール含む)</li>
 </ul>
-<h4 id="×-Export-Import-できない情報"><a href="#×-Export-Import-できない情報" class="headerlink" title="× : Export/Import できない情報"></a>× : Export/Import できない情報</h4><ul>
+<h4 id="×-Export-Import-できない情報"><a href="#×-Export-Import-できない情報" class="headerlink" title="× : Export&#x2F;Import できない情報"></a>× : Export&#x2F;Import できない情報</h4><ul>
 <li>Azure AD Connect インストール ウィザード内の設定情報<ul>
 <li>[ディレクトリの接続] 画面で入力するオンプレミス AD 側の管理者の資格情報</li>
 <li>[ドメインと OU のフィルタリング] 画面の情報</li>
@@ -201,12 +201,12 @@
 </ul>
 </li>
 </ul>
-<p>Azure AD Connect のバージョンのアップグレードにおいて、「Azure AD Connect 設定の Export/Import」は、お客様側の作業工数を少しでも減らすことができる有効な機能と考えています。</p>
+<p>Azure AD Connect のバージョンのアップグレードにおいて、「Azure AD Connect 設定の Export&#x2F;Import」は、お客様側の作業工数を少しでも減らすことができる有効な機能と考えています。</p>
 <p> Title : Azure AD Connect 構成設定のインポートとエクスポート (パブリック プレビュー)<br> URL : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-import-export-config">https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-import-export-config</a></p>
-<h3 id="Azure-AD-Connect-設定の-Export-Import-を用いるシナリオおよびその手順"><a href="#Azure-AD-Connect-設定の-Export-Import-を用いるシナリオおよびその手順" class="headerlink" title="Azure AD Connect 設定の Export/Import を用いるシナリオおよびその手順"></a>Azure AD Connect 設定の Export/Import を用いるシナリオおよびその手順</h3><p>Azure AD Connect 設定の Export/Import を用いるシナリオとしては、主に下記のシナリオ例が考えられます。</p>
-<h4 id="1-Azure-AD-Connect-のバージョンのアップグレード時"><a href="#1-Azure-AD-Connect-のバージョンのアップグレード時" class="headerlink" title="1. Azure AD Connect のバージョンのアップグレード時"></a>1. Azure AD Connect のバージョンのアップグレード時</h4><p>既存の Azure AD Connect サーバーの設定を Export し、その Export した設定内容を新しい Azure AD Connect  ステージング サーバーに適用させる際に、Azure AD Connect 設定の Export/Import は有効的な方法です。<br>なお、既存の Azure AD Connect から Azure AD Connect 設定を移行する際の詳細手順につきましては、下記の弊社公開情報をご参照ください。</p>
+<h3 id="Azure-AD-Connect-設定の-Export-Import-を用いるシナリオおよびその手順"><a href="#Azure-AD-Connect-設定の-Export-Import-を用いるシナリオおよびその手順" class="headerlink" title="Azure AD Connect 設定の Export&#x2F;Import を用いるシナリオおよびその手順"></a>Azure AD Connect 設定の Export&#x2F;Import を用いるシナリオおよびその手順</h3><p>Azure AD Connect 設定の Export&#x2F;Import を用いるシナリオとしては、主に下記のシナリオ例が考えられます。</p>
+<h4 id="1-Azure-AD-Connect-のバージョンのアップグレード時"><a href="#1-Azure-AD-Connect-のバージョンのアップグレード時" class="headerlink" title="1. Azure AD Connect のバージョンのアップグレード時"></a>1. Azure AD Connect のバージョンのアップグレード時</h4><p>既存の Azure AD Connect サーバーの設定を Export し、その Export した設定内容を新しい Azure AD Connect  ステージング サーバーに適用させる際に、Azure AD Connect 設定の Export&#x2F;Import は有効的な方法です。<br>なお、既存の Azure AD Connect から Azure AD Connect 設定を移行する際の詳細手順につきましては、下記の弊社公開情報をご参照ください。</p>
 <p>Title : 既存のサーバーから設定を移行する<br>URL : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-import-export-config#migrating-settings-from-an-existing-server">https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-import-export-config#migrating-settings-from-an-existing-server</a></p>
-<h4 id="2-設定変更前の環境に切り戻すための-バックアップ-リストア-を行いたい時"><a href="#2-設定変更前の環境に切り戻すための-バックアップ-リストア-を行いたい時" class="headerlink" title="2. 設定変更前の環境に切り戻すための バックアップ / リストア を行いたい時"></a>2. 設定変更前の環境に切り戻すための バックアップ / リストア を行いたい時</h4><p>Azure AD Connect 設定の変更を行い障害が生じた場合に、環境の切り戻しをスムーズに行う際に、Azure AD Connect 設定の Export/Import は有効的な方法です。<br>なお、Azure AD Connect のバックアップ取得からリストアまでの詳細手順につきましては、<a href="/blog/azure-active-directory-connect/aadc-import-export-config/AADC_Config.pptx">Azure AD Connect 設定ファイルの復元 (1.5.42.0 以降)</a> にてお纏めしておりますので、必要に応じて該当 ppt ファイルをご参照ください。</p>
+<h4 id="2-設定変更前の環境に切り戻すための-バックアップ-リストア-を行いたい時"><a href="#2-設定変更前の環境に切り戻すための-バックアップ-リストア-を行いたい時" class="headerlink" title="2. 設定変更前の環境に切り戻すための バックアップ &#x2F; リストア を行いたい時"></a>2. 設定変更前の環境に切り戻すための バックアップ &#x2F; リストア を行いたい時</h4><p>Azure AD Connect 設定の変更を行い障害が生じた場合に、環境の切り戻しをスムーズに行う際に、Azure AD Connect 設定の Export&#x2F;Import は有効的な方法です。<br>なお、Azure AD Connect のバックアップ取得からリストアまでの詳細手順につきましては、<a href="/blog/azure-active-directory-connect/aadc-import-export-config/AADC_Config.pptx">Azure AD Connect 設定ファイルの復元 (1.5.42.0 以降)</a> にてお纏めしておりますので、必要に応じて該当 ppt ファイルをご参照ください。</p>
 <p>上記内容が少しでも参考となりますと幸いです。</p>
 <p>なお、製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>
 

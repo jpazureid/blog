@@ -6,15 +6,15 @@
   
   <title>Microsoft Entra ID に必要な通信先エンドポイントのまとめ | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure &amp; Identity サポート チームの大庭です。 今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL&#x2F;IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能によってアク">
+  <meta name="description" content="こんにちは、Azure &amp; Identity サポート チームの大庭です。 今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL&#x2F;IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能に">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Microsoft Entra ID に必要な通信先エンドポイントのまとめ">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-endpoints/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの大庭です。 今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL&#x2F;IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能によってアク">
+<meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの大庭です。 今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL&#x2F;IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能に">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-12-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.143Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.080Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Entra ID">
 <meta property="article:tag" content="Network">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,13 +155,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ab646d0a-0022-58ef-a0b0-c1174a2f2d47%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+ID+%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E9%80%9A%E4%BF%A1%E5%85%88%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-endpoints%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-endpoints.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-endpoints.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-endpoints/" data-id="cmmketdr2006p0nqp0qmn92ka" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-endpoints/" data-id="cuid05hysFJbuOtreAf1PTttg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、Azure &amp; Identity サポート チームの大庭です。</p>
-<p>今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL/IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能によってアクセス先のエンドポイントが異なります。お客様によっては、ネットワーク プロキシにて厳密に接続可能なエンドポイント (URL) 先を制御されている場合があり、そういった制御を行われているお客様では、正常にサービスを利用するために個別にエンドポイント (URL/IP アドレス) への通信を許可する必要があります。</p>
+<p>今回はよくご質問をいただく Microsoft Entra ID をご利用いただく際に必要となるエンドポイント (URL&#x2F;IP アドレス) について案内します。Microsoft Entra ID においては認証からアカウント管理、アカウント同期に至るまで複数のサービスを提供しており、ご利用いただく機能によってアクセス先のエンドポイントが異なります。お客様によっては、ネットワーク プロキシにて厳密に接続可能なエンドポイント (URL) 先を制御されている場合があり、そういった制御を行われているお客様では、正常にサービスを利用するために個別にエンドポイント (URL&#x2F;IP アドレス) への通信を許可する必要があります。</p>
 <p>本記事においては、現時点で提供している Microsoft Entra ID の各サービスに関し、必要となるエンドポイントを記載した公開資料へのリンクをまとめます。これにより、「どのエンドポイントに対してアクセス許可をすればいいのかまとめて知りたい！」といったご要望にお応え出来たら幸いです。</p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>サポート チームにて可能な限り迅速かつ網羅的な情報の更新に努めておりますが、本記事にてすべての情報の網羅ができているわけではありません。サービスが利用するエンドポイントはドキュメントの更新とともに変化する可能性があります。正式な案内については各公開情報を参照いただくか、弊社サポート サービスまでお問い合わせください。</p></div>
 <h2 id="Microsoft-Entra-ID-で基本的に利用されるエンドポイント"><a href="#Microsoft-Entra-ID-で基本的に利用されるエンドポイント" class="headerlink" title="Microsoft Entra ID で基本的に利用されるエンドポイント"></a>Microsoft Entra ID で基本的に利用されるエンドポイント</h2><p>まず初めに Microsoft Entra ID を利用いただく際に基本的に必要となるエンドポイントは、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-365-common-and-office-online">Office 365 の URL と IP アドレスの範囲</a> に記載されている ID 56 , ID 59 , ID 97 そして ID 125 になります。こちらは Microsoft Entra ID を利用するシナリオで最低限必要となるエンドポイントをまとめたものです。Microsoft Entra ID をご利用いただく際は、認証を行うクライアントからこれらのエンドポイントについてネットワークの疎通を確保ください。また、Windows を利用される場合は ctldl.windowsupdate.com および *.windowsupdate.com への許可も実施ください。</p>

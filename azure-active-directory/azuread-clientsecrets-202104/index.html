@@ -15,10 +15,10 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-clientsecrets-202104/clientsecrets.png">
 <meta property="article:published_time" content="2021-04-19T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.174Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.111Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Application">
+<meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Client Secrets">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-clientsecrets-202104/clientsecrets.png">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+64e571d7-1068-5a74-b358-bdcea0416fc3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88+%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90%E7%94%BB%E9%9D%A2%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazuread-clientsecrets-202104%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazuread-clientsecrets-202104.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazuread-clientsecrets-202104.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-clientsecrets-202104/" data-id="cmmketdrg007t0nqpcofpa2mv" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-clientsecrets-202104/" data-id="cuid7HAbm9PDL2u-bYe8ya1dI" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -168,17 +168,17 @@
 <h2 id="新旧画面の比較"><a href="#新旧画面の比較" class="headerlink" title="新旧画面の比較"></a>新旧画面の比較</h2><p>該当画面 : [Azure Active Directory] &gt; [アプリの登録] &gt; (任意のアプリケーション) &gt; [証明書とシークレット]</p>
 <p><img src="/blog/azure-active-directory/azuread-clientsecrets-202104/clientsecrets.png" alt="該当画面"></p>
 <ul>
-<li><p>従来の画面では、有効期限が「1 年」「2 年」「なし (= 無期限)」が選択いただけました。</p>
+<li><p>従来の画面では、有効期限が「1 年」「2 年」「なし (&#x3D; 無期限)」が選択いただけました。</p>
 </li>
 <li><p>新しい画面では、1, 12, 18, 24 ヶ月が選択肢として表示されます。</p>
 <p>  [カスタム] を選択することで更にきめ細かく開始日と終了日を選択可能です。</p>
 <ul>
-<li>開始日 : 現在の日付 ～ 1 年 6 ヶ月後の範囲内を指定します。(現在の日時が 2021/04/20 の場合、2021/04/20 ～ 2022/10/20 の範囲)</li>
-<li>終了日 : 開始日 ～ 開始日 ＋ 2 年後 の範囲内を指定します。(開始日を 2021/04/20 にした場合、2021/04/20 ～ 2023/04/20 の範囲)</li>
+<li>開始日 : 現在の日付 ～ 1 年 6 ヶ月後の範囲内を指定します。(現在の日時が 2021&#x2F;04&#x2F;20 の場合、2021&#x2F;04&#x2F;20 ～ 2022&#x2F;10&#x2F;20 の範囲)</li>
+<li>終了日 : 開始日 ～ 開始日 ＋ 2 年後 の範囲内を指定します。(開始日を 2021&#x2F;04&#x2F;20 にした場合、2021&#x2F;04&#x2F;20 ～ 2023&#x2F;04&#x2F;20 の範囲)</li>
 </ul>
 </li>
 </ul>
-<h2 id="最大の変更点-“無期限”-のクライアント-シークレットが作成不可になりました"><a href="#最大の変更点-“無期限”-のクライアント-シークレットが作成不可になりました" class="headerlink" title="最大の変更点 : “無期限” のクライアント シークレットが作成不可になりました"></a>最大の変更点 : “無期限” のクライアント シークレットが作成不可になりました</h2><p>上記の変更によって、 <strong>新しい画面では無期限 (= 失効日を持たない永続的な) クライアント シークレットを作成することができなくなりました。</strong> 最大でも 2 年ごとに、クライアント シークレットを更新する必要があります。</p>
+<h2 id="最大の変更点-“無期限”-のクライアント-シークレットが作成不可になりました"><a href="#最大の変更点-“無期限”-のクライアント-シークレットが作成不可になりました" class="headerlink" title="最大の変更点 : “無期限” のクライアント シークレットが作成不可になりました"></a>最大の変更点 : “無期限” のクライアント シークレットが作成不可になりました</h2><p>上記の変更によって、 <strong>新しい画面では無期限 (&#x3D; 失効日を持たない永続的な) クライアント シークレットを作成することができなくなりました。</strong> 最大でも 2 年ごとに、クライアント シークレットを更新する必要があります。</p>
 <h2 id="動作変更に至った経緯"><a href="#動作変更に至った経緯" class="headerlink" title="動作変更に至った経緯"></a>動作変更に至った経緯</h2><p>上記の動作変更は「同じクライアント シークレットを長期間利用し続けることは、セキュリティ リスクである」という考えに基づきます。</p>
 <p>クライアント シークレットは、アプリケーションが Azure AD へアクセスするために利用するための資格情報です。万が一この情報が漏洩することで、その登録されたアプリケーションに許可された操作をおこなうことができます。</p>
 <p>特に、利用されなくなったアプリケーションが、有効な資格情報 (クライアント シークレット) を保持し続けることは、リスクと考えられます。</p>
@@ -191,22 +191,25 @@
 <li>PowerShell を管理者権限で起動します</li>
 <li>下記コマンドで  Micorosft Graph PowerShell モジュール をインストールします (すでにインストール済みである場合は必要ありません)<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> Microsoft.Graph</span><br></pre></td></tr></table></figure></li>
 <li>下記コマンドでテナントに接続します <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&#x27;Application.ReadWrite.All&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li>下記コマンドでシークレットを作成します<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$passwordCred</span> = <span class="selector-tag">@</span>&#123;</span><br><span class="line">    displayName = <span class="string">&#x27;キーの説明&#x27;</span></span><br><span class="line">    endDateTime = [<span class="type">System.DateTime</span>]::new(<span class="number">2099</span>,<span class="number">12</span>,<span class="number">31</span>,<span class="number">23</span>,<span class="number">59</span>,<span class="number">59</span>,[<span class="type">System.DateTimeKind</span>]::Utc)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$secret</span> = <span class="built_in">Add-MgApplicationPassword</span> <span class="literal">-ApplicationId</span> &lt;アプリケーションのオブジェクト ID&gt; <span class="literal">-PasswordCredential</span> <span class="variable">$passwordCred</span></span><br><span class="line"><span class="variable">$secret</span> | <span class="built_in">fl</span> *</span><br></pre></td></tr></table></figure></li>
+<li>下記コマンドでシークレットを作成します</li>
 </ol>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$passwordCred</span> = <span class="selector-tag">@</span>&#123;</span><br><span class="line">    displayName = <span class="string">&#x27;キーの説明&#x27;</span></span><br><span class="line">    endDateTime = [<span class="type">System.DateTime</span>]::new(<span class="number">2099</span>,<span class="number">12</span>,<span class="number">31</span>,<span class="number">23</span>,<span class="number">59</span>,<span class="number">59</span>,[<span class="type">System.DateTimeKind</span>]::Utc)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$secret</span> = <span class="built_in">Add-MgApplicationPassword</span> <span class="literal">-ApplicationId</span> &lt;アプリケーションのオブジェクト ID&gt; <span class="literal">-PasswordCredential</span> <span class="variable">$passwordCred</span></span><br><span class="line"><span class="variable">$secret</span> | <span class="built_in">fl</span> *</span><br></pre></td></tr></table></figure>
+
 <div class="alert is-info"><p class="alert-title">Note</p><p>ApplicationId にはアプリケーション ID (クライアント ID) ではなくアプリケーションのオブジェクト ID を指定します</p></div>
 <p>※ 出力される SecretText をシークレットとして保存します。</p>
 <p>ただし、いずれは PowerShell コマンドによるクライアントシークレット作成にも、Azure ポータル上と同じ制限がかかるようになる方針です (制限が反映された際には、この項目は削除する予定です)。この制限が実施されるスケジュールについては、現時点では未定です。</p>
 <h2 id="作成したシークレットの有効期限をメールなどで通知する方法はありますか？"><a href="#作成したシークレットの有効期限をメールなどで通知する方法はありますか？" class="headerlink" title="作成したシークレットの有効期限をメールなどで通知する方法はありますか？"></a>作成したシークレットの有効期限をメールなどで通知する方法はありますか？</h2><p>開発部門でもご要望は認識しておりますが、現時点ではシークレットの有効期限をメールなどで通知する機能は実装されておりません。また現時点では具体的な提供予定についての情報もございません。</p>
 <p>以下の弊社ブログで Power Automate を使ってシークレットと証明書の期限切れの状態を確認する処理を自動化する方法を案内しておりますので、代替案として検討ください。</p>
 <ul>
-<li>Use Power Automate to Notify of Upcoming Azure AD App Client Secrets and Certificate Expirations - Microsoft Tech Community<br><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145">https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145</a></li>
+<li>Use Power Automate to Notify of Upcoming Azure AD App Client Secrets and Certificate Expirations - Microsoft Tech Community</li>
 </ul>
+<p> <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145">https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145</a></p>
 <h2 id="“Updates-to-converged-applications-are-not-allowed-in-this-version-”-が発生する場合"><a href="#“Updates-to-converged-applications-are-not-allowed-in-this-version-”-が発生する場合" class="headerlink" title="“Updates to converged applications are not allowed in this version.” が発生する場合"></a>“Updates to converged applications are not allowed in this version.” が発生する場合</h2><p>アプリの <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation">サポートされているアカウントの種類</a> が <code>任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)</code> または <code>個人用 Microsoft アカウントのみ</code><br>の場合 New-AzureADApplicationPasswordCredential コマンドレットや New-AzADAppCredential (v6.6.0 以前) によるシークレットの追加は行えません。</p>
 <p>この場合シークレットの作成は上述の、Microsoft Graph API 経由で実施いただく必要があります。</p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>Azure CLI および Az モジュールの最新版では Microsoft Graph API を利用したシークレット更新に対応しております。</p></div>
 <h2 id="“You-can-only-add-a-maximum-of-2-encrypted-credentials-”-が発生する場合"><a href="#“You-can-only-add-a-maximum-of-2-encrypted-credentials-”-が発生する場合" class="headerlink" title="“You can only add a maximum of 2 encrypted credentials.” が発生する場合"></a>“You can only add a maximum of 2 encrypted credentials.” が発生する場合</h2><p>アプリの <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/develop/supported-accounts-validation">サポートされているアカウントの種類</a> が <code>任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と個人の Microsoft アカウント (Skype、Xbox など)</code> または <code>個人用 Microsoft アカウントのみ</code><br>の場合に、3 つ以上のクライアント シークレットを登録しようとするとこのエラーが発生します。</p>
 <p>前項での内容の通り、Microsoft Graph REST API を利用することでクライアント シークレットの追加が可能ですが、登録できるクライアント シークレットの数の上限は 2 つです。<br>エラーが発生した場合には、既存のシークレットを削除するなどし上限を超えないよう設定ください。</p>
-<h2 id="今後のアップデートについて"><a href="#今後のアップデートについて" class="headerlink" title="今後のアップデートについて"></a>今後のアップデートについて</h2><p>本変更についての公開情報やアナウンス等は、現在 (2022/12/21) の時点で公開されておりません。新たな情報が入り次第、本記事内でアップデートさせていただきます。</p>
+<h2 id="今後のアップデートについて"><a href="#今後のアップデートについて" class="headerlink" title="今後のアップデートについて"></a>今後のアップデートについて</h2><p>本変更についての公開情報やアナウンス等は、現在 (2022&#x2F;12&#x2F;21) の時点で公開されておりません。新たな情報が入り次第、本記事内でアップデートさせていただきます。</p>
 <h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>上記の内容がご参考になれば幸いです。<br>ご不明点などございます場合は、ぜひ弊社サポートサービスをご利用ください。</p>
 
       

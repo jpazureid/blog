@@ -6,12 +6,12 @@
   
   <title>Azure AD Connect における TLS 1.2 の対応について | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは。 Azure Identity サポート チームです。 こちらのブログでは、MC246440 にて案内している Azure AD における TLS 1.0 および TLS 1.1 の無効化における Azure AD Connect の対応ついてご案内いたします。 MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 &#x2F;1.1 , 3DES 暗号スイート">
+  <meta name="description" content="こんにちは。 Azure Identity サポート チームです。 こちらのブログでは、MC246440 にて案内している Azure AD における TLS 1.0 および TLS 1.1 の無効化における Azure AD Connect の対応ついてご案内いたします。 MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 &#x2F;1.1 , 3DES 暗">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure AD Connect における TLS 1.2 の対応について">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは。 Azure Identity サポート チームです。 こちらのブログでは、MC246440 にて案内している Azure AD における TLS 1.0 および TLS 1.1 の無効化における Azure AD Connect の対応ついてご案内いたします。 MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 &#x2F;1.1 , 3DES 暗号スイート">
+<meta property="og:description" content="こんにちは。 Azure Identity サポート チームです。 こちらのブログでは、MC246440 にて案内している Azure AD における TLS 1.0 および TLS 1.1 の無効化における Azure AD Connect の対応ついてご案内いたします。 MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 &#x2F;1.1 , 3DES 暗">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/image01.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/image02.png">
@@ -20,11 +20,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/image06.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/image05.png">
 <meta property="article:published_time" content="2021-04-23T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.873Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.810Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="TLS 1.2">
 <meta property="article:tag" content="Azure AD Connect">
+<meta property="article:tag" content="TLS 1.2">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/image01.png">
   
@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -163,14 +163,14 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9180352a-54b0-55c0-aa8d-846d3e895e7b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B+TLS+1.2+%E3%81%AE%E5%AF%BE%E5%BF%9C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fazure-ad-connect-tls%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fazure-ad-connect-tls.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fazure-ad-connect-tls.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/" data-id="cmmketdp8001s0nqp5gk279ts" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/" data-id="cuidD0mlPOI7xR_jVlDrVXVBx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは。 Azure Identity サポート チームです。</p>
 <p>こちらのブログでは、MC246440 にて案内している Azure AD における TLS 1.0 および TLS 1.1 の無効化における Azure AD Connect の対応ついてご案内いたします。</p>
-<h2 id="MC246440-の詳細"><a href="#MC246440-の詳細" class="headerlink" title="MC246440 の詳細"></a>MC246440 の詳細</h2><p>この度、2021 年 6 月 30 日をもって TLS 1.0 /1.1 , 3DES 暗号スイート (TLS_RSA_WITH_3DES_EDE_CBC_SHA)  のプロトコルおよび暗号のサポートが終了いたします。<br>それに伴い Azure AD にて 上記プロトコルが無効化されますので、Azure AD Connect でも TLS 1.2 への対応が必要となります。</p>
+<h2 id="MC246440-の詳細"><a href="#MC246440-の詳細" class="headerlink" title="MC246440 の詳細"></a>MC246440 の詳細</h2><p>この度、2021 年 6 月 30 日をもって TLS 1.0 &#x2F;1.1 , 3DES 暗号スイート (TLS_RSA_WITH_3DES_EDE_CBC_SHA)  のプロトコルおよび暗号のサポートが終了いたします。<br>それに伴い Azure AD にて 上記プロトコルが無効化されますので、Azure AD Connect でも TLS 1.2 への対応が必要となります。</p>
 <div class="alert is-important"><p class="alert-title">重要</p><p>上記の通り、2021 年 6 月 30 日に TLS 1.0 および TLS 1.1 の無効化を計画しておりましたが、お客様の対応状況を考慮し 無効化を2022 年 1 月 31 日に延期いたしました。</p><p>延期はしておりますが、早急に TLS 1.2 への対応のご準備をよろしくお願いいたします。</p>
 <p>なお、延期については MC258228 として通知されております。</p><p>また、実施いただく対応としては、後述の内容と同一でございます。</p></div>
 <h2 id="TLS-1-2への対応"><a href="#TLS-1-2への対応" class="headerlink" title="TLS 1.2への対応"></a>TLS 1.2への対応</h2><p>主な対応は以下の 3 点です。</p>
@@ -194,7 +194,7 @@
 <p>画面での確認:</p>
 <p>[コントロールパネル] - [プログラム] - [プログラムと機能] で ”Microsoft Azure AD Connect” のバージョンを確認します。</p>
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-tls/image02.png"></p>
-<h3 id="2-Windows-Server-（OS-レベル）で-TLS-1-2-が無効化されていないことを確認する。"><a href="#2-Windows-Server-（OS-レベル）で-TLS-1-2-が無効化されていないことを確認する。" class="headerlink" title="2. Windows Server （OS レベル）で TLS 1.2 が無効化されていないことを確認する。"></a>2. Windows Server （OS レベル）で TLS 1.2 が無効化されていないことを確認する。</h3><p>Azure AD Connect が新しいバージョンであっても、OS にて TLS 1.2 が無効化されていれば、Azure AD Connect は TLS 1.0 /1.1 を利用する可能性があります。</p>
+<h3 id="2-Windows-Server-（OS-レベル）で-TLS-1-2-が無効化されていないことを確認する。"><a href="#2-Windows-Server-（OS-レベル）で-TLS-1-2-が無効化されていないことを確認する。" class="headerlink" title="2. Windows Server （OS レベル）で TLS 1.2 が無効化されていないことを確認する。"></a>2. Windows Server （OS レベル）で TLS 1.2 が無効化されていないことを確認する。</h3><p>Azure AD Connect が新しいバージョンであっても、OS にて TLS 1.2 が無効化されていれば、Azure AD Connect は TLS 1.0 &#x2F;1.1 を利用する可能性があります。</p>
 <p>TLS 1.2 が無効化されていないことは 以下のレジストリで確認が可能です。</p>
 <p>レジストリ: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\Schannel\Protocols</p>
 <p>以下のように Protocols 配下に TLS 1.2 に関する設定がなければ 、既定通り TLS 1.2 が有効であるため 、対応は不要です。</p>
@@ -207,7 +207,7 @@
 <p><img src="/blog/azure-active-directory-connect/azure-ad-connect-tls/image05.png"></p>
 <p>古い場合は、Azure ポータルにサインインし、[Azure Active Directory] - [Azure AD Connect] - [パススルー認証] - [ダウンロード] より最新のエージェントをダウンロードし、インストールします。</p>
 <h2 id="よくあるご質問"><a href="#よくあるご質問" class="headerlink" title="よくあるご質問"></a>よくあるご質問</h2><h3 id="Q-バージョンアップをしなかった場合の影響について教えてください。"><a href="#Q-バージョンアップをしなかった場合の影響について教えてください。" class="headerlink" title="Q. バージョンアップをしなかった場合の影響について教えてください。"></a>Q. バージョンアップをしなかった場合の影響について教えてください。</h3><p>A. 恐縮ながら、ご利用の各バージョンにおける 影響についてはご案内することができません。2021 年 6 月 30 日以降 は Azure AD Connect  1.4.38.0 以降のバージョンであればご利用いただけることを確認しております。古いバージョンの Azure AD Connect を 6 月 30 日以降もご利用の場合に何らかの事象が発生した場合も、サポート チケットを発行いただくことは可能です。ただし調査の結果、発生している事象が古いバージョンに起因している可能性が考えられる場合は、最新版へのアップデートや、ご利用の環境での最新版を用いた動作確認をご案内させていただく点にご留意ください。</p>
-<h3 id="Q-TLS-1-0-1-1-を無効化した際の影響はありますか。"><a href="#Q-TLS-1-0-1-1-を無効化した際の影響はありますか。" class="headerlink" title="Q. TLS 1.0 /1.1 を無効化した際の影響はありますか。"></a>Q. TLS 1.0 /1.1 を無効化した際の影響はありますか。</h3><p>A. Azure  や Office 365 など弊社のクラウドサービスは すでに TLS 1.2 にて動作をしておりますので影響ございません。また、社内のサーバー間での通信におきましても、上記 TLS 1.2 の無効化がされていなければ 影響はありません。その他 ご利用いただいている Web サービス 等がある場合には、それぞれ サービス提供元にご確認ください。</p>
+<h3 id="Q-TLS-1-0-1-1-を無効化した際の影響はありますか。"><a href="#Q-TLS-1-0-1-1-を無効化した際の影響はありますか。" class="headerlink" title="Q. TLS 1.0 &#x2F;1.1 を無効化した際の影響はありますか。"></a>Q. TLS 1.0 &#x2F;1.1 を無効化した際の影響はありますか。</h3><p>A. Azure  や Office 365 など弊社のクラウドサービスは すでに TLS 1.2 にて動作をしておりますので影響ございません。また、社内のサーバー間での通信におきましても、上記 TLS 1.2 の無効化がされていなければ 影響はありません。その他 ご利用いただいている Web サービス 等がある場合には、それぞれ サービス提供元にご確認ください。</p>
 <p>上記内容が少しでも参考となりますと幸いです。なお、製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>
 
       

@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs4.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs5.png">
 <meta property="article:published_time" content="2024-02-11T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.325Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.263Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+73ae5746-1494-5af3-9b67-8f86bef91a04%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%9B%A3%E6%9F%BB%E3%83%AD%E3%82%B0%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%89%B9%E6%A8%A9%E3%83%AD%E3%83%BC%E3%83%AB%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%81%AE%E7%AE%A1%E7%90%86%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Feasily-manage-privileged-role-assignments-with-auditlogs%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Feasily-manage-privileged-role-assignments-with-auditlogs.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Feasily-manage-privileged-role-assignments-with-auditlogs.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/" data-id="cmmketdsc00au0nqpgpjygwy4" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/" data-id="cuidkBF2aLW3EwUnfq8uDm7Yg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,7 +174,7 @@
 <p>特権ロールを持つユーザーに、「本当にそのロール必要です？」と確認すると、ほとんどの場合は「はい、必要です！」と答えると思います。例えば、グローバル管理者ロールを保持しているユーザー A が、他のユーザーのパスワードをリセットする業務を行っている場合、確かにグローバル管理者ロールであればパスワードのリセットが可能なので、ユーザー A はそのロールを取り上げられては困ると主張すると思います。</p>
 <p>しかし、パスワードをリセットする業務にグローバル管理者ロールの権限は強すぎます。より低い権限を持つロールが利用できるにもかかわらず、このようにユーザーは無意識のうちに特定のタスクを実行するために高い権限が必要だと考えてしまうのです。例えばこのシナリオの場合、確かにグローバル管理者ロールを使えば他のユーザーのパスワードをリセットできますが、このユーザーが誰のパスワードをリセットする予定なのかをヒアリングし、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/privileged-roles-permissions?tabs=admin-center#who-can-reset-passwords">Microsoft Entra ID の特権を持つロールとアクセス許可 (プレビュー)</a> の表を確認すれば、「ユーザー管理者」や「ヘルプデスク管理者」などより小さい権限を持つロールに置き換えることができるかもしれません。</p>
 <p>このように、管理者ロールを持つユーザーの活動が注意深く監視および監査されないと、本来必要でないロールを割り当て続けてしまうことになります。ロール割り当ての定期的なチェックと新しい役割割り当てに関するアラートの発報は、特権ロールの割り当てを追跡し管理するにあたり非常に重要です。</p>
-<h2 id="特権とは"><a href="#特権とは" class="headerlink" title="特権とは"></a>特権とは</h2><p>Microsoft Entra ID における特権とは、ディレクトリ上のリソースの管理を何らかの主体に委任し、資格情報や認証/認可のポリシーの変更、制限付きのデータへのアクセスを行えるようにするアクセス許可のことを指します。Microsoft Entra ロールには、それぞれロールごとに、このアクセス許可の内容が定義されています。ロールを割り当てられたユーザーには、このアクセス許可が付与され、様々な管理操作が可能となります。</p>
+<h2 id="特権とは"><a href="#特権とは" class="headerlink" title="特権とは"></a>特権とは</h2><p>Microsoft Entra ID における特権とは、ディレクトリ上のリソースの管理を何らかの主体に委任し、資格情報や認証&#x2F;認可のポリシーの変更、制限付きのデータへのアクセスを行えるようにするアクセス許可のことを指します。Microsoft Entra ロールには、それぞれロールごとに、このアクセス許可の内容が定義されています。ロールを割り当てられたユーザーには、このアクセス許可が付与され、様々な管理操作が可能となります。</p>
 <p>まずは、割り当てられているロールにどのような管理権限があるのかを確認することが重要です。すべての組み込みロールに定義されている権限は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/role-based-access-control/permissions-reference">こちら</a> で確認できます。 </p>
 <p>また、 Azure ポータル上でロールを検索し、「説明」メニューを開くことでもアクセス許可一覧を確認できます。この方法であれば、カスタム ロールに定義されているアクセス許可も確認できます。</p>
 <p><img src="/blog/azure-active-directory/easily-manage-privileged-role-assignments-with-auditlogs/easily-manage-privileged-role-assignments-with-auditlogs1.png"></p>

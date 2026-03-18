@@ -14,13 +14,13 @@
 <meta property="og:description" content="こんにちは、 Azure &amp; Identity サポート チームの平形です。 以前、Azure AD のサインイン アクティビティ レポートと監査アクティビティ レポートを Azure AD Graph API を経由して取得するスクリプトを紹介しました。今回はスクリプト内にクライアント シークレットや証明書の情報を記載しなくてもよい方法として、マネージド ID を使用したレポート取得方法">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-01-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.647Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.584Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="signin log">
-<meta property="article:tag" content="graph api">
-<meta property="article:tag" content="PowerShell">
 <meta property="article:tag" content="Managed ID">
+<meta property="article:tag" content="PowerShell">
+<meta property="article:tag" content="graph api">
+<meta property="article:tag" content="signin log">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6a5f80ed-8857-59e8-b154-a43cad6759b9%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89+ID+%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6+Azure+AD+%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%B3+%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3+%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%82%92+CSV+%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B+PowerShell+%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-graph-api-signin-activity-reports-v2%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-graph-api-signin-activity-reports-v2.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-graph-api-signin-activity-reports-v2.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports-v2/" data-id="cmmketdup00hw0nqpakaw36of" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-api-signin-activity-reports-v2/" data-id="cuid_3u3NhLd7LIOsPBiGLvIv" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -204,8 +204,8 @@
 <p>Azure CLI のインストール<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli?view=azure-cli-latest">https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli?view=azure-cli-latest</a></p>
 <p>az コマンドについての公開情報<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/cli/azure/reference-index?view=azure-cli-latest#az-rest">https://docs.microsoft.com/ja-jp/cli/azure/reference-index?view=azure-cli-latest#az-rest</a></p>
 <h2 id="Graph-API-の公開情報"><a href="#Graph-API-の公開情報" class="headerlink" title="Graph API の公開情報"></a>Graph API の公開情報</h2><p>Graph API を実行する際には事前に権限付与が必要な場合があります。例えば今回のサインイン ログの場合は以下の公開情報に記載のある通り、監査ログに対する読み取り権限が必要です。実行する Graph API ごとに要求される権限が異なるため、公開情報から実行する Graph API に必要な権限を確認し、実行するアプリケーション、もしくはユーザーに権限付与を行ってください。</p>
-<p>List signIns<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/graph/api/signin-list?view=graph-rest-1.0&amp;tabs=http">https://docs.microsoft.com/en-us/graph/api/signin-list?view=graph-rest-1.0&amp;tabs=http</a></p>
-<p>「Application    AuditLog.Read.All and Directory.Read.All」という文言から、アプリケーションがこの Graph API を実行するにはこれらの権限が必要なことが分かります。そのため事前準備でこれらの権限をアプリケーションに対して付与しました。</p>
+<p>List signIns<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/graph/api/signin-list?view=graph-rest-1.0&tabs=http">https://docs.microsoft.com/en-us/graph/api/signin-list?view=graph-rest-1.0&amp;tabs=http</a></p>
+<p>「Application	AuditLog.Read.All and Directory.Read.All」という文言から、アプリケーションがこの Graph API を実行するにはこれらの権限が必要なことが分かります。そのため事前準備でこれらの権限をアプリケーションに対して付与しました。</p>
 <p>今回紹介しました方法にてお客様の要件に合わせて適宜フィルター条件を追加したり、整形しやすく出力することが可能です。<br>以上の内容が、Azure AD 上のサインイン ログを長期的に保管する際に是非ご活用ください。</p>
 
       

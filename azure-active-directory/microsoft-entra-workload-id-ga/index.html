@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 三輪 です。  本記事は、2022 年 11 月 28 日に米国の Azure Active Directory Identity Blog で公開された Microsoft Entra Workload Identities now generally available - Microsoft Community Hub を意訳した">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-12-24T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.643Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.581Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6a082df6-1932-50d8-a91d-df5dceab1578%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89+ID+%E3%81%AE%E4%B8%80%E8%88%AC%E6%8F%90%E4%BE%9B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-entra-workload-id-ga%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-entra-workload-id-ga.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-entra-workload-id-ga.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-workload-id-ga/" data-id="cmmketduo00hu0nqp739741qj" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-workload-id-ga/" data-id="cuidv0IIzDFOXo6ii3OsvYXHJ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -171,7 +171,7 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/workload-identity">条件付きアクセス</a>: 業界で最も強力なアクセス制御の 1 つである条件付きアクセスをワークロード ID に導入することができます。条件付きアクセスは、ワークロード ID の場所ベースまたはリスク ベースのポリシーをサポートします。組織は信頼できる場所以外からのサインイン試行や、Identity Protection によって検出された危険なアプリやサービスによるサインイン試行をブロックすることができます。 </li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/identity-protection/concept-workload-identity-risk">Identity Protection</a>: 人間の ID とは異なり、ワークロード ID のライフサイクルは十分に定義されていないことが多く、そのため管理が困難です。この問題に対処するため、マイクロソフトではワークロード ID のライフサイクルを横断的に調査し、怪しい兆候がないかを監視しています。Identity Protection は、資格情報の侵害、異常なサインイン、アカウント情報の不審な変更に関するレポートを提供します。危険なユーザーと同様に、危険なワークロード ID のリスク レポートは、ポータル、Microsoft Graph、または、診断設定を使用してデータをエクスポートした先のツールなど、お好みのフォーマットで表示することができます。 </li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review">アクセス レビュー</a>: 特権ロールの割り当てに関連するリスクを軽減するために、定期的なアクセス レビューが必要です。この機能により、ワークロード ID に対してアクセス レビューを作成し、最小特権アクセスを強制することができます。 </li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review">アクセス レビュー</a>: 特権ロールの割り当てに関連するリスクを軽減するために、定期的なアクセス レビューが必要です。この機能により、ワークロード ID に対してアクセス レビューを作成し、最小特権アクセスを強制することができます。</li>
 </ul>
 <p>これは、ワークロード ID を使用して組織の生産性と安全性を維持するという弊社の取り組みの始まりにすぎません。未使用のアプリ、期限切れの資格情報、未使用の資格情報などのアプリケーションに関する推奨事項を提供する新機能である <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/reports-monitoring/overview-recommendations">Azure Active Directory の推奨事項</a>の App Health Recommendations は、11 月末までにパブリック プレビューを開始する予定です。 </p>
 <h2 id="Microsoft-Entra-Workload-Identities-を今すぐお試しください"><a href="#Microsoft-Entra-Workload-Identities-を今すぐお試しください" class="headerlink" title="Microsoft Entra Workload Identities を今すぐお試しください"></a>Microsoft Entra Workload Identities を今すぐお試しください</h2><p>Microsoft Entra Workload Identities の <a target="_blank" rel="noopener" href="https://ms.portal.azure.com/?feature.canmodifyextensions=true&feature.canmodifystamps=true&Microsoft_Azure_ManagedServiceIdentity=test3&Microsoft_AAD_IAM_isWorkloadIdentitiesFreeTrialEnabled=true&Microsoft_Azure_ManagedServiceIdentity_isWorkloadIdentitiesUpsellBannerEnabled=true&Microsoft_Azure_ManagedServiceIdentity_isWorkloadIdentitiesPlaceHolderBannerEnabled=false#view/Microsoft_Azure_ManagedServiceIdentity/WorkloadIdentitiesBlade">90 日間無料試用版</a> では、新しい条件付きアクセス ポリシーを設定し、検出されたリスクのレポートを確認し、最小特権アクセスを適用することができます。 </p>

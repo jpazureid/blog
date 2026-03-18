@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/bh3.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/bh4.png">
 <meta property="article:published_time" content="2021-02-17T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.122Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.056Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Azure AD Connect">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f992408f-b9b1-5e7a-91f4-d2f4f7da7b0c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%82%92%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E4%BA%88%E5%AE%9A%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E5%A4%9A%E8%A6%81%E7%B4%A0%E8%AA%8D%E8%A8%BC%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%A4%89%E6%9B%B4%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fupcoming-changes-to-managing-mfa-methods-for-hybrid-customers%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fupcoming-changes-to-managing-mfa-methods-for-hybrid-customers.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fupcoming-changes-to-managing-mfa-methods-for-hybrid-customers.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/" data-id="cmmketdwq00of0nqpde3e0kyg" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/" data-id="cuidEo-Q93tEoLgqmxLqEKoee" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -223,7 +223,7 @@
 <h2 id="動作変更に伴い必要となる対応"><a href="#動作変更に伴い必要となる対応" class="headerlink" title="動作変更に伴い必要となる対応"></a>動作変更に伴い必要となる対応</h2><p>以上の動作変更に伴い、多要素認証に使用する電話番号を現在オンプレミス AD 上で管理されているお客様においては、管理方法を変更いただく必要がございます。多要素認証に使用する電話番号を変更したい場合は、管理者がオンプレミス AD 上のユーザー属性 (電話番号) を変更するという方法ではなく、後述するいずれかの方法で認証用の電話番号を設定および更新するようご対応ください。</p>
 <h3 id="Azure-ポータルからユーザーの「認証方法」ブレードを使用する"><a href="#Azure-ポータルからユーザーの「認証方法」ブレードを使用する" class="headerlink" title="Azure ポータルからユーザーの「認証方法」ブレードを使用する"></a>Azure ポータルからユーザーの「認証方法」ブレードを使用する</h3><p>管理者がユーザーの認証用電話番号を構成したい場合、Azure ポータルの Azure Active Directory ブレードから行うのが簡単です。Azure Active Directory ブレードより対象のユーザーを選択し、認証方法のブレードへお進みください。<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-userdevicesettings#add-authentication-methods-for-a-user">この方法</a> によりポータルの画面からユーザーの認証用電話番号を直接変更いただけます。</p>
 <p><img src="/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/bh1.png"></p>
-<h3 id="Microsoft-Graph-API-の-authentication-methods-エンドポイントを使用する"><a href="#Microsoft-Graph-API-の-authentication-methods-エンドポイントを使用する" class="headerlink" title="Microsoft Graph API の authentication/methods エンドポイントを使用する"></a>Microsoft Graph API の authentication/methods エンドポイントを使用する</h3><p>管理者がユーザーの認証用電話番号を構成する方法としては、直接 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/graph/authenticationmethods-get-started">Microsoft Graph API の authentication/methods エンドポイント</a> を使用する方法もございます。API を直接操作したい場合は本方法をご利用ください。</p>
+<h3 id="Microsoft-Graph-API-の-authentication-methods-エンドポイントを使用する"><a href="#Microsoft-Graph-API-の-authentication-methods-エンドポイントを使用する" class="headerlink" title="Microsoft Graph API の authentication&#x2F;methods エンドポイントを使用する"></a>Microsoft Graph API の authentication&#x2F;methods エンドポイントを使用する</h3><p>管理者がユーザーの認証用電話番号を構成する方法としては、直接 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/graph/authenticationmethods-get-started">Microsoft Graph API の authentication&#x2F;methods エンドポイント</a> を使用する方法もございます。API を直接操作したい場合は本方法をご利用ください。</p>
 <p><img src="/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/bh2.png"></p>
 <h3 id="Microsoft-Graph-Identity-Signins-PowerShell-を使用する"><a href="#Microsoft-Graph-Identity-Signins-PowerShell-を使用する" class="headerlink" title="Microsoft.Graph.Identity.Signins PowerShell を使用する"></a>Microsoft.Graph.Identity.Signins PowerShell を使用する</h3><p>Microsoft Graph API を直接操作することが難しい場合は、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/authentication/howto-mfa-userdevicesettings#manage-methods-using-powershell">Microsoft.Graph.Identity.Signins PowerShell コマンド</a> から同様の操作を実施いただけます。</p>
 <p><img src="/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/bh3.png"></p>

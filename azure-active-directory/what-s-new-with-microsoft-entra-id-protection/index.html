@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-s-new-with-microsoft-entra-id-protection/pic9.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-s-new-with-microsoft-entra-id-protection/pic10.png">
 <meta property="article:published_time" content="2023-08-20T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.151Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.086Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -166,7 +166,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+deae1e3f-631b-5df6-b097-79000cc8cd47%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+ID+Protection+%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fwhat-s-new-with-microsoft-entra-id-protection%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fwhat-s-new-with-microsoft-entra-id-protection.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fwhat-s-new-with-microsoft-entra-id-protection.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-s-new-with-microsoft-entra-id-protection/" data-id="cmmketdx300p80nqp1igidupr" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-s-new-with-microsoft-entra-id-protection/" data-id="cuidvyNPgZ_6__nguriHHIJpb" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -197,7 +197,7 @@
 <p>2 つ目は <strong>中間者攻撃</strong> です。ユーザーのアクセス権を取得し、アカウントを侵害する一般的な手法はフィッシングであり、通常は偽のログイン ページにユーザーを誘導して資格情報を入力させ、入手した認証方法を Microsoft Entra ID に横流しして利用します。仮にユーザーに多要素認証 (MFA) が要求されても、いつもどおりの認証操作であるため、ユーザーはそのまま認証を完了する可能性が高いです。これによって攻撃者に認証済みのセッションと、以降に攻撃に利用できる資格情報を提供してしまいます。</p>
 <p>Microsoft 365 Defender からのシグナルと Microsoft Entra ID からのデータを組み合わせることで、このような攻撃を正確に検知し、対象となるサインインとユーザーに <strong>Azure AD 脅威インテリジェンス</strong> のリスクを割り当てるようにします。これにより、パスワード リセットを強制することによってセッションを破棄させ、ユーザーの資格情報がその後悪用させるのを抑止します。</p>
 <p>両検知機能はすでに Microsoft Entra ID のお客様にて利用可能です。</p>
-<h2 id="リアルタイムな-Azure-AD-脅威インテリジェンス"><a href="#リアルタイムな-Azure-AD-脅威インテリジェンス" class="headerlink" title="リアルタイムな Azure AD 脅威インテリジェンス"></a>リアルタイムな Azure AD 脅威インテリジェンス</h2><p>新たに発生する ID ベースの攻撃からお客様を保護するために、Microsoft Entra ID Protection にてリアルタイムな Azure AD 脅威インテリジェンスを提供いたします。新しい攻撃パターンが判明したときに、迅速に新しいリアルタイム検知機能を Microsoft Entra ID Protection に追加し、これら新しい攻撃に対抗できるようになりました。これらの検知は Microsoft の脅威インテリジェンスをリアルタイムに活用するため、Microsoft Entra ID Protection がサインインの時点で侵害パターンを特定/検知して、リスク ベースの条件付きアクセスポリシーを利用することで ID を保護することができます。</p>
+<h2 id="リアルタイムな-Azure-AD-脅威インテリジェンス"><a href="#リアルタイムな-Azure-AD-脅威インテリジェンス" class="headerlink" title="リアルタイムな Azure AD 脅威インテリジェンス"></a>リアルタイムな Azure AD 脅威インテリジェンス</h2><p>新たに発生する ID ベースの攻撃からお客様を保護するために、Microsoft Entra ID Protection にてリアルタイムな Azure AD 脅威インテリジェンスを提供いたします。新しい攻撃パターンが判明したときに、迅速に新しいリアルタイム検知機能を Microsoft Entra ID Protection に追加し、これら新しい攻撃に対抗できるようになりました。これらの検知は Microsoft の脅威インテリジェンスをリアルタイムに活用するため、Microsoft Entra ID Protection がサインインの時点で侵害パターンを特定&#x2F;検知して、リスク ベースの条件付きアクセスポリシーを利用することで ID を保護することができます。</p>
 <p>ユーザーのサインインの処理において、サインイン情報がリアルタイム脅威インテリジェンス検知のパターンにマッチすると、Microsoft Entra ID Protection のリアルタイム リスク評価エンジンが検知を報告し、サインインとユーザーのリスク レベルを上げて、お客様が構成したリスク ベースの条件付きアクセスポリシーに従い、ブロックまたはユーザーへの認証要求を強制します。これにより、悪意ある攻撃から組織が保護されます。</p>
 <p>リアルタイムな脅威インテリジェンスの検知について詳細を確認するには、検知内容の追加情報の欄をご覧ください。</p>
 <p><img src="/blog/azure-active-directory/what-s-new-with-microsoft-entra-id-protection/pic8.png"></p>

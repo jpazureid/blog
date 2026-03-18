@@ -6,15 +6,15 @@
   
   <title>9/28 (日本語抄訳) RCA – 複数の Microsoft サービスおよび Azure Active Directory と連携したアプリケーションでの認証エラー (Tracking ID SM79-F88) | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 9&#x2F;28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の PDF については、以">
+  <meta name="description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 9&#x2F;28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の PDF につ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="9&#x2F;28 (日本語抄訳) RCA – 複数の Microsoft サービスおよび Azure Active Directory と連携したアプリケーションでの認証エラー (Tracking ID SM79-F88)">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/20200928-rca-azure-ad/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 9&#x2F;28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の PDF については、以">
+<meta property="og:description" content="いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。 今回は 9&#x2F;28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。 日本語版の抄訳の PDF につ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-10-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.012Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.948Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,17 +154,17 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3772e834-811e-53de-b975-c36b4c09dac4%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B9%2F28+%28%E6%97%A5%E6%9C%AC%E8%AA%9E%E6%8A%84%E8%A8%B3%29+RCA+%E2%80%93+%E8%A4%87%E6%95%B0%E3%81%AE+Microsoft+%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%8A%E3%82%88%E3%81%B3+Azure+Active+Directory+%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E3%81%AE%E8%AA%8D%E8%A8%BC%E3%82%A8%E3%83%A9%E3%83%BC+%28Tracking+ID+SM79-F88%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2F20200928-rca-azure-ad%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2F20200928-rca-azure-ad.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2F20200928-rca-azure-ad.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/20200928-rca-azure-ad/" data-id="cmmketdpl002v0nqp36cy3h68" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/20200928-rca-azure-ad/" data-id="cuid8aTTkgKKl7CPxKLvYJswQ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。</p>
-<p>今回は 9/28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は <a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/status/history/">状態の履歴および根本原因分析 (RCA)</a> を確認ください。</p>
+<p>今回は 9&#x2F;28 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は <a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/status/history/">状態の履歴および根本原因分析 (RCA)</a> を確認ください。</p>
 <p>日本語版の抄訳の PDF については、以下のリンクよりダウンロード頂けます。</p>
 <p><a href="/blog/azure-active-directory/20200928-rca-azure-ad/SM79-F88_JP.pdf">SM79-F88_JP.pdf</a></p>
-<p>この障害では Azure / Office 365 ポータルへのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。改めて、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。</p>
-<h2 id="9-28-RCA-–-複数の-Microsoft-サービスおよび-Azure-Active-Directory-と連携したアプリケーションでの認証エラー-Tracking-ID-SM79-F88"><a href="#9-28-RCA-–-複数の-Microsoft-サービスおよび-Azure-Active-Directory-と連携したアプリケーションでの認証エラー-Tracking-ID-SM79-F88" class="headerlink" title="9/28 RCA – 複数の Microsoft サービスおよび Azure Active Directory と連携したアプリケーションでの認証エラー (Tracking ID SM79-F88)"></a>9/28 RCA – 複数の Microsoft サービスおよび Azure Active Directory と連携したアプリケーションでの認証エラー (Tracking ID SM79-F88)</h2><h3 id="影響の概要"><a href="#影響の概要" class="headerlink" title="影響の概要"></a>影響の概要</h3><p>2020 年 9 月 28 日の 21:25 UTC (日本時間 9 月 29 日 AM 6:25) から 2020 年 9 月 29 日の 00:23 UTC (日本時間 9 月 29 日 AM 9:23) の間で Azure Active Directory (Azure AD) を認証基盤として利用するすべての Microsoft およびサードパーティのアプリケーション、サービスの認証処理でエラーが生じた可能性があります。Azure AD B2C を使用して認証を行うアプリケーションも影響を受けました。</p>
+<p>この障害では Azure &#x2F; Office 365 ポータルへのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。改めて、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。</p>
+<h2 id="9-28-RCA-–-複数の-Microsoft-サービスおよび-Azure-Active-Directory-と連携したアプリケーションでの認証エラー-Tracking-ID-SM79-F88"><a href="#9-28-RCA-–-複数の-Microsoft-サービスおよび-Azure-Active-Directory-と連携したアプリケーションでの認証エラー-Tracking-ID-SM79-F88" class="headerlink" title="9&#x2F;28 RCA – 複数の Microsoft サービスおよび Azure Active Directory と連携したアプリケーションでの認証エラー (Tracking ID SM79-F88)"></a>9&#x2F;28 RCA – 複数の Microsoft サービスおよび Azure Active Directory と連携したアプリケーションでの認証エラー (Tracking ID SM79-F88)</h2><h3 id="影響の概要"><a href="#影響の概要" class="headerlink" title="影響の概要"></a>影響の概要</h3><p>2020 年 9 月 28 日の 21:25 UTC (日本時間 9 月 29 日 AM 6:25) から 2020 年 9 月 29 日の 00:23 UTC (日本時間 9 月 29 日 AM 9:23) の間で Azure Active Directory (Azure AD) を認証基盤として利用するすべての Microsoft およびサードパーティのアプリケーション、サービスの認証処理でエラーが生じた可能性があります。Azure AD B2C を使用して認証を行うアプリケーションも影響を受けました。</p>
 <p>事象発生時点で Azure AD を利用したクラウド サービスで認証済みでなかったユーザーは、問題の影響を受けた可能性がより高く、平均して以下に示すような可用性の値で複数の認証リクエストが失敗していた可能性があります。これらの値は、さまざまな顧客とワークロードの情報を元に集計されました。</p>
 <ul>
 <li>ヨーロッパ: 事象発生期間中の成功率 81 ％。</li>

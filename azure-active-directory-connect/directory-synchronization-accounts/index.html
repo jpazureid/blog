@@ -17,11 +17,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/directory-synchronization-accounts/image02.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/directory-synchronization-accounts/image03.png">
 <meta property="article:published_time" content="2021-02-17T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.882Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.819Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Conditional Access">
 <meta property="article:tag" content="Azure AD Connect">
+<meta property="article:tag" content="Conditional Access">
 <meta property="article:tag" content="Directory Synchronization Accounts">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/directory-synchronization-accounts/image01.png">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+98e7d62c-cfb5-50b0-be44-6e2bc8c15240%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8A%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8C%E6%9C%9F%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fdirectory-synchronization-accounts%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fdirectory-synchronization-accounts.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fdirectory-synchronization-accounts.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/directory-synchronization-accounts/" data-id="cmmketdpb00220nqp85wm3qm8" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/directory-synchronization-accounts/" data-id="cuidWfOMrDRPCNmu7kYkOTwDs" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -180,26 +180,21 @@
 <p>具体的には、お客様環境における条件付きアクセス ポリシーにて、下記の手順をもとにディレクトリロールの観点で設定を行います。</p>
 <h2 id="条件付きアクセスの適用「対象外」に-Azure-AD-コネクタ-アカウントのディレクトリ-ロールを指定する方法"><a href="#条件付きアクセスの適用「対象外」に-Azure-AD-コネクタ-アカウントのディレクトリ-ロールを指定する方法" class="headerlink" title="条件付きアクセスの適用「対象外」に Azure AD コネクタ アカウントのディレクトリ ロールを指定する方法"></a>条件付きアクセスの適用「対象外」に Azure AD コネクタ アカウントのディレクトリ ロールを指定する方法</h2><p>▼手順</p>
 <ol>
-<li><p>Azure ポータル (<a target="_blank" rel="noopener" href="https://portal.azure.com/">https://portal.azure.com</a>) に、グローバル管理者 (全体管理者) でサインインをします。
- </p>
+<li><p>Azure ポータル (<a target="_blank" rel="noopener" href="https://portal.azure.com/">https://portal.azure.com</a>) に、グローバル管理者 (全体管理者) でサインインをします。</p>
 </li>
-<li><p>[Azure Active Directory] &gt; [セキュリティ] &gt; [条件付きアクセス] の順にクリックします。
- </p>
+<li><p>[Azure Active Directory] &gt; [セキュリティ] &gt; [条件付きアクセス] の順にクリックします。</p>
 </li>
-<li><p>変更を行う条件付きアクセスのポリシーをクリックします。
- </p>
+<li><p>変更を行う条件付きアクセスのポリシーをクリックします。</p>
 </li>
-<li><p>[割り当て] 配下にある [ユーザーとグループ] をクリックし、下記の設定を追加します。
- </p>
-<p>[対象] : 特に追加の設定は不要です。
- </p>
+<li><p>[割り当て] 配下にある [ユーザーとグループ] をクリックし、下記の設定を追加します。</p>
+<p>[対象] : 特に追加の設定は不要です。</p>
 <p>[対象外] : [ディレクトリ ロール] にチェックを入れた後、[ディレクトリ同期アカウント] にチェックを入れるという追加の設定を行います。</p>
 <p><img src="/blog/azure-active-directory-connect/directory-synchronization-accounts/image01.png"></p>
 </li>
-<li><p>[保存] をクリックします。
- </p>
+<li><p>[保存] をクリックします。</p>
 </li>
 </ol>
+<p> </p>
 <p>設定手順は以上となります。
  </p>
 <h2 id="どのようなときに、Azure-AD-コネクタ-アカウントのサインインに問題が発生していると判断すればいいのか"><a href="#どのようなときに、Azure-AD-コネクタ-アカウントのサインインに問題が発生していると判断すればいいのか" class="headerlink" title="どのようなときに、Azure AD コネクタ アカウントのサインインに問題が発生していると判断すればいいのか"></a>どのようなときに、Azure AD コネクタ アカウントのサインインに問題が発生していると判断すればいいのか</h2><p>Azure AD コネクタ アカウントのサインインは、Azure AD Connect 新規インストール時からその後の定期的な同期処理においても発生します。</p>

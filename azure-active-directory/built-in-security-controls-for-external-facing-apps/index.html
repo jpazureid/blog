@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/pic4.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/pic5.png">
 <meta property="article:published_time" content="2024-11-10T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.208Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.145Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8a1bb66e-d4c0-5b72-b7df-fcfe05f704a8%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%A4%96%E9%83%A8%E5%85%AC%E9%96%8B%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E9%81%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA+Entra+ID+%E3%81%AE%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E5%88%B6%E5%BE%A1%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fbuilt-in-security-controls-for-external-facing-apps%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fbuilt-in-security-controls-for-external-facing-apps.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fbuilt-in-security-controls-for-external-facing-apps.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/" data-id="cmmketdrn008g0nqpaq3l6ssp" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/" data-id="cuid4wv5KbDDfvJUc6NzYx4Rd" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -181,9 +181,9 @@
 <p>弊社は、潜在的な脅威に先手を打つべくシステムを継続的に更新していますのでご安心ください。</p>
 <h3 id="条件付きアクセスでリスクを検出および解消する"><a href="#条件付きアクセスでリスクを検出および解消する" class="headerlink" title="条件付きアクセスでリスクを検出および解消する"></a>条件付きアクセスでリスクを検出および解消する</h3><p>ここまでで、外部テナントの作成時に既定で有効になる保護機能について説明してきました。お客様のアプリのセキュリティをさらに強化するために、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-policies">条件付きアクセス</a> ポリシーをカスタマイズして多要素認証 (MFA) を求めることで、侵害のリスクが 99.22% と大幅に減少し (<a target="_blank" rel="noopener" href="https://www.microsoft.com/ja-jp/security/security-insider/microsoft-digital-defense-report-2023">2023 年 Microsoft デジタル防衛レポート</a>)、不正アクセスが防止されるだけでなく、フィッシングやアカウント乗っ取りなどの脅威に対する堅牢な防御が提供されます。外部テナントで構成できるさまざまな MFA 方法の詳細については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/external-id/customers/concept-multifactor-authentication-customers">弊社ドキュメント</a> をご覧ください。</p>
 <p><img src="/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/pic4.png" alt="図 4: 外部ユーザー向けの MFA。"></p>
-<h2 id="次のステップ-エンドツーエンドの-CIAM-セキュリティ戦略を構築する"><a href="#次のステップ-エンドツーエンドの-CIAM-セキュリティ戦略を構築する" class="headerlink" title="次のステップ: エンドツーエンドの CIAM セキュリティ戦略を構築する"></a>次のステップ: エンドツーエンドの CIAM セキュリティ戦略を構築する</h2><p>ここまでで、テナント作成時から有効な既定のセキュリティ機能についてご理解いただけたと存じます。次に、お客様が自社の ID に関するセキュリティ要件について確認され、さらに高度な脅威が存在しているという点についても理解が得られましたら、ぜひ以下に紹介します External ID のプレミアム セキュリティ機能についてもご検討ください。今後数か月の間に、包括的な外部 ID セキュリティ ブログの連載を開始し、Web Application Firewall (WAF) の統合、不正サインアップの防止、サインイン アカウントの乗っ取り保護、そして最後にオフラインでの脅威ハンティングのための SIEM/SOAR ツールに関する情報を公開する予定です。</p>
+<h2 id="次のステップ-エンドツーエンドの-CIAM-セキュリティ戦略を構築する"><a href="#次のステップ-エンドツーエンドの-CIAM-セキュリティ戦略を構築する" class="headerlink" title="次のステップ: エンドツーエンドの CIAM セキュリティ戦略を構築する"></a>次のステップ: エンドツーエンドの CIAM セキュリティ戦略を構築する</h2><p>ここまでで、テナント作成時から有効な既定のセキュリティ機能についてご理解いただけたと存じます。次に、お客様が自社の ID に関するセキュリティ要件について確認され、さらに高度な脅威が存在しているという点についても理解が得られましたら、ぜひ以下に紹介します External ID のプレミアム セキュリティ機能についてもご検討ください。今後数か月の間に、包括的な外部 ID セキュリティ ブログの連載を開始し、Web Application Firewall (WAF) の統合、不正サインアップの防止、サインイン アカウントの乗っ取り保護、そして最後にオフラインでの脅威ハンティングのための SIEM&#x2F;SOAR ツールに関する情報を公開する予定です。</p>
 <p><img src="/blog/azure-active-directory/built-in-security-controls-for-external-facing-apps/pic5.png" alt="図 5: Microsoft Entra External ID を使用して Web アプリケーションとモバイル アプリケーションをセキュリティで保護。"></p>
-<p>Microsoft Entra External ID を使用して、安全で美しく、使い心地の良いアプリを数分で構築できます。今すぐ <a target="_blank" rel="noopener" href="https://aka.ms/TryExternalID">aka.ms/TryExternalID</a> にアクセスしてお試しください。</p>
+<p>Microsoft Entra External ID を使用して、安全で美しく、使い心地の良いアプリを数分で構築できます。今すぐ <a target="_blank" rel="noopener" href="https://aka.ms/TryExternalID">aka.ms&#x2F;TryExternalID</a> にアクセスしてお試しください。</p>
 
       
       

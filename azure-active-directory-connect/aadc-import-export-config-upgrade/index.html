@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの谷です。現在ご利用環境のバージョンが 1.5.4x.0 未満、かつ、別のサーバーに新規に Azure AD Connect インストールし、利用環境の設定情報を復元する場合の方法です。例えば、現在利用している Azure AD Connect のバージョンが 1.1.647.0 で 1.5.45.0 にスイング アップグレードするために、">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-09-08T15:01:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.839Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.777Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,23 +154,25 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+01bdc88c-0105-54fb-8444-e62695223256%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E7%A7%BB%E8%A1%8C%E3%81%AB%E4%BC%B4%E3%81%86%E8%A8%AD%E5%AE%9A%E6%83%85%E5%A0%B1%E3%81%AE+Export+%2F+Import%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Faadc-import-export-config-upgrade%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Faadc-import-export-config-upgrade.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Faadc-import-export-config-upgrade.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config-upgrade/" data-id="cmmketdox00110nqpe2o1aw3s" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config-upgrade/" data-id="cuid7jKArh_SagymaI-ejciA2" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、Azure Identity サポート チームの谷です。<br>現在ご利用環境のバージョンが 1.5.4x.0 未満、かつ、別のサーバーに新規に Azure AD Connect インストールし、利用環境の設定情報を復元する場合の方法です。<br>例えば、現在利用している Azure AD Connect のバージョンが 1.1.647.0 で 1.5.45.0 にスイング アップグレードするために、追加で Azure AD Connect 用にサーバーを構成し、Azure AD Connect の各種設定を行う場合が想定される方法となります。</p>
 <h2 id="留意事項"><a href="#留意事項" class="headerlink" title="留意事項"></a>留意事項</h2><p>予め Azure AD Connect 1.5.4x.0 以降のバージョンをインストールし、スクリプト ファイル <a href="/blog/azure-active-directory-connect/aadc-import-export-config-upgrade/MigrateSettings.ps1">MigrateSettings.ps1</a> を取得し、既存の Azure AD Connect サーバーに配置しておく必要があります。<br>バージョン 1.5.45.0 を弊社環境にてインストールし、取得したファイルをサンプルとして本記事にて掲載させていただきますが、今後の更新等にて不具合等が確認された場合には予告等無く変更させていただくこととなりますので、実際に利用する場合には、最新バージョンに同梱されているスクリプトを利用するようにしてください。<br>MigrateSettings.ps1 は既定で下記に配置されます。<br> C:\Program Files\Microsoft Azure Active Directory Connect\Tools</p>
-<h2 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h2><p> 本番環境のみで実施する場合での手順として、<a href="../how-to-upgrade-details/AADC_Upgrade_B.pptx">アップグレード手順</a>の 3. / 4. の順番が変わります。<br> 4. の手順にてインストール後に、MigrateSettings.ps1 を取得し、既存の Azure AD Connect サーバーに配置します。</p>
+<h2 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h2><p> 本番環境のみで実施する場合での手順として、<a href="../how-to-upgrade-details/AADC_Upgrade_B.pptx">アップグレード手順</a>の 3. &#x2F; 4. の順番が変わります。<br> 4. の手順にてインストール後に、MigrateSettings.ps1 を取得し、既存の Azure AD Connect サーバーに配置します。</p>
 <ol>
 <li>既存の Azure AD Connect サーバーにて MigrateSettings.ps1 を配置し、PowerShell を管理者にて起動します。</li>
-<li>下記のコマンドを実行します。<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\MigrateSettings.ps1</span><br></pre></td></tr></table></figure></li>
+<li>下記のコマンドを実行します。</li>
 </ol>
-<p> 実行例)<br> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\temp&gt; .\MigrateSettings.ps1</span><br><span class="line"></span><br><span class="line">The downlevel server configuration was successfully exported.  Copy the entire directory to</span><br><span class="line">your new staging server and select &#x27;MigratedPolicy.json&#x27; from the UI to import these settings.</span><br><span class="line"></span><br><span class="line">    C:\ProgramData\AADConnect\Exported-ServerConfiguration-85885ede-d99a-4c1f-9cec-cc5571b9287a</span><br><span class="line"></span><br><span class="line">Please see https://go.microsoft.com/fwlink/?LinkID=2117122 for more information on completing this process.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\MigrateSettings.ps1</span><br></pre></td></tr></table></figure>
+
+<p> 実行例)<br> <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">PS C:\temp&gt; .\MigrateSettings.ps1</span><br><span class="line"></span><br><span class="line">The downlevel server configuration was successfully exported.  Copy the entire directory to</span><br><span class="line">your new staging server and select &#x27;MigratedPolicy.json&#x27; from the UI to import these settings.</span><br><span class="line"></span><br><span class="line">    C:\ProgramData\AADConnect\Exported-ServerConfiguration-85885ede-d99a-4c1f-9cec-cc5571b9287a</span><br><span class="line"></span><br><span class="line">Please see https://go.microsoft.com/fwlink/?LinkID=2117122 for more information on completing this process.</span><br></pre></td></tr></table></figure></p>
 <ol start="3">
 <li><p>上記メッセージに表示のとおり、C:\ProgramData\AADConnect にディレクトリが生成されますので、同ディレクトリごと新規に構築しているサーバーにコピーします。</p>
 </li>
-<li><p>設定ファイルの読み込み方法は下記記事にて記載の手順と同様となり、コピーしたディレクトリ内の MigratedPolicy.json を選択し、ウィザードを進めます。<br>Azure AD Connect 設定の Export / Import<br><a href="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/">https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/</a></p>
+<li><p>設定ファイルの読み込み方法は下記記事にて記載の手順と同様となり、コピーしたディレクトリ内の MigratedPolicy.json を選択し、ウィザードを進めます。<br>  Azure AD Connect 設定の Export &#x2F; Import<br>  <a href="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/">https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/</a></p>
 </li>
 </ol>
 <p>上記で手順は完了となります。<br>アップグレードの際に同期ルールなどが多い場合や構成項目が多い場合にご利用いただければ幸いです。</p>

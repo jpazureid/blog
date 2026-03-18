@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/10.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/11.png">
 <meta property="article:published_time" content="2024-02-14T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.140Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.075Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -166,7 +166,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+bc30b36d-c425-591e-aafa-a40092ab781a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96+%E3%83%9E%E3%83%83%E3%83%97%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F+Entra+%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%B3+%E3%83%AD%E3%82%B0%E3%81%AE%E5%8F%AF%E8%A6%96%E5%8C%96%E6%89%8B%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fvisualize-entra-sign-in-logs-using-an-interactive-map%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fvisualize-entra-sign-in-logs-using-an-interactive-map.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fvisualize-entra-sign-in-logs-using-an-interactive-map.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/" data-id="cmmketdx100p30nqp09qw7erh" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/" data-id="cuid3vO9Usuv6tukbANfCF5eF" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -198,7 +198,7 @@
 <p>テーブルをクエリするには、ワークスペースを選択し、Sentinel の Logs の画面で通常行うようにクエリを入力ください。</p>
 <p><img src="/blog/azure-active-directory/visualize-entra-sign-in-logs-using-an-interactive-map/06.png"></p>
 <h2 id="インタラクティブ-マップの使用"><a href="#インタラクティブ-マップの使用" class="headerlink" title="インタラクティブ マップの使用"></a>インタラクティブ マップの使用</h2><p>インタラクティブ マップを使用するには、経度と緯度のデータが必要が必要になります。国名、州名、都市名に基づくマッピングには対応していません。経度と緯度のフォーマットは 10 進数である必要があります。つまり、41.40338 と 2.17403 の組み合わせは機能しますが、41°24’12.2”N と 2°10’26.5”E の形式では機能しません。Sentinel のほとんどのテーブルには、すでに正しいフォーマットの地理データが含まれています。</p>
-<p>インタラクティブ マップを生成するには、”scatterchart with (kind=map) “の後に <strong>render</strong> 演算子を使用する必要があります。地理空間データの可視化に関連する引数についてのドキュメントは <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/geospatial-visualizations">こちら</a> です。ルールの 1 つとして、クエリ出力の最初の 2 列は経度と緯度の値でなければなりません。経度と緯度の特定の列は、クエリを実行した後に手動で選択することもできますが、列の順序を適切に設定することで、余分な作業を省略することができます。</p>
+<p>インタラクティブ マップを生成するには、”scatterchart with (kind&#x3D;map) “の後に <strong>render</strong> 演算子を使用する必要があります。地理空間データの可視化に関連する引数についてのドキュメントは <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/geospatial-visualizations">こちら</a> です。ルールの 1 つとして、クエリ出力の最初の 2 列は経度と緯度の値でなければなりません。経度と緯度の特定の列は、クエリを実行した後に手動で選択することもできますが、列の順序を適切に設定することで、余分な作業を省略することができます。</p>
 <p>各ロケーションから Entra のサインイン数を取得し、インタラクティブ マップ上に可視化させたデータを表示するには以下のクエリを利用ください。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SigninLogs</span><br><span class="line">| whereTimeGenerated &gt;ago(7d)</span><br><span class="line">| whereisnotempty(LocationDetails.geoCoordinates)</span><br><span class="line">| extend Latitude =toreal(LocationDetails.geoCoordinates[&quot;latitude&quot;])</span><br><span class="line">| extend Longitude =toreal(LocationDetails.geoCoordinates[&quot;longitude&quot;])</span><br><span class="line">| summarize Count =count()byLongitude,Latitude</span><br><span class="line">| project Longitude,Latitude,Count</span><br><span class="line">| render scatterchart with(kind=map)</span><br></pre></td></tr></table></figure>
 

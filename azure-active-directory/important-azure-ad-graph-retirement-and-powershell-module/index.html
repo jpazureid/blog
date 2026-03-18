@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 高田 です。 本記事は、2023 年 6 月 15 日に米国の Azure Active Directory Identity Blog で公開された Important: Azure AD Graph Retirement and Powershell Module Deprecation を意訳したものになります。ご不明点等ございま">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-06-18T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.491Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.428Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+76ee6765-8707-573a-acc8-722f6785df8f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E9%87%8D%E8%A6%81+-+Azure+AD+Graph+%E3%81%AE%E5%BB%83%E6%AD%A2%E3%81%A8+PowerShell+%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E9%9D%9E%E6%8E%A8%E5%A5%A8%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fimportant-azure-ad-graph-retirement-and-powershell-module%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fimportant-azure-ad-graph-retirement-and-powershell-module.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fimportant-azure-ad-graph-retirement-and-powershell-module.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/important-azure-ad-graph-retirement-and-powershell-module/" data-id="cmmketdtd00e00nqpfxx18ul7" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/important-azure-ad-graph-retirement-and-powershell-module/" data-id="cuidp8yNu2rzU6Fxmf_l0In7Y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -173,7 +173,7 @@
 <li>この廃止に向けたサイクルの各ステップについては、期待されることや必要なアクションの詳細を定期的に発表していきます。</li>
 </ul>
 <h2 id="PowerShell-モジュールに関する更新情報"><a href="#PowerShell-モジュールに関する更新情報" class="headerlink" title="PowerShell モジュールに関する更新情報"></a>PowerShell モジュールに関する更新情報</h2><ul>
-<li>以前に <a href="https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/">お知らせ</a> したとおり、レガシーな <strong>ライセンス割り当て</strong> PowerShell コマンドレット (Set-AzureADUserLicense、Set-MsolUserLicense、-LicenseAssignment または New-MsolUser の -LicenseOptions パラメーター）および Azure AD Graph API (assignLicense) は廃止されました。これらのコマンドレットおよび API の利用延長を申請されていたお客様については、<strong>2023 年 9 月 30 日</strong> までに Microsoft Graph のライセンス割り当て API/PowerShell への移行を完了する必要があります。</li>
+<li>以前に <a href="https://jpazureid.github.io/blog/azure-active-directory/migrate-your-apps-to-access-the-license-managements/">お知らせ</a> したとおり、レガシーな <strong>ライセンス割り当て</strong> PowerShell コマンドレット (Set-AzureADUserLicense、Set-MsolUserLicense、-LicenseAssignment または New-MsolUser の -LicenseOptions パラメーター）および Azure AD Graph API (assignLicense) は廃止されました。これらのコマンドレットおよび API の利用延長を申請されていたお客様については、<strong>2023 年 9 月 30 日</strong> までに Microsoft Graph のライセンス割り当て API&#x2F;PowerShell への移行を完了する必要があります。</li>
 <li>当社では Microsoft Graph PowerShell SDK でまだ実現できないいくつかのシナリオにおいて、レガシーな PowerShell モジュールが必要であることを認識しています。そのため、MS Online、AzureAD、AzureAD Preview の PowerShell モジュールの非推奨の期限を <strong>2024 年 3 月 30 日</strong> に延期します。</li>
 </ul>
 <h2 id="2023-年-6-月-30-日に-Azure-AD-Graph-を使用しているアプリケーションはどうなりますか？"><a href="#2023-年-6-月-30-日に-Azure-AD-Graph-を使用しているアプリケーションはどうなりますか？" class="headerlink" title="2023 年 6 月 30 日に Azure AD Graph を使用しているアプリケーションはどうなりますか？"></a>2023 年 6 月 30 日に Azure AD Graph を使用しているアプリケーションはどうなりますか？</h2><p>2023 年 6 月 30 日のマイルストーンにおいて、Azure AD Graph を使用しているアプリケーションに影響はありません。アプリケーションは引き続き機能しますが、Azure AD Graph API には SLA やメンテナンスの提供がなくなります (セキュリティ関連の修正を除く)。当社は近い将来、廃止に向けた最初のステップ (新しく作成されたアプリケーションが Azure AD Graph を使用しないようにブロックする) のタイムラインと詳細を明確にするべく追加情報を提供する予定です。</p>

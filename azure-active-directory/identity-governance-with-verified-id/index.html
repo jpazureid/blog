@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/identity-governance-with-verified-id/identity-governance-with-verified-id6.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/identity-governance-with-verified-id/identity-governance-with-verified-id7.png">
 <meta property="article:published_time" content="2023-05-14T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.483Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.420Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Identity Governance">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+317accff-3244-51b5-8aca-536b8179535c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BVerified+ID+%E3%81%A8+Identity+Governance+%E3%81%AE%E7%B5%B1%E5%90%88+-+%E3%82%88%E3%82%8A%E6%AD%A3%E7%A2%BA%E3%81%AA%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E6%A8%A9%E3%81%AE%E4%BB%98%E4%B8%8E%E3%81%A8%E8%BF%85%E9%80%9F%E3%81%AA%E3%82%AA%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fidentity-governance-with-verified-id%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fidentity-governance-with-verified-id.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fidentity-governance-with-verified-id.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/identity-governance-with-verified-id/" data-id="cmmketdtb00dv0nqp485xhs56" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/identity-governance-with-verified-id/" data-id="cuidymsmHDgKqDkyz_tuUMo0W" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -180,10 +180,9 @@
 <p>この必要な認定ベンダーの証明書を発行する機関が、Verified ID の発行を開始したことを最近知りました。現在、あなたはプロジェクトに必要なリソースを含む <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/governance/entitlement-management-overview#what-are-access-packages-and-what-resources-can-i-manage-with-them">アクセス パッケージ</a>）を利用しています。このため、コンサルタントがアクセス パッケージへのアクセスを要求する際に、すでにあるオンボーディング プロセスに Verified ID のチェックを組み込むことにしました。</p>
 <p>その方法は次のとおりです。</p>
 <h2 id="わずか-3-ステップで-Verified-ID-を使用したアクセス-パッケージへの自動アクセスを設定する！"><a href="#わずか-3-ステップで-Verified-ID-を使用したアクセス-パッケージへの自動アクセスを設定する！" class="headerlink" title="わずか 3 ステップで Verified ID を使用したアクセス パッケージへの自動アクセスを設定する！"></a>わずか 3 ステップで Verified ID を使用したアクセス パッケージへの自動アクセスを設定する！</h2><ol>
-<li><strong>検証済み ID をアクセス パッケージの要件として追加します</strong>: [Entra Identity Governance アクセス パッケージ]<a target="_blank" rel="noopener" href="https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/elmEntitlement">https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/elmEntitlement</a> にアクセスして、保護したいアクセス パッケージを選択します。<strong>ポリシー</strong> セクションに行き、**+ ポリシーの追加** をクリックして新しいポリシーを追加する流れです。<strong>要求</strong> タブで、<strong>必須の確認済み ID</strong> セクションを確認します。</li>
+<li><strong>検証済み ID をアクセス パッケージの要件として追加します</strong>: [Entra Identity Governance アクセス パッケージ]<a target="_blank" rel="noopener" href="https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/elmEntitlement">https://entra.microsoft.com/#view/Microsoft_AAD_ERM/DashboardBlade/~/elmEntitlement</a> にアクセスして、保護したいアクセス パッケージを選択します。<strong>ポリシー</strong> セクションに行き、<strong>+ ポリシーの追加</strong> をクリックして新しいポリシーを追加する流れです。<strong>要求</strong> タブで、<strong>必須の確認済み ID</strong> セクションを確認します。</li>
 </ol>
-<p><img src="/blog/azure-active-directory/identity-governance-with-verified-id/identity-governance-with-verified-id1.png"></p>
-<p><strong>+ 発行者の追加</strong> をクリックします。ドロップダウンを使用して Entra Verified ID ネットワークで Contoso Supplier Agency を検索し、Verified Vendor の資格情報の種類を選択します。</p>
+<p><img src="/blog/azure-active-directory/identity-governance-with-verified-id/identity-governance-with-verified-id1.png"><br>	<br><strong>+ 発行者の追加</strong> をクリックします。ドロップダウンを使用して Entra Verified ID ネットワークで Contoso Supplier Agency を検索し、Verified Vendor の資格情報の種類を選択します。</p>
 <p><img src="/blog/azure-active-directory/identity-governance-with-verified-id/identity-governance-with-verified-id2.png"></p>
 <ol start="2">
 <li><strong>手動での承認を削除する</strong>: Verified Vendor の資格情報は、信頼された発行元によるユーザー認定の証明として検証されたものであるため、承認者が手動で承認する必要はありません。これにより、オンボーディングが一層スムーズになります。</li>

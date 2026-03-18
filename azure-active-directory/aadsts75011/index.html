@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/aadsts75011/75011_user_password.png">
 <meta property="og:image" content="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/media/single-sign-on-saml-protocol/saml-single-sign-on-workflow.png">
 <meta property="article:published_time" content="2023-11-06T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.046Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.983Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="SAML">
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d15f9bb7-db30-5d7f-87c8-fe43c5169bd6%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAADSTS75011+%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%92%E5%9B%9E%E9%81%BF%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%A0%B9%E6%9C%AC%E5%AF%BE%E5%87%A6%E3%81%AB%E3%81%AF%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%81%B4%E3%81%A7%E3%81%AE%E5%AF%BE%E5%87%A6%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%21%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Faadsts75011%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Faadsts75011.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Faadsts75011.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/aadsts75011/" data-id="cmmketdq6004c0nqpgtf4cc54" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/aadsts75011/" data-id="cuid57Vg3RCEb2g1DJdU6OOur" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -188,14 +188,10 @@
 <p>AADSTS75011 エラーが生じるタイミングは、上図の 4 と 5 の間です。<br>そのため、エラーが生じるまでの流れを説明します。</p>
 <ol>
 <li><code>User</code> が <code>Service Provider</code> (<code>SP</code>) にアクセスします。</li>
-<li><code>SP</code> はユーザーを認証するために Microsoft Entra ID にリダイレクトするよう <code>User</code> に指示します (SP によって Microsoft Entra ID へのリダイレクトが行われるきっかけは異なります)。<br>このとき SP は SAML リクエストを含むリダイレクト先 URL を生成します (<a target="_blank" rel="noopener" href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a><tenantid>/saml2?SAMLRequest=xxx)。</li>
-</ol>
-<p><strong>この SAML リクエストの中に <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/single-sign-on-saml-protocol#requestedauthncontext">RequestedAuthnContext</a> 要素が含まれています。</strong><br>RequestedAuthnContext 要素は、SP がユーザーに対して要求する認証方法を指定するための要素です。<br>つまり、ここで証明書ベースの認証を指定したりなどの認証方法の指定ができます。</p>
-<ol>
+<li><code>SP</code> はユーザーを認証するために Microsoft Entra ID にリダイレクトするよう <code>User</code> に指示します (SP によって Microsoft Entra ID へのリダイレクトが行われるきっかけは異なります)。<br>このとき SP は SAML リクエストを含むリダイレクト先 URL を生成します (<a target="_blank" rel="noopener" href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a><tenantid>&#x2F;saml2?SAMLRequest&#x3D;xxx)。<br><strong>この SAML リクエストの中に <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/single-sign-on-saml-protocol#requestedauthncontext">RequestedAuthnContext</a> 要素が含まれています。</strong><br>RequestedAuthnContext 要素は、SP がユーザーに対して要求する認証方法を指定するための要素です。<br>つまり、ここで証明書ベースの認証を指定したりなどの認証方法の指定ができます。</li>
 <li><code>User</code> のブラウザーを通して、2. で <code>SP</code> が指示したリダイレクト先 (Microsoft Entra ID) にリクエストが生じます。</li>
-<li>サインインを試行するユーザーの認証状況を確認します。Microsoft Entra ID で認証済みの場合は通常は 5 への進みます。<br>ただ、SAML リクエストの中に RequestedAuthnContext が含まれる際には、直近で使用した認証方法を確認します。</li>
+<li>サインインを試行するユーザーの認証状況を確認します。Microsoft Entra ID で認証済みの場合は通常は 5 への進みます。<br>ただ、SAML リクエストの中に RequestedAuthnContext が含まれる際には、直近で使用した認証方法を確認します。<br><strong>このとき、直近で使用した認証方法 (<code>User</code> が使用した認証方法) と RequestedAuthnContext で指定された認証方法 (<code>SP</code> が指定した認証方法) とが異なる場合に AADSTS75011 エラーが発生します。</strong></li>
 </ol>
-<p><strong>このとき、直近で使用した認証方法 (<code>User</code> が使用した認証方法) と RequestedAuthnContext で指定された認証方法 (<code>SP</code> が指定した認証方法) とが異なる場合に AADSTS75011 エラーが発生します。</strong></p>
 <p>SP 側で認証方法を指定するのが先であり、Microsoft Entra ID 側で認証方法の一致を判定するのが後です。</p>
 <p>そのため、根本対処としては SP 側での対処が必要であるエラーではあるものの、Microsoft Entra ID 側でエラー画面を表示されます。</p>
 <h2 id="SP-側での-AADSTS75011-エラーの対処案について"><a href="#SP-側での-AADSTS75011-エラーの対処案について" class="headerlink" title="SP 側での AADSTS75011 エラーの対処案について"></a>SP 側での AADSTS75011 エラーの対処案について</h2><p>対処案としては以下 2 つです。</p>

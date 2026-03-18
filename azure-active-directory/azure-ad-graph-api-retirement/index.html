@@ -15,10 +15,10 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-graph-api-retirement/azure-ad-graph-api-retirement.png">
 <meta property="article:published_time" content="2024-07-29T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.143Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.080Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="US Identity Blog">
 <meta property="article:tag" content="Azure AD Graph API retirement">
+<meta property="article:tag" content="US Identity Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-graph-api-retirement/azure-ad-graph-api-retirement.png">
   
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+45be1a87-c23d-5299-baee-57bf726c9f4a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Graph+API+%E3%81%AE%E5%BB%83%E6%AD%A2%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazure-ad-graph-api-retirement%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazure-ad-graph-api-retirement.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazure-ad-graph-api-retirement.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-graph-api-retirement/" data-id="cmmketdr4006x0nqp1jsz7c2i" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azure-ad-graph-api-retirement/" data-id="cuid0p981LbMR0GGI_EtelPkG" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -181,7 +181,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PATCH https://graph.microsoft.com/beta/applications/afe88638-df6f-4d2a-905e-40f2a2d451bf/authenticationBehaviors  </span><br><span class="line">Content-Type: application/json </span><br><span class="line">&#123; </span><br><span class="line">    &quot;blockAzureADGraphAccess&quot;: false </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <h3 id="Microsoft-Graph-PowerShell-の例"><a href="#Microsoft-Graph-PowerShell-の例" class="headerlink" title="Microsoft Graph PowerShell の例"></a>Microsoft Graph PowerShell の例</h3><p>シングル アプリケーションの authenticationBehaviors プロパティを読み取ります。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> Microsoft.Graph.Beta.Applications </span><br><span class="line"></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Application.Read.All&quot;</span> </span><br><span class="line"><span class="built_in">Get-MgBetaApplication</span> <span class="literal">-ApplicationId</span> afe88638<span class="literal">-df6f</span><span class="literal">-4d2a</span><span class="literal">-905e</span><span class="literal">-40f2a2d451bf</span> <span class="literal">-Property</span> <span class="string">&quot;id,displayName,appId,authenticationBehaviors&quot;</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> Microsoft.Graph.Beta.Applications </span><br><span class="line"></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Application.Read.All&quot;</span> </span><br><span class="line"><span class="built_in">Get-MgBetaApplication</span> <span class="literal">-ApplicationId</span> afe88638<span class="literal">-df6f-4d2a-905e-40f2a2d451bf</span> <span class="literal">-Property</span> <span class="string">&quot;id,displayName,appId,authenticationBehaviors&quot;</span> </span><br></pre></td></tr></table></figure>
 
 <p>authenticationBehaviors プロパティを設定して、新しいアプリケーションに拡張 Azure AD Graph アクセスを許可します。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> Microsoft.Graph.Beta.Applications  </span><br><span class="line"></span><br><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Application.ReadWrite.All&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="variable">$params</span> = <span class="selector-tag">@</span>&#123;  </span><br><span class="line">    authenticationBehaviors = <span class="selector-tag">@</span>&#123;  </span><br><span class="line">        blockAzureADGraphAccess = <span class="variable">$false</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="built_in">Update-MgBetaApplication</span> <span class="literal">-ApplicationId</span> <span class="variable">$applicationId</span> <span class="literal">-BodyParameter</span> <span class="variable">$params</span></span><br></pre></td></tr></table></figure>

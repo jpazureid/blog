@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2018&#x2F;04&#x2F;17&#x2F;20180406-rca-azure-ad&#x2F; の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。 いつも Azure Identity サポート チームのブログを参照いただきましてありがと">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2018-04-16T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.011Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.948Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,23 +154,23 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+105c4a04-c47f-5ad1-b154-1d2a876e2d01%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B4%2F6+RCA+%E2%80%93+Azure+Active+Directory+%E2%80%93+%E8%AA%8D%E8%A8%BC%E3%82%A8%E3%83%A9%E3%83%BC+%28%E6%97%A5%E6%9C%AC%E8%AA%9E%E6%8A%84%E8%A8%B3%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2F20180406-rca-azure-ad%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2F20180406-rca-azure-ad.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2F20180406-rca-azure-ad.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/20180406-rca-azure-ad/" data-id="cmmketdpk002t0nqp3s594mbw" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/20180406-rca-azure-ad/" data-id="cuidN_0UEjTAyw80NZPHtYwB2" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/04/17/20180406-rca-azure-ad/">https://blogs.technet.microsoft.com/jpazureid/2018/04/17/20180406-rca-azure-ad/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
 <p>いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。</p>
-<p>今回は 4/6 に発生しました Azure Active Directory の障害についての RCA (Root Cause Analysis) レポートの日本語版の抄訳をご紹介します。</p>
-<p>この障害では Azure / Office 365 ポータルへのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。</p>
+<p>今回は 4&#x2F;6 に発生しました Azure Active Directory の障害についての RCA (Root Cause Analysis) レポートの日本語版の抄訳をご紹介します。</p>
+<p>この障害では Azure &#x2F; Office 365 ポータルへのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。</p>
 <p>改めてですが、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。</p>
-<h2 id="4-6-RCA-Azure-Active-Directory-認証エラー"><a href="#4-6-RCA-Azure-Active-Directory-認証エラー" class="headerlink" title="4/6 RCA - Azure Active Directory - 認証エラー"></a>4/6 RCA - Azure Active Directory - 認証エラー</h2><h3 id="影響の概要："><a href="#影響の概要：" class="headerlink" title="影響の概要："></a><span style="color: red; ">影響の概要：</span></h3><p>2018 年 4 月 6 日の 8:18 から 11:25 (UTC) (日本時間同日の 17:18 から 20:25) の間で、アジア、オセアニア、ヨーロッパの各地域を主として Azure Active Directory (AAD) を認証基盤として利用しているリソースへのアクセスに問題が生じました。</p>
+<h2 id="4-6-RCA-Azure-Active-Directory-認証エラー"><a href="#4-6-RCA-Azure-Active-Directory-認証エラー" class="headerlink" title="4&#x2F;6 RCA - Azure Active Directory - 認証エラー"></a>4&#x2F;6 RCA - Azure Active Directory - 認証エラー</h2><h3 id="影響の概要："><a href="#影響の概要：" class="headerlink" title="影響の概要："></a><span style="color: red; ">影響の概要：</span></h3><p>2018 年 4 月 6 日の 8:18 から 11:25 (UTC) (日本時間同日の 17:18 から 20:25) の間で、アジア、オセアニア、ヨーロッパの各地域を主として Azure Active Directory (AAD) を認証基盤として利用しているリソースへのアクセスに問題が生じました。</p>
 <p>これは AAD 内の 2 つのスケール ユニットで生じた誤ったデータ マッピングが原因です。</p>
 <p>結果として AAD による認証に問題が生じ、全世界のテナントのうち約 2.5 % のテナントで影響が生じました。</p>
 <p>障害が生じた期間では、 AAD を利用する Azure のサービスに影響が生じましたが、具体的には次のようなサービスで問題が発生した可能性があります。</p>
 <ol>
-<li>バックアップ: 新しいコンテナーの登録およびバックアップ/リストア操作の失敗</li>
-<li>StorSimple: 新しいデバイス登録の失敗と StorSimple の管理/通信の失敗</li>
+<li>バックアップ: 新しいコンテナーの登録およびバックアップ&#x2F;リストア操作の失敗</li>
+<li>StorSimple: 新しいデバイス登録の失敗と StorSimple の管理&#x2F;通信の失敗</li>
 <li>Azure Bot サービス： ボットが応答しない</li>
 <li>Visual Studio Team Services: 実行時間の長期化と複数の地域における AAD トークン取得の失敗</li>
 <li>メディアサービス： 認証の失敗</li>

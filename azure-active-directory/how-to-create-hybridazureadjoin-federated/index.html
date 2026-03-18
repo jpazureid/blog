@@ -65,13 +65,13 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/056.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg">
 <meta property="article:published_time" content="2019-09-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.422Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.359Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Azure AD Connect">
-<meta property="article:tag" content="Hybrid Azure AD Join">
 <meta property="article:tag" content="Federated Domain">
+<meta property="article:tag" content="Hybrid Azure AD Join">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/001.jpg">
   
@@ -93,7 +93,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -210,7 +210,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e1d2c8be-bc67-5c07-bd26-7fca32574336%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%95%E3%82%A7%E3%83%87%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%94%A8%28AD+FS+%E3%81%82%E3%82%8A%29+Hybrid+Azure+AD+Join+%E3%82%92%E4%B8%80%E3%81%8B%E3%82%89%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhow-to-create-hybridazureadjoin-federated.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cmmkete04014h0nqp3i851grx" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/" data-id="cuid1IeX3MolmVejH8QFA5Lcm" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -302,8 +302,8 @@
 <li>Windows 10 コンピューターを、オンプレミス AD に参加します。</li>
 <li>オンプレミス AD 上のコンピューター オブジェクトの userCertificate 属性に Windows 10 コンピューターを認証するための証明書が当該コンピューターにより、追加されます。</li>
 <li>オンプレミス AD 上のコンピューター オブジェクトの userCertificate 属性値に証明書が追加されると、Azure AD Connect がコンピューター オブジェクトを Azure AD に同期します。 (通常は 30 分間隔)</li>
-<li>当該コンピューター上のタスク スケジューラにより証明書を使用して、 Azure Active Directory 上にデバイスが登録します。<br> (このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADJoined の値が YES になります)</li>
-<li>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、Azure AD による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。<br> (このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になります)</li>
+<li>当該コンピューター上のタスク スケジューラにより証明書を使用して、 Azure Active Directory 上にデバイスが登録します。<br> (このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADJoined の値が YES になります)</li>
+<li>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、Azure AD による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。<br> (このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADPrt の値が YES になります)</li>
 </ol>
 <p>図式化するとこんな感じです。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/040.jpg"></p>
 <h4 id="フェデレーション-ドメイン環境の場合"><a href="#フェデレーション-ドメイン環境の場合" class="headerlink" title="フェデレーション ドメイン環境の場合"></a>フェデレーション ドメイン環境の場合</h4><p>フェデレーション ドメイン環境の場合はフローが異なります。<br>SCP を構成したときを思い出してください、 Azure Active Directory ではなくて、フェデレーション サービス名 (AD FS) を指定していました。<br>つまり、Windows 10 のコンピューター アカウントが SCP を参照した結果、認証先は Azure AD ではなくて AD FS サーバーであることがわかり、 AD FS に対してトークンを要求する動作となります。フローを箇条書きに書くと以下のとおりとなります。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/041.jpg"></p>
@@ -312,9 +312,9 @@
 <li>サービス接続ポイント (SCP) へ接続を行い Azure AD への接続を試行します。</li>
 <li>Azure AD 側でフェデレーション ドメインであることを判定されます。</li>
 <li>AD FS にコンピューター アカウントが認証され、認証トークンが発行されます。</li>
-<li>クライアント端末が発行されたトークンを Azure AD に提供し、デバイス登録が実施されます。<br> (このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADJoined の値が YES になります)</li>
+<li>クライアント端末が発行されたトークンを Azure AD に提供し、デバイス登録が実施されます。<br> (このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADJoined の値が YES になります)</li>
 <li>デバイス認証用の証明書鍵がデバイス内にインポートされます。</li>
-<li>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、AD FS による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。<br> (このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になります)</li>
+<li>オンプレミス AD と Azure AD 間で同期しているユーザーで当該の Windows 10 コンピューターにサインインしたとき、AD FS による認証後、サインインしたユーザーの PRT (Primary Refresh Token) が発行され、Hybrid Azure AD Join として Azure AD (Office 365) にサインインできます。<br> (このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADPrt の値が YES になります)</li>
 </ol>
 <p>上述のとおり、フェデレーション ドメイン環境の場合は Azure AD Connect で同期を行わなくても Hybrid Azure AD Join が構成できますが、以下の理由で Azure AD Connect によるデバイス同期を行うことを推奨しています。</p>
 <p>例えば、オンプレミス AD 側の構成が変更されて、オンプレミス AD と Azure AD 間のデバイス構成情報に差分が発生したとします。<br>その場合、Azure AD Connect がないと、デバイスの差分を補ってくれません。<br>極端な話をすると、オンプレミス AD 側で 1000 台 Hybrid Azure AD Join を構成するフォレストから別のフォレストに移動した場合、Azure AD Connect がないと、デバイス情報を手動で削除しない限りは、Azure AD 側に残ったままになります。</p>
@@ -327,21 +327,21 @@
 <p>Azure AD Connect の同期ルールを見てみると、 userCertificate 属性が ISNOTNULL (証明書がセットされていることが必須) であることが分かります。<br>[Synchronization Rules Editor] から Direction を「Outbound」を選択し、[Out to AAD - Device Join SOAInAD]を選択後に「View」をクリックします。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/044.jpg"></p>
 <p>Scoping Filter をクリックすると、 userCertificate が ISNOTNULL であることがわかります。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/045.jpg"></p>
 <p>つまり、フェデレーション ドメイン環境にて Hybrid Azure AD Join を構成し、Azure AD Connect にてデバイス同期を行っている場合 、マネージド ドメイン環境と同じように、userCertificate 属性に証明書がセットされている場合も Azure AD にデバイスが Hybrid Azure AD Join として同期されますし、上記のフェデレーション ドメインのフローによりデバイスが Hybrid Azure AD Join として登録されるという <strong>2 通りの方法が存在する</strong>ということになります。<br>(厳密にどちらの方法でデバイスが登録されたかを都度都度追いかける必要はありません。方法が 2 通りあるということを覚えていただければと思います。)</p>
-<h5 id="エンド-ポイントの注意点"><a href="#エンド-ポイントの注意点" class="headerlink" title="エンド ポイントの注意点"></a>エンド ポイントの注意点</h5><p>上記フェデレーション ドメインのフロー図において、AD FS にトークンを取得するためにアクセスするエンド ポイントは「/adfs/services/trust/13/windowstransport」と記載されています。つまりこのエンドポイントが有効になっていないと、デバイスの登録に失敗します。<br>下記画面ショットにありますが、デフォルトでは「/adfs/services/trust/13/windowstransport」が無効になっているので手動で有効にする必要があります。</p>
+<h5 id="エンド-ポイントの注意点"><a href="#エンド-ポイントの注意点" class="headerlink" title="エンド ポイントの注意点"></a>エンド ポイントの注意点</h5><p>上記フェデレーション ドメインのフロー図において、AD FS にトークンを取得するためにアクセスするエンド ポイントは「&#x2F;adfs&#x2F;services&#x2F;trust&#x2F;13&#x2F;windowstransport」と記載されています。つまりこのエンドポイントが有効になっていないと、デバイスの登録に失敗します。<br>下記画面ショットにありますが、デフォルトでは「&#x2F;adfs&#x2F;services&#x2F;trust&#x2F;13&#x2F;windowstransport」が無効になっているので手動で有効にする必要があります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/046.jpg"></p>
-<p>エンドポイント「/adfs/services/trust/13/windowstransport」を選択し、右クリックより「有効」をクリックします。</p>
+<p>エンドポイント「&#x2F;adfs&#x2F;services&#x2F;trust&#x2F;13&#x2F;windowstransport」を選択し、右クリックより「有効」をクリックします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/047.jpg"></p>
 <p>AD FS サービスの再起動を要求されるので、「OK」を押して画面を閉じます。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/048.jpg"></p>
 <p>※ 上記エンドポイントはイントラネット環境向けにのみ有効化します。プロキシ向けに手動で有効化する必要はありません。</p>
 <p>サービス画面より Active Directory フェデレーション サービス (AD FS) を右クリックし、「再起動」をクリックします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/051.jpg"></p>
-<p>この時点で Azure AD Join は完了しているので確認します。<br>Windows 10 コンピューターにログオンし、dsregcmd /status コマンド レットを実行すると、下記のとおり、AzureAdJoined が YES になっていることが分かります。</p>
+<p>この時点で Azure AD Join は完了しているので確認します。<br>Windows 10 コンピューターにログオンし、dsregcmd &#x2F;status コマンド レットを実行すると、下記のとおり、AzureAdJoined が YES になっていることが分かります。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/017.jpg"></p>
-<h1 id="PRT-を取得する。"><a href="#PRT-を取得する。" class="headerlink" title="PRT を取得する。"></a>PRT を取得する。</h1><p>PRT を取得するためには、Azure AD に同期済みのオンプレミス AD ユーザーでログオンする必要があるのは、フェデレーション ドメインの場合でも同様です。<br>Azure AD に同期済みの下記「<a href="mailto:&#116;&#x65;&#115;&#116;&#48;&#48;&#x31;&#64;&#x78;&#x78;&#120;&#x2e;&#119;&#111;&#114;&#x6b;">&#116;&#x65;&#115;&#116;&#48;&#48;&#x31;&#64;&#x78;&#x78;&#120;&#x2e;&#119;&#111;&#114;&#x6b;</a>」で Windows 10 コンピューター (Windows10-18091) にログオンします。</p>
+<h1 id="PRT-を取得する。"><a href="#PRT-を取得する。" class="headerlink" title="PRT を取得する。"></a>PRT を取得する。</h1><p>PRT を取得するためには、Azure AD に同期済みのオンプレミス AD ユーザーでログオンする必要があるのは、フェデレーション ドメインの場合でも同様です。<br>Azure AD に同期済みの下記「<a href="mailto:&#x74;&#x65;&#x73;&#116;&#x30;&#48;&#x31;&#64;&#x78;&#x78;&#120;&#46;&#119;&#111;&#x72;&#x6b;">test001@xxx.work</a>」で Windows 10 コンピューター (Windows10-18091) にログオンします。</p>
 <p><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/055.jpg"></p>
 <p>資格情報を入力してログオンします。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/056.jpg"></p>
-<p>コマンドプロンプトを起動し、このタイミングで dsregcmd /status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg"></p>
+<p>コマンドプロンプトを起動し、このタイミングで dsregcmd &#x2F;status のコマンドレットをたたくと AzureADPrt の値が YES になることが確認できます。<br><img src="/blog/azure-active-directory/how-to-create-hybridazureadjoin-federated/018.jpg"></p>
 <h1 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h1><p>今回はフェデレーション ドメイン環境における Hybrid Azure AD Join の構築手順をご紹介しました。<br>フェデレーション ドメイン環境の場合も Azure AD Connect により、SCP およびクレーム ルールを構成することができます。</p>
 <p>本 Blog ではマネージド ドメイン環境とフェデレーション ドメイン環境の Hybrid Azure AD Join の登録フローの違いを説明しました。<br>フェデレーション ドメイン環境の場合は、 Azure AD Connect は必須ではないですが、オンプレミス AD 側はデバイスの削除を行うと、同期を行えないため Azure AD 上でのデバイス情報に差分が発生する、というデメリットがあります。</p>
 <p>確実にデバイスを管理したい、という方は Azure AD Connect によるデバイス同期をお勧めします。<br>(今回 Hybrid Azure AD Join も Azure AD Connect で構成してますので、 Azure AD Connect を使わない手はないと思います)</p>

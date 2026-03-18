@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-mc125948/4056318_properties.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-mc125948/4056318_unblock.png">
 <meta property="article:published_time" content="2017-12-13T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.872Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.809Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ff6f4fa0-9bf8-56ab-b9b9-12d13ea38ad0%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+Connect+%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3+%E3%82%A2%E3%83%89%E3%83%90%E3%82%A4%E3%82%B6%E3%83%AA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+%28MC125948%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Fazure-ad-connect-mc125948%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Fazure-ad-connect-mc125948.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Fazure-ad-connect-mc125948.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-mc125948/" data-id="cmmketdp7001q0nqp5kntbw5p" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-mc125948/" data-id="cuidr7yt12EEAvqphOczadggx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -167,7 +167,7 @@
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/security-updates/securityadvisories/2017/4056318">Microsoft Security Advisory 4056318</a><br>Guidance for securing AD DS account used by Azure AD Connect for directory synchronization  </p>
 <ul>
 <li>セキュリティ アドバイザリの概要について  </li>
-<li>対処策について  </li>
+<li>対処策について</li>
 </ul>
 <h2 id="セキュリティ-アドバイザリの概要について"><a href="#セキュリティ-アドバイザリの概要について" class="headerlink" title="セキュリティ アドバイザリの概要について"></a>セキュリティ アドバイザリの概要について</h2><p>Azure AD Connect (AADC) はオンプレミスの Active Directory に接続するためのアカウントをインストール時に作成します。  </p>
 <p>このアカウントは、同期処理を実施するためにオンプレミス AD に対してパスワードリセットなど (Exchange ハイブリッドを構成した場合はディレクトリ オブジェクトへの書き込みや、パスワードの書き戻しを構成している場合はパスワードのリセット) などの比較的強い権限を持ちます。  </p>
@@ -197,19 +197,19 @@
 <ol>
 <li><p>AdSyncConfig.psm1 をダウンロードします。※ もしファイルのダウンロード時に警告が表示された場合、ダウンロードしたファイルのプロパティを開き、以下のチェックが行われているかご確認ください。<br>チェックが行われている場合は、チェックを外して [OK] をクリックしてください。<br><img src="/blog/azure-active-directory-connect/azure-ad-connect-mc125948/4056318_unblock.png">  </p>
 </li>
-<li><p>管理者として実行している PowerShell にて、AdSyncConfig.psm1 をダウンロードしたディレクトリに移動し、以下のコマンドを実行します。  </p>
+<li><p>管理者として実行している PowerShell にて、AdSyncConfig.psm1 をダウンロードしたディレクトリに移動し、以下のコマンドを実行します。</p>
 </li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">import-module</span> .\AdSyncConfig.psm1  </span><br></pre></td></tr></table></figure>
 
 <ol>
-<li>続けて以下のコマンドを実行します。<br>認証ダイアログが表示されるので、オンプレミス AD のエンタープライズ管理者等、アカウントの設定を変更できる権限を持つアカウントの資格情報を入力します。  </li>
+<li>続けて以下のコマンドを実行します。<br>認証ダイアログが表示されるので、オンプレミス AD のエンタープライズ管理者等、アカウントの設定を変更できる権限を持つアカウントの資格情報を入力します。</li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Set-ADSyncRestrictedPermissions</span> <span class="literal">-ObjectDN</span> <span class="string">&quot;&lt;AD 接続用サービスアカウントの DistinguishedName&gt;&quot;</span> <span class="literal">-Credential</span> <span class="variable">$credential</span>  </span><br></pre></td></tr></table></figure>
 
-<p>例: Set-ADSyncRestrictedPermissions -ObjectDN “CN=MSOL_546eeedf0b95,CN=Users,DC=contoso,DC=local” -Credential $credential  </p>
+<p>例: Set-ADSyncRestrictedPermissions -ObjectDN “CN&#x3D;MSOL_546eeedf0b95,CN&#x3D;Users,DC&#x3D;contoso,DC&#x3D;local” -Credential $credential  </p>
 <ol start="11">
-<li>スクリプトを続行するか確認が行われる場合は、”Y” キーを押して ENTER キーを押します。<br>以下のメッセージが表示されていれば成功です。  </li>
+<li>スクリプトを続行するか確認が行われる場合は、”Y” キーを押して ENTER キーを押します。<br>以下のメッセージが表示されていれば成功です。</li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">Setting Restricted permissions on &lt;アカウントの DistinguishedName&gt; completed successfully.</span><br></pre></td></tr></table></figure>
 

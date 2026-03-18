@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/customize-authentication-experiences-and-url-domains-for-external-apps/customize-authentication-experiences-and-url-domains-for-external-apps1.png">
 <meta property="article:published_time" content="2025-02-27T17:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.305Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.243Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+1710f7ce-05a8-5ee0-9cf8-ab3f08293efb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%A4%96%E9%83%A8%E5%90%91%E3%81%91%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%AA%8D%E8%A8%BC%E4%BD%93%E9%A8%93%E3%81%A8+URL+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fcustomize-authentication-experiences-and-url-domains-for-external-apps%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fcustomize-authentication-experiences-and-url-domains-for-external-apps.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fcustomize-authentication-experiences-and-url-domains-for-external-apps.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/customize-authentication-experiences-and-url-domains-for-external-apps/" data-id="cmmketds700af0nqpdnjh1kmn" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/customize-authentication-experiences-and-url-domains-for-external-apps/" data-id="cuidZyp1PxuUBLvyy1qY_yKGl" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -178,7 +178,7 @@
 <li><strong>クラウド ID プロバイダーとの統合</strong>: クラウド ID プロバイダーとのサインインおよびサインアップフローを統合できるようになります。 </li>
 <li><strong>Azure AD B2C とのフェデレーション</strong>: 既存の Azure AD B2C テナントとフェデレーションしながら、新しい IAM 体験を構築可能になります。 </li>
 <li><strong>パートナー ID プロバイダーでのサインイン</strong>: 例えばパートナー従業員割引プログラムなどのパートナーシップ シナリオにおいてフェデレーション認証を利用可能になります。</li>
-<li><strong>政府および地方自治体が提供する ID プロバイダーとのフェデレーション</strong>: 政府および地方自治体の ID プロバイダーとの安全な認証を確立できるようになります。 </li>
+<li><strong>政府および地方自治体が提供する ID プロバイダーとのフェデレーション</strong>: 政府および地方自治体の ID プロバイダーとの安全な認証を確立できるようになります。</li>
 </ul>
 <h2 id="OIDC-フェデレーションを構成してみる"><a href="#OIDC-フェデレーションを構成してみる" class="headerlink" title="OIDC フェデレーションを構成してみる"></a>OIDC フェデレーションを構成してみる</h2><p>OIDC フェデレーションにより、外部の ID プロバイダーの既存のアカウントを使用してアプリケーションにサインアップおよびサインインできます。OpenID Connect プロトコルをサポートする外部 ID プロバイダーをユーザー フローに追加することで、そのユーザー フローで定義されたアプリケーションに対して、OIDC の ID プロバイダーの認証情報を使用して認証できます。</p>
 <p>OpenID Connect の ID プロバイダーの設定、ユーザー フローへの追加、およびサインインおよびサインアップ体験のアプリケーションへの統合に関するガイダンスについては、以下のリソースを参照ください:</p>
@@ -189,19 +189,17 @@
 </ul>
 <h2 id="Microsoft-Entra-External-ID-カスタム-URL-ドメイン"><a href="#Microsoft-Entra-External-ID-カスタム-URL-ドメイン" class="headerlink" title="Microsoft Entra External ID カスタム URL ドメイン"></a>Microsoft Entra External ID カスタム URL ドメイン</h2><h3 id="カスタム-URLドメインとは何か？"><a href="#カスタム-URLドメインとは何か？" class="headerlink" title="カスタム URLドメインとは何か？"></a>カスタム URLドメインとは何か？</h3><p><a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/identity/custom-url-domains-ga/">カスタム URL ドメイン</a>は、組織が独自のドメイン名を使用して認証体験をカスタマイズできるようにするためのものです。既定の Microsoft のテナント URL の代わりに、ユーザーにはブランド化された URL が提示されます。これにより、ブランドとしての ID をユーザーに印象付けることが可能となり、アプリケーションがよりプロフェッショナルでセキュアに感じられるという、一貫した体験が提供されます。</p>
 <h3 id="主な機能"><a href="#主な機能" class="headerlink" title="主な機能"></a>主な機能</h3><ol>
-<li><p><strong>カスタマイズとブランド化</strong>: 認証ページで使用する独自のドメイン名を登録することで、ログイン体験を他のユーザー フローと統一できます。ユーザーには、既定の Microsoft テナント URL の代わりに、login.contoso.com のようなブランド化された URL が提示されます。 </p>
-</li>
-<li><p><strong>複数のドメインが利用可能</strong>: 1 つのテナントに複数のカスタム URL ドメインを設定できます。 </p>
-<h3 id="追加のセキュリティ強化"><a href="#追加のセキュリティ強化" class="headerlink" title="追加のセキュリティ強化:"></a>追加のセキュリティ強化:</h3></li>
-<li><p><strong>標準の URL ドメイン保護</strong>: カスタム URL ドメインがアクティブな場合、既定のエンドポイントへのアクセスをブロックすることで、ボット攻撃や DDoS 攻撃などのさまざまなセキュリティ攻撃からテナントを保護できます。この機能はお客様から弊社に要望いただければ利用可能です。この機能の有効化をご要望の場合は、<a target="_blank" rel="noopener" href="https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR8p84R3AsLtAjEb1gFOJGX5URVFVNFJQUEtXUUxBRldRVlRFTEJFOUE2Qy4u&route=shorturl">Microsoft Forms</a> よりテナントを登録ください。 </p>
-</li>
-<li><p><strong>サードパーティの Web アプリケーション ファイア ウォール (WAF) との統合</strong>: カスタム URL ドメインは Azure Front Door (AFD) で構成する必要がありますが、さらに AFD に上乗せする形で <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/external-id/customers/tutorial-configure-cloudflare-integration">Cloudflare</a> や Akamai などのサードパーティ WAF 統合を追加することで、テナントに追加の WAF ルールを追加可能です。</p>
-</li>
+<li><strong>カスタマイズとブランド化</strong>: 認証ページで使用する独自のドメイン名を登録することで、ログイン体験を他のユーザー フローと統一できます。ユーザーには、既定の Microsoft テナント URL の代わりに、login.contoso.com のようなブランド化された URL が提示されます。 </li>
+<li><strong>複数のドメインが利用可能</strong>: 1 つのテナントに複数のカスタム URL ドメインを設定できます。</li>
+</ol>
+<h3 id="追加のセキュリティ強化"><a href="#追加のセキュリティ強化" class="headerlink" title="追加のセキュリティ強化:"></a>追加のセキュリティ強化:</h3><ol>
+<li><strong>標準の URL ドメイン保護</strong>: カスタム URL ドメインがアクティブな場合、既定のエンドポイントへのアクセスをブロックすることで、ボット攻撃や DDoS 攻撃などのさまざまなセキュリティ攻撃からテナントを保護できます。この機能はお客様から弊社に要望いただければ利用可能です。この機能の有効化をご要望の場合は、<a target="_blank" rel="noopener" href="https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR8p84R3AsLtAjEb1gFOJGX5URVFVNFJQUEtXUUxBRldRVlRFTEJFOUE2Qy4u&route=shorturl">Microsoft Forms</a> よりテナントを登録ください。 </li>
+<li><strong>サードパーティの Web アプリケーション ファイア ウォール (WAF) との統合</strong>: カスタム URL ドメインは Azure Front Door (AFD) で構成する必要がありますが、さらに AFD に上乗せする形で <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/external-id/customers/tutorial-configure-cloudflare-integration">Cloudflare</a> や Akamai などのサードパーティ WAF 統合を追加することで、テナントに追加の WAF ルールを追加可能です。</li>
 </ol>
 <h2 id="カスタム-URL-ドメインを設定する際の重要な考慮事項"><a href="#カスタム-URL-ドメインを設定する際の重要な考慮事項" class="headerlink" title="カスタム URL ドメインを設定する際の重要な考慮事項"></a>カスタム URL ドメインを設定する際の重要な考慮事項</h2><ul>
-<li><strong>メタデータ エンドポイントへの影響</strong>: カスタム URL ドメインを変更すると、メタデータ エンドポイントにも影響します。例えば、既定のエンドポイントが https://&lt;tenantID&gt;.ciamlogin.com/&lt;tenantID&gt;/.well-known/openid-configuration/v2.0 の場合、メタデータ エンドポイントは <a target="_blank" rel="noopener" href="https://login.contoso.com/.well-known/openid-configuration/v2.0">https://login.contoso.com/.well-known/openid-configuration/v2.0</a> に変更されます。</li>
+<li><strong>メタデータ エンドポイントへの影響</strong>: カスタム URL ドメインを変更すると、メタデータ エンドポイントにも影響します。例えば、既定のエンドポイントが https:&#x2F;&#x2F;&lt;tenantID&gt;.ciamlogin.com&#x2F;&lt;tenantID&gt;&#x2F;.well-known&#x2F;openid-configuration&#x2F;v2.0 の場合、メタデータ エンドポイントは <a target="_blank" rel="noopener" href="https://login.contoso.com/.well-known/openid-configuration/v2.0">https://login.contoso.com/.well-known/openid-configuration/v2.0</a> に変更されます。</li>
 <li><strong>単一ドメインでのみ利用可能</strong>: 一度 1 つのテナントに追加され検証されたカスタム URL ドメインは、他のテナントに追加することはできません。 </li>
-<li><strong>トークン発行者</strong>: トークン発行者は既定のエンドポイントのままとなります。例えば、”iss”: “https://&lt;tenantID&gt;.ciamlogin.com/&lt;tenantID&gt;/v2.0” のようになります。 </li>
+<li><strong>トークン発行者</strong>: トークン発行者は既定のエンドポイントのままとなります。例えば、”iss”: “https:&#x2F;&#x2F;&lt;tenantID&gt;.ciamlogin.com&#x2F;&lt;tenantID&gt;&#x2F;v2.0” のようになります。 </li>
 <li><strong>トップ レベル ドメイン</strong>: トップ レベル ドメインの使用は避けてください。カスタム URL ドメインにルート ドメインを使用すると、ユーザー体験や設定プロセスが複雑になる可能性があります。これらの問題を避けるため、カスタム URL ドメインにはサブ ドメインを使用することが一般的に推奨されます。<ul>
 <li>正しいドメインの例: ‘login.contoso.com’</li>
 <li>間違ったドメインの例: ‘contoso.com’</li>

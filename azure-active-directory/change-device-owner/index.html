@@ -16,10 +16,10 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/change-device-owner/change-device-owner1.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/change-device-owner/change-device-owner2.jpg">
 <meta property="article:published_time" content="2024-12-20T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.219Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.158Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Device">
+<meta property="article:tag" content="Microsoft Entra">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/change-device-owner/change-device-owner1.jpg">
   
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -158,7 +158,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d402669a-52d1-505e-82d5-22704112d59f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9+%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%89%80%E6%9C%89%E8%80%85%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fchange-device-owner%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fchange-device-owner.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fchange-device-owner.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/change-device-owner/" data-id="cmmketdrq008s0nqpca3o92ur" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/change-device-owner/" data-id="cuidJUL3GimCOWIJvaceRt4RI" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -187,9 +187,11 @@
 <li><p>PowerShell を管理者権限で起動します。</p>
 </li>
 <li><p>以下のコマンドを実行し、Microsoft Graph PowerShell モジュールを作業端末にインストールします。</p>
- <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> Microsoft.Graph <span class="literal">-Force</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> Microsoft.Graph <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>以下のコマンドを実行し、表示されるユーザー認証画面で、テナントのグローバル管理者のユーザーで認証を行います ([要求されているアクセス許可] という画面が表示された場合は、[承諾] を押下します)。もしグローバル管理者を利用しない場合は、実行するユーザーに二つのロール (クラウド アプリケーション管理者と Intune 管理者) が付与されていれば実行可能です。</p>
- <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Directory.AccessAsUser.All&quot;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Connect-MgGraph</span> <span class="literal">-Scopes</span> <span class="string">&quot;Directory.AccessAsUser.All&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>以下のコマンドを順番に実行して、対象のデバイス オブジェクトから所有者情報を変更します。</p>
  <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$userId</span>=<span class="string">&quot;新たに所有者にしたいユーザーの ObjectId を指定&quot;</span></span><br><span class="line"><span class="variable">$deviceObjectId</span>=<span class="string">&quot;対象のデバイスの ObjectId を指定&quot;</span></span><br><span class="line"><span class="variable">$params</span> = <span class="selector-tag">@</span>&#123;</span><br><span class="line">    <span class="string">&quot;@odata.id&quot;</span> = <span class="string">&quot;https://graph.microsoft.com/v1.0/directoryObjects/&quot;</span> + <span class="variable">$userId</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Get-MgDeviceRegisteredOwner</span> <span class="literal">-DeviceId</span> <span class="variable">$deviceObjectId</span> | %&#123;<span class="built_in">Remove-MgDeviceRegisteredOwnerByRef</span> <span class="literal">-DeviceId</span> <span class="variable">$deviceObjectId</span> <span class="literal">-DirectoryObjectId</span> <span class="variable">$_</span>.Id&#125;</span><br><span class="line"><span class="built_in">New-MgDeviceRegisteredOwnerByRef</span> <span class="literal">-DeviceId</span> <span class="variable">$deviceObjectId</span> <span class="literal">-BodyParameter</span> <span class="variable">$params</span></span><br></pre></td></tr></table></figure>
 

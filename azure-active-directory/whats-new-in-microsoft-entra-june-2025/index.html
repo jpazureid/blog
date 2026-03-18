@@ -14,7 +14,7 @@
 <meta property="og:description" content="こんにちは、Azure Identity サポート チームの 高田 です。 本記事は、2025 年 7 月 1 日に米国の Microsoft Entra Blog で公開された What’s new in Microsoft Entra – June 2025 を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。  Microsoft Entra 全体の最">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2025-07-29T20:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.167Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.101Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+dcb0ac18-6d45-5157-949c-03545fb40f40%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Entra+%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD+%E2%80%93+2025+%E5%B9%B4+6+%E6%9C%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fwhats-new-in-microsoft-entra-june-2025%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fwhats-new-in-microsoft-entra-june-2025.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fwhats-new-in-microsoft-entra-june-2025.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/whats-new-in-microsoft-entra-june-2025/" data-id="cmmkete1f01760nqpcqbldmbu" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/whats-new-in-microsoft-entra-june-2025/" data-id="cuidkL7zRze6RFAvQY8j6bf4L" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -173,7 +173,7 @@
 <p>2025 年 11 月に Microsoft Entra ID のパスキー (FIDO2) 認証方法ポリシーを拡張し、パブリック プレビューとしてパスキーのプロファイルをサポートする予定です。このアップデートによりパスキー構成をグループごとにきめ細かく制御できるようになると共に、新しく API のスキーマ変更も実施されます。このロールアウト後、ユーザーのグループごとに異なるパスキー構成を適用できるようになります。たとえば次のことが可能になります。 </p>
 <ul>
 <li>ユーザーのグループ A に特定の FIDO2 セキュリティ キーのモデルを使用させる</li>
-<li>ユーザーのグループ B には Microsoft Authenticator でのパスキーの使用を許可する </li>
+<li>ユーザーのグループ B には Microsoft Authenticator でのパスキーの使用を許可する</li>
 </ul>
 <p>プレビュー中に組織が Microsoft Azure ポータルまたは Microsoft Entra 管理センターを使用してパスキーのポリシーを変更すると、新しいスキーマが有効になります。Graph API またはサード パーティのツールを使用してポリシーを変更する場合、スキーマは一般提供 (GA) まで変更されません。 </p>
 <p>2025 年 11 月のこの更新の一環として、「構成証明の適用」の設定が無効になっている場合、<a target="_blank" rel="noopener" href="https://www.w3.org/TR/webauthn-2/#sctn-defined-attestation-formats">WebAuthn に準拠</a> したあらゆるセキュリティ キーまたはパスキー プロバイダーの受け入れを開始します。これにより、Microsoft Entra ID への登録および認証において、より幅広いセキュリティ キーとパスキー プロバイダーを利用することができるようになります。この今後の更新プログラムの動作を現在のものと比較するには、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/entra/identity/authentication/concept-fido2-hardware-vendor#attestation-requirements">FIDO2 セキュリティ キー ベンダーに対する Microsoft Entra ID による構成証明</a> を参照ください。  </p>
@@ -207,7 +207,7 @@
 <ul>
 <li>Microsoft の個人アカウントを必要とする既存のアプリ内でのバックアップ機能は削除されます。</li>
 <li>ユーザーは、iCloud と iCloud Keychain を介してバックアップを有効にすることで、アカウント名とサードパーティの TOTP (時間ベースのワンタイム パスワード) 資格情報をエンドツーエンドの暗号化を介して安全に保存できるようになります。他の資格情報はバックアップに含まれません。必要に応じて、ユーザーはいつでも iCloud のデバイス設定から Authenticator アプリのバックアップを無効にすることが可能です。 </li>
-<li>Authenticator アプリで iCloud と iCloud キーチェーンのバックアップをすでに有効にしているユーザーは、この改善されたエクスペリエンスが自動的に適用されます。 </li>
+<li>Authenticator アプリで iCloud と iCloud キーチェーンのバックアップをすでに有効にしているユーザーは、この改善されたエクスペリエンスが自動的に適用されます。</li>
 </ul>
 <p>ユーザーが新しい iOS デバイスをセットアップすると、Microsoft アカウントを必要とせずともアカウント名が Authenticator アプリに自動的に表示され、各アカウントにサインインすることでセットアップを完了できます。この変更により、バックアップと復元のプロセスが簡素化され、Microsoft の個人アカウントへの依存がなくなります。このため、デバイスを切り替える際のエクスペリエンスがよりスムーズになります。 </p>
 <p><strong>注意</strong>: このアップデートは iOS デバイスにのみ適用されます。Android のサポートは後日行われる予定です。この iOS 機能のプライベート プレビューは 2025 年 8 月に開始され、その後 2025 年 9 月に一般提供 (GA) される予定です。 </p>
@@ -218,14 +218,14 @@
 <ul>
 <li>利用延長が構成されており、引き続き <strong>Azure AD Graph</strong> API に依存しているアプリケーションは、<strong>2025 年 9 月</strong> 初旬以降、本 API を使用できなくなります。 </li>
 <li>2025 年 7 月下旬から 9 月上旬にかけて、8 〜 24 時間の一時的な停止テストが 1 度か 2 度行われる予定です。</li>
-<li>移行が完了していない場合は、テナント内で Azure AD Graph API へのアクセスに依存しているアプリケーションを確認するとともに、2025 年 9 月までにこれらを Microsoft Graph に移行することが急務となります。今後数か月にわたり、対象となるテナントには具体的なタイムラインを追加で提供いたします。M365 メッセージ センターに更新情報や具体的なタイムラインを定期的に提供しますので、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージ センター</a> をチェックください。詳細については、<a target="_blank" rel="noopener" href="https://aka.ms/AzureADGraphRetirement">https://aka.ms/AzureADGraphRetirement</a> でもご覧いただけます。  </li>
+<li>移行が完了していない場合は、テナント内で Azure AD Graph API へのアクセスに依存しているアプリケーションを確認するとともに、2025 年 9 月までにこれらを Microsoft Graph に移行することが急務となります。今後数か月にわたり、対象となるテナントには具体的なタイムラインを追加で提供いたします。M365 メッセージ センターに更新情報や具体的なタイムラインを定期的に提供しますので、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージ センター</a> をチェックください。詳細については、<a target="_blank" rel="noopener" href="https://aka.ms/AzureADGraphRetirement">https://aka.ms/AzureADGraphRetirement</a> でもご覧いただけます。</li>
 </ul>
 <h4 id="AzureAD-PowerShell-の廃止"><a href="#AzureAD-PowerShell-の廃止" class="headerlink" title="AzureAD PowerShell の廃止"></a>AzureAD PowerShell の廃止</h4><p>[お客様によっては対応が必要です]</p>
 <p><strong>変更内容</strong></p>
 <p><strong>AzureAD</strong> と <strong>AzureAD-Preview PowerShell</strong> モジュールは 2024 年 3 月に <a href="https://jpazureid.github.io/blog/azure-active-directory/important-update-deprecation-of-azure-ad-powershell-and-msonline/">非推奨</a> となり、2025 年 10 月には廃止が始まります。AzureAD PowerShell を利用している場合は <a target="_blank" rel="noopener" href="https://learn.microsoft.com/powershell/microsoftgraph/installation?view=graph-powershell-1.0">Microsoft Graph PowerShell SDK</a> または <a target="_blank" rel="noopener" href="https://learn.microsoft.com/powershell/entra-powershell/installation?view=entra-powershell&tabs=powershell&pivots=windows">Microsoft Entra PowerShell</a> に移行し、この廃止による影響が生じないよう措置を講じる必要があります。  </p>
 <ul>
 <li>AzureAD と AzureAD-Preview PowerShell モジュールは、2025 年 10 月中旬から廃止 (動作を停止) されます。  </li>
-<li>2025 年 9 月には、8 〜 24 時間の一時的な停止テストが 1 回以上行われることが計画されています。 </li>
+<li>2025 年 9 月には、8 〜 24 時間の一時的な停止テストが 1 回以上行われることが計画されています。</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージ センター</a> で、具体的なタイムラインを随時提供しますので、定期的にチェックください。詳細については、<a target="_blank" rel="noopener" href="https://aka.ms/AzureADPowerShellRetirement">https://aka.ms/AzureADPowerShellRetirement</a> でもご覧いただけます。  </p>
 <h4 id="Microsoft-Entra-ID-での-B2B-コラボレーションのゲスト認証エクスペリエンスの変更"><a href="#Microsoft-Entra-ID-での-B2B-コラボレーションのゲスト認証エクスペリエンスの変更" class="headerlink" title="Microsoft Entra ID での B2B コラボレーションのゲスト認証エクスペリエンスの変更"></a>Microsoft Entra ID での B2B コラボレーションのゲスト認証エクスペリエンスの変更</h4><p>[お客様によっては対応が必要です]</p>
@@ -241,7 +241,7 @@
 <p><strong>必要な対応</strong></p>
 <ul>
 <li>管理ポータルで [<strong>アプリのサインイン フィールドを手動でキャプチャする</strong>] オプションを使用する  </li>
-<li><strong>MyApps セキュア サインイン拡張機能</strong> (Edge/Chrome) をインストールしてログイン フィールドをキャプチャする</li>
+<li><strong>MyApps セキュア サインイン拡張機能</strong> (Edge&#x2F;Chrome) をインストールしてログイン フィールドをキャプチャする</li>
 <li>管理者向けの手順書があればそれらを更新してお客様社内に通知する</li>
 <li>今後のよりよいセキュリティのために <strong>パスワードレス</strong> またはフェデレーション認証方法への移行を検討する</li>
 </ul>
@@ -257,7 +257,7 @@
 <p><strong>影響を受けるユーザー</strong></p>
 <p>この新しいサインイン オプションは、Teams on the Web (teams.microsoft.com または teams.com) を介してサインインする一部のユーザーに対して表示され、これらのユーザーは <a target="_blank" rel="noopener" href="https://login.microsoftonline.com/common">https://login.microsoftonline.com/common</a> にリダイレクトされます。お客様独自の URL を経由して login.microsoftonline.com にアクセスするユーザーには、この機能は表示されません。また、この機能はテナント ID を指定してアクセスしているお客様には表示されません。 </p>
 <p><strong>ユーザー インターフェイスの変更内容</strong></p>
-<p>Teams Web にサインインする際に、特定のユーザーには、サインイン画面の下部に [<strong>Apple で続行</strong>] と [<strong>Google で続行</strong>] という 2 つの新しいオプションが表示されるようになります。いずれかのオプションを選択すると、ユーザーは Apple または Google の資格情報を使用してサインインするか、個人の Microsoft アカウントに登録するかを促されます。一部のユーザーでは、個人アカウントと職場/学校アカウントのどちらを使用するかかを確認する画面が表示される場合があります。</p>
+<p>Teams Web にサインインする際に、特定のユーザーには、サインイン画面の下部に [<strong>Apple で続行</strong>] と [<strong>Google で続行</strong>] という 2 つの新しいオプションが表示されるようになります。いずれかのオプションを選択すると、ユーザーは Apple または Google の資格情報を使用してサインインするか、個人の Microsoft アカウントに登録するかを促されます。一部のユーザーでは、個人アカウントと職場&#x2F;学校アカウントのどちらを使用するかかを確認する画面が表示される場合があります。</p>
 <p><strong>お客様からのアクションは必要ありません。</strong> サインイン画面の上部に E メール アドレスまたはユーザー名を入力するか、[サインイン オプション] を選択して特定の組織にログインすることで、いつもどおりサインインを続けることができます。 </p>
 <h2 id="Microsoft-Entra-ID-Protection"><a href="#Microsoft-Entra-ID-Protection" class="headerlink" title="Microsoft Entra ID Protection"></a>Microsoft Entra ID Protection</h2><h3 id="新機能のリリース-1"><a href="#新機能のリリース-1" class="headerlink" title="新機能のリリース"></a>新機能のリリース</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-report-only#policy-impact-preview">条件付きアクセス ポリシーの影響分析</a></li>
@@ -290,8 +290,8 @@
 <p>これらのアクセス パッケージをすべてのメンバーに表示したくない場合は、この日付までにアクセス パッケージを非表示に設定ください。アクセス パッケージを確認し、設定を変更する方法の詳細については、<a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?linkid=2321837">Learn の記事</a> を参照ください。  </p>
 <h2 id="Microsoft-Entra-External-ID"><a href="#Microsoft-Entra-External-ID" class="headerlink" title="Microsoft Entra External ID"></a>Microsoft Entra External ID</h2><p><strong>新機能のリリース</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/external-id/direct-federation-overview">SAML/WS-Fed ID プロバイダーによるユーザー認証</a></li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/custom-extension-attribute-collection">事前/事後で属性を収集するカスタム拡張機能のサポート</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/external-id/direct-federation-overview">SAML&#x2F;WS-Fed ID プロバイダーによるユーザー認証</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/custom-extension-attribute-collection">事前&#x2F;事後で属性を収集するカスタム拡張機能のサポート</a></li>
 </ul>
 <h2 id="Microsoft-Entra-Domain-Services"><a href="#Microsoft-Entra-Domain-Services" class="headerlink" title="Microsoft Entra Domain Services"></a>Microsoft Entra Domain Services</h2><p><strong>新機能のリリース</strong></p>
 <ul>

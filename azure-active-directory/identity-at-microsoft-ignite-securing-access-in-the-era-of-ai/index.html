@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai4.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai5.png">
 <meta property="article:published_time" content="2023-12-03T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.480Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.417Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+7a0db25e-68c3-5669-814c-626393e9c43e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMicrosoft+Ignite+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B+ID%3A+AI+%E6%99%82%E4%BB%A3%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E4%BF%9D%E8%AD%B7%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fidentity-at-microsoft-ignite-securing-access-in-the-era-of-ai%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fidentity-at-microsoft-ignite-securing-access-in-the-era-of-ai.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fidentity-at-microsoft-ignite-securing-access-in-the-era-of-ai.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/" data-id="cmmkete0b014w0nqpbb3f7b8g" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/" data-id="cuidoYwzMfeBRCo6gKBwnzPKs" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -201,7 +201,7 @@
 <p>近日開催予定の <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/tech-community-live/microsoft-security-tech-accelerator/ec-p/3968748#M20">Tech Accelerator Ask Microsoft Anything (AMA) セッション</a> に是非参加し、Microsoft の SSE ソリューションに関するあらゆる疑問について製品のエキスパートにご相談ください。</p>
 <h2 id="Microsoft-マネージド条件付きアクセス-ポリシーの自動ロールアウトなど"><a href="#Microsoft-マネージド条件付きアクセス-ポリシーの自動ロールアウトなど" class="headerlink" title="Microsoft マネージド条件付きアクセス ポリシーの自動ロールアウトなど"></a>Microsoft マネージド条件付きアクセス ポリシーの自動ロールアウトなど</h2><p>昨年、弊社では約 700 万の既存テナントに対して Microsoft Entra ID (旧 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/fundamentals/new-name">Azure Active Directory</a>) のセキュリティの既定値群を有効にし、これらのテナントにおける侵害の件数を 80% 削減しました。お客様からの好意的なフィードバックに基づき、弊社ではさらに、お客様のリスク情報、現在の使用状況、およびライセンスに基づいて、対象となるテナントに条件付きアクセス ポリシーを自動的に作成することで、より多くの Microsoft Entra ID のお客様が自身を保護できるよう支援してまいります。<strong>Microsoft マネージド条件付きアクセス ポリシー</strong> が展開されると、リスクが高いと想定されるシナリオにて多要素認証 (MFA) を実施する 3 つのポリシーが作成されます。詳細については、Alex Weinert の最近のブログ記事 <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/security/blog/2023/11/06/automatic-conditional-access-policies-in-microsoft-entra-streamline-identity-protection/">Automatic Conditional Access policies in Microsoft Entra streamline identity protection</a> をご覧ください。</p>
 <p><img src="/blog/azure-active-directory/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai3.png" alt="こちらが Microsoft マネージド条件付きアクセス ポリシーが作成されたテナントです。ポリシーの詳細が右側のコンテキスト ウィンドウに表示されています。選択されているポリシーでは、特定の管理者ロールが Microsoft 管理ポータルにアクセスする際に多要素認証の実施を必須とすることが示されています。"></p>
-<p>しかし、すべての MFA の方法が同等にユーザーを保護するわけではありません。FIDO2 セキュリティ キー、Windows Hello、**Microsoft Entra 証明書ベース認証 (CBA)**、パスキーなど、より効果的な MFA の方法では暗号技術が使用されており、認証にフィッシング耐性が付与されます。Microsoft Entra CBA のプレビューでは、証明書、リソースの種類、ユーザーおよびグループごとに認証ポリシーを調整することが可能です。これらのフィッシングに強い認証方式により、パスワードを完全に排除することが可能になり、パスワードの推測、傍受、フィッシングを防ぐことが可能となります。</p>
+<p>しかし、すべての MFA の方法が同等にユーザーを保護するわけではありません。FIDO2 セキュリティ キー、Windows Hello、<strong>Microsoft Entra 証明書ベース認証 (CBA)</strong>、パスキーなど、より効果的な MFA の方法では暗号技術が使用されており、認証にフィッシング耐性が付与されます。Microsoft Entra CBA のプレビューでは、証明書、リソースの種類、ユーザーおよびグループごとに認証ポリシーを調整することが可能です。これらのフィッシングに強い認証方式により、パスワードを完全に排除することが可能になり、パスワードの推測、傍受、フィッシングを防ぐことが可能となります。</p>
 <p>Microsoft は、Windows 11 を皮切りに、エコシステム全体でパスキーのサポートに取り組んでいます。Windows Hello を使用して Web サイト、アプリケーション、またはサービスのパスキーを作成すると、顔、指紋、またはデバイスの PIN を使用してデバイスからサインイン可能となります。これにより、企業や政府機関のお客様は、物理的な FIDO2 セキュリティ キーに代わる、フィッシングに強い新たな選択肢を得ることができます。Microsoft Entra ID ユーザーは、まもなく <strong>Microsoft Authenticator アプリ</strong> にて管理されるパスキーを使用してサインインできるようになります。</p>
 <p><img src="/blog/azure-active-directory/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai/identity-at-microsoft-ignite-securing-access-in-the-era-of-ai4.png"></p>
 <p>最後に、<a target="_blank" rel="noopener" href="https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-id-protection?rtc=1">Microsoft Entra ID Protection</a> では、トークンの有効期間が異常に長い場合や、なじみのない場所からトークンが再生された場合などの異常を検出するようになりました。アラートが上がると、条件付きアクセスを用いて直ちにトークンを失効させ、パスワードのリセットやステップアップ MFA などの他の対策とともに、管理者による手動での介入を必要とせずに再認証を強制することができます。また、ユーザーがオンプレミスでパスワードを変更した場合に、Entra ID Protection は <a href="https://jpazureid.github.io/blog/azure-active-directory/Remediate-User-Risks-in-Microsoft-Entra-ID-Protection-Through-On-premises-Password-Changes/">自動的にリスクを修復</a> できるようになりました。これにより、ハイブリッド組織はユーザー リスク ポリシーをより簡単に利用できるようになります。</p>

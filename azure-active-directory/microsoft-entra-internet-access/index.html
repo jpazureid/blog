@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-internet-access/microsoft-entra-internet-access14.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-internet-access/microsoft-entra-internet-access15.png">
 <meta property="article:published_time" content="2023-11-16T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.617Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.554Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Global Secure Access">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -170,7 +170,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f5bdfeaf-a29a-5414-8ef8-b5f0f9bc0a2c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%AF+%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC+Microsoft+Entra+Internet+Access+%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmicrosoft-entra-internet-access%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmicrosoft-entra-internet-access.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmicrosoft-entra-internet-access.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-internet-access/" data-id="cmmkete0m015i0nqpeubnh0o4" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/microsoft-entra-internet-access/" data-id="cuidqC-dOLyRLfsOHy20bwNVP" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -216,7 +216,7 @@
 <li><p>条件付きアクセスのカバー範囲の拡大</p>
 <p> これまで条件付きアクセスでは、ターゲット リソースとしてアプリケーションを明示的に指定したり、アプリ フィルターを用いて特定のカスタム セキュリティ属性をもつアプリを対象にするような構成としていたかと思います。この新機能を利用すると、下記の画面にてインターネット トラフィックを選択できるようになるため、ポリシーの対象として、アプリだけでなく、アクセス先のネットワーク自体を指定できるようになり、より広くきめ細かな範囲にポリシーを適用できるようになります。</p>
 <p> <img src="/blog/azure-active-directory/microsoft-entra-internet-access/microsoft-entra-internet-access3.png"></p>
-<p> ※ 2023/10/19 現在、インターネット トラフィックおよびプライベート アクセス  トラフィックへの条件付きアクセスの適用はサポートされていません。それぞれ下記の公開情報をもとに、代替案やプライベート プレビューへの申請をご検討ください。</p>
+<p> ※ 2023&#x2F;10&#x2F;19 現在、インターネット トラフィックおよびプライベート アクセス  トラフィックへの条件付きアクセスの適用はサポートされていません。それぞれ下記の公開情報をもとに、代替案やプライベート プレビューへの申請をご検討ください。</p>
 <p> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/global-secure-access/concept-universal-conditional-access#known-limitations">Global Secure Access 経由のユニバーサル条件付きアクセスについて説明します</a></p>
 <ul>
 <li>プライベート アクセス トラフィックへの条件付きアクセス ポリシーの適用は現在サポートされていません。 この動作をモデル化するために、クイック アクセスと Global Secure Access アプリに対してアプリケーション レベルで条件付きアクセス ポリシーを適用できます。 詳細については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-target-resource-private-access-apps">Private Access アプリに条件付きアクセス ポリシーを適用する</a> を参照ください。</li>
@@ -269,8 +269,8 @@
 <p>下記の機能は現在開発中で、来年早々にリリースされる予定です:</p>
 <ul>
 <li>送受信トラフィックの制限機能: ユーザーの利用形態を考慮したクラウド ファイアウォールを活用することで、たきめ細かなポリシー条件により、IP アドレス、ポート、プロトコルなどに基づいて制限を行えるようにします。</li>
-<li>悪意のあるネットワーク活動の特定とブロック: 侵入検知防御システム (IDPS) と脅威インテリジェンスにより、既知の悪意のある IP/FQDN/URL を特定およびブロックします。</li>
-<li>暗号化されたトラフィックの検査: すべての TCP/UDP トラフィックに対してきめ細かな TLS のインスペクションを行います。</li>
+<li>悪意のあるネットワーク活動の特定とブロック: 侵入検知防御システム (IDPS) と脅威インテリジェンスにより、既知の悪意のある IP&#x2F;FQDN&#x2F;URL を特定およびブロックします。</li>
+<li>暗号化されたトラフィックの検査: すべての TCP&#x2F;UDP トラフィックに対してきめ細かな TLS のインスペクションを行います。</li>
 </ul>
 <h2 id="Microsoft-Entra-Internet-Access-の展開方法"><a href="#Microsoft-Entra-Internet-Access-の展開方法" class="headerlink" title="Microsoft Entra Internet Access の展開方法"></a>Microsoft Entra Internet Access の展開方法</h2><p>下記公開情報に記載の手順を 4 つ実施いただくことで構成が可能です。2 の手順にて、エンド ユーザーのデバイスにクライアントをインストールする手順がございますので、あらかじめ要件を満たす Microsoft Entra 参加済みデバイスもしくはハイブリッド参加済みデバイスをご用意のうえ実施いただけますと幸いです。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/global-secure-access/how-to-get-started-with-global-secure-access#microsoft-entra-internet-access">Global Secure Access の概要 (プレビュー)</a></p>

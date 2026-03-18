@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/hybrid-azuread-joined-devices-setup/008.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/hybrid-azuread-joined-devices-setup/009-1024x351.png">
 <meta property="article:published_time" content="2018-04-02T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.472Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.410Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+a9ed1ef5-d07a-5914-9ff2-5c1f122862ed%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%8F%E3%82%A4%E3%83%96%E3%83%AA%E3%83%83%E3%83%89+Azure+Active+Directory+%E5%8F%82%E5%8A%A0%E6%B8%88%E3%81%BF%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fhybrid-azuread-joined-devices-setup%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fhybrid-azuread-joined-devices-setup.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fhybrid-azuread-joined-devices-setup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/hybrid-azuread-joined-devices-setup/" data-id="cmmkete09014r0nqpf4itd3v2" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/hybrid-azuread-joined-devices-setup/" data-id="cuidLMcIsAb6qgp6s5l7fIVhR" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -182,7 +182,7 @@
 <li>Windows 10 のデバイス登録の流れについて</li>
 <li>Windows 10 のデバイス登録について注意事項  </li>
 <li>ダウンレベルの Windows (Windows 7、Windows 8.1) のデバイス登録の流れ  </li>
-<li>ダウンレベルの Windows (Windows 7、Windows 8.1) のデバイス登録について注意事項  </li>
+<li>ダウンレベルの Windows (Windows 7、Windows 8.1) のデバイス登録について注意事項</li>
 </ol>
 <h2 id="本記事の目的"><a href="#本記事の目的" class="headerlink" title="本記事の目的"></a>本記事の目的</h2><p>本記事の目的は、以下の弊社公開情報を補足することです。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup">ハイブリッド Azure Active Directory 参加済みデバイスの構成方法</a></p>
@@ -208,7 +208,7 @@
 <p>サービス接続ポイント (SCP) が登録されていない場合、デバイス登録時に適切に AD FS への認証が行われません。</p>
 <p>結果、デバイス登録に失敗します。<br>サービス接続ポイント (SCP) の実体は以下に登録されます。</p>
 <ul>
-<li>CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=contoso,DC=local (「DC=contoso,DC=local」部分は環境に合わせて読み替えてください) の keywords 属性の値</li>
+<li>CN&#x3D;62a0ff2e-97b9-4513-943f-0d221bd30080,CN&#x3D;Device Registration Configuration,CN&#x3D;Services,CN&#x3D;Configuration,DC&#x3D;contoso,DC&#x3D;local (「DC&#x3D;contoso,DC&#x3D;local」部分は環境に合わせて読み替えてください) の keywords 属性の値</li>
 </ul>
 <p>この keywords 属性の値として登録される以下 2 つがサービス接続ポイント (SCP) の実体です。</p>
 <ul>
@@ -284,7 +284,7 @@
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$multipleVerifiedDomainNames</span> = <span class="variable">$false</span></span><br><span class="line"><span class="variable">$immutableIDAlreadyIssuedforUsers</span> = <span class="variable">$false</span></span><br><span class="line"><span class="variable">$oneOfVerifiedDomainNames</span> = <span class="string">&#x27;example.com&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>それぞれの行について説明します。</p>
-<h4 id="multipleVerifiedDomainNames-false"><a href="#multipleVerifiedDomainNames-false" class="headerlink" title="$multipleVerifiedDomainNames = $false"></a>$multipleVerifiedDomainNames = $false</h4><p>ここで指定をする値は以下のいずれかです。</p>
+<h4 id="multipleVerifiedDomainNames-false"><a href="#multipleVerifiedDomainNames-false" class="headerlink" title="$multipleVerifiedDomainNames &#x3D; $false"></a>$multipleVerifiedDomainNames &#x3D; $false</h4><p>ここで指定をする値は以下のいずれかです。</p>
 <ul>
 <li>$false</li>
 <li>$true</li>
@@ -311,7 +311,8 @@
 <p>※ 認証が発生するので対象の Azure AD の全体管理者の資格情報を入力します。</p>
 </li>
 <li><p>以下のコマンドを実行してドメイン情報を取得する</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MsolDomain</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MsolDomain</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>以下のコマンドを実行して IssuerUri を取得する</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-MsolDomainFederationSettings</span> <span class="literal">-DomainName</span> xxxx | <span class="built_in">select</span> IssuerUri</span><br></pre></td></tr></table></figure>
 
@@ -320,13 +321,13 @@
 <p>Federated ドメインが複数ある場合は、どれでも結構です。</p>
 </li>
 <li><p>取得した以下の IssuerUri の値から $false と $true のどちらを指定するかを判断する</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">IssuerUri</span><br><span class="line">---------</span><br><span class="line">http://xxxx/adfs/services/trust/</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">IssuerUri</span><br><span class="line"><span class="literal">---------</span></span><br><span class="line">http://xxxx/adfs/services/trust/</span><br></pre></td></tr></table></figure>
 
 <p>※「xxxx」部分が AD FS のフェデレーション サービス名と一致する場合は、$false を指定します。</p>
 <p>「xxxx」部分が AD FS のフェデレーション サービス名と一致しない場合は、$true を指定します。</p>
 </li>
 </ol>
-<h4 id="immutableIDAlreadyIssuedforUsers-false"><a href="#immutableIDAlreadyIssuedforUsers-false" class="headerlink" title="$immutableIDAlreadyIssuedforUsers = $false"></a>$immutableIDAlreadyIssuedforUsers = $false</h4><p>ここで指定をする値は以下のいずれかです。</p>
+<h4 id="immutableIDAlreadyIssuedforUsers-false"><a href="#immutableIDAlreadyIssuedforUsers-false" class="headerlink" title="$immutableIDAlreadyIssuedforUsers &#x3D; $false"></a>$immutableIDAlreadyIssuedforUsers &#x3D; $false</h4><p>ここで指定をする値は以下のいずれかです。</p>
 <ul>
 <li>$false</li>
 <li>$true</li>
@@ -353,14 +354,15 @@
 <li><p>1 つ目の規則をダブルクリックする</p>
 </li>
 <li><p>以下の赤字部分の属性名を確認する (既定では objectGUID になっています。)</p>
-<p> c:[Type == “<a target="_blank" rel="noopener" href="http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname&quot;]">http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname&quot;]</a><br>=&gt; issue(store = “Active Directory”, types = (“<a target="_blank" rel="noopener" href="http://schemas.xmlsoap.org/claims/UPN&quot;">http://schemas.xmlsoap.org/claims/UPN&quot;</a>, “<a target="_blank" rel="noopener" href="http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID&quot;">http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID&quot;</a>), query = “samAccountName={0};userPrincipalName,xxxxxxxxx;{1}”, param = regexreplace(c.Value, “(?[^\]+)\(?.+)”, “${user}”), param = c.Value);</p>
-</li>
-<li><p>確認した属性名から $false と $true のどちらを指定するかを判断する</p>
-<p> 属性名がコンピューターオブジェクトにも存在していて、かつ、既定で値が設定される属性の場合は、$false を指定します。</p>
-<p> 属性名がコンピューターオブジェクトに存在しない、または、存在するけど既定で値が設定されない属性の場合は、$true を指定します。</p>
+<p> c:[Type &#x3D;&#x3D; “<a target="_blank" rel="noopener" href="http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname%22]">http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname&quot;]</a></p>
 </li>
 </ol>
-<h4 id="oneOfVerifiedDomainNames-‘example-com’"><a href="#oneOfVerifiedDomainNames-‘example-com’" class="headerlink" title="$oneOfVerifiedDomainNames = ‘example.com’"></a>$oneOfVerifiedDomainNames = ‘example.com’</h4><p>ここで指定をする値は対象の Azure AD に登録されている Federated ドメインのいずれかです。</p>
+<p>&#x3D;&gt; issue(store &#x3D; “Active Directory”, types &#x3D; (“<a target="_blank" rel="noopener" href="http://schemas.xmlsoap.org/claims/UPN">http://schemas.xmlsoap.org/claims/UPN</a>“, “<a target="_blank" rel="noopener" href="http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID">http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID</a>“), query &#x3D; “samAccountName&#x3D;{0};userPrincipalName,xxxxxxxxx;{1}”, param &#x3D; regexreplace(c.Value, “(?[^\]+)\(?.+)”, “${user}”), param &#x3D; c.Value);<br>8. 確認した属性名から $false と $true のどちらを指定するかを判断する</p>
+<pre><code>属性名がコンピューターオブジェクトにも存在していて、かつ、既定で値が設定される属性の場合は、$false を指定します。
+
+属性名がコンピューターオブジェクトに存在しない、または、存在するけど既定で値が設定されない属性の場合は、$true を指定します。
+</code></pre>
+<h4 id="oneOfVerifiedDomainNames-‘example-com’"><a href="#oneOfVerifiedDomainNames-‘example-com’" class="headerlink" title="$oneOfVerifiedDomainNames &#x3D; ‘example.com’"></a>$oneOfVerifiedDomainNames &#x3D; ‘example.com’</h4><p>ここで指定をする値は対象の Azure AD に登録されている Federated ドメインのいずれかです。</p>
 <p>Federated ドメインが 1 つのみの場合は、それを指定してください。</p>
 <p>Federated ドメインが複数ある場合は、どれでも結構です。</p>
 <p>以上を設定した上で、ヘルパースクリプトをご利用ください。</p>
@@ -399,7 +401,7 @@
 <p><img src="/blog/azure-active-directory/hybrid-azuread-joined-devices-setup/006.png"></p>
 <p>ここに入力をしたユーザー Azure AD 上に登録されるデバイスの所有者になります。</p>
 <p>仮にここで入力をするユーザーが Azure AD には同期されておらず、オンプレミス AD 上だけに存在するユーザーであった場合、以降ずっと Azure AD 上でそのデバイスの所有者は [該当なし] のままになります。</p>
-<p>このデバイスの所有者情報については、 他ユーザーでこの Windows 10 にサインインしても変わらず、これを変更するためには、一旦 Workgroup に戻して再度オンプレミス AD へ、所有者にしたいユーザーの資格情報を利用しての参加が必要になります (もちろん所有者にしたいユーザーは Azure AD に同期済み / 同期予定のユーザーである必要があります)。</p>
+<p>このデバイスの所有者情報については、 他ユーザーでこの Windows 10 にサインインしても変わらず、これを変更するためには、一旦 Workgroup に戻して再度オンプレミス AD へ、所有者にしたいユーザーの資格情報を利用しての参加が必要になります (もちろん所有者にしたいユーザーは Azure AD に同期済み &#x2F; 同期予定のユーザーである必要があります)。</p>
 <h2 id="ダウンレベルの-Windows-Windows-7、Windows-8-1-のデバイス登録の流れ"><a href="#ダウンレベルの-Windows-Windows-7、Windows-8-1-のデバイス登録の流れ" class="headerlink" title="ダウンレベルの Windows (Windows 7、Windows 8.1) のデバイス登録の流れ"></a>ダウンレベルの Windows (Windows 7、Windows 8.1) のデバイス登録の流れ</h2><p>ダウンレベルの Windows (Windows 7、Windows 8.1) のデバイス登録の流れについて説明します。</p>
 <p>”AD FS がある場合の” ハイブリッド Azure Active Directory 参加済みデバイスの構成が正しく構築できている場合、ダウンレベルの Windows は以下の流れでデバイス登録されます。</p>
 <p>Windows 7 で説明をしますが、Windows 8.1 でも同様です。<br>(実際には様々な処理が並列して行われているはずですので、前後する部分もあります)</p>
@@ -435,9 +437,9 @@
 <p>本記事がみなさまの一助になれば幸いです。</p>
 <p>引き続きよろしくお願いします。</p>
 <h2 id="更新履歴"><a href="#更新履歴" class="headerlink" title="更新履歴"></a>更新履歴</h2><ul>
-<li><p>2018/04/03:<br>新規作成<br>$immutableIDAlreadyIssuedforUsers の記載を修正</p>
+<li><p>2018&#x2F;04&#x2F;03:<br>新規作成<br>$immutableIDAlreadyIssuedforUsers の記載を修正</p>
 </li>
-<li><p>2018/04/04:<br>注意事項を追記</p>
+<li><p>2018&#x2F;04&#x2F;04:<br>注意事項を追記</p>
 </li>
 </ul>
 

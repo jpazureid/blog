@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/4-SecDetail.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/5-CheckPoint.jpg">
 <meta property="article:published_time" content="2020-05-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.886Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.824Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AAD Connect">
 <meta name="twitter:card" content="summary">
@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2c7a2080-ff06-561f-bfe2-8fabb5a18cc0%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5Bpermission-issue+-+Error+Code+%3B+8344%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory-connect%2Ferror-code-8344%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory-connect%2Ferror-code-8344.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory-connect%2Ferror-code-8344.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/" data-id="cmmketdpe002c0nqp4ep9fqr5" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/error-code-8344/" data-id="cuid7sRNqXmEguY_lgPqouli8" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -175,7 +175,7 @@
 </ol>
 <p> <br>上記の 3. の処理で通常はユーザーオブジェクトの <code>mS-DS-ConsistencyGuid</code> 属性に対し、Azure AD Connect で設定している AD DS コネクタ アカウント (MSOL_ から始まるユーザー、あるいはインストール時に指定したドメイン ユーザー) で書き込み処理が行われ、完了します。<br>この処理にて AD DS コネクタ アカウントでの書き込み処理がアクセス権が不足している場合に、権限が不足していることを示す <em><strong>permission-issue - Error Code ; 8344</strong></em> が発生します。
  </p>
-<h1 id="同事象発生時の確認方法-エラー"><a href="#同事象発生時の確認方法-エラー" class="headerlink" title="同事象発生時の確認方法 / エラー"></a>同事象発生時の確認方法 / エラー</h1><hr>
+<h1 id="同事象発生時の確認方法-エラー"><a href="#同事象発生時の確認方法-エラー" class="headerlink" title="同事象発生時の確認方法 &#x2F; エラー"></a>同事象発生時の確認方法 &#x2F; エラー</h1><hr>
 <p>Azure AD Connect では Synchronization Service Manager よりエラーを内容を確認することができます。<br>Synchronization Service Manager では下記のような表示となります。</p>
 <pre><code>Status : completed-export-errors 
 Export Error (s) : permission-issue
@@ -207,7 +207,7 @@ Connected data source error: この操作を実行するための十分なアク
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Start-ADSyncSyncCycle</span> <span class="literal">-PolicyType</span> Delta</span><br></pre></td></tr></table></figure>
 
 <p><strong>&lt;全てのユーザーで発生している場合&gt;</strong></p>
-<p>AD DS コネクタ アカウントにユーザーオブジェクトの属性の読み取り / 書き込み権限が不足していることが原因となって発生していることが多く報告されています。<br>下記の手順にて AD DS コネクタ アカウントの確認、同アカウントに適切な権限を付与します。</p>
+<p>AD DS コネクタ アカウントにユーザーオブジェクトの属性の読み取り &#x2F; 書き込み権限が不足していることが原因となって発生していることが多く報告されています。<br>下記の手順にて AD DS コネクタ アカウントの確認、同アカウントに適切な権限を付与します。</p>
 <h2 id="AD-DS-コネクタ-アカウント確認手順"><a href="#AD-DS-コネクタ-アカウント確認手順" class="headerlink" title="AD DS コネクタ アカウント確認手順"></a>AD DS コネクタ アカウント確認手順</h2><ol>
 <li>Azure AD Connect を起動し、[構成] ボタンをクリックします。</li>
 <li>[現在の構成を表示する] を選択し、[次へ] ボタンをクリックします。</li>
@@ -230,7 +230,7 @@ Connected data source error: この操作を実行するための十分なアク
 <li>“有効なアクセス許可の表示” ボタンをクリックします。</li>
 <li>画面下部にて表示されるアクセス許可にて下記全てが許可されていることを確認します。<blockquote>
 <ul>
-<li>プロパティの読み取り/書き込み</li>
+<li>プロパティの読み取り&#x2F;書き込み</li>
 <li>ユーザーの子孫オブジェクト</li>
 </ul>
 </blockquote>

@@ -30,11 +30,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/GuestUser-Inventory/13_lastsignin1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/GuestUser-Inventory/14_lastsignin2.png">
 <meta property="article:published_time" content="2023-01-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.017Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.955Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Entra ID">
-<meta property="article:tag" content="B2B">
 <meta property="article:tag" content="Access review">
+<meta property="article:tag" content="B2B">
+<meta property="article:tag" content="Entra ID">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/GuestUser-Inventory/1_access_IdentityGovernance.png">
   
@@ -56,7 +56,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -173,7 +173,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+63f0c99d-547f-594e-8ec0-c49e381ddff3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%B2%E3%82%B9%E3%83%88+%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E6%A3%9A%E5%8D%B8%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2FGuestUser-Inventory%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2FGuestUser-Inventory.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2FGuestUser-Inventory.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/GuestUser-Inventory/" data-id="cmmketdz6012g0nqp5ul19hz1" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/GuestUser-Inventory/" data-id="cuidt0g1xiEjo3YJZqx3WFlC8" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -201,7 +201,7 @@
 <h2 id="idx1">A. アクセス レビューを使用して一定期間サインインのないユーザー アカウントを自動的に棚卸する方法</h2>
 
 <p>アクセス レビューは、特定のグループやアプリケーションに割り当てられたユーザーを対象に、グループのメンバーシップやアプリケーションの割り当てに問題がないか (不要なユーザーに割り当てが行われていないか) を定期的に確認できる機能です。</p>
-<p>1 回もしくは定期的に行われるレビューでは、レビューを行う管理者ユーザー (以下、レビュー担当者) が、レビュー内で各ユーザーに対し、[許可] もしくは [拒否] を設定します。詳細は後述しますが、レビュー担当者はレビュー内で各対象ユーザーの最終サインイン日時 (=最終利用日時) を確認することが可能ですので、そちらをもとに割り当ての「許可」「拒否」を選択します。</p>
+<p>1 回もしくは定期的に行われるレビューでは、レビューを行う管理者ユーザー (以下、レビュー担当者) が、レビュー内で各ユーザーに対し、[許可] もしくは [拒否] を設定します。詳細は後述しますが、レビュー担当者はレビュー内で各対象ユーザーの最終サインイン日時 (&#x3D;最終利用日時) を確認することが可能ですので、そちらをもとに割り当ての「許可」「拒否」を選択します。</p>
 <p>レビューで拒否が選択された場合、たとえばグループから自動的にユーザーを削除したり、アプリケーションから割り当てを自動的に削除したりすることができます。さらには 30 日間アカウントを無効化 (サインインをブロック) したのちにユーザーを自動的に削除することも可能です。</p>
 <p>このアクセスレビュー機能を応用してゲスト ユーザーの棚卸を行いますが、実際のところレビューを行う管理者は不特定多数のゲスト ユーザーについて 1 人 1 人アクセスの要否を判断することは困難です。そのため、今回はゲスト ユーザー自身にセルフレビューを依頼し、アクセス権の継続が必要な場合のみ [許可] してもらいます。アクセス権が不要になったゲスト ユーザーは自ら [拒否] を選択することも、レビュー自体を無視することも可能です。(レビューを無視した場合は [拒否] 扱いとすることが可能です。)</p>
 <p>以下の手順にてレビューを作成すると、レビューで拒否が設定されたゲスト ユーザーは自動的に無効化され、 30 日後にテナントから自動的に削除されます。</p>
@@ -325,13 +325,13 @@
 <h3 id="idx1-2">アクセス レビューの実施 (セルフ レビュー編)</h2>
 
 <ol>
-<li><p>アクセス レビューが開始されると、レビュー対象者の元に <a href="mailto:&#97;&#122;&#117;&#x72;&#101;&#x2d;&#x6e;&#111;&#x72;&#x65;&#x70;&#x6c;&#x79;&#x40;&#109;&#105;&#x63;&#x72;&#111;&#115;&#x6f;&#x66;&#116;&#x2e;&#99;&#x6f;&#109;">&#97;&#122;&#117;&#x72;&#101;&#x2d;&#x6e;&#111;&#x72;&#x65;&#x70;&#x6c;&#x79;&#x40;&#109;&#105;&#x63;&#x72;&#111;&#115;&#x6f;&#x66;&#116;&#x2e;&#99;&#x6f;&#109;</a> からメールが届くので、[レビューを開始する（Review Access）] をクリックします。  </p>
+<li><p>アクセス レビューが開始されると、レビュー対象者の元に <a href="mailto:&#97;&#122;&#117;&#x72;&#x65;&#x2d;&#110;&#111;&#x72;&#x65;&#112;&#x6c;&#121;&#64;&#109;&#x69;&#99;&#x72;&#111;&#x73;&#111;&#102;&#x74;&#x2e;&#x63;&#111;&#109;">azure-noreply@microsoft.com</a> からメールが届くので、[レビューを開始する（Review Access）] をクリックします。  </p>
 <p> <img src="/blog/azure-active-directory/GuestUser-Inventory/8_selfReview1.png"></p>
 </li>
 <li><p>以下のような画面が表示されるので、セルフ レビューを実施します。  </p>
 <p> <img src="/blog/azure-active-directory/GuestUser-Inventory/9_selfReview2.png"></p>
 </li>
-<li><p>画面が以下のように遷移します。 Progress の項目が 1/1 と表示されていることを確認します。  </p>
+<li><p>画面が以下のように遷移します。 Progress の項目が 1&#x2F;1 と表示されていることを確認します。  </p>
 <p> <img src="/blog/azure-active-directory/GuestUser-Inventory/10_selfReview3.png"></p>
 </li>
 <li><p>指定した日付が経過するなどしてレビューが完了すると、[自動適用] が有効な場合は、自動的に [拒否されたゲスト ユーザーに対するアクション] が実行されます。</p>
@@ -342,7 +342,7 @@
 
 <p>上記まではゲスト ユーザー自身にレビューを実施してもらう手順となりますが、もしゲスト ユーザーの数が少ない場合などは管理者が代表してレビューを行うことも可能です。この場合の手順を後述します。</p>
 <ol>
-<li><p>アクセス レビューが開始されると、レビュー対象者の元に <a href="mailto:&#x61;&#x7a;&#117;&#114;&#101;&#x2d;&#x6e;&#x6f;&#x72;&#x65;&#x70;&#x6c;&#121;&#64;&#109;&#x69;&#99;&#x72;&#x6f;&#x73;&#111;&#x66;&#x74;&#46;&#x63;&#111;&#109;">&#x61;&#x7a;&#117;&#114;&#101;&#x2d;&#x6e;&#x6f;&#x72;&#x65;&#x70;&#x6c;&#121;&#64;&#109;&#x69;&#99;&#x72;&#x6f;&#x73;&#111;&#x66;&#x74;&#46;&#x63;&#111;&#109;</a> からメールが届くので、[レビューを開始する] をクリックします。</p>
+<li><p>アクセス レビューが開始されると、レビュー対象者の元に <a href="mailto:&#x61;&#122;&#117;&#x72;&#101;&#x2d;&#110;&#111;&#x72;&#x65;&#112;&#x6c;&#121;&#64;&#109;&#105;&#99;&#x72;&#x6f;&#x73;&#x6f;&#102;&#x74;&#46;&#99;&#x6f;&#109;">azure-noreply@microsoft.com</a> からメールが届くので、[レビューを開始する] をクリックします。</p>
 <p> <img src="/blog/azure-active-directory/GuestUser-Inventory/11_adminreview1.png"></p>
 </li>
 <li><p>ユーザーの状況を確認します。各ユーザーを選択すると、 [承認する] と [拒否] がクリックできるようになるので、承認もしくは拒否を指定します。</p>

@@ -14,11 +14,11 @@
 <meta property="og:description" content="こんにちは、Azure &amp; Identity サポート チームの金森です。 2024 年 1 月 10 日に、メッセージ センターにて [MC705680] として以下の情報公開が行われています。 Note2024 年 3 月 3 日に When will this happen: の説明が更新されました。当初は 2 月 15 日にクラウド側の変更が行われる予定でしたが、ご利用者様のクライ">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2024-03-11T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.555Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.492Z">
 <meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="Device">
 <meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Windows Hello for Business">
-<meta property="article:tag" content="Device">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -156,7 +156,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9a2696d7-cb57-5955-afa7-a1b19ebe65cb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMC705680+%282024%2F1%2F10+%E5%85%AC%E9%96%8B%29+%E3%81%AE%E9%80%9A%E7%9F%A5%E5%86%85%E5%AE%B9%E3%81%AE%E8%AA%AC%E6%98%8E%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmc705680-20240110%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmc705680-20240110.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmc705680-20240110.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc705680-20240110/" data-id="cmmketdu300g60nqp2bfsfswr" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mc705680-20240110/" data-id="cuidOkkWePeNnyI1rAr3XiSeu" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -166,36 +166,36 @@
 <div class="alert is-info"><p class="alert-title">Note</p><p>2024 年 3 月 3 日に When will this happen: の説明が更新されました。当初は 2 月 15 日にクラウド側の変更が行われる予定でしたが、ご利用者様のクライアントへの修正適用の準備期間を踏まえて、変更予定を延長していました。3 月 3 日の週からクラウド側の展開を開始し、4 月末までにはすべてのお客様のテナントに展開が完了する予定です。</p></div>
 <blockquote>
 <p><strong>Action required: Security hardening of Windows Hello authentication with July 2023 Windows updates</strong><br>[Updated March 3, 2024]: Starting this week, the change described in this article will begin a gradual roll out. It will reach all customers by end of April. </p>
-<p>Windows updates released on July 11, 2023 introduced a phased approach to address a vulnerability in the Microsoft Entra ID Windows Hello authentication stack <a target="_blank" rel="noopener" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36871">CVE-2023-36871</a> that could enable an attacker to create long lived authentication artifact from a low privileged process on Entra ID joined machines. This would enable the attacker to move the artifact indefinitely onto other Entra ID joined machines.<br>To address this vulnerability, Microsoft has introduced protections starting with the July 11, 2023 security updates. We strongly recommend that you update your organization’s devices immediately with Windows updates release in July 2023 or later.<br>Microsoft plans to fully address this CVE by not accepting Windows Hello authentication requests from machines running Windows security updates released in June 2023 or before. This security hardening will start February 15th, 2024 and will affect authentication/Single Sign On (SSO) on Windows devices that have not been updated with updates released in July 2023 or later.</p>
+<p>Windows updates released on July 11, 2023 introduced a phased approach to address a vulnerability in the Microsoft Entra ID Windows Hello authentication stack <a target="_blank" rel="noopener" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36871">CVE-2023-36871</a> that could enable an attacker to create long lived authentication artifact from a low privileged process on Entra ID joined machines. This would enable the attacker to move the artifact indefinitely onto other Entra ID joined machines.<br>To address this vulnerability, Microsoft has introduced protections starting with the July 11, 2023 security updates. We strongly recommend that you update your organization’s devices immediately with Windows updates release in July 2023 or later.<br>Microsoft plans to fully address this CVE by not accepting Windows Hello authentication requests from machines running Windows security updates released in June 2023 or before. This security hardening will start February 15th, 2024 and will affect authentication&#x2F;Single Sign On (SSO) on Windows devices that have not been updated with updates released in July 2023 or later.</p>
 <p>[When will this happen:]<br><del>This security hardening will start on February 15th, 2024.</del><br><span style="color: red; ">Server-side changes for this security hardening are beginning to roll out starting with the week of March 3, 2024. The new measure is expected to affect 10% of customers by the end of the first week of March, and should reach all customers by the end of April.</p>
 <p>This security hardening was originally scheduled to start on February, 2024, but was postponed to allow more time for organizations to install the necessary updates for this change.</span></p>
-<p>[How this will affect your organization:]<br>This security hardening will impact Windows Hello authentication/Single Sign On (SSO).</p>
+<p>[How this will affect your organization:]<br>This security hardening will impact Windows Hello authentication&#x2F;Single Sign On (SSO).</p>
 <p>[What you need to do to prepare:]<br>We strongly recommend that you update immediately your organization’s devices with Windows security updates release in July 2023 or later. Your organization will be at risk of business disruption, and IT administrators are encouraged to take action and install the necessary updates as soon as possible.</p>
-<p>[Additional information:]<br>If you have Active Directory Federation Services (ADFS) in your environment, please see <a target="_blank" rel="noopener" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36871">CVE-2023-36871 - Security Update Guide - Microsoft - Azure Active Directory Security Feature Bypass Vulnerability</a> to protect your on premises/Enterprise authentication scenarios as well.</p>
+<p>[Additional information:]<br>If you have Active Directory Federation Services (ADFS) in your environment, please see <a target="_blank" rel="noopener" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36871">CVE-2023-36871 - Security Update Guide - Microsoft - Azure Active Directory Security Feature Bypass Vulnerability</a> to protect your on premises&#x2F;Enterprise authentication scenarios as well.</p>
 </blockquote>
 <p>要約すると以下の主旨となります。</p>
 <ul>
 <li>Windows Hello for Business (WHfB) のセキュリティの脆弱性が確認されている</li>
 <li>この脆弱性に対して、<strong>2023 年 7 月の月例のセキュリティ修正にて、すでに Windows に対しては修正の提供済みであり、修正を適用することで脆弱性のリスクは解消される</strong></li>
-<li>上記の対処はクライアント視点でのアプローチであるものの、この脆弱性リスクに対して完全に対応できるよう、認証の要求先/トークンの発行を行う Microsoft Entra ID (ME-ID = Azure AD) 側でも対処を実施する</li>
+<li>上記の対処はクライアント視点でのアプローチであるものの、この脆弱性リスクに対して完全に対応できるよう、認証の要求先&#x2F;トークンの発行を行う Microsoft Entra ID (ME-ID &#x3D; Azure AD) 側でも対処を実施する</li>
 <li><strong>2024 年 3 月 3 日</strong> (<span style="color: red; ">こちら 2 月 15 日から延長しています</span>) から、”2023 年 7 月の月例修正を適用していない” クライアントからの、WHfB によるトークン発行要求を受け入れない対処を実施する</li>
 <li>AD FS を利用している環境では、AD FS サーバーに対しても修正の適用と設定の追加を行う必要がある</li>
 </ul>
 <p>おそらく多くの方がすでに 2023 年 7 月の月例修正を適用済みの環境でご利用いただいているものと思いますが、この修正を適用済みの場合すでにリスクは解消されており、それ以上クライアントにて何らかの対処を行う必要はないのでご安心ください。メッセージ センターの通知文章より不安を感じられた方もいらっしゃるかもしれませんが、QA 形式で詳細をおまとめいたしますので、不安の解消の一助となりましたら幸いです。</p>
 <p><strong>Q.</strong> MC705680 の通知内容の動作変化が生じるのはいつからでしょうか。<br><strong>A.</strong> 2024 年 3 月 3 日から展開が開始され 4 月末にかけてすべてのテナントで展開が行われます。</p>
-<p><strong>Q.</strong> 詳細な動作変更対象の前提情報を教えてください。<br><strong>A.</strong> Microsoft Entra 参加 (旧名 Azure AD Join) もしくは Microsoft Entra ハイブリッド参加 (旧名 Hybrid Azure AD Join) 構成の Windows 10 / 11 クライアントにて、Windows Hello for Business (WHfB) を構成しており、Windows に WHfB の方法 (PIN や生体認証) でログオンしている環境が対象です。以下の環境は考慮の対象外となります。</p>
+<p><strong>Q.</strong> 詳細な動作変更対象の前提情報を教えてください。<br><strong>A.</strong> Microsoft Entra 参加 (旧名 Azure AD Join) もしくは Microsoft Entra ハイブリッド参加 (旧名 Hybrid Azure AD Join) 構成の Windows 10 &#x2F; 11 クライアントにて、Windows Hello for Business (WHfB) を構成しており、Windows に WHfB の方法 (PIN や生体認証) でログオンしている環境が対象です。以下の環境は考慮の対象外となります。</p>
 <ul>
 <li>WHfB ではなく Windows Hello の構成</li>
 <li>WHfB は構成済みであるが、Windows へのログオンを PIN や生体認証ではなくパスワードで実行している</li>
 </ul>
 <p><strong>Q.</strong> どのような動作変化が生じるでしょうか。<br><strong>A.</strong> 2023 年 7 月 11 日の月例修正が適用されていない場合、Windows ログオン時に WHfB の方法 (PIN や生態認証) でログオンすると [Windows ログオンに伴う PRT (Primary Refresh Token) の取得もしくは更新] が行えなくなります。</p>
-<p>なお、Windows へのログオン自体が行えなくなる、ということは無く、ログオンとデスクトップの表示は変わらず行えます (PRT の取得 / 更新が行えなくなる、という影響のみとなります)。</p>
-<p>この結果、デスクトップ上で PRT の利用が行えなくなり、PRT を用いた SSO (ブラウザやアプリ利用時に、ユーザー名/パスワードの入力を必要とせずサインインが完了する) が行えなくなり、合わせて以下のような状況が生じる可能性があります。</p>
+<p>なお、Windows へのログオン自体が行えなくなる、ということは無く、ログオンとデスクトップの表示は変わらず行えます (PRT の取得 &#x2F; 更新が行えなくなる、という影響のみとなります)。</p>
+<p>この結果、デスクトップ上で PRT の利用が行えなくなり、PRT を用いた SSO (ブラウザやアプリ利用時に、ユーザー名&#x2F;パスワードの入力を必要とせずサインインが完了する) が行えなくなり、合わせて以下のような状況が生じる可能性があります。</p>
 <ul>
-<li>SSO が行われなくなり、Microsoft Entra ID (ME-ID = Azure AD) のユーザー認証を対話的に求める認証画面が表示される</li>
+<li>SSO が行われなくなり、Microsoft Entra ID (ME-ID &#x3D; Azure AD) のユーザー認証を対話的に求める認証画面が表示される</li>
 <li>(条件付きアクセスにてデバイス ベースのアクセス制御を行っている場合) ME-ID へのサインインがブロックされる</li>
 </ul>
-<p>2023 年 7 月 11 日の月例修正が適用済みの Windows 10 / 11 クライアントでは、上記の動作が生じることなく、これまで通り PRT の取得 / 更新と利用が可能です。</p>
+<p>2023 年 7 月 11 日の月例修正が適用済みの Windows 10 &#x2F; 11 クライアントでは、上記の動作が生じることなく、これまで通り PRT の取得 &#x2F; 更新と利用が可能です。</p>
 <p><strong>Q.</strong> 具体的に適用しておくべき修正を教えてください。<br><strong>A.</strong> 以下の技術情報の [セキュリティ更新プログラム] の項目にて公開しておりますので、ご参照ください。</p>
 <p><a target="_blank" rel="noopener" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36871">Azure Active Directory のセキュリティ機能のバイパスの脆弱性</a></p>
 <p>※ [よく寄せられる質問] の項目には “7 月 12 日以降にリリースされた Windows 更新プログラム” と記載がありますが、[セキュリティ更新プログラム] の項目にある対象修正は 7 月 11 日にリリースされており、こちらの修正が本問題を修正した KB となります。</p>

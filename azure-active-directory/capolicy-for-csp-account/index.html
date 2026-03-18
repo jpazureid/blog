@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/capolicy-for-csp-account/compliant-or-haadj.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/capolicy-for-csp-account/notcompliant.png">
 <meta property="article:published_time" content="2022-07-24T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.218Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.155Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Conditional Access">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -164,7 +164,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+bb9dfd7e-65f1-51a4-a75d-1f9d4d396a55%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BCSP+%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%8B%E3%82%89%E9%A1%A7%E5%AE%A2%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fcapolicy-for-csp-account%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fcapolicy-for-csp-account.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fcapolicy-for-csp-account.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/capolicy-for-csp-account/" data-id="cmmketdzq013l0nqp9ot1f4ih" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/capolicy-for-csp-account/" data-id="cuidC9JZGqA6TbhTuWoKOXC8b" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -176,7 +176,7 @@
 <div class="alert is-info"><p class="alert-title">Note</p><p>本記事内では、顧客テナントに対して代理管理者権限を持つ、CSP パートナー テナントのアカウントを、「CSP アカウント」と記載します。</p></div>
 <p>さて、この「CSP アカウントによる顧客テナントへのアクセス」について、CSP パートナーの方から、下記のようなご相談をよく受けます。</p>
 <ul>
-<li>お問い合わせ内容 : ある時を境に、パートナーセンターを経由した顧客テナントへのアクセスが、下記画面によって、ブロックされるようになった。この事象は特定の顧客 (1 社) のみで発生しており、他の顧客テナントへのアクセスは問題なく可能です。<br><img src="/blog/azure-active-directory/capolicy-for-csp-account/blocked.png">  </li>
+<li>お問い合わせ内容 : ある時を境に、パートナーセンターを経由した顧客テナントへのアクセスが、下記画面によって、ブロックされるようになった。この事象は特定の顧客 (1 社) のみで発生しており、他の顧客テナントへのアクセスは問題なく可能です。<br><img src="/blog/azure-active-directory/capolicy-for-csp-account/blocked.png"></li>
 </ul>
 <p>上記の画面は、<strong>条件付きアクセス ポリシー</strong>と呼ばれる Azure AD の機能によって、アクセスがブロックされたことを示します。</p>
 <p>※ 条件付きアクセスは、多くのお客様にご利用いただいているセキュリティ機能です。機能の詳細については、<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/conditional-access/overview">Azure Active Directory の条件付きアクセスとは - Microsoft Entra</a> をご参照ください。</p>
@@ -196,7 +196,7 @@
 </ul>
 <h2 id="CSP-アカウントへの条件付きアクセス-ポリシーの適用を回避する方法"><a href="#CSP-アカウントへの条件付きアクセス-ポリシーの適用を回避する方法" class="headerlink" title="CSP アカウントへの条件付きアクセス ポリシーの適用を回避する方法"></a>CSP アカウントへの条件付きアクセス ポリシーの適用を回避する方法</h2><div class="alert is-info"><p class="alert-title">Note</p><p>再掲 : </p>
 <p>2022 年 10 月にプレビュー機能として公開された「外部ユーザーの種類 (仮称)」をご利用いただくことで、これまでは不可能だった「CSP アカウント “のみ” をポリシーの対象外にする”」という操作が可能になりました。詳細については新ブログ記事の <a href="https://jpazureid.github.io/blog/azure-active-directory/new-capolicy-for-csp-account/">CSP プログラムにおけるパートナーセンターから顧客テナントにアクセスする際の条件付きアクセス ポリシーについて - 「外部ユーザーの種類の指定」による解決方法</a> を是非ご参照ください。</p></div>
-<h3 id="前提-ユーザーとグループ-gt-対象外-の項目で-CSP-アカウントを指定して回避することはできません"><a href="#前提-ユーザーとグループ-gt-対象外-の項目で-CSP-アカウントを指定して回避することはできません" class="headerlink" title="前提 : [ユーザーとグループ] &gt; [対象外] の項目で CSP アカウントを指定して回避することはできません"></a>前提 : [ユーザーとグループ] &gt; [対象外] の項目で CSP アカウントを指定して回避することはできません</h3><p>条件付きアクセス ポリシーでは、割り当て対象ユーザーの設定画面において [対象外] の項目があります。通常であれば、特定のユーザーをポリシーの割り当て対象から除外したい場合は、[対象外] の項目で該当のユーザーを指定する方法が適切です。</p>
+<h3 id="前提-ユーザーとグループ-対象外-の項目で-CSP-アカウントを指定して回避することはできません"><a href="#前提-ユーザーとグループ-対象外-の項目で-CSP-アカウントを指定して回避することはできません" class="headerlink" title="前提 : [ユーザーとグループ] &gt; [対象外] の項目で CSP アカウントを指定して回避することはできません"></a>前提 : [ユーザーとグループ] &gt; [対象外] の項目で CSP アカウントを指定して回避することはできません</h3><p>条件付きアクセス ポリシーでは、割り当て対象ユーザーの設定画面において [対象外] の項目があります。通常であれば、特定のユーザーをポリシーの割り当て対象から除外したい場合は、[対象外] の項目で該当のユーザーを指定する方法が適切です。</p>
 <p>しかし、CSP アカウントの場合は、この方法を利用できません。前述の通り、CSP アカウントは顧客のテナント上にユーザー オブジェクトが存在しない、特別なアカウントです。 そのため、[対象外] の項目で選択することができません。</p>
 <p>したがって、割り当て対象ユーザーの設定では、CSP アカウントを明示的にポリシーの適用対象外に指定することはできません。以下で 3 通りの回避策を紹介します。</p>
 <ol>
@@ -234,7 +234,9 @@
 <h3 id="回避策-2-“ディレクトリ-ロール-グローバル管理者”-を、ポリシーの割り当て対象外に指定"><a href="#回避策-2-“ディレクトリ-ロール-グローバル管理者”-を、ポリシーの割り当て対象外に指定" class="headerlink" title="回避策 2 : “ディレクトリ ロール : グローバル管理者” を、ポリシーの割り当て対象外に指定"></a>回避策 2 : “ディレクトリ ロール : グローバル管理者” を、ポリシーの割り当て対象外に指定</h3><p>条件付きアクセス ポリシーの割り当て設定では、特定の Azure AD ロールを持つユーザーを、ポリシーの割り当て対象外に指定可能です。</p>
 <p>グローバル管理者のロールを、ポリシーの割り当て対象外に指定することで、顧客テナント上でグローバル管理者ロールを持つアカウント、ならびに CSP アカウントに対しては、ポリシーが適用されなくなります。必要に応じて、このポリシーとは別にグローバル管理者ロールを持つアカウントを個別に対象とするポリシーを追加ください。</p>
 <ul>
-<li>設定箇所 : 割り当て &gt; ユーザーまたはワークロード ID &gt; 対象外“ディレクトリ ロール” にチェックを入れ、一覧から “グローバル管理者” を選択。</li>
+<li><p>設定箇所 : 割り当て &gt; ユーザーまたはワークロード ID &gt; 対象外</p>
+<p>“ディレクトリ ロール” にチェックを入れ、一覧から “グローバル管理者” を選択。</p>
+</li>
 </ul>
 <h3 id="回避策-3-“すべてのユーザー”-または-“すべてのゲストと外部ユーザー”-を利用しない"><a href="#回避策-3-“すべてのユーザー”-または-“すべてのゲストと外部ユーザー”-を利用しない" class="headerlink" title="回避策 3 : “すべてのユーザー” または “すべてのゲストと外部ユーザー” を利用しない"></a>回避策 3 : “すべてのユーザー” または “すべてのゲストと外部ユーザー” を利用しない</h3><p>前述の通り、”すべてのユーザー” “すべてのゲストと外部ユーザー” を割り当て対象とするポリシーは、CSP アカウントによるアクセスに対しても一律に適用されます。</p>
 <p>これらの割り当てオプションを利用せずに、<strong>ポリシーを適用するユーザーを個別に指定</strong>することで、CSP アカウントに対してのポリシー適用を回避が可能です。</p>
@@ -247,13 +249,14 @@
 <p>以下では、条件付きアクセス ポリシーにおける “すべてのユーザー” ならびに “すべてのゲストと外部ユーザー” の代わりとしてご利用可能な、動的グループ メンバーシップルールをご紹介します。いずれのグループも、CSP アカウントは含まれません。</p>
 <ul>
 <li><p>「すべてのユーザー (除外 : CSP アカウント)」 に該当する、動的メンバーシップ ルール<br><img src="/blog/azure-active-directory/capolicy-for-csp-account/allusers.png">  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(user.objectId -ne null)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(user.objectId -ne null)</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>「すべてのゲストと外部ユーザー (除外 : CSP アカウント)」 に該当する、動的メンバーシップ ルール<br><img src="/blog/azure-active-directory/capolicy-for-csp-account/allguestusers.png"> </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(user.objectId -ne null) and (user.userType -eq &quot;Guest&quot;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>上記 2 つのルールはいずれも「オブジェクト ID が null ではない」という条件を含みます。従って、ユーザー オブジェクト自体が存在しない CSP アカウントは、その条件を満たさず、グループのメンバーには含まれません。</p>
 <p>上記の手順で作成したユーザー グループは、条件付きアクセス ポリシーの [ユーザーとグループの選択] において選択することができます。</p>
-<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><ul>
+<h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><ul>
 <li><p><strong><span style="color:blue">Q </span>.</strong> [対象外] に “すべてのゲストと外部ユーザー” を指定することで、CSP アカウントへのポリシー適用を回避できますか？</p>
 <p><strong><span style="color:red">A </span>.</strong>  はい、回避可能です。</p>
 </li>

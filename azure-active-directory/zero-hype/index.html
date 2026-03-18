@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/zero-hype/ZH3_JP.PNG">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/zero-hype/ZH4_JP.PNG">
 <meta property="article:published_time" content="2020-03-20T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.178Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.112Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Conditional Access">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+56ead42c-8d60-56e4-9f51-05ff6f72cf0e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%BC%E3%83%AD+%E3%83%8F%E3%82%A4%E3%83%97%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fzero-hype%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fzero-hype.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fzero-hype.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/zero-hype/" data-id="cmmkete1k017i0nqpgoip3vg7" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/zero-hype/" data-id="cuidwtXGzUChxWQQbHZjQFEXI" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -172,7 +172,7 @@
 </blockquote>
 <p>Ignite では、製品マーケティングを統括する同僚の Nupur Goyalstatus (<a target="_blank" rel="noopener" href="http://twitter.com/nupur_11">@nupur_11</a>) に加え、Azure Security Center や Microsoft Cloud App Security、およびユーザー向け Azure ATP などのプログラム マネジメントを統括する Yinon Costca (<a target="_blank" rel="noopener" href="http://twitter.com/c0stica">@c0stica</a>) を含めて、<a target="_blank" rel="noopener" href="https://aka.ms/ztignite">ゼロ ハイプ</a> と題する発表を行いました。ゼロ トラストのような概念は、あいまいなまま理解していては役に立ちません。この用語は長年にわたり話に上がってきましたが、私が話をした人の間では、この用語にはまだ一貫性や明確性が乏しい状況です。そのため、Nupur からゼロ トラストについての講演を依頼されたとき、概念に関して不明瞭な部分を全部なくすようなそんな発表をしようと提案しました。先の発表でそれが達成できていたら幸いです。セッションを見ることができなかった皆さんのために、ここでその本質をお伝えしたいと思います。</p>
 <h2 id="簡単にまとめると"><a href="#簡単にまとめると" class="headerlink" title="簡単にまとめると"></a>簡単にまとめると</h2><p>ゼロ トラストは概念的には、「壁で囲まれた庭」のような境界の中は安全という従来のセキュリティ モデルは時代遅れであり、セキュリティ モデルとしてはすべてのリクエストが制御の及ばない (外部または侵害された) ネットワークから発信されたものとして扱われるべきであるというものです。これは「侵害は常に起きるもの」と考えたり、攻撃者が境界内にいるとして運用したり、また特に境界のない運用環境を考えたりなど、どれでも結構ですが要は脅威の蔓延した環境を前提に運用するということです。これはシンプルな考え方でとても意味のあることなので、これ以上複雑にしたり誇張したりする必要はありません。以下では、もう少し深く見ていきましょう。</p>
-<h2 id="昔々の話"><a href="#昔々の話" class="headerlink" title="昔々の話"></a>昔々の話</h2><p>1990 年に、私はオフィスのネットワーク構築を支援する会社を設立しました。その時代は、基本的にネットワーク間の接続方法にほとんど選択肢はありませんでした。2 つのオフィスがある場合は、Wide Area Network (専用回線) でつないでその間の通信を行いました。この世界では、リソースへのアクセスはすべて所有している建物内、所有しているマシン、雇用している人からのものであると非常に安全に想定できました。これらの前提があったため、ファイル共有は広く開かれ、ユーザー名/パスワードの組合せを持つ人なら誰でもアプリにアクセスでき、私が協力したほとんどすべての企業は、「従業員を信頼する」という考えが中心にありました。もちろん、一部例外もいましたが、それほど高度なセキュリティもなく、ネットワークへのアクセスよりも建物へのアクセスに重点が置かれていました。</p>
+<h2 id="昔々の話"><a href="#昔々の話" class="headerlink" title="昔々の話"></a>昔々の話</h2><p>1990 年に、私はオフィスのネットワーク構築を支援する会社を設立しました。その時代は、基本的にネットワーク間の接続方法にほとんど選択肢はありませんでした。2 つのオフィスがある場合は、Wide Area Network (専用回線) でつないでその間の通信を行いました。この世界では、リソースへのアクセスはすべて所有している建物内、所有しているマシン、雇用している人からのものであると非常に安全に想定できました。これらの前提があったため、ファイル共有は広く開かれ、ユーザー名&#x2F;パスワードの組合せを持つ人なら誰でもアプリにアクセスでき、私が協力したほとんどすべての企業は、「従業員を信頼する」という考えが中心にありました。もちろん、一部例外もいましたが、それほど高度なセキュリティもなく、ネットワークへのアクセスよりも建物へのアクセスに重点が置かれていました。</p>
 <p>それからモデムの速度が向上し、PC が安価になったことで、遠距離通信が一般的になり、VPN (電話で接続したの覚えてます？) の利用が主流になりました。1994 年までに、インターネットはアカデミアで幅広く利用され、企業は専用線の代わりに公共の通信インフラを利用し始めました。突然、プライベート ネットワークがすべて、外部の世界に接続されることとなりました。ファイアウォールの企業が生まれ、すべての予期しないまたは悪意のあるトラフィックを排除し始めることとなります。ここで壁に囲まれた庭 (境界で囲まれたネットワークではあるが、内部は本質的にはオープンな状態) が生まれました。私はこれが境界で囲まれたネットワークは安全という思い込みのきっかけだと思っています。</p>
 <p>その後の数年間は目まぐるしい変化がありました。Netscape は 1995 年に大きく成長し、その年の 12 月に Microsoft は “インターネット ファースト” を掲げました。Salesforce は 2000 年に SaaS の提供を開始しましたし、2002 年にスターバックスがすべての店舗に WiFi を導入しました。iPhone は 2007 年に販売を開始し、Office 365 も 2011 年に開始されました。これらの変化を通し、リソースへのアクセスに関して、自前のネットワークから自身で所有するデバイスを用いて自分で展開したアプリにアクセスし、それは自社の従業員からのものであるという仮定は、徐々に有効でなくなりました。今日の IT は、壁に囲まれた庭のモデルが意図していた世界とは一変しています。これらの仮定はもはや有効ではありません。攻撃者はこれを何年も前から知っています。</p>
 <p><img src="/blog/azure-active-directory/zero-hype/ZH1_JP.PNG"></p>

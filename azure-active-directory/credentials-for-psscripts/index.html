@@ -17,11 +17,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/credentials-for-psscripts/secret-visible.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/credentials-for-psscripts/secret-hidden.png">
 <meta property="article:published_time" content="2024-03-07T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.293Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.231Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Conditional Access">
-<meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Managed ID">
+<meta property="article:tag" content="Microsoft Entra">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/credentials-for-psscripts/popup.png">
   
@@ -43,7 +43,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -160,7 +160,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c341bc05-7283-5034-99ec-ca5883312016%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89+ID+%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F+Azure+PowerShell+%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E8%AA%8D%E8%A8%BC%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fcredentials-for-psscripts%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fcredentials-for-psscripts.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fcredentials-for-psscripts.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/credentials-for-psscripts/" data-id="cmmketdzv013v0nqp32hu0xvl" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/credentials-for-psscripts/" data-id="cuid_7DPs15WmzE6y4bz2msTQ" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -179,13 +179,13 @@
 </ul>
 <p>マネージド ID では、Azure 内部のエンドポイントで Azure リソースに紐づいた ID として Microsoft Entra ID の認証処理を行います。利用者は、Azure 上のリソース (Azure VM や WebApp など) を作成すれば、この ID をすぐに利用でき、資格情報の管理 (有効期限に応じた更新、資格情報漏洩の対策など) が不要という大きなメリットがあります。</p>
 <p>マネージド ID の利用をサポートする Azure リソースについては、以下の公開情報をご参照ください。<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/managed-identities-azure-resources/managed-identities-status">マネージド ID を使用して他のサービスにアクセスできる Azure サービス (learn.microsoft.com)</a></p>
-<h2 id="アプリケーション-サービス-プリンシパル-オブジェクトのシークレット-証明書とマネージド-ID-のどれを使えばいい？"><a href="#アプリケーション-サービス-プリンシパル-オブジェクトのシークレット-証明書とマネージド-ID-のどれを使えばいい？" class="headerlink" title="アプリケーション (サービス プリンシパル) オブジェクトのシークレット/証明書とマネージド ID のどれを使えばいい？"></a>アプリケーション (サービス プリンシパル) オブジェクトのシークレット/証明書とマネージド ID のどれを使えばいい？</h2><p>それでは、実際に PowerShell スクリプトを実装する際には、以下のうちどの認証方法を選べばいいのでしょうか？</p>
+<h2 id="アプリケーション-サービス-プリンシパル-オブジェクトのシークレット-証明書とマネージド-ID-のどれを使えばいい？"><a href="#アプリケーション-サービス-プリンシパル-オブジェクトのシークレット-証明書とマネージド-ID-のどれを使えばいい？" class="headerlink" title="アプリケーション (サービス プリンシパル) オブジェクトのシークレット&#x2F;証明書とマネージド ID のどれを使えばいい？"></a>アプリケーション (サービス プリンシパル) オブジェクトのシークレット&#x2F;証明書とマネージド ID のどれを使えばいい？</h2><p>それでは、実際に PowerShell スクリプトを実装する際には、以下のうちどの認証方法を選べばいいのでしょうか？</p>
 <ol>
 <li>アプリケーション (サービス プリンシパル) - クライアント シークレットによる認証</li>
 <li>アプリケーション (サービス プリンシパル) - 証明書による認証</li>
-<li>マネージド ID </li>
+<li>マネージド ID</li>
 </ol>
-<p>マネージド ID が利用可能なシナリオ (= コマンド実行元がマネージド ID に対応した Azure リソース) である場合は、マネージド ID のご利用が最もおすすめです。</p>
+<p>マネージド ID が利用可能なシナリオ (&#x3D; コマンド実行元がマネージド ID に対応した Azure リソース) である場合は、マネージド ID のご利用が最もおすすめです。</p>
 <p>上述のとおり、マネージド ID では資格情報の管理が不要という大きなメリットがあります。そして、管理者側で予めマネージド ID を有効化した Azure リソース上でのみ認証が可能であるため、外部のシステムによる ID の不正利用ができないというセキュリティ面での利点もあります。</p>
 <p>マネージド ID が利用できないシナリオでは、次点でアプリケーション (サービス プリンシパル) の資格情報として証明書を利用することがおすすめです。証明書の利用が難しい場合には、クライアント シークレットを利用した方法を検討します。クライアント シークレットを利用する場合、資格情報の取り扱いに十分ご注意ください。マネージド ID ではなくアプリケーション (サービス プリンシパル) を利用する場合、必要に応じて、後述の「ワークロード ID 用の条件付きアクセス」もぜひご活用ください。</p>
 <h2 id="アプリケーション-サービス-プリンシパル-およびマネージド-ID-を使った認証コマンド"><a href="#アプリケーション-サービス-プリンシパル-およびマネージド-ID-を使った認証コマンド" class="headerlink" title="アプリケーション (サービス プリンシパル) およびマネージド ID を使った認証コマンド"></a>アプリケーション (サービス プリンシパル) およびマネージド ID を使った認証コマンド</h2><p>以下ではまず、もっともお勧めするマネージド ID を利用した方法についてお知らせします。続いて、アプリケーション (サービス プリンシパル) を利用した認証方法についてもおまとめします。</p>
@@ -234,8 +234,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="アプリケーション-サービス-プリンシパル-を利用した認証-証明書"><a href="#アプリケーション-サービス-プリンシパル-を利用した認証-証明書" class="headerlink" title="アプリケーション (サービス プリンシパル) を利用した認証 - 証明書"></a>アプリケーション (サービス プリンシパル) を利用した認証 - 証明書</h4><p>アプリケーション (サービス プリンシパル) の証明書認証では、証明書に含まれる非対称キー (秘密鍵/公開鍵) ベースの認証処理を行います。証明書は証明機関 (CA) 等で発行することがおすすめですが、自己署名証明書の利用も可能です。証明書の Subject 名などはどのようなものでも構いません。</p>
-<h5 id="証明書の準備"><a href="#証明書の準備" class="headerlink" title="証明書の準備"></a>証明書の準備</h5><p>証明機関 (CA) で証明書のファイル (秘密鍵あり / 秘密鍵なし) を取得ください。Windows 端末上で自己署名証明書を発行する場合の例については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/howto-create-self-signed-certificate">自己署名公開証明書を作成してアプリケーションを認証する (learn.microsoft.com)</a> の公開情報をご参照ください。PowerShell を実行する Windows 端末で、[個人 (/My)] の証明書ストアに秘密鍵を含む証明書をインポートします。証明書の拇印をお手元にお控えください。</p>
+<h4 id="アプリケーション-サービス-プリンシパル-を利用した認証-証明書"><a href="#アプリケーション-サービス-プリンシパル-を利用した認証-証明書" class="headerlink" title="アプリケーション (サービス プリンシパル) を利用した認証 - 証明書"></a>アプリケーション (サービス プリンシパル) を利用した認証 - 証明書</h4><p>アプリケーション (サービス プリンシパル) の証明書認証では、証明書に含まれる非対称キー (秘密鍵&#x2F;公開鍵) ベースの認証処理を行います。証明書は証明機関 (CA) 等で発行することがおすすめですが、自己署名証明書の利用も可能です。証明書の Subject 名などはどのようなものでも構いません。</p>
+<h5 id="証明書の準備"><a href="#証明書の準備" class="headerlink" title="証明書の準備"></a>証明書の準備</h5><p>証明機関 (CA) で証明書のファイル (秘密鍵あり &#x2F; 秘密鍵なし) を取得ください。Windows 端末上で自己署名証明書を発行する場合の例については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/howto-create-self-signed-certificate">自己署名公開証明書を作成してアプリケーションを認証する (learn.microsoft.com)</a> の公開情報をご参照ください。PowerShell を実行する Windows 端末で、[個人 (&#x2F;My)] の証明書ストアに秘密鍵を含む証明書をインポートします。証明書の拇印をお手元にお控えください。</p>
 <p>Microsoft Entra ID では、以下の手順で秘密鍵を含まない証明書をアップロードします。</p>
 <ol>
 <li>[アプリの登録] から該当のサービス プリンシパルを選択し、[証明書とシークレット] を開きます。</li>
@@ -269,7 +269,7 @@
 <p>※ マネージド ID による認証は対象外です。</p>
 <p>ワークロード ID 用の条件付きアクセスでは、「IP アドレス ベースの場所情報」ならびに「リスク スコア」に応じて、アクセスの可否 (許可 or ブロック) を構成できます。設定方法は上記の公開情報をご参照ください。</p>
 <div class="alert is-success"><p class="alert-title">ヒント</p><p>アプリケーション (サービス プリンシパル) による認証を利用する IP アドレス範囲が予め分かっている場合に、その他の IP アドレスからのアクセスをブロックとするポリシーを作成します。これにより、指定した場所以外からのアクセスをブロックでき、不正アクセスのリスクを低減いただけます。</p></div>
-<h2 id="アプリケーション-サービス-プリンシパル-およびマネージド-ID-での認証に対応した-PowerShell-モジュール-一部"><a href="#アプリケーション-サービス-プリンシパル-およびマネージド-ID-での認証に対応した-PowerShell-モジュール-一部" class="headerlink" title="アプリケーション (サービス プリンシパル) およびマネージド ID での認証に対応した PowerShell モジュール (一部)"></a>アプリケーション (サービス プリンシパル) およびマネージド ID での認証に対応した PowerShell モジュール (一部)</h2><h3 id="Microsoft-Graph-PowerShell-SDK-モジュール"><a href="#Microsoft-Graph-PowerShell-SDK-モジュール" class="headerlink" title="Microsoft Graph PowerShell SDK モジュール"></a>Microsoft Graph PowerShell SDK モジュール</h3><p>Microsoft Graph PowerShell SDK v2.0 (2023/7/5 以降のリリース) の認証用コマンド “Connect-MgGraph” は、アプリケーション (サービス プリンシパル) とマネージド ID の両方に対応しています。</p>
+<h2 id="アプリケーション-サービス-プリンシパル-およびマネージド-ID-での認証に対応した-PowerShell-モジュール-一部"><a href="#アプリケーション-サービス-プリンシパル-およびマネージド-ID-での認証に対応した-PowerShell-モジュール-一部" class="headerlink" title="アプリケーション (サービス プリンシパル) およびマネージド ID での認証に対応した PowerShell モジュール (一部)"></a>アプリケーション (サービス プリンシパル) およびマネージド ID での認証に対応した PowerShell モジュール (一部)</h2><h3 id="Microsoft-Graph-PowerShell-SDK-モジュール"><a href="#Microsoft-Graph-PowerShell-SDK-モジュール" class="headerlink" title="Microsoft Graph PowerShell SDK モジュール"></a>Microsoft Graph PowerShell SDK モジュール</h3><p>Microsoft Graph PowerShell SDK v2.0 (2023&#x2F;7&#x2F;5 以降のリリース) の認証用コマンド “Connect-MgGraph” は、アプリケーション (サービス プリンシパル) とマネージド ID の両方に対応しています。</p>
 <p>※ 旧バージョンの場合は利用可能な認証オプションが限られます</p>
 <ul>
 <li>参考情報: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/authentication-commands?view=graph-powershell-1.0#app-only-access">Authentication module cmdlets in Microsoft Graph PowerShell - 項目 “App-only access” (learn.microsoft.com)</a></li>

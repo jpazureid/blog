@@ -1,4 +1,4 @@
-#
+﻿#
 # Use this PowerShell script to export the server configuration from a downlevel version of Azure AD Connect 
 # that does not support the new JSON settings import and export feature.
 #

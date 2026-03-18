@@ -14,10 +14,10 @@
 <meta property="og:description" content="こんにちは。Azure Identity チームの栗井です。 Azure AD の [アプリの登録] から各アプリに連携している証明書・クライアント シークレット、ならびに [エンタープライズ アプリケーション] で SAML SSO を構成いただいている場合に登録している SAML 署名証明書は、いずれも有効期限があります。 Azure Portal の画面上では、有効期限を一覧で確認できないた">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-07-04T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.372Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.310Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Application">
+<meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+71554e29-89e2-535e-86c9-2e9e673af4e7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%AB%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E5%90%84%E7%A8%AE%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%80%81%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88+%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%99%90%E3%81%AE%E6%8A%BD%E5%87%BA%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fget-certificates-secrets-expirydateandtime%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fget-certificates-secrets-expirydateandtime.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fget-certificates-secrets-expirydateandtime.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/get-certificates-secrets-expirydateandtime/" data-id="cmmkete02014c0nqp98q62097" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/get-certificates-secrets-expirydateandtime/" data-id="cuid8ve98CUVpijaU9dNuKPLt" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -168,7 +168,7 @@
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-app-registrations-secrets-and-certs">アプリの登録用にシークレットと証明書をエクスポートする</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/manage-apps/scripts/powershell-export-all-enterprise-apps-secrets-and-certs">エンタープライズ アプリのシークレットと証明書をエクスポートする</a></li>
 </ul>
-<div class="alert is-info"><p class="alert-title">Note</p><p>2023/7/12 に上記の公開情報でも Microsoft Graph PowerShell を使用したサンプル スクリプトに書き換えられました。</p><p>公開情報内のサンプル スクリプトについてもサンプルの 1 つとしてご参照ください。</p></div>
+<div class="alert is-info"><p class="alert-title">Note</p><p>2023&#x2F;7&#x2F;12 に上記の公開情報でも Microsoft Graph PowerShell を使用したサンプル スクリプトに書き換えられました。</p><p>公開情報内のサンプル スクリプトについてもサンプルの 1 つとしてご参照ください。</p></div>
 <h2 id="免責事項"><a href="#免責事項" class="headerlink" title="免責事項"></a>免責事項</h2><div class="alert is-important"><p class="alert-title">重要</p><p>こちらで紹介するサンプル スクリプトについては、あくまでもサンプルの情報となります。</p><p>運用環境でそのまま利用されることは想定しておらず、ご利用の際には、十分な検証作業を実施をお願いします。</p><p>執筆時点以降のクラウド サービスの動作変更に伴い、大幅な改変が必要となることがあります。</p><p>(本情報の執筆時点でテスト環境における検証作業は実施していますが、動作を保証するものではありません)</p></div>
 <div class="alert is-info"><p class="alert-title">Note</p><p>また、サンプルについてのサポート サービスの提供はしておりません。</p><p>恐れ入りますが、スクリプトを利用したことで生じる影響、スクリプトの改変や、スクリプトの動作に関するご質問については、 Azure 技術サポートにて受け付けることができない場合があります。</p><p>サンプル スクリプトが動作しない場合などは、 Github Issue やプル リクエストでのレポートをお願いいたします。</p></div>
 <h2 id="事前準備-Microsoft-Graph-PowerShell-SDK-のインストール"><a href="#事前準備-Microsoft-Graph-PowerShell-SDK-のインストール" class="headerlink" title="事前準備: Microsoft Graph PowerShell SDK のインストール"></a>事前準備: Microsoft Graph PowerShell SDK のインストール</h2><p>PowerShell を使用する端末で、Microsoft Graph PowerShell SDK が未インストールの場合は、下記の手順を実施ください。</p>

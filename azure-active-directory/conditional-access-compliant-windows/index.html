@@ -17,12 +17,12 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/registered-set.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/compliant-set.png">
 <meta property="article:published_time" content="2021-02-18T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.267Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.206Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
+<meta property="article:tag" content="Compliant">
 <meta property="article:tag" content="Conditional Access">
 <meta property="article:tag" content="Hybrid Azure AD Join">
-<meta property="article:tag" content="Compliant">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/deviceid-not-displayed.png">
   
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+b32b9cfe-3515-5bfb-8acc-d6e6fcfbdb1b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%A7%E3%80%8C%E6%BA%96%E6%8B%A0%E6%B8%88%E3%81%BF%E3%80%8D%E3%82%84%E3%80%8CHybrid+Azure+AD+%E5%8F%82%E5%8A%A0%E3%81%8C%E5%BF%85%E8%A6%81%E3%80%8D%E3%81%A7%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%81%95%E3%82%8C%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%B3%95+%28Windows+%E7%B7%A8%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fconditional-access-compliant-windows%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fconditional-access-compliant-windows.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fconditional-access-compliant-windows.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/" data-id="cmmketdrz009m0nqp9iodcnp0" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/" data-id="cuidxYXYc8vZkBnGHYLgJ1Gpz" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -177,7 +177,7 @@
 </blockquote>
 <br>
 
-<h2 id="lt-なぜブロックされるのか？-gt"><a href="#lt-なぜブロックされるのか？-gt" class="headerlink" title="&lt;なぜブロックされるのか？&gt;"></a>&lt;なぜブロックされるのか？&gt;</h2><p>条件付きアクセスの「準拠済み」と「Hybrid Azure AD 参加が必要」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。</p>
+<h2 id=""><a href="#" class="headerlink" title="&lt;なぜブロックされるのか？&gt;"></a>&lt;なぜブロックされるのか？&gt;</h2><p>条件付きアクセスの「準拠済み」と「Hybrid Azure AD 参加が必要」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Azure AD が判断する必要があります。この判断のために、ご利用のデバイスは Azure AD に対して ”デバイス情報” を提示する必要があります。</p>
 <p>ご利用の端末がデバイス情報を Azure AD に提示できない場合、Azure AD は ”どの端末からのアクセスか？” を判断することができません。つまり「準拠済み」であるかも「Hybrid Azure AD 参加を構成済み」であるかも判断することができず、ブロックされてしまいます。<br>ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。</p>
 <p><img src="/blog/azure-active-directory/conditional-access-compliant-windows/deviceid-not-displayed.png"></p>
 <br>
@@ -186,7 +186,7 @@
 <p><strong>”デバイス情報を提示できているかどうか”</strong><br><strong>”デバイス情報を提示できていない場合は、なぜ提示できていないのか”</strong></p>
 <br>
 
-<h2 id="lt-対処方法-gt"><a href="#lt-対処方法-gt" class="headerlink" title="&lt;対処方法&gt;"></a>&lt;対処方法&gt;</h2><p>Windows でデバイス情報が提示できない原因としては、以下が挙げられます。<br>それぞれの項目ごとに解説します。</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="&lt;対処方法&gt;"></a>&lt;対処方法&gt;</h2><p>Windows でデバイス情報が提示できない原因としては、以下が挙げられます。<br>それぞれの項目ごとに解説します。</p>
 <table>
 <thead>
 <tr>
@@ -245,7 +245,7 @@
 
 <h2 id="C-PRT-取得済み？"><a href="#C-PRT-取得済み？" class="headerlink" title="C. PRT 取得済み？"></a>C. PRT 取得済み？</h2><p>[A. Hybrid Azure AD 参加が構成済み？] で Hybrid Azure AD 参加が構成済み、もしくは [B. 準拠済み？] で 準拠済み となっていても、Primary Refresh Token (PRT) を取得できていないと Azure AD にデバイス情報を提示することができません。</p>
 <p>PRT の中にはデバイス情報が含まれており、Azure AD 側が、どの端末からのアクセスなのかを判断するために使用されます。そのため、ご利用の端末で正常に PRT を取得できているか確認してください。<br>以下のコマンドの実行結果で [AzureAdPrt : NO] となっている場合は、PRT が取得できていないことになります。</p>
-<p>dsregcmd /status</p>
+<p>dsregcmd &#x2F;status</p>
 <pre><code>+------- SSO State -------+
             AzureAdPrt : NO
    AzureAdPrtAuthority : NO
@@ -282,7 +282,7 @@ EnterprisePrtAuthority : NO
 <p>基本的に、Microsoft 製のアプリケーションは Microsoft Authenticator を使用してデバイス情報を提示するとお考え下さい。(Outlook などは Microsoft Authenticator を使用しなくてもデバイス情報を提示できるシナリオがあることを確認していますが、基本的には Microsoft Authenticator が使用されるとお考えください)</p>
 <p>なお、モバイル デバイスに Microsoft Authenticator をインストールするだけでは不十分で、アプリケーション側が Microsoft Authenticator を使用するように実装がされている必要があります。上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/develop/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker">ブローカーを使用するようにアプリケーションを構成する - Azure Active Directory | Microsoft Docs</a></p>
-<p>こちらは iOS / Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。</p>
+<p>こちらは iOS &#x2F; Android 端末を利用時の場合の説明となりますが、Windows 端末を使用する場合も類似の動作があります。Windows 10 端末上のデスクトップ アプリ (ネイティブ アプリ) を使用してアプリケーションにアクセスする場合、Microsoft Authenticator ではなく、Web Account Manager (WAM) と呼ばれる Windows 10 に既定で実装されているトークン ブローカーを使用して PRT を Azure AD に提示します。</p>
 <p>Microsoft のアプリケーションは基本的に WAM に対応しているため問題ありませんが、3rd Party 製のアプリケーションは WAM に対応した実装となっていないことが考えられ、PRT を提示できないことが想定されます。こちらも正確な実装はアプリケーション ベンダーに確認いただく必要がありますが、このような動作処理が行われるために、Azure AD 側でデバイスを判断できない結果になることがあります。</p>
 <br>
 
@@ -291,7 +291,7 @@ EnterprisePrtAuthority : NO
 <p>クライアント端末から Azure AD にデバイス情報を提示する経路上に、プロキシなど一部 3rd Party 製品の動作 (仕様) によって、デバイス情報が提示できない場合があることを確認しております。<br>もし切り分けの結果、ご利用の 3rd Party 製品を経由する場合のみ事象が発生するということであれば、該当のベンダーに確認のお問い合わせをいただければと思います。</p>
 <br>
 
-<h2 id="関連ブログ"><a href="#関連ブログ" class="headerlink" title="関連ブログ"></a>関連ブログ</h2><p><a href="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android">Japan Azure Identity Support Blog: 条件付きアクセスで「準拠済み」でブロックされる場合の対処法 (iOS / Android 編)</a></p>
+<h2 id="関連ブログ"><a href="#関連ブログ" class="headerlink" title="関連ブログ"></a>関連ブログ</h2><p><a href="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android">Japan Azure Identity Support Blog: 条件付きアクセスで「準拠済み」でブロックされる場合の対処法 (iOS &#x2F; Android 編)</a></p>
 <p>上記内容が少しでも参考となれば幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひサポートサービスまでお問い合わせください。</p>
 
       

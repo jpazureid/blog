@@ -19,10 +19,10 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/publisher-domain/publisher-verified.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/publisher-domain/custom-domain.png">
 <meta property="article:published_time" content="2022-06-16T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.933Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.869Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Application">
+<meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/publisher-domain/permissions-requested.png">
   
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4c825909-de0f-5965-b95b-a250242d0c0f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%91%E3%83%96%E3%83%AA%E3%83%83%E3%82%B7%E3%83%A3%E3%83%BC+%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3+%28%E7%99%BA%E8%A1%8C%E5%85%83%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%29+%E3%81%A8%E7%99%BA%E8%A1%8C%E8%80%85%E7%A2%BA%E8%AA%8D%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fpublisher-domain%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fpublisher-domain.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fpublisher-domain.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/publisher-domain/" data-id="cmmketdvr00lc0nqp76x563xf" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/publisher-domain/" data-id="cuidonPgh7jxia8jih6Qk7wSs" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -188,12 +188,12 @@
 <h3 id="方法-2-JSON-ファイルを用意する"><a href="#方法-2-JSON-ファイルを用意する" class="headerlink" title="方法 2. JSON ファイルを用意する"></a>方法 2. JSON ファイルを用意する</h3><p>[新しいドメインの確認] を選択した際に表示される手順に従って構成します。 </p>
 <p><img src="/blog/azure-active-directory/publisher-domain/update-domain-2.png"></p>
 <p>まず、以下のような内容の JSON ファイルを事前に用意します。{YOUR-APP-ID-HERE} は、パブリッシャー ドメインを構成しているアプリケーションのアプリケーション ID に置き換えます。 </p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">&quot;associatedApplications&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;applicationId&quot;</span>: <span class="string">&quot;&#123;YOUR-APP-ID-HERE&#125;&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;associatedApplications&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;applicationId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;YOUR-APP-ID-HERE&#125;&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <div class="alert is-info"><p class="alert-title">Note</p><p>パブリッシャー ドメインを構成するアプリケーションが複数ある場合は、{ “applicationId”: “{YOUR-APP-ID-HERE}” } のブロックを必要な数分 “,” で区切って定義します。 </p></div>
 <p>次に、作成した JSON ファイルを、以下のようなパスでアクセスできるよう Web サーバー上に配置します。{YOUR-DOMAIN-HERE} は、[パブリッシャー ドメイン] 欄に入力したドメインに置き換えます。 </p>
 <blockquote>
-<p>https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json</p>
+<p>https:&#x2F;&#x2F;{YOUR-DOMAIN-HERE}.com&#x2F;.well-known&#x2F;microsoft-identity-association.json</p>
 </blockquote>
 <h2 id="発行者確認を行う"><a href="#発行者確認を行う" class="headerlink" title="発行者確認を行う"></a>発行者確認を行う</h2><p>発行者確認を行うには、[MPN ID を追加して発行元を確認します] をクリックして表示される画面にも表示されているとおり、事前に満たしておくべき条件がいくつかあります。以下にその条件をまとめます。</p>
 <p><img src="/blog/azure-active-directory/publisher-domain/publisher-verified.png"></p>

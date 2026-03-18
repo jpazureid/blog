@@ -6,12 +6,12 @@
   
   <title>Azure AD が発行するトークンの有効期間と考え方 (2023 年版) | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Note本記事は、2018 年公開の以下の Blog の内容が、現在の機能&#x2F;技術にマッチしない内容になってきたことを踏まえ、2023 年現在の機能&#x2F;技術を元に改めて考え方をおまとめしたものとなります。以前に公開した Azure AD が発行するトークンの有効期間について (2018 年公開) の記事は参考のためそのまま残し、新しく本記事を執筆しました。 こんにちは、Azure &amp; Iden">
+  <meta name="description" content="Note本記事は、2018 年公開の以下の Blog の内容が、現在の機能&#x2F;技術にマッチしない内容になってきたことを踏まえ、2023 年現在の機能&#x2F;技術を元に改めて考え方をおまとめしたものとなります。以前に公開した Azure AD が発行するトークンの有効期間について (2018 年公開) の記事は参考のためそのまま残し、新しく本記事を執筆しました。 こんにちは、Azure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure AD が発行するトークンの有効期間と考え方 (2023 年版)">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="Note本記事は、2018 年公開の以下の Blog の内容が、現在の機能&#x2F;技術にマッチしない内容になってきたことを踏まえ、2023 年現在の機能&#x2F;技術を元に改めて考え方をおまとめしたものとなります。以前に公開した Azure AD が発行するトークンの有効期間について (2018 年公開) の記事は参考のためそのまま残し、新しく本記事を執筆しました。 こんにちは、Azure &amp; Iden">
+<meta property="og:description" content="Note本記事は、2018 年公開の以下の Blog の内容が、現在の機能&#x2F;技術にマッチしない内容になってきたことを踏まえ、2023 年現在の機能&#x2F;技術を元に改めて考え方をおまとめしたものとなります。以前に公開した Azure AD が発行するトークンの有効期間について (2018 年公開) の記事は参考のためそのまま残し、新しく本記事を執筆しました。 こんにちは、Azure">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/token-types.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/token-lifetime.png">
@@ -19,11 +19,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/browser-non-persist.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/browser-persist.png">
 <meta property="article:published_time" content="2023-06-23T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.100Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.035Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Token">
 <meta property="article:tag" content="OAuth">
+<meta property="article:tag" content="Token">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/token-types.png">
   
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ec846399-19eb-52d9-838e-43e2f346c89b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%8C%E7%99%BA%E8%A1%8C%E3%81%99%E3%82%8B%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%96%93%E3%81%A8%E8%80%83%E3%81%88%E6%96%B9+%282023+%E5%B9%B4%E7%89%88%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Ftoken-lifetime-2023%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Ftoken-lifetime-2023.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Ftoken-lifetime-2023.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/" data-id="cmmkete18016s0nqpguaj06bc" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/token-lifetime-2023/" data-id="cuiddxhL9PahKywfOpOJL3eqW" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -173,9 +173,9 @@
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%88%E3%81%8F%E5%87%BA%E3%81%A6%E3%81%8F%E3%82%8B%E3%82%AD%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%89"><span class="toc-text">よく出てくるキーワード</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%A8%AE%E5%88%A5-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%8A%E3%82%88%E3%81%B3%E7%9B%AE%E7%9A%84"><span class="toc-text">トークン種別 (プロトコルおよび目的)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A2%E5%AE%9A%E3%81%AE%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%96%93"><span class="toc-text">既定のトークン有効期間</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%96%93%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">アクセス トークンの有効期間の考え方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B6%99%E7%B6%9A%E7%9A%84%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E8%A9%95%E4%BE%A1-CAE-Continuous-Access-Evaluation-%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%95%E3%82%8C%E3%82%8B%E4%BB%A5%E5%89%8D%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">継続的アクセス評価 (CAE: Continuous Access Evaluation) が提供される以前の考え方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAE-%E3%81%8C%E6%9C%89%E5%8A%B9%E5%8C%96%E3%81%95%E3%82%8C%E3%81%9F%E5%BE%8C%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">CAE が有効化された後の考え方</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%9B%B4%E6%96%B0%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">トークンの更新タイミングの考え方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ADAL-MSAL-%E5%85%88%E9%80%B2%E8%AA%8D%E8%A8%BC-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%88%A9%E7%94%A8%E6%99%82%E3%81%AE%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E5%8F%96%E5%BE%97-%E6%9B%B4%E6%96%B0%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">ADAL&#x2F;MSAL (先進認証) クライアント利用時のトークン取得&#x2F;更新の考え方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%AE%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E5%8F%96%E5%BE%97%E3%81%8A%E3%82%88%E3%81%B3%E6%9B%B4%E6%96%B0%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">ブラウザーのトークン取得および更新の考え方</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%B0%B8%E7%B6%9A%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3-Cookie-%E3%81%AE%E5%A0%B4%E5%90%88"><span class="toc-text">非永続セッション (Cookie) の場合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B8%E7%B6%9A%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3-Cookie-%E3%81%AE%E5%A0%B4%E5%90%88"><span class="toc-text">永続セッション (Cookie) の場合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%96%93%E3%81%AE%E5%88%B6%E5%BE%A1"><span class="toc-text">トークンの有効期間の制御</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%82%E3%82%8F%E3%82%8A%E3%81%AB"><span class="toc-text">終わりに</span></a></li></ol>
         </div>
           
-        <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は、2018 年公開の以下の Blog の内容が、現在の機能/技術にマッチしない内容になってきたことを踏まえ、2023 年現在の機能/技術を元に改めて考え方をおまとめしたものとなります。以前に公開した <a href="https://jpazureid.github.io/blog/azure-active-directory/aad-token-lifetime/">Azure AD が発行するトークンの有効期間について (2018 年公開)</a> の記事は参考のためそのまま残し、新しく本記事を執筆しました。</p></div>
+        <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は、2018 年公開の以下の Blog の内容が、現在の機能&#x2F;技術にマッチしない内容になってきたことを踏まえ、2023 年現在の機能&#x2F;技術を元に改めて考え方をおまとめしたものとなります。以前に公開した <a href="https://jpazureid.github.io/blog/azure-active-directory/aad-token-lifetime/">Azure AD が発行するトークンの有効期間について (2018 年公開)</a> の記事は参考のためそのまま残し、新しく本記事を執筆しました。</p></div>
 <p>こんにちは、Azure &amp; Identity サポートの金森です。</p>
-<p>Azure AD (AAD) は、Microsoft 365 をはじめ様々なクラウド サービスの認証基盤 (Identity Provider / IdP) として利用されています。その重要な機能としてユーザーの認証が完了したら、アプリケーションに対してトークンを発行するというものがあります。あるサービス (Teams や Exchange Online、他に Azure AD と連携しているクラウド上のサービス) にアプリがアクセスしようとした際、そのアプリはユーザーの認証を要求します。ユーザーが AAD 上で認証し、アクセス許可へ同意すると、AAD から “そのサービスにアクセスするための” トークンが発行され、アプリに渡されます。アプリはそのトークンをサービスに提示することでクラウド上のリソース (Teams や E メール、Microsoft Graph API など) にアクセスできるというイメージです。</p>
+<p>Azure AD (AAD) は、Microsoft 365 をはじめ様々なクラウド サービスの認証基盤 (Identity Provider &#x2F; IdP) として利用されています。その重要な機能としてユーザーの認証が完了したら、アプリケーションに対してトークンを発行するというものがあります。あるサービス (Teams や Exchange Online、他に Azure AD と連携しているクラウド上のサービス) にアプリがアクセスしようとした際、そのアプリはユーザーの認証を要求します。ユーザーが AAD 上で認証し、アクセス許可へ同意すると、AAD から “そのサービスにアクセスするための” トークンが発行され、アプリに渡されます。アプリはそのトークンをサービスに提示することでクラウド上のリソース (Teams や E メール、Microsoft Graph API など) にアクセスできるというイメージです。</p>
 <p>弊社サポートでは、この [AAD が発行するトークン] にはどのような種類があるのか、構成によってトークンの有効期間はどうなっているのか、有効期間の制御は行えるのか等、様々なお問い合わせをいただきます。このため本記事ではそれらの詳細と考え方について、以下に紹介したいと思います。</p>
 <h2 id="よく出てくるキーワード"><a href="#よく出てくるキーワード" class="headerlink" title="よく出てくるキーワード"></a>よく出てくるキーワード</h2><p>解説に当たり、まず以下に略語の一覧をまとめます。これらのキーワードは、弊社へのお問い合わせの中でも頻繁に使用されるものであり、サポートからの回答でもよく利用されます。</p>
 <table>
@@ -202,7 +202,7 @@
 <td>Service Provider の略です。以下の説明ではアクセス先のアプリケーションを指します。</td>
 </tr>
 <tr>
-<td>ADAL/MSAL</td>
+<td>ADAL&#x2F;MSAL</td>
 <td>先進認証ライブラリの略です。OAuth 2.0 や OpenIDConnect のようなプロトコルを用いた認証方式を利用できるライブラリを指します。</td>
 </tr>
 <tr>
@@ -256,7 +256,7 @@
 <p>このリアルタイムな検知機能により、アクセス トークンの有効期間に基づいて頻繁に AAD にユーザーをアクセスさせる必要がなくなりますので、現在 CAE が有効 (既定で有効) な AAD テナントでは、アクセストークンの有効期間が最大で 28 時間 (Long lived) となっています。CAE が有効なテナントでアクセス トークンの有効期間が 28 時間に延長されたのはこのためです。従来は 1 時間毎であった CA ポリシーのチェックが、アクセス トークンの有効期間に関わらずリアルタイムに行え、よりセキュリティが高まったため、トークンの有効期間を延ばすようになったとお考えください。</p>
 <p><a href="https://jpazureid.github.io/blog/azure-active-directory/cae-overview/index.html">CAE (Continuous Access Evaluation: 継続的アクセス評価)</a></p>
 <p>CAE が無効な場合、もしくは CAE は有効だが利用するリソースが CAE に対応していない場合は、アクセス トークンの有効期間は 60-90 分となり、以前の [1 時間のアクセス トークン] 利用時とほぼ同様の考え方になります。</p>
-<h2 id="トークンの更新タイミングの考え方"><a href="#トークンの更新タイミングの考え方" class="headerlink" title="トークンの更新タイミングの考え方"></a>トークンの更新タイミングの考え方</h2><h3 id="ADAL-MSAL-先進認証-クライアント利用時のトークン取得-更新の考え方"><a href="#ADAL-MSAL-先進認証-クライアント利用時のトークン取得-更新の考え方" class="headerlink" title="ADAL/MSAL (先進認証) クライアント利用時のトークン取得/更新の考え方"></a>ADAL/MSAL (先進認証) クライアント利用時のトークン取得/更新の考え方</h3><p>クライアントが更新トークンや PRT を保持している場合、アクセス トークンが必要になるとクライアントは AAD に (すでに保持済みの) 更新トークンおよび PRT を提示することで、再度新しいアクセス トークンを非対話的 (明示的な認証操作を必要とせず) に取得することが可能です。他の言い方をすると <strong>更新トークンおよび PRT を保持していれば、アクセス トークンはいつでも必要なタイミングで非対話的に取得が可能</strong> です。</p>
+<h2 id="トークンの更新タイミングの考え方"><a href="#トークンの更新タイミングの考え方" class="headerlink" title="トークンの更新タイミングの考え方"></a>トークンの更新タイミングの考え方</h2><h3 id="ADAL-MSAL-先進認証-クライアント利用時のトークン取得-更新の考え方"><a href="#ADAL-MSAL-先進認証-クライアント利用時のトークン取得-更新の考え方" class="headerlink" title="ADAL&#x2F;MSAL (先進認証) クライアント利用時のトークン取得&#x2F;更新の考え方"></a>ADAL&#x2F;MSAL (先進認証) クライアント利用時のトークン取得&#x2F;更新の考え方</h3><p>クライアントが更新トークンや PRT を保持している場合、アクセス トークンが必要になるとクライアントは AAD に (すでに保持済みの) 更新トークンおよび PRT を提示することで、再度新しいアクセス トークンを非対話的 (明示的な認証操作を必要とせず) に取得することが可能です。他の言い方をすると <strong>更新トークンおよび PRT を保持していれば、アクセス トークンはいつでも必要なタイミングで非対話的に取得が可能</strong> です。</p>
 <p><img src="/blog/azure-active-directory/token-lifetime-2023/msal-token-flow.png"></p>
 <p>ID トークンは OpenID Connect の流れにおいて、認証後に ID の属性情報をアプリに提示するためのトークンであり、初回のアプリへのアクセス時に参照された後は再利用されることが無いのが一般的です。そのため、上記の図では初回のアプリへのアクセスに伴う認証時のみ取得している表現としています。</p>
 <p>一度更新トークンもしくは PRT を取得後に、改めて対話的な認証が必要となるケースは以下の通りです。</p>
@@ -284,7 +284,7 @@
 <h2 id="トークンの有効期間の制御"><a href="#トークンの有効期間の制御" class="headerlink" title="トークンの有効期間の制御"></a>トークンの有効期間の制御</h2><p>以前はトークンの有効期間を変更したい場合、PowerShell を用いてトークン ライフタイム ポリシーを AAD に構成する機能が提供されておりました。しかし、2021 年 1 月 30 日より、この “トークン ライフタイム ポリシーを用いた更新トークンとセッショントークンの有効期間を制御する機能” は廃止されています。詳細については <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/configurable-token-lifetimes">Token lifetime policies for refresh tokens and session tokens</a> もご覧ください。</p>
 <p>アクセス トークンに関しては、トークン ライフタイム ポリシーを用いた有効期間の制御が現状でも利用可能です。以前は、上述のように “1 時間のアクセス トークン” による “困った時間” を最小化するため、極力短い (10 分間) アクセス トークンの有効期間を設定したいというご要望もよくございました。しかし、CAE を用いた動的 (ポリシーの有効期間に依存しない) かつリアルタイムな CA ポリシーの評価が行える昨今では、アクセス トークンの有効期間を (主に短時間に) カスタムする運用は推奨されません。また、トークン ライフタイム ポリシーはプレビュー状態であり、運用環境への適用もお勧めできない状況です。</p>
 <p>このため、アクセス トークンの有効期間をどうするかという観点というよりも、<strong>CA ポリシーをリアルタイムに適用したいのであれば CAE を有効にする</strong> こと、<strong>対話的な認証を再度求められるタイミングを制御したいという要件の場合は CA ポリシーのサインインの頻度 (SIF) の機能を利用すること</strong> をご検討ください。</p>
-<p>サインインの頻度 (SIF) の機能については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime#user-sign-in-frequency">条件付きアクセスを使用して認証セッション管理を構成する</a> をご覧ください。サインインの頻度は、CA のポリシーとして適用する機能となるため、適用対象のユーザー/アプリケーションの条件を柔軟に指定することが可能です。</p>
+<p>サインインの頻度 (SIF) の機能については、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime#user-sign-in-frequency">条件付きアクセスを使用して認証セッション管理を構成する</a> をご覧ください。サインインの頻度は、CA のポリシーとして適用する機能となるため、適用対象のユーザー&#x2F;アプリケーションの条件を柔軟に指定することが可能です。</p>
 <h2 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h2><p>この数年で AAD は条件付きアクセスをはじめ、セキュリティと利便性のバランスを踏まえた、多様な制御機能の公開とアップデートが行われています。例えばここまでのご案内でご紹介した機能以外にも、リスクが高い認証 (漏洩したパスワードや普段とは違う場所や国からのアクセス) 時には、MFA を要求しパスワードの変更も強制するというアクセス制御を CA で行うことも可能です。前述の CAE もそうですが、このような “クライアントの動的な環境やリスクの変化を、可能な限りリアルタイムに検出してそのレベルに応じたアクセス制御を行う” ような考え方によって、よりご利用者様にとってもストレスが無い状態で高いセキュリティ環境を維持するアプローチがとれるようになってきています。</p>
 <p>また、Windows Hello for Business のように、<strong>高い強度の認証を突破した後は、ユーザーに極力再認証を求めないことで、パスワードそのものを利用者様が扱う機会を減らす</strong> というアプローチも増えてきています。</p>
 <p><strong>必ず 1 時間に 1 回の頻度で対話的な認証を行えば、確認の頻度が上がるからセキュリティが安心！という考え方は逆にセキュリティを低める</strong> ことが報告されており、このような考え方からは大きく方向転換が必要かと思います。最新の仕組みを取り入れることで、セキュリティと利便性をトレードオフとすることなく、セキュリティを高めつつ利用者様への運用負担も減らすという “良いとこどり” が実現できるはずです。トークンの有効期間をベースとした静的なセキュリティから、ご利用者様の環境やリスクの変化を元にした動的なセキュリティの世界に進んでいくことを願ってやみません。</p>

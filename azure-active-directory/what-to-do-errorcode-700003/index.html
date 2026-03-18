@@ -22,12 +22,12 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/fig7-what-todo-errorcode-700003.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/fig8-what-todo-errorcode-700003.png">
 <meta property="article:published_time" content="2019-09-02T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.163Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.098Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="トラブルシューティング">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Primary Refresh Token">
 <meta property="article:tag" content="PRT">
+<meta property="article:tag" content="Primary Refresh Token">
+<meta property="article:tag" content="トラブルシューティング">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/fig1-what-todo-errorcode-700003.jpg">
   
@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -166,7 +166,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+67d96685-785e-5906-8333-bb2904f9e0af%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89+700003+%E3%81%AE%E5%AF%BE%E5%87%A6%E7%AD%96%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fwhat-to-do-errorcode-700003%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fwhat-to-do-errorcode-700003.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fwhat-to-do-errorcode-700003.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/" data-id="cmmketdx500pg0nqpcp7hh1jv" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/what-to-do-errorcode-700003/" data-id="cuidetngGKYpRYuMCcimy50Mk" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -175,7 +175,7 @@
 <h2 id="エラーコード-700003-とは何か"><a href="#エラーコード-700003-とは何か" class="headerlink" title="エラーコード 700003 とは何か"></a>エラーコード 700003 とは何か</h2><p>最近こんなエラーを見たことはありますか？</p>
 <p><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig1-what-todo-errorcode-700003.jpg"></p>
 <p>上記で表示されているエラー コード 700003 とは、「クライアントが提示したデバイス情報が Azure AD 上に存在しない」場合に発生するエラーです。<br>このエラーが多く起きるのは Windows 10 デバイスをご利用されており、かつ Edge や Internet Explorer をご利用されている、もしくは Office アプリケーションご利用のタイミングです。<br>本ブログでは、このエラーの対処策と、簡単に「デバイス情報」とは何かをご説明します。</p>
-<h2 id="デバイス情報とは何か"><a href="#デバイス情報とは何か" class="headerlink" title="デバイス情報とは何か"></a>デバイス情報とは何か</h2><p>Windows 10 を Azure AD に参加させた場合、あるいはデバイスを登録することで、Windows 10 側にはデバイスを AAD に登録したという情報、 Azure AD にはデバイス情報が、それぞれ格納されます。<br>この状態で Azure AD に所属するユーザーがログオン、あるいはデバイスを登録したユーザーがログオンするタイミングで Primary Refresh Token (プライマリ更新トークン = PRT) と呼ばれるトークンを取得するようになります。<br>この PRT は、ブラウザーや Office クライアントを利用した Azure AD (Office 365) へのアクセスで利用され、改めてユーザー名、パスワードを入力することなく、シングル サインオンを実現するために利用されます。</p>
+<h2 id="デバイス情報とは何か"><a href="#デバイス情報とは何か" class="headerlink" title="デバイス情報とは何か"></a>デバイス情報とは何か</h2><p>Windows 10 を Azure AD に参加させた場合、あるいはデバイスを登録することで、Windows 10 側にはデバイスを AAD に登録したという情報、 Azure AD にはデバイス情報が、それぞれ格納されます。<br>この状態で Azure AD に所属するユーザーがログオン、あるいはデバイスを登録したユーザーがログオンするタイミングで Primary Refresh Token (プライマリ更新トークン &#x3D; PRT) と呼ばれるトークンを取得するようになります。<br>この PRT は、ブラウザーや Office クライアントを利用した Azure AD (Office 365) へのアクセスで利用され、改めてユーザー名、パスワードを入力することなく、シングル サインオンを実現するために利用されます。</p>
 <p>他に PRT が利用されるケースとしては、条件付きアクセスのアクセス制御にあります「デバイスは準拠しているとしてマーク済みである必要があります」「ハイブリッド Azure AD 参加済みのデバイスが必要」といったデバイスの状態に依存したコントロールを利用する場合が挙げられます。<br>この状態を Azure AD はどのように察知しているか、気になった人もいると思いますが、実は PRT にはデバイス情報が含まれるため、 PRT を Azure AD に提示することでこれらの制御ができるようになっています。</p>
 <p>なお、 Office のバージョンにも依存しますが、最新のバージョンでは Windows 10 に対する Office のインストール、セットアップ時に自動的に Azure AD へのデバイス登録をおこなうため、明示的に Azure AD への登録、参加を実施していなくともデバイスが Azure AD に登録され、 PRT 取得、シングル サインオンが行われます。</p>
 <p>改めて PRT に含まれる情報を図にまとめますと次のようになります。</p>
@@ -187,20 +187,20 @@
 <p>さて、今回の問題ですが、クライアントが PRT の取得を試みた場合、あるいは既に取得していた PRT を Azure AD に提示した際に Azure AD が提供されたデバイス情報に紐づく情報を Azure AD 上に確認できなかった場合に、このエラーコード 700003 が発生します。<br>(クライアントが PRT の取得を試みる際にもクライアントが保持するデバイス情報を Azure AD に提示する動作が行われ、その時に該当のものが見つからない場合にもエラーになります)</p>
 <p>以下の図は、既に取得済みの PRT を Azure AD に提供した場合のケースで問題が発生したパターンを示しています。</p>
 <p><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig3-what-todo-errorcode-700003.png"></p>
-<h2 id="エラーコードが-700003-が発生した時の対処策"><a href="#エラーコードが-700003-が発生した時の対処策" class="headerlink" title="エラーコードが 700003 が発生した時の対処策"></a>エラーコードが 700003 が発生した時の対処策</h2><p>端的に言えば現在クライアント上に存在するデバイス情報を削除し、必要に応じて再度 Azure AD に登録します。<br>Azure AD へのデバイス登録には 3 種類 (*1, 注釈は最下部に記載) ありますので、その状態に合わせて登録処理を行う必要があります。<br>現在の状態は dsregcmd /status コマンドで確認することが可能です。<br>この実行結果を基に、現在デバイスがどの状態かを確認することが可能です。</p>
+<h2 id="エラーコードが-700003-が発生した時の対処策"><a href="#エラーコードが-700003-が発生した時の対処策" class="headerlink" title="エラーコードが 700003 が発生した時の対処策"></a>エラーコードが 700003 が発生した時の対処策</h2><p>端的に言えば現在クライアント上に存在するデバイス情報を削除し、必要に応じて再度 Azure AD に登録します。<br>Azure AD へのデバイス登録には 3 種類 (*1, 注釈は最下部に記載) ありますので、その状態に合わせて登録処理を行う必要があります。<br>現在の状態は dsregcmd &#x2F;status コマンドで確認することが可能です。<br>この実行結果を基に、現在デバイスがどの状態かを確認することが可能です。</p>
 <p>大まかなフローは以下の通りです。</p>
 <p><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig4-what-todo-errorcode-700003.png"></p>
 <p>以下にそれぞれのシナリオごとの対処手順を記載します。</p>
 <h3 id="WorkplaceJoined-が-YES-の場合"><a href="#WorkplaceJoined-が-YES-の場合" class="headerlink" title="WorkplaceJoined が YES の場合"></a>WorkplaceJoined が YES の場合</h3><p>Azure AD 登録済み状態 (Azure AD Registered) と認識されています。<br>これを解除するには、 Windows 10 の [設定] - [アカウント] - [職場または学校アカウント] より、 Azure AD のバッジを選択し、「切断」を選択する必要があります。</p>
 <p><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig5-what-todo-errorcode-700003.png"></p>
 <p>切断後、再度「+ 接続」より Azure AD への再登録を実行してください。 (*2, 注釈は最下部に記載)</p>
-<h3 id="AzureADJoined-のみ-YES-の場合"><a href="#AzureADJoined-のみ-YES-の場合" class="headerlink" title="AzureADJoined のみ YES の場合"></a>AzureADJoined のみ YES の場合</h3><p>Azure AD 参加済み状態 (Azure AD Joined) と認識されています。<br>これを解除・再登録を行う場合は dsregcmd /forcerecovery コマンドを実行します。 (*2, 注釈は最下部に記載)<br>このコマンドは管理者権限で実行する必要があります。<br>管理者権限でないユーザーで実行した場合には以下のエラーが表示されます。<br><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig6-what-todo-errorcode-700003.png"></p>
+<h3 id="AzureADJoined-のみ-YES-の場合"><a href="#AzureADJoined-のみ-YES-の場合" class="headerlink" title="AzureADJoined のみ YES の場合"></a>AzureADJoined のみ YES の場合</h3><p>Azure AD 参加済み状態 (Azure AD Joined) と認識されています。<br>これを解除・再登録を行う場合は dsregcmd &#x2F;forcerecovery コマンドを実行します。 (*2, 注釈は最下部に記載)<br>このコマンドは管理者権限で実行する必要があります。<br>管理者権限でないユーザーで実行した場合には以下のエラーが表示されます。<br><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig6-what-todo-errorcode-700003.png"></p>
 <p>管理者権限で実行すると以下の画面が表示されるので、「サインイン」を選択します。</p>
 <p><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig7-what-todo-errorcode-700003.png"></p>
 <p>再度サインインを行い、 Azure AD 参加を行い直すと以下の画面が表示されますのでサインアウト・サインインをして作業完了です。</p>
 <p><img src="/blog/azure-active-directory/what-to-do-errorcode-700003/fig8-what-todo-errorcode-700003.png"></p>
-<h3 id="DomainJoined-および-AzureADJoined-の両方が-YES-の場合"><a href="#DomainJoined-および-AzureADJoined-の両方が-YES-の場合" class="headerlink" title="DomainJoined および AzureADJoined の両方が YES の場合"></a>DomainJoined および AzureADJoined の両方が YES の場合</h3><p>ハイブリッド Azure AD 参加済み状態 (Hybrid Azure AD Joined) と認識されています。<br>この場合、管理者権限でコマンド プロンプトを起動し、 dsregcmd /leave コマンドを実行します。<br>実行後、 OS を再起動してサインインし直すことでデバイスが自動的に再登録されます。 (*2 *3, 注釈は最下部に記載)</p>
-<h3 id="上記を実行しても解消しない場合"><a href="#上記を実行しても解消しない場合" class="headerlink" title="上記を実行しても解消しない場合"></a>上記を実行しても解消しない場合</h3><p>上記手順を実行しても解消しない場合には、一度 Azure AD 参加・登録を一度解除し、「AzureADJoined/WorkplaceJoined」両方が No の状態であることを確認した上で以下のレジストリを確認します。</p>
+<h3 id="DomainJoined-および-AzureADJoined-の両方が-YES-の場合"><a href="#DomainJoined-および-AzureADJoined-の両方が-YES-の場合" class="headerlink" title="DomainJoined および AzureADJoined の両方が YES の場合"></a>DomainJoined および AzureADJoined の両方が YES の場合</h3><p>ハイブリッド Azure AD 参加済み状態 (Hybrid Azure AD Joined) と認識されています。<br>この場合、管理者権限でコマンド プロンプトを起動し、 dsregcmd &#x2F;leave コマンドを実行します。<br>実行後、 OS を再起動してサインインし直すことでデバイスが自動的に再登録されます。 (*2 *3, 注釈は最下部に記載)</p>
+<h3 id="上記を実行しても解消しない場合"><a href="#上記を実行しても解消しない場合" class="headerlink" title="上記を実行しても解消しない場合"></a>上記を実行しても解消しない場合</h3><p>上記手順を実行しても解消しない場合には、一度 Azure AD 参加・登録を一度解除し、「AzureADJoined&#x2F;WorkplaceJoined」両方が No の状態であることを確認した上で以下のレジストリを確認します。</p>
 <p> HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AAD\Storage</p>
 <p>上記レジストリ配下に「<code>https://login.microsoftonline.com</code>」というレジストリが残っているかを確認します。<br>残留している場合には削除し、 Azure AD への再登録を実行ください。<br>その後事象が解消したかを確認します。<br>上記はハイブリッド Azure AD 参加環境下で事前に Azure AD デバイス登録を行っていたデバイスで残留する場合があります。<br>なお、レジストリ削除は今回のエラーが発生した時のみ実行し、それ以外の時には実行しないようお願い致します。</p>
 <p>基本的な対処策は上記の通りですが、これらを行っても事象が解消しない場合はお気軽に弊社までお問い合わせください。</p>

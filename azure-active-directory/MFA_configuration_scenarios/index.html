@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/MFA_configuration_scenarios/image.jpg">
 <meta property="article:published_time" content="2023-06-22T23:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.030Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.967Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="MFA">
@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -157,7 +157,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c317ea0f-68b7-5586-b92c-1b9f78fc4044%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+MFA+%E5%B0%8E%E5%85%A5%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%92%E7%B6%B2%E7%BE%85%E7%9A%84%E3%81%AB%E3%81%94%E7%B4%B9%E4%BB%8B%EF%BC%81%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2FMFA_configuration_scenarios%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2FMFA_configuration_scenarios.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2FMFA_configuration_scenarios.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/MFA_configuration_scenarios/" data-id="cmmketdz7012i0nqpd0pe0eig" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/MFA_configuration_scenarios/" data-id="cuidiJwd053bFa3mcMkDypavr" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -165,7 +165,7 @@
         
         <div class="toc-wrapper">
           <h2 id="toc-header" class="toc-header">この記事の内容</h2>
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Azure-MFA-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9"><span class="toc-text">1. Azure MFA サービスを利用するためのライセンス</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Azure-MFA-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">2. Azure MFA サービスを利用する際の構成要素の考え方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Azure-MFA-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3"><span class="toc-text">3. Azure MFA サービスの利用パターン</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89-AAD-%E3%81%B8%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%B3"><span class="toc-text">1. クライアントから AAD へのサインイン</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-NPS-Server-%E3%81%B8%E3%81%AE-Always-on-VPN-%E8%AA%8D%E8%A8%BC%E6%99%82"><span class="toc-text">2. NPS Server への Always on VPN 認証時</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-AD-FS-%E3%81%B8%E3%81%AE%E3%83%95%E3%82%A7%E3%83%87%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E6%99%82"><span class="toc-text">3. AD FS へのフェデレーション認証時</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-NPS-Server-%E3%81%B8%E3%81%AE-RADIUS-%E8%AA%8D%E8%A8%BC%E6%99%82"><span class="toc-text">4. NPS Server への RADIUS 認証時</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2024-%E5%B9%B4-9-%E6%9C%88%E3%83%AA%E3%82%BF%E3%82%A4%E3%82%A2%E4%BA%88%E5%AE%9A-%E3%82%AA%E3%83%B3%E3%83%97%E3%83%AC%E3%83%9F%E3%82%B9%E3%81%AB-MFA-Server-%E3%82%92%E5%B0%8E%E5%85%A5"><span class="toc-text">5. (2024 年 9 月リタイア予定) オンプレミスに MFA Server を導入</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Azure-MFA-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9"><span class="toc-text">1. Azure MFA サービスを利用するためのライセンス</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Azure-MFA-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><span class="toc-text">2. Azure MFA サービスを利用する際の構成要素の考え方</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Azure-MFA-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3"><span class="toc-text">3. Azure MFA サービスの利用パターン</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89-AAD-%E3%81%B8%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%B3"><span class="toc-text">1. クライアントから AAD へのサインイン</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-NPS-Server-%E3%81%B8%E3%81%AE-Always-on-VPN-%E8%AA%8D%E8%A8%BC%E6%99%82"><span class="toc-text">2. NPS Server への Always on VPN 認証時</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-AD-FS-%E3%81%B8%E3%81%AE%E3%83%95%E3%82%A7%E3%83%87%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E6%99%82"><span class="toc-text">3. AD FS へのフェデレーション認証時</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-NPS-Server-%E3%81%B8%E3%81%AE-RADIUS-%E8%AA%8D%E8%A8%BC%E6%99%82"><span class="toc-text">4. NPS Server への RADIUS 認証時</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2024-%E5%B9%B4-9-%E6%9C%88%E3%83%AA%E3%82%BF%E3%82%A4%E3%82%A2%E4%BA%88%E5%AE%9A-%E3%82%AA%E3%83%B3%E3%83%97%E3%83%AC%E3%83%9F%E3%82%B9%E3%81%AB-MFA-Server-%E3%82%92%E5%B0%8E%E5%85%A5"><span class="toc-text">5. (2024 年 9 月リタイア予定) オンプレミスに MFA Server を導入</span></a></li></ol></li></ol>
         </div>
           
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2020 年に公開したものですが、サポートへのお問い合わせ状況などをふまえ、2023 年 6 月時点での最新の情報にアップデートいたしました。</p></div>
@@ -179,7 +179,7 @@
 <ul>
 <li><a href="https://jpazureid.github.io/blog/azure-active-directory/faq-using-ca-to-secure-remote-access/">安全なリモート アクセスを実現するための条件付きアクセスに関するよくある質問</a></li>
 </ul>
-<p>セキュリティを高める方法は様々ですが、おそらく持っていない人を探す方が大変と思われる携帯電話/スマホを使って実現できる MFA (多要素認証) の導入が最もご検討いただきやすいと思われます。今回は、Azure MFA サービスを利用した MFA の実現方法について、2023 年 6 月時点の情報を元に以下の観点でご紹介いたします！</p>
+<p>セキュリティを高める方法は様々ですが、おそらく持っていない人を探す方が大変と思われる携帯電話&#x2F;スマホを使って実現できる MFA (多要素認証) の導入が最もご検討いただきやすいと思われます。今回は、Azure MFA サービスを利用した MFA の実現方法について、2023 年 6 月時点の情報を元に以下の観点でご紹介いたします！</p>
 <ol>
 <li><strong>Azure MFA サービスを利用するためのライセンス</strong></li>
 <li><strong>Azure MFA サービスを利用する際の構成要素の考え方</strong></li>
@@ -188,7 +188,7 @@
 <p>なお、本記事では以下の主旨でご案内を進めていきますので、前提としてご認識ください。</p>
 <ul>
 <li>Microsoft アカウント (MSA) は Azure MFA サービスを用いた MFA ではないため本記事の対象外です。</li>
-<li>プライマリ認証 (通常はユーザー名/パスワード) に対する追加の認証方式としての MFA (多要素認証) を本記事の対象とします。</li>
+<li>プライマリ認証 (通常はユーザー名&#x2F;パスワード) に対する追加の認証方式としての MFA (多要素認証) を本記事の対象とします。</li>
 <li>プライマリ認証をパスワードレスの認証方式 (Authenticator アプリを使用、もしくは FIDO2 キーを使用) にする考え方は、本記事では主旨が別になるため扱いません。</li>
 </ul>
 <p>パスワードレスの認証方式については <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/authentication/concept-authentication-passwordless">Azure Active Directory のパスワードレス認証オプション</a> をご参照ください。</p>
@@ -242,18 +242,18 @@
 </thead>
 <tbody><tr>
 <td align="left">Security Default s</td>
-<td align="left"><ul><li>テナントに対する機能の有効/無効のみが設定できる</li><li>機能の有効/無効以外の設定はできない (ユーザー毎、アクセス先などで条件を変える等)</li><li>すべての AAD ユーザーが MFA の方法をセットアップする必要がある</li><Li>MFA の方法として Authenticator アプリでの通知を利用できる</li><li>特定の特権ユーザー (管理者ロールを保持) には、サインイン時に MFA が求められる</li><li>一般ユーザーに対しても “必要に応じて” サインイン時に MFA が求められる<br>(一般ユーザーがサインイン時に MFA を求められる条件は非公開)</li><li>レガシー認証 (Outlook 2010 や POP/IMAP/SMTP など) はブロックされる</li><li>Azure の管理用での接続である Azure PowerShell, Azure CLI, Azure ポータルへのサインインは MFA が求められる</li><li>条件付きアクセス ポリシーと本機能は共存不可。条件付きアクセス ポリシーを作成すると本機能は利用できなくなる</li></ul></td>
+<td align="left"><ul><li>テナントに対する機能の有効&#x2F;無効のみが設定できる</li><li>機能の有効&#x2F;無効以外の設定はできない (ユーザー毎、アクセス先などで条件を変える等)</li><li>すべての AAD ユーザーが MFA の方法をセットアップする必要がある</li><Li>MFA の方法として Authenticator アプリでの通知を利用できる</li><li>特定の特権ユーザー (管理者ロールを保持) には、サインイン時に MFA が求められる</li><li>一般ユーザーに対しても “必要に応じて” サインイン時に MFA が求められる<br>(一般ユーザーがサインイン時に MFA を求められる条件は非公開)</li><li>レガシー認証 (Outlook 2010 や POP&#x2F;IMAP&#x2F;SMTP など) はブロックされる</li><li>Azure の管理用での接続である Azure PowerShell, Azure CLI, Azure ポータルへのサインインは MFA が求められる</li><li>条件付きアクセス ポリシーと本機能は共存不可。条件付きアクセス ポリシーを作成すると本機能は利用できなくなる</li></ul></td>
 <td align="left"><ul><li>カスタマイズ性はなくても無料で MFA を使いたい！とお考えの方 (ただし、一般ユーザーについては必ずしも MFA が求められるわけではないことはご注意を)</li><li>ある程度のセキュリティが実現できれば良いとお考えの方</li></ul></td>
 </tr>
 <tr>
 <td align="left">ユーザーごとの MFA (Per-user MFA)</td>
-<td align="left"><ul><li>AAD ユーザー毎に MFA の有効/無効の設定ができる</li><li>最終的にアクセスしたいサービスは問わず、AAD へのサインインすべてが MFA の対象となる</li><li>MFA が必要 (有効) とされたユーザーのみが MFA の方法をセットアップする必要がある</li><li>MFA の方法として、Authenticator だけではなく電話 (SMS/音声) や OATH トークンも利用可能</li><li>[どの MFA の認証方法をセットアップ可能とするか] という制限もテナント全体で可能</li><li>[信頼できる IP] を登録し、その IP からの認証時には MFA をスキップさせる設定が可能</li><li>[MFA の記憶] 機能で、一度 MFA をすると指定した日数は MFA を求めないようにすることが可能</li><li>アプリケーション パスワード (レガシ認証で MFA 要求をスキップするための専用パスワード) を利用可能</li></ul></td>
-<td align="left"><ul><li>Office 365 のライセンスをお持ちの方</li><li>ユーザーによって MFA の有効/無効を制御したいとお考えの方</li><li>グループ単位やアクセスしたいサービス毎に MFA の有効/無効は制御しなくても良いとお考えの方</li></ul></td>
+<td align="left"><ul><li>AAD ユーザー毎に MFA の有効&#x2F;無効の設定ができる</li><li>最終的にアクセスしたいサービスは問わず、AAD へのサインインすべてが MFA の対象となる</li><li>MFA が必要 (有効) とされたユーザーのみが MFA の方法をセットアップする必要がある</li><li>MFA の方法として、Authenticator だけではなく電話 (SMS&#x2F;音声) や OATH トークンも利用可能</li><li>[どの MFA の認証方法をセットアップ可能とするか] という制限もテナント全体で可能</li><li>[信頼できる IP] を登録し、その IP からの認証時には MFA をスキップさせる設定が可能</li><li>[MFA の記憶] 機能で、一度 MFA をすると指定した日数は MFA を求めないようにすることが可能</li><li>アプリケーション パスワード (レガシ認証で MFA 要求をスキップするための専用パスワード) を利用可能</li></ul></td>
+<td align="left"><ul><li>Office 365 のライセンスをお持ちの方</li><li>ユーザーによって MFA の有効&#x2F;無効を制御したいとお考えの方</li><li>グループ単位やアクセスしたいサービス毎に MFA の有効&#x2F;無効は制御しなくても良いとお考えの方</li></ul></td>
 </tr>
 <tr>
 <td align="left">条件付きアクセス</td>
-<td align="left"><ul><li>AAD ユーザー毎だけではなく、グループ毎でも MFA の有効/無効の設定ができる</li><li>最終的にアクセスしたいサービス毎に MFA の有効/無効の設定ができる</li><li>接続元クライアントの OS の種類、IP (場所) なども条件として指定することができる</li><li>MFA を求める以外の制御 (ブロックやデバイス認証が必要など) を指定できる</li><li>Azure MFA ポータルのオプション機能を利用することができる</li><li>アプリケーション パスワードは利用できない (レガシはスルーで認証する、という設定は可能だが非推奨)</li></ul></td>
-<td align="left"><ul><li>グループ単位で MFA の有効/無効を制御したいとお考えの方</li><li>アクセスしたいサービス毎に MFA の有効/無効を制御したいとお考えの方</li><li>MFA が必要という制御以外にブロックなど他の制御も条件に応じて実現されたい方</li><li>接続元デバイス (Hybrid Azure AD Join 済みデバイス、Intune ポリシー準拠済みデバイス) の条件毎に MFA の有効/無効を制御したいとお考えの方</li></ul></td>
+<td align="left"><ul><li>AAD ユーザー毎だけではなく、グループ毎でも MFA の有効&#x2F;無効の設定ができる</li><li>最終的にアクセスしたいサービス毎に MFA の有効&#x2F;無効の設定ができる</li><li>接続元クライアントの OS の種類、IP (場所) なども条件として指定することができる</li><li>MFA を求める以外の制御 (ブロックやデバイス認証が必要など) を指定できる</li><li>Azure MFA ポータルのオプション機能を利用することができる</li><li>アプリケーション パスワードは利用できない (レガシはスルーで認証する、という設定は可能だが非推奨)</li></ul></td>
+<td align="left"><ul><li>グループ単位で MFA の有効&#x2F;無効を制御したいとお考えの方</li><li>アクセスしたいサービス毎に MFA の有効&#x2F;無効を制御したいとお考えの方</li><li>MFA が必要という制御以外にブロックなど他の制御も条件に応じて実現されたい方</li><li>接続元デバイス (Hybrid Azure AD Join 済みデバイス、Intune ポリシー準拠済みデバイス) の条件毎に MFA の有効&#x2F;無効を制御したいとお考えの方</li></ul></td>
 </tr>
 <tr>
 <td align="left">リスクベースの条件付きアクセス</td>
@@ -311,39 +311,39 @@
 <td align="left">Security Defaults (設定変更不可)</td>
 <td align="left"><ul><li>特定の特権ユーザー</li><li>MFA を求める必要のある一般ユーザー</li><li>Azure 管理機能を利用するユーザー</li></ul></td>
 <td align="left"><ul><li>特定の特権ユーザーの AAD への認証要求時</li><li>MFA を求める必要があると判断された一般ユーザーの AAD への認証要求時</li><li>Azure PowerShell, CLI, ポータルへの認証要求時</li></ul></td>
-<td align="left">Authenticator アプリの通知/確認コード (テナントの全体管理者ユーザーは他の方法も利用可能)</td>
+<td align="left">Authenticator アプリの通知&#x2F;確認コード (テナントの全体管理者ユーザーは他の方法も利用可能)</td>
 </tr>
 <tr>
 <td align="left">ユーザーごとの MFA (Per-user MFA)</td>
 <td align="left">MFA を有効にしているユーザー</td>
 <td align="left">AAD への認証要求時</td>
-<td align="left">音声電話、SMS、Authenticator アプリの通知/確認コード、OATH トークン</td>
+<td align="left">音声電話、SMS、Authenticator アプリの通知&#x2F;確認コード、OATH トークン</td>
 </tr>
 <tr>
 <td align="left">条件付きアクセス</td>
 <td align="left">作成したポリシーの評価条件に該当するユーザー (条件は柔軟に指定可能)</td>
 <td align="left">作成したポリシーの評価条件に該当する AAD への認証要求時</td>
-<td align="left">音声電話、SMS、Authenticator アプリの通知/確認コード、OATH トークン</td>
+<td align="left">音声電話、SMS、Authenticator アプリの通知&#x2F;確認コード、OATH トークン</td>
 </tr>
 <tr>
 <td align="left">リスクベースの条件付きアクセス</td>
 <td align="left">サインインのリスクが中以上と判定されたユーザー</td>
 <td align="left">サインインのリスクが中以上と判定された AAD への認証要求時</td>
-<td align="left">音声電話、SMS、Authenticator アプリの通知/確認コード、OATH トークン</td>
+<td align="left">音声電話、SMS、Authenticator アプリの通知&#x2F;確認コード、OATH トークン</td>
 </tr>
 </tbody></table>
-<p>Who と When はご利用になる各機能にて設定/提供されます。また、How (MFA の実行方法) は、各機能ではなく AAD ユーザー自身が保持する設定値になります。そのため、ご利用になる機能が変わっても、仮に MFA を求める機能を使用しない場合も How (MFA の実行方法) は AAD ユーザー毎に保持することが可能です。</p>
+<p>Who と When はご利用になる各機能にて設定&#x2F;提供されます。また、How (MFA の実行方法) は、各機能ではなく AAD ユーザー自身が保持する設定値になります。そのため、ご利用になる機能が変わっても、仮に MFA を求める機能を使用しない場合も How (MFA の実行方法) は AAD ユーザー毎に保持することが可能です。</p>
 <p>また、各 AAD ユーザーは自身の How (MFA の実行方法) のセットアップを以下のタイミングで実行することが可能です。</p>
 <ul>
 <li>各機能から MFA の実行が求められるタイミングで、該当ユーザーの How がまだ未構成の場合</li>
 <li>MFA の実行方法を <a target="_blank" rel="noopener" href="https://aka.ms/mysecurityinfo">セットアップするサイト</a> を利用する</li>
 </ul>
 <p>上記のセットアップページに対し、ユーザーが Azure AD ユーザーとしてサインインすることで、現在設定済みの MFA 方法の確認や、新規 MFA 方法の登録、登録済み MFA 方法の削除等が行えます。</p>
-<div class="alert is-warning"><p class="alert-title">警告</p><p>無料版もしくは試用版の AAD テナントをご利用の方は、MFA の方法として音声電話 (Voice) はご利用いただけません。</p><p>SMS はご利用いただけますが、選択肢に音声電話が無いという状況の際には、無料/試用版の AAD テナントではご利用いただけないのが適切な状態ですのでご留意ください。</p></div>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>無料版もしくは試用版の AAD テナントをご利用の方は、MFA の方法として音声電話 (Voice) はご利用いただけません。</p><p>SMS はご利用いただけますが、選択肢に音声電話が無いという状況の際には、無料&#x2F;試用版の AAD テナントではご利用いただけないのが適切な状態ですのでご留意ください。</p></div>
 <h2 id="3-Azure-MFA-サービスの利用パターン"><a href="#3-Azure-MFA-サービスの利用パターン" class="headerlink" title="3. Azure MFA サービスの利用パターン"></a>3. Azure MFA サービスの利用パターン</h2><p>ここまでのご案内は基本的に “クライアントから AAD へのサインイン時に Azure MFA サービスで MFA を求める” ことを前提としていました。しかし、Azure MFA はオンプレミスの他の認証システムとも連携することが可能です！つまりこれは、”Azure MFA サービスに話しかけているのがクライアント端末ではなく何らかのサーバー” になるようなパターンです。</p>
 <p>それではざっくりとご利用いただける Azure MFA サービスの利用パターンを見てみましょう。</p>
 <p><img src="/blog/azure-active-directory/MFA_configuration_scenarios/image.jpg" alt="MFA 構成パターン図"></p>
-<p>それぞれのパターンごとに以下にご紹介いたします。たくさんあって大変… という印象もあるかもしれませんが、”どんな認証システムをご利用になっているか/なりたいか” が先にあるかと思いますので、そのご要件に沿って Azure MFA と連携できるかご検討ください。</p>
+<p>それぞれのパターンごとに以下にご紹介いたします。たくさんあって大変… という印象もあるかもしれませんが、”どんな認証システムをご利用になっているか&#x2F;なりたいか” が先にあるかと思いますので、そのご要件に沿って Azure MFA と連携できるかご検討ください。</p>
 <h3 id="1-クライアントから-AAD-へのサインイン"><a href="#1-クライアントから-AAD-へのサインイン" class="headerlink" title="1. クライアントから AAD へのサインイン"></a>1. クライアントから AAD へのサインイン</h3><p>こちらのパターンはこれまでご紹介した機能が対象となります。</p>
 <h3 id="2-NPS-Server-への-Always-on-VPN-認証時"><a href="#2-NPS-Server-への-Always-on-VPN-認証時" class="headerlink" title="2. NPS Server への Always on VPN 認証時"></a>2. NPS Server への Always on VPN 認証時</h3><p>こちらは、Windows 10 クライアントに対して Always On VPN を構成した際のオプションとして条件付きアクセスと連携して MFA 認証を求めるシナリオになります。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/Windows-server/remote/remote-access/tutorial-aovpn-deploy-setup">チュートリアル: Always On VPN を展開する - Always On VPN のインフラストラクチャを設定する</a><br>-&gt; Always On VPN 機能の概要です。</p>

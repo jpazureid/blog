@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;10&#x2F;24&#x2F;%e8%aa%bf%e6%9f%bb%e3%81%ab%e6%9c%89%e5%8a%b9%e3%81%aa%e6%8e%a1%e5%8f%96%e6%83%85%e5%a0%b1-%e3%83%96%e3%83%a9%e3">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2017-10-23T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.104Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.039Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2d3d91f8-2241-5dde-ab9d-393397caf373%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E7%B5%8C%E7%94%B1%E3%81%A7%E3%81%AE+Azure+AD+%E8%AA%8D%E8%A8%BC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Ftroubleshoot-browser-auth%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Ftroubleshoot-browser-auth.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Ftroubleshoot-browser-auth.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-browser-auth/" data-id="cmmketdwo00oa0nqpc6u98rio" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-browser-auth/" data-id="cuidO7HKtCK756kK3Xo0jUZZr" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -168,7 +168,7 @@
 <li>Office 365 にサインインしようとしたが、エラーが出力されサインインできない。</li>
 <li>上記のようなシナリオで有効な採取情報、その採取手順をご紹介します。あわせて Azure AD に関する問題全般 でご紹介しました情報の採取も実施ください (PSR 情報は重複していますが、認証に関わる問題の際には本ブログの手順で採取します)。</li>
 </ul>
-<h3 id="lt-採取情報-gt"><a href="#lt-採取情報-gt" class="headerlink" title="&lt;採取情報&gt;"></a>&lt;採取情報&gt;</h3><p>(a) 問題ステップ記録 (PSR) ツール情報</p>
+<h3 id=""><a href="#" class="headerlink" title="&lt;採取情報&gt;"></a>&lt;採取情報&gt;</h3><p>(a) 問題ステップ記録 (PSR) ツール情報</p>
 <p>問題ステップ記録 (以降、PSR) は、クリックした場所の説明や、表示される画面のスクリーン ショット、その日時などを自動的にキャプチャするツールです。</p>
 <p>PSR 情報から得られた各オペレーションの実行日時を元に Fiddler トレース、ネットワーク パケットの情報を解析します。</p>
 <p>(b) Fiddler トレース</p>
@@ -202,9 +202,9 @@
 <p>4-3. Fiddler の画面を最小化します。</p>
 <p>以下の手順でネットワーク キャプチャの記録を開始します。<br>5-1. 管理者権限を持つアカウントでコマンド プロンプトを開きます (UAC が有効の場合には、”管理者として実行” します)。</p>
 <p>5-2. 次のコマンドを実行し、ネットワーク キャプチャの記録を開始します。</p>
-<p>netsh trace start capture=yes</p>
+<p>netsh trace start capture&#x3D;yes</p>
 <p>5-3. 以下 4 つのコマンドを実行してキャッシュ情報を削除します。</p>
-<p>ipconfig /flushdns</p>
+<p>ipconfig &#x2F;flushdns</p>
 <p>nbtstat -R</p>
 <p>klist purge</p>
 <p>klist purge -li 0x3e7</p>

@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad/azure-ad.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad/scim-results.png">
 <meta property="article:published_time" content="2022-01-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.999Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.934Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ff5041c0-d04c-5891-8154-b1aa03427f87%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%AB%E3%82%88%E3%82%8A+ID+%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E3%82%88%E3%82%8A%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fsimplify-your-identity-provisioning-with-these-new-azure-ad%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fsimplify-your-identity-provisioning-with-these-new-azure-ad.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fsimplify-your-identity-provisioning-with-these-new-azure-ad.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad/" data-id="cmmketdw800mr0nqp3qta49ao" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/simplify-your-identity-provisioning-with-these-new-azure-ad/" data-id="cuidQDMRdC9GgyZ4TQn12OvXV" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -180,9 +180,9 @@
 <h2 id="プロビジョニング-ロジックに日付の比較を使用する"><a href="#プロビジョニング-ロジックに日付の比較を使用する" class="headerlink" title="プロビジョニング ロジックに日付の比較を使用する"></a>プロビジョニング ロジックに日付の比較を使用する</h2><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/app-provisioning/functions-for-customizing-application-data">属性マッピング</a> を用いることにより、対象のシステムに書き込む前にデータを制御および変換することができます。皆様からのフィードバックに基づき、新しい組み込み日付関数 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/app-provisioning/functions-for-customizing-application-data#now">Now()</a>, <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/app-provisioning/functions-for-customizing-application-data#dateadd">DateAdd()</a>, <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/active-directory/app-provisioning/functions-for-customizing-application-data#datediff">DateDiff()</a> を追加し、日付を比較したり、日付時刻の値に基づくきめ細かい属性プロビジョニングを定義できるようにいたしました。ユーザーのプロビジョニング フローの他の関数とネストしたり組み合わせることで、以下のようなシナリオを実装できます。</p>
 <ul>
 <li>ユーザー タイプに基づいて、SaaS アプリケーションまたはオンプレミス アプリケーションのユーザー アカウントの有効期限を、 現在のプロビジョニング時刻から “X” 日後に設定する。</li>
-<li>現在の日付と人事的な採用日の間隔の差を求め、それをアカウントの有効化/データフロー ロジックの決定に使用する。</li>
+<li>現在の日付と人事的な採用日の間隔の差を求め、それをアカウントの有効化&#x2F;データフロー ロジックの決定に使用する。</li>
 </ul>
-<p>いつも通り、皆様のご意見をお聞かせください。コメントをお寄せいただくか、<a target="_blank" rel="noopener" href="https://feedback.azure.com/d365community">aka.ms/AzureADFeedback</a> までお気軽にご連絡ください。</p>
+<p>いつも通り、皆様のご意見をお聞かせください。コメントをお寄せいただくか、<a target="_blank" rel="noopener" href="https://feedback.azure.com/d365community">aka.ms&#x2F;AzureADFeedback</a> までお気軽にご連絡ください。</p>
 
       
       

@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfasetupinteg/mfasetupinteg4-8-1024x318.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfasetupinteg/mfasetupinteg4-9.jpg">
 <meta property="article:published_time" content="2018-09-04T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.567Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.505Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="MFA">
@@ -64,7 +64,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -181,7 +181,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+aa629d9f-2fec-5d99-bb3c-e961e5a146dc%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+MFA+%E3%81%AE%E5%A4%9A%E8%A6%81%E7%B4%A0%E8%AA%8D%E8%A8%BC%E8%A8%AD%E5%AE%9A%E3%81%AE%E7%B5%B1%E5%90%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmfasetupinteg%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmfasetupinteg.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmfasetupinteg.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfasetupinteg/" data-id="cmmketdu800gl0nqpdfv68kxj" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfasetupinteg/" data-id="cuidvy-_R2BB9OR1Zp5vcHzwL" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -189,8 +189,8 @@
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/09/05/mfasetupinteg/">https://blogs.technet.microsoft.com/jpazureid/2018/09/05/mfasetupinteg/</a> の内容を移行したものです。</p><p>元の記事の最新の更新情報については、本内容をご参照ください。</p></div>
 <p>こんにちは。Azure Identity チームの金森です。</p>
 <p>今回は先日プレビューとなりました [SSPR と Azure MFA の多要素認証設定の統合] をご紹介したいと思います。<br>※ 個人的に待ちに待っていた改善となります！</p>
-<p>Converged registration for self-service password reset and Azure Multi-Factor Authentication (Public preview)<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-registration-mfa-sspr-converged">https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-registration-mfa-sspr-converged</a><br>2018/8/1 に公開された docs 技術情報です。</p>
-<p>Combined registration for Azure AD MFA and Self Service Password Reset plus two other cool updates now in public preview!<br><a target="_blank" rel="noopener" href="https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/">https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/</a><br>2018/8/6 に公開された Alex の Blog 情報です。こちらの方が私の気持ちを汲んだ内容になっています。</p>
+<p>Converged registration for self-service password reset and Azure Multi-Factor Authentication (Public preview)<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-registration-mfa-sspr-converged">https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-registration-mfa-sspr-converged</a><br>2018&#x2F;8&#x2F;1 に公開された docs 技術情報です。</p>
+<p>Combined registration for Azure AD MFA and Self Service Password Reset plus two other cool updates now in public preview!<br><a target="_blank" rel="noopener" href="https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/">https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/</a><br>2018&#x2F;8&#x2F;6 に公開された Alex の Blog 情報です。こちらの方が私の気持ちを汲んだ内容になっています。</p>
 <p>これまで SSPR (Self Service Password Reset) 機能と、Azure MFA (Multi-Factor Authentication) 機能を有効にすると、ユーザーが最初に Azure AD (AAD) へサインインする際にそれぞれの機能毎に追加の認証方法のセットアップが求められていました。<br>つまり、AAD ユーザーとしての追加の認証方法という意味は同じなのに、2 回のセットアップ画面での設定を終えないとサービスのご利用を開始できなかったのです。</p>
 <p>それぞれのセットアップ画面が分かれていることで操作している対象が分かりやすい、という感想をお持ちの方もいらっしゃるかもしれませんが、これから AAD ユーザーとして利用を開始する方が最初のサインイン時に <strong>あれ？さっき追加の認証方法をセットアップしたのに、似たような画面でもう 1 回セットアップを求められてる？</strong> と煩わしく思われたり、Azure MFA を導入済みの環境に SSPR を追加で導入した場合、 <strong>あれ？以前サービス利用を開始した時に追加の認証方法を設定したはずなのにまた設定するよう求められている？以前セットアップした時とちょっと画面が違うような気もするけど…</strong> と混乱されるようなことがあったかもしれません。</p>
 <p>今回のプレビュー機能では、 [SSPR 用の多要素認証方法のセットアップ] と [Azure MFA 用の多要素認証方法のセットアップ] が [AAD ユーザーとしての多要素認証方法のセットアップ] として統合され、1 回の設定で SSPR と Azure MFA それぞれで利用される方法が設定できることになります。</p>

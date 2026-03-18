@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note本記事は Technet Blog の更新停止に伴い https:&#x2F;&#x2F;blogs.technet.microsoft.com&#x2F;jpazureid&#x2F;2017&#x2F;10&#x2F;13&#x2F;%e8%a8%bc%e6%98%8e%e6%9b%b8%e5%88%a9%e7%94%a8%e8%80%85%e4%bf%a1%e9%a0%bc%e3%81%ae%e3%82%bb%e3%82%ad%e3%83%a5%e3%">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2017-10-12T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:19.833Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:43.770Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="AD FS">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -154,7 +154,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+30ae6409-1ae6-5522-bf5a-75cd8eb9f586%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E8%A8%BC%E6%98%8E%E6%9B%B8%E5%88%A9%E7%94%A8%E8%80%85%E4%BF%A1%E9%A0%BC%E3%81%AE%E3%82%BB%E3%82%AD%E3%83%A5%E3%82%A2+%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5+%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Factive-directory-federation-service%2Fsecure-hash%2F%29%0A*+Content+Source%3A+%5Barticles%2Factive-directory-federation-service%2Fsecure-hash.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Factive-directory-federation-service%2Fsecure-hash.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/secure-hash/" data-id="cmmketdop000m0nqp999k5k4g" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/active-directory-federation-service/secure-hash/" data-id="cuidcJNYTlvQNLHizS4MEOmWP" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,7 +174,7 @@
 <p>Change signature hash algorithm for Office 365 replying party trust</p>
 <p>※ 2017 年 7 月 より、Office 365 は SHA-1 に非対応となる可能性があります。<br>現在 SHA-1 に設定されている環境では、早めに SHA-256 への変更をお願いします。</p>
 <p>※ 2017 年 6 月 20 日 更新<br>現時点では、7 月 1 日より SHA-1 に非対応となることは無いことを確認しております。<br>また、今後の対応につきまして、現時点では明確なマイルストーンは決定されておりません。<br>しかしながら、ゆくゆくは廃止される方向で検討が進んでいることは事実であり、セキュリティの観点からもお早目に SHA-256 への変更をお願い申し上げます。</p>
-<p>以下に、よくお問合せをいただく内容を Q/A 形式でお纏めします。</p>
+<p>以下に、よくお問合せをいただく内容を Q&#x2F;A 形式でお纏めします。</p>
 <h4 id="Q1"><a href="#Q1" class="headerlink" title="Q1."></a>Q1.</h4><p>以下のような、一般的に推進されている SHA-1 証明書の制限措置と関係ありますか。</p>
 <p><a target="_blank" rel="noopener" href="https://msrc-blog.microsoft.com/2016/11/25/sha1countdown/">https://msrc-blog.microsoft.com/2016/11/25/sha1countdown/</a></p>
 <h4 id="A1"><a href="#A1" class="headerlink" title="A1."></a>A1.</h4><p>直接の関連はありません。<br>上記は、証明書に含まれる署名ハッシュアルゴリズムに関するものです。<br>今回ご案内いたしました、AD FS がトークンに付与する署名のハッシュアルゴリズムとは別のものになります。<br>このトークンの署名ハッシュアルゴリズムが SHA-1 であることにより、ブラウザーアクセス時に警告が表示されるようなこともありません。</p>
@@ -185,10 +185,10 @@
 <h4 id="A3"><a href="#A3" class="headerlink" title="A3."></a>A3.</h4><p>設定の際に、AD FS サーバーを変更する必要はありません。<br>ファーム内のプライマリサーバーで変更してください。(セカンダリ サーバーには自動的に反映されます。)<br>また、ユーザーの認証が停止するなどのダウンタイムは生じません。</p>
 <h4 id="Q4"><a href="#Q4" class="headerlink" title="Q4."></a>Q4.</h4><p>設定が変更されていることを確認する方法はありますか ?</p>
 <h4 id="A4"><a href="#A4" class="headerlink" title="A4."></a>A4.</h4><p>プライマリ AD FS サーバー上で、以下のように Get-AdfsRelyingPartyTrus コマンドレット を使用して確認することができます。</p>
-<p>// SHA1 の状態<br>Get-AdfsRelyingPartyTrust -Name ‘Microsoft Office 365 Identity Platform’ | select SignatureAlgorithm</p>
+<p>&#x2F;&#x2F; SHA1 の状態<br>Get-AdfsRelyingPartyTrust -Name ‘Microsoft Office 365 Identity Platform’ | select SignatureAlgorithm</p>
 <p>SignatureAlgorithm</p>
 <p><a target="_blank" rel="noopener" href="http://www.w3.org/2000/09/xmldsig#rsa-sha1">http://www.w3.org/2000/09/xmldsig#rsa-sha1</a> ★ &lt;&lt;&lt;</p>
-<p>// SHA-256 の状態<br>Get-AdfsRelyingPartyTrust -Name ‘Microsoft Office 365 Identity Platform’ | select SignatureAlgorithm</p>
+<p>&#x2F;&#x2F; SHA-256 の状態<br>Get-AdfsRelyingPartyTrust -Name ‘Microsoft Office 365 Identity Platform’ | select SignatureAlgorithm</p>
 <p>SignatureAlgorithm</p>
 <p><a target="_blank" rel="noopener" href="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256">http://www.w3.org/2001/04/xmldsig-more#rsa-sha256</a> ★ &lt;&lt;&lt;</p>
 <h4 id="Q5"><a href="#Q5" class="headerlink" title="Q5."></a>Q5.</h4><p>AD FS Proxy サーバー (WAP サーバー) で何か作業が必要ですか ?</p>

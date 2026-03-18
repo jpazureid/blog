@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/create-support-ticket-1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/create-support-ticket-2.png">
 <meta property="article:published_time" content="2019-07-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.938Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.874Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Conditional Access">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,7 +162,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4a0e40ed-671a-50d4-ace6-659caacd3bb8%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+AD+%E3%81%AE%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B+Q%26A%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fqanda-conditional-access%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fqanda-conditional-access.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fqanda-conditional-access.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/" data-id="cmmkete0z01690nqp3ivs37lq" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/qanda-conditional-access/" data-id="cuidlgsNKwhAw7oEdnOYmTM_Y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -171,7 +171,7 @@
 <p>こんにちは、Azure &amp; Identity サポート チームの高田です。</p>
 <p>今回はお問い合わせをよくいただく、Azure AD の条件付きアクセスについてです。</p>
 <blockquote>
-<p>2019/07/02 条件付きアクセスの動作の考え方やアクセス制御の適用順序など <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Mailbag-Conditional-Access-Q-amp-A/ba-p/566492">Azure Active Directory Identity Blog</a> に投稿された内容を追記しました。</p>
+<p>2019&#x2F;07&#x2F;02 条件付きアクセスの動作の考え方やアクセス制御の適用順序など <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Mailbag-Conditional-Access-Q-amp-A/ba-p/566492">Azure Active Directory Identity Blog</a> に投稿された内容を追記しました。</p>
 </blockquote>
 <p>お問い合わせの多いご質問について、Q&amp;A 形式でおまとめいたしました。既存のドキュメントではカバーされていない動作や質問について今後も適宜内容を拡充していきますので、ご参照いただければと思います。</p>
 <hr>
@@ -196,8 +196,8 @@
 <p><span style="color:red">A</span>. ブロックが常に優先されます。これに次いで、次のような順序でアクセス制御が強制されます。</p>
 <ol>
 <li>多要素認証</li>
-<li>承認されたクライアント アプリ / アプリの保護ポリシー</li>
-<li>マネージド デバイス (準拠済み / Hybrid Azure AD Join)</li>
+<li>承認されたクライアント アプリ &#x2F; アプリの保護ポリシー</li>
+<li>マネージド デバイス (準拠済み &#x2F; Hybrid Azure AD Join)</li>
 <li>カスタム コントロール (利用規約を含む)</li>
 <li>セッション制御 (ブラウザー セッションの有効期限など)</li>
 </ol>
@@ -225,7 +225,7 @@
 <p>不明なデバイスプラットフォームもカバーする形でポリシーを定義するには以下のようにします。</p>
 <ul>
 <li>新しいポリシーを作り、すべてのクラウド アプリを対象とする (ユーザーについてはまずは一部のみ選択して、問題なければその後すべてのユーザーに適用する)</li>
-<li>デバイス プラットフォームの条件を以下のように構成する<br>(全てのデバイス プラットフォーム) - (Android, iOS, WP, Windows, macOS) = 不明なデバイス プラットフォーム</li>
+<li>デバイス プラットフォームの条件を以下のように構成する<br>(全てのデバイス プラットフォーム) - (Android, iOS, WP, Windows, macOS) &#x3D; 不明なデバイス プラットフォーム</li>
 </ul>
 <p><img src="/blog/azure-active-directory/qanda-conditional-access/CA4.png"></p>
 <ul>

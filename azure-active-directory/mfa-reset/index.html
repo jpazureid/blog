@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/mfa-config-2.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/csv.png">
 <meta property="article:published_time" content="2018-10-15T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.566Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.504Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="MFA">
@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -159,7 +159,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ffc95461-3b9a-5083-8df3-22b83fe169bf%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%A4%9A%E8%A6%81%E7%B4%A0%E8%AA%8D%E8%A8%BC+%28MFA%29+%E3%81%AE%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E6%89%8B%E9%A0%86+-+2018+%E5%B9%B4%E7%89%88%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fmfa-reset%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fmfa-reset.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fmfa-reset.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/" data-id="cmmketdu700gj0nqpf0cth8b3" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/mfa-reset/" data-id="cuid7LpcPq8hx0N5c07V3Yrii" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -167,8 +167,8 @@
         <div class="alert is-info"><p class="alert-title">Note</p><p>本記事は Technet Blog の更新停止に伴い <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/">https://blogs.technet.microsoft.com/jpazureid/2018/10/15/mfa-reset/</a> の内容を移行したものです。元の記事の最新の更新情報については、本内容をご参照ください。現在では 2018 年版から GUI やコマンドなどが変更されているため、最新の記事は <a href="/blog/azure-active-directory/mfa-reset-2025/">多要素認証 (MFA) のリセット手順 - 2025 年版</a> をご覧ください。</p></div>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>本記事のコマンド実行例では MSOnline PowerShell を利用しています。MSOnline PowerShell は 2025 年 4 月初旬から 5 月下旬の間に廃止され、使用できなくなります。</p><p>詳細は、<a href="/blog/azure-active-directory/msonline-and-azuread-powershell-retirement/">MSOnline および AzureAD PowerShell の廃止 - 2025 年版</a> の記事をご確認ください。</p></div>
 <p>こんにちは、Azure &amp; Identity サポート チームの小野です。</p>
-<p>今回は、Azure AD における多要素認証 (Multi-Factor Authentication = MFA) のリセット手順についてご紹介します。</p>
-<p>Azure AD では、ログイン時の追加認証方式として電話・スマートフォンアプリなどを使った多要素認証 (Multi-Factor Authentication = MFA) を利用することができ、パスワードのセルフサービス リセット時にも同様の認証方式を利用させることが可能です。MFA の設定を有効にしている場合、Azure AD にログインをするためには認証方法に指定したスマートフォンなどを利用できる必要がありますが、スマートフォンを紛失してしまった場合や電話番号が無効になった場合などには、MFA で設定していた認証を利用できない状況となり、ユーザー認証を完了することができずサービスを利用することができなくなります。<br>このような場合は、Azure AD  の管理者による対象ユーザーの MFA 設定のリセットを実施します。</p>
+<p>今回は、Azure AD における多要素認証 (Multi-Factor Authentication &#x3D; MFA) のリセット手順についてご紹介します。</p>
+<p>Azure AD では、ログイン時の追加認証方式として電話・スマートフォンアプリなどを使った多要素認証 (Multi-Factor Authentication &#x3D; MFA) を利用することができ、パスワードのセルフサービス リセット時にも同様の認証方式を利用させることが可能です。MFA の設定を有効にしている場合、Azure AD にログインをするためには認証方法に指定したスマートフォンなどを利用できる必要がありますが、スマートフォンを紛失してしまった場合や電話番号が無効になった場合などには、MFA で設定していた認証を利用できない状況となり、ユーザー認証を完了することができずサービスを利用することができなくなります。<br>このような場合は、Azure AD  の管理者による対象ユーザーの MFA 設定のリセットを実施します。</p>
 <p>なお、一般ユーザー権限では他ユーザーの MFA 認証設定のリセットは行うことができません。一般ユーザーは 、ログインができる状態であればユーザー自身で登録されている MFA の設定を変更することはできますが、MFA の追加の認証を受け取れるスマートフォンを紛失したなどの場合に、自ら MFA 設定のリセットを行うことはできません。</p>
 <p>MFA のリセットは、Azure Portal または PowerShell より行うことが可能です。Azure Portal からの操作では事前準備が不要なため、すぐに操作を実施することができます。PowerShell からの操作では、CSV 形式で用意した全ユーザーに対してリセットを行うことができるため、多くのユーザーに対し一括でリセットを行いたい場合に有効です。</p>
 <h2 id="Azure-Portal-での手順"><a href="#Azure-Portal-での手順" class="headerlink" title="Azure Portal での手順"></a>Azure Portal での手順</h2><ol>
@@ -223,11 +223,11 @@
     
 <nav id="article-nav">
   
-    <a href="../../active-directory-federation-service/adfs-cba-ts/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../create-subscription-error/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          証明書認証のトラブルシューティング
+          サブスクリプション作成時のエラー「アカウントが Azure サブスクリプションに関連付けられないディレクトリに属しています。別のアカウントでサインインしてください」
         
       </div>
     </a>

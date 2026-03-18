@@ -6,12 +6,12 @@
   
   <title>B2B コラボレーション用の非管理アカウントが作成されなくなりました | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、 Azure ID チームの小出です。 本記事は、2022&#x2F;9&#x2F;2 の Say goodbye to unmanaged Azure AD accounts for B2B collaboration の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。 変更内容の概要Azure Active Directory (Azure AD">
+  <meta name="description" content="こんにちは、 Azure ID チームの小出です。 本記事は、2022&#x2F;9&#x2F;2 の Say goodbye to unmanaged Azure AD accounts for B2B collaboration の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。 変更内容の概要Azure Active Directory">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B2B コラボレーション用の非管理アカウントが作成されなくなりました">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、 Azure ID チームの小出です。 本記事は、2022&#x2F;9&#x2F;2 の Say goodbye to unmanaged Azure AD accounts for B2B collaboration の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。 変更内容の概要Azure Active Directory (Azure AD">
+<meta property="og:description" content="こんにちは、 Azure ID チームの小出です。 本記事は、2022&#x2F;9&#x2F;2 の Say goodbye to unmanaged Azure AD accounts for B2B collaboration の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。 変更内容の概要Azure Active Directory">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b2.png">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b5.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/say-goodbye-to-unmanaged-azuread-account-for-b2b6.png">
 <meta property="article:published_time" content="2022-11-04T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.983Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.919Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="US Identity Blog">
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -162,13 +162,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f7634981-8798-5d60-bd8f-bd6690796b2d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BB2B+%E3%82%B3%E3%83%A9%E3%83%9C%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%A8%E3%81%AE%E9%9D%9E%E7%AE%A1%E7%90%86%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%81%AA%E3%81%8F%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fsay-goodbye-to-unmanaged-azuread-account-for-b2b%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fsay-goodbye-to-unmanaged-azuread-account-for-b2b.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fsay-goodbye-to-unmanaged-azuread-account-for-b2b.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/" data-id="cmmketdw200m80nqpcgdx7rra" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/say-goodbye-to-unmanaged-azuread-account-for-b2b/" data-id="cuidwakcYAHN-n2kB7anVELp7" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、 Azure ID チームの小出です。</p>
-<p>本記事は、2022/9/2 の <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/say-goodbye-to-unmanaged-azure-ad-accounts-for-b2b-collaboration/ba-p/3094111">Say goodbye to unmanaged Azure AD accounts for B2B collaboration</a> の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。</p>
+<p>本記事は、2022&#x2F;9&#x2F;2 の <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/say-goodbye-to-unmanaged-azure-ad-accounts-for-b2b-collaboration/ba-p/3094111">Say goodbye to unmanaged Azure AD accounts for B2B collaboration</a> の記事の抄訳を元に Azure AD B2B コラボレーションの動作変更と、対処策についてお知らせします。</p>
 <h2 id="変更内容の概要"><a href="#変更内容の概要" class="headerlink" title="変更内容の概要"></a>変更内容の概要</h2><p>Azure Active Directory (Azure AD) において、B2B コラボレーション用の非管理 (バイラル) アカウントが廃止されました。B2B コラボレーション用の非管理 (バイラル) アカウントは、「いつのまにか自動で作成されている」、「削除すると、ゲストがリソース テナントにアクセスできなくなる」など、管理や運用が難しいという課題を抱えていました。また、「アカウントを誰が作成したのか分からない」、「消していいのか」など、弊社サポートでもお問い合わせをいただいていました。</p>
 <p>以前 <a href="https://jpazureid.github.io/blog/azure-active-directory/announcement-of-otp/">2021 年 10 月に予定されるゲスト ユーザー招待時の動作変更について</a> の弊社ブログでは、非管理アカウントがサポートされなくなる旨と、代替案として OTP の仕様についてご案内しておりました。今回の変更では、サポートされなくなった非管理アカウントが、今後の動作としても新しく作成されなくなりました。</p>
 <p>なお、以前に招待され、非管理型の Azure AD アカウントとして引き換えされたアカウントは、引き続き機能します。 </p>

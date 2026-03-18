@@ -14,10 +14,10 @@
 <meta property="og:description" content="日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="AD FS">
 <meta property="article:tag" content="Azure">
 <meta property="article:tag" content="Azure AD">
 <meta property="article:tag" content="Identity">
-<meta property="article:tag" content="AD FS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -115,7 +115,7 @@
 みなさんは CAE (Continuous Access Evaluation: 継続的アクセス評価) という機能をご存知でしょうか。2021 年 11 月現在、以下のようなお知らせがあり、目にされた方も多いのではないかと思います。
 
 Microsoft 365 管理ポータルのメッセージ センターに MC255540 (Continuous access evaluation on by default) として情報が公開
-送信元 : Microsoft Azure &#97;&#x7a;&#117;&#x72;&#101;&#x2d;&#x6e;&#111;&#x72;&#x65;&#112;&#x6c;&#x79;&#x40;&#109;&#105;&#x63;&#114;&#x6f;&#x73;&#x6f;&#x66;&#...
+送信元 : Microsoft Azure azure-noreply@microsoft.com から TRACKING ID: 5T93-LTG として以下の件名のメールでお知らせ-&gt; Continuous access evaluation will be enabled in premium A...
         <p class="article-readmore">
           <a href="../../azure-active-directory/cae-overview/">Read more</a>
         </p>
@@ -123,7 +123,7 @@ Microsoft 365 管理ポータルのメッセージ センターに MC255540 (Con
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/cae-overview/" data-id="cmmketdzp013j0nqp6jfw64cs" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/cae-overview/" data-id="cuidWV7YoXO89cTNisMWhBQcH" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li></ul>
@@ -164,7 +164,7 @@ Microsoft 365 管理ポータルのメッセージ センターに MC255540 (Con
     <div class="article-entry" itemprop="articleBody">
       
         こんにちは、Azure &amp; Identity サポート チームの金子です。今回はパスワード ライトバックのしくみと一般的なトラブルシューティングについてご紹介します。
-パスワード ハッシュ同期とパスワード ライトバックの違いとはまず、ユーザーは Azure AD Connect により、オンプレミス AD から Azure AD に同期されていることを前提とします。パスワード ハッシュ同期についてはご存じの方が多いと思いますが、パスワード ハッシュ同期はオンプレミスの認証パスワード (厳密にはパスワード ハッシュ) を Azure AD に同期する機能です。これによりユーザーは同じ ID/パスワードで Office 365 などのクラウド上のアプリにもサインインすることができるようになります。オンプレミス側でパスワードを変更した場合も同様にクラウド側へ同期されますが、逆にクラウド側...
+パスワード ハッシュ同期とパスワード ライトバックの違いとはまず、ユーザーは Azure AD Connect により、オンプレミス AD から Azure AD に同期されていることを前提とします。パスワード ハッシュ同期についてはご存じの方が多いと思いますが、パスワード ハッシュ同期はオンプレミスの認証パスワード (厳密にはパスワード ハッシュ) を Azure AD に同期する機能です。これによりユーザーは同じ ID&#x2F;パスワードで Office 365 などのクラウド上のアプリにもサインインすることができるようになります。オンプレミス側でパスワードを変更した場合も同様にクラウド側へ同期されますが、逆に...
         <p class="article-readmore">
           <a href="../../azure-active-directory-connect/password-writeback-overview/">Read more</a>
         </p>
@@ -172,7 +172,7 @@ Microsoft 365 管理ポータルのメッセージ センターに MC255540 (Con
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/password-writeback-overview/" data-id="cmmketdz4012c0nqp2ulxf8o6" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/password-writeback-overview/" data-id="cuidgf1t4v7H0FlXKpzt_509m" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Password-Writeback/" rel="tag">Password Writeback</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Self-Service-Password-Reset/" rel="tag">Self Service Password Reset</a></li></ul>
@@ -214,8 +214,8 @@ Microsoft 365 管理ポータルのメッセージ センターに MC255540 (Con
       
         こんにちは。 Azure Identity サポート チームです。
 こちらのブログでは、MC246440 にて案内している Azure AD における TLS 1.0 および TLS 1.1 の無効化における Azure AD Connect の対応ついてご案内いたします。
-MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 /1.1 , 3DES 暗号スイート (TLS_RSA_WITH_3DES_EDE_CBC_SHA)  のプロトコルおよび暗号のサポートが終了いたします。それに伴い Azure AD にて 上記プロトコルが無効化されますので、Azure AD Connect でも TLS 1.2 への対応が必要となります。
-重要上記の通り、2021 年 6 月 30 日に TLS 1.0 および TLS 1.1 の無効化を計画しておりましたが、お客...
+MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 &#x2F;1.1 , 3DES 暗号スイート (TLS_RSA_WITH_3DES_EDE_CBC_SHA)  のプロトコルおよび暗号のサポートが終了いたします。それに伴い Azure AD にて 上記プロトコルが無効化されますので、Azure AD Connect でも TLS 1.2 への対応が必要となります。
+重要上記の通り、2021 年 6 月 30 日に TLS 1.0 および TLS 1.1 の無効化を計画しておりまし...
         <p class="article-readmore">
           <a href="../../azure-active-directory-connect/azure-ad-connect-tls/">Read more</a>
         </p>
@@ -223,7 +223,7 @@ MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 /1.1 , 3
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/" data-id="cmmketdp8001s0nqp5gk279ts" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory-connect/azure-ad-connect-tls/" data-id="cuidD0mlPOI7xR_jVlDrVXVBx" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li></ul>
@@ -268,12 +268,12 @@ MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 /1.1 , 3
 新旧画面の比較該当画面 : [Azure Active Directory] &gt; [アプリの登録] &gt; (任意のアプリケーション) &gt; [証明書とシークレット]
 
 
-従来の画面では、有効期限が「1 年」「2 年」「なし (= 無期限)」が選択いただけました。
+従来の画面では、有効期限が「1 年」「2 年」「なし (&#x3D; 無期限)」が選択いただけました。
 
 新しい画面では、1, 12, 18, 24 ヶ月が選択肢として表示されます。
   [カスタム] を選択することで更にきめ細かく開始日と終了日を選択可能です。
 
-開始日 : 現在の日付 ～ 1 年 6 ヶ月後の範囲内を指定します。(現在の日時が 2021/04/2...
+開始日 : 現在の日付 ～ 1 年 6 ヶ月後の範囲内を指定します。(現在の日時が 2021...
         <p class="article-readmore">
           <a href="../../azure-active-directory/azuread-clientsecrets-202104/">Read more</a>
         </p>
@@ -281,7 +281,7 @@ MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 /1.1 , 3
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-clientsecrets-202104/" data-id="cmmketdrg007t0nqpcofpa2mv" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-clientsecrets-202104/" data-id="cuid7HAbm9PDL2u-bYe8ya1dI" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Client-Secrets/" rel="tag">Client Secrets</a></li></ul>
@@ -322,11 +322,11 @@ MC246440 の詳細この度、2021 年 6 月 30 日をもって TLS 1.0 /1.1 , 3
     <div class="article-entry" itemprop="articleBody">
       
         いつも Azure Identity サポート チームのブログを参照いただきましてありがとうございます。
-今回は 日本時間の 3/16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。
+今回は 日本時間の 3&#x2F;16 に発生しました Azure Active Directory の障害について、RCA (Root Cause Analysis) レポートの日本語版の抄訳を紹介します。原文は 状態の履歴および根本原因分析 (RCA) を確認ください。
 日本語版の抄訳の PDF については、以下のリンクよりダウンロード頂けます。
 LN01-P8Z _JP.pdf
 本障害では Azure および Office 365 へのサインインができないことをはじめ、障害の対象となりましたテナントで多大な影響が生じました。改めて、今回の障害により多くのお客様にご迷惑をお掛けしましたことを深くお詫び申し上げます。
-重要下記内容において 2021 年半ばに対応が予定されていた「第 2 フェー...
+重要下記内容において 2021 年半ばに対応が予定されていた「第 ...
         <p class="article-readmore">
           <a href="../../azure-active-directory/20210318-rca-azure-ad/">Read more</a>
         </p>
@@ -334,60 +334,7 @@ LN01-P8Z _JP.pdf
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/20210318-rca-azure-ad/" data-id="cmmketdpm002y0nqpfwox7jay" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-azure-active-directory/support-sevA" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../azure-active-directory/support-sevA/" class="article-date">
-  <time datetime="2021-02-28T15:00:00.000Z" itemprop="datePublished">2021-03-01</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../azure-active-directory/support-sevA/">Azure AD サポートが提供する [深刻度 A の対応について]</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        こんにちは。Azure &amp; Identity サポート チームの関口です。
-今回は、お客様が弊社サポートにお問い合わせする際にご指定いただく「深刻度 (重要度 / 緊急度) A」の詳細について紹介します。本記事は Azure ＆ Identity (Azure AD) サポートを念頭に置いてまとめたものですが、基本的には Azure サポート全般に当てはまります。どのような状況の際に「深刻度 A」での対応となるか、サポートをご利用いただく際の助けになれば幸いです。
-
-
-Azure のサポートでは、深刻度を A ~ C に分類しています。
-通常深刻度 (深刻度 B、もしくは C) は、日本時間の営業時間内 平日 9:00 ～ 17:30 の対応のみ承っています。※ 土日祝日、年末年始、事前に 日本マイクロソフト サポート情報 (aka.ms/JSupport) にてお知らせするサポー...
-        <p class="article-readmore">
-          <a href="../../azure-active-directory/support-sevA/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/support-sevA/" data-id="cmmketdwg00nj0nqp1fo64hob" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/20210318-rca-azure-ad/" data-id="cuidwP0awhYMoHsDDcjAVV2t_" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
@@ -432,8 +379,8 @@ Azure のサポートでは、深刻度を A ~ C に分類しています。
 サポートに関する FAQ | Microsoft AzureAzure のサポート プランの比較 | Microsoft Azure
 
 
-▼ お問い合わせの発行 / 対応終了 / 再オープンについてQ. 問い合わせを発行したテナントと異なるテナントの調査は受け付けてもらえますか？A. 原則受け付けることはできません。
-お客様が発行するお問い合わせはテナ...
+▼ お問い合わせの発行 &#x2F; 対応終了 &#x2F; 再オープンについてQ. 問い合わせを発行したテナントと異なるテナントの調査は受け付けてもらえますか？A. 原則受け付けることはできません。
+お客様が発行す...
         <p class="article-readmore">
           <a href="../../azure-active-directory/support-q-and-a/">Read more</a>
         </p>
@@ -441,7 +388,60 @@ Azure のサポートでは、深刻度を A ~ C に分類しています。
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/support-q-and-a/" data-id="cmmkete16016o0nqp5f9pf84r" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/support-q-and-a/" data-id="cuidbB3kaJu4xmiIrK7sEph8w" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-azure-active-directory/support-sevA" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../azure-active-directory/support-sevA/" class="article-date">
+  <time datetime="2021-02-28T15:00:00.000Z" itemprop="datePublished">2021-03-01</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../azure-active-directory/support-sevA/">Azure AD サポートが提供する [深刻度 A の対応について]</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        こんにちは。Azure &amp; Identity サポート チームの関口です。
+今回は、お客様が弊社サポートにお問い合わせする際にご指定いただく「深刻度 (重要度 &#x2F; 緊急度) A」の詳細について紹介します。本記事は Azure ＆ Identity (Azure AD) サポートを念頭に置いてまとめたものですが、基本的には Azure サポート全般に当てはまります。どのような状況の際に「深刻度 A」での対応となるか、サポートをご利用いただく際の助けになれば幸いです。
+
+
+Azure のサポートでは、深刻度を A ~ C に分類しています。
+通常深刻度 (深刻度 B、もしくは C) は、日本時間の営業時間内 平日 9:00 ～ 17:30 の対応のみ承っています。※ 土日祝日、年末年始、事前に 日本マイクロソフト サポート情報 (aka.ms&#x2F;JSupport) に...
+        <p class="article-readmore">
+          <a href="../../azure-active-directory/support-sevA/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/support-sevA/" data-id="cuidJTK3WUdcEizM2ic0xXj8r" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li></ul>
@@ -493,7 +493,7 @@ Azure のサポートでは、深刻度を A ~ C に分類しています。
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/" data-id="cmmketdry009j0nqpb8ska65k" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/" data-id="cuid9ghAGJFRzg64wX0EvV0gD" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li></ul>
@@ -545,7 +545,7 @@ Azure のサポートでは、深刻度を A ~ C に分類しています。
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/" data-id="cmmketdrz009m0nqp9iodcnp0" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows/" data-id="cuidxYXYc8vZkBnGHYLgJ1Gpz" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li></ul>
@@ -598,7 +598,7 @@ Azure AD Connect などのアカウント同期ソリューションを利用し
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/" data-id="cmmketdwq00of0nqpde3e0kyg" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpazureid.github.io/blog/azure-active-directory/upcoming-changes-to-managing-mfa-methods-for-hybrid-customers/" data-id="cuidEo-Q93tEoLgqmxLqEKoee" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li></ul>

@@ -18,11 +18,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed/userCertificate02.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed/device-list-azure-portal02.png">
 <meta property="article:published_time" content="2020-01-19T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.104Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:45.039Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Azure AD">
-<meta property="article:tag" content="Troubleshooting">
 <meta property="article:tag" content="Hybrid Azure AD Join">
+<meta property="article:tag" content="Troubleshooting">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed/device-list-azure-portal.png">
   
@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -161,7 +161,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5f347a34-b754-5d6f-bb3a-63be7bcfd0e5%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BHybrid+Azure+AD+Join+%E5%A4%B1%E6%95%97%E6%99%82%E3%81%AE%E5%88%9D%E5%8B%95%E8%AA%BF%E6%9F%BB%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+%28%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E7%B7%A8%29%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Ftroubleshoot-hybrid-azure-ad-join-managed%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Ftroubleshoot-hybrid-azure-ad-join-managed.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Ftroubleshoot-hybrid-azure-ad-join-managed.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed/" data-id="cmmkete1b016y0nqp57yiglxk" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed/" data-id="cuidkhIKj-JEpteyBSBS7sArx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -190,7 +190,7 @@
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$scp</span> = <span class="built_in">New-Object</span> System.DirectoryServices.DirectoryEntry</span><br><span class="line"><span class="variable">$scp</span>.Path = <span class="string">&quot;LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=xxxxxxx,DC=xxxxxx&quot;</span></span><br><span class="line"><span class="variable">$scp</span>.Keywords</span><br></pre></td></tr></table></figure>
 
-<p>  DC=xxxxxxx,DC=xxxxxx にはオンプレミス Active Directory のドメイン名 (フォレストに複数ドメインが存在する場合には、フォレスト ルート ドメイン名) を入力します。contoso.com の場合、DC=contoso,DC=com  と入力します。</p>
+<p>  DC&#x3D;xxxxxxx,DC&#x3D;xxxxxx にはオンプレミス Active Directory のドメイン名 (フォレストに複数ドメインが存在する場合には、フォレスト ルート ドメイン名) を入力します。contoso.com の場合、DC&#x3D;contoso,DC&#x3D;com  と入力します。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">例:</span><br><span class="line"></span><br><span class="line"><span class="variable">$scp</span> = <span class="built_in">New-Object</span> System.DirectoryServices.DirectoryEntry</span><br><span class="line"><span class="variable">$scp</span>.Path = <span class="string">&quot;LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=contoso,DC=com &quot;</span></span><br><span class="line"><span class="variable">$scp</span>.Keywords</span><br></pre></td></tr></table></figure>
 
 <p>  これらのコマンドの出力結果として、以下のように Azure AD テナントのドメイン名 (azureADName) とテナント ID (azureADId) の情報が表示されていれば、正常に構成されていると判断できます。<br>  また、マネージドの HAADJ であるため、azureADName は xxxxx.onmicrosoft.com 形式で設定されている必要があります。</p>
@@ -217,7 +217,7 @@
 <p>プロキシを利用してアクセスすることが必要な環境であるのにも関わらず、設定されていない場合、以下のコマンドを実行し、設定します。</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">netsh winhttp <span class="built_in">set</span> proxy proxy-server=&quot;&lt;プロキシー サーバー&gt;:&lt;ポート&gt;&quot; bypass-list=&quot;&lt;バイパスする URL&gt;&quot;</span><br></pre></td></tr></table></figure>
 
-<p>&lt;バイパスする URL&gt; はプロキシ サーバーを介さずにアクセスさせるサーバーの一覧です。必要に応じて指定します。例えばローカルと <em>.test.com へのアクセスにはプロキシを経由させない場合には、 bypass-list=”<local>;</em>.test.com” というような記載を行います。</p>
+<p>&lt;バイパスする URL&gt; はプロキシ サーバーを介さずにアクセスさせるサーバーの一覧です。必要に応じて指定します。例えばローカルと <em>.test.com へのアクセスにはプロキシを経由させない場合には、 bypass-list&#x3D;”<local>;</em>.test.com” というような記載を行います。</p>
 <p>WinHTTP のプロキシー サーバー設定を実施した場合には、以下のタスクを手動で実行します。</p>
 <p>パス : [タスクスケジューラ] – [タスクスケジューラ ライブラリ] – [Microsoft] – [Windows] – [Workplace Join]<br>タスク名 : Automatic-Device-Join</p>
 <p>再度、ドメイン コントローラーで ADSI エディターを利用し、対象のコンピューター オブジェクトの userCertificate に何らかの値が書き込まれたかどうかを確認ください。以下の例は userCertificate に何らかの値が書き込まれた場合です。</p>
@@ -227,8 +227,8 @@
 <h2 id="2-HAADJ-の対象のコンピューター-オブジェクトが保留中の状態"><a href="#2-HAADJ-の対象のコンピューター-オブジェクトが保留中の状態" class="headerlink" title="(2) HAADJ の対象のコンピューター オブジェクトが保留中の状態"></a>(2) HAADJ の対象のコンピューター オブジェクトが保留中の状態</h2><p>HAADJ の対象のコンピューター オブジェクトが Azure AD に登録されているが、Azure ポータルで以下の図の例のように [登録済み] の欄が “保留中” というステータスになっている場合には HAADJ が完了していない状態を疑います。</p>
 <p><img src="/blog/azure-active-directory/troubleshoot-hybrid-azure-ad-join-managed/device-list-azure-portal02.png"></p>
 <p>Azure AD Connect によりコンピューターオブジェクトが、 Azure AD に同期され、その後、クライアントで再度 Automatic-Device-Join タスクが実行されることにより、デバイスの Azure AD への登録 (Hybrid Azure AD Join の処理) が完了します。コンピューター オブジェクトは同期されたものの、最終的な Join 処理が失敗、あるいはタスクが未実行の場合、Azure ポータルではデバイスは上記のように “保留中” という状態になります。</p>
-<p>コンピューター オブジェクトが Azure AD に同期された後に、ユーザーがログオフ/ログオンを実行していない場合タスクはまだ未実行であるため、処理が完了していないのは想定される動作です。そのため、一度ユーザーのログオフ、ログオンにより状態が変わるかをご確認ください。ログオンすることによって、バックグラウンドで Automatic-Device-Join タスクが実行され、最終的な Join 処理が実施されることが期待できるためです。</p>
-<p>もし、ユーザーによるログオフ/ログオンを実施しても、”保留中” の状態が変わらない場合、以下の Azure AD 側のエンドポイントにアクセスできないことが原因として考えられます。</p>
+<p>コンピューター オブジェクトが Azure AD に同期された後に、ユーザーがログオフ&#x2F;ログオンを実行していない場合タスクはまだ未実行であるため、処理が完了していないのは想定される動作です。そのため、一度ユーザーのログオフ、ログオンにより状態が変わるかをご確認ください。ログオンすることによって、バックグラウンドで Automatic-Device-Join タスクが実行され、最終的な Join 処理が実施されることが期待できるためです。</p>
+<p>もし、ユーザーによるログオフ&#x2F;ログオンを実施しても、”保留中” の状態が変わらない場合、以下の Azure AD 側のエンドポイントにアクセスできないことが原因として考えられます。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://enterpriseregistration.windows.net</span><br><span class="line">https://login.microsoftonline.com</span><br><span class="line">https://device.login.microsoftonline.com</span><br></pre></td></tr></table></figure>
 
 <p>このため、”(1-3) HAADJ に必要な Azure AD のエンドポイントへアクセスできていない” の項を参照の上、 winHTTP プロキシの設定が行われているか確認ください。</p>
@@ -243,7 +243,7 @@
 </ul>
 <p>PRT を正常に取得できているか (HAADJ が正しく完了しているか) は以下の確認事項をご覧ください。</p>
 <h3 id="3-1-本ブログにある-1-および-2-の事象が発生していない"><a href="#3-1-本ブログにある-1-および-2-の事象が発生していない" class="headerlink" title="(3-1) 本ブログにある (1) および (2) の事象が発生していない"></a>(3-1) 本ブログにある (1) および (2) の事象が発生していない</h3><p>上記の (1) および (2) を参照ください。</p>
-<h3 id="3-2-Azure-AD-に同期されているオンプレミスの-Active-Directory-のユーザーで端末にログオンする"><a href="#3-2-Azure-AD-に同期されているオンプレミスの-Active-Directory-のユーザーで端末にログオンする" class="headerlink" title="(3-2) Azure AD に同期されているオンプレミスの Active Directory のユーザーで端末にログオンする"></a>(3-2) Azure AD に同期されているオンプレミスの Active Directory のユーザーで端末にログオンする</h3><p>コマンド プロンプトを起動し、dsregcmd /status コマンドを実行します。dsregcmd コマンドにはほかにもたくさんの出力の情報がありますが、まずは以下の項目をご確認ください。</p>
+<h3 id="3-2-Azure-AD-に同期されているオンプレミスの-Active-Directory-のユーザーで端末にログオンする"><a href="#3-2-Azure-AD-に同期されているオンプレミスの-Active-Directory-のユーザーで端末にログオンする" class="headerlink" title="(3-2) Azure AD に同期されているオンプレミスの Active Directory のユーザーで端末にログオンする"></a>(3-2) Azure AD に同期されているオンプレミスの Active Directory のユーザーで端末にログオンする</h3><p>コマンド プロンプトを起動し、dsregcmd &#x2F;status コマンドを実行します。dsregcmd コマンドにはほかにもたくさんの出力の情報がありますが、まずは以下の項目をご確認ください。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AzureAdJoined : YES &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; AzureAdJoined は YES になっており、Azure AD に正常に Join していると判断できます</span><br><span class="line">DomainJoined : YES &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; DomainJoined は YES になっており、正常にオンプレミスの Active Directory に参加していると判断できます</span><br><span class="line">AzureAdPrt : NO &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; AzureAdPrt は NO になっている場合、PRT を正常に取得できていないと判断できます</span><br></pre></td></tr></table></figure>
 
 <p>PRT を正常に取得できない場合の一般的な要因はユーザーのログオン タイミングで以下の Azure AD 側のエンドポイントにアクセスできないことが考えられます。まずは、”(1-3) HAADJ に必要な Azure AD のエンドポイントへアクセスできていない” の対応をご参照ください。</p>

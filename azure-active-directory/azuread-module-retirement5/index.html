@@ -6,12 +6,12 @@
   
   <title>MSOnline / AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、 Azure Identity サポート チームの三輪です。 この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。 1_概要編2_移行導入編3_インストール・接続編4_ユーザー管理 5 回目となる今回は、グループ管理についてご紹介します。 まだモジュールをインストールしていない場合や、 Connect-MgGraph コマン">
+  <meta name="description" content="こんにちは、 Azure Identity サポート チームの三輪です。 この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。 1_概要編2_移行導入編3_インストール・接続編4_ユーザー管理 5 回目となる今回は、グループ管理についてご紹介します。 まだモジュールをインストールしていない場合や、 Connect-MgGrap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MSOnline &#x2F; AzureAD PowerShell から Graph PowerShell SDK への移行について 5_グループ管理">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、 Azure Identity サポート チームの三輪です。 この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。 1_概要編2_移行導入編3_インストール・接続編4_ユーザー管理 5 回目となる今回は、グループ管理についてご紹介します。 まだモジュールをインストールしていない場合や、 Connect-MgGraph コマン">
+<meta property="og:description" content="こんにちは、 Azure Identity サポート チームの三輪です。 この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。 1_概要編2_移行導入編3_インストール・接続編4_ユーザー管理 5 回目となる今回は、グループ管理についてご紹介します。 まだモジュールをインストールしていない場合や、 Connect-MgGrap">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/azuread-module-retirement5-1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/azuread-module-retirement5-2.png">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/azuread-module-retirement5-10.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/mgusermemberofasgroup.png">
 <meta property="article:published_time" content="2023-03-12T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:20.181Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.119Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="PowerShell">
 <meta property="article:tag" content="Microsoft Graph">
+<meta property="article:tag" content="PowerShell">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/azuread-module-retirement5-1.png">
   
@@ -50,7 +50,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -167,13 +167,13 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9ebb1cc6-e7be-5187-a85e-cc3e65a650f8%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMSOnline+%2F+AzureAD+PowerShell+%E3%81%8B%E3%82%89+Graph+PowerShell+SDK+%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+5_%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E7%AE%A1%E7%90%86%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fazuread-module-retirement5%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fazuread-module-retirement5.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fazuread-module-retirement5.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/" data-id="cmmketdrj00830nqp5o7yeoxg" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement5/" data-id="cuidU1jKKnz_lj258U3KZGzsk" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>こんにちは、 Azure Identity サポート チームの三輪です。</p>
-<p>この記事は、MSOnline / AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。</p>
+<p>この記事は、MSOnline &#x2F; AzureAD モジュール廃止について、下記シリーズの続きとして連載しています。</p>
 <p><a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement1/">1_概要編</a><br><a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement2/">2_移行導入編</a><br><a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement3/">3_インストール・接続編</a><br><a href="https://jpazureid.github.io/blog/azure-active-directory/azuread-module-retirement4/">4_ユーザー管理</a></p>
 <p>5 回目となる今回は、グループ管理についてご紹介します。</p>
 <p>まだモジュールをインストールしていない場合や、 Connect-MgGraph コマンドを使用した接続方法が分からない場合などは、本シリーズの 2 と 3 をご確認ください。</p>
@@ -258,7 +258,7 @@
 <p>以下の公開情報も併せてご確認ください。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/get-mggroupmember?view=graph-powershell-1.0">Get-MgGroupMember (Microsoft.Graph.Groups) | Microsoft Learn</a>  </li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/group-list-members?view=graph-rest-1.0&tabs=powershell">メンバーを一覧表示する - Microsoft Graph v1.0 | Microsoft Learn</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/group-list-members?view=graph-rest-1.0&tabs=powershell">メンバーを一覧表示する - Microsoft Graph v1.0 | Microsoft Learn</a></li>
 </ul>
 <p>※ Get-MgGroupMember コマンドで取得できるのは、グループのダイレクト メンバーの一覧です。入れ子になったグループ内メンバーを含むすべてのメンバーを推移的に取得したい場合には、Get-MgGroupTransitiveMember を使用します。</p>
 <ul>
@@ -284,7 +284,7 @@
 <p>以下の公開情報も併せてご確認ください。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/new-mggroupmember?view=graph-powershell-1.0">New-MgGroupMember (Microsoft.Graph.Groups) | Microsoft Docs</a>  </li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/group-post-members?view=graph-rest-1.0&tabs=http">メンバーを追加する - Microsoft Graph v1.0 | Microsoft Learn</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/group-post-members?view=graph-rest-1.0&tabs=http">メンバーを追加する - Microsoft Graph v1.0 | Microsoft Learn</a></li>
 </ul>
 <h3 id="idx3-2">グループ メンバーの削除</h3>
 
@@ -295,7 +295,7 @@
 <p>以下の公開情報も併せてご確認ください。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/remove-mggroupmemberdirectoryobjectbyref?view=graph-powershell-1.0">Remove-MgGroupMemberDirectoryObjectByRef (Microsoft.Graph.Groups) | Microsoft Learn</a>  </li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/group-delete-members?view=graph-rest-1.0&tabs=http">メンバーを削除する - Microsoft Graph v1.0 | Microsoft Learn</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/graph/api/group-delete-members?view=graph-rest-1.0&tabs=http">メンバーを削除する - Microsoft Graph v1.0 | Microsoft Learn</a></li>
 </ul>
 <h2 id="idx4">4. 特定のユーザーが所属するグループ一覧の取得</h2>
 

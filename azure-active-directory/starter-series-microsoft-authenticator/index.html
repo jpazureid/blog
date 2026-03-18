@@ -21,11 +21,11 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/blog6_passkey1.png">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/blog7_passkey2.png">
 <meta property="article:published_time" content="2025-09-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-10T09:30:21.056Z">
+<meta property="article:modified_time" content="2026-03-18T01:53:44.990Z">
 <meta property="article:author" content="Azure Identity Support Japan">
-<meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="MFA">
 <meta property="article:tag" content="Microsoft Authenticator">
+<meta property="article:tag" content="Microsoft Entra">
 <meta property="article:tag" content="Starter series">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/blog1.png">
@@ -48,7 +48,7 @@
 <link rel="stylesheet" href="../../css/style.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -165,7 +165,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+da0dbcb9-aa7a-5305-bf23-43be925528ee%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BEntra+ID+%E5%88%9D%E5%AD%A6%E8%80%85%E5%90%91%E3%81%91%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA+%E7%AC%AC+3+%E5%BC%BE+-+Microsoft+Authenticator+%E3%82%A2%E3%83%97%E3%83%AA%E5%85%A5%E9%96%80%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fstarter-series-microsoft-authenticator%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fstarter-series-microsoft-authenticator.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fstarter-series-microsoft-authenticator.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/" data-id="cmmketdwa00n10nqpggvkb5uq" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/" data-id="cuidIT9V10uAvPbIG20qZFL7Q" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -204,7 +204,7 @@
 </ul>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-authentication-authenticator-app">Microsoft Authenticator の認証方法 - Microsoft Entra ID | Microsoft Learn</a></p>
 <p>これらを従来の SMS や音声通話と比較しながら、以下に解説していきます。現在 SMS や音声通話による MFA を利用されている方は、まずプッシュ通知による MFA の利用をぜひ検討ください。すでにプッシュ通知による MFA を利用しているお客様は、ぜひパスキーによるパスワードレス認証を検討ください。</p>
-<h3 id="Good-パスワード-SMS-音声通話"><a href="#Good-パスワード-SMS-音声通話" class="headerlink" title="Good: パスワード + SMS/音声通話"></a>Good: パスワード + SMS/音声通話</h3><p>SMS や音声通話は MFA の方法として依然として多くのお客様に利用されている一方で、安全性が低い方式です。これらの方式は公衆交換電話網 (PSTN) を利用しており、通信の盗聴などのリスクが存在します。 そのため、Microsoft では SMS や音声通話による認証は、アカウント回復時のバックアップとして使用することは認めつつも、より安全な認証手段への移行を推奨しています。</p>
+<h3 id="Good-パスワード-SMS-音声通話"><a href="#Good-パスワード-SMS-音声通話" class="headerlink" title="Good: パスワード + SMS&#x2F;音声通話"></a>Good: パスワード + SMS&#x2F;音声通話</h3><p>SMS や音声通話は MFA の方法として依然として多くのお客様に利用されている一方で、安全性が低い方式です。これらの方式は公衆交換電話網 (PSTN) を利用しており、通信の盗聴などのリスクが存在します。 そのため、Microsoft では SMS や音声通話による認証は、アカウント回復時のバックアップとして使用することは認めつつも、より安全な認証手段への移行を推奨しています。</p>
 <p>詳しくは以下のブログをご参照ください: <a href="https://jpazureid.github.io/blog/azure-active-directory/it-s-time-to-hang-up-on-phone-transports-for-authentication/">認証に電話網を使うのはそろそろやめよう</a></p>
 <p>SMS や音声通話を MFA で利用されているお客様に置かれましては、ぜひ Microsoft Authenticator アプリを活用した「Better」および「Best」な認証方式に移行ください。ここからは、これら「Better」および「Best」な認証方式について紹介します。</p>
 <h3 id="Better-プッシュ通知による-MFA"><a href="#Better-プッシュ通知による-MFA" class="headerlink" title="Better: プッシュ通知による MFA"></a>Better: プッシュ通知による MFA</h3><p>この方式は、パスワードで認証した後に Microsoft Authenticator アプリにプッシュ通知が届き、アプリ側でその通知を承認することで認証を完了する仕組みです。信頼性の低い電話網を利用する SMS や音声通話に対し、暗号化された通信を使用することで、通信経路の安全性を確保しています。また、大量の認証リクエストをユーザーに送るなどして、ユーザーに誤って承認させる手法 (MFA 疲労攻撃) への対策として、「数値の一致」機能や「アプリケーション名の表示」機能、「地理的な場所の表示」機能が導入されています。  </p>
