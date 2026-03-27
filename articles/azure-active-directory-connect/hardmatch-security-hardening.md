@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra Connect のハードマッチの動作変更について
-date: 2026-03-25 09:00:00
+date: 2026-03-30 09:00:00
 tags:
   - Microsoft Entra Connect
 ---
@@ -128,7 +128,7 @@ Set-ADSyncScheduler -SyncCycleEnabled $true
 
 <span style="color: red; ">A:</span> 
 今回の変更は Microsoft Entra ID のサービス側で行われる変更となり、OnPremisesObjectIdentifier 属性の検証はハードマッチ操作時にサービス側で実施されるため、MEC のバージョンには依存しません。
-特に MEC のアップグレードは必要なく、2026 年  7 月 1 日以降、全ての MEC バージョンに適用されます。
+特に MEC のアップグレードは必要なく、2026 年  7 月 1 日以降、全てのサポートされている MEC バージョンに適用されます。
 
 ---
 ### <span style="color: blue; ">Q:</span> OnPremisesObjectIdentifier 属性が空であるかを検証してハードマッチする新しい動作を停止することはできますか？
