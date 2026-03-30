@@ -1,6 +1,6 @@
 ---
 title: Microsoft Entra Connect のハードマッチの動作変更について
-date: 2026-03-30 09:00:00
+date: 2026-03-30 12:00:00
 tags:
   - Microsoft Entra Connect
 ---
@@ -217,6 +217,17 @@ mS-DS-ConsistencyGUID を sourceAnchor としている場合、 mS-DS-Consistenc
 そのため、 mS-DS-ConsistencyGUID に意図的に別の値を入力した状態で同期しない限りは mS-DS-ConsistencyGUID と onPremisesObjectIdentifier は一致します。一致しない場合は、ハードマッチを用いた可能性があると判断可能です。
  
 ---
+### <span style="color: blue; ">Q:</span> 
+以下のような MC が通知されました。本ブログでは管理者ユーザーのハードマッチについて言及がありませんが、この MC1262584 は本ブログと関連がありますか？
+
+MC1262584
+Upcoming change – Microsoft Entra Connect security update to block hard match for users with Microsoft Entra roles
+ 
+<span style="color: red; ">A:</span>
+MC1262584 は、管理者ロールを持つクラウドユーザーを標的としたハードマッチの試みをブロックするというもので、本ブログの内容とは別の通知となります。
+ 
+---
+
 
 ## 3.参考資料
 
