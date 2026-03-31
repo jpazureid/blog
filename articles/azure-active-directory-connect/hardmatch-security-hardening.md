@@ -9,7 +9,7 @@ tags:
 
 こんにちは、 Azure Identity サポート チームの新倉です。
 
-公開情報「Microsoft Entra のリリースとお知らせ」にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Connect (以下 MEC) のハードマッチの動作が変更されることが通知されました。
+公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Connect (以下 MEC) のハードマッチの動作が変更されることが通知されました。
 
 公開情報　
 [Microsoft Entra のリリースとお知らせ - 一般提供 - ユーザー アカウントの引き継ぎを防ぐための Microsoft Entra Connect セキュリティ強化](https://learn.microsoft.com/ja-jp/entra/fundamentals/whats-new#general-availability---microsoft-entra-connect-security-hardening-to-prevent-user-account-takeover)
@@ -204,8 +204,7 @@ Update-MgBetaDirectoryOnPremiseSynchronization -OnPremisesDirectorySynchronizati
 はい、この手順も同様に OnPremisesObjectIdentifier 属性を空にする必要がありますので、その点を追記する予定です。
 
 ---
-### <span style="color: blue; ">Q:</span> 
-ハードマッチによって同期元が切り替わったユーザーを確認する方法はありますか？
+### <span style="color: blue; ">Q:</span> ハードマッチによって同期元が切り替わったユーザーを確認する方法はありますか？
  
 <span style="color: red; ">A:</span>
 いいえ、確認することはできません。
@@ -217,8 +216,7 @@ mS-DS-ConsistencyGUID を sourceAnchor としている場合、 mS-DS-Consistenc
 そのため、 mS-DS-ConsistencyGUID に意図的に別の値を入力した状態で同期しない限りは mS-DS-ConsistencyGUID と onPremisesObjectIdentifier は一致します。一致しない場合は、ハードマッチを用いた可能性があると判断可能です。
  
 ---
-### <span style="color: blue; ">Q:</span> 
-以下のような MC が通知されました。本ブログでは管理者ユーザーのハードマッチについて言及がありませんが、この MC1262584 は本ブログと関連がありますか？
+### <span style="color: blue; ">Q:</span> 以下のような MC が通知されました。本ブログでは管理者ユーザーのハードマッチについて言及がありませんが、この MC1262584 は本ブログと関連がありますか？
 
 MC1262584
 Upcoming change – Microsoft Entra Connect security update to block hard match for users with Microsoft Entra roles
