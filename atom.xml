@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-04-02T09:10:02.417Z</updated>
+  <updated>2026-04-06T00:19:24.737Z</updated>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -27,14 +27,14 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-04-02T09:10:02.417Z</updated>
+    <updated>2026-04-06T00:19:24.737Z</updated>
   </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
     </author>
-    <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
     <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
+    <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
     <category term="US Identity Blog" scheme="https://jpazureid.github.io/blog/tags/US-Identity-Blog/"/>
     <content>
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925">Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p><div class="alert is-info"><p class="alert-title">Note</p><p>2026&#x2F;03&#x2F;18 更新: 原文が更新された点を反映しました。展開開始日が 2026 年 3 月 27 日から 2026 年 5 月 13 日に変更されました。</p></div><hr><h2 id="Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"><a href="#Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。" class="headerlink" title="Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"></a>Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。</h2><p><a href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266">Microsoft セキュア フューチャー イニシアティブ</a> に基づき、多層防御のための以下のプロアクティブなセキュリティ対策を実施します。変更内容を確認し、必要な準備を実施ください。</p><h2 id="何が変更されるのか"><a href="#何が変更されるのか" class="headerlink" title="何が変更されるのか"></a>何が変更されるのか</h2><ul><li><strong>現在</strong>、クライアント アプリケーションが <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc#openid-connect-scopes">OIDC スコープ</a> または <a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">限定的なディレクトリ スコープ</a> <strong>のみ</strong> を要求してユーザーがサインインした場合、<strong>ポリシーに 1 つ以上の除外となるリソースが含まれていると</strong>、「すべてのリソース」を対象とする条件付きアクセス ポリシーは、そのサインインに対して適用されません。</li><li>この変更後は、リソースの除外が設定されている場合でも、これらのサインインに対して「すべてのリソース」を対象とする条件付きアクセスポリシーが適用されます。これにより、アプリケーションによって要求されたスコープに関係なく、ポリシーが一貫して適用されるようになります。<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=usage-and-insights-report#new-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">この変更の詳細についてはこちらをご覧ください</a>。</li></ul><h2 id="この変更はいつ反映されるか"><a href="#この変更はいつ反映されるか" class="headerlink" title="この変更はいつ反映されるか"></a>この変更はいつ反映されるか</h2><p>展開スケジュールが調整され、展開は 2026 年 5 月 13 日から開始されます。円滑な移行を支援するため、<strong>Microsoft 365 メッセージセンター</strong>のメッセージを通じて追加情報やガイダンスが提供されます。</p><h2 id="この変更の影響を受けるのは誰か"><a href="#この変更の影響を受けるのは誰か" class="headerlink" title="この変更の影響を受けるのは誰か"></a>この変更の影響を受けるのは誰か</h2><p>この変更は、<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">「すべてのリソース」を対象とし、かつ 1 つ以上のリソース除外を含む</a> 条件付きアクセス ポリシーを設定しているテナントにのみ影響します。これらのテナントには、<a href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージセンター</a> を通じて通知が行われます。この構成のポリシーを持たないテナントには影響はありません。</p><h2 id="この変更はお客様の組織にどのような影響を与えるか"><a href="#この変更はお客様の組織にどのような影響を与えるか" class="headerlink" title="この変更はお客様の組織にどのような影響を与えるか"></a>この変更はお客様の組織にどのような影響を与えるか</h2><p>ユーザーが上記のスコープのみを要求するクライアント アプリケーションを通じてサインインする場合、これまでは適用されずにアクセスできていた状況でも、今回の変更により条件付きアクセスのチャレンジ（MFA やデバイス準拠など）が求められる可能性があります。具体的にどのような制御が要求されるかは、「すべてのリソース」を対象とするポリシー、またはリソースとして Azure AD Graph を明示的に対象とするポリシーに設定されているアクセス制御の内容に依存します。</p><h2 id="何を準備する必要があるか"><a href="#何を準備する必要があるか" class="headerlink" title="何を準備する必要があるか"></a>何を準備する必要があるか</h2><h4 id="ほとんどのお客様-特に対応は不要です"><a href="#ほとんどのお客様-特に対応は不要です" class="headerlink" title="ほとんどのお客様: 特に対応は不要です"></a>ほとんどのお客様: 特に対応は不要です</h4><p>ほとんどのアプリケーションは、上記のスコープ以外に追加のスコープを要求しており、すでに条件付きアクセスの適用対象となっています。このような場合、動作に変更はありません。また、アプリケーションが条件付きアクセスの要求を適切に処理できるようにするため、更新が必要となる可能性がある主要なソフトウェア ベンダーと協力して対応を進めています。</p><h4 id="テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨"><a href="#テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨" class="headerlink" title="テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨"></a>テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨</h4><p>上記のスコープ <strong>のみ</strong> を要求するよう意図的に設計されたカスタム アプリケーションがある場合、それらのアプリが MFA やデバイス準拠などの条件付きアクセスの制御に対応できるかどうかを評価ください。<strong>すでに条件付きアクセスの制御に対応している場合</strong> は特に変更は不要です。<strong>対応していない場合は</strong> 更新が必要になる可能性があります。アプリケーションを適切に更新する方法については、<a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a> を参照ください。</p><p>-Swaroop Krishnamurthy</p><h2 id="補足リソース"><a href="#補足リソース" class="headerlink" title="補足リソース"></a>補足リソース</h2><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース</a> </li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc">Microsoft ID プラットフォームでのスコープとアクセス許可</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/troubleshoot-conditional-access#audience-reporting">条件付きアクセスでのサインインに関する問題のトラブルシューティング</a></li><li></li></ul>]]>
@@ -46,7 +46,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-04-02T09:10:03.573Z</updated>
+    <updated>2026-04-06T00:19:25.928Z</updated>
   </entry>
   <entry>
     <author>
@@ -65,7 +65,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-04-02T09:10:02.725Z</updated>
+    <updated>2026-04-06T00:19:25.055Z</updated>
   </entry>
   <entry>
     <author>
@@ -85,7 +85,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-04-02T09:10:02.868Z</updated>
+    <updated>2026-04-06T00:19:25.203Z</updated>
   </entry>
   <entry>
     <author>
@@ -104,7 +104,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-04-02T09:10:02.553Z</updated>
+    <updated>2026-04-06T00:19:24.880Z</updated>
   </entry>
   <entry>
     <author>
@@ -122,7 +122,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-04-02T09:10:03.043Z</updated>
+    <updated>2026-04-06T00:19:25.379Z</updated>
   </entry>
   <entry>
     <author>
@@ -141,7 +141,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-04-02T09:10:03.425Z</updated>
+    <updated>2026-04-06T00:19:25.775Z</updated>
   </entry>
   <entry>
     <author>
@@ -160,7 +160,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-04-02T09:10:02.414Z</updated>
+    <updated>2026-04-06T00:19:24.734Z</updated>
   </entry>
   <entry>
     <author>
@@ -179,7 +179,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-04-02T09:10:03.615Z</updated>
+    <updated>2026-04-06T00:19:25.971Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,14 +198,14 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-04-02T09:10:03.129Z</updated>
+    <updated>2026-04-06T00:19:25.467Z</updated>
   </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
     </author>
-    <category term="AD FS" scheme="https://jpazureid.github.io/blog/tags/AD-FS/"/>
     <category term="Microsoft Entra Connect" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-Connect/"/>
+    <category term="AD FS" scheme="https://jpazureid.github.io/blog/tags/AD-FS/"/>
     <content>
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。</p><p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フェデレーションの管理」の項目を用いて AD FS を構成しますが、この構成の際、以下の画面のとおり MSIS7612 エラーが発生し AD FS の構成に失敗することがあります。このエラーが発生すると、その時の IssuerUri (クレーム ルール) の設定値次第ではフェデレーションの信頼関係が崩れ、フェデレーション ユーザーの認証にも影響が生じます。本ブログではこのエラーについて説明します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-01.jpg" alt="MEC で AD FS の構成に失敗し MSIS7612 エラーが表示された画面"></p><h2 id="MSIS7612-とは"><a href="#MSIS7612-とは" class="headerlink" title="MSIS7612 とは"></a>MSIS7612 とは</h2><p>MSIS7612 は AD FS の証明書利用者信頼を構成する際に指定した各識別子のいずれかが、すでに AD FS で構成済みの証明書利用者信頼で既に利用されている (重複している) 際に表示されるエラーです。各識別子は AD FS 上での重複は許されず一意である必要があります。</p><h2 id="MEC-で-MSI7612-が記録されるパターン"><a href="#MEC-で-MSI7612-が記録されるパターン" class="headerlink" title="MEC で MSI7612 が記録されるパターン"></a>MEC で MSI7612 が記録されるパターン</h2><p>以下の条件が重なっている場合に、MEC のウィザードから Microsoft Entra ID 用の証明書利用者信頼を更新しようとすると MSIS7612 エラーが発生します。</p><ul><li>AD FS を利用しており、すでに Microsoft Entra ID 用の証明書利用者信頼を構成している。</li><li>AD FS 上の Microsoft Entra ID 用の証明書利用者信頼の表示名が「Microsoft Office 365 ID プラットフォーム Worldwide」以外となっている (例: 「Microsoft Office 365 Identity Platform」や「Microsoft Office 365 Identity Platform Worldwide」など)。</li><li>MEC で AD FS を管理している。 </li><li>MEC をインストールしている Windows Server の OS の言語設定を英語以外の言語 (日本語) にしている。 </li><li>MEC を最新版にアップグレードした。</li></ul><h2 id="MEC-で-MSI7612-が記録される理由"><a href="#MEC-で-MSI7612-が記録される理由" class="headerlink" title="MEC で MSI7612 が記録される理由"></a>MEC で MSI7612 が記録される理由</h2><p>MEC で Microsoft Entra ID 用の証明書利用者信頼を更新しようとした場合、MEC は AD FS に対して証明書利用者信頼の有無を検索します。この検索の際には証明書利用者信頼の表示名も利用します。しかしながら、MEC がこの検索に利用する証明書利用者信頼の表示名は OS の言語設定に依存して変わる動作になっています。MEC は、日本語環境の場合は「Microsoft Office 365 ID プラットフォーム Worldwide」という表示名で証明者利用者信頼を検索します。</p><p>既に AD FS 上で構成されている Microsoft Entra ID 用の証明書利用者信頼の表示名が「Microsoft Office 365 Identity Platform」もしくは「Microsoft Office 365 Identity Platform Worldwide」の場合、MEC が検索に使用する表示名である「Microsoft Office 365 ID プラットフォーム Worldwide」とは名前が異なるため、MEC は証明書利用者信頼がまだ AD FS 上に構成されていないと誤認します。この結果、MEC は新たに Microsoft Entra ID 用の証明書利用者信頼を AD FS 上に構成しようとします。実際には Microsoft Entra ID 用の証明書利用者信頼は構成済みであるため、識別子の重複が検出されます。その結果 MSIS7612 が記録されます。</p><h2 id="MEC-で-MSI7612-が記録された際の影響"><a href="#MEC-で-MSI7612-が記録された際の影響" class="headerlink" title="MEC で MSI7612 が記録された際の影響"></a>MEC で MSI7612 が記録された際の影響</h2><p>この MSIS7612 が表示された場合、MEC によりすでに Microsoft Entra ID 側のフェデレーション構成のアップデートが行われ、その後の AD FS 側の更新処理が失敗したという状況です。つまり Microsoft Entra ID 側のフェデレーション構成は更新されたが AD FS 側は未更新という状況のため、Microsoft Entra ID 上の IssuerUri の値と AD FS によって発行される IssuerUri の値に不一致が生じる可能性があります。これらの値が不一致となった場合、フェデレーション信頼の構成が崩れ、結果としてそのドメインをもつユーザーがフェデレーション認証する際に AADSTS50107 エラーが発生し、ユーザーは Microsoft Entra ID へのサインインに失敗するようになります。</p><h2 id="MEC-で-MSI7612-を回避する方法"><a href="#MEC-で-MSI7612-を回避する方法" class="headerlink" title="MEC で MSI7612 を回避する方法"></a>MEC で MSI7612 を回避する方法</h2><p>MEC をインストールしている Windows Server OS の言語設定を日本語にしている場合は、AD FS 上の Microsoft Entra ID 用の証明書利用者信頼の表示名を「Microsoft Office 365 ID プラットフォーム Worldwide」に変更することで MEC での証明書利用者信頼を更新が可能になります (大文字、小文字、スペースの位置、カタカナ部分などは変えずにまったく同じ文字列にしてください)。表示名の変更手順は以下のとおりです。</p><ol><li><p>AD FS サーバーにて [AD FS の管理] を起動します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-02.jpg" alt="AD FS の管理"></p></li><li><p>[証明書利用者信頼] 内の [Microsoft Office 365 Identity Platform (Worldwide)] を右クリックし [プロパティ] を選択します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-03.jpg" alt="証明書利用者信頼のプロパティ"></p></li><li><p>[識別子] タブ内の [表示名] を「Microsoft Office 365 ID プラットフォーム Worldwide」に変更し [OK] を選択します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-04.jpg" alt="識別子の表示名を変更"></p></li></ol><h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>本記事では Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する事象とその対処方法について紹介しました。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。</p>]]>
     </content>
@@ -217,7 +217,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-04-02T09:10:02.414Z</updated>
+    <updated>2026-04-06T00:19:24.734Z</updated>
   </entry>
   <entry>
     <author>
@@ -237,7 +237,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-04-02T09:10:03.521Z</updated>
+    <updated>2026-04-06T00:19:25.875Z</updated>
   </entry>
   <entry>
     <author>
@@ -258,7 +258,7 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-04-02T09:10:03.510Z</updated>
+    <updated>2026-04-06T00:19:25.864Z</updated>
   </entry>
   <entry>
     <author>
@@ -277,7 +277,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
     </summary>
     <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-04-02T09:10:02.888Z</updated>
+    <updated>2026-04-06T00:19:25.223Z</updated>
   </entry>
   <entry>
     <author>
@@ -296,7 +296,7 @@
 <p>本記事は、2025 年 8 月 22 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommun]]>
     </summary>
     <title>パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access</title>
-    <updated>2026-04-02T09:10:03.122Z</updated>
+    <updated>2026-04-06T00:19:25.460Z</updated>
   </entry>
   <entry>
     <author>
@@ -315,7 +315,7 @@
 <p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunit]]>
     </summary>
     <title>Microsoft Defender for Identity のシグナルが Microsoft Entra ID の推奨事項に統合</title>
-    <updated>2026-04-02T09:10:02.815Z</updated>
+    <updated>2026-04-06T00:19:25.148Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +334,7 @@
 <p>2025 年 10 月 1 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Cod]]>
     </summary>
     <title>MFA 義務付け (フェーズ 2) の開始</title>
-    <updated>2026-04-02T09:10:03.367Z</updated>
+    <updated>2026-04-06T00:19:25.717Z</updated>
   </entry>
   <entry>
     <author>
@@ -354,7 +354,7 @@
 <p>本記事は、2025 年 8 月 13 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.mic]]>
     </summary>
     <title>一般提供開始: Microsoft Entra ID による macOS 向けプラットフォーム SSO</title>
-    <updated>2026-04-02T09:10:03.350Z</updated>
+    <updated>2026-04-06T00:19:25.699Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,7 +372,7 @@
 <p>本記事は、2025 年 7 月 21 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.mi]]>
     </summary>
     <title>紐づけ可能なトークンの識別子を用いて ID にまつわる脅威の検出と対応を強化</title>
-    <updated>2026-04-02T09:10:03.525Z</updated>
+    <updated>2026-04-06T00:19:25.879Z</updated>
   </entry>
   <entry>
     <author>
@@ -391,6 +391,6 @@
 <p>本記事は、2025 年 6 月 10 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Entra 条件付きアクセスにおける新しいポリシー強化ツール</title>
-    <updated>2026-04-02T09:10:03.336Z</updated>
+    <updated>2026-04-06T00:19:25.685Z</updated>
   </entry>
 </feed>
