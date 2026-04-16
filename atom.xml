@@ -10,7 +10,26 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-04-06T00:19:24.737Z</updated>
+  <updated>2026-04-16T10:00:56.573Z</updated>
+  <entry>
+    <author>
+      <name>Azure Identity Support Japan</name>
+    </author>
+    <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
+    <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
+    <category term="Audit Logs" scheme="https://jpazureid.github.io/blog/tags/Audit-Logs/"/>
+    <content>
+      <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を行ったときに記録されるデータ量が多くなる場合、更新操作は 1 回のみであるにもかかわらず、監査ログ上では「Update policy」という同一のアクティビティが、複数件連続して記録されることがあります。<br>この事象が発生すると、Microsoft Entra 管理センター上で個々の監査ログを確認しても、実際にポリシーのどの設定がどのように変更されたのかを判別しにくい状態になります。<br>本記事では、この事象の内容と対処方法について解説します。</p><h2 id="観測される挙動"><a href="#観測される挙動" class="headerlink" title="観測される挙動"></a>観測される挙動</h2><p>例として指定するターゲット リソースが多い条件付きアクセス ポリシーに対して変更を行うと、1 回の更新操作に対して「Update policy」の監査ログが複数件、生成される場合があります。<br>参考までに弊社検証環境における動作として、条件付きアクセスの対象ターゲット リソースを約 480 個指定したうえでターゲット リソースの更新を行ったところ、1 回の更新操作に対して「Update policy」の監査ログが 5 件生成される挙動を確認しました。<br>これらのログは、同一の日時、同一のターゲット、同一の開始者 (アクター) で連続して記録されており、見た目上は「複数回更新が行われた」ように見える点が特徴です。</p><p><img src="/blog/azure-active-directory/long-audit-log-split-behavior/audit-log-screenshot.png"></p><p>しかしながら、これらのログを 1 つずつ確認すると、複数回の更新が行われたのではなく 1 回の更新が複数の監査ログ レコードに分割されて記録されていることに気づきます。<br>このとき、通常は変更内容が表示される「変更されたプロパティ」タブが空で表示されますが、これは変更が行われていないことを示すものではありません。分割された監査ログ レコードを総合して変更内容を確認する必要があります。</p><h2 id="なぜ監査ログが分割されるのか"><a href="#なぜ監査ログが分割されるのか" class="headerlink" title="なぜ監査ログが分割されるのか"></a>なぜ監査ログが分割されるのか</h2><p>通常、条件付きアクセス ポリシーに設定されているターゲット リソースの数が比較的少ない場合には、ポリシー更新時の変更内容は 1 件の監査ログ レコードに記録されます。<br>一方で、条件付きアクセス ポリシーに対して数百件規模のターゲット リソースを指定している場合、更新時に記録されるデータ量 (アプリケーション GUID などを含む JSON データ) が非常に大きくなります。<br>その結果、1 件の監査ログ レコードに記録可能なサイズ上限を超過するため、データが欠落しないよう、システム側で監査ログが自動的に複数件に分割されて記録されます。<br>この挙動は想定された動作であり、また、監査ログの内容そのものが失われているわけではありません。</p><h2 id="分割された監査ログの構造と読み方"><a href="#分割された監査ログの構造と読み方" class="headerlink" title="分割された監査ログの構造と読み方"></a>分割された監査ログの構造と読み方</h2><p>通常、変更内容が比較的少ない場合には、JSON の監査ログ レコードの <code>targetResources</code> 内の <code>modifiedProperties</code> に変更前・変更後の値が直接表示されます。<br>しかし、ターゲット リソースに指定したアプリケーション数が多いなど JSON のデータ量が大きくなる場合、変更内容が <code>modifiedProperties</code> に収まりきらないため、分割されたデータとして <code>additionalDetails</code> 側に記録される挙動に自動で切り替わります。</p><p>分割された監査ログでは、Microsoft Graph API の監査ログ (Audit Logs) における <code>additionalDetails</code> セクションに、以下のような管理用のキーが含まれます。</p><table><thead><tr><th>キー</th><th>意味</th><th>役割</th></tr></thead><tbody><tr><td>id</td><td>相関 ID (Correlation ID)</td><td>分割された複数のログが、同一の操作に属することを示します</td></tr><tr><td>seq</td><td>シーケンス番号</td><td>分割されたデータの何番目の断片かを示します (例：1, 2, 3…)</td></tr><tr><td>b</td><td>データ本体</td><td>分割された JSON データの一部です</td></tr><tr><td>c</td><td>総数</td><td>データが何件に分割されているかを示します</td></tr></tbody></table><p>同一の <code>id</code> を持つログを <code>seq</code> の順番に並べ、それぞれの <code>b</code> の値を順に結合することで、本来 1 回の操作として記録されるべき変更内容を論理的に復元することが可能です。</p><p>以下は、実際に API から取得できる「分割されたログの 1 レコード例」です。</p><div class="alert is-info"><p class="alert-title">Note</p><p>以下の例では説明のために JSON 内にコメントを付与していますが、実際の API レスポンスにコメントは含まれません。</p></div><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Directory_xxx_0001&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Policy&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;activityDisplayName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Update policy&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;correlationId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;00000000-0000-1234-5678-0000000090ab&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;activityDateTime&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2026-03-06T06:02:10Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="string">&quot;success&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;targetResources&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;対象ポリシーの GUID&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;displayName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ExampleConditionalAccessPolicy&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Policy&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;modifiedProperties&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">      <span class="comment">// データが大きいため modifiedProperties は空になる</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;additionalDetails&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;id&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;policy-id-123&quot;</span></span><br><span class="line">      <span class="comment">// 分割された複数のログが、同一の操作に属することを示します</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;seq&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">      <span class="comment">// 分割ログの順序番号 (同一 &quot;id&quot; 内での位置)</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;b&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123; \&quot;Users\&quot;: &#123; \&quot;Include\&quot;: [ &#123; \&quot;Groups\&quot;: [ \&quot;group-id-1\&quot; ] &#125; ],&quot;</span></span><br><span class="line">      <span class="comment">// 実際のポリシー設定 JSON の断片 (文字列) </span></span><br><span class="line">      <span class="comment">// seq 順にすべて結合して初めて意味を持つ</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5&quot;</span></span><br><span class="line">      <span class="comment">// 重要</span></span><br><span class="line">      <span class="comment">// この操作 (correlationId) で生成された分割ログの総数</span></span><br><span class="line">      <span class="comment">// seq=1 ～ seq=5 が存在することを示す</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><h2 id="分割された監査ログの確認方法-手動"><a href="#分割された監査ログの確認方法-手動" class="headerlink" title="分割された監査ログの確認方法 (手動)"></a>分割された監査ログの確認方法 (手動)</h2><p>分割された監査ログの内容を確認する一例として、テキスト エディターを用いてデータを結合する方法をご紹介します。</p><ol><li>[Microsoft Entra 管理センター] &gt; [監視と正常性] &gt; [監査ログ] を表示します</li><li>同一の日時、同一のターゲット、同一の開始者 (アクター) で連続して記録されている複数の「Update policy」ログを確認します</li><li>各ログの <code>additionalDetails</code> 内にある <code>b</code> の値を、<code>seq</code> の順にコピーします</li><li>空白や改行を入れずに連結し、1 つの文字列として復元します</li><li>復元したデータを確認し、どのような変更が行われたかを確認します</li></ol><p>この方法により、分割されて記録された変更内容を確認することが可能です。</p><h2 id="分割された監査ログの確認方法-自動化"><a href="#分割された監査ログの確認方法-自動化" class="headerlink" title="分割された監査ログの確認方法 (自動化)"></a>分割された監査ログの確認方法 (自動化)</h2><p>上述した手動での結合作業は、分割数が多い場合には煩雑になるため、調査を補助する目的でスクリプトを用いた自動化についてもご案内いたします。</p><p>分割された監査ログを Microsoft Graph API 経由で自動的に取得・結合し、変更前後の差分を確認する PowerShell スクリプトを以下の GitHub リポジトリにて公開しています。事前準備や実行手順の詳細についてもリポジトリの README に記載しておりますので、併せてご参照ください。</p><div class="alert is-info"><p class="alert-title">Note</p><p>なお、以下のスクリプトでは、条件付きアクセスのターゲットリソースが多い場合の変更に特化した処理を実装しています。</p></div><ul><li><a href="https://github.com/jpazureid/long-audit-log-recovery">Recover split audit logs for Conditional Access policy changes</a></li></ul><h3 id="免責事項"><a href="#免責事項" class="headerlink" title="免責事項"></a>免責事項</h3><p>本サンプル コードは、あくまでも説明のためのサンプルとして提供されるものであり、製品の実運用環境で使用されることを前提に提供されるものではありません。本サンプル コードおよびそれに関連するあらゆる情報は、「現状のまま」で提供されるものであり、商品性や特定の目的への適合性に関する黙示の保証も含め、明示・黙示を問わずいかなる保証も付されるものではありません。マイクロソフトは、お客様に対し、本サンプル コードを使用および改変するための非排他的かつ無償の権利ならびに本サンプル コードをオブジェクト コードの形式で複製および頒布するための非排他的かつ無償の権利を許諾します。但し、お客様は以下の 3 点に同意するものとします。</p><ol><li>本サンプル コードが組み込まれたお客様のソフトウェア製品のマーケティングのためにマイクロソフトの会社名、ロゴまたは商標を用いないこと</li><li>本サンプル コードが組み込まれたお客様のソフトウェア製品に有効な著作権表示をすること</li><li>本サンプル コードの使用または頒布から生じるあらゆる損害 (弁護士費用を含む) に関する請求または訴訟について、マイクロソフトおよびマイクロソフトの取引業者に対し補償し、損害を与えないこと</li></ol><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><ul><li>条件付きアクセス ポリシー更新時に監査ログが分割されて記録される場合があります</li><li>本挙動は、データ量が大きい場合に発生する想定された動作です</li><li>分割されたログでは、<code>additionalDetails</code> 内の情報を基に内容を確認する必要があります</li><li>単一ログや「変更されたプロパティ」だけで判断しない点にご注意ください</li></ul><p>もしも上記の内容について不明点などある場合には、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。</p>]]>
+    </content>
+    <id>https://jpazureid.github.io/blog/azure-active-directory/long-audit-log-split-behavior/</id>
+    <link href="https://jpazureid.github.io/blog/azure-active-directory/long-audit-log-split-behavior/"/>
+    <published>2026-04-16T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
+    </summary>
+    <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
+    <updated>2026-04-16T10:00:56.573Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -27,14 +46,14 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-04-06T00:19:24.737Z</updated>
+    <updated>2026-04-16T10:00:55.950Z</updated>
   </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
     </author>
-    <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
     <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
+    <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
     <category term="US Identity Blog" scheme="https://jpazureid.github.io/blog/tags/US-Identity-Blog/"/>
     <content>
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925">Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p><div class="alert is-info"><p class="alert-title">Note</p><p>2026&#x2F;03&#x2F;18 更新: 原文が更新された点を反映しました。展開開始日が 2026 年 3 月 27 日から 2026 年 5 月 13 日に変更されました。</p></div><hr><h2 id="Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"><a href="#Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。" class="headerlink" title="Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"></a>Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。</h2><p><a href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266">Microsoft セキュア フューチャー イニシアティブ</a> に基づき、多層防御のための以下のプロアクティブなセキュリティ対策を実施します。変更内容を確認し、必要な準備を実施ください。</p><h2 id="何が変更されるのか"><a href="#何が変更されるのか" class="headerlink" title="何が変更されるのか"></a>何が変更されるのか</h2><ul><li><strong>現在</strong>、クライアント アプリケーションが <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc#openid-connect-scopes">OIDC スコープ</a> または <a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">限定的なディレクトリ スコープ</a> <strong>のみ</strong> を要求してユーザーがサインインした場合、<strong>ポリシーに 1 つ以上の除外となるリソースが含まれていると</strong>、「すべてのリソース」を対象とする条件付きアクセス ポリシーは、そのサインインに対して適用されません。</li><li>この変更後は、リソースの除外が設定されている場合でも、これらのサインインに対して「すべてのリソース」を対象とする条件付きアクセスポリシーが適用されます。これにより、アプリケーションによって要求されたスコープに関係なく、ポリシーが一貫して適用されるようになります。<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=usage-and-insights-report#new-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">この変更の詳細についてはこちらをご覧ください</a>。</li></ul><h2 id="この変更はいつ反映されるか"><a href="#この変更はいつ反映されるか" class="headerlink" title="この変更はいつ反映されるか"></a>この変更はいつ反映されるか</h2><p>展開スケジュールが調整され、展開は 2026 年 5 月 13 日から開始されます。円滑な移行を支援するため、<strong>Microsoft 365 メッセージセンター</strong>のメッセージを通じて追加情報やガイダンスが提供されます。</p><h2 id="この変更の影響を受けるのは誰か"><a href="#この変更の影響を受けるのは誰か" class="headerlink" title="この変更の影響を受けるのは誰か"></a>この変更の影響を受けるのは誰か</h2><p>この変更は、<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">「すべてのリソース」を対象とし、かつ 1 つ以上のリソース除外を含む</a> 条件付きアクセス ポリシーを設定しているテナントにのみ影響します。これらのテナントには、<a href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージセンター</a> を通じて通知が行われます。この構成のポリシーを持たないテナントには影響はありません。</p><h2 id="この変更はお客様の組織にどのような影響を与えるか"><a href="#この変更はお客様の組織にどのような影響を与えるか" class="headerlink" title="この変更はお客様の組織にどのような影響を与えるか"></a>この変更はお客様の組織にどのような影響を与えるか</h2><p>ユーザーが上記のスコープのみを要求するクライアント アプリケーションを通じてサインインする場合、これまでは適用されずにアクセスできていた状況でも、今回の変更により条件付きアクセスのチャレンジ（MFA やデバイス準拠など）が求められる可能性があります。具体的にどのような制御が要求されるかは、「すべてのリソース」を対象とするポリシー、またはリソースとして Azure AD Graph を明示的に対象とするポリシーに設定されているアクセス制御の内容に依存します。</p><h2 id="何を準備する必要があるか"><a href="#何を準備する必要があるか" class="headerlink" title="何を準備する必要があるか"></a>何を準備する必要があるか</h2><h4 id="ほとんどのお客様-特に対応は不要です"><a href="#ほとんどのお客様-特に対応は不要です" class="headerlink" title="ほとんどのお客様: 特に対応は不要です"></a>ほとんどのお客様: 特に対応は不要です</h4><p>ほとんどのアプリケーションは、上記のスコープ以外に追加のスコープを要求しており、すでに条件付きアクセスの適用対象となっています。このような場合、動作に変更はありません。また、アプリケーションが条件付きアクセスの要求を適切に処理できるようにするため、更新が必要となる可能性がある主要なソフトウェア ベンダーと協力して対応を進めています。</p><h4 id="テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨"><a href="#テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨" class="headerlink" title="テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨"></a>テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨</h4><p>上記のスコープ <strong>のみ</strong> を要求するよう意図的に設計されたカスタム アプリケーションがある場合、それらのアプリが MFA やデバイス準拠などの条件付きアクセスの制御に対応できるかどうかを評価ください。<strong>すでに条件付きアクセスの制御に対応している場合</strong> は特に変更は不要です。<strong>対応していない場合は</strong> 更新が必要になる可能性があります。アプリケーションを適切に更新する方法については、<a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a> を参照ください。</p><p>-Swaroop Krishnamurthy</p><h2 id="補足リソース"><a href="#補足リソース" class="headerlink" title="補足リソース"></a>補足リソース</h2><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース</a> </li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc">Microsoft ID プラットフォームでのスコープとアクセス許可</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/troubleshoot-conditional-access#audience-reporting">条件付きアクセスでのサインインに関する問題のトラブルシューティング</a></li><li></li></ul>]]>
@@ -46,7 +65,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-04-06T00:19:25.928Z</updated>
+    <updated>2026-04-16T10:00:57.116Z</updated>
   </entry>
   <entry>
     <author>
@@ -65,7 +84,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-04-06T00:19:25.055Z</updated>
+    <updated>2026-04-16T10:00:56.258Z</updated>
   </entry>
   <entry>
     <author>
@@ -85,7 +104,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-04-06T00:19:25.203Z</updated>
+    <updated>2026-04-16T10:00:56.403Z</updated>
   </entry>
   <entry>
     <author>
@@ -104,7 +123,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-04-06T00:19:24.880Z</updated>
+    <updated>2026-04-16T10:00:56.086Z</updated>
   </entry>
   <entry>
     <author>
@@ -122,7 +141,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-04-06T00:19:25.379Z</updated>
+    <updated>2026-04-16T10:00:56.582Z</updated>
   </entry>
   <entry>
     <author>
@@ -141,7 +160,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-04-06T00:19:25.775Z</updated>
+    <updated>2026-04-16T10:00:56.966Z</updated>
   </entry>
   <entry>
     <author>
@@ -160,7 +179,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-04-06T00:19:24.734Z</updated>
+    <updated>2026-04-16T10:00:55.946Z</updated>
   </entry>
   <entry>
     <author>
@@ -179,7 +198,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-04-06T00:19:25.971Z</updated>
+    <updated>2026-04-16T10:00:57.158Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,14 +217,14 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-04-06T00:19:25.467Z</updated>
+    <updated>2026-04-16T10:00:56.670Z</updated>
   </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
     </author>
-    <category term="Microsoft Entra Connect" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-Connect/"/>
     <category term="AD FS" scheme="https://jpazureid.github.io/blog/tags/AD-FS/"/>
+    <category term="Microsoft Entra Connect" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-Connect/"/>
     <content>
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。</p><p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フェデレーションの管理」の項目を用いて AD FS を構成しますが、この構成の際、以下の画面のとおり MSIS7612 エラーが発生し AD FS の構成に失敗することがあります。このエラーが発生すると、その時の IssuerUri (クレーム ルール) の設定値次第ではフェデレーションの信頼関係が崩れ、フェデレーション ユーザーの認証にも影響が生じます。本ブログではこのエラーについて説明します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-01.jpg" alt="MEC で AD FS の構成に失敗し MSIS7612 エラーが表示された画面"></p><h2 id="MSIS7612-とは"><a href="#MSIS7612-とは" class="headerlink" title="MSIS7612 とは"></a>MSIS7612 とは</h2><p>MSIS7612 は AD FS の証明書利用者信頼を構成する際に指定した各識別子のいずれかが、すでに AD FS で構成済みの証明書利用者信頼で既に利用されている (重複している) 際に表示されるエラーです。各識別子は AD FS 上での重複は許されず一意である必要があります。</p><h2 id="MEC-で-MSI7612-が記録されるパターン"><a href="#MEC-で-MSI7612-が記録されるパターン" class="headerlink" title="MEC で MSI7612 が記録されるパターン"></a>MEC で MSI7612 が記録されるパターン</h2><p>以下の条件が重なっている場合に、MEC のウィザードから Microsoft Entra ID 用の証明書利用者信頼を更新しようとすると MSIS7612 エラーが発生します。</p><ul><li>AD FS を利用しており、すでに Microsoft Entra ID 用の証明書利用者信頼を構成している。</li><li>AD FS 上の Microsoft Entra ID 用の証明書利用者信頼の表示名が「Microsoft Office 365 ID プラットフォーム Worldwide」以外となっている (例: 「Microsoft Office 365 Identity Platform」や「Microsoft Office 365 Identity Platform Worldwide」など)。</li><li>MEC で AD FS を管理している。 </li><li>MEC をインストールしている Windows Server の OS の言語設定を英語以外の言語 (日本語) にしている。 </li><li>MEC を最新版にアップグレードした。</li></ul><h2 id="MEC-で-MSI7612-が記録される理由"><a href="#MEC-で-MSI7612-が記録される理由" class="headerlink" title="MEC で MSI7612 が記録される理由"></a>MEC で MSI7612 が記録される理由</h2><p>MEC で Microsoft Entra ID 用の証明書利用者信頼を更新しようとした場合、MEC は AD FS に対して証明書利用者信頼の有無を検索します。この検索の際には証明書利用者信頼の表示名も利用します。しかしながら、MEC がこの検索に利用する証明書利用者信頼の表示名は OS の言語設定に依存して変わる動作になっています。MEC は、日本語環境の場合は「Microsoft Office 365 ID プラットフォーム Worldwide」という表示名で証明者利用者信頼を検索します。</p><p>既に AD FS 上で構成されている Microsoft Entra ID 用の証明書利用者信頼の表示名が「Microsoft Office 365 Identity Platform」もしくは「Microsoft Office 365 Identity Platform Worldwide」の場合、MEC が検索に使用する表示名である「Microsoft Office 365 ID プラットフォーム Worldwide」とは名前が異なるため、MEC は証明書利用者信頼がまだ AD FS 上に構成されていないと誤認します。この結果、MEC は新たに Microsoft Entra ID 用の証明書利用者信頼を AD FS 上に構成しようとします。実際には Microsoft Entra ID 用の証明書利用者信頼は構成済みであるため、識別子の重複が検出されます。その結果 MSIS7612 が記録されます。</p><h2 id="MEC-で-MSI7612-が記録された際の影響"><a href="#MEC-で-MSI7612-が記録された際の影響" class="headerlink" title="MEC で MSI7612 が記録された際の影響"></a>MEC で MSI7612 が記録された際の影響</h2><p>この MSIS7612 が表示された場合、MEC によりすでに Microsoft Entra ID 側のフェデレーション構成のアップデートが行われ、その後の AD FS 側の更新処理が失敗したという状況です。つまり Microsoft Entra ID 側のフェデレーション構成は更新されたが AD FS 側は未更新という状況のため、Microsoft Entra ID 上の IssuerUri の値と AD FS によって発行される IssuerUri の値に不一致が生じる可能性があります。これらの値が不一致となった場合、フェデレーション信頼の構成が崩れ、結果としてそのドメインをもつユーザーがフェデレーション認証する際に AADSTS50107 エラーが発生し、ユーザーは Microsoft Entra ID へのサインインに失敗するようになります。</p><h2 id="MEC-で-MSI7612-を回避する方法"><a href="#MEC-で-MSI7612-を回避する方法" class="headerlink" title="MEC で MSI7612 を回避する方法"></a>MEC で MSI7612 を回避する方法</h2><p>MEC をインストールしている Windows Server OS の言語設定を日本語にしている場合は、AD FS 上の Microsoft Entra ID 用の証明書利用者信頼の表示名を「Microsoft Office 365 ID プラットフォーム Worldwide」に変更することで MEC での証明書利用者信頼を更新が可能になります (大文字、小文字、スペースの位置、カタカナ部分などは変えずにまったく同じ文字列にしてください)。表示名の変更手順は以下のとおりです。</p><ol><li><p>AD FS サーバーにて [AD FS の管理] を起動します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-02.jpg" alt="AD FS の管理"></p></li><li><p>[証明書利用者信頼] 内の [Microsoft Office 365 Identity Platform (Worldwide)] を右クリックし [プロパティ] を選択します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-03.jpg" alt="証明書利用者信頼のプロパティ"></p></li><li><p>[識別子] タブ内の [表示名] を「Microsoft Office 365 ID プラットフォーム Worldwide」に変更し [OK] を選択します。</p><p><img src="/blog/azure-active-directory-connect/entra-connect-msis7612/entra-connect-msis7612-04.jpg" alt="識別子の表示名を変更"></p></li></ol><h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>本記事では Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する事象とその対処方法について紹介しました。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供しますので、ぜひ弊社サポート サービスをご利用ください。</p>]]>
     </content>
@@ -217,7 +236,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-04-06T00:19:24.734Z</updated>
+    <updated>2026-04-16T10:00:55.946Z</updated>
   </entry>
   <entry>
     <author>
@@ -237,7 +256,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-04-06T00:19:25.875Z</updated>
+    <updated>2026-04-16T10:00:57.064Z</updated>
   </entry>
   <entry>
     <author>
@@ -258,7 +277,7 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-04-06T00:19:25.864Z</updated>
+    <updated>2026-04-16T10:00:57.053Z</updated>
   </entry>
   <entry>
     <author>
@@ -277,7 +296,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
     </summary>
     <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-04-06T00:19:25.223Z</updated>
+    <updated>2026-04-16T10:00:56.423Z</updated>
   </entry>
   <entry>
     <author>
@@ -296,7 +315,7 @@
 <p>本記事は、2025 年 8 月 22 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommun]]>
     </summary>
     <title>パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access</title>
-    <updated>2026-04-06T00:19:25.460Z</updated>
+    <updated>2026-04-16T10:00:56.662Z</updated>
   </entry>
   <entry>
     <author>
@@ -315,7 +334,7 @@
 <p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunit]]>
     </summary>
     <title>Microsoft Defender for Identity のシグナルが Microsoft Entra ID の推奨事項に統合</title>
-    <updated>2026-04-06T00:19:25.148Z</updated>
+    <updated>2026-04-16T10:00:56.349Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +353,7 @@
 <p>2025 年 10 月 1 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Cod]]>
     </summary>
     <title>MFA 義務付け (フェーズ 2) の開始</title>
-    <updated>2026-04-06T00:19:25.717Z</updated>
+    <updated>2026-04-16T10:00:56.909Z</updated>
   </entry>
   <entry>
     <author>
@@ -354,7 +373,7 @@
 <p>本記事は、2025 年 8 月 13 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.mic]]>
     </summary>
     <title>一般提供開始: Microsoft Entra ID による macOS 向けプラットフォーム SSO</title>
-    <updated>2026-04-06T00:19:25.699Z</updated>
+    <updated>2026-04-16T10:00:56.891Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,25 +391,6 @@
 <p>本記事は、2025 年 7 月 21 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.mi]]>
     </summary>
     <title>紐づけ可能なトークンの識別子を用いて ID にまつわる脅威の検出と対応を強化</title>
-    <updated>2026-04-06T00:19:25.879Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Azure Identity Support Japan</name>
-    </author>
-    <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
-    <category term="US Identity Blog" scheme="https://jpazureid.github.io/blog/tags/US-Identity-Blog/"/>
-    <content>
-      <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームです。</p><p>本記事は、2025 年 6 月 10 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/new-policy-enhancement-tools-in-entra-conditional-access/4418866">New policy enhancement tools in Entra Conditional Access</a> を意訳したものになります。ご不明点等ございましたらサポート チームまでお問い合わせください。</p><hr><p>近年、<a href="https://www.microsoft.com/en-us/security/blog/2025/02/13/storm-2372-conducts-device-code-phishing-campaign/">Storm-2372 のようなフィッシング攻撃</a> をはじめとする ID を対象にした攻撃がますます複雑化しています。攻撃者は見落とされやすい認証の流れやポリシーの抜け穴を狙って攻撃してくるため、IT 管理者にはより高度なアクセス制御ツールが必要です。そこで弊社は Microsoft Entra の条件付きアクセスにおいてポリシーの展開をより正確かつ安心して行えるよう、以下の 3 つの強力な新機能を導入しました。これらは管理者がポリシーをより正確かつ自信をもって計画し、監視し、最適化できるようデザインされたものです。それぞれのツールにはアクセス ポリシーを安全かつ効率的に、なおかつ耐障害性も考慮して運用するための独自の機能が備わっています。</p><ul><li><strong>一般提供開始</strong>: ポリシーごとのレポート機能</li><li><strong>パブリック プレビュー</strong>: What-If 評価 API</li><li><strong>一般提供開始</strong>: サインイン頻度 – 毎回 (セッション制御)</li></ul><p>それぞれの機能が実際にどのように動作するのか、詳しく見ていきましょう。</p><h2 id="ポリシーごとのレポート機能でアクセス制御の状況を分かりやすく把握"><a href="#ポリシーごとのレポート機能でアクセス制御の状況を分かりやすく把握" class="headerlink" title="ポリシーごとのレポート機能でアクセス制御の状況を分かりやすく把握"></a>ポリシーごとのレポート機能でアクセス制御の状況を分かりやすく把握</h2><p><img src="/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/new-policy-enhancement-tools-in-entra-conditional-access1.png" alt="図 1: 条件付きアクセスで「ポリシーごとのレポート」ツールを確認する"></p><p>管理者が条件付きアクセス ポリシーを調整や適用する際、各ポリシーがユーザーのサインインにどのような影響を与えているかを把握することで、より適切な判断が可能になります。新たに追加された <strong>ポリシーごとのレポート機能</strong> を利用すると、各ポリシーが組織内のサインイン アクテビティにどのような影響を与えるかを簡単に、かつポリシー単位で確認できるようになります。ポリシーが有効かレポート専用モードかにかかわらず、わかりやすい可視化機能によりポリシーが与える影響を速やかに評価できるようになります。これにより複雑なログの解析や、追加ライセンスが必要なカスタム ワークブックに頼る必要がなくなるのです。4 月の一般提供開始以来、利用率は 475% 増加しており、多くの管理者にとってこのツールが、ポリシーの監視や調整を安心して行うために実際に役立っていることがわかります。</p><h2 id="What-If-評価-API-でポリシーの影響を事前に確認"><a href="#What-If-評価-API-でポリシーの影響を事前に確認" class="headerlink" title="What-If 評価 API でポリシーの影響を事前に確認"></a>What-If 評価 API でポリシーの影響を事前に確認</h2><p>条件付きアクセス ポリシーの管理は、単に受動的に対応するだけでなく、先を見越して行うことが重要です。<strong>What-If 評価 API</strong> は、ポリシーが実際に適用される前に、その影響を大規模にシミュレーションできる強力なツールです。これにより、さまざまなサインイン シナリオに対してテストを自動化でき、ポリシー構成が組織のセキュリティ要件と常に一致していることを確認することができます。また、あまりないパターンや複雑なケースもシミュレーションできるため、より包括的で強固なポリシー設計が可能になります。この API は Microsoft Entra ポータル内の What-If 機能でも利用されており、実際のサインインと同じ認証ロジックを使って高精度な評価を実現しますので、テストで得られる結果はユーザーに対して実際に適用される制御内容と同じものになります。2025 年のパブリック プレビュー以降、この API の利用は 220% 増加しており、多くの管理者がこのツールを使ってポリシーをテストおよび調整し、安心して展開していることがわかります。</p><h3 id="実際の動作を見てみる"><a href="#実際の動作を見てみる" class="headerlink" title="実際の動作を見てみる"></a>実際の動作を見てみる</h3><p>Contoso 社が、社内の給与アプリを保護するために新しい What-If 評価 API ツールを活用し、安心して新しい条件付きアクセスポリシーを展開するというシナリオを見てみましょう。</p><h4 id="ステップ-1-ポリシーを定義する"><a href="#ステップ-1-ポリシーを定義する" class="headerlink" title="ステップ 1: ポリシーを定義する"></a>ステップ 1: ポリシーを定義する</h4><p>Contoso 社の ID およびアクセス管理チームは、機密性の高い従業員データを含む Contoso 給与アプリへのアクセスを保護したいと考えています。そこで、以下のようなポリシーを導入することにしました。</p><ul><li>多要素認証 (MFA) の要求</li><li><strong>再認証</strong> の強制</li><li>信頼されていないネットワークからアプリにアクセスする <strong>リスクのあるユーザー</strong> を対象とする</li></ul><p>ただし、ポリシーをすぐに強制適用するのではなく、まずはレポート専用モードで構成し、ユーザーに影響を与えずにその効果を監視することにしました。</p><h4 id="ステップ-2-ポリシーを検証する"><a href="#ステップ-2-ポリシーを検証する" class="headerlink" title="ステップ 2: ポリシーを検証する"></a>ステップ 2: ポリシーを検証する</h4><p>Contoso 社は、要件に沿って条件付きアクセス ポリシーを構成しましたが、ポリシーの影響を事前に確認するために、Microsoft Entra ポータル内の What-If 機能を使用することにしました。このツールを使用することで、再認証の要件が適切なシナリオで適用されることが確認できました。</p><p><img src="/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/new-policy-enhancement-tools-in-entra-conditional-access2.png" alt="図 2: 条件付きアクセスの What-If ポータル機能を使ったポリシー影響の検証"></p><p><img src="/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/new-policy-enhancement-tools-in-entra-conditional-access3.png" alt="図 3: 条件付きアクセスの What-if ポータル エクスペリエンスを使用したポリシー影響の検証"></p><h4 id="ステップ-3-API-を使ってテストを自動化する"><a href="#ステップ-3-API-を使ってテストを自動化する" class="headerlink" title="ステップ 3: API を使ってテストを自動化する"></a>ステップ 3: API を使ってテストを自動化する</h4><p>さらに、Contoso 社のチームは API を活用してテスト プロセスを自動化することにしました。Contoso 社は What-If 評価 API を使って、手動ではテストが難しいような微妙なサインイン シナリオを含め幅広くシミュレートするスクリプトを開発しました。たとえば:</p><ul><li>組織が拠点を持たない地域からユーザーがサインインするケース</li><li>リスクのあるユーザーが信頼されたネットワーク外からアプリケーションにアクセスするケース</li></ul><p>API はそれぞれのシナリオに対して、どのポリシーが適用されるか結果を返します。そしてこのスクリプトを毎日実行するようスケジュールし、テナント内の構成変更によってポリシーの適用にずれが生じていないかを継続的に監視できるようにしました。</p><p><img src="/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/new-policy-enhancement-tools-in-entra-conditional-access4.png" alt="図 4: 条件付きアクセス What-if API を使用した Graph API Explorer の結果例"></p><h4 id="ステップ-4-ポリシーの影響を確認し有効化する"><a href="#ステップ-4-ポリシーの影響を確認し有効化する" class="headerlink" title="ステップ 4: ポリシーの影響を確認し有効化する"></a>ステップ 4: ポリシーの影響を確認し有効化する</h4><p>このポリシーは過去 7 日間、レポート専用モードで運用されていたため、管理者は「ポリシーごとのレポート機能」を使ってポリシーの影響を確認しました。この機能には、ポリシーによって影響を受けたサインインの件数が詳しくまとめられています。管理者はポリシー結果のフィルターやサンプルのサインイン データを活用し、ポリシーの動作が想定どおりであることを確認します。その結果、ほとんどのサインインは成功しており、ブロックされたのは主にリスクのあるユーザーのみであることが分かりました。これは想定した結果と一致しているため、管理者はこのポリシーがセキュリティを強化しつつ、一般ユーザーに悪影響を与えないと確信し、ポリシーを正式に有効化しました。</p><p><img src="/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/new-policy-enhancement-tools-in-entra-conditional-access5.png" alt="図 5: 条件付きアクセスにおいてポリシーごとの影響を表示"></p><h2 id="サインイン頻度-–-毎回"><a href="#サインイン頻度-–-毎回" class="headerlink" title="サインイン頻度 – 毎回"></a>サインイン頻度 – 毎回</h2><p>現在のデジタル環境では、機密性の高いリソースへのアクセスやコンプライアンス対応、高リスクな操作を行う際などに、ユーザーに対して繰り返し再認証を求める必要がある場合があります。これは <a href="https://learn.microsoft.com/ja-jp/security/zero-trust/zero-trust-overview">ゼロトラストの基本原則</a> のひとつである明示的な検証に沿った考え方です。そこで活用できるのが、<strong>サインイン頻度 – 毎回</strong> というセッション制御機能です。この機能を使えば、管理者は条件付きアクセス ポリシーを通じて、対象のアプリケーションや認証コンテキストに対して毎回の対話型再認証を求める設定が可能になります。</p><p><img src="/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/new-policy-enhancement-tools-in-entra-conditional-access6.png" alt="図 6: 機密性の高いアプリケーション向けに「サインイン頻度 – 毎回」のポリシーを作成する"></p><p>たとえば、組織が機密性の高いアプリケーションを保護したい場合や、VPN の背後にあるリソースを守りたい場合、または Privileged Identity Management (PIM) で特権ロールの昇格を安全に行いたいなどのシナリオを想像ください。このような重要なリソースへのアクセス時に、「サインイン頻度 – 毎回のセッション制御」を導入することで、ユーザーに毎回の再認証を求めることができます。このように追加のセキュリティの層を設けることにより、トークンの盗難や不正アクセスといったリスクを軽減することができます。</p><h2 id="条件付きアクセス最適化エージェントを使って新しいセキュリティ脅威にも素早く対応"><a href="#条件付きアクセス最適化エージェントを使って新しいセキュリティ脅威にも素早く対応" class="headerlink" title="条件付きアクセス最適化エージェントを使って新しいセキュリティ脅威にも素早く対応"></a>条件付きアクセス最適化エージェントを使って新しいセキュリティ脅威にも素早く対応</h2><p>攻撃者の手口が進化し続ける中、私たちの防御もそれに合わせて進化する必要があります。このため、新しくリリースされた <a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/agent-optimization">Microsoft Security Copilot を使用した Microsoft Entra 条件付きアクセス最適化エージェント</a> (現在パブリック プレビュー中) もぜひ活用ください。この機能は AI を活用した自律型エージェントで、環境内の変化 (新しいユーザーやアプリケーションの追加など) を常時監視し、条件付きアクセスポリシーの適用漏れを検出します。さらに、ワンクリックで適用できるポリシーの改善案を提示し、ゼロ トラストのセキュリティ体制を強化します。</p><p>エージェントがポリシーの見直しポイントや改善点を自動で提案してくれるので、手作業や特別なツールなしで、組織の変化に合わせてセキュリティポリシーを常に最新の状態に保つことができます。</p><h2 id="ぜひお試しください"><a href="#ぜひお試しください" class="headerlink" title="ぜひお試しください"></a>ぜひお試しください</h2><p>これらの条件付きアクセスの強化機能により、管理者はポリシーの計画、監視、最適化を効果的に行うための新たなツールを手にすることになります。「<strong>条件付きアクセスのポリシーごとのレポート</strong>」、「<strong>What-If API</strong>」、「<strong>再認証</strong>」などの機能を活用することで、ポリシーが組織のニーズに合い、なおかつ安全で効果的なものになっていることを確認いただけます。</p><p>Swaroop Krishnamurthy<br>Principal Product Manager</p>]]>
-    </content>
-    <id>https://jpazureid.github.io/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/</id>
-    <link href="https://jpazureid.github.io/blog/azure-active-directory/new-policy-enhancement-tools-in-entra-conditional-access/"/>
-    <published>2025-08-08T00:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームです。</p>
-<p>本記事は、2025 年 6 月 10 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
-    </summary>
-    <title>Entra 条件付きアクセスにおける新しいポリシー強化ツール</title>
-    <updated>2026-04-06T00:19:25.685Z</updated>
+    <updated>2026-04-16T10:00:57.068Z</updated>
   </entry>
 </feed>
