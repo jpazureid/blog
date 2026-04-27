@@ -30,7 +30,8 @@ tags:
 |---|---|---|---|
 | ユーザー (クラウドに作成)	| 〇	| 〇	|  | 
 | ユーザー (同期) | × | × | *1 オンプレミス AD 側から操作ください。
-| セキュリティ グループ	| ×	| × | *2 |  
+| セキュリティ グループ (クラウドに作成)	| ×	| × | *3 |  
+| セキュリティ グループ (同期)	| ×	| × | *2 |  
 | Microsoft 365 グループ | 〇 | 〇 | | 	
 | 配布グループ | × | ×	| *2 | 
 | アプリケーション | 〇 | 〇 |  | 	
@@ -39,7 +40,12 @@ tags:
     
 *1: ユーザーについて、同期されたユーザーオブジェクトもソフト削除に対応しています。ただし、Microsoft Entra 管理センター側から復元操作を行うのではなく、ソース (Active Directory) でリストアし、再度 Entra ID に同期する必要があります。再同期を行うと、ソフト削除されたオブジェクトが自動的にごみ箱から復元されます。 
 
-*2: 上記表に記載されていますが、グループの論理的な削除は Microsoft 365 グループのみ利用可能です。このため、たとえばセキュリティ グループを誤って削除した場合、論理的な削除は利用できず、いきなり完全削除されてしまいます。緊急のお問い合わせなどで「セキュリティ グループを誤って削除してしまった」という内容も多くありますので、論理的な削除に対応していないグループを削除する際には十分ご注意ください。
+*2: 上記表に記載されていますが、グループの論理的な削除は Microsoft 365 グループおよびクラウド セキュリティ グループのみ利用可能です。このため、たとえば同期されたセキュリティ グループについてオンプレミス AD 側で誤って削除した場合、論理的な削除は利用できず、いきなり完全削除されてしまいます。緊急のお問い合わせなどで「セキュリティ グループを誤って削除してしまった」という内容も多くありますので、論理的な削除に対応していないグループを削除する際には十分ご注意ください。
+
+*3: クラウド セキュリティ グループが論理的な削除の対象となったことを受けて本記事の記載を更新しました。（2026/04/24 追記）
+公開情報としては、以下が該当します。
+
+[削除された Microsoft 365 グループまたはクラウド セキュリティ グループを復元する - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/ja-jp/entra/identity/users/groups-restore-deleted)
 
 ## Entra ID 監査ログを使用した削除の追跡  
 
@@ -151,17 +157,17 @@ Users 
 
 ### Microsoft Graph API
 
-PowerShell と Microsoft.Graph モジュールを使用して Microsoft Graph API を呼び出すことで、ごみ箱に現在あるすべてのオブジェクトのリストを取得できます。以下のサンプル コードは、すべてのオブジェクト タイプのレポートを生成し、必要に応じて、Restore-MgBetaDirectoryDeletedItem コマンドレットを使用して復元を実行するように簡単に調整できます。 
+PowerShell と Microsoft.Graph モジュールを使用して Microsoft Graph API を呼び出すことで、ごみ箱に現在あるすべてのオブジェクトのリストを取得できます。以下のサンプル コードは、すべてのオブジェクト タイプのレポートを生成し、必要に応じて、Restore-MgDirectoryDeletedItem コマンドレットを使用して復元を実行するように簡単に調整できます。 
 
 ```
 Install-Module Microsoft.Graph  
 Connect-MgGraph   
 
-$deletedUsers = Get-MgBetaDirectoryDeletedItemAsUser  
-$deletedServicePrincipals = Get-MgBetaDirectoryDeletedItemAsServicePrincipal  
-$deletedGroups = Get-MgBetaDirectoryDeletedItemAsGroup  
-$deletedApplications = Get-MgBetaDirectoryDeletedItemAsApplication  
-$deletedAUs = Get-MgBetaDirectoryDeletedItemAsAdministrativeUnit 
+$deletedUsers = Get-MgDirectoryDeletedItemAsUser  -Property id, userPrincipalName , displayName, deletedDateTime
+$deletedServicePrincipals = Get-MgDirectoryDeletedItemAsServicePrincipal  
+$deletedGroups = Get-MgDirectoryDeletedItemAsGroup  
+$deletedApplications = Get-MgDirectoryDeletedItemAsApplication  
+$deletedAUs = Get-MgDirectoryDeletedItemAsAdministrativeUnit 
 
 $deletedItems = @()  
 
@@ -173,8 +179,7 @@ $deletedItems += $deletedAUs 
 
 if ($deletedItems.Count -eq 0) {  
     Write-Host "No soft deleted objects found." -ForegroundColor Green  
-}  
-else {  
+}  else {  
     Write-Host "Soft deleted Users: $($deletedUsers.Count)" -ForegroundColor Green  
     Write-Host "Soft deleted Service Principals: $($deletedServicePrincipals.Count)" -ForegroundColor Green  
     Write-Host "Soft deleted M365 Groups: $($deletedGroups.Count)" -ForegroundColor Green  
@@ -196,8 +201,9 @@ else { 
     }  
     $report | Sort-Object 'Display Name' | Select-Object Id, DisplayName, Deleted, HardDeletionIn | Format-Table   
     $report | Export-Csv -Path "C:\temp\softDeletedObjects.csv" -Encoding UTF8 -NoTypeInformation  
-}  
+} 
 ```
+2026/04/24 Beta 版を使用したスクリプトから v1.0 版を使用したスクリプトに更新
 
 
 このスクリプトは以下のような .csvファイルを生成し、要約した情報を出力します：
