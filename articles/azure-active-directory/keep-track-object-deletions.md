@@ -160,6 +160,7 @@ Users 
 PowerShell と Microsoft.Graph モジュールを使用して Microsoft Graph API を呼び出すことで、ごみ箱に現在あるすべてのオブジェクトのリストを取得できます。以下のサンプル コードは、すべてのオブジェクト タイプのレポートを生成し、必要に応じて、Restore-MgDirectoryDeletedItem コマンドレットを使用して復元を実行するように簡単に調整できます。 
 
 ```
+# 2026/04/27 Beta 版を使用したスクリプトから v1.0 版を使用したスクリプトに更新
 Install-Module Microsoft.Graph  
 Connect-MgGraph   
 
@@ -203,7 +204,7 @@ if ($deletedItems.Count -eq 0) { 
     $report | Export-Csv -Path "C:\temp\softDeletedObjects.csv" -Encoding UTF8 -NoTypeInformation  
 } 
 ```
-2026/04/27 Beta 版を使用したスクリプトから v1.0 版を使用したスクリプトに更新
+
 
 
 このスクリプトは以下のような .csvファイルを生成し、要約した情報を出力します：
