@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-04-28T01:02:26.296Z</updated>
+  <updated>2026-04-29T23:32:56.497Z</updated>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -18,7 +18,7 @@
     <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
     <category term="Enterprise SSO" scheme="https://jpazureid.github.io/blog/tags/Enterprise-SSO/"/>
     <content>
-      <![CDATA[<p>こんにちは、Azure &amp; Identity サポートの金森です。</p><p>今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについてお知らせします。</p><p>弊社公開情報では、 <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin">Apple デバイス用の Microsoft Enterprise SSO プラグイン</a> 内の <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage">デバイス ID キー ストレージ</a> の説明が該当します。</p><h2 id="どのような実装変更であるか"><a href="#どのような実装変更であるか" class="headerlink" title="どのような実装変更であるか"></a>どのような実装変更であるか</h2><p><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage">前述の公開情報</a> の説明のポイントをサマライズします。</p><ul><li>Apple デバイスは、Intune への MDM 登録を行うと、併せて Entra ID へのデバイス登録も行っている</li><li>つまり、Apple デバイス上には以下の 2 つのデバイス登録情報がそれぞれ別のものとして保持されていることになる<ul><li>Intune への MDM 登録情報</li><li>Entra ID へのデバイス登録情報 (以降デバイス ID と呼称します)</li></ul></li><li>デバイス ID は、PRT (Primary Refresh Token) を用いた SSO やデバイス ベースのアクセス制御を適切に受けるための判定情報であるデバイス固有の ID 値を提供する</li><li>これまで、Entra ID に対してデバイスの新規登録をおこなう際、デバイス ID は OS 内の “キーチェーン” に格納されていた</li><li>この新規登録の際のデバイス ID の格納先が、キーチェーンから Secure Enclave に変わる実装がロールアウトされた</li><li>このロールアウトにより、デバイスに格納されているデバイス認証に利用される鍵などの情報の保護が強化された</li><li>このロールアウトは 2025 年 8 月以降順次、各テナントにロールアウトされていき、特に 2026 年 3 月に広くロールアウトされた</li></ul><p>つまり、ロールアウトが適用される以前に Intune MDM 登録 + Entra ID へのデバイス登録を行った Apple デバイスと、2025 年 8 月以降にロールアウトが適用された Apple デバイスでは [デバイス ID の格納先が異なる] ことになります。</p><ul><li>ロールアウトが適用される以前のセットアップ : キーチェーンにデバイス ID が格納されている</li><li>ロールアウトが適用された以降のセットアップ : Secure Enclave にデバイス ID が格納されている</li></ul><h3 id="補足"><a href="#補足" class="headerlink" title="補足"></a>補足</h3><p>キーチェーンや Secure Enclave は、Apple デバイスの [機密性の高いデータ (アカウントの資格情報やトークンのキャッシュなど) を格納する領域] です。<br>以下は Apple の技術情報ですが、参考として紹介します。</p><p><a href="https://support.apple.com/ja-jp/guide/security/secb0694df1a/1/web/1">キーチェーンのデータ保護 - Apple サポート (日本)</a><br><a href="https://support.apple.com/ja-jp/guide/security/sec59b0b31ff/web">Secure Enclave - Apple サポート (日本)</a></p><div class="alert is-info"><p class="alert-title">Note</p><p>Secure Enclave は、Windows における TPM のように [OS から直接アクセスできない、ディスク以外のハードウェアに確保されたセキュアなデータの格納領域] です。</p></div><h2 id="キーチェーンと-Secure-Enclave-のどちらに格納されているかの見分け方"><a href="#キーチェーンと-Secure-Enclave-のどちらに格納されているかの見分け方" class="headerlink" title="キーチェーンと Secure Enclave のどちらに格納されているかの見分け方"></a>キーチェーンと Secure Enclave のどちらに格納されているかの見分け方</h2><p>お手元の Intune MDM 登録 + Entra ID へのデバイス登録済みの Apple デバイスがどちらのシナリオで構成されたものであるかを見分ける場合、特徴的な差異として [SCEP デバイス ID 証明書が視認できるかどうか] という見方があります。<br>以下は iOS デバイスの例ですが [設定] - [一般] - [VPN とデバイス管理] から、Intune 登録時にインポートされている Management Profile の詳細を確認する流れです。</p><table><thead><tr><th>Management Profile をタップ</th><th>詳細をタップ</th></tr></thead><tbody><tr><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/1-ManagenentProfile.jpg"></td><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/2-Shosai.jpg"></td></tr></tbody></table><table><thead><tr><th>SCEP デバイス ID 証明書あり &#x3D; キーチェーン利用</th><th>SCEP デバイス ID 証明書なし &#x3D; Secure Enclave 利用</th></tr></thead><tbody><tr><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/3-SCEP-device-Cert-KeyChain.jpg"></td><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/4-SCEP-device-Cert-SecureEnclave.jpg"></td></tr></tbody></table><h2 id="この実装変更が展開されるとどのような影響が発生するか"><a href="#この実装変更が展開されるとどのような影響が発生するか" class="headerlink" title="この実装変更が展開されるとどのような影響が発生するか"></a>この実装変更が展開されるとどのような影響が発生するか</h2><p>この実装変更がロールアウトされた後に Intune MDM 登録 + Entra ID へのデバイス登録をしたデバイスの一部のアプリにおいてデバイス ID を提示できなくなります。<br>その結果、条件付きアクセスでデバイス ID の提示を必要とするポリシーを構成している場合に一部アプリでのサインインがブロックされます。</p><h2 id="どのような環境のどのようなアプリが影響を受けるのか"><a href="#どのような環境のどのようなアプリが影響を受けるのか" class="headerlink" title="どのような環境のどのようなアプリが影響を受けるのか"></a>どのような環境のどのようなアプリが影響を受けるのか</h2><p>次のような条件付きアクセス ポリシーを構成している環境で影響が発生する恐れがあります。</p><ul><li><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-condition-filters-for-devices">条件付きアクセス: デバイスのフィルター</a> で紹介しているデバイスのフィルターを判定条件に利用している。</p></li><li><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-grant">条件付きアクセス:Grant</a> で紹介している、デバイスは準拠としてマーク済みである必要がある、承認済みクライアント アプリを必須にする (2026 年 3 月に廃止)、アプリの保護ポリシーを必須にする、といったアクセス制御を利用している。</p></li></ul><p>上記の判定条件やアクセス制御はいずれも <strong>クライアント アプリ&#x2F;ブラウザからの認証要求時に、デバイス ID が Entra ID に提示される</strong> ことで適切に判定を受けることが可能な機能です。<br>つまり、クライアント アプリ&#x2F;ブラウザが認証時にデバイス ID を提示できないと、Entra ID は [どのデバイスからの認証要求であるか] を判定する情報が得られず、未登録デバイスと判定することになります。</p><p>影響を受けるアプリは、MSAL (Microsoft 認証ライブラリ) に対応していないアプリです。MSAL に対応しているアプリは影響を受けません。表にすると次の通りになります。</p><table><thead><tr><th>区分</th><th>説明</th></tr></thead><tbody><tr><td>MSAL 対応アプリ／ブラウザ</td><td>特に対応は不要です。なお、Microsoft の 1st party アプリや Edge ブラウザは MSAL に対応しています。3rd party アプリが MSAL に対応しているかどうかは、アプリ提供元への確認が必要です。</td></tr><tr><td>非 MSAL 対応アプリ／ブラウザ</td><td>Enterprise SSO 機能を有効にすることで、Secure Enclave に格納されたデバイス ID の取得と認証時の提示が行えるようになります。</td></tr></tbody></table><h2 id="影響を受けた場合の具体的な例"><a href="#影響を受けた場合の具体的な例" class="headerlink" title="影響を受けた場合の具体的な例"></a>影響を受けた場合の具体的な例</h2><p>ここまでの内容を踏まえて、影響を受けた場合の具体的な例を紹介します。</p><ul><li><p>前提</p><ul><li>ロールアウトが適用された以降に Intune MDM 登録 + Entra ID へのデバイス登録をした Apple デバイス</li><li>Enterprise SSO を有効にする設定を配布していない</li><li>デバイス ID を元にアクセス制御を行う条件付きアクセスのポリシーを構成している</li><li>Safari や 3rd party 製アプリなど MSAL に対応していないアプリ利用時</li></ul></li><li><p>発生しうる事象</p><ul><li>認証時にクライアント側からデバイス ID が提示されず、条件付きアクセスのポリシーに抵触してサインインがブロックされる。</li><li>Edge ブラウザ や 1st party (Microsoft) 製アプリを使用した場合は同様の事象は発生しない。</li><li>ロールアウトが適用される以前にセットアップしたデバイスでは同様の事象は発生しない。</li></ul></li><li><p>事象が発生した際のクライアント上でのエラー表示例<br>以下の例では Safari ブラウザからのアクセス シナリオですが、サインイン時に以下のように 530003 のエラー コードで失敗しています。このエラー コード 530003 は “Your device is required to be managed to access this resource.” を意味しており、つまり MDM 管理されたデバイスからのアクセスではないため “デバイスは準拠としてマーク済みである必要がある” のアクセス制御に抵触したことを示しています。<br>また、”デバイスの識別子” の項目が “使用できません” となっていることもデバイス ID が提示されなかったことを示唆しています。</p></li></ul><p><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/5-Sample-Sign-ins.jpg"></p><p>上記のサインインに呼応する Entra ID のサインイン ログの詳細を参照すると以下のようにデバイス ID の項目がブランクとなっており、この点からもクライアントからデバイス ID が提示されていないことを確認可能です。</p><p><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/6-NoDevice-Sign-ins-EntraID.jpg"></p><p>上記は <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin">Apple デバイス用の Microsoft Enterprise SSO プラグイン</a> 内の <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#troubleshooting-secure-enclave-based-device-identity">セキュリティで保護されたエンクレーブ ベースのデバイス ID のトラブルシューティング</a> の説明が該当します。</p><h2 id="対処方法"><a href="#対処方法" class="headerlink" title="対処方法"></a>対処方法</h2><p>Enterprise SSO プラグインを有効化することで、非 MSAL 対応アプリ&#x2F;ブラウザを利用する際のユーザー認証時にデバイス ID を提示できるようになります。<br>Enterprise SSO 機能を有効化するには、 <a href="https://learn.microsoft.com/ja-jp/intune/intune-service/configuration/use-enterprise-sso-plug-in-ios-ipados-with-intune?tabs=prereq-intune,create-profile-intune">MDM を使用して iOS&#x2F;iPadOS Enterprise SSO アプリ拡張機能を構成する</a> 内の <a href="https://learn.microsoft.com/ja-jp/intune/intune-service/configuration/use-enterprise-sso-plug-in-ios-ipados-with-intune?tabs=prereq-intune,create-profile-intune#create-a-single-sign-on-app-extension-configuration-policy">シングル サインオン アプリ拡張機能構成ポリシーを作成する</a> の手順に沿って Intune にてデバイス構成ポリシーを用いて設定を配布します。</p><p>Safari ブラウザもしくは [認証ブローカーとして Safari WebView を使用する] 3rd party アプリの場合、以下のように Enterprise SSO を有効化することで、デバイス ID を提示できるようになります。<br>[SSO アプリ拡張機能の種類] の設定を “Microsoft Entra ID” にしているのみの設定です。</p><p><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/7-SSO-app-extension-Intune.jpg"></p><p>なお、3rd party アプリが [認証ブローカーとして Safari WebView] を使用しているかどうかは、各アプリの実装に依存するためアプリ提供元までご確認ください。<br>もし MSAL も Safari WebView も認証処理に使用していない 3rd party アプリの場合、該当アプリの [アプリ バンドル ID] を指定することで対応できる可能性はありますが、該当アプリの実装に依存するため Microsoft として確証を持ったご案内ができない点、あらかじめご了承ください。</p><h2 id="よくあるご質問とその回答-FAQ"><a href="#よくあるご質問とその回答-FAQ" class="headerlink" title="よくあるご質問とその回答 (FAQ)"></a>よくあるご質問とその回答 (FAQ)</h2><h3 id="FAQ1"><a href="#FAQ1" class="headerlink" title="FAQ1"></a>FAQ1</h3><p>Q:<br>3rd party アプリの [アプリ バンドル ID] はどのように確認することができますか？</p><p>A:<br>アプリ バンドル ID の正確な情報はアプリのご提供元ベンダー様へご確認ください。<br><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#find-app-bundle-identifiers-on-ios-devices">iOS デバイスでのアプリ バンドル ID の確認</a> にも該当のご案内があります。</p><p>その他の簡易的なアプリ バンドル ID の確認方法としては、2026 年 4 月現在では、App Store のアプリ ID を元に、アプリ バンドル ID を確認することが可能であるという情報を確認しています。<br>その手順は次の通りです。</p><p>まずは確認したいアプリの App Store サイトを開きます。例として MSN アプリとします。</p><p>App Store の MSN アプリのサイト<br><a href="https://apps.apple.com/jp/app/msn/id945416273">https://apps.apple.com/jp/app/msn/id945416273</a><br>-&gt;この URL よりアプリ ID が 945416273 であることがわかります。</p><p>続けて、Apple の iTunes の lookup サイトでアプリ ID の数字 945416273 を id&#x3D; で指定した URL を開きます。<br><a href="https://itunes.apple.com/lookup?id=945416273">https://itunes.apple.com/lookup?id=945416273</a></p><p>1.txt というテキストのダウンロードが行われるため、テキストファイルより bundleid 値を検索します。<br>今回の例では [“bundleId”:”com.microsoft.axp-ios.BingNews”] という値であるため、com.microsoft.axp-ios.BingNews が MSN アプリのアプリ バンドル ID であることがわかります。</p><hr><h3 id="FAQ2"><a href="#FAQ2" class="headerlink" title="FAQ2"></a>FAQ2</h3><p>Q:<br>認証ブローカーとは何でしょうか。</p><p>A:<br>認証ブローカーとは、アプリに代わって認証の処理を行うコンポーネントを指します。<br>OS 上で起動するアプリは、認証に関わるやり取りをアプリ自身のプロセス上で実行せず、別のプロセスに委任する (認証に関する処理を任せる) 作りが広く一般的です。<br>これは OS の種類にかかわらず、以下のように言えます。</p><ul><li><p>Windows の場合、Outlook や Teams などの Office (1st party) アプリでは WAM (Web Account Manager) と呼ばれる OS の認証ブローカーに認証の処理を任せる<br>　3rd party アプリの場合、アプリの作りによって WAM に任せる作りのアプリもあれば、Edge WebView に任せる作りのアプリ、自分自身のプロセスで対応する (他プロセスに委任しない) アプリもある</p></li><li><p>iOS の場合、Office (1st party) アプリは、Microsoft Authenticator に認証の処理を任せる<br>　3rd party アプリの場合、アプリの作りによって認証ブローカーである Microsoft Authenticator に任せる作りのアプリもあれば、Safari WebView に任せる作りのアプリ、自分自身のプロセスで対応する (他プロセスに委任しない) アプリもある</p></li><li><p>Android の場合、Office (1st party) アプリは、Intune Company ポータル アプリに認証の処理を任せる<br>　3rd party アプリの場合、アプリの作りによって認証ブローカーである Intune Company ポータル アプリに任せる作りのアプリもあれば、Chrome WebView に任せる作りのアプリ、自分自身のプロセスで対応する (他プロセスに委任しない) アプリもある</p></li></ul><p>上記の Microsoft の認証ブローカーに認証処理を委任できるアプリは、1st &#x2F; 3rd party 製であるかどうかにかかわらず [MSAL (先進認証のライブラリ) に対応したアプリ] という言い方も可能です。</p><hr><h3 id="FAQ3"><a href="#FAQ3" class="headerlink" title="FAQ3"></a>FAQ3</h3><p>Q:<br>Enterprise SSO を有効にすることによる影響はありますか。</p><p>A:<br>Apple の OS に対して Enterprise SSO を有効化することで、Safari の認証処理がアドイン&#x2F;強化される (ブラウザ単位ではなく、デバイスとして保持する認証情報を利用できるようになる) ことになります。<br>そのため、Safari もしくは [Safari WebView を認証ブローカーとする作りのアプリ] がその恩恵を受けることになります。</p><p>そのため [Safari ブラウザ、もしくは認証ブローカーとして Safari WebView を使用する 3rd party アプリの利用時、これまでは対話的な認証画面が表示されて認証操作を行っていたが、Intune に MDM 登録を行っているユーザーとして SSO が行えるようになり、かつ認証時にデバイス ID 情報も提示できるようになる] という影響&#x2F;効果が生じることが期待値となります。</p><p>なお、前述のとおり MSAL も Safari WebView も認証処理に使用していない 3rd party アプリの場合、該当アプリの [アプリ バンドル ID] を指定することで、同様の影響&#x2F;効果を得られる可能性もあります。<br>繰り返しになりますが該当アプリの実装に依存するため Microsoft として Enterprise SSO の効果が得られるかどうかに関して確証を持ったご案内ができない点、あらかじめご了承ください。</p><hr><p>上記内容が皆様の参考となりますと幸いです。どちら様も素敵な Entra ID ライフをお過ごしください。</p>]]>
+      <![CDATA[<p>こんにちは、Azure &amp; Identity サポートの金森です。</p><p>今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについてお知らせします。</p><p>弊社公開情報では、 <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin">Apple デバイス用の Microsoft Enterprise SSO プラグイン</a> 内の <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage">デバイス ID キー ストレージ</a> の説明が該当します。</p><h2 id="どのような実装変更であるか"><a href="#どのような実装変更であるか" class="headerlink" title="どのような実装変更であるか"></a>どのような実装変更であるか</h2><p><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage">前述の公開情報</a> の説明のポイントをサマライズします。</p><ul><li>Apple デバイスは、Intune への MDM 登録を行うと、併せて Entra ID へのデバイス登録も行っている</li><li>つまり、Apple デバイス上には以下の 2 つのデバイス登録情報がそれぞれ別のものとして保持されていることになる<ul><li>Intune への MDM 登録情報</li><li>Entra ID へのデバイス登録情報 (以降デバイス ID と呼称します)</li></ul></li><li>デバイス ID は、PRT (Primary Refresh Token) を用いた SSO やデバイス ベースのアクセス制御を適切に受けるための判定情報であるデバイス固有の ID 値を提供する</li><li>これまで、Entra ID に対してデバイスの新規登録をおこなう際、デバイス ID は OS 内の “キーチェーン” に格納されていた</li><li>この新規登録の際のデバイス ID の格納先が、キーチェーンから Secure Enclave に変わる実装がロールアウトされた</li><li>このロールアウトにより、デバイスに格納されているデバイス認証に利用される鍵などの情報の保護が強化された</li><li>このロールアウトは 2025 年 8 月以降順次、各テナントにロールアウトされていき、特に 2026 年 3 月に広くロールアウトされた</li></ul><p>つまり、ロールアウトが適用される以前に Intune MDM 登録 + Entra ID へのデバイス登録を行った Apple デバイスと、2025 年 8 月以降にロールアウトが適用された Apple デバイスでは [デバイス ID の格納先が異なる] ことになります。</p><ul><li>ロールアウトが適用される以前のセットアップ : キーチェーンにデバイス ID が格納されている</li><li>ロールアウトが適用された以降のセットアップ : Secure Enclave にデバイス ID が格納されている</li></ul><h3 id="補足"><a href="#補足" class="headerlink" title="補足"></a>補足</h3><p>キーチェーンや Secure Enclave は、Apple デバイスの [機密性の高いデータ (アカウントの資格情報やトークンのキャッシュなど) を格納する領域] です。<br>以下は Apple の技術情報ですが、参考として紹介します。</p><p><a href="https://support.apple.com/ja-jp/guide/security/secb0694df1a/1/web/1">キーチェーンのデータ保護 - Apple サポート (日本)</a><br><a href="https://support.apple.com/ja-jp/guide/security/sec59b0b31ff/web">Secure Enclave - Apple サポート (日本)</a></p><div class="alert is-info"><p class="alert-title">Note</p><p>Secure Enclave は、Windows における TPM のように [OS から直接アクセスできない、ディスク以外のハードウェアに確保されたセキュアなデータの格納領域] です。</p></div><h2 id="キーチェーンと-Secure-Enclave-のどちらに格納されているかの見分け方"><a href="#キーチェーンと-Secure-Enclave-のどちらに格納されているかの見分け方" class="headerlink" title="キーチェーンと Secure Enclave のどちらに格納されているかの見分け方"></a>キーチェーンと Secure Enclave のどちらに格納されているかの見分け方</h2><p>お手元の Intune MDM 登録 + Entra ID へのデバイス登録済みの Apple デバイスがどちらのシナリオで構成されたものであるかを見分ける場合、特徴的な差異として [SCEP デバイス ID 証明書が視認できるかどうか] という見方があります。<br>以下は iOS デバイスの例ですが [設定] - [一般] - [VPN とデバイス管理] から、Intune 登録時にインポートされている Management Profile の詳細を確認する流れです。</p><table><thead><tr><th>Management Profile をタップ</th><th>詳細をタップ</th></tr></thead><tbody><tr><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/1-ManagenentProfile.jpg"></td><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/2-Shosai.jpg"></td></tr></tbody></table><table><thead><tr><th>SCEP デバイス ID 証明書あり &#x3D; キーチェーン利用</th><th>SCEP デバイス ID 証明書なし &#x3D; Secure Enclave 利用</th></tr></thead><tbody><tr><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/3-SCEP-device-Cert-KeyChain.jpg"></td><td><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/4-SCEP-device-Cert-SecureEnclave.jpg"></td></tr></tbody></table><h2 id="この実装変更が展開されるとどのような影響が発生するか"><a href="#この実装変更が展開されるとどのような影響が発生するか" class="headerlink" title="この実装変更が展開されるとどのような影響が発生するか"></a>この実装変更が展開されるとどのような影響が発生するか</h2><p>この実装変更がロールアウトされた後に Intune MDM 登録 + Entra ID へのデバイス登録をしたデバイスの一部のアプリにおいてデバイス ID を提示できなくなります。<br>その結果、条件付きアクセスでデバイス ID の提示を必要とするポリシーを構成している場合に一部アプリでのサインインがブロックされます。</p><h2 id="どのような環境のどのようなアプリが影響を受けるのか"><a href="#どのような環境のどのようなアプリが影響を受けるのか" class="headerlink" title="どのような環境のどのようなアプリが影響を受けるのか"></a>どのような環境のどのようなアプリが影響を受けるのか</h2><p>次のような条件付きアクセス ポリシーを構成している環境で影響が発生する恐れがあります。</p><ul><li><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-condition-filters-for-devices">条件付きアクセス: デバイスのフィルター</a> で紹介しているデバイスのフィルターを判定条件に利用している。</p></li><li><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-grant">条件付きアクセス:Grant</a> で紹介している、デバイスは準拠としてマーク済みである必要がある、承認済みクライアント アプリを必須にする (2026 年 3 月に廃止)、アプリの保護ポリシーを必須にする、といったアクセス制御を利用している。</p></li></ul><p>上記の判定条件やアクセス制御はいずれも <strong>クライアント アプリ&#x2F;ブラウザからの認証要求時に、デバイス ID が Entra ID に提示される</strong> ことで適切に判定を受けることが可能な機能です。<br>つまり、クライアント アプリ&#x2F;ブラウザが認証時にデバイス ID を提示できないと、Entra ID は [どのデバイスからの認証要求であるか] を判定する情報が得られず、未登録デバイスと判定することになります。</p><p>上述の条件付きアクセス ポリシーを構成している環境において、それぞれの OS ごとで動作するアプリケーションへの影響を以下の表にまとめました。</p><h3 id="iOS-の場合"><a href="#iOS-の場合" class="headerlink" title="iOS の場合"></a>iOS の場合</h3><table><thead><tr><th>区分</th><th>説明</th></tr></thead><tbody><tr><td>MSAL 対応アプリ／ブラウザ</td><td>特に対応は不要です。なお、Microsoft の 1st party アプリや Edge ブラウザは MSAL に対応しています。3rd party アプリが MSAL に対応しているかどうかは、アプリ提供元への確認が必要です。</td></tr><tr><td>非 MSAL 対応アプリ／ブラウザ</td><td>Enterprise SSO プラグイン機能を有効にすることで、Secure Enclave に格納されたデバイス ID の取得と認証時の提示が行えるようになります。</td></tr></tbody></table><h3 id="macOS-の場合"><a href="#macOS-の場合" class="headerlink" title="macOS の場合"></a>macOS の場合</h3><table><thead><tr><th>区分</th><th>説明</th></tr></thead><tbody><tr><td>MSAL 対応アプリ／ブラウザ</td><td>Enterprise SSO プラグイン機能を有効にすることで、Secure Enclave に格納されたデバイス ID の取得と認証時の提示が行えるようになります。</td></tr><tr><td>非 MSAL 対応アプリ／ブラウザ</td><td>Enterprise SSO プラグイン機能を有効にすることで、Secure Enclave に格納されたデバイス ID の取得と認証時の提示が行えるようになります。</td></tr></tbody></table><p>※ Platform SSO では Enterprise SSO を利用しているため Secure Enclave に対応しています。</p><h2 id="影響を受けた場合の具体的な例"><a href="#影響を受けた場合の具体的な例" class="headerlink" title="影響を受けた場合の具体的な例"></a>影響を受けた場合の具体的な例</h2><p>ここまでの内容を踏まえて、影響を受けた場合の具体的な例を紹介します。</p><ul><li><p>前提</p><ul><li>ロールアウトが適用された以降に Intune MDM 登録 + Entra ID へのデバイス登録をした iOS デバイス</li><li>Enterprise SSO を有効にする設定を配布していない</li><li>デバイス ID を元にアクセス制御を行う条件付きアクセスのポリシーを構成している</li><li>Safari や 3rd party 製アプリなど MSAL に対応していないアプリ利用時</li></ul></li><li><p>発生しうる事象</p><ul><li>認証時にクライアント側からデバイス ID が提示されず、条件付きアクセスのポリシーに抵触してサインインがブロックされる。</li><li>Edge ブラウザ や 1st party (Microsoft) 製アプリを使用した場合は同様の事象は発生しない。</li><li>ロールアウトが適用される以前にセットアップしたデバイスでは同様の事象は発生しない。</li></ul></li><li><p>事象が発生した際のクライアント上でのエラー表示例<br>以下の例では Safari ブラウザからのアクセス シナリオですが、サインイン時に以下のように 530003 のエラー コードで失敗しています。このエラー コード 530003 は “Your device is required to be managed to access this resource.” を意味しており、つまり MDM 管理されたデバイスからのアクセスではないため “デバイスは準拠としてマーク済みである必要がある” のアクセス制御に抵触したことを示しています。<br>また、”デバイスの識別子” の項目が “使用できません” となっていることもデバイス ID が提示されなかったことを示唆しています。</p></li></ul><p><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/5-Sample-Sign-ins.jpg"></p><p>上記のサインインに呼応する Entra ID のサインイン ログの詳細を参照すると以下のようにデバイス ID の項目がブランクとなっており、この点からもクライアントからデバイス ID が提示されていないことを確認可能です。</p><p><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/6-NoDevice-Sign-ins-EntraID.jpg"></p><p>上記は <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin">Apple デバイス用の Microsoft Enterprise SSO プラグイン</a> 内の <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#troubleshooting-secure-enclave-based-device-identity">セキュリティで保護されたエンクレーブ ベースのデバイス ID のトラブルシューティング</a> の説明が該当します。</p><h2 id="対処方法"><a href="#対処方法" class="headerlink" title="対処方法"></a>対処方法</h2><p>Enterprise SSO プラグインを有効化することで、非 MSAL 対応アプリ&#x2F;ブラウザを利用する際のユーザー認証時にデバイス ID を提示できるようになります。<br>Enterprise SSO 機能を有効化するには、 <a href="https://learn.microsoft.com/ja-jp/intune/intune-service/configuration/use-enterprise-sso-plug-in-ios-ipados-with-intune?tabs=prereq-intune,create-profile-intune">MDM を使用して iOS&#x2F;iPadOS Enterprise SSO アプリ拡張機能を構成する</a> 内の <a href="https://learn.microsoft.com/ja-jp/intune/intune-service/configuration/use-enterprise-sso-plug-in-ios-ipados-with-intune?tabs=prereq-intune,create-profile-intune#create-a-single-sign-on-app-extension-configuration-policy">シングル サインオン アプリ拡張機能構成ポリシーを作成する</a> の手順に沿って Intune にてデバイス構成ポリシーを用いて設定を配布します。</p><p>Safari ブラウザもしくは [認証ブローカーとして Safari WebView を使用する] 3rd party アプリの場合、以下のように Enterprise SSO を有効化することで、デバイス ID を提示できるようになります。<br>[SSO アプリ拡張機能の種類] の設定を “Microsoft Entra ID” にしているのみの設定です。</p><p><img src="/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/7-SSO-app-extension-Intune.jpg"></p><p>なお、3rd party アプリが [認証ブローカーとして Safari WebView] を使用しているかどうかは、各アプリの実装に依存するためアプリ提供元までご確認ください。<br>もし MSAL も Safari WebView も認証処理に使用していない 3rd party アプリの場合、該当アプリの [アプリ バンドル ID] を指定することで対応できる可能性はありますが、該当アプリの実装に依存するため Microsoft として確証を持ったご案内ができない点、あらかじめご了承ください。</p><h2 id="よくあるご質問とその回答-FAQ"><a href="#よくあるご質問とその回答-FAQ" class="headerlink" title="よくあるご質問とその回答 (FAQ)"></a>よくあるご質問とその回答 (FAQ)</h2><h3 id="FAQ1"><a href="#FAQ1" class="headerlink" title="FAQ1"></a>FAQ1</h3><p>Q:<br>3rd party アプリの [アプリ バンドル ID] はどのように確認することができますか？</p><p>A:<br>アプリ バンドル ID の正確な情報はアプリのご提供元ベンダー様へご確認ください。<br><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#find-app-bundle-identifiers-on-ios-devices">iOS デバイスでのアプリ バンドル ID の確認</a> にも該当のご案内があります。</p><p>その他の簡易的なアプリ バンドル ID の確認方法としては、2026 年 4 月現在では、App Store のアプリ ID を元に、アプリ バンドル ID を確認することが可能であるという情報を確認しています。<br>その手順は次の通りです。</p><p>まずは確認したいアプリの App Store サイトを開きます。例として MSN アプリとします。</p><p>App Store の MSN アプリのサイト<br><a href="https://apps.apple.com/jp/app/msn/id945416273">https://apps.apple.com/jp/app/msn/id945416273</a><br>-&gt;この URL よりアプリ ID が 945416273 であることがわかります。</p><p>続けて、Apple の iTunes の lookup サイトでアプリ ID の数字 945416273 を id&#x3D; で指定した URL を開きます。<br><a href="https://itunes.apple.com/lookup?id=945416273">https://itunes.apple.com/lookup?id=945416273</a></p><p>1.txt というテキストのダウンロードが行われるため、テキストファイルより bundleid 値を検索します。<br>今回の例では [“bundleId”:”com.microsoft.axp-ios.BingNews”] という値であるため、com.microsoft.axp-ios.BingNews が MSN アプリのアプリ バンドル ID であることがわかります。</p><hr><h3 id="FAQ2"><a href="#FAQ2" class="headerlink" title="FAQ2"></a>FAQ2</h3><p>Q:<br>認証ブローカーとは何でしょうか。</p><p>A:<br>認証ブローカーとは、アプリに代わって認証の処理を行うコンポーネントを指します。<br>OS 上で起動するアプリは、認証に関わるやり取りをアプリ自身のプロセス上で実行せず、別のプロセスに委任する (認証に関する処理を任せる) 作りが広く一般的です。<br>これは OS の種類にかかわらず、以下のように言えます。</p><ul><li><p>Windows の場合、Outlook や Teams などの Office (1st party) アプリでは WAM (Web Account Manager) と呼ばれる OS の認証ブローカーに認証の処理を任せる<br>　3rd party アプリの場合、アプリの作りによって WAM に任せる作りのアプリもあれば、Edge WebView に任せる作りのアプリ、自分自身のプロセスで対応する (他プロセスに委任しない) アプリもある</p></li><li><p>iOS の場合、Office (1st party) アプリは、Microsoft Authenticator に認証の処理を任せる<br>　3rd party アプリの場合、アプリの作りによって認証ブローカーである Microsoft Authenticator に任せる作りのアプリもあれば、Safari WebView に任せる作りのアプリ、自分自身のプロセスで対応する (他プロセスに委任しない) アプリもある</p></li><li><p>Android の場合、Office (1st party) アプリは、Intune Company ポータル アプリに認証の処理を任せる<br>　3rd party アプリの場合、アプリの作りによって認証ブローカーである Intune Company ポータル アプリに任せる作りのアプリもあれば、Chrome WebView に任せる作りのアプリ、自分自身のプロセスで対応する (他プロセスに委任しない) アプリもある</p></li></ul><p>上記の Microsoft の認証ブローカーに認証処理を委任できるアプリは、1st &#x2F; 3rd party 製であるかどうかにかかわらず [MSAL (先進認証のライブラリ) に対応したアプリ] という言い方も可能です。</p><hr><h3 id="FAQ3"><a href="#FAQ3" class="headerlink" title="FAQ3"></a>FAQ3</h3><p>Q:<br>Enterprise SSO を有効にすることによる影響はありますか。</p><p>A:<br>Apple の OS に対して Enterprise SSO を有効化することで、Safari の認証処理がアドイン&#x2F;強化される (ブラウザ単位ではなく、デバイスとして保持する認証情報を利用できるようになる) ことになります。<br>そのため、Safari もしくは [Safari WebView を認証ブローカーとする作りのアプリ] がその恩恵を受けることになります。</p><p>そのため [Safari ブラウザ、もしくは認証ブローカーとして Safari WebView を使用する 3rd party アプリの利用時、これまでは対話的な認証画面が表示されて認証操作を行っていたが、Intune に MDM 登録を行っているユーザーとして SSO が行えるようになり、かつ認証時にデバイス ID 情報も提示できるようになる] という影響&#x2F;効果が生じることが期待値となります。</p><p>なお、前述のとおり MSAL も Safari WebView も認証処理に使用していない 3rd party アプリの場合、該当アプリの [アプリ バンドル ID] を指定することで、同様の影響&#x2F;効果を得られる可能性もあります。<br>繰り返しになりますが該当アプリの実装に依存するため Microsoft として Enterprise SSO の効果が得られるかどうかに関して確証を持ったご案内ができない点、あらかじめご了承ください。</p><hr><p>上記内容が皆様の参考となりますと幸いです。どちら様も素敵な Entra ID ライフをお過ごしください。</p>]]>
     </content>
     <id>https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/</id>
     <link href="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/"/>
@@ -28,7 +28,7 @@
 <p>今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-04-28T01:02:26.296Z</updated>
+    <updated>2026-04-29T23:32:56.497Z</updated>
   </entry>
   <entry>
     <author>
@@ -47,7 +47,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-04-28T01:02:26.794Z</updated>
+    <updated>2026-04-29T23:32:56.994Z</updated>
   </entry>
   <entry>
     <author>
@@ -65,7 +65,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-04-28T01:02:26.171Z</updated>
+    <updated>2026-04-29T23:32:56.372Z</updated>
   </entry>
   <entry>
     <author>
@@ -84,7 +84,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-04-28T01:02:27.334Z</updated>
+    <updated>2026-04-29T23:32:57.530Z</updated>
   </entry>
   <entry>
     <author>
@@ -103,7 +103,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-04-28T01:02:26.480Z</updated>
+    <updated>2026-04-29T23:32:56.681Z</updated>
   </entry>
   <entry>
     <author>
@@ -123,7 +123,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-04-28T01:02:26.624Z</updated>
+    <updated>2026-04-29T23:32:56.825Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +142,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-04-28T01:02:26.308Z</updated>
+    <updated>2026-04-29T23:32:56.509Z</updated>
   </entry>
   <entry>
     <author>
@@ -160,7 +160,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-04-28T01:02:26.802Z</updated>
+    <updated>2026-04-29T23:32:57.003Z</updated>
   </entry>
   <entry>
     <author>
@@ -179,7 +179,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-04-28T01:02:27.185Z</updated>
+    <updated>2026-04-29T23:32:57.382Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,7 +198,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-04-28T01:02:26.168Z</updated>
+    <updated>2026-04-29T23:32:56.368Z</updated>
   </entry>
   <entry>
     <author>
@@ -217,7 +217,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-04-28T01:02:27.376Z</updated>
+    <updated>2026-04-29T23:32:57.571Z</updated>
   </entry>
   <entry>
     <author>
@@ -236,7 +236,7 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-04-28T01:02:26.889Z</updated>
+    <updated>2026-04-29T23:32:57.089Z</updated>
   </entry>
   <entry>
     <author>
@@ -255,7 +255,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-04-28T01:02:26.168Z</updated>
+    <updated>2026-04-29T23:32:56.368Z</updated>
   </entry>
   <entry>
     <author>
@@ -275,7 +275,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-04-28T01:02:27.282Z</updated>
+    <updated>2026-04-29T23:32:57.478Z</updated>
   </entry>
   <entry>
     <author>
@@ -296,7 +296,7 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-04-28T01:02:27.271Z</updated>
+    <updated>2026-04-29T23:32:57.467Z</updated>
   </entry>
   <entry>
     <author>
@@ -315,7 +315,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
     </summary>
     <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-04-28T01:02:26.644Z</updated>
+    <updated>2026-04-29T23:32:56.846Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +334,7 @@
 <p>本記事は、2025 年 8 月 22 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommun]]>
     </summary>
     <title>パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access</title>
-    <updated>2026-04-28T01:02:26.881Z</updated>
+    <updated>2026-04-29T23:32:57.082Z</updated>
   </entry>
   <entry>
     <author>
@@ -353,7 +353,7 @@
 <p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunit]]>
     </summary>
     <title>Microsoft Defender for Identity のシグナルが Microsoft Entra ID の推奨事項に統合</title>
-    <updated>2026-04-28T01:02:26.570Z</updated>
+    <updated>2026-04-29T23:32:56.771Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,7 +372,7 @@
 <p>2025 年 10 月 1 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Cod]]>
     </summary>
     <title>MFA 義務付け (フェーズ 2) の開始</title>
-    <updated>2026-04-28T01:02:27.127Z</updated>
+    <updated>2026-04-29T23:32:57.324Z</updated>
   </entry>
   <entry>
     <author>
@@ -392,6 +392,6 @@
 <p>本記事は、2025 年 8 月 13 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.mic]]>
     </summary>
     <title>一般提供開始: Microsoft Entra ID による macOS 向けプラットフォーム SSO</title>
-    <updated>2026-04-28T01:02:27.110Z</updated>
+    <updated>2026-04-29T23:32:57.307Z</updated>
   </entry>
 </feed>
