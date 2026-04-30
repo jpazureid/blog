@@ -14,6 +14,9 @@ list_number: false
 # Apple デバイスでキーチェーンから Secure Enclave 利用へ
 こんにちは、Azure & Identity サポートの金森です。
 
+> [!NOTE]
+> 2026 年 4 月 30 日更新: 影響範囲について、iOS と Mac デバイスの違いを追記しました。
+
 今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID / キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについてお知らせします。
 
 弊社公開情報では、 [Apple デバイス用の Microsoft Enterprise SSO プラグイン](https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin) 内の [デバイス ID キー ストレージ](https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage) の説明が該当します。
