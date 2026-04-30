@@ -12,10 +12,11 @@ list_number: false
 ---
 
 # Apple デバイスでキーチェーンから Secure Enclave 利用へ
-こんにちは、Azure & Identity サポートの金森です。
 
 > [!NOTE]
 > 2026 年 4 月 30 日更新: 影響範囲について、iOS と Mac デバイスの違いを追記しました。
+
+こんにちは、Azure & Identity サポートの金森です。
 
 今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID / キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについてお知らせします。
 
