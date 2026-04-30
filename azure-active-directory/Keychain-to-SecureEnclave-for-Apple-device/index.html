@@ -6,12 +6,12 @@
   
   <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure &amp; Identity サポートの金森です。 今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについて">
+  <meta name="description" content="Note2026 年 4 月 30 日更新: 影響範囲について、iOS と Mac デバイスの違いを追記しました。 こんにちは、Azure &amp; Identity サポートの金森です。 今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apple デバイスでキーチェーンから Secure Enclave 利用へ">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="こんにちは、Azure &amp; Identity サポートの金森です。 今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについて">
+<meta property="og:description" content="Note2026 年 4 月 30 日更新: 影響範囲について、iOS と Mac デバイスの違いを追記しました。 こんにちは、Azure &amp; Identity サポートの金森です。 今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/1-ManagenentProfile.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/2-Shosai.jpg">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/6-NoDevice-Sign-ins-EntraID.jpg">
 <meta property="og:image" content="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/7-SSO-app-extension-Intune.jpg">
 <meta property="article:published_time" content="2026-04-17T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-29T23:32:56.497Z">
+<meta property="article:modified_time" content="2026-04-30T02:06:43.981Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Enterprise SSO">
 <meta property="article:tag" content="Microsoft Entra ID">
@@ -163,7 +163,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+fc3eb11a-4d41-5406-9bc5-09f1aa1e8eb1%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BApple+%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%A7%E3%82%AD%E3%83%BC%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89+Secure+Enclave+%E5%88%A9%E7%94%A8%E3%81%B8%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2FKeychain-to-SecureEnclave-for-Apple-device%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2FKeychain-to-SecureEnclave-for-Apple-device.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2FKeychain-to-SecureEnclave-for-Apple-device.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/" data-id="cuidDj90AdQ7ZTn2aNpvIqUbw" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/" data-id="cuidsp7STdCreKgvfEo4zvHRD" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -174,7 +174,8 @@
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E5%AE%9F%E8%A3%85%E5%A4%89%E6%9B%B4%E3%81%A7%E3%81%82%E3%82%8B%E3%81%8B"><span class="toc-text">どのような実装変更であるか</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%9C%E8%B6%B3"><span class="toc-text">補足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%AD%E3%83%BC%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E3%81%A8-Secure-Enclave-%E3%81%AE%E3%81%A9%E3%81%A1%E3%82%89%E3%81%AB%E6%A0%BC%E7%B4%8D%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E3%81%AE%E8%A6%8B%E5%88%86%E3%81%91%E6%96%B9"><span class="toc-text">キーチェーンと Secure Enclave のどちらに格納されているかの見分け方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%93%E3%81%AE%E5%AE%9F%E8%A3%85%E5%A4%89%E6%9B%B4%E3%81%8C%E5%B1%95%E9%96%8B%E3%81%95%E3%82%8C%E3%82%8B%E3%81%A8%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E5%BD%B1%E9%9F%BF%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E3%81%8B"><span class="toc-text">この実装変更が展開されるとどのような影響が発生するか</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E7%92%B0%E5%A2%83%E3%81%AE%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%82%A2%E3%83%97%E3%83%AA%E3%81%8C%E5%BD%B1%E9%9F%BF%E3%82%92%E5%8F%97%E3%81%91%E3%82%8B%E3%81%AE%E3%81%8B"><span class="toc-text">どのような環境のどのようなアプリが影響を受けるのか</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS-%E3%81%AE%E5%A0%B4%E5%90%88"><span class="toc-text">iOS の場合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS-%E3%81%AE%E5%A0%B4%E5%90%88"><span class="toc-text">macOS の場合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%B1%E9%9F%BF%E3%82%92%E5%8F%97%E3%81%91%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AE%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E4%BE%8B"><span class="toc-text">影響を受けた場合の具体的な例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BE%E5%87%A6%E6%96%B9%E6%B3%95"><span class="toc-text">対処方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%81%94%E8%B3%AA%E5%95%8F%E3%81%A8%E3%81%9D%E3%81%AE%E5%9B%9E%E7%AD%94-FAQ"><span class="toc-text">よくあるご質問とその回答 (FAQ)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ1"><span class="toc-text">FAQ1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ2"><span class="toc-text">FAQ2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ3"><span class="toc-text">FAQ3</span></a></li></ol></li></ol>
         </div>
           
-        <p>こんにちは、Azure &amp; Identity サポートの金森です。</p>
+        <div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 4 月 30 日更新: 影響範囲について、iOS と Mac デバイスの違いを追記しました。</p></div>
+<p>こんにちは、Azure &amp; Identity サポートの金森です。</p>
 <p>今回は Apple デバイス (iPhone、iPad、Mac) の [Microsoft Entra ID (以下 Entra ID) へのデバイス登録に紐づく、デバイス ID &#x2F; キーの情報が保持される仕組み] が変更されたことについて、どのような変更であるかの説明や、この変更による影響、対処方法などについてお知らせします。</p>
 <p>弊社公開情報では、 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin">Apple デバイス用の Microsoft Enterprise SSO プラグイン</a> 内の <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage">デバイス ID キー ストレージ</a> の説明が該当します。</p>
 <h2 id="どのような実装変更であるか"><a href="#どのような実装変更であるか" class="headerlink" title="どのような実装変更であるか"></a>どのような実装変更であるか</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin#device-identity-key-storage">前述の公開情報</a> の説明のポイントをサマライズします。</p>
