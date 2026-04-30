@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説 | Japan Azure Identity Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは、Azure Identity サポート チームの 成田 です。本記事では、2026 年 5 月 13 日 より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。 警告この変更は 2026 年 5 月 13 日 から段階的に展開される予定です。「すべてのリソースを対象」かつ「特定のリソースを対象外」とする条件付き">
+<meta property="og:type" content="article">
+<meta property="og:title" content="条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説">
+<meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/index.html">
+<meta property="og:site_name" content="Japan Azure Identity Support Blog">
+<meta property="og:description" content="こんにちは、Azure Identity サポート チームの 成田 です。本記事では、2026 年 5 月 13 日 より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。 警告この変更は 2026 年 5 月 13 日 から段階的に展開される予定です。「すべてのリソースを対象」かつ「特定のリソースを対象外」とする条件付き">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-04-20T15:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-30T05:25:41.175Z">
+<meta property="article:author" content="Azure Identity Support Japan">
+<meta property="article:tag" content="Conditional Access">
+<meta property="article:tag" content="Microsoft Entra ID">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan Azure Identity Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpazureid.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan Azure Identity Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-azure-active-directory/baseline-scopes-enforcement" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Published: 
+        <a href="" class="article-date-single">
+  <time datetime="2026-04-20T15:00:00.000Z" itemprop="datePublished">2026-04-21</time>
+</a>
+        
+          / Last update: <a id="update-time" class="article-date-single"></a>
+/ Contributors: <ul style="display: inline-block; list-style:none" id="contributors" class="github-contributors"> </ul>
+
+<script type="text/javascript">
+  const sourceUrl = "https://github.com/jpazureid/blog/blob/main/articles/azure-active-directory/baseline-scopes-enforcement.md";
+  const urlParts = sourceUrl.split("/");
+  const user = urlParts[3];
+  const repo = urlParts[4];
+  const filePath = urlParts.slice(7).join("/");
+  const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits?path=${filePath}`;
+  function formatDate(date) {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return year + '-' + month + '-' + day;
+  }
+
+  $.getJSON(apiUrl, function (data) {
+    const commit = data[0];
+    const updateDate = new Date(commit.commit.author.date);
+    const localDate = formatDate(updateDate);
+    const contributors = new Map();
+
+    data.reverse().forEach(function (commit) {
+      if (commit.author == null) {
+        return;
+      } else {
+        const name = commit.author.login;
+        const url = commit.author.html_url;
+        const avatar = commit.author.avatar_url;
+        contributors.set(name, { name, url, avatar });
+      }
+    });
+
+    $("#update-time").text(localDate);
+    $("#update-time").href = commit.html_url;
+    Array.from(contributors, ([_, value]) => value).reverse().forEach(function (contributor) {
+      $("#contributors").append(`<li class="contributor-avatar"><a target="_blank" rel="noopener" href="https://github.com/${contributor.name}" title="${contributor.name}"><img src="${contributor.avatar}" alt="${contributor.name}"/></a></li>`);
+    });
+  });
+</script>
+        
+        
+        
+        <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+225f351b-68db-5adb-9e77-a42e71d49a3f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%80%8C%E3%83%99%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3+%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E3%80%8D%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%8B%95%E4%BD%9C%E5%A4%89%E6%9B%B4%E3%81%AE%E8%A7%A3%E8%AA%AC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fbaseline-scopes-enforcement%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fbaseline-scopes-enforcement.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fbaseline-scopes-enforcement.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/" data-id="cuidTSw7haOxFSeoUpKnf5_1u" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <div class="toc-wrapper">
+          <h2 id="toc-header" class="toc-header">この記事の内容</h2>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E3%81%93%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AF%E4%BD%95%E3%81%8B"><span class="toc-text">1. この変更は何か</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-text">概要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%99%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3-%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E3%81%A8%E3%81%AF"><span class="toc-text">ベースライン スコープとは</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E3%81%AA%E3%81%9C%E3%81%93%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%8C%E8%A1%8C%E3%82%8F%E3%82%8C%E3%81%9F%E3%81%AE%E3%81%8B"><span class="toc-text">2. なぜこの変更が行われたのか</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%B0%E3%81%97%E3%81%84%E5%8B%95%E4%BD%9C%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">3. 新しい動作の仕組み</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E8%A9%95%E4%BE%A1%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">条件付きアクセスのリソース評価の仕組み</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E3%81%97%E3%81%84%E5%8B%95%E4%BD%9C%E3%81%AE%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88"><span class="toc-text">新しい動作のポイント</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BD%B1%E9%9F%BF%E3%82%92%E5%8F%97%E3%81%91%E3%82%8B%E6%9D%A1%E4%BB%B6"><span class="toc-text">4. 影響を受ける条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BE%93%E6%9D%A5%E3%81%AE%E5%8B%95%E4%BD%9C%E3%82%92%E7%B6%AD%E6%8C%81%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%89%8B%E9%A0%86"><span class="toc-text">5. 従来の動作を維持したい場合の対処手順</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E3%81%88%E6%96%B9%E3%81%AE%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8"><span class="toc-text">考え方のイメージ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E8%A8%AD%E5%AE%9A%E6%89%8B%E9%A0%86"><span class="toc-text">6. 具体的な設定手順</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-1-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%99%BB%E9%8C%B2"><span class="toc-text">ステップ 1: カスタム アプリケーションの登録</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-2-%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%AF%BE%E8%B1%A1%E5%A4%96%E3%81%AB%E8%BF%BD%E5%8A%A0"><span class="toc-text">ステップ 2: 条件付きアクセス ポリシーの対象外に追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-3-%E3%83%99%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3-%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E8%A8%AD%E5%AE%9A%E3%81%A7%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88-%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E6%88%90"><span class="toc-text">ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">7. まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%83%85%E5%A0%B1"><span class="toc-text">参考情報</span></a></li></ol>
+        </div>
+          
+        <p>こんにちは、Azure Identity サポート チームの 成田 です。<br>本記事では、<strong>2026 年 5 月 13 日</strong> より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>この変更は <strong>2026 年 5 月 13 日</strong> から段階的に展開される予定です。「すべてのリソースを対象」かつ「特定のリソースを対象外」とする条件付きアクセス ポリシーをお持ちの組織では、展開開始日までに影響の確認と必要な対処を完了いただくことをお勧めします。</p></div>
+<p>公開情報:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-enforcement-resource-exclusions">リソースの除外による条件付きアクセス ポリシーの適用の強化 - Microsoft Entra ID | Microsoft Learn</a></li>
+<li><a href="https://jpazureid.github.io/blog/azure-active-directory/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/">今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化 - Japan Azure Identity Support Blog</a></li>
+</ul>
+<h2 id="1-この変更は何か"><a href="#1-この変更は何か" class="headerlink" title="1. この変更は何か"></a>1. この変更は何か</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>条件付きアクセス ポリシーを <strong>「対象: すべてのリソース」</strong> かつ <strong>「対象外: 特定のリソース」</strong> の構成で運用しているテナントにおいて、以前は「ベースライン スコープ」のみを要求する認証リクエストが自動的にポリシーの適用対象から除外されていました。<br>今回の変更により、<strong>この自動除外が廃止</strong> され、ベースライン スコープのみを要求するリクエストにも条件付きアクセス ポリシーが適用されるようになります。</p>
+<h3 id="ベースライン-スコープとは"><a href="#ベースライン-スコープとは" class="headerlink" title="ベースライン スコープとは"></a>ベースライン スコープとは</h3><p>ベースライン スコープとは、以下の低い特権スコープの総称です。</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>スコープ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenID Connect (OIDC) スコープ</td>
+<td><code>email</code>, <code>offline_access</code>, <code>openid</code>, <code>profile</code></td>
+</tr>
+<tr>
+<td>ベースライン ディレクトリ スコープ</td>
+<td><code>User.Read</code>, <code>User.Read.All</code>, <code>User.ReadBasic.All</code>, <code>People.Read</code>, <code>People.Read.All</code>, <code>GroupMember.Read.All</code>, <code>Member.Read.Hidden</code></td>
+</tr>
+</tbody></table>
+<p>これらのスコープは、サインイン時にユーザーの基本的なプロフィール情報やグループ メンバーシップを取得するために多くのアプリケーションが要求するものです。<br>このスコープと、特定のリソースの関係性については後述する「3. 新しい動作の仕組み」にて「条件付きアクセスのリソース評価の仕組み」の項にてご説明します。</p>
+<h2 id="2-なぜこの変更が行われたのか"><a href="#2-なぜこの変更が行われたのか" class="headerlink" title="2. なぜこの変更が行われたのか"></a>2. なぜこの変更が行われたのか</h2><p>従来は、「対象: すべてのリソース &#x2F; 対象外: 特定のリソース」構成のポリシーにおいて、アプリケーションがベースライン スコープのみを要求した場合、そのリクエストは <strong>CA ポリシーの適用対象外</strong> として扱われていました。<br>これは、多くのアプリケーションがサインイン処理の一部としてこれらのスコープを要求するため、意図しないアクセス ブロックを防ぐための配慮でした。<br>今回の変更により、この配慮した動作が廃止されます。結果として、セキュリティがより高まる方向に動作変更されます。</p>
+<h2 id="3-新しい動作の仕組み"><a href="#3-新しい動作の仕組み" class="headerlink" title="3. 新しい動作の仕組み"></a>3. 新しい動作の仕組み</h2><p>変更後の動作を理解するために、まず技術的な背景を整理します。</p>
+<h3 id="条件付きアクセスのリソース評価の仕組み"><a href="#条件付きアクセスのリソース評価の仕組み" class="headerlink" title="条件付きアクセスのリソース評価の仕組み"></a>条件付きアクセスのリソース評価の仕組み</h3><p>条件付きアクセスは、認証リクエストにおいてアクセス先の <strong>「リソース (Audience)」</strong> に基づいてポリシーの適用を判断します。たとえば、アプリケーションが <code>Mail.Read</code> スコープを要求した場合、リソースは Exchange Online として評価され、Exchange Online を対象とする CA ポリシーが適用されます。<br>ベースライン スコープ (<code>User.Read</code> や <code>openid</code> など) は、<strong>Windows Azure Active Directory</strong> (アプリ ID: 00000002-0000-0000-c000-000000000000) をリソースとして評価されます。ここで重要なのは、Windows Azure Active Directory というリソースにはベースライン スコープだけでなく、<code>Directory.ReadWrite.All</code> や <code>Application.ReadWrite.All</code> のような <strong>高い特権を持つスコープも含まれている</strong> という点です。つまり、同じ「Windows Azure Active Directory」というリソースの中に、低特権のスコープと高特権のスコープが混在しています。</p>
+<h3 id="新しい動作のポイント"><a href="#新しい動作のポイント" class="headerlink" title="新しい動作のポイント"></a>新しい動作のポイント</h3><p>変更後は、ベースライン スコープのみを要求する認証リクエストも、リソースとして <strong>Windows Azure Active Directory</strong> にマップされ、CA ポリシーの適用対象として評価されるようになりました。</p>
+<div class="alert is-important"><p class="alert-title">重要</p><p><strong>影響の具体例:</strong></p><p>「すべてのリソースを対象 &#x2F; Exchange Online を対象外 &#x2F; MFA 必須」という CA ポリシーがある場合:</p><p><strong>従来</strong>: <code>openid</code> + <code>profile</code> のみを要求する VS Code へのサインイン → MFA <strong>不要</strong> (暗黙的に対象外になる)</p><p><strong>変更後</strong>: 同じサインイン → MFA が <strong>要求される</strong> (対象外にならない)</p></div>
+<h2 id="4-影響を受ける条件"><a href="#4-影響を受ける条件" class="headerlink" title="4. 影響を受ける条件"></a>4. 影響を受ける条件</h2><p>以下の <strong>すべて</strong> に該当する場合に影響を受けます。</p>
+<ol>
+<li><strong>すべてのリソース</strong> を対象とする条件付きアクセス ポリシーが 1 つ以上ある</li>
+<li>それらのポリシーに 1 つ以上の <strong>リソース除外</strong> が設定されている</li>
+<li>テナント内のユーザーが <strong>ベースライン スコープのみ</strong> を要求するアプリケーションを使用してサインインする</li>
+</ol>
+<div class="alert is-info"><p class="alert-title">Note</p><p><strong>影響を受けないケース:</strong></p><p>・「すべてのリソースを対象」でリソース除外が <strong>ない</strong> ポリシーのみ運用している場合</p><p>・アプリケーションがベースライン スコープに加えて他のスコープ (<code>Mail.Read</code> など) も要求している場合 (これらは既に CA の適用対象)</p></div>
+<h2 id="5-従来の動作を維持したい場合の対処手順"><a href="#5-従来の動作を維持したい場合の対処手順" class="headerlink" title="5. 従来の動作を維持したい場合の対処手順"></a>5. 従来の動作を維持したい場合の対処手順</h2><p>以前 (2026 年 2 月) の記事公開後、お客様より多くのフィードバックをいただき、Entra ID 側の設定変更で従来の動作を維持する方法を提供する運びとなりました。</p>
+<p>ただし、本変更は <a target="_blank" rel="noopener" href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative">Microsoft セキュア フューチャー イニシアティブ</a> に基づくプロアクティブなセキュリティ対策であるため、従来の動作を維持し続けることを積極的にお勧めするものではありません。<br>影響の確認やアプリケーションの動作検証、さらにはアプリケーション側の改修といったお客様側の対応にも一定の時間を要することから、暫定的な猶予期間として、あるいはどうしても対応が難しいアプリケーション向けの措置としてご活用いただくことを想定しています。</p>
+<p>新しい適用モデルへの移行が推奨されますが、既存のアプリケーションの動作を維持する必要がある場合は、<strong>「ベースライン スコープ設定」</strong> を使用して従来の動作を保持できます。<br>仕組みとしては、テナント内にカスタム アプリケーションを登録し、それをベースライン スコープのターゲット リソースとして設定します。ベースライン スコープのみを要求する認証リクエストは、Windows Azure Active Directory の代わりに <strong>このカスタム アプリケーションをリソースとして評価</strong> されるようになります。そのうえで、CA ポリシーの対象外にこのカスタム アプリケーションを追加することで、従来と同じ除外動作を実現します。</p>
+<h3 id="考え方のイメージ"><a href="#考え方のイメージ" class="headerlink" title="考え方のイメージ"></a>考え方のイメージ</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">【従来の動作】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: Windows Azure Active Directory</span><br><span class="line">  → 自動的に CA ポリシーの適用対象外 (ベースライン スコープのため)</span><br><span class="line"></span><br><span class="line">【変更後の動作 (対処なし)】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: Windows Azure Active Directory</span><br><span class="line">  → CA ポリシーの適用対象 ← MFA 等が要求される</span><br><span class="line"></span><br><span class="line">【変更後の動作 (カスタム ターゲット リソースで対処)】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: カスタム アプリ (例: CA_BaselineScopes_TargetResource)</span><br><span class="line">  → CA ポリシーの対象外に追加済み → 除外される ※従来と同等</span><br></pre></td></tr></table></figure>
+
+<div class="alert is-info"><p class="alert-title">Note</p><p><strong>なぜ Windows Azure Active Directory を直接除外しないのか?</strong></p><p>Windows Azure Active Directory をリソースとして CA ポリシーの対象外に追加した場合、ベースライン スコープだけでなく <code>Directory.ReadWrite.All</code> などの <strong>高い特権スコープも含めて除外</strong> されてしまいます。</p><p>これはセキュリティ上好ましくありません。 カスタム アプリケーションを「身代わり」のターゲット リソースとして設定することで、<strong>ベースライン スコープのリクエストのみを選択的に除外</strong> しつつ、高い特権スコープの要求には引き続き CA ポリシーを適用できます。</p></div>
+<h2 id="6-具体的な設定手順"><a href="#6-具体的な設定手順" class="headerlink" title="6. 具体的な設定手順"></a>6. 具体的な設定手順</h2><p>以下の 3 つのステップで設定を行います。</p>
+<h3 id="ステップ-1-カスタム-アプリケーションの登録"><a href="#ステップ-1-カスタム-アプリケーションの登録" class="headerlink" title="ステップ 1: カスタム アプリケーションの登録"></a>ステップ 1: カスタム アプリケーションの登録</h3><ol>
+<li>Azure portal (<a target="_blank" rel="noopener" href="https://portal.azure.com/">https://portal.azure.com</a>) もしくは Microsoft Entra 管理センター (<a target="_blank" rel="noopener" href="https://entra.microsoft.com/">https://entra.microsoft.com</a>) に、アプリケーションを登録可能な管理者アカウントでサインインします。</li>
+<li>[Microsoft Entra ID] &gt; [アプリの登録] に遷移し、[+ 新規登録] をクリックします。</li>
+<li>以下の設定でアプリケーションを登録します。<ul>
+<li><strong>名前</strong>: 任意の分かりやすい名前 (例: <code>CA_BaselineScopes_TargetResource</code>)<br>※ ベースライン スコープ設定で利用する組織にとって重要なアプリケーションになりますため、用途が明確に分かる名前をお勧めします。</li>
+<li><strong>サポートされているアカウントの種類</strong>: 「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」</li>
+<li><strong>リダイレクト URI</strong>: 設定は必須ではありません。設定する場合は、プラットフォームに “Web” を選択し、URL 欄に任意の URL を入力してください (ダミーで構いません)。</li>
+</ul>
+</li>
+<li>[登録] をクリックし、アプリケーションを作成します。</li>
+</ol>
+<h3 id="ステップ-2-条件付きアクセス-ポリシーの対象外に追加"><a href="#ステップ-2-条件付きアクセス-ポリシーの対象外に追加" class="headerlink" title="ステップ 2: 条件付きアクセス ポリシーの対象外に追加"></a>ステップ 2: 条件付きアクセス ポリシーの対象外に追加</h3><ol>
+<li>条件付きアクセス管理者以上の権限を持つアカウントで [Microsoft Entra ID] &gt; [セキュリティ] &gt; [条件付きアクセス] に遷移します。</li>
+<li>「すべてのリソースを対象 &#x2F; 特定のリソースを対象外」の構成となっている条件付きアクセス ポリシーを選択します。</li>
+<li>[ターゲット リソース] &gt; [対象外] タブを開き、ステップ 1 で作成したカスタム アプリケーションを追加します。</li>
+<li>[保存] をクリックします。</li>
+</ol>
+<div class="alert is-important"><p class="alert-title">重要</p><p>対象のポリシーが複数ある場合は、すべてのポリシーに対してこの手順を実施してください。</p></div>
+<h3 id="ステップ-3-ベースライン-スコープ設定でカスタム-ターゲット-リソースを構成"><a href="#ステップ-3-ベースライン-スコープ設定でカスタム-ターゲット-リソースを構成" class="headerlink" title="ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成"></a>ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成</h3><ol>
+<li>以下の URL にアクセスし、条件付きアクセスのベースライン スコープ設定画面を開きます。現在はこの URL からのみアクセスが可能です。<br><a target="_blank" rel="noopener" href="https://aka.ms/BaselineScopesSettingsUX">https://aka.ms/BaselineScopesSettingsUX</a></li>
+<li>条件付きアクセス管理者以上の権限を持つアカウントでサインインします。</li>
+<li>[カスタム ターゲット リソース: カスタム ターゲット リソースを選択する (Custom target resource: Select a custom target resource)] を選択し、ステップ 1 で作成したカスタム アプリケーションを選択します。</li>
+<li>[保存 (Save)] をクリックして設定を保存します。</li>
+</ol>
+<div class="alert is-info"><p class="alert-title">Note</p><p>この設定により、ベースライン スコープのみを要求する認証リクエストにおいて、条件付きアクセスのリソース評価で Windows Azure Active Directory の代わりに指定したカスタム アプリケーションが使用されるようになります。</p><p>ステップ 2 でこのカスタム アプリケーションを CA ポリシーの対象外に設定済みのため、結果として従来と同等の除外動作が実現されます。 なお、発行されるトークンの audience (aud クレーム) 自体は Windows Azure Active Directory や Microsoft Graph のままであり、アプリケーションの動作に影響はありません。</p></div>
+<div class="alert is-important"><p class="alert-title">重要</p><p><strong>カスタム ターゲット リソースによるオプトアウトはあくまで暫定措置です</strong></p><p>上記の手順で特定したアプリケーションについては、カスタム ターゲット リソースによる除外で従来の動作を維持している間に、アプリケーション側の改修をご検討ください。</p><p>新しい既定の動作では、ベースライン スコープのみを要求するサインインにも CA ポリシーが適用されます。そのため、アプリケーションが条件付きアクセス チャレンジ (MFA やデバイス コンプライアンスなど) を適切にハンドルできるよう改修することが、中長期的には推奨されます。</p><p>具体的には、アプリケーションが CA チャレンジを受けた際に、ユーザーに対して正しくリダイレクトや再認証のフローを提示できるようにする必要があります。</p><p>実装方法の詳細については、以下の公開情報をご参照ください。</p><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">条件付きアクセス開発者向けガイダンス - Microsoft identity platform | Microsoft Learn</a></p></div>
+<h2 id="7-まとめ"><a href="#7-まとめ" class="headerlink" title="7. まとめ"></a>7. まとめ</h2><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>変更内容</td>
+<td>「すべてのリソース &#x2F; 対象外あり」の CA ポリシーにおいて、ベースライン スコープのみの認証リクエストが自動除外されなくなった</td>
+</tr>
+<tr>
+<td>影響</td>
+<td>ベースライン スコープのみを要求するアプリへのサインイン時に、MFA やデバイス コンプライアンスなどの CA チャレンジが発生する可能性がある</td>
+</tr>
+<tr>
+<td>推奨対応</td>
+<td>新しい適用モデルに合わせることが推奨。やむを得ない場合はカスタム ターゲット リソースで従来の動作を維持</td>
+</tr>
+<tr>
+<td>必要な手順 (従来の動作を維持する場合)</td>
+<td>1. カスタム アプリケーションの登録 &#x2F; 2. CA ポリシーの対象外に追加 &#x2F; 3. ベースライン スコープ設定にカスタム ターゲット リソースを構成</td>
+</tr>
+</tbody></table>
+<h2 id="参考情報"><a href="#参考情報" class="headerlink" title="参考情報"></a>参考情報</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-enforcement-resource-exclusions">リソースの除外による条件付きアクセス ポリシーの適用の強化 - Microsoft Entra ID | Microsoft Learn</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース - Microsoft Entra ID | Microsoft Learn</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/BaselineScopesSettingsUX">ベースライン スコープ設定画面</a></li>
+</ul>
+<p>上記内容が少しでも参考となりますと幸いです。製品動作に関する正式な見解や回答については、お客様環境などを把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Microsoft-Entra-ID/" rel="tag">Microsoft Entra ID</a></li></ul>
+
+        
+        <a href="https://github.com/jpazureid/blog/edit/main/articles/azure-active-directory/baseline-scopes-enforcement.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../Keychain-to-SecureEnclave-for-Apple-device/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Apple デバイスでキーチェーンから Secure Enclave 利用へ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</a>
+          </li>
+        
+          <li>
+            <a href="../Keychain-to-SecureEnclave-for-Apple-device/">Apple デバイスでキーチェーンから Secure Enclave 利用へ</a>
+          </li>
+        
+          <li>
+            <a href="../long-audit-log-split-behavior/">条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</a>
+          </li>
+        
+          <li>
+            <a href="../../azure-active-directory-connect/hardmatch-security-hardening/">Microsoft Entra Connect のハードマッチの動作変更について</a>
+          </li>
+        
+          <li>
+            <a href="../upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/">今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090016/" rel="tag">80090016</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/80090030/" rel="tag">80090030</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/" rel="tag">AAD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AADSTS50107/" rel="tag">AADSTS50107</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/" rel="tag">AD FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-Sync/" rel="tag">AD Sync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ADSync/" rel="tag">ADSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Package/" rel="tag">Access Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-Review/" rel="tag">Access Review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Access-review/" rel="tag">Access review</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/App-Service/" rel="tag">App Service</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Application/" rel="tag">Application</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Audit-Logs/" rel="tag">Audit Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/" rel="tag">Azure AD</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Application-Proxy/" rel="tag">Azure AD Application Proxy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2B/" rel="tag">Azure AD B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-B2C/" rel="tag">Azure AD B2C</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Connect/" rel="tag">Azure AD Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Domain-Services/" rel="tag">Azure AD Domain Services</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Graph-API-retirement/" rel="tag">Azure AD Graph API retirement</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Join/" rel="tag">Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-License/" rel="tag">Azure AD License</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD-Rename-ROllout/" rel="tag">Azure AD Rename ROllout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Ad-Connect/" rel="tag">Azure Ad Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/B2B/" rel="tag">B2B</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BitLocker/" rel="tag">BitLocker</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CBA/" rel="tag">CBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Client-Secrets/" rel="tag">Client Secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Cloud-Kerberos-Trust/" rel="tag">Cloud Kerberos Trust</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Company-Branding/" rel="tag">Company Branding</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Compliant/" rel="tag">Compliant</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access/" rel="tag">Conditional Access</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Conditional-Access-Policy/" rel="tag">Conditional Access Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Cross-Tenat-Synchronization/" rel="tag">Cross-Tenat Synchronization</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Device/" rel="tag">Device</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DirSync/" rel="tag">DirSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Directory-Synchronization-Accounts/" rel="tag">Directory Synchronization Accounts</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Enterprise-SSO/" rel="tag">Enterprise SSO</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entitlement-Management/" rel="tag">Entitlement Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entra-ID/" rel="tag">Entra ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Entra-ID-Directory-Roles/" rel="tag">Entra ID Directory Roles</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ExpressRoute/" rel="tag">ExpressRoute</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/External-ID/" rel="tag">External ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federated-Domain/" rel="tag">Federated Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Federation/" rel="tag">Federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Global-Secure-Access/" rel="tag">Global Secure Access</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Graph/" rel="tag">Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HAADJ/" rel="tag">HAADJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hard-match/" rel="tag">Hard match</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hybrid-Azure-AD-Join/" rel="tag">Hybrid Azure AD Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ID-Protection/" rel="tag">ID Protection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Governance/" rel="tag">Identity Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Identity-Protection/" rel="tag">Identity Protection</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Ignite/" rel="tag">Ignite</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Intune/" rel="tag">Intune</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-ID/" rel="tag">Issuer ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Issuer-URI/" rel="tag">Issuer URI</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Key-Vault/" rel="tag">Key Vault</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Legacy-Authentication/" rel="tag">Legacy Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Lifecycle-Workflow/" rel="tag">Lifecycle Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Lifecycle-Workflows/" rel="tag">Lifecycle Workflows</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Limitation/" rel="tag">Limitation</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MFA/" rel="tag">MFA</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-Domain/" rel="tag">Managed Domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Managed-ID/" rel="tag">Managed ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Authenticator/" rel="tag">Microsoft Authenticator</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Authenticator-%E3%82%A2%E3%83%97%E3%83%AA/" rel="tag">Microsoft Authenticator アプリ</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra/" rel="tag">Microsoft Entra</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-Connect/" rel="tag">Microsoft Entra Connect</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-Domain-Services/" rel="tag">Microsoft Entra Domain Services</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-External-ID/" rel="tag">Microsoft Entra External ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-Hybrid-Join/" rel="tag">Microsoft Entra Hybrid Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-ID/" rel="tag">Microsoft Entra ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-ID-Governance/" rel="tag">Microsoft Entra ID Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-Join/" rel="tag">Microsoft Entra Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-Registered/" rel="tag">Microsoft Entra Registered</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Entra-hybrid-join/" rel="tag">Microsoft Entra hybrid join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph/" rel="tag">Microsoft Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph-PowerShell/" rel="tag">Microsoft Graph PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Microsoft-Graph-PowerShell-SDK/" rel="tag">Microsoft Graph PowerShell SDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Multi-Factor-Authentication/" rel="tag">Multi Factor Authentication</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Multi-Tenant-Organization/" rel="tag">Multi Tenant Organization</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Network/" rel="tag">Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OAuth/" rel="tag">OAuth</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/OTP/" rel="tag">OTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIM/" rel="tag">PIM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PIN/" rel="tag">PIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PRT/" rel="tag">PRT</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Policy/" rel="tag">Password Policy</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Password-Writeback/" rel="tag">Password Writeback</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Primary-Refresh-Token/" rel="tag">Primary Refresh Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Provisioning/" rel="tag">Provisioning</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RBAC/" rel="tag">RBAC</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Role-Management/" rel="tag">Role Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SAML/" rel="tag">SAML</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSO/" rel="tag">SSO</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SSPR/" rel="tag">SSPR</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SameSite/" rel="tag">SameSite</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Security-Default/" rel="tag">Security Default</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Self-Service-Password-Reset/" rel="tag">Self Service Password Reset</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Service-Principal/" rel="tag">Service Principal</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Signin-Logs/" rel="tag">Signin Logs</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Smart-lockout/" rel="tag">Smart lockout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Soft-matching/" rel="tag">Soft matching</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Staged-Rollout/" rel="tag">Staged Rollout</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Starter-series/" rel="tag">Starter series</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Subscription/" rel="tag">Subscription</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TLS-1-2/" rel="tag">TLS 1.2</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TPM/" rel="tag">TPM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tenant-Restrictions/" rel="tag">Tenant Restrictions</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Token/" rel="tag">Token</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Troubleshooting/" rel="tag">Troubleshooting</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Trusted-Platform-Module/" rel="tag">Trusted Platform Module</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/UPN/" rel="tag">UPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/US-Identity-Blog/" rel="tag">US Identity Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Verified-ID/" rel="tag">Verified ID</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WAP/" rel="tag">WAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WHfB/" rel="tag">WHfB</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-10/" rel="tag">Windows 10</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Defender-ATP/" rel="tag">Windows Defender ATP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-Hello-for-Business/" rel="tag">Windows Hello for Business</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Windows-LAPS/" rel="tag">Windows LAPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WorkPlace-Join/" rel="tag">WorkPlace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Workplace-Join/" rel="tag">Workplace Join</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/XTAP/" rel="tag">XTAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Zero-Trust/" rel="tag">Zero Trust</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/graph-api/" rel="tag">graph api</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/signin-log/" rel="tag">signin log</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/supportMultipleDomain/" rel="tag">supportMultipleDomain</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/unusual-sign-in/" rel="tag">unusual sign-in</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" rel="tag">クレームルール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" rel="tag">テナント制限</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%AE%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC/" rel="tag">デバイスのフィルター</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" rel="tag">トラステッド プラットフォーム モジュール</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" rel="tag">トラブルシューティング</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" rel="tag">ログ取得</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" rel="tag">条件付きアクセス</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" rel="tag">証明書</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" rel="tag">証明書認証</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AD-FS/">AD FS</a><span class="tag-list-count">24</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/AADSTS50107">AADSTS50107</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD">Azure AD</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/CBA">CBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Conditional-Access">Conditional Access</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Federated-Domain">Federated Domain</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Hybrid-Azure-AD-Join">Hybrid Azure AD Join</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Intune">Intune</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-ID">Issuer ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Issuer-URI">Issuer URI</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/MFA">MFA</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Managed-Domain">Managed Domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Microsoft-Entra-Connect">Microsoft Entra Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/SameSite">SameSite</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Security">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Smart-lockout">Smart lockout</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/WAP">WAP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/Workplace-Join">Workplace Join</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/supportMultipleDomain">supportMultipleDomain</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AD-FS/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB">クレームルール</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-AD/">Azure AD</a><span class="tag-list-count">289</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090016">80090016</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/80090030">80090030</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/AD-FS">AD FS</a><span class="tag-list-count">7</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-Review">Access Review</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Access-review">Access review</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/App-Service">App Service</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Application">Application</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Audit-Logs">Audit Logs</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Application-Proxy">Azure AD Application Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2B">Azure AD B2B</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-B2C">Azure AD B2C</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Domain-Services">Azure AD Domain Services</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Azure-AD-Join">Azure AD Join</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/B2B">B2B</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Client-Secrets">Client Secrets</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Cloud-Kerberos-Trust">Cloud Kerberos Trust</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Compliant">Compliant</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access">Conditional Access</a><span class="tag-list-count">23</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-AD/Conditional-Access-Policy">Conditional Access Policy</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD">Azure AD</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Azure-AD-Connect">Azure AD Connect</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Key-Vault">Key Vault</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/AAD-Connect/">AAD Connect</a><span class="tag-list-count">17</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/AD-Sync">AD Sync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/ADSync">ADSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/DirSync">DirSync</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SMTP">SMTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/SSO">SSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/Soft-matching">Soft matching</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/AAD-Connect/UPN">UPN</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2026/04/">2026 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2026/03/">2026 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2026/02/">2026 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2026/01/">2026 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/12/">2025 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/10/">2025 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/09/">2025 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/08/">2025 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/07/">2025 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/06/">2025 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/05/">2025 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/04/">2025 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/07/">2024 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/03/">2024 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/02/">2024 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/11/">2023 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/05/">2023 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/02/">2023 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/12/">2022 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/07/">2022 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/05/">2022 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">2022 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">2021 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/07/">2021 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">2021 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">2021 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/04/">2021 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/03/">2021 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/02/">2021 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/01/">2021 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/12/">2020 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/10/">2020 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/09/">2020 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">2020 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/07/">2020 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/06/">2020 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">2020 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">2020 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">2020 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">2020 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">2020 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">2019 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">2019 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">2019 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/09/">2019 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/07/">2019 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/05/">2019 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/02/">2019 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/12/">2018 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/11/">2018 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/10/">2018 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/09/">2018 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/08/">2018 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/07/">2018 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/06/">2018 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/05/">2018 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/04/">2018 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/03/">2018 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/02/">2018 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2018/01/">2018 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">2017 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/11/">2017 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">2017 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/06/">2017 / 06</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/80090016/" style="font-size: 10px;">80090016</a> <a href="../../tags/80090030/" style="font-size: 10px;">80090030</a> <a href="../../tags/AAD-Connect/" style="font-size: 16.67px;">AAD Connect</a> <a href="../../tags/AADSTS50107/" style="font-size: 10px;">AADSTS50107</a> <a href="../../tags/AD-FS/" style="font-size: 17.78px;">AD FS</a> <a href="../../tags/AD-Sync/" style="font-size: 10px;">AD Sync</a> <a href="../../tags/ADSync/" style="font-size: 10px;">ADSync</a> <a href="../../tags/Access-Package/" style="font-size: 10.56px;">Access Package</a> <a href="../../tags/Access-Review/" style="font-size: 10.56px;">Access Review</a> <a href="../../tags/Access-review/" style="font-size: 11.67px;">Access review</a> <a href="../../tags/Android/" style="font-size: 10px;">Android</a> <a href="../../tags/App-Service/" style="font-size: 10px;">App Service</a> <a href="../../tags/Application/" style="font-size: 13.89px;">Application</a> <a href="../../tags/Audit-Logs/" style="font-size: 10.56px;">Audit Logs</a> <a href="../../tags/Azure-AD/" style="font-size: 20px;">Azure AD</a> <a href="../../tags/Azure-AD-Application-Proxy/" style="font-size: 10px;">Azure AD Application Proxy</a> <a href="../../tags/Azure-AD-B2B/" style="font-size: 13.89px;">Azure AD B2B</a> <a href="../../tags/Azure-AD-B2C/" style="font-size: 11.67px;">Azure AD B2C</a> <a href="../../tags/Azure-AD-Connect/" style="font-size: 15.56px;">Azure AD Connect</a> <a href="../../tags/Azure-AD-Domain-Services/" style="font-size: 10px;">Azure AD Domain Services</a> <a href="../../tags/Azure-AD-Graph-API-retirement/" style="font-size: 10px;">Azure AD Graph API retirement</a> <a href="../../tags/Azure-AD-Join/" style="font-size: 10.56px;">Azure AD Join</a> <a href="../../tags/Azure-AD-License/" style="font-size: 10px;">Azure AD License</a> <a href="../../tags/Azure-AD-Rename-ROllout/" style="font-size: 10px;">Azure AD Rename ROllout</a> <a href="../../tags/Azure-Ad-Connect/" style="font-size: 10px;">Azure Ad Connect</a> <a href="../../tags/B2B/" style="font-size: 12.78px;">B2B</a> <a href="../../tags/BitLocker/" style="font-size: 10px;">BitLocker</a> <a href="../../tags/CBA/" style="font-size: 10px;">CBA</a> <a href="../../tags/Client-Secrets/" style="font-size: 10px;">Client Secrets</a> <a href="../../tags/Cloud-Kerberos-Trust/" style="font-size: 10px;">Cloud Kerberos Trust</a> <a href="../../tags/Company-Branding/" style="font-size: 10px;">Company Branding</a> <a href="../../tags/Compliant/" style="font-size: 10.56px;">Compliant</a> <a href="../../tags/Conditional-Access/" style="font-size: 18.33px;">Conditional Access</a> <a href="../../tags/Conditional-Access-Policy/" style="font-size: 10.56px;">Conditional Access Policy</a> <a href="../../tags/Cross-Tenat-Synchronization/" style="font-size: 10px;">Cross-Tenat Synchronization</a> <a href="../../tags/Device/" style="font-size: 13.89px;">Device</a> <a href="../../tags/DirSync/" style="font-size: 10px;">DirSync</a> <a href="../../tags/Directory-Synchronization-Accounts/" style="font-size: 10px;">Directory Synchronization Accounts</a> <a href="../../tags/Enterprise-SSO/" style="font-size: 10px;">Enterprise SSO</a> <a href="../../tags/Entitlement-Management/" style="font-size: 11.11px;">Entitlement Management</a> <a href="../../tags/Entra-ID/" style="font-size: 14.44px;">Entra ID</a> <a href="../../tags/Entra-ID-Directory-Roles/" style="font-size: 10px;">Entra ID Directory Roles</a> <a href="../../tags/ExpressRoute/" style="font-size: 10px;">ExpressRoute</a> <a href="../../tags/External-ID/" style="font-size: 10px;">External ID</a> <a href="../../tags/Federated-Domain/" style="font-size: 10.56px;">Federated Domain</a> <a href="../../tags/Federation/" style="font-size: 10px;">Federation</a> <a href="../../tags/Global-Secure-Access/" style="font-size: 10px;">Global Secure Access</a> <a href="../../tags/Graph/" style="font-size: 10px;">Graph</a> <a href="../../tags/HAADJ/" style="font-size: 10px;">HAADJ</a> <a href="../../tags/Hard-match/" style="font-size: 10px;">Hard match</a> <a href="../../tags/Hybrid-Azure-AD-Join/" style="font-size: 15px;">Hybrid Azure AD Join</a> <a href="../../tags/ID-Protection/" style="font-size: 11.11px;">ID Protection</a> <a href="../../tags/Identity-Governance/" style="font-size: 12.22px;">Identity Governance</a> <a href="../../tags/Identity-Protection/" style="font-size: 10.56px;">Identity Protection</a> <a href="../../tags/Ignite/" style="font-size: 10px;">Ignite</a> <a href="../../tags/Intune/" style="font-size: 11.11px;">Intune</a> <a href="../../tags/Issuer-ID/" style="font-size: 10px;">Issuer ID</a> <a href="../../tags/Issuer-URI/" style="font-size: 10px;">Issuer URI</a> <a href="../../tags/Key-Vault/" style="font-size: 10px;">Key Vault</a> <a href="../../tags/Legacy-Authentication/" style="font-size: 10px;">Legacy Authentication</a> <a href="../../tags/Lifecycle-Workflow/" style="font-size: 10px;">Lifecycle Workflow</a> <a href="../../tags/Lifecycle-Workflows/" style="font-size: 10px;">Lifecycle Workflows</a> <a href="../../tags/Limitation/" style="font-size: 10px;">Limitation</a> <a href="../../tags/MFA/" style="font-size: 17.22px;">MFA</a> <a href="../../tags/Managed-Domain/" style="font-size: 10.56px;">Managed Domain</a> <a href="../../tags/Managed-ID/" style="font-size: 10.56px;">Managed ID</a> <a href="../../tags/Microsoft-Authenticator/" style="font-size: 11.67px;">Microsoft Authenticator</a> <a href="../../tags/Microsoft-Authenticator-%E3%82%A2%E3%83%97%E3%83%AA/" style="font-size: 10px;">Microsoft Authenticator アプリ</a> <a href="../../tags/Microsoft-Entra/" style="font-size: 18.89px;">Microsoft Entra</a> <a href="../../tags/Microsoft-Entra-Connect/" style="font-size: 11.67px;">Microsoft Entra Connect</a> <a href="../../tags/Microsoft-Entra-Domain-Services/" style="font-size: 10px;">Microsoft Entra Domain Services</a> <a href="../../tags/Microsoft-Entra-External-ID/" style="font-size: 10px;">Microsoft Entra External ID</a> <a href="../../tags/Microsoft-Entra-Hybrid-Join/" style="font-size: 10px;">Microsoft Entra Hybrid Join</a> <a href="../../tags/Microsoft-Entra-ID/" style="font-size: 16.11px;">Microsoft Entra ID</a> <a href="../../tags/Microsoft-Entra-ID-Governance/" style="font-size: 10px;">Microsoft Entra ID Governance</a> <a href="../../tags/Microsoft-Entra-Join/" style="font-size: 10px;">Microsoft Entra Join</a> <a href="../../tags/Microsoft-Entra-Registered/" style="font-size: 10.56px;">Microsoft Entra Registered</a> <a href="../../tags/Microsoft-Entra-hybrid-join/" style="font-size: 10px;">Microsoft Entra hybrid join</a> <a href="../../tags/Microsoft-Graph/" style="font-size: 13.89px;">Microsoft Graph</a> <a href="../../tags/Microsoft-Graph-PowerShell/" style="font-size: 10px;">Microsoft Graph PowerShell</a> <a href="../../tags/Microsoft-Graph-PowerShell-SDK/" style="font-size: 10.56px;">Microsoft Graph PowerShell SDK</a> <a href="../../tags/Multi-Factor-Authentication/" style="font-size: 10px;">Multi Factor Authentication</a> <a href="../../tags/Multi-Tenant-Organization/" style="font-size: 10px;">Multi Tenant Organization</a> <a href="../../tags/Network/" style="font-size: 10px;">Network</a> <a href="../../tags/OAuth/" style="font-size: 12.78px;">OAuth</a> <a href="../../tags/OTP/" style="font-size: 10px;">OTP</a> <a href="../../tags/PIM/" style="font-size: 10.56px;">PIM</a> <a href="../../tags/PIN/" style="font-size: 10px;">PIN</a> <a href="../../tags/PRT/" style="font-size: 10px;">PRT</a> <a href="../../tags/Password-Policy/" style="font-size: 10px;">Password Policy</a> <a href="../../tags/Password-Writeback/" style="font-size: 10px;">Password Writeback</a> <a href="../../tags/PowerShell/" style="font-size: 15px;">PowerShell</a> <a href="../../tags/Primary-Refresh-Token/" style="font-size: 10px;">Primary Refresh Token</a> <a href="../../tags/Provisioning/" style="font-size: 10px;">Provisioning</a> <a href="../../tags/RBAC/" style="font-size: 10.56px;">RBAC</a> <a href="../../tags/Role-Management/" style="font-size: 10px;">Role Management</a> <a href="../../tags/SAML/" style="font-size: 10.56px;">SAML</a> <a href="../../tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="../../tags/SSO/" style="font-size: 10.56px;">SSO</a> <a href="../../tags/SSPR/" style="font-size: 11.11px;">SSPR</a> <a href="../../tags/SameSite/" style="font-size: 10px;">SameSite</a> <a href="../../tags/Security/" style="font-size: 15.56px;">Security</a> <a href="../../tags/Security-Default/" style="font-size: 10px;">Security Default</a> <a href="../../tags/Self-Service-Password-Reset/" style="font-size: 10px;">Self Service Password Reset</a> <a href="../../tags/Service-Principal/" style="font-size: 10px;">Service Principal</a> <a href="../../tags/Signin-Logs/" style="font-size: 10px;">Signin Logs</a> <a href="../../tags/Smart-lockout/" style="font-size: 10px;">Smart lockout</a> <a href="../../tags/Soft-matching/" style="font-size: 10px;">Soft matching</a> <a href="../../tags/Staged-Rollout/" style="font-size: 10px;">Staged Rollout</a> <a href="../../tags/Starter-series/" style="font-size: 12.78px;">Starter series</a> <a href="../../tags/Subscription/" style="font-size: 10px;">Subscription</a> <a href="../../tags/TLS-1-2/" style="font-size: 11.11px;">TLS 1.2</a> <a href="../../tags/TPM/" style="font-size: 10px;">TPM</a> <a href="../../tags/Tenant-Restrictions/" style="font-size: 10px;">Tenant Restrictions</a> <a href="../../tags/Token/" style="font-size: 10.56px;">Token</a> <a href="../../tags/Troubleshooting/" style="font-size: 12.78px;">Troubleshooting</a> <a href="../../tags/Trusted-Platform-Module/" style="font-size: 10px;">Trusted Platform Module</a> <a href="../../tags/UPN/" style="font-size: 11.11px;">UPN</a> <a href="../../tags/US-Identity-Blog/" style="font-size: 19.44px;">US Identity Blog</a> <a href="../../tags/Verified-ID/" style="font-size: 10px;">Verified ID</a> <a href="../../tags/WAP/" style="font-size: 10px;">WAP</a> <a href="../../tags/WHfB/" style="font-size: 10px;">WHfB</a> <a href="../../tags/Windows-10/" style="font-size: 10px;">Windows 10</a> <a href="../../tags/Windows-Defender-ATP/" style="font-size: 10px;">Windows Defender ATP</a> <a href="../../tags/Windows-Hello-for-Business/" style="font-size: 12.78px;">Windows Hello for Business</a> <a href="../../tags/Windows-LAPS/" style="font-size: 10px;">Windows LAPS</a> <a href="../../tags/WorkPlace-Join/" style="font-size: 11.11px;">WorkPlace Join</a> <a href="../../tags/Workplace-Join/" style="font-size: 10.56px;">Workplace Join</a> <a href="../../tags/XTAP/" style="font-size: 10px;">XTAP</a> <a href="../../tags/Zero-Trust/" style="font-size: 13.33px;">Zero Trust</a> <a href="../../tags/graph-api/" style="font-size: 11.11px;">graph api</a> <a href="../../tags/signin-log/" style="font-size: 12.22px;">signin log</a> <a href="../../tags/supportMultipleDomain/" style="font-size: 10px;">supportMultipleDomain</a> <a href="../../tags/unusual-sign-in/" style="font-size: 10px;">unusual sign-in</a> <a href="../../tags/%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AB%E3%83%BC%E3%83%AB/" style="font-size: 10px;">クレームルール</a> <a href="../../tags/%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90/" style="font-size: 10px;">テナント制限</a> <a href="../../tags/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%AE%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC/" style="font-size: 10px;">デバイスのフィルター</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%82%B9%E3%83%86%E3%83%83%E3%83%89-%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/" style="font-size: 10px;">トラステッド プラットフォーム モジュール</a> <a href="../../tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/" style="font-size: 13.33px;">トラブルシューティング</a> <a href="../../tags/%E3%83%AD%E3%82%B0%E5%8F%96%E5%BE%97/" style="font-size: 10px;">ログ取得</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 10.56px;">情報採取</a> <a href="../../tags/%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/" style="font-size: 11.11px;">条件付きアクセス</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8/" style="font-size: 10px;">証明書</a> <a href="../../tags/%E8%A8%BC%E6%98%8E%E6%9B%B8%E8%AA%8D%E8%A8%BC/" style="font-size: 10px;">証明書認証</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="https://privacy.microsoft.com/ja-jp/privacystatement" target="_blank" rel=”noopener”>Privacy & Cookies</a> |  
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/copyright" target="_blank" rel=”noopener”>Terms of use</a> |
+      <a href="https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks" target="_blank" rel=”noopener”>Trademarks</a> |
+      &copy; 2026 Azure Identity Support Japan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
