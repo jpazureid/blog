@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-05-06T09:09:28.037Z</updated>
+  <updated>2026-05-19T08:13:31.234Z</updated>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -28,7 +28,7 @@
 <p>こん]]>
     </summary>
     <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</title>
-    <updated>2026-05-06T09:09:28.037Z</updated>
+    <updated>2026-05-19T08:13:31.234Z</updated>
   </entry>
   <entry>
     <author>
@@ -47,7 +47,7 @@
 <p>こんにちは、Azure]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-05-06T09:09:27.866Z</updated>
+    <updated>2026-05-19T08:13:31.049Z</updated>
   </entry>
   <entry>
     <author>
@@ -66,7 +66,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-05-06T09:09:28.367Z</updated>
+    <updated>2026-05-19T08:13:31.592Z</updated>
   </entry>
   <entry>
     <author>
@@ -84,7 +84,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-05-06T09:09:27.740Z</updated>
+    <updated>2026-05-19T08:13:30.911Z</updated>
   </entry>
   <entry>
     <author>
@@ -94,7 +94,7 @@
     <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
     <category term="US Identity Blog" scheme="https://jpazureid.github.io/blog/tags/US-Identity-Blog/"/>
     <content>
-      <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925">Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p><div class="alert is-info"><p class="alert-title">Note</p><p>2026&#x2F;03&#x2F;18 更新: 原文が更新された点を反映しました。展開開始日が 2026 年 3 月 27 日から 2026 年 5 月 13 日に変更されました。</p></div><hr><h2 id="Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"><a href="#Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。" class="headerlink" title="Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"></a>Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。</h2><p><a href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266">Microsoft セキュア フューチャー イニシアティブ</a> に基づき、多層防御のための以下のプロアクティブなセキュリティ対策を実施します。変更内容を確認し、必要な準備を実施ください。</p><h2 id="何が変更されるのか"><a href="#何が変更されるのか" class="headerlink" title="何が変更されるのか"></a>何が変更されるのか</h2><ul><li><strong>現在</strong>、クライアント アプリケーションが <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc#openid-connect-scopes">OIDC スコープ</a> または <a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">限定的なディレクトリ スコープ</a> <strong>のみ</strong> を要求してユーザーがサインインした場合、<strong>ポリシーに 1 つ以上の除外となるリソースが含まれていると</strong>、「すべてのリソース」を対象とする条件付きアクセス ポリシーは、そのサインインに対して適用されません。</li><li>この変更後は、リソースの除外が設定されている場合でも、これらのサインインに対して「すべてのリソース」を対象とする条件付きアクセスポリシーが適用されます。これにより、アプリケーションによって要求されたスコープに関係なく、ポリシーが一貫して適用されるようになります。<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=usage-and-insights-report#new-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">この変更の詳細についてはこちらをご覧ください</a>。</li></ul><h2 id="この変更はいつ反映されるか"><a href="#この変更はいつ反映されるか" class="headerlink" title="この変更はいつ反映されるか"></a>この変更はいつ反映されるか</h2><p>展開スケジュールが調整され、展開は 2026 年 5 月 13 日から開始されます。円滑な移行を支援するため、<strong>Microsoft 365 メッセージセンター</strong>のメッセージを通じて追加情報やガイダンスが提供されます。</p><h2 id="この変更の影響を受けるのは誰か"><a href="#この変更の影響を受けるのは誰か" class="headerlink" title="この変更の影響を受けるのは誰か"></a>この変更の影響を受けるのは誰か</h2><p>この変更は、<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">「すべてのリソース」を対象とし、かつ 1 つ以上のリソース除外を含む</a> 条件付きアクセス ポリシーを設定しているテナントにのみ影響します。これらのテナントには、<a href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージセンター</a> を通じて通知が行われます。この構成のポリシーを持たないテナントには影響はありません。</p><h2 id="この変更はお客様の組織にどのような影響を与えるか"><a href="#この変更はお客様の組織にどのような影響を与えるか" class="headerlink" title="この変更はお客様の組織にどのような影響を与えるか"></a>この変更はお客様の組織にどのような影響を与えるか</h2><p>ユーザーが上記のスコープのみを要求するクライアント アプリケーションを通じてサインインする場合、これまでは適用されずにアクセスできていた状況でも、今回の変更により条件付きアクセスのチャレンジ（MFA やデバイス準拠など）が求められる可能性があります。具体的にどのような制御が要求されるかは、「すべてのリソース」を対象とするポリシー、またはリソースとして Azure AD Graph を明示的に対象とするポリシーに設定されているアクセス制御の内容に依存します。</p><h2 id="何を準備する必要があるか"><a href="#何を準備する必要があるか" class="headerlink" title="何を準備する必要があるか"></a>何を準備する必要があるか</h2><h4 id="ほとんどのお客様-特に対応は不要です"><a href="#ほとんどのお客様-特に対応は不要です" class="headerlink" title="ほとんどのお客様: 特に対応は不要です"></a>ほとんどのお客様: 特に対応は不要です</h4><p>ほとんどのアプリケーションは、上記のスコープ以外に追加のスコープを要求しており、すでに条件付きアクセスの適用対象となっています。このような場合、動作に変更はありません。また、アプリケーションが条件付きアクセスの要求を適切に処理できるようにするため、更新が必要となる可能性がある主要なソフトウェア ベンダーと協力して対応を進めています。</p><h4 id="テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨"><a href="#テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨" class="headerlink" title="テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨"></a>テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨</h4><p>上記のスコープ <strong>のみ</strong> を要求するよう意図的に設計されたカスタム アプリケーションがある場合、それらのアプリが MFA やデバイス準拠などの条件付きアクセスの制御に対応できるかどうかを評価ください。<strong>すでに条件付きアクセスの制御に対応している場合</strong> は特に変更は不要です。<strong>対応していない場合は</strong> 更新が必要になる可能性があります。アプリケーションを適切に更新する方法については、<a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a> を参照ください。</p><p>-Swaroop Krishnamurthy</p><h2 id="補足リソース"><a href="#補足リソース" class="headerlink" title="補足リソース"></a>補足リソース</h2><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース</a> </li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc">Microsoft ID プラットフォームでのスコープとアクセス許可</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/troubleshoot-conditional-access#audience-reporting">条件付きアクセスでのサインインに関する問題のトラブルシューティング</a></li><li></li></ul>]]>
+      <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925">Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p><div class="alert is-info"><p class="alert-title">Note</p><p>2026&#x2F;03&#x2F;18 更新: 原文が更新された点を反映しました。展開開始日が 2026 年 3 月 27 日から 2026 年 5 月 13 日に変更されました。</p><p>2026&#x2F;05&#x2F;19 更新: 原文が更新された点を反映しました。展開開始日が 2026 年 5 月 13 日から 2026 年 6 月 15 日に変更されました。</p></div><hr><h2 id="Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"><a href="#Microsoft-Entra-条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。" class="headerlink" title="Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。"></a>Microsoft Entra 条件付きアクセスが適用される認証フローを限定的に強化し、セキュリティ態勢の向上を図ります。</h2><p><a href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266">Microsoft セキュア フューチャー イニシアティブ</a> に基づき、多層防御のための以下のプロアクティブなセキュリティ対策を実施します。変更内容を確認し、必要な準備を実施ください。</p><h2 id="何が変更されるのか"><a href="#何が変更されるのか" class="headerlink" title="何が変更されるのか"></a>何が変更されるのか</h2><ul><li><strong>現在</strong>、クライアント アプリケーションが <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc#openid-connect-scopes">OIDC スコープ</a> または <a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">限定的なディレクトリ スコープ</a> <strong>のみ</strong> を要求してユーザーがサインインした場合、<strong>ポリシーに 1 つ以上の除外となるリソースが含まれていると</strong>、「すべてのリソース」を対象とする条件付きアクセス ポリシーは、そのサインインに対して適用されません。</li><li>この変更後は、リソースの除外が設定されている場合でも、これらのサインインに対して「すべてのリソース」を対象とする条件付きアクセスポリシーが適用されます。これにより、アプリケーションによって要求されたスコープに関係なく、ポリシーが一貫して適用されるようになります。<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=usage-and-insights-report#new-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">この変更の詳細についてはこちらをご覧ください</a>。</li></ul><h2 id="この変更はいつ反映されるか"><a href="#この変更はいつ反映されるか" class="headerlink" title="この変更はいつ反映されるか"></a>この変更はいつ反映されるか</h2><p>展開スケジュールが調整され、展開は 2026 年 6 月 15 日から開始されます。円滑な移行を支援するため、<strong>Microsoft 365 メッセージセンター</strong>のメッセージを通じて追加情報やガイダンスが提供されます。</p><h2 id="この変更の影響を受けるのは誰か"><a href="#この変更の影響を受けるのは誰か" class="headerlink" title="この変更の影響を受けるのは誰か"></a>この変更の影響を受けるのは誰か</h2><p>この変更は、<a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps?tabs=powershell#legacy-conditional-access-behavior-when-an-all-resources-policy-has-a-resource-exclusion">「すべてのリソース」を対象とし、かつ 1 つ以上のリソース除外を含む</a> 条件付きアクセス ポリシーを設定しているテナントにのみ影響します。これらのテナントには、<a href="https://learn.microsoft.com/ja-jp/microsoft-365/admin/manage/message-center?view=o365-worldwide">M365 メッセージセンター</a> を通じて通知が行われます。この構成のポリシーを持たないテナントには影響はありません。</p><h2 id="この変更はお客様の組織にどのような影響を与えるか"><a href="#この変更はお客様の組織にどのような影響を与えるか" class="headerlink" title="この変更はお客様の組織にどのような影響を与えるか"></a>この変更はお客様の組織にどのような影響を与えるか</h2><p>ユーザーが上記のスコープのみを要求するクライアント アプリケーションを通じてサインインする場合、これまでは適用されずにアクセスできていた状況でも、今回の変更により条件付きアクセスのチャレンジ（MFA やデバイス準拠など）が求められる可能性があります。具体的にどのような制御が要求されるかは、「すべてのリソース」を対象とするポリシー、またはリソースとして Azure AD Graph を明示的に対象とするポリシーに設定されているアクセス制御の内容に依存します。</p><h2 id="何を準備する必要があるか"><a href="#何を準備する必要があるか" class="headerlink" title="何を準備する必要があるか"></a>何を準備する必要があるか</h2><h4 id="ほとんどのお客様-特に対応は不要です"><a href="#ほとんどのお客様-特に対応は不要です" class="headerlink" title="ほとんどのお客様: 特に対応は不要です"></a>ほとんどのお客様: 特に対応は不要です</h4><p>ほとんどのアプリケーションは、上記のスコープ以外に追加のスコープを要求しており、すでに条件付きアクセスの適用対象となっています。このような場合、動作に変更はありません。また、アプリケーションが条件付きアクセスの要求を適切に処理できるようにするため、更新が必要となる可能性がある主要なソフトウェア ベンダーと協力して対応を進めています。</p><h4 id="テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨"><a href="#テナントに登録されていて、これらのスコープのみを要求するアプリ-確認を推奨" class="headerlink" title="テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨"></a>テナントに登録されていて、これらのスコープのみを要求するアプリ: 確認を推奨</h4><p>上記のスコープ <strong>のみ</strong> を要求するよう意図的に設計されたカスタム アプリケーションがある場合、それらのアプリが MFA やデバイス準拠などの条件付きアクセスの制御に対応できるかどうかを評価ください。<strong>すでに条件付きアクセスの制御に対応している場合</strong> は特に変更は不要です。<strong>対応していない場合は</strong> 更新が必要になる可能性があります。アプリケーションを適切に更新する方法については、<a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a> を参照ください。</p><p>-Swaroop Krishnamurthy</p><h2 id="補足リソース"><a href="#補足リソース" class="headerlink" title="補足リソース"></a>補足リソース</h2><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース</a> </li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">Microsoft Entra 条件付きアクセスの開発者向けガイダンス</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scopes-oidc">Microsoft ID プラットフォームでのスコープとアクセス許可</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/troubleshoot-conditional-access#audience-reporting">条件付きアクセスでのサインインに関する問題のトラブルシューティング</a></li><li></li></ul>]]>
     </content>
     <id>https://jpazureid.github.io/blog/azure-active-directory/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/</id>
     <link href="https://jpazureid.github.io/blog/azure-active-directory/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/"/>
@@ -103,7 +103,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-05-06T09:09:28.906Z</updated>
+    <updated>2026-05-19T08:13:32.184Z</updated>
   </entry>
   <entry>
     <author>
@@ -122,7 +122,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-05-06T09:09:28.052Z</updated>
+    <updated>2026-05-19T08:13:31.249Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +142,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-05-06T09:09:28.196Z</updated>
+    <updated>2026-05-19T08:13:31.407Z</updated>
   </entry>
   <entry>
     <author>
@@ -161,7 +161,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-05-06T09:09:27.878Z</updated>
+    <updated>2026-05-19T08:13:31.062Z</updated>
   </entry>
   <entry>
     <author>
@@ -179,7 +179,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-05-06T09:09:28.375Z</updated>
+    <updated>2026-05-19T08:13:31.600Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,7 +198,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-05-06T09:09:28.756Z</updated>
+    <updated>2026-05-19T08:13:32.023Z</updated>
   </entry>
   <entry>
     <author>
@@ -217,7 +217,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-05-06T09:09:27.737Z</updated>
+    <updated>2026-05-19T08:13:30.908Z</updated>
   </entry>
   <entry>
     <author>
@@ -236,7 +236,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-05-06T09:09:28.948Z</updated>
+    <updated>2026-05-19T08:13:32.230Z</updated>
   </entry>
   <entry>
     <author>
@@ -255,7 +255,7 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-05-06T09:09:28.462Z</updated>
+    <updated>2026-05-19T08:13:31.696Z</updated>
   </entry>
   <entry>
     <author>
@@ -274,7 +274,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-05-06T09:09:27.737Z</updated>
+    <updated>2026-05-19T08:13:30.908Z</updated>
   </entry>
   <entry>
     <author>
@@ -294,7 +294,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-05-06T09:09:28.854Z</updated>
+    <updated>2026-05-19T08:13:32.128Z</updated>
   </entry>
   <entry>
     <author>
@@ -315,7 +315,7 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-05-06T09:09:28.843Z</updated>
+    <updated>2026-05-19T08:13:32.116Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +334,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
     </summary>
     <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-05-06T09:09:28.216Z</updated>
+    <updated>2026-05-19T08:13:31.428Z</updated>
   </entry>
   <entry>
     <author>
@@ -353,7 +353,7 @@
 <p>本記事は、2025 年 8 月 22 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommun]]>
     </summary>
     <title>パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access</title>
-    <updated>2026-05-06T09:09:28.454Z</updated>
+    <updated>2026-05-19T08:13:31.688Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,7 +372,7 @@
 <p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunit]]>
     </summary>
     <title>Microsoft Defender for Identity のシグナルが Microsoft Entra ID の推奨事項に統合</title>
-    <updated>2026-05-06T09:09:28.142Z</updated>
+    <updated>2026-05-19T08:13:31.348Z</updated>
   </entry>
   <entry>
     <author>
@@ -391,6 +391,6 @@
 <p>2025 年 10 月 1 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Cod]]>
     </summary>
     <title>MFA 義務付け (フェーズ 2) の開始</title>
-    <updated>2026-05-06T09:09:28.700Z</updated>
+    <updated>2026-05-19T08:13:31.961Z</updated>
   </entry>
 </feed>
