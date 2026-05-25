@@ -6,15 +6,15 @@
   
   <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説 | Japan Azure Identity Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Note2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました こんにちは、Azure Identity サポート チームの 成田 です。本記事では、2026 年 5 月 13 日 より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。 警告この変更は">
+  <meta name="description" content="Note2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました2026 年 5 月 26 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を改めて更新しました こんにちは、Azure Identity サポート チームの 成田 です。本記事では、2026 年 5 月 13 日 より展開が予">
 <meta property="og:type" content="article">
 <meta property="og:title" content="条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説">
 <meta property="og:url" content="https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/index.html">
 <meta property="og:site_name" content="Japan Azure Identity Support Blog">
-<meta property="og:description" content="Note2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました こんにちは、Azure Identity サポート チームの 成田 です。本記事では、2026 年 5 月 13 日 より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。 警告この変更は">
+<meta property="og:description" content="Note2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました2026 年 5 月 26 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を改めて更新しました こんにちは、Azure Identity サポート チームの 成田 です。本記事では、2026 年 5 月 13 日 より展開が予">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2026-04-20T15:00:00.000Z">
-<meta property="article:modified_time" content="2026-05-25T04:17:08.385Z">
+<meta property="article:modified_time" content="2026-05-25T15:43:12.939Z">
 <meta property="article:author" content="Azure Identity Support Japan">
 <meta property="article:tag" content="Conditional Access">
 <meta property="article:tag" content="Microsoft Entra ID">
@@ -155,7 +155,7 @@
         
         <a href="https://github.com/jpazureid/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+225f351b-68db-5adb-9e77-a42e71d49a3f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%80%8C%E3%83%99%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3+%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E3%80%8D%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%8B%95%E4%BD%9C%E5%A4%89%E6%9B%B4%E3%81%AE%E8%A7%A3%E8%AA%AC%5D%28https%3A%2F%2Fjpazureid.github.io%2Fblog%2Fazure-active-directory%2Fbaseline-scopes-enforcement%2F%29%0A*+Content+Source%3A+%5Barticles%2Fazure-active-directory%2Fbaseline-scopes-enforcement.md%5D%28https%3A%2F%2Fgithub.com%2Fjpazureid%2Fblog%2Fblob%2Fmain%2Farticles%2Fazure-active-directory%2Fbaseline-scopes-enforcement.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/" data-id="cuid1q7gHesbjgQo19AkL3NCR" class="article-share-link">共有</a>
+        <a data-url="https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/" data-id="cuidSZdgM3ajjt5IsH5c3wqYv" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -166,7 +166,7 @@
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E3%81%93%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AF%E4%BD%95%E3%81%8B"><span class="toc-text">1. この変更は何か</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-text">概要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%99%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3-%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E3%81%A8%E3%81%AF"><span class="toc-text">ベースライン スコープとは</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E3%81%AA%E3%81%9C%E3%81%93%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%8C%E8%A1%8C%E3%82%8F%E3%82%8C%E3%81%9F%E3%81%AE%E3%81%8B"><span class="toc-text">2. なぜこの変更が行われたのか</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%B0%E3%81%97%E3%81%84%E5%8B%95%E4%BD%9C%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">3. 新しい動作の仕組み</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%AE%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E8%A9%95%E4%BE%A1%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">条件付きアクセスのリソース評価の仕組み</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E3%81%97%E3%81%84%E5%8B%95%E4%BD%9C%E3%81%AE%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88"><span class="toc-text">新しい動作のポイント</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BD%B1%E9%9F%BF%E3%82%92%E5%8F%97%E3%81%91%E3%82%8B%E6%9D%A1%E4%BB%B6"><span class="toc-text">4. 影響を受ける条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BE%93%E6%9D%A5%E3%81%AE%E5%8B%95%E4%BD%9C%E3%82%92%E7%B6%AD%E6%8C%81%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%89%8B%E9%A0%86"><span class="toc-text">5. 従来の動作を維持したい場合の対処手順</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%83%E3%81%88%E6%96%B9%E3%81%AE%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8"><span class="toc-text">考え方のイメージ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E8%A8%AD%E5%AE%9A%E6%89%8B%E9%A0%86"><span class="toc-text">6. 具体的な設定手順</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-1-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%99%BB%E9%8C%B2"><span class="toc-text">ステップ 1: カスタム アプリケーションの登録</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-2-%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%AF%BE%E8%B1%A1%E5%A4%96%E3%81%AB%E8%BF%BD%E5%8A%A0"><span class="toc-text">ステップ 2: 条件付きアクセス ポリシーの対象外に追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-3-%E3%83%99%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%B3-%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E8%A8%AD%E5%AE%9A%E3%81%A7%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88-%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E6%88%90"><span class="toc-text">ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">7. まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%83%85%E5%A0%B1"><span class="toc-text">参考情報</span></a></li></ol>
         </div>
           
-        <div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p></div>
+        <div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5 月 26 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を改めて更新しました</p></div>
 <p>こんにちは、Azure Identity サポート チームの 成田 です。<br>本記事では、<strong>2026 年 5 月 13 日</strong> より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。</p>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>この変更は <strong>2026 年 5 月 13 日</strong> から段階的に展開される予定です。「すべてのリソースを対象」かつ「特定のリソースを対象外」とする条件付きアクセス ポリシーをお持ちの組織では、展開開始日までに影響の確認と必要な対処を完了いただくことをお勧めします。</p></div>
 <p>公開情報:</p>
@@ -217,12 +217,21 @@
 <li>[Microsoft Entra ID] &gt; [アプリの登録] に遷移し、[+ 新規登録] をクリックします。</li>
 <li>以下の設定でアプリケーションを登録します。<ul>
 <li><strong>名前</strong>: 任意の分かりやすい名前 (例: <code>CA_BaselineScopes_TargetResource</code>)<br>※ ベースライン スコープ設定で利用する組織にとって重要なアプリケーションになりますため、用途が明確に分かる名前をお勧めします。</li>
-<li><strong>サポートされているアカウントの種類</strong>: <del>「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」</del>「複数の Entra ID テナント」および「すべてのテナントを許可する」を選択します</li>
+<li><strong>サポートされているアカウントの種類</strong>: 「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」を選択します</li>
 <li><strong>リダイレクト URI</strong>: 設定は必須ではありません。設定する場合は、プラットフォームに “Web” を選択し、URL 欄に任意の URL を入力してください (ダミーで構いません)。</li>
 </ul>
 </li>
 <li>[登録] をクリックし、アプリケーションを作成します。</li>
 </ol>
+<div class="alert is-info"><p class="alert-title">Note</p><p>以前、この手順 3 においてサポートされているアカウントの種類は「複数の Entra ID テナント」を選択する必要がありました。</p><p>これは一部アプリケーションで限定的に発生することが確認されていた問題に対する回避策でした。</p><p>現在は問題が解消していますので、新しく構成する場合には「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」を選択してください。</p><p>もし、既に「複数の Entra ID テナント」を選択して構成していた場合、以下の手順で「この組織ディレクトリのみに含まれるアカウント」に変更することをご検討ください。</p>
+<ol>
+<li>Azure ポータルもしくは Microsoft Entra 管理センターにアプリケーションを更新可能な管理者アカウント (所有者、アプリケーション管理者など) でサインインします</li>
+<li>[Microsoft Entra ID] &gt; [アプリの登録] に遷移します。</li>
+<li>作成済みの [アプリの登録] を開きます。</li>
+<li>Authentication (Preview) を開きます。</li>
+<li>Supported accounts を選択して、「サポートされているアカウントの種類:」を「シングル テナントのみ - テナント名」を選択します</li>
+</ol>
+<p>この変更によりベースライン スコープや条件付きアクセス ポリシーの動作に変更はありません。</p><p>マルチ テナントであっても動作上の違いはないのですが、作成するアプリの目的はシングル テナントにのみ影響を与える用途であるため、「シングル テナントのみ」であることが妥当であると考えられます。</p></div>
 <h3 id="ステップ-2-条件付きアクセス-ポリシーの対象外に追加"><a href="#ステップ-2-条件付きアクセス-ポリシーの対象外に追加" class="headerlink" title="ステップ 2: 条件付きアクセス ポリシーの対象外に追加"></a>ステップ 2: 条件付きアクセス ポリシーの対象外に追加</h3><ol>
 <li>条件付きアクセス管理者以上の権限を持つアカウントで [Microsoft Entra ID] &gt; [セキュリティ] &gt; [条件付きアクセス] に遷移します。</li>
 <li>「すべてのリソースを対象 &#x2F; 特定のリソースを対象外」の構成となっている条件付きアクセス ポリシーを選択します。</li>

@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-05-25T04:17:08.385Z</updated>
+  <updated>2026-05-25T15:43:12.939Z</updated>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -18,17 +18,16 @@
     <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
     <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
     <content>
-      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p></div><p>こんにちは、Azure Identity サポート チームの 成田 です。<br>本記事では、<strong>2026 年 5 月 13 日</strong> より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。</p><div class="alert is-warning"><p class="alert-title">警告</p><p>この変更は <strong>2026 年 5 月 13 日</strong> から段階的に展開される予定です。「すべてのリソースを対象」かつ「特定のリソースを対象外」とする条件付きアクセス ポリシーをお持ちの組織では、展開開始日までに影響の確認と必要な対処を完了いただくことをお勧めします。</p></div><p>公開情報:</p><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-enforcement-resource-exclusions">リソースの除外による条件付きアクセス ポリシーの適用の強化 - Microsoft Entra ID | Microsoft Learn</a></li><li><a href="https://jpazureid.github.io/blog/azure-active-directory/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/">今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化 - Japan Azure Identity Support Blog</a></li></ul><h2 id="1-この変更は何か"><a href="#1-この変更は何か" class="headerlink" title="1. この変更は何か"></a>1. この変更は何か</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>条件付きアクセス ポリシーを <strong>「対象: すべてのリソース」</strong> かつ <strong>「対象外: 特定のリソース」</strong> の構成で運用しているテナントにおいて、以前は「ベースライン スコープ」のみを要求する認証リクエストが自動的にポリシーの適用対象から除外されていました。<br>今回の変更により、<strong>この自動除外が廃止</strong> され、ベースライン スコープのみを要求するリクエストにも条件付きアクセス ポリシーが適用されるようになります。</p><h3 id="ベースライン-スコープとは"><a href="#ベースライン-スコープとは" class="headerlink" title="ベースライン スコープとは"></a>ベースライン スコープとは</h3><p>ベースライン スコープとは、以下の低い特権スコープの総称です。</p><table><thead><tr><th>種類</th><th>スコープ</th></tr></thead><tbody><tr><td>OpenID Connect (OIDC) スコープ</td><td><code>email</code>, <code>offline_access</code>, <code>openid</code>, <code>profile</code></td></tr><tr><td>ベースライン ディレクトリ スコープ</td><td><code>User.Read</code>, <code>User.Read.All</code>, <code>User.ReadBasic.All</code>, <code>People.Read</code>, <code>People.Read.All</code>, <code>GroupMember.Read.All</code>, <code>Member.Read.Hidden</code></td></tr></tbody></table><p>これらのスコープは、サインイン時にユーザーの基本的なプロフィール情報やグループ メンバーシップを取得するために多くのアプリケーションが要求するものです。<br>このスコープと、特定のリソースの関係性については後述する「3. 新しい動作の仕組み」にて「条件付きアクセスのリソース評価の仕組み」の項にてご説明します。</p><h2 id="2-なぜこの変更が行われたのか"><a href="#2-なぜこの変更が行われたのか" class="headerlink" title="2. なぜこの変更が行われたのか"></a>2. なぜこの変更が行われたのか</h2><p>従来は、「対象: すべてのリソース &#x2F; 対象外: 特定のリソース」構成のポリシーにおいて、アプリケーションがベースライン スコープのみを要求した場合、そのリクエストは <strong>CA ポリシーの適用対象外</strong> として扱われていました。<br>これは、多くのアプリケーションがサインイン処理の一部としてこれらのスコープを要求するため、意図しないアクセス ブロックを防ぐための配慮でした。<br>今回の変更により、この配慮した動作が廃止されます。結果として、セキュリティがより高まる方向に動作変更されます。</p><h2 id="3-新しい動作の仕組み"><a href="#3-新しい動作の仕組み" class="headerlink" title="3. 新しい動作の仕組み"></a>3. 新しい動作の仕組み</h2><p>変更後の動作を理解するために、まず技術的な背景を整理します。</p><h3 id="条件付きアクセスのリソース評価の仕組み"><a href="#条件付きアクセスのリソース評価の仕組み" class="headerlink" title="条件付きアクセスのリソース評価の仕組み"></a>条件付きアクセスのリソース評価の仕組み</h3><p>条件付きアクセスは、認証リクエストにおいてアクセス先の <strong>「リソース (Audience)」</strong> に基づいてポリシーの適用を判断します。たとえば、アプリケーションが <code>Mail.Read</code> スコープを要求した場合、リソースは Exchange Online として評価され、Exchange Online を対象とする CA ポリシーが適用されます。<br>ベースライン スコープ (<code>User.Read</code> や <code>openid</code> など) は、<strong>Windows Azure Active Directory</strong> (アプリ ID: 00000002-0000-0000-c000-000000000000) をリソースとして評価されます。ここで重要なのは、Windows Azure Active Directory というリソースにはベースライン スコープだけでなく、<code>Directory.ReadWrite.All</code> や <code>Application.ReadWrite.All</code> のような <strong>高い特権を持つスコープも含まれている</strong> という点です。つまり、同じ「Windows Azure Active Directory」というリソースの中に、低特権のスコープと高特権のスコープが混在しています。</p><h3 id="新しい動作のポイント"><a href="#新しい動作のポイント" class="headerlink" title="新しい動作のポイント"></a>新しい動作のポイント</h3><p>変更後は、ベースライン スコープのみを要求する認証リクエストも、リソースとして <strong>Windows Azure Active Directory</strong> にマップされ、CA ポリシーの適用対象として評価されるようになりました。</p><div class="alert is-important"><p class="alert-title">重要</p><p><strong>影響の具体例:</strong></p><p>「すべてのリソースを対象 &#x2F; Exchange Online を対象外 &#x2F; MFA 必須」という CA ポリシーがある場合:</p><p><strong>従来</strong>: <code>openid</code> + <code>profile</code> のみを要求する VS Code へのサインイン → MFA <strong>不要</strong> (暗黙的に対象外になる)</p><p><strong>変更後</strong>: 同じサインイン → MFA が <strong>要求される</strong> (対象外にならない)</p></div><h2 id="4-影響を受ける条件"><a href="#4-影響を受ける条件" class="headerlink" title="4. 影響を受ける条件"></a>4. 影響を受ける条件</h2><p>以下の <strong>すべて</strong> に該当する場合に影響を受けます。</p><ol><li><strong>すべてのリソース</strong> を対象とする条件付きアクセス ポリシーが 1 つ以上ある</li><li>それらのポリシーに 1 つ以上の <strong>リソース除外</strong> が設定されている</li><li>テナント内のユーザーが <strong>ベースライン スコープのみ</strong> を要求するアプリケーションを使用してサインインする</li></ol><div class="alert is-info"><p class="alert-title">Note</p><p><strong>影響を受けないケース:</strong></p><p>・「すべてのリソースを対象」でリソース除外が <strong>ない</strong> ポリシーのみ運用している場合</p><p>・アプリケーションがベースライン スコープに加えて他のスコープ (<code>Mail.Read</code> など) も要求している場合 (これらは既に CA の適用対象)</p></div><h2 id="5-従来の動作を維持したい場合の対処手順"><a href="#5-従来の動作を維持したい場合の対処手順" class="headerlink" title="5. 従来の動作を維持したい場合の対処手順"></a>5. 従来の動作を維持したい場合の対処手順</h2><p>以前 (2026 年 2 月) の記事公開後、お客様より多くのフィードバックをいただき、Entra ID 側の設定変更で従来の動作を維持する方法を提供する運びとなりました。</p><p>ただし、本変更は <a href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative">Microsoft セキュア フューチャー イニシアティブ</a> に基づくプロアクティブなセキュリティ対策であるため、従来の動作を維持し続けることを積極的にお勧めするものではありません。<br>影響の確認やアプリケーションの動作検証、さらにはアプリケーション側の改修といったお客様側の対応にも一定の時間を要することから、暫定的な猶予期間として、あるいはどうしても対応が難しいアプリケーション向けの措置としてご活用いただくことを想定しています。</p><p>新しい適用モデルへの移行が推奨されますが、既存のアプリケーションの動作を維持する必要がある場合は、<strong>「ベースライン スコープ設定」</strong> を使用して従来の動作を保持できます。<br>仕組みとしては、テナント内にカスタム アプリケーションを登録し、それをベースライン スコープのターゲット リソースとして設定します。ベースライン スコープのみを要求する認証リクエストは、Windows Azure Active Directory の代わりに <strong>このカスタム アプリケーションをリソースとして評価</strong> されるようになります。そのうえで、CA ポリシーの対象外にこのカスタム アプリケーションを追加することで、従来と同じ除外動作を実現します。</p><h3 id="考え方のイメージ"><a href="#考え方のイメージ" class="headerlink" title="考え方のイメージ"></a>考え方のイメージ</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">【従来の動作】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: Windows Azure Active Directory</span><br><span class="line">  → 自動的に CA ポリシーの適用対象外 (ベースライン スコープのため)</span><br><span class="line"></span><br><span class="line">【変更後の動作 (対処なし)】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: Windows Azure Active Directory</span><br><span class="line">  → CA ポリシーの適用対象 ← MFA 等が要求される</span><br><span class="line"></span><br><span class="line">【変更後の動作 (カスタム ターゲット リソースで対処)】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: カスタム アプリ (例: CA_BaselineScopes_TargetResource)</span><br><span class="line">  → CA ポリシーの対象外に追加済み → 除外される ※従来と同等</span><br></pre></td></tr></table></figure><div class="alert is-info"><p class="alert-title">Note</p><p><strong>なぜ Windows Azure Active Directory を直接除外しないのか?</strong></p><p>Windows Azure Active Directory をリソースとして CA ポリシーの対象外に追加した場合、ベースライン スコープだけでなく <code>Directory.ReadWrite.All</code> などの <strong>高い特権スコープも含めて除外</strong> されてしまいます。</p><p>これはセキュリティ上好ましくありません。 カスタム アプリケーションを「身代わり」のターゲット リソースとして設定することで、<strong>ベースライン スコープのリクエストのみを選択的に除外</strong> しつつ、高い特権スコープの要求には引き続き CA ポリシーを適用できます。</p></div><h2 id="6-具体的な設定手順"><a href="#6-具体的な設定手順" class="headerlink" title="6. 具体的な設定手順"></a>6. 具体的な設定手順</h2><p>以下の 3 つのステップで設定を行います。</p><h3 id="ステップ-1-カスタム-アプリケーションの登録"><a href="#ステップ-1-カスタム-アプリケーションの登録" class="headerlink" title="ステップ 1: カスタム アプリケーションの登録"></a>ステップ 1: カスタム アプリケーションの登録</h3><ol><li>Azure portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) もしくは Microsoft Entra 管理センター (<a href="https://entra.microsoft.com/">https://entra.microsoft.com</a>) に、アプリケーションを登録可能な管理者アカウントでサインインします。</li><li>[Microsoft Entra ID] &gt; [アプリの登録] に遷移し、[+ 新規登録] をクリックします。</li><li>以下の設定でアプリケーションを登録します。<ul><li><strong>名前</strong>: 任意の分かりやすい名前 (例: <code>CA_BaselineScopes_TargetResource</code>)<br>※ ベースライン スコープ設定で利用する組織にとって重要なアプリケーションになりますため、用途が明確に分かる名前をお勧めします。</li><li><strong>サポートされているアカウントの種類</strong>: <del>「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」</del>「複数の Entra ID テナント」および「すべてのテナントを許可する」を選択します</li><li><strong>リダイレクト URI</strong>: 設定は必須ではありません。設定する場合は、プラットフォームに “Web” を選択し、URL 欄に任意の URL を入力してください (ダミーで構いません)。</li></ul></li><li>[登録] をクリックし、アプリケーションを作成します。</li></ol><h3 id="ステップ-2-条件付きアクセス-ポリシーの対象外に追加"><a href="#ステップ-2-条件付きアクセス-ポリシーの対象外に追加" class="headerlink" title="ステップ 2: 条件付きアクセス ポリシーの対象外に追加"></a>ステップ 2: 条件付きアクセス ポリシーの対象外に追加</h3><ol><li>条件付きアクセス管理者以上の権限を持つアカウントで [Microsoft Entra ID] &gt; [セキュリティ] &gt; [条件付きアクセス] に遷移します。</li><li>「すべてのリソースを対象 &#x2F; 特定のリソースを対象外」の構成となっている条件付きアクセス ポリシーを選択します。</li><li>[ターゲット リソース] &gt; [対象外] タブを開き、ステップ 1 で作成したカスタム アプリケーションを追加します。</li><li>[保存] をクリックします。</li></ol><div class="alert is-important"><p class="alert-title">重要</p><p>対象のポリシーが複数ある場合は、すべてのポリシーに対してこの手順を実施してください。</p></div><h3 id="ステップ-3-ベースライン-スコープ設定でカスタム-ターゲット-リソースを構成"><a href="#ステップ-3-ベースライン-スコープ設定でカスタム-ターゲット-リソースを構成" class="headerlink" title="ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成"></a>ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成</h3><ol><li>以下の URL にアクセスし、条件付きアクセスのベースライン スコープ設定画面を開きます。現在はこの URL からのみアクセスが可能です。<br><a href="https://aka.ms/BaselineScopesSettingsUX">https://aka.ms/BaselineScopesSettingsUX</a></li><li>条件付きアクセス管理者以上の権限を持つアカウントでサインインします。</li><li>[カスタム ターゲット リソース: カスタム ターゲット リソースを選択する (Custom target resource: Select a custom target resource)] を選択し、ステップ 1 で作成したカスタム アプリケーションを選択します。</li><li>[保存 (Save)] をクリックして設定を保存します。</li></ol><div class="alert is-info"><p class="alert-title">Note</p><p>この設定により、ベースライン スコープのみを要求する認証リクエストにおいて、条件付きアクセスのリソース評価で Windows Azure Active Directory の代わりに指定したカスタム アプリケーションが使用されるようになります。</p><p>ステップ 2 でこのカスタム アプリケーションを CA ポリシーの対象外に設定済みのため、結果として従来と同等の除外動作が実現されます。 なお、発行されるトークンの audience (aud クレーム) 自体は Windows Azure Active Directory や Microsoft Graph のままであり、アプリケーションの動作に影響はありません。</p></div><div class="alert is-important"><p class="alert-title">重要</p><p><strong>カスタム ターゲット リソースによるオプトアウトはあくまで暫定措置です</strong></p><p>上記の手順で特定したアプリケーションについては、カスタム ターゲット リソースによる除外で従来の動作を維持している間に、アプリケーション側の改修をご検討ください。</p><p>新しい既定の動作では、ベースライン スコープのみを要求するサインインにも CA ポリシーが適用されます。そのため、アプリケーションが条件付きアクセス チャレンジ (MFA やデバイス コンプライアンスなど) を適切にハンドルできるよう改修することが、中長期的には推奨されます。</p><p>具体的には、アプリケーションが CA チャレンジを受けた際に、ユーザーに対して正しくリダイレクトや再認証のフローを提示できるようにする必要があります。</p><p>実装方法の詳細については、以下の公開情報をご参照ください。</p><p><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">条件付きアクセス開発者向けガイダンス - Microsoft identity platform | Microsoft Learn</a></p></div><h2 id="7-まとめ"><a href="#7-まとめ" class="headerlink" title="7. まとめ"></a>7. まとめ</h2><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>変更内容</td><td>「すべてのリソース &#x2F; 対象外あり」の CA ポリシーにおいて、ベースライン スコープのみの認証リクエストが自動除外されなくなった</td></tr><tr><td>影響</td><td>ベースライン スコープのみを要求するアプリへのサインイン時に、MFA やデバイス コンプライアンスなどの CA チャレンジが発生する可能性がある</td></tr><tr><td>推奨対応</td><td>新しい適用モデルに合わせることが推奨。やむを得ない場合はカスタム ターゲット リソースで従来の動作を維持</td></tr><tr><td>必要な手順 (従来の動作を維持する場合)</td><td>1. カスタム アプリケーションの登録 &#x2F; 2. CA ポリシーの対象外に追加 &#x2F; 3. ベースライン スコープ設定にカスタム ターゲット リソースを構成</td></tr></tbody></table><h2 id="参考情報"><a href="#参考情報" class="headerlink" title="参考情報"></a>参考情報</h2><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-enforcement-resource-exclusions">リソースの除外による条件付きアクセス ポリシーの適用の強化 - Microsoft Entra ID | Microsoft Learn</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース - Microsoft Entra ID | Microsoft Learn</a></li><li><a href="https://aka.ms/BaselineScopesSettingsUX">ベースライン スコープ設定画面</a></li></ul><p>上記内容が少しでも参考となりますと幸いです。製品動作に関する正式な見解や回答については、お客様環境などを把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>]]>
+      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5 月 26 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を改めて更新しました</p></div><p>こんにちは、Azure Identity サポート チームの 成田 です。<br>本記事では、<strong>2026 年 5 月 13 日</strong> より展開が予定されている、条件付きアクセス (CA) ポリシーの「ベースライン スコープ」に関する動作変更について解説いたします。</p><div class="alert is-warning"><p class="alert-title">警告</p><p>この変更は <strong>2026 年 5 月 13 日</strong> から段階的に展開される予定です。「すべてのリソースを対象」かつ「特定のリソースを対象外」とする条件付きアクセス ポリシーをお持ちの組織では、展開開始日までに影響の確認と必要な対処を完了いただくことをお勧めします。</p></div><p>公開情報:</p><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-enforcement-resource-exclusions">リソースの除外による条件付きアクセス ポリシーの適用の強化 - Microsoft Entra ID | Microsoft Learn</a></li><li><a href="https://jpazureid.github.io/blog/azure-active-directory/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/">今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化 - Japan Azure Identity Support Blog</a></li></ul><h2 id="1-この変更は何か"><a href="#1-この変更は何か" class="headerlink" title="1. この変更は何か"></a>1. この変更は何か</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>条件付きアクセス ポリシーを <strong>「対象: すべてのリソース」</strong> かつ <strong>「対象外: 特定のリソース」</strong> の構成で運用しているテナントにおいて、以前は「ベースライン スコープ」のみを要求する認証リクエストが自動的にポリシーの適用対象から除外されていました。<br>今回の変更により、<strong>この自動除外が廃止</strong> され、ベースライン スコープのみを要求するリクエストにも条件付きアクセス ポリシーが適用されるようになります。</p><h3 id="ベースライン-スコープとは"><a href="#ベースライン-スコープとは" class="headerlink" title="ベースライン スコープとは"></a>ベースライン スコープとは</h3><p>ベースライン スコープとは、以下の低い特権スコープの総称です。</p><table><thead><tr><th>種類</th><th>スコープ</th></tr></thead><tbody><tr><td>OpenID Connect (OIDC) スコープ</td><td><code>email</code>, <code>offline_access</code>, <code>openid</code>, <code>profile</code></td></tr><tr><td>ベースライン ディレクトリ スコープ</td><td><code>User.Read</code>, <code>User.Read.All</code>, <code>User.ReadBasic.All</code>, <code>People.Read</code>, <code>People.Read.All</code>, <code>GroupMember.Read.All</code>, <code>Member.Read.Hidden</code></td></tr></tbody></table><p>これらのスコープは、サインイン時にユーザーの基本的なプロフィール情報やグループ メンバーシップを取得するために多くのアプリケーションが要求するものです。<br>このスコープと、特定のリソースの関係性については後述する「3. 新しい動作の仕組み」にて「条件付きアクセスのリソース評価の仕組み」の項にてご説明します。</p><h2 id="2-なぜこの変更が行われたのか"><a href="#2-なぜこの変更が行われたのか" class="headerlink" title="2. なぜこの変更が行われたのか"></a>2. なぜこの変更が行われたのか</h2><p>従来は、「対象: すべてのリソース &#x2F; 対象外: 特定のリソース」構成のポリシーにおいて、アプリケーションがベースライン スコープのみを要求した場合、そのリクエストは <strong>CA ポリシーの適用対象外</strong> として扱われていました。<br>これは、多くのアプリケーションがサインイン処理の一部としてこれらのスコープを要求するため、意図しないアクセス ブロックを防ぐための配慮でした。<br>今回の変更により、この配慮した動作が廃止されます。結果として、セキュリティがより高まる方向に動作変更されます。</p><h2 id="3-新しい動作の仕組み"><a href="#3-新しい動作の仕組み" class="headerlink" title="3. 新しい動作の仕組み"></a>3. 新しい動作の仕組み</h2><p>変更後の動作を理解するために、まず技術的な背景を整理します。</p><h3 id="条件付きアクセスのリソース評価の仕組み"><a href="#条件付きアクセスのリソース評価の仕組み" class="headerlink" title="条件付きアクセスのリソース評価の仕組み"></a>条件付きアクセスのリソース評価の仕組み</h3><p>条件付きアクセスは、認証リクエストにおいてアクセス先の <strong>「リソース (Audience)」</strong> に基づいてポリシーの適用を判断します。たとえば、アプリケーションが <code>Mail.Read</code> スコープを要求した場合、リソースは Exchange Online として評価され、Exchange Online を対象とする CA ポリシーが適用されます。<br>ベースライン スコープ (<code>User.Read</code> や <code>openid</code> など) は、<strong>Windows Azure Active Directory</strong> (アプリ ID: 00000002-0000-0000-c000-000000000000) をリソースとして評価されます。ここで重要なのは、Windows Azure Active Directory というリソースにはベースライン スコープだけでなく、<code>Directory.ReadWrite.All</code> や <code>Application.ReadWrite.All</code> のような <strong>高い特権を持つスコープも含まれている</strong> という点です。つまり、同じ「Windows Azure Active Directory」というリソースの中に、低特権のスコープと高特権のスコープが混在しています。</p><h3 id="新しい動作のポイント"><a href="#新しい動作のポイント" class="headerlink" title="新しい動作のポイント"></a>新しい動作のポイント</h3><p>変更後は、ベースライン スコープのみを要求する認証リクエストも、リソースとして <strong>Windows Azure Active Directory</strong> にマップされ、CA ポリシーの適用対象として評価されるようになりました。</p><div class="alert is-important"><p class="alert-title">重要</p><p><strong>影響の具体例:</strong></p><p>「すべてのリソースを対象 &#x2F; Exchange Online を対象外 &#x2F; MFA 必須」という CA ポリシーがある場合:</p><p><strong>従来</strong>: <code>openid</code> + <code>profile</code> のみを要求する VS Code へのサインイン → MFA <strong>不要</strong> (暗黙的に対象外になる)</p><p><strong>変更後</strong>: 同じサインイン → MFA が <strong>要求される</strong> (対象外にならない)</p></div><h2 id="4-影響を受ける条件"><a href="#4-影響を受ける条件" class="headerlink" title="4. 影響を受ける条件"></a>4. 影響を受ける条件</h2><p>以下の <strong>すべて</strong> に該当する場合に影響を受けます。</p><ol><li><strong>すべてのリソース</strong> を対象とする条件付きアクセス ポリシーが 1 つ以上ある</li><li>それらのポリシーに 1 つ以上の <strong>リソース除外</strong> が設定されている</li><li>テナント内のユーザーが <strong>ベースライン スコープのみ</strong> を要求するアプリケーションを使用してサインインする</li></ol><div class="alert is-info"><p class="alert-title">Note</p><p><strong>影響を受けないケース:</strong></p><p>・「すべてのリソースを対象」でリソース除外が <strong>ない</strong> ポリシーのみ運用している場合</p><p>・アプリケーションがベースライン スコープに加えて他のスコープ (<code>Mail.Read</code> など) も要求している場合 (これらは既に CA の適用対象)</p></div><h2 id="5-従来の動作を維持したい場合の対処手順"><a href="#5-従来の動作を維持したい場合の対処手順" class="headerlink" title="5. 従来の動作を維持したい場合の対処手順"></a>5. 従来の動作を維持したい場合の対処手順</h2><p>以前 (2026 年 2 月) の記事公開後、お客様より多くのフィードバックをいただき、Entra ID 側の設定変更で従来の動作を維持する方法を提供する運びとなりました。</p><p>ただし、本変更は <a href="https://www.microsoft.com/ja-jp/trust-center/security/secure-future-initiative">Microsoft セキュア フューチャー イニシアティブ</a> に基づくプロアクティブなセキュリティ対策であるため、従来の動作を維持し続けることを積極的にお勧めするものではありません。<br>影響の確認やアプリケーションの動作検証、さらにはアプリケーション側の改修といったお客様側の対応にも一定の時間を要することから、暫定的な猶予期間として、あるいはどうしても対応が難しいアプリケーション向けの措置としてご活用いただくことを想定しています。</p><p>新しい適用モデルへの移行が推奨されますが、既存のアプリケーションの動作を維持する必要がある場合は、<strong>「ベースライン スコープ設定」</strong> を使用して従来の動作を保持できます。<br>仕組みとしては、テナント内にカスタム アプリケーションを登録し、それをベースライン スコープのターゲット リソースとして設定します。ベースライン スコープのみを要求する認証リクエストは、Windows Azure Active Directory の代わりに <strong>このカスタム アプリケーションをリソースとして評価</strong> されるようになります。そのうえで、CA ポリシーの対象外にこのカスタム アプリケーションを追加することで、従来と同じ除外動作を実現します。</p><h3 id="考え方のイメージ"><a href="#考え方のイメージ" class="headerlink" title="考え方のイメージ"></a>考え方のイメージ</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">【従来の動作】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: Windows Azure Active Directory</span><br><span class="line">  → 自動的に CA ポリシーの適用対象外 (ベースライン スコープのため)</span><br><span class="line"></span><br><span class="line">【変更後の動作 (対処なし)】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: Windows Azure Active Directory</span><br><span class="line">  → CA ポリシーの適用対象 ← MFA 等が要求される</span><br><span class="line"></span><br><span class="line">【変更後の動作 (カスタム ターゲット リソースで対処)】</span><br><span class="line">アプリが openid + profile を要求</span><br><span class="line">  → リソース: カスタム アプリ (例: CA_BaselineScopes_TargetResource)</span><br><span class="line">  → CA ポリシーの対象外に追加済み → 除外される ※従来と同等</span><br></pre></td></tr></table></figure><div class="alert is-info"><p class="alert-title">Note</p><p><strong>なぜ Windows Azure Active Directory を直接除外しないのか?</strong></p><p>Windows Azure Active Directory をリソースとして CA ポリシーの対象外に追加した場合、ベースライン スコープだけでなく <code>Directory.ReadWrite.All</code> などの <strong>高い特権スコープも含めて除外</strong> されてしまいます。</p><p>これはセキュリティ上好ましくありません。 カスタム アプリケーションを「身代わり」のターゲット リソースとして設定することで、<strong>ベースライン スコープのリクエストのみを選択的に除外</strong> しつつ、高い特権スコープの要求には引き続き CA ポリシーを適用できます。</p></div><h2 id="6-具体的な設定手順"><a href="#6-具体的な設定手順" class="headerlink" title="6. 具体的な設定手順"></a>6. 具体的な設定手順</h2><p>以下の 3 つのステップで設定を行います。</p><h3 id="ステップ-1-カスタム-アプリケーションの登録"><a href="#ステップ-1-カスタム-アプリケーションの登録" class="headerlink" title="ステップ 1: カスタム アプリケーションの登録"></a>ステップ 1: カスタム アプリケーションの登録</h3><ol><li>Azure portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) もしくは Microsoft Entra 管理センター (<a href="https://entra.microsoft.com/">https://entra.microsoft.com</a>) に、アプリケーションを登録可能な管理者アカウントでサインインします。</li><li>[Microsoft Entra ID] &gt; [アプリの登録] に遷移し、[+ 新規登録] をクリックします。</li><li>以下の設定でアプリケーションを登録します。<ul><li><strong>名前</strong>: 任意の分かりやすい名前 (例: <code>CA_BaselineScopes_TargetResource</code>)<br>※ ベースライン スコープ設定で利用する組織にとって重要なアプリケーションになりますため、用途が明確に分かる名前をお勧めします。</li><li><strong>サポートされているアカウントの種類</strong>: 「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」を選択します</li><li><strong>リダイレクト URI</strong>: 設定は必須ではありません。設定する場合は、プラットフォームに “Web” を選択し、URL 欄に任意の URL を入力してください (ダミーで構いません)。</li></ul></li><li>[登録] をクリックし、アプリケーションを作成します。</li></ol><div class="alert is-info"><p class="alert-title">Note</p><p>以前、この手順 3 においてサポートされているアカウントの種類は「複数の Entra ID テナント」を選択する必要がありました。</p><p>これは一部アプリケーションで限定的に発生することが確認されていた問題に対する回避策でした。</p><p>現在は問題が解消していますので、新しく構成する場合には「この組織ディレクトリのみに含まれるアカウント (シングル テナント)」を選択してください。</p><p>もし、既に「複数の Entra ID テナント」を選択して構成していた場合、以下の手順で「この組織ディレクトリのみに含まれるアカウント」に変更することをご検討ください。</p><ol><li>Azure ポータルもしくは Microsoft Entra 管理センターにアプリケーションを更新可能な管理者アカウント (所有者、アプリケーション管理者など) でサインインします</li><li>[Microsoft Entra ID] &gt; [アプリの登録] に遷移します。</li><li>作成済みの [アプリの登録] を開きます。</li><li>Authentication (Preview) を開きます。</li><li>Supported accounts を選択して、「サポートされているアカウントの種類:」を「シングル テナントのみ - テナント名」を選択します</li></ol><p>この変更によりベースライン スコープや条件付きアクセス ポリシーの動作に変更はありません。</p><p>マルチ テナントであっても動作上の違いはないのですが、作成するアプリの目的はシングル テナントにのみ影響を与える用途であるため、「シングル テナントのみ」であることが妥当であると考えられます。</p></div><h3 id="ステップ-2-条件付きアクセス-ポリシーの対象外に追加"><a href="#ステップ-2-条件付きアクセス-ポリシーの対象外に追加" class="headerlink" title="ステップ 2: 条件付きアクセス ポリシーの対象外に追加"></a>ステップ 2: 条件付きアクセス ポリシーの対象外に追加</h3><ol><li>条件付きアクセス管理者以上の権限を持つアカウントで [Microsoft Entra ID] &gt; [セキュリティ] &gt; [条件付きアクセス] に遷移します。</li><li>「すべてのリソースを対象 &#x2F; 特定のリソースを対象外」の構成となっている条件付きアクセス ポリシーを選択します。</li><li>[ターゲット リソース] &gt; [対象外] タブを開き、ステップ 1 で作成したカスタム アプリケーションを追加します。</li><li>[保存] をクリックします。</li></ol><div class="alert is-important"><p class="alert-title">重要</p><p>対象のポリシーが複数ある場合は、すべてのポリシーに対してこの手順を実施してください。</p></div><h3 id="ステップ-3-ベースライン-スコープ設定でカスタム-ターゲット-リソースを構成"><a href="#ステップ-3-ベースライン-スコープ設定でカスタム-ターゲット-リソースを構成" class="headerlink" title="ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成"></a>ステップ 3: ベースライン スコープ設定でカスタム ターゲット リソースを構成</h3><ol><li>以下の URL にアクセスし、条件付きアクセスのベースライン スコープ設定画面を開きます。現在はこの URL からのみアクセスが可能です。<br><a href="https://aka.ms/BaselineScopesSettingsUX">https://aka.ms/BaselineScopesSettingsUX</a></li><li>条件付きアクセス管理者以上の権限を持つアカウントでサインインします。</li><li>[カスタム ターゲット リソース: カスタム ターゲット リソースを選択する (Custom target resource: Select a custom target resource)] を選択し、ステップ 1 で作成したカスタム アプリケーションを選択します。</li><li>[保存 (Save)] をクリックして設定を保存します。</li></ol><div class="alert is-info"><p class="alert-title">Note</p><p>この設定により、ベースライン スコープのみを要求する認証リクエストにおいて、条件付きアクセスのリソース評価で Windows Azure Active Directory の代わりに指定したカスタム アプリケーションが使用されるようになります。</p><p>ステップ 2 でこのカスタム アプリケーションを CA ポリシーの対象外に設定済みのため、結果として従来と同等の除外動作が実現されます。 なお、発行されるトークンの audience (aud クレーム) 自体は Windows Azure Active Directory や Microsoft Graph のままであり、アプリケーションの動作に影響はありません。</p></div><div class="alert is-important"><p class="alert-title">重要</p><p><strong>カスタム ターゲット リソースによるオプトアウトはあくまで暫定措置です</strong></p><p>上記の手順で特定したアプリケーションについては、カスタム ターゲット リソースによる除外で従来の動作を維持している間に、アプリケーション側の改修をご検討ください。</p><p>新しい既定の動作では、ベースライン スコープのみを要求するサインインにも CA ポリシーが適用されます。そのため、アプリケーションが条件付きアクセス チャレンジ (MFA やデバイス コンプライアンスなど) を適切にハンドルできるよう改修することが、中長期的には推奨されます。</p><p>具体的には、アプリケーションが CA チャレンジを受けた際に、ユーザーに対して正しくリダイレクトや再認証のフローを提示できるようにする必要があります。</p><p>実装方法の詳細については、以下の公開情報をご参照ください。</p><p><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/v2-conditional-access-dev-guide">条件付きアクセス開発者向けガイダンス - Microsoft identity platform | Microsoft Learn</a></p></div><h2 id="7-まとめ"><a href="#7-まとめ" class="headerlink" title="7. まとめ"></a>7. まとめ</h2><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>変更内容</td><td>「すべてのリソース &#x2F; 対象外あり」の CA ポリシーにおいて、ベースライン スコープのみの認証リクエストが自動除外されなくなった</td></tr><tr><td>影響</td><td>ベースライン スコープのみを要求するアプリへのサインイン時に、MFA やデバイス コンプライアンスなどの CA チャレンジが発生する可能性がある</td></tr><tr><td>推奨対応</td><td>新しい適用モデルに合わせることが推奨。やむを得ない場合はカスタム ターゲット リソースで従来の動作を維持</td></tr><tr><td>必要な手順 (従来の動作を維持する場合)</td><td>1. カスタム アプリケーションの登録 &#x2F; 2. CA ポリシーの対象外に追加 &#x2F; 3. ベースライン スコープ設定にカスタム ターゲット リソースを構成</td></tr></tbody></table><h2 id="参考情報"><a href="#参考情報" class="headerlink" title="参考情報"></a>参考情報</h2><ul><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-enforcement-resource-exclusions">リソースの除外による条件付きアクセス ポリシーの適用の強化 - Microsoft Entra ID | Microsoft Learn</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-cloud-apps">条件付きアクセス: ターゲット リソース - Microsoft Entra ID | Microsoft Learn</a></li><li><a href="https://aka.ms/BaselineScopesSettingsUX">ベースライン スコープ設定画面</a></li></ul><p>上記内容が少しでも参考となりますと幸いです。製品動作に関する正式な見解や回答については、お客様環境などを把握したうえでサポート部門より提供させていただきますので、ぜひ弊社サポート サービスをご利用ください。</p>]]>
     </content>
     <id>https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/</id>
     <link href="https://jpazureid.github.io/blog/azure-active-directory/baseline-scopes-enforcement/"/>
     <published>2026-04-20T15:00:00.000Z</published>
     <summary>
-      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p></div>
-<p>こん]]>
+      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5]]>
     </summary>
     <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</title>
-    <updated>2026-05-25T04:17:08.385Z</updated>
+    <updated>2026-05-25T15:43:12.939Z</updated>
   </entry>
   <entry>
     <author>
@@ -47,7 +46,7 @@
 <p>こんにちは、Azure]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-05-25T04:17:08.218Z</updated>
+    <updated>2026-05-25T15:43:12.769Z</updated>
   </entry>
   <entry>
     <author>
@@ -66,7 +65,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-05-25T04:17:08.710Z</updated>
+    <updated>2026-05-25T15:43:13.267Z</updated>
   </entry>
   <entry>
     <author>
@@ -84,7 +83,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-05-25T04:17:08.086Z</updated>
+    <updated>2026-05-25T15:43:12.642Z</updated>
   </entry>
   <entry>
     <author>
@@ -103,7 +102,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-05-25T04:17:09.263Z</updated>
+    <updated>2026-05-25T15:43:13.802Z</updated>
   </entry>
   <entry>
     <author>
@@ -122,7 +121,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-05-25T04:17:08.399Z</updated>
+    <updated>2026-05-25T15:43:12.953Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +141,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-05-25T04:17:08.543Z</updated>
+    <updated>2026-05-25T15:43:13.097Z</updated>
   </entry>
   <entry>
     <author>
@@ -161,7 +160,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-05-25T04:17:08.230Z</updated>
+    <updated>2026-05-25T15:43:12.781Z</updated>
   </entry>
   <entry>
     <author>
@@ -179,7 +178,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-05-25T04:17:08.718Z</updated>
+    <updated>2026-05-25T15:43:13.274Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,7 +197,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-05-25T04:17:09.111Z</updated>
+    <updated>2026-05-25T15:43:13.653Z</updated>
   </entry>
   <entry>
     <author>
@@ -217,7 +216,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-05-25T04:17:08.083Z</updated>
+    <updated>2026-05-25T15:43:12.639Z</updated>
   </entry>
   <entry>
     <author>
@@ -236,7 +235,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-05-25T04:17:09.305Z</updated>
+    <updated>2026-05-25T15:43:13.844Z</updated>
   </entry>
   <entry>
     <author>
@@ -255,7 +254,7 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-05-25T04:17:08.806Z</updated>
+    <updated>2026-05-25T15:43:13.361Z</updated>
   </entry>
   <entry>
     <author>
@@ -274,7 +273,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-05-25T04:17:08.083Z</updated>
+    <updated>2026-05-25T15:43:12.639Z</updated>
   </entry>
   <entry>
     <author>
@@ -294,7 +293,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-05-25T04:17:09.211Z</updated>
+    <updated>2026-05-25T15:43:13.750Z</updated>
   </entry>
   <entry>
     <author>
@@ -315,7 +314,7 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-05-25T04:17:09.200Z</updated>
+    <updated>2026-05-25T15:43:13.739Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +333,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
     </summary>
     <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-05-25T04:17:08.563Z</updated>
+    <updated>2026-05-25T15:43:13.117Z</updated>
   </entry>
   <entry>
     <author>
@@ -353,7 +352,7 @@
 <p>本記事は、2025 年 8 月 22 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommun]]>
     </summary>
     <title>パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access</title>
-    <updated>2026-05-25T04:17:08.799Z</updated>
+    <updated>2026-05-25T15:43:13.353Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,7 +371,7 @@
 <p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunit]]>
     </summary>
     <title>Microsoft Defender for Identity のシグナルが Microsoft Entra ID の推奨事項に統合</title>
-    <updated>2026-05-25T04:17:08.489Z</updated>
+    <updated>2026-05-25T15:43:13.043Z</updated>
   </entry>
   <entry>
     <author>
@@ -391,6 +390,6 @@
 <p>2025 年 10 月 1 日以降、Azure Command Line Interface (CLI)、Azure PowerShell、Infrastructure as Cod]]>
     </summary>
     <title>MFA 義務付け (フェーズ 2) の開始</title>
-    <updated>2026-05-25T04:17:09.054Z</updated>
+    <updated>2026-05-25T15:43:13.596Z</updated>
   </entry>
 </feed>
