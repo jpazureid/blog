@@ -1,3 +1,13 @@
+---
+title: "Entra ID 初学者向けシリーズ第 5 弾 - Microsoft Entra Private Access 入門"
+date: 2026-6-05 15:00
+tags:
+    - Microsoft Entra
+    - Starter series
+    - GSA
+    - Private Access
+---
+
 # Entra ID 初学者向けシリーズ第 5 弾 - Microsoft Entra Private Access 入門
 
 こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズの「Microsoft Entra Private Access 入門」です。
