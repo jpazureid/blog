@@ -32,7 +32,7 @@ tags:
 ご利用の端末がデバイス情報を Azure AD に提示できない場合、Azure AD は ”どの端末からのアクセスか？” を判断することができません。つまり「準拠済み」であるかも判断することができず、ブロックされてしまいます。
 ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。
 
-![](./conditional-access-compliant-ios-android/deviceid-not-displayed.png)
+![](./conditional-access-compliant-ios-android-2026/deviceid-not-displayed.png)
 
 <br>
 
@@ -66,7 +66,7 @@ iOS / Android でデバイス情報が提示できない原因としては、以
 利用している端末が準拠済みとなっているかを確認します。
 Azure Portal のデバイス一覧で、対象の端末の「準拠している」の列が「はい」にセットされていれば OK です。
 
-![](./conditional-access-compliant-ios-android/compliant-set.png)
+![](./conditional-access-compliant-ios-android-2026/compliant-set.png)
 
 対象の端末が準拠していない場合は、Microsoft Endpoint Manager (Intune) の観点で、なぜ準拠済みとならないのかを調査する必要があります。
 
@@ -98,7 +98,7 @@ iOS / Android がデバイス情報を提示する仕組みは、ブラウザー
 Android の場合、以下のように端末内に保持している証明書一覧が表示されて、どの証明書を使用するのか促されます。(既に使用する証明書が決まっていると判断されれば促されない場合もあります)
 ここで適切な証明書を選択すれば、証明書の中に保存されているデバイス情報を提示し、Azure AD でデバイス ベースの条件付きアクセスの制御が可能となります。
 
-![](./conditional-access-compliant-ios-android/device-cert.png)
+![](./conditional-access-compliant-ios-android-2026/device-cert.png)
 
 なお、ここで使用する証明書 (上記画面の証明書) は、Microsoft Endpoint Manager (Intune) ポータル サイトからインストール可能です。以下の公開情報をご参照の上、記載された画面と同様のメッセージが表示されている状況であれば、本公開情報の「ブラウザー アクセスを有効にする」手順をお試しください。
 
@@ -107,9 +107,9 @@ Android の場合、以下のように端末内に保持している証明書一
 iOS の場合、Intune によるプロファイル設定が行われる際に証明書もあわせてインストールされるはずです。
 iOS の [プロファイルとデバイス管理] から、Intune 用のプロファイルが既に設定されているかご確認ください。
 
-![](./conditional-access-compliant-ios-android/device-profile1.png)
+![](./conditional-access-compliant-ios-android-2026/device-profile1.png)
 
-![](./conditional-access-compliant-ios-android/device-profile2.png)
+![](./conditional-access-compliant-ios-android-2026/device-profile2.png)
 
 iOS / Android を使用したブラウザー アクセスは、上記のように証明書を使用したデバイス情報の提示が可能となります。
 
@@ -129,11 +129,11 @@ iOS / Android を使用してモバイル アプリ (ネイティブ アプリ) 
 
 Microsoft Teams のモバイル アプリにサインインするために資格情報を入力すると、パスワード入力画面に遷移しています。画面左上に Teams の表示がありますが、これは Microsoft Teams が呼び出した画面ではないことがわかります。なぜなら、このパスワード入力画面が Microsoft Teams が呼び出した画面であれば、画面左側に Teams への切り替えを促す表示は出ないからです。
 
-![](./conditional-access-compliant-ios-android/authenticator-screen1.png)
+![](./conditional-access-compliant-ios-android-2026/authenticator-screen1.png)
 
 実際に、起動アプリを確認すると Microsoft Authenticator がパスワード入力画面を呼び出していることが確認できます。
 
-![](./conditional-access-compliant-ios-android/authenticator-screen2.png)
+![](./conditional-access-compliant-ios-android-2026/authenticator-screen2.png)
 
 このことから、Microsoft Teams から Microsoft Authenticator にリダイレクトされ、この動作でパスワード入力、および PRT を Azure AD に渡しているように思われます。
 
