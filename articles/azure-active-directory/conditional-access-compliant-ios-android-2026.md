@@ -12,7 +12,7 @@ tags:
 # [2026 年度版] 条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)
 
 > [!NOTE]
-> 本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。
+> 本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。リニューアル前の記事は [条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)](https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/) をご参照ください。
 
 こんにちは、Azure & Identity サポート チームの上出です。
 
