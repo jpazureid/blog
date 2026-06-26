@@ -1,6 +1,6 @@
 ---
 title: "[2026 年度版] 条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)"
-date: 2026-06-16
+date: 2026-06-26
 tags:
   - Microsoft Entra ID
   - Conditional Access
