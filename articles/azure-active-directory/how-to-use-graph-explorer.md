@@ -10,8 +10,8 @@ tags:
 
 
 Entra ID テナントやユーザーなどのオブジェクトを管理する方法には、各管理センター (Microsoft Entra 管理センターなど) の画面上で操作する以外にも、Microsoft Graph API を使う方法があります。
-Microsoft Graph API は PowerShell コマンドとして呼び出せる Microsoft Graph PowerShell SDK も提供しております。
-API やコマンドは、一括処理のためのスクリプトなどで活用するシナリオが一般的ですが、Microsoft Graph API を手軽に実行できるツールとして、Graph Explorer というツールがあります。
+Microsoft Graph API は PowerShell コマンドとして呼び出せる Microsoft Graph PowerShell SDK も提供しております。  
+API やコマンドは、一括処理のためのスクリプトなどで活用するシナリオが一般的ですが、Microsoft Graph API を手軽に実行できるツールとして、Graph Explorer というツールがあります。  
 本記事では、Graph Explorer を初めて使用される方向けに使用方法について順を追ってご紹介します。
 
 ## [GET] リクエストの実行
@@ -27,10 +27,11 @@ https://graph.microsoft.com/v1.0/tenantRelationships/findTenantInformationByDoma
 
 
 ### 操作手順例
-1\. Graph Explorer ( https://developer.microsoft.com/en-us/graph/graph-explorer ) を開きます。
+1\. Graph Explorer ( https://developer.microsoft.com/en-us/graph/graph-explorer ) を開きます。  
 2\. 右上の人型アイコンをクリックし、サインインします。
-自身で管理者の同意が必要なアクセス許可に同意する必要がある場合には、管理者（グローバル管理者、クラウドアプリケーション管理者、特権ロール管理者 等）のロール権限のあるユーザーにてサインインします。（※予めアクセス許可を付与しておきたい場合にはこちら([Microsoft Graph PowerShell アクセス許可の付与 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/))の記事をご参照ください）
-![](./how-to-use-graph-explorer/1-1.png)
+自身で管理者の同意が必要なアクセス許可に同意する必要がある場合には、管理者（グローバル管理者、クラウドアプリケーション管理者、特権ロール管理者 等）のロール権限のあるユーザーにてサインインします。  
+（※予めアクセス許可を付与しておきたい場合にはこちら([Microsoft Graph PowerShell アクセス許可の付与 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/))の記事をご参照ください）
+![](./how-to-use-graph-explorer/1-1.png)  
 ※サインイン時に [要求されているアクセス許可] のポップアップが表示された場合には承諾をクリックします。  
 ※[組織の代理として同意する] はオフのままで問題ございません。  
 アイコンとテナント名が自身のものに変更されたことを確認します。
@@ -87,11 +88,12 @@ https://graph.microsoft.com/v1.0/tenantRelationships/findTenantInformationByDoma
 [Microsoft Graph でのユーザーの操作 - Microsoft Graph v1.0 | Microsoft Learn](https://learn.microsoft.com/ja-jp/graph/api/resources/users?view=graph-rest-1.0#sensitive-actions)
 
 ### 操作手順例
-1\. Graph Explorer ( https://developer.microsoft.com/en-us/graph/graph-explorer ) を開きます。
-2\. 右上の人型アイコンをクリックし、サインインします。
-グローバル管理者などの対象ユーザーのユーザー情報を更新する権限のある管理者かつ、必要なアクセス許可のある（もしくは自身でアクセス許可に同意できる管理者）ユーザーでサインインします。（※予めアクセス許可を付与しておきたい場合にはこちら([Microsoft Graph PowerShell アクセス許可の付与 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/))の記事をご参照ください）
-![](./how-to-use-graph-explorer/2-1.png)
-※サインイン時に [要求されているアクセス許可] のポップアップが表示された場合には承諾をクリックします。
+1\. Graph Explorer ( https://developer.microsoft.com/en-us/graph/graph-explorer ) を開きます。  
+2\. 右上の人型アイコンをクリックし、サインインします。  
+グローバル管理者などの対象ユーザーのユーザー情報を更新する権限のある管理者かつ、必要なアクセス許可のある（もしくは自身でアクセス許可に同意できる管理者）ユーザーでサインインします。  
+（※予めアクセス許可を付与しておきたい場合にはこちら([Microsoft Graph PowerShell アクセス許可の付与 | Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/))の記事をご参照ください）
+![](./how-to-use-graph-explorer/2-1.png)  
+※サインイン時に [要求されているアクセス許可] のポップアップが表示された場合には承諾をクリックします。  
 ※[組織の代理として同意する] はオフのままで問題ございません。
 アイコンとテナント名が自身のものに変更されたことを確認します。
 ![](./how-to-use-graph-explorer/2-2.png)
@@ -131,9 +133,9 @@ https://graph.microsoft.com/v1.0/users/<対象ユーザーのオブジェクト 
  ※『組織の代理として同意する』のチェックボックスがある場合、こちらにチェックを入れる必要はありません。
 ![](./how-to-use-graph-explorer/2-7.png)
 
-9-2. アクセス許可の承諾については、(ユーザー アイコンのクリック) > [Consent to permissions] から Permissions panel を開き、必要なアクセス許可を検索して付与しても構いません。  
-ユーザーの mobilePhone だけ更新する場合には User-Phone.ReadWrite.All が最小のアクセス許可となりますので、以下では、User-Phone.ReadWrite.All を例に操作した画面をご紹介します。
-![](./how-to-use-graph-explorer/2-8.png)  
+9-2. アクセス許可の承諾については、(ユーザー アイコンのクリック) > [Consent to permissions] から Permissions panel を開き、必要なアクセス許可を検索して付与しても構いません。    
+ユーザーの mobilePhone だけ更新する場合には User-Phone.ReadWrite.All が最小のアクセス許可となりますので、以下では、User-Phone.ReadWrite.All を例に操作した画面をご紹介します。  
+![](./how-to-use-graph-explorer/2-8.png)   
 ![](./how-to-use-graph-explorer/2-9.png)  
 
 10\. 再び [Run query] を実行し、クエリの実行に成功するかを確認します。  
