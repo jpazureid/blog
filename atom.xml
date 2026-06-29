@@ -10,7 +10,26 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-06-24T05:39:22.888Z</updated>
+  <updated>2026-06-29T06:29:18.727Z</updated>
+  <entry>
+    <author>
+      <name>Azure Identity Support Japan</name>
+    </author>
+    <category term="Conditional Access" scheme="https://jpazureid.github.io/blog/tags/Conditional-Access/"/>
+    <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
+    <category term="Compliant" scheme="https://jpazureid.github.io/blog/tags/Compliant/"/>
+    <content>
+      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。リニューアル前の記事は <a href="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android/">条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS &#x2F; Android 編)</a> をご参照ください。</p></div><p>こんにちは、Azure &amp; Identity サポート チームの上出です。</p><p>条件付きアクセスで「デバイスは準拠しているとしてマーク済みである必要があります」の許可を設定しているにもかかわらず、Intune に MDM 登録済み、且つコンプライアンス準拠済みの端末からのアクセスがブロックされてしまうことがあります。今回は、iOS &#x2F; Android でこの事象が発生した場合の原因と対処方法をご紹介します。</p><p>&lt;エラー コード例&gt;</p><blockquote><p>“errorCode”: 53000, “failureReason”: “Device is not in required device state: {state}. Conditional Access policy requires a compliant device, and the device is not compliant. The user must enroll their device with an approved MDM provider like Intune.”, “additionalDetails”: “Your administrator might have configured a conditional access policy that allows access to your organization’s resources only from compliant devices. To be compliant, your device must be either joined to your on-premises Active Directory or joined to your Azure Active Directory. More details available at <a href="https://support.microsoft.com/account-billing/troubleshooting-compliance-error-messages-for-a-work-or-school-account-479a9c42-d9d1-4e44-9e90-24bbad96c251">https://support.microsoft.com/account-billing/troubleshooting-compliance-error-messages-for-a-work-or-school-account-479a9c42-d9d1-4e44-9e90-24bbad96c251</a></p></blockquote><blockquote><p>“errorCode”: 530003, “failureReason”: “Your device is required to be managed to access this resource.”<br>“additionalDetails”: “The requested resource can only be accessed using a compliant device. The user is either using a device not managed by a Mobile-Device-Management (MDM) agent like Intune, or it’s using an application that doesn’t support device authentication. The user could enroll their devices with an approved MDM provider, or use a different app to sign in, or find the app vendor and ask them to update their app. More details available at <a href="https://support.microsoft.com/account-billing/troubleshooting-compliance-error-messages-for-a-work-or-school-account-479a9c42-d9d1-4e44-9e90-24bbad96c251">https://support.microsoft.com/account-billing/troubleshooting-compliance-error-messages-for-a-work-or-school-account-479a9c42-d9d1-4e44-9e90-24bbad96c251</a></p></blockquote><br><h2 id=""><a href="#" class="headerlink" title="&lt;なぜブロックされるのか？&gt;"></a>&lt;なぜブロックされるのか？&gt;</h2><p>条件付きアクセスの「準拠済み」の設定でブロックされる原因は、大きく以下の 2 つに分けられます。</p><ol><li><strong>そもそも端末が準拠済みになっていない</strong></li><li><strong>端末は準拠済みだが、サインイン時にデバイス情報を Microsoft Entra ID に提示できていない</strong></li></ol><p>1 のケースはアクセスがブロックされるのが期待される動作ですが、2 のケースについてのお問い合わせも多くいただいております。以下では、まずユーザー認証時にデバイス情報の提示がなぜ必要なのかを説明します。</p><p>条件付きアクセスの「準拠済み」の設定は、デバイス ベースのアクセス制御となるため、”どの端末からのアクセスか？” を Microsoft Entra ID が判断する必要があります。この判断のために、ご利用のデバイスは Microsoft Entra ID に対して “デバイス情報” を提示する必要があります。</p><p>ご利用の端末がデバイス情報を Microsoft Entra ID に提示できない場合、Microsoft Entra ID は対応するデバイス レコードを見つけることができず、”どの端末からのアクセスか？” を判断することができません。つまり「準拠済み」であるかどうかも判断できず、アクセス制御設定に沿ってブロックされます。<br>ブロックされたアクセスをサインイン ログで確認すると、以下のようにデバイス ID の情報が表示されていないことがわかります。</p><p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/deviceid-not-displayed.png"></p><br><p>このように、端末が準拠済みであっても、デバイス情報を提示できていなければブロックされてしまいます。そのため、切り分けの際は、まず “デバイス情報を提示できているかどうか” に着目すると整理しやすくなります。</p><ul><li>デバイス情報は提示できているのにブロックされる場合は、そもそも端末が準拠済みになっていない可能性があるため、「A. 準拠済み？」を確認する必要があります。</li><li>デバイス情報を提示できていない場合は、なぜ提示できていないのかを切り分けるため、「B」以降を確認することが有効です。</li></ul><br><h2 id="-1"><a href="#-1" class="headerlink" title="&lt;対処方法&gt;"></a>&lt;対処方法&gt;</h2><p>前述の切り分けの考え方に沿って、以下の観点で確認を行います。まず確認ポイント A で端末が準拠済みかどうかを確認し (原因 1)、準拠済みの場合はデバイス情報を提示できない原因 (原因 2) として B 以降を確認していきます。<br>それぞれの項目ごとに解説します。</p><table><thead><tr><th>No.</th><th>確認ポイント</th></tr></thead><tbody><tr><td>A</td><td>準拠済み？</td></tr><tr><td>B</td><td>サポートされたブラウザーを使用している？</td></tr><tr><td>C</td><td>Microsoft Edge を使用している場合、ブラウザーにサインインできている？</td></tr><tr><td>D</td><td>証明書を提示できていない</td></tr><tr><td>E</td><td>Microsoft Authenticator をインストールしていない</td></tr><tr><td>F</td><td>アプリの実装によりデバイス情報を提示できないこともある</td></tr><tr><td>G</td><td>その他</td></tr></tbody></table><br><h2 id="A-準拠済み？"><a href="#A-準拠済み？" class="headerlink" title="A. 準拠済み？"></a>A. 準拠済み？</h2><p>利用している端末が準拠済みとなっているかを確認します。<br>Microsoft Entra 管理センターのデバイス一覧で、対象の端末の「準拠している」の列が「はい」にセットされていれば OK です。</p><p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/compliant-set.png"></p><p>対象の端末が準拠していない場合は、Microsoft Intune の観点で、なぜ準拠済みとならないのかを調査する必要があります。</p><br><h2 id="B-サポートされたブラウザーを使用している？"><a href="#B-サポートされたブラウザーを使用している？" class="headerlink" title="B. サポートされたブラウザーを使用している？"></a>B. サポートされたブラウザーを使用している？</h2><p>OS によってサポートされるブラウザーは異なるため、以下の公開情報を元にご利用のブラウザーがサポートされているかご確認をお願いします。</p><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/conditional-access/concept-conditional-access-conditions#supported-browsers">条件付きアクセス: 条件 - サポートされているブラウザー | Microsoft Learn</a></p><br><h2 id="C-Microsoft-Edge-を使用している場合、ブラウザーにサインインしている？"><a href="#C-Microsoft-Edge-を使用している場合、ブラウザーにサインインしている？" class="headerlink" title="C. Microsoft Edge を使用している場合、ブラウザーにサインインしている？"></a>C. Microsoft Edge を使用している場合、ブラウザーにサインインしている？</h2><p>Microsoft Edge を利用してデバイス情報を提示するためには、ブラウザーにサインインしている必要があります。</p><p><a href="https://learn.microsoft.com/ja-jp/deployedge/ms-edge-security-conditional-access">Microsoft Edge と条件付きアクセス | Microsoft Learn</a></p><blockquote><p>Microsoft Entra ID (旧称 Azure Active Directory) 資格情報を使用して Edge プロファイルにサインインすると、条件付きアクセスを使用して保護されたエンタープライズ クラウド リソースへのシームレスなアクセスが Microsoft Edge によって許可されます。</p></blockquote><br><h2 id="D-証明書を提示できていない"><a href="#D-証明書を提示できていない" class="headerlink" title="D. 証明書を提示できていない"></a>D. 証明書を提示できていない</h2><p>iOS &#x2F; Android がデバイス情報を提示する仕組みは、ブラウザー アクセスの場合と、クライアント アプリの場合で異なります。</p><p>ブラウザー アクセスの場合は、iOS も Android も Microsoft Entra ID に証明書を提示することでデバイス情報を渡します。ただし、証明書のインストールや格納の仕組みは iOS と Android で異なるため、以下では OS ごとに分けて説明します。</p><h3 id="Android-の場合"><a href="#Android-の場合" class="headerlink" title="Android の場合"></a>Android の場合</h3><p>Android の場合、以下のように端末内に保持している証明書一覧が表示されて、どの証明書を使用するのか促されます。(既に使用する証明書が決まっていると判断されれば促されない場合もあります)<br>ここで適切な証明書を選択すれば、証明書の中に保存されているデバイス情報を提示し、Microsoft Entra ID でデバイス ベースの条件付きアクセスの制御が可能となります。</p><p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/device-cert.png"></p><p>なお、ここで使用する証明書 (上記画面の証明書) は、Intune ポータル サイトからインストール可能です。以下の公開情報をご参照の上、記載された画面と同様のメッセージが表示されている状況であれば、本公開情報の「ブラウザー アクセスを有効にする」手順をお試しください。</p><p><a href="https://learn.microsoft.com/ja-jp/intune/user-help/compliance/update-settings-android#missing-certificate">Android のデバイス設定の要件 - 証明書がありません | Microsoft Learn</a></p><h3 id="iOS-の場合"><a href="#iOS-の場合" class="headerlink" title="iOS の場合"></a>iOS の場合</h3><p>iOS の場合、Intune によるプロファイル設定が行われる際に証明書もあわせてインストールされることが想定されます。</p><div class="alert is-info"><p class="alert-title">Note</p><p>iOS (Apple デバイス) では、Entra ID へのデバイス登録に紐づくデバイス ID の格納先がキーチェーンから Secure Enclave に変更されています。この変更により、非 MSAL 対応アプリやブラウザー (Safari など) でデバイス情報を提示できなくなる場合があります。詳細および対処方法については、以下のブログ記事をご参照ください。</p><p><a href="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/">Apple デバイスでキーチェーンから Secure Enclave 利用へ</a></p></div><p>一方で、モバイル アプリ (クライアント アプリ) の場合は、Microsoft Authenticator を使用して PRT を Microsoft Entra ID に提示する必要があります。詳細は 「E. Microsoft Authenticator をインストールしていない」で説明します。</p><br><h2 id="E-Microsoft-Authenticator-をインストールしていない"><a href="#E-Microsoft-Authenticator-をインストールしていない" class="headerlink" title="E. Microsoft Authenticator をインストールしていない"></a>E. Microsoft Authenticator をインストールしていない</h2><p>iOS &#x2F; Android を使用してモバイル アプリ (ネイティブ アプリ) にアクセスする際は、基本的に Microsoft Authenticator を使用して PRT を Microsoft Entra ID に提示する必要があります。アプリの実装によっては、ブラウザーを経由してデバイス情報を提示する場合もあるため、その場合は Microsoft Authenticator を用いずにデバイス情報を提示可能です。</p><p>以下は iPad を使用した動作サンプルとなりますが、こちらを見ていただくと Microsoft Authenticator を使用してデバイス情報を提示するシナリオのイメージが湧くかと思います。</p><p>Microsoft Teams のモバイル アプリにサインインするために資格情報を入力すると、パスワード入力画面に遷移しています。画面左上に Teams の表示があることから、これは Microsoft Teams 自体が表示している画面ではなく、別のアプリが呼び出した画面であることがわかります。(Microsoft Teams 自体の画面であれば、左上に呼び出し元の Teams へ戻る表示は出ません)</p><p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/authenticator-screen1.png"></p><p>実際に、起動アプリを確認すると Microsoft Authenticator がパスワード入力画面を呼び出していることが確認できます。</p><p><img src="/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/authenticator-screen2.png"></p><p>このことから、Microsoft Teams から Microsoft Authenticator にリダイレクトされ、この動作でパスワード入力、および PRT を Microsoft Entra ID に渡していることがわかります。</p><p>※ なお、Android の場合は、このような画面遷移が行われていることを明示的に確認できませんが、同様の動作が行われているとお考えください。</p><br><h2 id="F-アプリの実装によりデバイス情報を提示できないこともある"><a href="#F-アプリの実装によりデバイス情報を提示できないこともある" class="headerlink" title="F. アプリの実装によりデバイス情報を提示できないこともある"></a>F. アプリの実装によりデバイス情報を提示できないこともある</h2><p>3rd Party 製のアプリケーションの場合、デバイス情報を直接 Microsoft Entra ID に提示できるような実装か、Microsoft Authenticator 経由で提示できるように実装されている必要があります。具体的には、アプリケーションが Microsoft Authentication Library (MSAL) を使用して開発されていれば、MSAL にブローカー (Microsoft Authenticator) 連携の仕組みが組み込まれているため、自動的に Microsoft Authenticator 経由でデバイス情報を提示できます。3rd Party 製のアプリケーションが MSAL を使用しているかどうかは、アプリケーション ベンダーに直接ご確認いただく必要があります。</p><p>基本的に、Microsoft 製のアプリケーションは MSAL を使用しており、Microsoft Authenticator をブローカーとしてデバイス情報を提示するとお考え下さい。(Outlook などは Microsoft Authenticator を使用しなくてもデバイス情報を提示できるシナリオがあることを確認していますが、基本的には Microsoft Authenticator が使用されるとお考えください)</p><p>なお、モバイル デバイスに Microsoft Authenticator をインストールするだけでは不十分で、アプリケーション側が MSAL を使用し、Microsoft Authenticator をブローカーとして利用するように実装されている必要があります。上記の動作については、以下のアプリケーション開発者用の公開情報に記載がありますのでご参照ください。</p><p><a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/scenario-mobile-app-configuration#configure-the-application-to-use-the-broker">ブローカーを使用するようにアプリケーションを構成する | Microsoft Learn</a></p><div class="alert is-info"><p class="alert-title">Note</p><p>iOS &#x2F; iPadOS (Apple デバイス) では、MDM 経由で <a href="https://learn.microsoft.com/ja-jp/entra/identity-platform/apple-sso-plugin">Microsoft Enterprise SSO プラグイン</a> を有効化することで、MSAL に対応していないアプリケーションでもデバイス情報の提示が可能になります。Enterprise SSO プラグインは Microsoft Authenticator アプリに組み込まれており、MDM で構成することで非 MSAL アプリにも SSO とデバイスベースの条件付きアクセスを拡張できます。構成方法の詳細は <a href="https://learn.microsoft.com/ja-jp/mem/intune/configuration/use-enterprise-sso-plug-in-ios-ipados-with-intune">iOS&#x2F;iPadOS デバイスで Microsoft Enterprise SSO プラグインを使用する | Microsoft Learn</a> をご参照ください。</p></div><br><h2 id="G-その他"><a href="#G-その他" class="headerlink" title="G. その他"></a>G. その他</h2><p>その他サポート チームで確認できている事象や仕様についてです。</p><p>・ 3rd Party 製品によってデバイス情報が提示できない</p><p>クライアント端末から Microsoft Entra ID にデバイス情報を提示する経路上に、プロキシなど一部 3rd Party 製品の動作 (仕様) によって、デバイス情報が提示できない場合があることを確認しております。<br>もし切り分けの結果、ご利用の 3rd Party 製品を経由する場合のみ事象が発生するということであれば、該当のベンダーに確認のお問い合わせをいただければと思います。</p><br><h2 id="関連ブログ"><a href="#関連ブログ" class="headerlink" title="関連ブログ"></a>関連ブログ</h2><p><a href="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-windows">Japan Azure Identity Support Blog: 条件付きアクセスで 「準拠済み」 や 「Hybrid Azure AD 参加が必要」 でブロックされる場合の対処法 (Windows 編)</a><br><a href="https://jpazureid.github.io/blog/azure-active-directory/Keychain-to-SecureEnclave-for-Apple-device/">Japan Azure Identity Support Blog: Apple デバイスでキーチェーンから Secure Enclave 利用へ</a></p><p>上記内容が少しでも参考となれば幸いです。製品動作に関する正式な見解や回答については、お客様環境などを十分に把握したうえでサポート部門より提供させていただきますので、ぜひサポートサービスまでお問い合わせください。</p>]]>
+    </content>
+    <id>https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/</id>
+    <link href="https://jpazureid.github.io/blog/azure-active-directory/conditional-access-compliant-ios-android-2026/"/>
+    <published>2026-06-25T15:00:00.000Z</published>
+    <summary>
+      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。リニューアル前の記事は <a href="]]>
+    </summary>
+    <title>[2026 年度版] 条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)</title>
+    <updated>2026-06-29T06:29:18.727Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -29,7 +48,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 5 弾 - Microsoft Entra Private Access 入門</title>
-    <updated>2026-06-24T05:39:22.888Z</updated>
+    <updated>2026-06-29T06:29:19.499Z</updated>
   </entry>
   <entry>
     <author>
@@ -47,7 +66,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5]]>
     </summary>
     <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</title>
-    <updated>2026-06-24T05:39:22.064Z</updated>
+    <updated>2026-06-29T06:29:18.671Z</updated>
   </entry>
   <entry>
     <author>
@@ -66,7 +85,7 @@
 <p>こんにちは、Azure]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-06-24T05:39:21.894Z</updated>
+    <updated>2026-06-29T06:29:18.501Z</updated>
   </entry>
   <entry>
     <author>
@@ -85,7 +104,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-06-24T05:39:22.400Z</updated>
+    <updated>2026-06-29T06:29:19.007Z</updated>
   </entry>
   <entry>
     <author>
@@ -103,7 +122,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-06-24T05:39:21.767Z</updated>
+    <updated>2026-06-29T06:29:18.373Z</updated>
   </entry>
   <entry>
     <author>
@@ -122,7 +141,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-06-24T05:39:22.940Z</updated>
+    <updated>2026-06-29T06:29:19.551Z</updated>
   </entry>
   <entry>
     <author>
@@ -141,7 +160,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-06-24T05:39:22.079Z</updated>
+    <updated>2026-06-29T06:29:18.686Z</updated>
   </entry>
   <entry>
     <author>
@@ -161,7 +180,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-06-24T05:39:22.223Z</updated>
+    <updated>2026-06-29T06:29:18.835Z</updated>
   </entry>
   <entry>
     <author>
@@ -180,7 +199,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-06-24T05:39:21.906Z</updated>
+    <updated>2026-06-29T06:29:18.513Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,7 +217,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-06-24T05:39:22.407Z</updated>
+    <updated>2026-06-29T06:29:19.014Z</updated>
   </entry>
   <entry>
     <author>
@@ -217,7 +236,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-06-24T05:39:22.790Z</updated>
+    <updated>2026-06-29T06:29:19.399Z</updated>
   </entry>
   <entry>
     <author>
@@ -236,7 +255,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-06-24T05:39:21.764Z</updated>
+    <updated>2026-06-29T06:29:18.370Z</updated>
   </entry>
   <entry>
     <author>
@@ -255,7 +274,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-06-24T05:39:22.982Z</updated>
+    <updated>2026-06-29T06:29:19.593Z</updated>
   </entry>
   <entry>
     <author>
@@ -274,7 +293,7 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-06-24T05:39:22.494Z</updated>
+    <updated>2026-06-29T06:29:19.102Z</updated>
   </entry>
   <entry>
     <author>
@@ -293,7 +312,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-06-24T05:39:21.764Z</updated>
+    <updated>2026-06-29T06:29:18.370Z</updated>
   </entry>
   <entry>
     <author>
@@ -313,7 +332,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-06-24T05:39:22.886Z</updated>
+    <updated>2026-06-29T06:29:19.497Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +353,7 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-06-24T05:39:22.875Z</updated>
+    <updated>2026-06-29T06:29:19.486Z</updated>
   </entry>
   <entry>
     <author>
@@ -353,7 +372,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
     </summary>
     <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-06-24T05:39:22.243Z</updated>
+    <updated>2026-06-29T06:29:18.855Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,25 +391,6 @@
 <p>本記事は、2025 年 8 月 22 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommun]]>
     </summary>
     <title>パブリック プレビュー: ドメイン コントローラー用の Microsoft Entra Private Access</title>
-    <updated>2026-06-24T05:39:22.487Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Azure Identity Support Japan</name>
-    </author>
-    <category term="US Identity Blog" scheme="https://jpazureid.github.io/blog/tags/US-Identity-Blog/"/>
-    <category term="Microsoft Entra" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra/"/>
-    <content>
-      <![CDATA[<p>こんにちは、Azure Identity サポート チームの 田辺 です。</p><p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/integrating-microsoft-defender-for-identity-signals-with-entra-recommendations/4352580">Integrating Microsoft Defender for Identity Signals with Entra Recommendations | Microsoft Community Hub</a> の抄訳です。ご不明点等ございましたらサポート チームまでお問い合わせください。</p><hr><h2 id="Microsoft-Defender-からのセキュリティ-スコアの推奨事項が-Microsoft-Entra-ID-の推奨事項として利用可能になりました"><a href="#Microsoft-Defender-からのセキュリティ-スコアの推奨事項が-Microsoft-Entra-ID-の推奨事項として利用可能になりました" class="headerlink" title="Microsoft Defender からのセキュリティ スコアの推奨事項が Microsoft Entra ID の推奨事項として利用可能になりました"></a>Microsoft Defender からのセキュリティ スコアの推奨事項が Microsoft Entra ID の推奨事項として利用可能になりました</h2><p>昨年、弊社は Microsoft Entra ID の推奨事項に対して、セキュリティの改善につながる新たな情報を追加することで、お客様が組織のセキュリティ体制を強化し、リスクの特定と軽減に役立つ実用的なヒントを得られるようにしました。Microsoft Entra ID の推奨事項は、<strong>AI やエージェントベースの脅威が高度化する中で</strong>、信頼できるセキュリティ アドバイザーとしての役割を果たすことを目的としています。加えて、Microsoft のセキュリティ製品群におけるベスト プラクティスと業界標準をこの機能にまとめ、単一のプラットフォーム上でセキュリティを確保しながら、従業員の生産性向上とゼロ トラストの実現を支援することも目指しています。</p><p>セキュリティ体制の確立は、ID にまつわる脅威の検出と対応 (Identity Threat Detection and Response, ITDR) を成功させるための重要なステップです。Microsoft は、ID とアクセス管理のベスト プラクティスに Defender のセキュリティ情報を組み合わせることで、継続的にセキュリティを強化できる仕組みを提供しています。現在 <strong>パブリック プレビュー</strong> 中の Microsoft Defender for Identity から新たに <strong>24 件の ID セキュリティ スコア推奨事項</strong> が追加され、組織のセキュリティ体制に対しての可視性がさらに向上しました。これらの推奨事項は、ID ベースのサイバー攻撃の防止、検出、対応を支援するだけでなく、ID チームとセキュリティチーム間の連携強化にも貢献します。</p><p>新しい <strong>ID セキュリティ スコアの推奨事項</strong> は、<a href="https://entra.microsoft.com/">Microsoft Entra 管理センター</a> にアクセスし、[概要] &gt; [推奨事項] から確認できます。</p><p>以下では、<strong>Agentic AI やネットワーク アクセス、ID に関する脅威の検出と対応</strong> など、さまざまなシナリオで活用できる新しいセキュリティ管理機能について紹介します。</p><p><img src="/blog/azure-active-directory/defender-identity-entra-recommendations/entra-recommendations.png" alt="Microsoft Entra ID 推奨事項"></p><p>最新の <a href="https://learn.microsoft.com/ja-jp/entra/identity/monitoring-health/concept-identity-secure-score">ID セキュリティ スコアの推奨事項</a> とその詳細を順に説明します。</p><h3 id="1-正しく構成されていない登録エージェント証明書テンプレートを編集する"><a href="#1-正しく構成されていない登録エージェント証明書テンプレートを編集する" class="headerlink" title="1. 正しく構成されていない登録エージェント証明書テンプレートを編集する"></a>1. 正しく構成されていない登録エージェント証明書テンプレートを編集する</h3><p>登録エージェント証明書は、IT 管理者として認証し、ユーザーに代わって証明書を要求できます。もしテナントに、権限が誤って構成されたテンプレートがあり、それがエージェント登録をサポートする別のテンプレートと組み合わせて利用されていた場合、攻撃者はこれを悪用し、特権アカウントを含むドメイン内の任意のユーザーに証明書を発行できてしまう可能性があります。環境全体で攻撃者が横方向へ移動できてしまうことを防ぐため、設定の見直しを推奨します。</p><h3 id="2-機密性の高い-Microsoft-Entra-Connect-アカウントに対する安全でないアクセス許可を削除する"><a href="#2-機密性の高い-Microsoft-Entra-Connect-アカウントに対する安全でないアクセス許可を削除する" class="headerlink" title="2. 機密性の高い Microsoft Entra Connect アカウントに対する安全でないアクセス許可を削除する"></a>2. 機密性の高い Microsoft Entra Connect アカウントに対する安全でないアクセス許可を削除する</h3><p>オンプレミスおよびクラウドの ID システムは、ハイブリッド ID 環境にとって重要です。これらに安全でないアクセス許可が付与されている場合、攻撃者がそれらを悪用して環境を乗っ取る可能性があるため、不要なアクセス許可は削除する必要があります。</p><h3 id="3-GPO-で可逆的なパスワードが見つかった"><a href="#3-GPO-で可逆的なパスワードが見つかった" class="headerlink" title="3. GPO で可逆的なパスワードが見つかった"></a>3. GPO で可逆的なパスワードが見つかった</h3><p>グループ ポリシーの基本設定 (GPP) を使用して資格情報を展開した場合、SYSVOL フォルダーにパスワードが残っている可能性があります。Microsoft は MS14-025 により本機能を無効化しましたが、XML ファイルが残存していると、公開されている AES キーを使って復号が可能となります。攻撃者にとっては容易で価値の高い標的となるため、これらのファイルを削除することを推奨します。</p><h3 id="4-クリア-テキスト資格情報の公開を停止する"><a href="#4-クリア-テキスト資格情報の公開を停止する" class="headerlink" title="4. クリア テキスト資格情報の公開を停止する"></a>4. クリア テキスト資格情報の公開を停止する</h3><p>Lightweight Directory Access Protocol (LDAP) の シンプル バインドなど暗号化されていない通信で資格情報が露出すると、攻撃者に盗まれるリスクがあります。Microsoft Defender for Identity は、ネットワーク トラフィックとイベント監視により、クリア テキスト (平文) で公開されている資格情報を検出できます。</p><h3 id="5-機密性の高いグループから休止中のアカウントを削除する"><a href="#5-機密性の高いグループから休止中のアカウントを削除する" class="headerlink" title="5. 機密性の高いグループから休止中のアカウントを削除する"></a>5. 機密性の高いグループから休止中のアカウントを削除する</h3><p>攻撃者が気づかれずに組織の深部へ入り込むために、機密性の高いグループに属する非アクティブなアカウントが利用される可能性があります。180 日以上使用されていない休止中のアカウントがある場合は、そのアクセス権を削除するか、アカウント自体を削除することで、組織の機密データを保護し、さらなる侵害を防ぐことができます。</p><h3 id="6-脆弱な暗号の使用を停止する"><a href="#6-脆弱な暗号の使用を停止する" class="headerlink" title="6. 脆弱な暗号の使用を停止する"></a>6. 脆弱な暗号の使用を停止する</h3><p>脆弱な暗号はクラッキングの影響を受けやすく、組織全体のセキュリティ体制を低下させます。この検出では、Microsoft Defender for Identity が構成ミスや意図的なダウングレードによる脆弱な暗号を利用したネットワークの活動を検出します。</p><h3 id="7-正しく構成されていない証明書テンプレートのアクセス制御リスト-ACL-を編集する"><a href="#7-正しく構成されていない証明書テンプレートのアクセス制御リスト-ACL-を編集する" class="headerlink" title="7. 正しく構成されていない証明書テンプレートのアクセス制御リスト (ACL) を編集する"></a>7. 正しく構成されていない証明書テンプレートのアクセス制御リスト (ACL) を編集する</h3><p>証明書テンプレートは Active Directory オブジェクトであり、テンプレートへのアクセスを定義するアクセス制御リスト (ACL) によって管理されます。証明書テンプレートの ACL が誤って構成されていると、任意のユーザーがテンプレート設定を改ざんし、権限昇格が発生するリスクが生じます。</p><h3 id="8-偽装を防ぐためにセキュリティで保護されていない-Kerberos-委任を変更する"><a href="#8-偽装を防ぐためにセキュリティで保護されていない-Kerberos-委任を変更する" class="headerlink" title="8. 偽装を防ぐためにセキュリティで保護されていない Kerberos 委任を変更する"></a>8. 偽装を防ぐためにセキュリティで保護されていない Kerberos 委任を変更する</h3><p>Kerberos 委任は、アプリケーションが認証元のユーザーに代わってリソースにアクセスするためにエンド ユーザーのアクセス資格情報を要求できるようにする仕組みです。セキュリティで保護されていない Kerberos 委任が利用されると、あらゆるサービスに対してユーザーを偽装できようになる可能性があります。Microsoft Defender for Identity は、ドメイン コントローラーに紐づかないオブジェクトについて、セキュリティで保護されていない Kerberos 委任がそれらのどれで構成されているかを検出し、修復手順を提供します。</p><h3 id="9-Microsoft-LAPS-を使用してローカル管理者パスワードを保護および管理する"><a href="#9-Microsoft-LAPS-を使用してローカル管理者パスワードを保護および管理する" class="headerlink" title="9. Microsoft LAPS を使用してローカル管理者パスワードを保護および管理する"></a>9. Microsoft LAPS を使用してローカル管理者パスワードを保護および管理する</h3><p>ローカル管理者パスワード ソリューション (LAPS) は、ドメインに参加しているコンピューターのローカル アカウント パスワードの管理機能を提供するものです。パスワードは AD に保存され、ACL により保護されるため、対象となるユーザーのみが読み取りやリセットを要求できます。Microsoft ではお客様環境に LAPS を導入することをお勧めしています。</p><h3 id="10-Microsoft-Entra-Connect-AD-DS-コネクタ-アカウントのパスワードをローテーションする"><a href="#10-Microsoft-Entra-Connect-AD-DS-コネクタ-アカウントのパスワードをローテーションする" class="headerlink" title="10. Microsoft Entra Connect AD DS コネクタ アカウントのパスワードをローテーションする"></a>10. Microsoft Entra Connect AD DS コネクタ アカウントのパスワードをローテーションする</h3><p>コネクター アカウントは、オンプレミスとクラウドの間で ID を同期する上で重要な役割を果たします。コネクター アカウントのパスワードが 90 日以上変更されていない場合、ハイブリッド ID 環境の弱点となる可能性があります。特に権限の高いのサービス アカウントの場合、侵害のリスクを高めますので、定期的なローテーションが推奨されます。</p><h3 id="11-Microsoft-Entra-Connect-AD-DS-コネクタのエンタープライズまたはドメイン管理者アカウントを置き換える"><a href="#11-Microsoft-Entra-Connect-AD-DS-コネクタのエンタープライズまたはドメイン管理者アカウントを置き換える" class="headerlink" title="11. Microsoft Entra Connect AD DS コネクタのエンタープライズまたはドメイン管理者アカウントを置き換える"></a>11. Microsoft Entra Connect AD DS コネクタのエンタープライズまたはドメイン管理者アカウントを置き換える</h3><p>Microsoft Entra Connect AD DS コネクターのアカウントが Domain Admins や Enterprise Admins グループに所属している場合、アカウントの権限が強すぎます。Entra Connect 用のアカウントに強すぎる権限を与えると、攻撃対象範囲が広がり、最小特権の原則にも違反します。これらの特権を削除するか、そのグループ メンバーシップを含めてこれらの特権を持たないアカウントに置き換えることをお勧めします。</p><h3 id="12-VPN-統合を構成する"><a href="#12-VPN-統合を構成する" class="headerlink" title="12. VPN 統合を構成する"></a>12. VPN 統合を構成する</h3><p>Microsoft Defender for Identity が提供するユーザー アカウント情報を活用することで、攻撃の調査を行う際の複雑さを低減できます。これは特に Defender for Identity が表示するユーザー アクティビティや異常な VPN 接続の検出を組み合わせて活用することで効果を発揮します。Microsoft Defender for Identity の VPN 統合ソリューションを用いると、VPN ソリューションからアカウント情報を収集し、IP アドレスや接続が発信された場所など、ユーザーの VPN 接続をユーザー プロファイルの画面に表示できます。</p><h3 id="13-GPO-により特権のない-ID-が特権を持つグループに割り当てられている"><a href="#13-GPO-により特権のない-ID-が特権を持つグループに割り当てられている" class="headerlink" title="13. GPO により特権のない ID が特権を持つグループに割り当てられている"></a>13. GPO により特権のない ID が特権を持つグループに割り当てられている</h3><p>この推奨事項は、エンタープライズ環境で起こりえる最も深刻な構成ミスの一つに対応するためのものです。グループ ポリシー オブジェクト (GPO) が通常権限のアカウントに意図せず権限を付与すると、非常に大きなセキュリティ ホールを作ることになります。お客様によっては、こういった構成がもたらす権限昇格のリスクを十分に理解せずに、日常的な管理タスク中でこのような構成を実施してしまうことがよくあります。</p><h3 id="14-機密性の高いエンティティへ横方向の移動が生じるリスクを軽減する"><a href="#14-機密性の高いエンティティへ横方向の移動が生じるリスクを軽減する" class="headerlink" title="14. 機密性の高いエンティティへ横方向の移動が生じるリスクを軽減する"></a>14. 機密性の高いエンティティへ横方向の移動が生じるリスクを軽減する</h3><p>弊社がエンタープライズ環境のネットワークを分析すると、攻撃者が標的に至るまでに複雑な攻撃経路をたどっているということが分かります。この推奨事項は、Microsoft Defender for Identity が提供する高度な行動分析機能とエンティティ間の紐づけ機能を利用して、どのネットワーク セグメントやアクセス制御を活用すれば、攻撃者が横方向に移動して重要な企業資産に到達する前に、それをブロックできるかを特定することを目的としています。この分析結果は、統合された Microsoft Entra ID のセキュリティ推奨事項の画面から確認できます。</p><h3 id="15-ドメイン-コントローラーで-Print-Spooler-サービスを無効にする"><a href="#15-ドメイン-コントローラーで-Print-Spooler-サービスを無効にする" class="headerlink" title="15. ドメイン コントローラーで Print Spooler サービスを無効にする"></a>15. ドメイン コントローラーで Print Spooler サービスを無効にする</h3><p>攻撃対象範囲を極力縮小すべく、この推奨事項では、悪用される可能性のある不要なサービスを実行しているドメイン コントローラーが特定されます。特に、Print Spooler サービスは、これまで繰り返しセキュリティにまつわる調査の対象となっており、ビジネス上の必要がなければドメイン コントローラー上では無効にすることが推奨です。</p><h3 id="16-安全でないアカウント属性を修正する"><a href="#16-安全でないアカウント属性を修正する" class="headerlink" title="16. 安全でないアカウント属性を修正する"></a>16. 安全でないアカウント属性を修正する</h3><p>この推奨事項では、パスワードの無期限設定や信頼の委任設定、可逆的なパスワード暗号化など、セキュリティを弱める属性を持つアカウントを検出します。これらの構成は多くの場合はレガシーな環境で実装されていたものがそのままになっているためで、現在の環境ではセキュリティ上の危険を不必要に高めることにつながります。</p><h3 id="17-AdminSDHolder-権限を持つ疑わしいアカウントのアクセス権を削除する"><a href="#17-AdminSDHolder-権限を持つ疑わしいアカウントのアクセス権を削除する" class="headerlink" title="17. AdminSDHolder 権限を持つ疑わしいアカウントのアクセス権を削除する"></a>17. AdminSDHolder 権限を持つ疑わしいアカウントのアクセス権を削除する</h3><p>AdminSDHolder は、Active Directory 内で高い特権アカウントを保護するために、アクセス許可の自動継承を制御する仕組みです。しかし、設定を間違えると、権限のないアカウントが永続的な管理アクセス権を取得してしまう可能性があります。この推奨事項は、AdminSDHolder のアクセス許可を持つものの適切な管理者ロールに沿っていないアカウントを特定します。</p><h3 id="18-DCsync-権限を持つ非管理者アカウントを削除する"><a href="#18-DCsync-権限を持つ非管理者アカウントを削除する" class="headerlink" title="18. DCsync 権限を持つ非管理者アカウントを削除する"></a>18. DCsync 権限を持つ非管理者アカウントを削除する</h3><p>DCsync レプリケーション権限を使用すると、ドメイン資格情報を完全に抽出することが可能になるため、この権限はドメイン コントローラーと重要な管理アカウントのみに制限する必要があります。この推奨事項は、資格情報を盗難するような攻撃に利用される可能性のあるサービス アカウント、ユーザー アカウント、またはグループ (不要な DCsync アクセス許可を持つもの) を識別します。</p><h3 id="19-特権アカウントが委任されていないことを確認する"><a href="#19-特権アカウントが委任されていないことを確認する" class="headerlink" title="19. 特権アカウントが委任されていないことを確認する"></a>19. 特権アカウントが委任されていないことを確認する</h3><p>アカウント委任機能は、高い権限をもつアカウントに適用すると、意図しない権限昇格を招く可能性があります。この推奨事項は、他のシステムが重要な管理 ID に偽装できてしまうような委任設定のある特権アカウントを特定します。</p><h3 id="20-特権-EKU-を使用して過度に権限が付与された証明書テンプレートを編集する"><a href="#20-特権-EKU-を使用して過度に権限が付与された証明書テンプレートを編集する" class="headerlink" title="20. 特権 EKU を使用して過度に権限が付与された証明書テンプレートを編集する"></a>20. 特権 EKU を使用して過度に権限が付与された証明書テンプレートを編集する</h3><p>過度な Extended Key Usage の値 (特に “どのような方法にも利用できる”) で構成された証明書テンプレートがある場合、その証明書が悪用されるリスクが生まれます。この推奨事項では、証明書を用いた攻撃による認証のバイパスまたは特権昇格を可能にする可能性のあるテンプレートを特定します。</p><h3 id="21-正しく構成されていない証明書テンプレートの所有者を編集する"><a href="#21-正しく構成されていない証明書テンプレートの所有者を編集する" class="headerlink" title="21. 正しく構成されていない証明書テンプレートの所有者を編集する"></a>21. 正しく構成されていない証明書テンプレートの所有者を編集する</h3><p>証明書テンプレートの所有権の設定は、テンプレートが意図せず書き換えられないようにするために重要です。この推奨事項は、不正な変更が生じる可能性のある不適切な所有権の割り当てを持つテンプレートを特定することで、ESC4 の攻撃手法に対処します。</p><h3 id="22-正しく構成されていない証明機関-CA-のアクセス制御リスト-ACL-を編集する"><a href="#22-正しく構成されていない証明機関-CA-のアクセス制御リスト-ACL-を編集する" class="headerlink" title="22. 正しく構成されていない証明機関 (CA) のアクセス制御リスト (ACL) を編集する"></a>22. 正しく構成されていない証明機関 (CA) のアクセス制御リスト (ACL) を編集する</h3><p>認証機関 (CA) のアクセス制御リストに対しては、不正な証明書の発行を防ぐために慎重な構成が必要です。この推奨事項は、ESC7 の攻撃手法を可能にする CA ACL の設定ミスを特定します。</p><h3 id="23-脆弱な証明機関の設定を編集する"><a href="#23-脆弱な証明機関の設定を編集する" class="headerlink" title="23. 脆弱な証明機関の設定を編集する"></a>23. 脆弱な証明機関の設定を編集する</h3><p>証明機関の設定フラグによっては、不適切に有効にするとセキュリティの脆弱性を引き起こす可能性があります。この推奨事項は、ESC6 の手法によるサブジェクト代替名の書き換えを可能にする CA 設定を特定します。</p><h3 id="24-任意のアプリケーション-ポリシーによる証明書登録を防止する"><a href="#24-任意のアプリケーション-ポリシーによる証明書登録を防止する" class="headerlink" title="24. 任意のアプリケーション ポリシーによる証明書登録を防止する"></a>24. 任意のアプリケーション ポリシーによる証明書登録を防止する</h3><p>任意のアプリケーション ポリシーを指定できる証明書テンプレートが存在すると、攻撃範囲が広がる可能性があります。この推奨事項は、アプリケーション ポリシーの登録を無制限に許可するテンプレートを特定することで、ESC11 の脆弱性に対処します。</p><p>これらの推奨事項について最新情報を得るには、Microsoft Entra 管理センターの 「推奨事項」 のページをご確認ください。弊社では常に新しいガイダンスを公開し、お客様の Identity セキュリティ体制の強化の取り組んでまいります。また今後数か月にわたり、Microsoft Defender for Identity の推奨事項をさらに Entra に統合し、組織全体のセキュリティに関する可視性を高めてまいる予定です。また、Microsoft Entra Suite においても、ゼロ トラスト戦略に沿った推奨事項を提供していきます。これらの新機能により、ID にまつわる脅威の検出と対応 (ITDR) 戦略に直接活用できる情報のエコシステムが拡充され、リスクをより一層可視化して、迅速に対処することが可能になります。Microsoft のソリューションを活用することで、受動的な対応から能動的な防御へと移行し、セキュリティ管理者と ID 管理者は自社の ID 基盤全体を、より深く把握できるようになるのです。</p>]]>
-    </content>
-    <id>https://jpazureid.github.io/blog/azure-active-directory/defender-identity-entra-recommendations/</id>
-    <link href="https://jpazureid.github.io/blog/azure-active-directory/defender-identity-entra-recommendations/"/>
-    <published>2025-08-28T23:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>こんにちは、Azure Identity サポート チームの 田辺 です。</p>
-<p>本記事は、2025 年 6 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunit]]>
-    </summary>
-    <title>Microsoft Defender for Identity のシグナルが Microsoft Entra ID の推奨事項に統合</title>
-    <updated>2026-06-24T05:39:22.169Z</updated>
+    <updated>2026-06-29T06:29:19.094Z</updated>
   </entry>
 </feed>
