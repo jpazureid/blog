@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-06-29T10:37:14.348Z</updated>
+  <updated>2026-07-03T08:14:33.183Z</updated>
+  <entry>
+    <author>
+      <name>Azure Identity Support Japan</name>
+    </author>
+    <category term="Microsoft Graph" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Graph/"/>
+    <content>
+      <![CDATA[<p>こんにちは、 Azure Identity サポート チームの三輪です。</p><p>Entra ID テナントやユーザーなどのオブジェクトを管理する方法には、各管理センター (Microsoft Entra 管理センターなど) の画面上で操作する以外にも、Microsoft Graph API を使う方法があります。<br>Microsoft Graph API は PowerShell コマンドとして呼び出せる Microsoft Graph PowerShell SDK も提供しております。<br>API やコマンドは、一括処理のためのスクリプトなどで活用するシナリオが一般的ですが、Microsoft Graph API を手軽に実行できるツールとして、Graph Explorer というツールがあります。<br>本記事では、Graph Explorer を初めて使用される方向けに使用方法について順を追ってご紹介します。</p><h2 id="GET-リクエストの実行"><a href="#GET-リクエストの実行" class="headerlink" title="[GET] リクエストの実行"></a>[GET] リクエストの実行</h2><p>まずは、[GET] リクエストを行う例をご紹介します。GET リクエストは、テナントやユーザーの情報を「取得」するために利用します。</p><p>題材として『contoso.com がどのテナントに紐づいているか』を確認する以下の Graph API を使用します。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://graph.microsoft.com/v1.0/tenantRelationships/findTenantInformationByDomainName(domainName=&#x27;contoso.com&#x27;)</span><br></pre></td></tr></table></figure><p>特定のドメインが紐づいているテナントを確認する Graph API の公開情報は以下が該当します。<br>  <a href="https://learn.microsoft.com/ja-jp/graph/api/tenantrelationship-findtenantinformationbydomainname?view=graph-rest-1.0&tabs=http">tenantRelationship: findTenantInformationByDomainName - Microsoft Graph v1.0 | Microsoft Learn</a></p><h3 id="操作手順例"><a href="#操作手順例" class="headerlink" title="操作手順例"></a>操作手順例</h3><p>1. Graph Explorer ( <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">https://developer.microsoft.com/en-us/graph/graph-explorer</a> ) を開きます。<br>2. 右上の人型アイコンをクリックし、サインインします。<br>自身で管理者の同意が必要なアクセス許可に同意する必要がある場合には、管理者（グローバル管理者、クラウドアプリケーション管理者、特権ロール管理者 等）のロール権限のあるユーザーにてサインインします。<br>（※予めアクセス許可を付与しておきたい場合にはこちら(<a href="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/">Microsoft Graph PowerShell アクセス許可の付与 | Japan Azure Identity Support Blog</a>)の記事をご参照ください）<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-1.png"><br>※サインイン時に [要求されているアクセス許可] のポップアップが表示された場合には承諾をクリックします。<br>※[組織の代理として同意する] はオフのままで問題ございません。<br>アイコンとテナント名が自身のものに変更されたことを確認します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-2.png"></p><p>3. 以下のクエリを入力し、[Run query] をクリックします。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://graph.microsoft.com/v1.0/tenantRelationships/findTenantInformationByDomainName(domainName=&#x27;contoso.com&#x27;)  </span><br></pre></td></tr></table></figure><p>※ contoso.com を検索する際のクエリです。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-3.png"></p><p>4. 以下のエラーは、必要な権限が足りていない場合に表示されるエラーです。<br>クエリの実行に必要なロール権限を持つユーザーで操作を実行してこのエラーとなる場合には、必要なアクセス許可が不足していることが疑われますので、5-1. 以降の対応をします。<br>エラーが発生しなかった場合は 7. を参照します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-4.png"></p><p>5-1. [Modify Permissions] をクリックし、必要なアクセス許可の候補が表示された場合には、必要なアクセス許可（今回の場合は、必要なアクセス許可は CrossTenantInformation.ReadBasic.All）の [Consent] をクリックしてアクセス許可を承諾します。<br>※『 要求されているアクセス許可 』のポップアップが表示された場合には承諾をクリックします。<br>※『組織の代理として同意する』のチェックボックスがある場合、こちらにチェックを入れる必要はありません。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-5.png"><br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-6.png"></p><p>5-2. [Modify Permissions] にて必要なアクセス許可が表示されなかった場合で、 [Open the permissions panel] のリンクが表示されている場合には、このリンクをクリックします。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-7.png"></p><p>その他、(ユーザー アイコンのクリック) &gt; [Consent to permissions] からも Permissions panel を開くことができます。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-8.png"></p><p>必要なアクセス許可（今回は CrossTenantInformation.ReadBasic.All ）を検索し、[Consent] をクリックしてアクセス許可を承諾します。<br>※『 要求されているアクセス許可 』のポップアップが表示された場合には承諾をクリックします。<br>※『組織の代理として同意する』のチェックボックスがある場合、こちらにチェックを入れる必要はありません。</p><p>6. 再度 [ Run query ] をクリックします。<br><br>7. 表示された結果から確認可能です。<br>本例では、contoso.com が contoso18839.onmicrosoft.com というイニシャル ドメインを保有するテナント上にカスタムドメインとして登録済みであることが確認できます。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/1-9.png"></p><h2 id="PATCH-リクエストの実行"><a href="#PATCH-リクエストの実行" class="headerlink" title="[PATCH] リクエストの実行"></a>[PATCH] リクエストの実行</h2><p>次に [PATCH] リクエストを行う例をご紹介します。PATCH リクエストは、テナントやユーザーの情報を部分的に「更新」するために利用します。</p><p>題材として『特定のユーザーの携帯電話と拡張属性を更新する』こととします。<br>ユーザー情報の更新についての公開情報は以下が該当いたします。<br><a href="https://learn.microsoft.com/ja-jp/graph/api/user-update?view=graph-rest-1.0&tabs=http#example-3-update-the-passwordprofile-of-a-user-and-reset-their-password">ユーザーを更新する - Microsoft Graph v1.0 | Microsoft Learn</a>  </p><p>※ユーザーの携帯電話の更新は機密性の高いアクションにあたり、対象ユーザーがロール権限を持つ場合や Microsoft Entra ロール割り当て可能なグループのメンバーまたは所有者である場合には、操作者により強いロール権限が必要となります。詳しくは以下公開情報をご参照ください。<br><a href="https://learn.microsoft.com/ja-jp/graph/api/resources/users?view=graph-rest-1.0#sensitive-actions">Microsoft Graph でのユーザーの操作 - Microsoft Graph v1.0 | Microsoft Learn</a></p><h3 id="操作手順例-1"><a href="#操作手順例-1" class="headerlink" title="操作手順例"></a>操作手順例</h3><p>1. Graph Explorer ( <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">https://developer.microsoft.com/en-us/graph/graph-explorer</a> ) を開きます。<br>2. 右上の人型アイコンをクリックし、サインインします。<br>グローバル管理者などの対象ユーザーのユーザー情報を更新する権限のある管理者かつ、必要なアクセス許可のある（もしくは自身でアクセス許可に同意できる管理者）ユーザーでサインインします。<br>（※予めアクセス許可を付与しておきたい場合にはこちら(<a href="https://jpazureid.github.io/blog/azure-active-directory/microsoft-graph-powershell-grant-permissions/">Microsoft Graph PowerShell アクセス許可の付与 | Japan Azure Identity Support Blog</a>)の記事をご参照ください）<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-1.png"><br>※サインイン時に [要求されているアクセス許可] のポップアップが表示された場合には承諾をクリックします。<br>※[組織の代理として同意する] はオフのままで問題ございません。<br>アイコンとテナント名が自身のものに変更されたことを確認します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-2.png"></p><p>3. 以下のクエリを入力します。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://graph.microsoft.com/v1.0/users/&lt;対象ユーザーのオブジェクト ID または UPN&gt;</span><br></pre></td></tr></table></figure><p>4. プルダウンから PATCH を選択します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-3.png"></p><p>5. Request Body に更新したい内容を JSON 形式で記載します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-4.png"></p><p>例: </p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;mobilePhone&quot;: &quot;+81 3-9999-9999&quot;,</span><br><span class="line">  &quot;onPremisesExtensionAttributes&quot;: &#123;</span><br><span class="line">   &quot;extensionAttribute1&quot;: &quot;value1&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>6. Request Headers に Key として Content-Type 、Value として application&#x2F;json を入力し、[Add] します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-5.png"></p><p>7. [Run query] をクリックします。<br>8. 対象ユーザーの属性を変更する Microsoft Entra ロール権限を持つユーザーで操作しているにも関わらず、403 の権限が足りないことを示すエラーとなる場合には、アクセス許可が不足していることが疑われます。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-6.png"></p><p>9-1. [Modify Permissions] をクリックし、必要なアクセス許可の候補が表示された場合には、必要なアクセス許可（今回の場合は、必要なアクセス許可は User.ReadWrite.All ）の [Consent] をクリックしてアクセス許可を承諾します。<br> ※『 要求されているアクセス許可 』のポップアップが表示された場合には承諾をクリックします。<br> ※『組織の代理として同意する』のチェックボックスがある場合、こちらにチェックを入れる必要はありません。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-7.png"></p><p>9-2. アクセス許可の承諾については、(ユーザー アイコンのクリック) &gt; [Consent to permissions] から Permissions panel を開き、必要なアクセス許可を検索して付与しても構いません。<br>ユーザーの mobilePhone だけ更新する場合には User-Phone.ReadWrite.All が最小のアクセス許可となりますので、以下では、User-Phone.ReadWrite.All を例に操作した画面をご紹介します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-8.png"><br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-9.png">  </p><p>10. 再び [Run query] を実行し、クエリの実行に成功するかを確認します。<br>クエリの実行に成功した例:<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/2-10.png">  </p><h2 id="実行するクエリとアクセス許可について"><a href="#実行するクエリとアクセス許可について" class="headerlink" title="実行するクエリとアクセス許可について"></a>実行するクエリとアクセス許可について</h2><p>どのようなクエリを実行すればよいか、どのようなアクセス許可が必要かについては、まずは対象とするオブジェクトおよび操作の Graph API の公開情報を確認します。<br>Graph API の公開情報の例: <a href="https://learn.microsoft.com/ja-jp/graph/api/user-get?view=graph-rest-1.0&tabs=http">ユーザーを取得する - Microsoft Graph v1.0 | Microsoft Learn</a><br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/3-1.png">  </p><p>必要なアクセス許可は例えば以下のような形で記述があります。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/3-2.png">  </p><p>クエリの記述例は以下のような形で例示してあります。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/3-3.png"><br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/3-4.png">  </p><p>その他、具体的なクエリ パラメーターの使用方法・フィルターの使い方等については、以下公開情報を参考にしてください。<br><a href="https://learn.microsoft.com/ja-jp/graph/query-parameters?tabs=http">クエリ パラメーターを使用して Microsoft Graph 応答をカスタマイズする - Microsoft Graph | Microsoft Learn</a><br><a href="https://learn.microsoft.com/ja-jp/graph/filter-query-parameter?tabs=http">$filter クエリ パラメーターを使用してオブジェクトのコレクションをフィルター処理する - Microsoft Graph | Microsoft Learn</a><br><a href="https://learn.microsoft.com/ja-jp/graph/search-query-parameter?tabs=http">Microsoft Graph API でクエリ パラメーター$search使用する - Microsoft Graph | Microsoft Learn</a><br><a href="https://learn.microsoft.com/ja-jp/graph/aad-advanced-queries?tabs=http">Microsoft Entra ID オブジェクトの高度なクエリ機能 - Microsoft Graph | Microsoft Learn</a></p><h2 id="自身が外部ゲストとして登録されているテナントにサインインする方法"><a href="#自身が外部ゲストとして登録されているテナントにサインインする方法" class="headerlink" title="自身が外部ゲストとして登録されているテナントにサインインする方法"></a>自身が外部ゲストとして登録されているテナントにサインインする方法</h2><p>自身が外部ゲストとして登録されているテナントにサインインする必要がある場合には Graph Explorer を開く際に以下のようにテナントのドメインもしくはテナント ID を指定します。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://developer.microsoft.com/en-us/graph/graph-explorer?tenant=&lt;サインインしたいテナントのテナント ID もしくは ドメイン名&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">例: https://developer.microsoft.com/en-us/graph/graph-explorer?tenant=contoso.com</span><br></pre></td></tr></table></figure><p>ユーザー アイコンをクリックして、ゲスト ユーザーにてサインインします。<br>サインインしたいテナントと異なるテナントが表示されている場合、サインインしなおして、以下のようにサインインしたいテナントが表示されることを確認します。<br><img src="/blog/azure-active-directory/how-to-use-graph-explorer/3-5.png">  </p>]]>
+    </content>
+    <id>https://jpazureid.github.io/blog/azure-active-directory/how-to-use-graph-explorer/</id>
+    <link href="https://jpazureid.github.io/blog/azure-active-directory/how-to-use-graph-explorer/"/>
+    <published>2026-06-30T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>こんにちは、 Azure Identity サポート チームの三輪です。</p>
+<p>Entra ID テナントやユーザーなどのオブジェクトを管理する方法には、各管理センター (Microsoft Entra 管理センターなど) の画面上で操作する以外にも、Microso]]>
+    </summary>
+    <title>Graph Explorer の使用法</title>
+    <updated>2026-07-03T08:14:33.183Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -28,7 +46,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。リニューアル前の記事は <a href="]]>
     </summary>
     <title>[2026 年度版] 条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)</title>
-    <updated>2026-06-29T10:37:14.348Z</updated>
+    <updated>2026-07-03T08:14:32.990Z</updated>
   </entry>
   <entry>
     <author>
@@ -48,7 +66,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。<br>本記事は、2026 年 5 月 7 日に米国の Microsoft Security Blog で公開された <a href="https://www.microsoft.com/en-us/security/blog/2026/05/07/world-passkey-day-advancing-passwordless-authentication/">World Passkey Day: Advancing passwordless authentication</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p>]]>
     </summary>
     <title>パスキーを利用したパスワードレスの導入を検討しよう</title>
-    <updated>2026-06-29T10:37:15.212Z</updated>
+    <updated>2026-07-03T08:14:33.880Z</updated>
   </entry>
   <entry>
     <author>
@@ -68,7 +86,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 5 弾 - Microsoft Entra Private Access 入門</title>
-    <updated>2026-06-29T10:37:15.114Z</updated>
+    <updated>2026-07-03T08:14:33.781Z</updated>
   </entry>
   <entry>
     <author>
@@ -86,7 +104,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5]]>
     </summary>
     <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</title>
-    <updated>2026-06-29T10:37:14.292Z</updated>
+    <updated>2026-07-03T08:14:32.934Z</updated>
   </entry>
   <entry>
     <author>
@@ -105,7 +123,7 @@
 <p>こんにちは、Azure]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-06-29T10:37:14.121Z</updated>
+    <updated>2026-07-03T08:14:32.763Z</updated>
   </entry>
   <entry>
     <author>
@@ -124,7 +142,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-06-29T10:37:14.627Z</updated>
+    <updated>2026-07-03T08:14:33.283Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +160,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-06-29T10:37:13.996Z</updated>
+    <updated>2026-07-03T08:14:32.635Z</updated>
   </entry>
   <entry>
     <author>
@@ -161,7 +179,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-06-29T10:37:15.166Z</updated>
+    <updated>2026-07-03T08:14:33.833Z</updated>
   </entry>
   <entry>
     <author>
@@ -180,7 +198,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-06-29T10:37:14.307Z</updated>
+    <updated>2026-07-03T08:14:32.948Z</updated>
   </entry>
   <entry>
     <author>
@@ -200,7 +218,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-06-29T10:37:14.456Z</updated>
+    <updated>2026-07-03T08:14:33.099Z</updated>
   </entry>
   <entry>
     <author>
@@ -219,7 +237,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-06-29T10:37:14.133Z</updated>
+    <updated>2026-07-03T08:14:32.775Z</updated>
   </entry>
   <entry>
     <author>
@@ -237,7 +255,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-06-29T10:37:14.634Z</updated>
+    <updated>2026-07-03T08:14:33.290Z</updated>
   </entry>
   <entry>
     <author>
@@ -256,7 +274,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-06-29T10:37:15.015Z</updated>
+    <updated>2026-07-03T08:14:33.675Z</updated>
   </entry>
   <entry>
     <author>
@@ -275,7 +293,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-06-29T10:37:13.993Z</updated>
+    <updated>2026-07-03T08:14:32.632Z</updated>
   </entry>
   <entry>
     <author>
@@ -294,7 +312,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-06-29T10:37:15.208Z</updated>
+    <updated>2026-07-03T08:14:33.876Z</updated>
   </entry>
   <entry>
     <author>
@@ -313,7 +331,7 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-06-29T10:37:14.722Z</updated>
+    <updated>2026-07-03T08:14:33.378Z</updated>
   </entry>
   <entry>
     <author>
@@ -332,7 +350,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-06-29T10:37:13.993Z</updated>
+    <updated>2026-07-03T08:14:32.632Z</updated>
   </entry>
   <entry>
     <author>
@@ -352,7 +370,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-06-29T10:37:15.112Z</updated>
+    <updated>2026-07-03T08:14:33.779Z</updated>
   </entry>
   <entry>
     <author>
@@ -373,25 +391,6 @@
 <p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-06-29T10:37:15.101Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Azure Identity Support Japan</name>
-    </author>
-    <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
-    <category term="MFA" scheme="https://jpazureid.github.io/blog/tags/MFA/"/>
-    <category term="SSPR" scheme="https://jpazureid.github.io/blog/tags/SSPR/"/>
-    <content>
-      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azure AD から Microsoft Entra ID への名称変更を反映し、一部画像を更新しました。</p><p>2025 年 9 月 17 日更新: 自動移行ガイドについて追記し、FAQ 一部画像について情報を更新しました。</p><p>今後も情報が更新される可能性があります。情報の更新がありましたら本ブログの内容も更新します。</p></div><p>こんにちは、Azure &amp; Identity サポート チームの田辺です。</p><p>今回は、Microsoft Entra ID (Azure AD) における認証方法ポリシーの移行方法についてご紹介します。これまで MFA (Multi-Factor Authentication) と SSPR (Self Service Password Reset) で利用可能な認証方法はそれぞれ個別の画面で別々に管理されていました。現在これら別々の管理画面はレガシーな管理方法として扱われており、今後、この 2 種類のレガシー ポリシーを統一した、新しい認証方法ポリシーにて一元管理することが必要となっています。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/migration-image.png"></p><p>レガシーな MFA と SSPR 用のポリシーは <strong>2025 年 9 月 30 日</strong> に非推奨となり、この期日までに新しい認証方法ポリシーに移行いただく必要がございます。適切に移行いただければ、現在と動作に変わりはなく、また今後よりきめ細かい制御も可能となります。</p><p>レガシー MFA と SSPR のポリシーの確認方法および新しい認証方法ポリシーへの移行方法につきましては、<a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-authentication-methods-manage">MFA と SSPR のポリシー設定を Microsoft Entra ID の認証方法ポリシーに移行する方法</a> の公開情報にまとめられておりますのでご覧ください。</p><p>本ブログ記事では、上記の公開情報で案内されている認証方法ポリシーの移行方法と、よくあるご質問について情報をおまとめいたしました。2025 年 9 月 30 日が近づきますと、移行が差し迫り混乱が予想されますので、可能な限り速やかに下記対応を実施することをお勧めいたします。</p><p>なお、移行作業は 3 段階に分かれており、それぞれの段階は数十分から 1 時間程度で完了可能と思われます。移行中にダウンタイムが生じることはありませんし、適切に構成いただければ、基本的にユーザー影響が生じることもありません。万が一、予期せぬ動作が生じた際には設定を切り戻すことも可能です。</p><h2 id="移行の要否"><a href="#移行の要否" class="headerlink" title="移行の要否"></a>移行の要否</h2><p>認証方法ポリシーの移行の要否について、まずは以下の項目をご確認ください。</p><ol><li><p>Azure Portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] に移動します。</p></li><li><p>移行の状態が [開始していません] か [処理中] の場合、移行が必要です。<br>移行の状態が [完了] の場合または移行の管理の項目が表示されない場合、移行は完了していますので、追加の対応は不要です。</p></li></ol><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/migration-state-1.png"></p><p>移行が必要な場合について、2025 年 9 月現在、移行の方法は自動移行ガイドおよび手動移行の 2 種類がございます。</p><p>A 自動移行ガイド<br>B 手動移行</p><p>それぞれについてご案内します。</p><h2 id="A-自動移行ガイド"><a href="#A-自動移行ガイド" class="headerlink" title="A 自動移行ガイド"></a>A 自動移行ガイド</h2><p>自動移行ガイドでは、ウィザードを進めていただくことで、レガシー ポリシーで設定されている内容を自動で有効化し、移行を完了することができます。</p><p>詳細な手順について、ご案内します。</p><ol><li><p>Azure Portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] に移動します。</p></li><li><p>以下画面内の [自動ガイドの開始] をクリックします。<br><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auto-1.png"></p></li><li><p>ウィザードの最初のページでは、認証方法ポリシーの移行の説明、およびレガシー ポリシーや公開情報へのリンクが表示されます。<br><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auto-2.png"></p></li><li><p>[従来の MFA 方式の設定] のリンクからレガシー MFA ポリシーの設定に、[従来の SSPR 方式の設定] のリンクからレガシー SSPR ポリシーの設定に遷移できます。それぞれのポリシーの設定内容を確認ください。</p></li><li><p>[次へ] をクリックすると、現在、テナントのレガシー MFA ポリシーとレガシー SSPR ポリシーで有効にしている方法に基づいて、認証方法ポリシーの構成案が表示されます。いずれかのレガシー ポリシーで認証方法が有効になっている場合、認証方法ポリシーでも有効にすることをお勧めします。この構成のまま移行を完了されますと、ユーザーはこれまでに使用していたものと同じ認証方法を使用して、MFA および SSPR が実行可能な動作が想定されます。注意点といたしまして、これまでレガシー ポリシーで管理できなかった、パスキー(FIDO2)、一時アクセス パス、Microsoft Authenticator などの Microsoft が推奨する最新の認証方法は既定ではオンの状態で表示されています。<br><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auto-3.png"></p></li><li><p>表示されている認証方法を、お客様の要件に合わせて編集することも可能です。もし編集する場合は、各方法の横にある鉛筆アイコンを選択し、編集して保存します。<br> <img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auto-4.png"></p></li><li><p>表示されている構成に問題が無ければ、[移行] を選択して移行を実施します。以下の画面が表示されたら、[続行] を選択します。認証方法ポリシーは、ウィザードで指定された構成と一致するように自動で更新され、レガシー MFA ポリシー、レガシー SSPR ポリシーはグレーアウトされ、適用されなくなる動作になります。<br> <img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auto-5.png"></p></li><li><p>移行の状態が [完了] になったら移行の完了です。<br> <img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auto-6.png"></p></li></ol><h2 id="B-手動移行"><a href="#B-手動移行" class="headerlink" title="B 手動移行"></a>B 手動移行</h2><p>自動移行ガイドではなく、お客様のご要件に合わせて、認証方法を一つずつ手動で移行することもできます。</p><p>詳細な手順について、ご案内します。</p><h2 id="B-1-開始する前の確認事項"><a href="#B-1-開始する前の確認事項" class="headerlink" title="B-1. 開始する前の確認事項"></a>B-1. 開始する前の確認事項</h2><p>はじめに、お客様のテナントにおける各レガシー ポリシーの設定をご確認ください。</p><h3 id="レガシー-MFA-ポリシーの設定の確認"><a href="#レガシー-MFA-ポリシーの設定の確認" class="headerlink" title="レガシー MFA ポリシーの設定の確認"></a>レガシー MFA ポリシーの設定の確認</h3><p>MFA で利用可能な認証方法の設定について確認します。</p><ol><li><p>Azure Portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [ユーザー] &gt; [ユーザーごとの MFA] に移動します。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/legacy-mfa-1.png"></p></li><li><p>[サービス設定] に移動します。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/legacy-mfa-2.png"></p></li><li><p>[検証オプション] 項目からどの項目にチェックが入っているかを控えます。これがレガシー MFA ポリシーの設定です。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/legacy-mfa-3.png"></p></li></ol><p>上記のスクリーンショットでは、ユーザーが利用可能な MFA の方法として、3 つがチェックされていることがわかります。これは、ユーザーが MFA を要求された際に、これらいずれかの方法を利用して (登録済みであれば) 認証を行えるということを意味します。</p><p>なお、Microsoft Entra ID Premium ライセンスを保有されている場合は、 [Microsoft Entra ID] &gt; [セキュリティ] &gt; [多要素認証] &gt; [クラウドベースの多要素認証の追加設定] でも上記画面に遷移可能です。</p><h3 id="レガシー-SSPR-ポリシーの設定の確認"><a href="#レガシー-SSPR-ポリシーの設定の確認" class="headerlink" title="レガシー SSPR ポリシーの設定の確認"></a>レガシー SSPR ポリシーの設定の確認</h3><p>次に、SSPR で利用可能な認証方法の設定について確認します。</p><ol><li><p>Azure Portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [パスワード リセット] &gt; [認証方法] に移動します。</p></li><li><p>以下の [ユーザーが使用できる方法] でどの項目にチェックが入っているかを確認します。これがレガシー SSPR ポリシーの設定です。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/legacy-sspr1.png"></p></li></ol><p>例えば、上記のスクリーンショットでは、ユーザーが利用可能な SSPR の方法として、[電子メール] または [携帯電話] にチェックされていることがわかります。これは、レガシー MFA ポリシーと同様に、ユーザーが上記のいずれかの方法を利用して SSPR を行うことができるということを意味しています。</p><h3 id="新しい認証方法ポリシーの確認"><a href="#新しい認証方法ポリシーの確認" class="headerlink" title="新しい認証方法ポリシーの確認"></a>新しい認証方法ポリシーの確認</h3><p>新しい認証方法ポリシーについては、Azure Portal (<a href="https://portal.azure.com/">https://portal.azure.com</a>) &gt; [Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] から確認します。</p><p>   <img src="/blog/azure-active-directory/how-to-authentication-methods-manage/new-1.png"></p><p>既定ではほとんどの設定の有効状態が [いいえ] となっているはずです。</p><h2 id="B-2-移行の開始"><a href="#B-2-移行の開始" class="headerlink" title="B-2. 移行の開始"></a>B-2. 移行の開始</h2><p><a href="#1-%E9%96%8B%E5%A7%8B%E3%81%99%E3%82%8B%E5%89%8D%E3%81%AE%E7%A2%BA%E8%AA%8D%E4%BA%8B%E9%A0%85">上記手順</a>で、現在のポリシーの設定を確認したら、次に現在の認証方法ポリシーの移行状態を確認します。</p><h3 id="現在の移行状態の確認"><a href="#現在の移行状態の確認" class="headerlink" title="現在の移行状態の確認"></a>現在の移行状態の確認</h3><ol><li><p>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] に移動します。</p></li><li><p>[移行の状態] の状態の右側にある [変更] を選択します。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/new-2.png"></p></li><li><p>画面右に表示される項目から、現在は [移行前] または [移行が進行中] の状態にあることを確認します。</p></li></ol><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/before-migration.png"></p><p>併せて、移行ステップである [移行前] [移行が進行中] [移行が完了済み] のそれぞれの意味を確認ください。移行の各ステップでどのポリシーの設定が参照されるかについては、[移行の管理] の項目の設定状況に依存します。各ステップで参照されるポリシーについて以下にまとめましたのでご覧ください。</p><table><thead><tr><th>移行の管理の各オプション</th><th>種類</th><th>参照されるポリシー</th></tr></thead><tbody><tr><td>移行前</td><td>MFA</td><td>認証方法ポリシーとレガシー MFA ポリシー</td></tr><tr><td>〃</td><td>SSPR</td><td>レガシー SSPR ポリシーのみ</td></tr><tr><td>移行が進行中</td><td>MFA</td><td>認証方法ポリシーとレガシー MFA ポリシー</td></tr><tr><td>〃</td><td>SSPR</td><td>認証方法ポリシーとレガシー SSPR ポリシー</td></tr><tr><td>移行が完了済み</td><td>MFA</td><td>認証方法ポリシーのみ</td></tr><tr><td>〃</td><td>SSPR</td><td>認証方法ポリシーのみ</td></tr></tbody></table><p>例えば、移行前の状態では、MFA においては「認証方法ポリシーとレガシー MFA ポリシー」が両方参照されます。これは認証方法の有効状態は、認証方法ポリシーとレガシー MFA&#x2F;SSPR ポリシーの有効状態の <strong>和 (OR)</strong> で行われるという意味です。つまり、あるユーザーに対しいずれかのポリシーで認証方法が有効になっている場合、ユーザーはその認証方法が使用可能な状態となります。これまでの例ですと、認証方法ポリシーはほぼすべてが [いいえ] であり、レガシー MFA ポリシーは以下の 3 つにチェックが入っていた状況でした。この場合、認証方法ポリシーがすべてが [いいえ] であっても、レガシー MFA ポリシーで有効な認証方法が 3 つありますので、引き続きこれら 3 つのポリシーが有効になるという結果になります。</p><ul><li>電話へのテキスト メッセージ</li><li>モバイル アプリによる通知</li><li>モバイル アプリからの確認コードまたはハードウェア トークンからの確認コード</li></ul><h3 id="移行状態の-移行が進行中-への変更"><a href="#移行状態の-移行が進行中-への変更" class="headerlink" title="移行状態の [移行が進行中] への変更"></a>移行状態の [移行が進行中] への変更</h3><p>まずは移行の管理画面から移行のステップを一つ進めます。既定の状態が [移行前] の場合、[移行が進行中] を選択し、[保存] を選択します (既定の状態が [移行が進行中] の状態のテナントもあります。既定の状態が [移行が進行中] の場合、本手順は省略ください。)</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/migration-in-progress.png"></p><p>上記のように移行の状態を [移行が進行中] に保存しても、認証方法ポリシーとレガシー ポリシーの両方が評価されるため、これまで利用できていた認証方法が使えなくなるということはありません。</p><div class="alert is-info"><p class="alert-title">Note</p><p>この変更により、認証方法ポリシーにて認証方法を許可していた環境の場合は、MFA で利用を許可していた認証方法が SSPR においても追加で利用可能となります。通常は MFA で使用している認証方法をそのまま SSPR でも利用することが一般的であるため、ほとんどのお客様でユーザー影響はないと想定されますが、SSPR への影響を懸念されるお客様はこの時点では移行のステップを [移行が進行中] に変更せず、一旦以降の手順を確認されることをお勧めします。</p></div><h3 id="レガシー-MFA-ポリシーの認証方法ポリシーへの移行"><a href="#レガシー-MFA-ポリシーの認証方法ポリシーへの移行" class="headerlink" title="レガシー MFA ポリシーの認証方法ポリシーへの移行"></a>レガシー MFA ポリシーの認証方法ポリシーへの移行</h3><p>それでは、まずレガシー MFA ポリシーの設定内容を認証方法ポリシーに設定する作業を開始しましょう。下表を参照し、<a href="#B-1-%E9%96%8B%E5%A7%8B%E3%81%99%E3%82%8B%E5%89%8D%E3%81%AE%E7%A2%BA%E8%AA%8D%E4%BA%8B%E9%A0%85">B-1. 開始する前の確認事項</a> で確認した レガシー MFA ポリシーの設定内容に対応する認証方法ポリシーを有効にします。</p><table><thead><tr><th>レガシー MFA ポリシー</th><th>対応する認証方法ポリシー</th></tr></thead><tbody><tr><td>電話への連絡</td><td><a href="#%E9%9F%B3%E5%A3%B0%E9%80%9A%E8%A9%B1">音声通話</a></td></tr><tr><td>電話へのテキスト メッセージ</td><td><a href="#sms">SMS</a></td></tr><tr><td>モバイル アプリによる通知</td><td><a href="#microsoft-authenticator">Microsoft Authenticator</a></td></tr><tr><td>モバイル アプリからの確認コードまたはハードウェア トークンからの確認コード</td><td><a href="#%E3%82%B5%E3%83%BC%E3%83%89-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E8%A3%BD%E3%81%AE%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2-OATH-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3">サード パーティ製のソフトウェア OATH トークン</a> <br> <a href="#%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2-OATH-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3">ハードウェア OATH トークン</a> <br> <a href="#microsoft-authenticator">Microsoft Authenticator</a></td></tr></tbody></table><p>本記事の例ですと、レガシー MFA ポリシーの設定画面では、以下の 3 つの認証方法が有効でした。この場合は、上記表でそれぞれレガシー MFA ポリシーに対応する認証方法を認証方法ポリシーの画面で有効にします。</p><ul><li>電話へのテキスト メッセージ</li><li>モバイル アプリによる通知</li><li>モバイル アプリからの確認コードまたはハードウェア トークンからの確認コード</li></ul><p>設定の実施後の認証方法ポリシーの画面 (本記事での例) は以下のようになります。お客様でも、事前に控えておいたレガシー MFA ポリシーの設定状況を用いて認証方法ポリシーを同じように変更ください。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/manage-after-mfa.png"></p><h3 id="レガシー-SSPR-ポリシーの認証方法ポリシーへの移行"><a href="#レガシー-SSPR-ポリシーの認証方法ポリシーへの移行" class="headerlink" title="レガシー SSPR ポリシーの認証方法ポリシーへの移行"></a>レガシー SSPR ポリシーの認証方法ポリシーへの移行</h3><p>レガシー MFA ポリシーの認証方法ポリシーへの移行が完了したら、次にレガシー SSPR ポリシーの内容を認証方法ポリシーに移行します。レガシー MFA ポリシーの移行時と同様に、下表を参照し、<a href="#1-%E9%96%8B%E5%A7%8B%E3%81%99%E3%82%8B%E5%89%8D%E3%81%AE%E7%A2%BA%E8%AA%8D%E4%BA%8B%E9%A0%85">1. 開始する前の確認事項</a> で確認したレガシー SSPR ポリシーの設定内容を、対応する認証方法ポリシーで有効にします。</p><table><thead><tr><th>レガシー SSPR ポリシー</th><th>対応する認証方法ポリシー</th></tr></thead><tbody><tr><td>モバイル アプリの通知</td><td><a href="#microsoft-authenticator">Microsoft Authenticator</a></td></tr><tr><td>モバイル アプリ コード</td><td><a href="#microsoft-authenticator">Microsoft Authenticator</a> <br> <a href="#%E3%82%B5%E3%83%BC%E3%83%89-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E8%A3%BD%E3%81%AE%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2-OATH-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3">サード パーティ製のソフトウェア OATH トークン</a></td></tr><tr><td>電子メール</td><td><a href="#%E3%83%A1%E3%83%BC%E3%83%AB-OTP">メール OTP</a></td></tr><tr><td>携帯電話</td><td><a href="#%E9%9F%B3%E5%A3%B0%E9%80%9A%E8%A9%B1">音声通話</a> <br> <a href="#sms">SMS</a></td></tr><tr><td>会社電話</td><td><a href="#%E9%9F%B3%E5%A3%B0%E9%80%9A%E8%A9%B1">音声通話</a></td></tr><tr><td>秘密の質問</td><td><a href="#%E7%A7%98%E5%AF%86%E3%81%AE%E8%B3%AA%E5%95%8F-%E8%BF%91%E6%97%A5%E5%85%AC%E9%96%8B%E4%BA%88%E5%AE%9A">秘密の質問 (近日公開予定)</a></td></tr></tbody></table><p>本記事の例では、レガシー SSPR ポリシーにおいては上述のとおり [電子メール] と [携帯電話] がチェックされている状況でした。このため、上記表でそれぞれ [電子メール] と [携帯電話] に対応する認証方法ポリシーの設定を有効にします。</p><p>設定の実施後の認証方法ポリシーの画面 (本記事での例) は以下のようになります。お客様でも、事前に控えておいたレガシー SSPR ポリシーの設定状況を用いて認証方法ポリシーを同じように変更ください。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/manage-after-sspr.png"></p><h2 id="B-3-移行が進行中での状態の確認"><a href="#B-3-移行が進行中での状態の確認" class="headerlink" title="B-3. 移行が進行中での状態の確認"></a>B-3. 移行が進行中での状態の確認</h2><p>以上の手順が完了したら、まずはユーザー影響が生じていないかなどを念のためご確認ください。特段影響がなければ、しばらくそのまま運用いただいてもかまいません。しばらく上記状態で運用いただき、移行を完了する準備が整ったら、以下の作業を進めます。</p><h2 id="B-4-移行の完了"><a href="#B-4-移行の完了" class="headerlink" title="B-4. 移行の完了"></a>B-4. 移行の完了</h2><p>[移行が進行中] の状態にてご要望の認証方法が使用可能となるよう新しい認証方法ポリシーを設定できたら、次のステップとして、レガシー MFA および SSPR ポリシーのチェックをすべて外して無効にします (全て一度に外すのが不安な場合は、一つずつ時間をかけてチェックを外していただいてもかまいません)。</p><p>上述のとおり、各認証方法の有効状態は、認証方法ポリシーとレガシー MFA&#x2F;SSPR ポリシーの有効状態の和 (OR) で評価されます。このため、認証方法ポリシーにおいて各認証方法が適切に有効になっていれば、レガシー MFA&#x2F;SSPR ポリシーのチェックをすべて外しても、引き続き認証方法ポリシーの設定が評価され各認証方法は有効状態となります。</p><p>レガシー MFA および SSPR ポリシーのチェックをすべて外して無効にした後、念のため、テナントにてご要望の認証方法が MFA と SSPR の双方で利用可能かご確認ください。ユーザー影響を確認するため、しばらくその状態で運用いただいてもかまいません。</p><p>動作確認が完了したら、移行のステップを [移行が進行中] から [移行が完了済み] に変更します。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/after-migration.png"></p><p>[移行が完了済み] になりましたら、一連の移行作業はすべて完了です。今後はレガシー ポリシーではなく、新しい認証ポリシーの画面にて認証方法の構成を実施ください。</p><h2 id="参考-各認証方法の設定の詳細"><a href="#参考-各認証方法の設定の詳細" class="headerlink" title="参考: 各認証方法の設定の詳細"></a>参考: 各認証方法の設定の詳細</h2><p>各認証方法ごとに、設定内容の詳細と設定の変更手順をおまとめいたします。大まかな手順を上記内容で把握した後で下記詳細をご確認ください。認証方法ポリシーについては、<a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-authentication-methods-manage">Microsoft Entra ID の認証方法を管理する</a> の公開情報でもご案内しておりますので、ご参照ください。</p><h3 id="Microsoft-Authenticator"><a href="#Microsoft-Authenticator" class="headerlink" title="Microsoft Authenticator"></a>Microsoft Authenticator</h3><h4 id="移行の条件"><a href="#移行の条件" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul><li>レガシー MFA ポリシーで [モバイル アプリによる通知] が有効または、レガシー SSPR ポリシーで [モバイル アプリの通知] が有効な場合、認証方法ポリシーで [Microsoft Authenticator] を有効にします。</li><li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効または、レガシー SSPR ポリシーで [モバイル アプリ コード] が有効な場合、[構成] タブで [Microsoft Authenticator OTP の使用を許可する] を [はい] に設定します。</li><li>プッシュ通知またはパスワードレス認証を許可するには、認証モードを [すべて] に設定します。どちらかを指定したい場合は、[パスワードレス] または [プッシュ] に変更します。</li></ul><h4 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h4><ol><li><p>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [Microsoft Authenticator] に移動します。</p></li><li><p>[有効化およびターゲット] タブにて [有効にする] および、 [含める] &gt; [すべてのユーザー] を選択します。<br>必要に応じて、認証モードを変更します。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auth1.png"></p></li><li><p>[構成] タブの内容を確認します (既定のままで OK ですが、必要に応じて [Microsoft Authenticator OTP の使用を許可する] の設定などを変更します。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/auth2.png"></p></li><li><p>[保存] をクリックします。</p></li></ol><h3 id="SMS"><a href="#SMS" class="headerlink" title="SMS"></a>SMS</h3><h4 id="移行の条件-1"><a href="#移行の条件-1" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul><li>レガシー MFA ポリシーで [電話へのテキスト メッセージ] が有効または、レガシー SSPR ポリシーで [携帯電話] が有効な場合、認証方法ポリシーで [SMS] を有効にします。</li><li>[サインインに使用] は SMS ベース サインインを有効にする設定となりますので、MFA や SSPR のみに SMS を利用されたい場合、本チェックマークは外して保存してください。</li></ul><h4 id="手順-1"><a href="#手順-1" class="headerlink" title="手順"></a>手順</h4><ol><li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [SMS] に移動します。</li><li>[有効化およびターゲット] タブにて [有効にする] および、 [含める] &gt; [すべてのユーザー] を選択します。</li><li>[保存] をクリックします。</li></ol><h3 id="サード-パーティ製のソフトウェア-OATH-トークン"><a href="#サード-パーティ製のソフトウェア-OATH-トークン" class="headerlink" title="サード パーティ製のソフトウェア OATH トークン"></a>サード パーティ製のソフトウェア OATH トークン</h3><h4 id="移行の条件-2"><a href="#移行の条件-2" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul><li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効または Microsoft Authenticator 以外のサードパーティー製のソフトウェア OATH トークンを許可したい場合、認証方法ポリシーで [サード パーティ製のソフトウェア OATH トークン] を有効にします。</li></ul><h4 id="手順-2"><a href="#手順-2" class="headerlink" title="手順"></a>手順</h4><ol><li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [サード パーティ製のソフトウェア OATH トークン] に移動します。</li><li>[有効化およびターゲット] タブにて [有効にする] および、 [含める] &gt; [すべてのユーザー] を選択します。</li><li>[保存] をクリックします。</li></ol><h3 id="音声通話"><a href="#音声通話" class="headerlink" title="音声通話"></a>音声通話</h3><h4 id="移行の条件-3"><a href="#移行の条件-3" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul><li>レガシー MFA ポリシーで [電話の呼び出し] が有効または レガシー SSPR ポリシーで [携帯電話] が有効な場合、認証方法ポリシーで [音声通話] を有効にします。 </li><li>レガシー SSPR ポリシーで [会社電話] を有効にしている等、会社電話を利用したい場合は、[構成] タブで [Office] オプションを選択します。</li></ul><h4 id="手順-3"><a href="#手順-3" class="headerlink" title="手順"></a>手順</h4><ol><li><p>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [音声通話] に移動します。</p></li><li><p>[有効化およびターゲット] タブにて [有効にする] および、 [含める] &gt; [すべてのユーザー] を選択します。</p></li><li><p>必要に応じて、[構成] タブにて [Office] を有効にします。</p><p><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/Office.png"></p></li><li><p>[保存] をクリックします。</p></li></ol><h3 id="メール-OTP"><a href="#メール-OTP" class="headerlink" title="メール OTP"></a>メール OTP</h3><h4 id="移行の条件-4"><a href="#移行の条件-4" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul><li>レガシー SSPR ポリシーで [メール] を有効にしている場合、認証方法ポリシーで [メール OTP] を有効にします。</li></ul><h4 id="手順-4"><a href="#手順-4" class="headerlink" title="手順"></a>手順</h4><ol><li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [メール OTP] に移動します。</li><li>[有効化およびターゲット] タブにて [有効にする] および、 [含める] &gt; [すべてのユーザー] を選択します。</li><li>[保存] をクリックします。</li></ol><p>認証方法ポリシーの [メール OTP] の設定はゲストのメール ワンタイム パスコード (OTP) の設定にも影響します。[構成] タブの [外部ユーザーに電子メールの OTP の使用を許可する] コントロールが有効な場合、認証方法ポリシーの [メール OTP] を無効にすることはできません。</p><h3 id="ハードウェア-OATH-トークン"><a href="#ハードウェア-OATH-トークン" class="headerlink" title="ハードウェア OATH トークン"></a>ハードウェア OATH トークン</h3><h4 id="移行の条件-5"><a href="#移行の条件-5" class="headerlink" title="移行の条件"></a>移行の条件</h4><ul><li>レガシー MFA ポリシーで [モバイル アプリまたはハードウェア トークンからの確認コード] が有効にしているか、ハードウェア OATH トークンの利用を許可したい場合、認証方法ポリシーで [ハードウェア OATH トークン] を有効にします。</li></ul><h4 id="手順-5"><a href="#手順-5" class="headerlink" title="手順"></a>手順</h4><ol><li>[Microsoft Entra ID] &gt; [セキュリティ] &gt; [認証方法] &gt; [ポリシー] &gt; [ハードウェア OATH トークン] に移動します。</li><li>[有効化およびターゲット] タブにて [有効にする] および、 [含める] &gt; [すべてのユーザー] を選択します。</li><li>[保存] をクリックします。</li></ol><h3 id="秘密の質問-近日公開予定"><a href="#秘密の質問-近日公開予定" class="headerlink" title="秘密の質問 (近日公開予定)"></a>秘密の質問 (近日公開予定)</h3><p>認証方法ポリシーでは、[秘密の質問] は現在利用できません。秘密の質問をご利用いただいている場合は、レガシー SSPR ポリシーで [秘密の質問] を有効なままにしておいてください。レガシ SSPR ポリシーで [秘密の質問] が有効なままでも、移行のステップを [移行を完了済み] に変更できます。</p><h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p><strong>Q1.</strong> もし、2025 年 9 月 30 日 まで何もしなかった場合、どうなりますか。</p><p><strong>A1.</strong> ※ 2025 年 9 月 17 日現在、最新の情報を確認中です。確認結果が得られ次第本ブログも更新いたします。<br>認証方法ポリシーへの移行を実施しなかった場合、これまでユーザーが利用していた認証方法が利用できなくなる可能性がございます。例えば、各ポリシーで以下のように設定していた場合、2025 年 9 月 30 日以降にレガシー MFA ポリシーが廃止されると、ユーザーは SMS による認証方法を利用できなくなることが予想されます。</p><table><thead><tr><th>ポリシー</th><th>設定</th></tr></thead><tbody><tr><td>レガシー MFA ポリシー</td><td>SMS による認証方法を有効に設定</td></tr><tr><td>認証方法ポリシー</td><td>SMS による認証方法を無効に設定</td></tr></tbody></table><p>このため、期日以降も想定どおりの認証方法を利用したい場合は、期日までに認証方法ポリシーに設定を移行することを推奨いたします。</p><p><strong>Q2.</strong> レガシー ポリシーへの切り戻しはできないでしょうか。</p><p><strong>A2.</strong> 万が一、何らか予期しない動作が生じた場合、レガシー ポリシーへ切り戻すことは可能です。この場合、一度「移行が完了済み」のステータスを以前のステータスに戻すこととなります。加えて、レガシー ポリシー側に以前の状態を手動で復元 (チェックボックスをつけなおす) する作業が必要です。一般的に、レガシー ポリシーへの切り戻しを行うよりも、発生している問題に応じて、新しいポリシー側の設定を見直す方がより効果的です。弊社サポート部門でも支援が可能ですので、その際はぜひお問い合わせください。</p><p><strong>Q3.</strong> 秘密の質問については近日公開予定ですが、それまでは、[移行が進行中] のままにしなければいけないのでしょうか。</p><p><strong>A3.</strong> いいえ、秘密の質問については、レガシー SSPR ポリシーで有効にしたままの状態で移行を完了できます。だたし、秘密の質問を使用していて、それらを無効にしたくない場合は、新しい認証方法ポリシーにて秘密の質問が使用可能になるまで、レガシー SSPR ポリシーで有効なままにしておいてください。</p><p>なお、現状では秘密の質問を認証方法の一つとして提供し続ける予定です。しかし、米国政府が発行している ID 標準 (NIST Special Publication 800-63B) では、ユーザー認証の方法として秘密の質問の利用が非推奨であることが挙げられます。弊社ではお客様に選択肢を提供するという意味で秘密の質問を認証方法の一つとして提供を続けますが、秘密の質問はパスワードと同様に記憶に基づく認証方法であり、認証強度の低い方法です。このため、秘密の質問ではなく、他の認証方法の利用も是非ご検討ください。</p><p><strong>Q4.</strong> レガシー MFA ポリシーが廃止されると認識しています。ユーザーごとに MFA を求める 「ユーザーごとの MFA」 の機能も廃止されるのでしょうか。</p><p><strong>A4.</strong> いいえ、ユーザーごとの MFA の機能は今回の移行では廃止されません。</p><p>今回の移行の対象は、Microsoft Authenticator や SMS など、ユーザーが利用可能な認証方法を管理する項目のみとなり、ユーザーに MFA を要求するかどうか、またはユーザーに対して SSPR を有効にするかどうかの設定は移行の対象外となります。認証方法ポリシーに移行したとしても、新たに MFA が要求されるようになる、などの動作はございませんのでその点はご安心ください。</p><p><strong>Q5.</strong><br>認証方法ポリシーの移行を行うための最小権限は何でしょうか。</p><p><strong>A5.</strong><br>認証方法ポリシーの移行を行うための最小権限は、”認証ポリシー管理者” のロールになります。</p><p><strong>Q6.</strong><br>自動移行ガイドと手動移行の違いは何か。</p><p><strong>A6.</strong><br>自動移行ガイドは、レガシー MFA ポリシーおよびレガシー SSPR ポリシーを基に、設定されている認証方法を自動的に有効化し、構成します。また、追加で Microsoft の推奨する認証方法であるパスキーなどが有効化されます。一方、手動移行の場合は、もともと管理していたレガシーポリシーに基づき、認証方法を一つずつ手動で有効化していく作業となりますので、お客様の環境に合わせたカスタマイズが可能です。</p><p><strong>Q7.</strong><br>移行の管理がないのですが、何か対応は必要でしょうか。</p><p><strong>A7.</strong><br>比較的新しく作成されたテナントでは、以下の画像のように、移行の管理の状態がない場合がございます。こちらは [移行が完了済み] のステータスと同じものとご認識ください。移行対応の必要はございません。<br><img src="/blog/azure-active-directory/how-to-authentication-methods-manage/migration-state-2.png"></p><p><strong>Q8.</strong><br>これまで MFA の認証方法としてのみ SMS を利用しています。認証方法ポリシーに移行後も、SMS のみを使えるようにするにはどのようにすればよいでしょうか。</p><p><strong>A8.</strong><br>認証方法ポリシーにて SMS を有効に設定ください。自動移行ガイドを利用して移行すると、SMS は既定では [サインインに使用] のチェックマークがついた状態で移行されますが、その際 SMS ベース サインインが有効になります。SMS ベース サインインは、ユーザーが Microsoft Entra ID にサインインする際、 ユーザー名 (ID) の代わりに電話番号を入力したサインインが可能となる機能です。MFA や SSPR の認証方法としてのみ SMS を利用されたい場合、SMS ベース サインインは無効で問題ございませんので、お客様のご要件に合わせて、[サインインに使用] オプションのチェックマークを外することを検討ください。</p><p>上記内容が皆様の参考となりますと幸いです。ご不明な点等がありましたら、ぜひ弊社サポート サービスをご利用ください。</p>]]>
-    </content>
-    <id>https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/</id>
-    <link href="https://jpazureid.github.io/blog/azure-active-directory/how-to-authentication-methods-manage/"/>
-    <published>2025-09-17T00:00:00.000Z</published>
-    <summary>
-      <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2023 年 9 月 29 日更新: レガシーポリシーが非推奨となる期日について情報を更新しました。</p><p>2024 年 1 月 23 日更新: Azu]]>
-    </summary>
-    <title>MFA と SSPR を新しい認証方法ポリシーに移行する方法</title>
-    <updated>2026-06-29T10:37:14.476Z</updated>
+    <updated>2026-07-03T08:14:33.768Z</updated>
   </entry>
 </feed>
