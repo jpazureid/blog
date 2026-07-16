@@ -10,7 +10,28 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-07-14T15:05:00.115Z</updated>
+  <updated>2026-07-16T00:49:48.874Z</updated>
+  <entry>
+    <author>
+      <name>Azure Identity Support Japan</name>
+    </author>
+    <category term="Microsoft Entra ID" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra-ID/"/>
+    <category term="MFA" scheme="https://jpazureid.github.io/blog/tags/MFA/"/>
+    <category term="Microsoft Security Blog" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Security-Blog/"/>
+    <category term="Passkey" scheme="https://jpazureid.github.io/blog/tags/Passkey/"/>
+    <category term="Passwordless" scheme="https://jpazureid.github.io/blog/tags/Passwordless/"/>
+    <content>
+      <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの 田辺 です。<br>本記事は、2026 年 7 月 13 日に米国の Microsoft Security Blog で公開された <a href="https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id/">Microsoft Entra ID security updates: Passkeys are the default authentication method in Entra ID</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p><span id="more"></span><hr><h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>AI 時代を迎え、ID を狙う攻撃はますます巧妙になっています。こうした状況では、フィッシングや資格情報の窃取、ソーシャル エンジニアリングからユーザーを守る、より強固な認証方法が組織に求められます。この進化する脅威に対応するため、<a href="https://www.microsoft.com/ja-jp/security/business/identity-access/microsoft-entra-id">Microsoft Entra ID</a> は認証エクスペリエンスを見直し、フィッシングに強い認証方法であるパスキーを既定とすることで、SMS や音声通話といったフィッシング可能な方法への依存を減らせるようにします。</p><p>2026 年 9 月 1 日より、Microsoft は Microsoft Entra ID における既定の認証エクスペリエンスとしてパスキーの段階的な展開を開始します。各組織に展開が適用されると、SMS または音声通話による認証が有効になっているユーザーは自動的にパスキーが有効化され、次回の多要素認証 (MFA) の際にパスキーの登録を促されるようになります。</p><p>この移行に続き、2027 年 2 月 1 日には、Microsoft が提供する SMS および音声通話認証向けの通信サービスを廃止し、SMS と音声通話を <a href="https://www.microsoft.com/ja-jp/security/business/microsoft-entra">Microsoft Entra</a> のネイティブ機能としては提供しなくなります。引き続き SMS や音声通話による認証が必要な組織は、Microsoft Security Store を通じて通信事業者パートナーのいずれかを選択することができます。その際、通信事業者パートナーから請求される通信関連の費用はお客様のご負担となります。</p><p>できるだけ早い段階で、ユーザーの MFA の認証方法を、SMS や音声通話などフィッシングに弱い方法から、パスキーなどフィッシングに強い認証方法へ移行させることを強くおすすめします。</p><h2 id="AI-時代になぜより強固な認証が重要なのか"><a href="#AI-時代になぜより強固な認証が重要なのか" class="headerlink" title="AI 時代になぜより強固な認証が重要なのか"></a>AI 時代になぜより強固な認証が重要なのか</h2><p>SMS や音声通話による認証は、共有シークレットや通信経路に依存しています。攻撃者は、これらを傍受したり、フィッシングでだまし取ったり、不正に操作したりする手口を年々増やしています。<a href="https://www.microsoft.com/ja-jp/security/business/security-101/what-is-passkey">パスキー</a> は共有シークレットではなく公開鍵暗号方式を利用するため、設計上フィッシングに強い特性を備えています。加えて、ユーザーにとってより高速でシンプルなサインイン体験を提供します。</p><p>SMS や音声通話から脱却すべき理由は、もはや攻撃者がこれらを傍受したりソーシャル エンジニアリングで悪用したりするという点だけにとどまりません。脅威を取り巻く環境は、速度、規模、巧妙さの面で変化しています。Microsoft Threat Intelligence は、AI を活用したフィッシング攻撃活動でクリック率が最大 54% に達する事例を観測しており、これは従来型の攻撃活動のおよそ 12% と比べて大幅に高い値です ※1。その結果、盗まれたパスワードや、フィッシングで突破できてしまう 2 つ目 (MFA) の認証要素が、差し迫ったリスクとなっています。同時に、SIM スワップや MFA バイパスといった手口も、以前より容易かつ再現しやすいものになっています。</p><p>AI を活用したサイバー攻撃では、侵害された ID を用いて、探索、権限昇格、横方向の移動といった一連の動作を、人間の攻撃者が手作業で行うよりもはるかに高速に自動化できます。だからこそ、フィッシングに強い認証方法が非常に重要になります。</p><p>パスキーを既定の認証エクスペリエンスとすることで、組織はフィッシング可能な認証方法への依存を減らし、資格情報の窃取やフィッシングに対する防御を強化できます。</p><h2 id="SMS-や音声通話が引き続き必要な場合は-Microsoft-Security-Store-で通信事業者を選択"><a href="#SMS-や音声通話が引き続き必要な場合は-Microsoft-Security-Store-で通信事業者を選択" class="headerlink" title="SMS や音声通話が引き続き必要な場合は Microsoft Security Store で通信事業者を選択"></a>SMS や音声通話が引き続き必要な場合は Microsoft Security Store で通信事業者を選択</h2><p>現在、SMS および音声通話認証の背後にある通信サービスは、Microsoft が Entra ID 内でネイティブに提供しています。今回の移行の一環として、Microsoft はこのネイティブな通信サービスの提供から一歩引くことで、フィッシングに強い認証方法をすべての人にとっての標準とすることを後押しします。</p><p>多くの組織にとって、推奨される移行方法はシンプルです。追加費用なしでユーザーをパスキーへ移行するというものです。</p><p>規制、技術、業務上の理由で SMS や音声通話を維持する必要がある場合は、Microsoft Security Store を通じてサードパーティの通信事業者を選択、構成、管理できるようになります。Microsoft Security Store は、対応する通信事業者と直接契約できるパートナー マーケットプレースです。</p><p>2026 年 9 月 18 日には、対応する事業者に関する情報、展開ガイダンス、技術ドキュメントを公開する予定です。料金や取引条件は Microsoft Security Store を通じて確認できるようになります。</p><h2 id="移行の準備"><a href="#移行の準備" class="headerlink" title="移行の準備"></a>移行の準備</h2><p>サインイン体験の変更に向けてユーザーが備えられるよう、また組織に最適な展開方法を選択できるよう、今のうちから移行の計画を始めましょう。</p><ol><li><strong>SMS や音声通話を今も利用しているユーザーを特定する。</strong> 認証方法ポリシーを確認し、SMS または音声通話認証が有効になっているユーザーやグループを洗い出します。</li><li><strong>パスキーの展開を計画する。</strong> <a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-authentication-passkeys-fido2">パスキー</a> を有効化し、ユーザーのデバイスや業務に合った種類を選択します。Microsoft Entra ID は以下をサポートしています。<ul><li>同期されたパスキー (iCloud キーチェーンや Google パスワード マネージャーなど、プラットフォームの資格情報マネージャーに保存されるパスキー)</li><li>デバイスにバインドされたパスキー (Microsoft Authenticator のパスキー、Windows 上の Entra パスキー、FIDO2 セキュリティ キーなど)</li></ul></li><li><strong><a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-mfa-registration-campaign">登録キャンペーン</a> を活用して導入を促進する。</strong> Microsoft Entra ID は、多要素認証によるサインイン時にパスキーの登録を促すことで、組織が大規模にユーザーを移行させる手助けをします。</li><li><strong>ユーザーへの案内を準備する。</strong> 何が変わるのか、いつパスキー登録のプロンプトが表示されるのか、デバイスでどのように登録を完了するのかを、対象ユーザーに伝えます。</li></ol><p>パスキーの計画、展開、管理に関する手順の詳細は、Microsoft Learn のドキュメントおよびパスキー展開ガイドをご覧ください。</p><ul><li><a href="https://aka.ms/passkeybydefault">既定でのパスキーと、Microsoft が提供する SMS および音声認証の廃止</a></li><li><a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-plan-prerequisites-phishing-resistant-passwordless-authentication">Microsoft Entra ID でフィッシングに強いパスワードレス認証の展開を始める</a></li></ul><p>規制、技術、運用上のシナリオで引き続き SMS や音声通話が必要な場合は、次のように進めます。</p><ol><li>影響を受けるユーザー セグメントを特定し、記録します。</li><li>2026 年 10 月 30 日以降、Microsoft Security Store を通じて対応する通信事業者を選択、構成します。</li><li>本格展開の前に、パイロット グループで構成をテストします。</li></ol><h2 id="タイムライン"><a href="#タイムライン" class="headerlink" title="タイムライン"></a>タイムライン</h2><table><thead><tr><th>日付</th><th>内容</th></tr></thead><tbody><tr><td>2026 年 9 月 1 日</td><td>SMS または音声通話が有効なすべてのユーザーにパスキーの利用が自動的に有効化され、多要素認証によるサインイン時にパスキー登録を促されます。パスキー展開ガイドを利用して、パスキー利用に向けた環境を準備してください。対象ユーザーに今後の変更を通知してください。すべてのユーザーが、パスキー、Windows 上の Entra パスキー、FIDO2 セキュリティ キーなど、フィッシングに強い認証方法を備えていることを確認してください。</td></tr><tr><td>2026 年 9 月 18 日</td><td>料金、取引条件、対応する通信事業者の一覧が公開されます。SMS や音声通話認証の継続利用を予定している場合は、利用可能な事業者の選択肢を確認し、影響を受けるユーザーを特定してください。</td></tr><tr><td>2026 年 10 月 30 日</td><td>管理者は Microsoft Security Store を通じて対応する通信事業者を選択、構成できるようになります。</td></tr><tr><td>2027 年 2 月 1 日</td><td>Microsoft が提供する SMS および音声通話認証が終了します。特定のユーザーに引き続き SMS や音声通話が必要な場合は、この日までに対応する通信事業者を構成してください。</td></tr><tr><td>2027 年 2 月 1 日以降</td><td>SMS または音声通話を多要素認証に利用しているユーザーは、サインイン前にパスキーの登録が必須となります。パスキー登録を促す自動プロンプトが、すべてのテナントのすべてのユーザーに対して強制されます。オプトアウトの選択肢はありません。</td></tr></tbody></table><p>注: 本記事に記載した日付は、パブリック クラウドの Microsoft Entra ID にのみ適用されます (日本の大部分のお客様はこちらに該当します)。その他のクラウド環境 (米国政府向けの Azure Government など) への対応は別のタイムラインで行われ、追加のガイダンスと日付は事前に案内されます。</p><p>SMS や音声通話はこれまで十分にその役割を果たし、そうでなければ多要素認証を利用できなかったであろう何十億もの人々に MFA を届けてきました。しかし、脅威を取り巻く環境はこれらの能力を超えて進化しており、私たちもそれに合わせて進化する必要があります。</p><p>Microsoft がパスキーを Entra ID の既定とするのは、パスキーがユーザーにとってはより良く、サイバー攻撃者にとってはより不都合だからです。この移行では、何がいつ起きるかを見通せるよう、明確な日付を示し、移行期間中はフォールバックの手段を用意し、フィッシング可能な資格情報に頼らない <a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-account-recovery-overview">アカウント回復</a> を提供します。</p><p>詳細は <a href="https://aka.ms/passkeybydefault">既定でのパスキーと、Microsoft が提供する SMS および音声認証の廃止</a> をご覧ください。</p><p><a href="https://www.microsoft.com/ja-jp/security/business/microsoft-entra">Microsoft Entra の ID およびアクセス ソリューションの詳細はこちら</a></p><p>Microsoft セキュリティ ソリューションの詳細については、当社の <a href="https://www.microsoft.com/ja-jp/security">Web サイト</a> をご覧ください。<br>セキュリティに関する専門的な解説を継続的に入手するために、<a href="https://www.microsoft.com/en-us/security/blog/">Security ブログ</a> をブックマークすることをおすすめします。<br>また、サイバー セキュリティに関する最新情報やアップデートについては、LinkedIn (<a href="https://www.linkedin.com/showcase/microsoft-security/">Microsoft Security</a>) および X (<a href="https://x.com/MSFTSecurity">@MSFTSecurity</a>) でもご確認いただけます。</p><hr><p>※1 <a href="https://aka.ms/mddr">Microsoft Digital Defense Report 2025</a>.</p>]]>
+    </content>
+    <id>https://jpazureid.github.io/blog/azure-active-directory/passkeys-default-authentication-method-in-entra-id/</id>
+    <link href="https://jpazureid.github.io/blog/azure-active-directory/passkeys-default-authentication-method-in-entra-id/"/>
+    <published>2026-07-14T15:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの 田辺 です。<br>本記事は、2026 年 7 月 13 日に米国の Microsoft Security Blog で公開された <a href="https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id/">Microsoft Entra ID security updates: Passkeys are the default authentication method in Entra ID</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p>]]>
+    </summary>
+    <title>MFA の既定の認証方法がパスキーに移行 (SMS / 音声通話の既定での提供が終了)</title>
+    <updated>2026-07-16T00:49:48.874Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -27,7 +48,7 @@
 <p>Entra ID テナントやユーザーなどのオブジェクトを管理する方法には、各管理センター (Microsoft Entra 管理センターなど) の画面上で操作する以外にも、Microso]]>
     </summary>
     <title>Graph Explorer の使用法</title>
-    <updated>2026-07-14T15:05:00.115Z</updated>
+    <updated>2026-07-16T00:49:48.443Z</updated>
   </entry>
   <entry>
     <author>
@@ -46,7 +67,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。リニューアル前の記事は <a href="]]>
     </summary>
     <title>[2026 年度版] 条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)</title>
-    <updated>2026-07-14T15:04:59.923Z</updated>
+    <updated>2026-07-16T00:49:48.250Z</updated>
   </entry>
   <entry>
     <author>
@@ -66,7 +87,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。<br>本記事は、2026 年 5 月 7 日に米国の Microsoft Security Blog で公開された <a href="https://www.microsoft.com/en-us/security/blog/2026/05/07/world-passkey-day-advancing-passwordless-authentication/">World Passkey Day: Advancing passwordless authentication</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p>]]>
     </summary>
     <title>パスキーを利用したパスワードレスの導入を検討しよう</title>
-    <updated>2026-07-14T15:05:00.815Z</updated>
+    <updated>2026-07-16T00:49:49.128Z</updated>
   </entry>
   <entry>
     <author>
@@ -86,7 +107,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 5 弾 - Microsoft Entra Private Access 入門</title>
-    <updated>2026-07-14T15:05:00.713Z</updated>
+    <updated>2026-07-16T00:49:49.030Z</updated>
   </entry>
   <entry>
     <author>
@@ -104,7 +125,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5]]>
     </summary>
     <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</title>
-    <updated>2026-07-14T15:04:59.866Z</updated>
+    <updated>2026-07-16T00:49:48.194Z</updated>
   </entry>
   <entry>
     <author>
@@ -123,7 +144,7 @@
 <p>こんにちは、Azure]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-07-14T15:04:59.693Z</updated>
+    <updated>2026-07-16T00:49:48.023Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +163,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-07-14T15:05:00.216Z</updated>
+    <updated>2026-07-16T00:49:48.543Z</updated>
   </entry>
   <entry>
     <author>
@@ -160,7 +181,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-07-14T15:04:59.563Z</updated>
+    <updated>2026-07-16T00:49:47.898Z</updated>
   </entry>
   <entry>
     <author>
@@ -179,7 +200,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-07-14T15:05:00.766Z</updated>
+    <updated>2026-07-16T00:49:49.083Z</updated>
   </entry>
   <entry>
     <author>
@@ -198,7 +219,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-07-14T15:04:59.881Z</updated>
+    <updated>2026-07-16T00:49:48.208Z</updated>
   </entry>
   <entry>
     <author>
@@ -218,7 +239,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-07-14T15:05:00.031Z</updated>
+    <updated>2026-07-16T00:49:48.360Z</updated>
   </entry>
   <entry>
     <author>
@@ -237,7 +258,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-07-14T15:04:59.705Z</updated>
+    <updated>2026-07-16T00:49:48.035Z</updated>
   </entry>
   <entry>
     <author>
@@ -255,7 +276,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-07-14T15:05:00.224Z</updated>
+    <updated>2026-07-16T00:49:48.550Z</updated>
   </entry>
   <entry>
     <author>
@@ -274,7 +295,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-07-14T15:05:00.611Z</updated>
+    <updated>2026-07-16T00:49:48.932Z</updated>
   </entry>
   <entry>
     <author>
@@ -293,7 +314,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-07-14T15:04:59.559Z</updated>
+    <updated>2026-07-16T00:49:47.895Z</updated>
   </entry>
   <entry>
     <author>
@@ -312,7 +333,7 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-07-14T15:05:00.811Z</updated>
+    <updated>2026-07-16T00:49:49.124Z</updated>
   </entry>
   <entry>
     <author>
@@ -331,7 +352,7 @@
 <p>Microsoft Graph PowerShell を利用したオブジェクト管理について、グローバル管理者等の強いロール権限を持たないユーザーに PowerShell を使用させたい場面]]>
     </summary>
     <title>Microsoft Graph PowerShell アクセス許可の付与</title>
-    <updated>2026-07-14T15:05:00.312Z</updated>
+    <updated>2026-07-16T00:49:48.638Z</updated>
   </entry>
   <entry>
     <author>
@@ -350,7 +371,7 @@
 <p>Microsoft Entra Connect 同期 (以下 MEC と表記) では AD FS を構成および管理することができます。その際には MEC のウィザードから「フ]]>
     </summary>
     <title>Microsoft Entra Connect で MSIS7612 エラーが発生し AD FS の構成に失敗する</title>
-    <updated>2026-07-14T15:04:59.559Z</updated>
+    <updated>2026-07-16T00:49:47.895Z</updated>
   </entry>
   <entry>
     <author>
@@ -370,27 +391,6 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 4 弾 - SAML 2.0入門</title>
-    <updated>2026-07-14T15:05:00.711Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Azure Identity Support Japan</name>
-    </author>
-    <category term="Microsoft Entra" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Entra/"/>
-    <category term="MFA" scheme="https://jpazureid.github.io/blog/tags/MFA/"/>
-    <category term="Microsoft Authenticator" scheme="https://jpazureid.github.io/blog/tags/Microsoft-Authenticator/"/>
-    <category term="Starter series" scheme="https://jpazureid.github.io/blog/tags/Starter-series/"/>
-    <content>
-      <![CDATA[<p>こんにちは。Azure Identity サポート チームの 喜多 です。  </p><p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Microsoft Authenticator アプリ入門」をお届けします。</p><p><strong>本記事の対象者</strong></p><ul><li>多要素認証 (MFA) の導入を検討中、またはその効果を知りたい方。</li><li>SMS 認証などを利用中で、より安全な認証方法を探している方。</li><li>Microsoft Authenticator アプリをすでに利用していて、さらにセキュリティを高めたい方。</li></ul><p><strong>記事の概要</strong></p><p>MFA の導入は、現代のセキュリティ対策において不可欠です。SMS や音声通話による認証をご利用中の方も多いと思いますが、Microsoft Authenticator アプリを利用することで、より安全にアカウントを保護できます。本記事では、MFA の基本的な仕組みや導入によるメリットを解説したうえで、Microsoft Authenticator アプリの各認証方式 (プッシュ通知、OATH トークン、パスワードレス、パスキー) を比較しながら紹介します。特に、現在 SMS や音声通話による認証を利用されている方にとって、Microsoft Authenticator アプリへの移行を検討するきっかけとなれば幸いです。</p><hr><h2 id="Microsoft-Authenticator-アプリとは"><a href="#Microsoft-Authenticator-アプリとは" class="headerlink" title="Microsoft Authenticator アプリとは"></a>Microsoft Authenticator アプリとは</h2><p>Microsoft Authenticator アプリは、Microsoft が提供している認証用のアプリです。Microsoft Entra ID や Microsoft アカウントを利用しているお客様は、まずそのサービスの利用にあたりサインインが必要になります。このサインインの体験をよりスムーズかつ安全にするために Microsoft Authenticator アプリが開発されました。Microsoft Authenticator アプリはサインインの流れの中で、特に多要素認証 (MFA) をより簡単かつ安全にするためにデザインされています。</p><p>ここで、ご存じかとは思いますが、MFA とは、異なる認証要素を複数組み合わせて本人確認を行う仕組みです。例えば、パスワード (知識の要素) に加えて、スマートフォンの通知やワンタイム パスワード (所持の要素) などを用いて、サインイン時に複数の認証要素を提示するよう求めることで、単一の要素 (パスワード) だけの場合よりもセキュリティを強化することが可能です。</p><p>パスワードはどれほど強固に設定しても、フィッシングや情報漏洩などによりパスワードが第三者に知られてしまうリスクを排除することはできません。しかし MFA を導入することで、仮にパスワードが漏洩し一つの要素が突破されたとしても、攻撃者は追加の認証要素の認証を満たすことができないため、不正アクセスのリスクを大幅に低減できます。例えば、ユーザーが MFA の要素として Microsoft Authenticator アプリを構成していたとします。この場合、ユーザー名とパスワードが悪意のある第三者に知られたとしても、その第三者が Microsoft Authenticator アプリのインストールされたユーザーのデバイスを奪うという状況が同時に起こる可能性は低いと言えます。このため、第三者による不正なサインインを防ぐことが可能です。</p><p>実際に、Microsoft の 2024 年 5 月の研究では、MFA を有効にすることで約 99% のセキュリティリスクを削減できると報告されています。</p><p><a href="https://arxiv.org/pdf/2305.00945">How effective is multifactor authentication at deterring cyberattacks?</a></p><p>日本のお客様の中には、仕事用デバイスにのみアプリをインストールしたいという声もありますが、Microsoft Authenticator アプリは私物デバイスにインストールしても問題ありません。アプリ自体はデバイスの所有形態に関係なく安全に利用できます。</p><h2 id="より安全な認証方法とは"><a href="#より安全な認証方法とは" class="headerlink" title="より安全な認証方法とは"></a>より安全な認証方法とは</h2><p>認証方式にはさまざまな種類があり、Microsoft は以下のようにそれをレベル分けしています。</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog1.png"></p><ul><li><strong>Good</strong> : SMS や音声通話など</li><li><strong>Better</strong> : Microsoft Authenticator アプリのプッシュ通知、ソフトウェアトークン OTP など</li><li><strong>Best</strong> : Microsoft Authenticator アプリのパスワードレス サインイン、Windows Hello、FIDO2 セキュリティキー（パスキーなど）</li></ul><p>Microsoft Authenticator アプリではいろいろな種類の認証方法を利用でき、Microsoft Authenticator アプリを使用した各認証方式は上記の「Better」および「Best」のレベルに対応しています。Microsoft では、より安全な認証手段として パスワードレス認証 (Best) を推奨していますが、まずは Better な認証方式である Microsoft Authenticator アプリのプッシュ通知をご利用いただくだけでもサインインの安全性を高めることが可能です。</p><h2 id="認証方式の比較"><a href="#認証方式の比較" class="headerlink" title="認証方式の比較"></a>認証方式の比較</h2><p>Microsoft Authenticator アプリには、現在以下の 4 つの認証方式があります:</p><ul><li>プッシュ通知による MFA</li><li>ソフトウェア OATH トークンによる MFA</li><li>プッシュ通知によるパスワードレス認証</li><li>パスキーによるパスワードレス認証</li></ul><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/concept-authentication-authenticator-app">Microsoft Authenticator の認証方法 - Microsoft Entra ID | Microsoft Learn</a></p><p>これらを従来の SMS や音声通話と比較しながら、以下に解説していきます。現在 SMS や音声通話による MFA を利用されている方は、まずプッシュ通知による MFA の利用をぜひ検討ください。すでにプッシュ通知による MFA を利用しているお客様は、ぜひパスキーによるパスワードレス認証を検討ください。</p><h3 id="Good-パスワード-SMS-音声通話"><a href="#Good-パスワード-SMS-音声通話" class="headerlink" title="Good: パスワード + SMS&#x2F;音声通話"></a>Good: パスワード + SMS&#x2F;音声通話</h3><p>SMS や音声通話は MFA の方法として依然として多くのお客様に利用されている一方で、安全性が低い方式です。これらの方式は公衆交換電話網 (PSTN) を利用しており、通信の盗聴などのリスクが存在します。 そのため、Microsoft では SMS や音声通話による認証は、アカウント回復時のバックアップとして使用することは認めつつも、より安全な認証手段への移行を推奨しています。</p><p>詳しくは以下のブログをご参照ください: <a href="https://jpazureid.github.io/blog/azure-active-directory/it-s-time-to-hang-up-on-phone-transports-for-authentication/">認証に電話網を使うのはそろそろやめよう</a></p><p>SMS や音声通話を MFA で利用されているお客様に置かれましては、ぜひ Microsoft Authenticator アプリを活用した「Better」および「Best」な認証方式に移行ください。ここからは、これら「Better」および「Best」な認証方式について紹介します。</p><h3 id="Better-プッシュ通知による-MFA"><a href="#Better-プッシュ通知による-MFA" class="headerlink" title="Better: プッシュ通知による MFA"></a>Better: プッシュ通知による MFA</h3><p>この方式は、パスワードで認証した後に Microsoft Authenticator アプリにプッシュ通知が届き、アプリ側でその通知を承認することで認証を完了する仕組みです。信頼性の低い電話網を利用する SMS や音声通話に対し、暗号化された通信を使用することで、通信経路の安全性を確保しています。また、大量の認証リクエストをユーザーに送るなどして、ユーザーに誤って承認させる手法 (MFA 疲労攻撃) への対策として、「数値の一致」機能や「アプリケーション名の表示」機能、「地理的な場所の表示」機能が導入されています。  </p><p>数値の一致機能では、サインイン画面に表示される 2 桁の数字を Microsoft Authenticator アプリに入力することで認証が完了します。これはユーザーが必ず認証画面の前におり、画面に表示された番号を見ながら Microsoft Authenticator アプリを操作して承認するということを確実にするための仕組みです。加えて、Microsoft Authenticator アプリの画面には、サインインしようとしているアプリの名前やサインインが開始されたユーザーの地理的な場所を表示するよう構成することもできます。これらの情報により、ユーザーはその要求が確かに自分自身により意図して開始されたものであることを確認して承認することが可能となります。</p><p>例えば、ユーザーが画面の前にいない状態で、見知らぬ MFA 要求がスマートフォンに通知されたとしても、ユーザーは正しい数字を知らないため、通知に応答することができません。またユーザーが PC の画面の前にいたとしても、サインインしようとしているアプリとは異なるアプリ名が Microsoft Authenticator アプリに表示されていたり、ユーザーが存在しない場所 (外国など) が Microsoft Authenticator アプリに表示されていたりする場合は、それが自分自身の意図したサインインではないということに気づくことができます。これにより、ユーザーがフィッシングに気づきやすくなります。</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog2_push.png"></p><p>プッシュ通知による MFA は、Microsoft が多くのお客様に推奨している方法であり、まだパスワードのみの認証を利用しているお客様や、電話ベースの MFA を利用しているお客様はぜひこのプッシュ通知による MFA をご検討ください。繰り返しとなりますが、Microsoft Authenticator アプリは私物デバイスにインストールしても問題ありません。仕事用デバイスでも、私物デバイスにでも、同等のセキュリティが提供されますので是非お手元のデバイスでのご利用を検討ください。</p><h3 id="Better-ソフトウェア-OATH-トークンによる-MFA"><a href="#Better-ソフトウェア-OATH-トークンによる-MFA" class="headerlink" title="Better: ソフトウェア OATH トークンによる MFA"></a>Better: ソフトウェア OATH トークンによる MFA</h3><p>Microsoft Authenticator アプリは、OATH トークン (ワンタイム パスワードの生成器) としても利用可能です。この方式では、アプリに表示される 6 桁の「ワンタイム パスワード コード」をサインイン画面に入力することで認証を完了します。</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog3_otp1.png"></p><p>この方式は、Microsoft Authenticator アプリ側の通信を伴わないため、Microsoft Authenticator アプリを利用している端末がオフライン環境であっても使用できるという利点があります。これにより、インターネット接続が不安定な状況でも安定した認証が可能となります。ただし、この方法はフィッシングに対する対策がありませんので、プッシュ通知やパスワードレス認証が利用可能であれば、この方法は利用しないことがおすすめです。</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog4_otp2.png"></p><h3 id="Best-プッシュ通知によるパスワードレス認証"><a href="#Best-プッシュ通知によるパスワードレス認証" class="headerlink" title="Best: プッシュ通知によるパスワードレス認証"></a>Best: プッシュ通知によるパスワードレス認証</h3><p>Microsoft Authenticator アプリは、認証時にパスワードを利用しないパスワードレス認証にも対応しています。そもそもパスワードを入力する場面を減らすことで、セキュリティを強化するという仕組みです。 </p><p>このプッシュ通知によるパスワードレス認証では、ユーザー名を入力した後にパスワードを打たずに Microsoft Authenticator アプリにプッシュ通知が届きます。アプリ側に表示された番号を入力し、承認した後、PIN や生体認証 (指紋や顔) を使ってデバイスの所有者を確認します。プッシュ通知による MFA と比較して、パスワードを入力することなく認証を完了する点が異なります。パスワードの入力を必要としないことで、利便性を向上させながらセキュリティも改善できます。この方式を利用するには、Microsoft Authenticator アプリがインストールされたデバイスを事前に Entra ID に登録しておく必要があります。</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog5_pwdlesspush.png"></p><h3 id="Best-パスキーによるパスワードレス認証-最も推奨されています"><a href="#Best-パスキーによるパスワードレス認証-最も推奨されています" class="headerlink" title="Best: パスキーによるパスワードレス認証 (最も推奨されています)"></a>Best: パスキーによるパスワードレス認証 (最も推奨されています)</h3><p>この方法が現在最もセキュリティが高く推奨されている認証方法です。Microsoft Authenticator アプリは「パスキー (Passkey)」による認証にも対応しています。</p><p>この方式では、プッシュ通知が Microsoft Authenticator アプリに来ることはなく、番号の入力も不要です。Microsoft Authetnicator アプリがデバイスにインストールされており、パスキーが構成されていること、そのデバイスに構成された PIN や生体認証を行うという二つの要素で認証が完了します。パスキーはフィッシング耐性に優れており、最も推奨される認証方式です。</p><p><a href="https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-sign-in-passkey-authenticator?tabs=iOS">Android および iOS デバイス用 Authenticator のパスキーを使用してサインインする - Microsoft Entra ID | Microsoft Learn</a></p><p>別のデバイス (PC など) でサインインするとき:</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog6_passkey1.png"></p><p>パスキーを登録したモバイル デバイス上でサインインするとき:</p><p><img src="/blog/azure-active-directory/starter-series-microsoft-authenticator/blog7_passkey2.png"></p><h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>MFA の導入は、現代のセキュリティ対策において不可欠です。Microsoft Authenticator アプリは、SMS や音声通話よりも安全な認証方法であり、さらに数値一致やパスワードレス認証、パスキー対応など、さまざまな攻撃に対応して進化を続けています。</p><p>SMS や音声通話による認証をご利用中の方は、ぜひこの機会に Microsoft Authenticator アプリの導入をご検討ください。パスキーなどのパスワードレス認証も活用し、より安全にアカウントを保護していきましょう。</p>]]>
-    </content>
-    <id>https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/</id>
-    <link href="https://jpazureid.github.io/blog/azure-active-directory/starter-series-microsoft-authenticator/"/>
-    <published>2025-09-25T00:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>こんにちは。Azure Identity サポート チームの 喜多 です。  </p>
-<p>Microsoft Entra サポート チームでは、Entra を使い始めたばかりのお客様向けに、初学者向けブログシリーズを展開しています。今回は第 3 弾として、「Micros]]>
-    </summary>
-    <title>Entra ID 初学者向けシリーズ 第 3 弾 - Microsoft Authenticator アプリ入門</title>
-    <updated>2026-07-14T15:05:00.700Z</updated>
+    <updated>2026-07-16T00:49:49.029Z</updated>
   </entry>
 </feed>
