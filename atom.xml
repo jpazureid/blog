@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Azure Identity Support Japan</rights>
   <subtitle>日本マイクロソフトの Azure Active Directory と AD FS に関するサポート情報のブログです。</subtitle>
   <title>Japan Azure Identity Support Blog</title>
-  <updated>2026-08-06T11:15:50.917Z</updated>
+  <updated>2026-08-12T00:07:05.130Z</updated>
   <entry>
     <author>
       <name>Azure Identity Support Japan</name>
@@ -28,7 +28,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。<br><a href="https://learn.microsoft.com/entra/identity/authentication/concept-sms-voice-retire]]>
     </summary>
     <title>自動パスキー有効化を一時的にオプトアウトする手順</title>
-    <updated>2026-08-06T11:15:50.917Z</updated>
+    <updated>2026-08-12T00:07:05.130Z</updated>
   </entry>
   <entry>
     <author>
@@ -48,7 +48,7 @@
 <p>この記事では、MFA の認証方法を SMS や音声通話からパスキーへ移行する際に、組織内のユーザーへのパスキー展開を効率的に進めるために役立つ<a href="https://learn]]>
     </summary>
     <title>登録キャンペーンを利用して認証方法にパスキー (セキュリティ キーを利用) をセットアップする手順</title>
-    <updated>2026-08-06T11:15:50.470Z</updated>
+    <updated>2026-08-12T00:07:04.695Z</updated>
   </entry>
   <entry>
     <author>
@@ -67,7 +67,7 @@
 <p>Microsoft Entra ID の認証方法にパスキーを利用する方が増え始めていると思います。パスキーは従来の電話網を利用した認証方法 (SMS や音声通話) などよりもセキュリティ]]>
     </summary>
     <title>認証方法にパスキー (セキュリティ キーを利用) をセットアップする手順</title>
-    <updated>2026-08-06T11:15:50.458Z</updated>
+    <updated>2026-08-12T00:07:04.683Z</updated>
   </entry>
   <entry>
     <author>
@@ -88,7 +88,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの 田辺 です。<br>本記事は、2026 年 7 月 13 日に米国の Microsoft Security Blog で公開された <a href="https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id/">Microsoft Entra ID security updates: Passkeys are the default authentication method in Entra ID</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p>]]>
     </summary>
     <title>MFA の既定の認証方法がパスキーに移行 (SMS / 音声通話の既定での提供が終了)</title>
-    <updated>2026-08-06T11:15:50.917Z</updated>
+    <updated>2026-08-12T00:07:05.132Z</updated>
   </entry>
   <entry>
     <author>
@@ -106,7 +106,7 @@
 <p>Entra ID テナントやユーザーなどのオブジェクトを管理する方法には、各管理センター (Microsoft Entra 管理センターなど) の画面上で操作する以外にも、Microso]]>
     </summary>
     <title>Graph Explorer の使用法</title>
-    <updated>2026-08-06T11:15:50.481Z</updated>
+    <updated>2026-08-12T00:07:04.705Z</updated>
   </entry>
   <entry>
     <author>
@@ -125,7 +125,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2021 年 2 月に公開した内容を、2026 年 6 月時点の最新情報に基づきリニューアルしたものです。リニューアル前の記事は <a href="]]>
     </summary>
     <title>[2026 年度版] 条件付きアクセスで 「準拠済み」 でブロックされる場合の対処法 (iOS / Android 編)</title>
-    <updated>2026-08-06T11:15:50.270Z</updated>
+    <updated>2026-08-12T00:07:04.500Z</updated>
   </entry>
   <entry>
     <author>
@@ -145,7 +145,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。<br>本記事は、2026 年 5 月 7 日に米国の Microsoft Security Blog で公開された <a href="https://www.microsoft.com/en-us/security/blog/2026/05/07/world-passkey-day-advancing-passwordless-authentication/">World Passkey Day: Advancing passwordless authentication</a> を意訳したものになります。ご不明点はサポート チームまでお問い合わせください。</p>]]>
     </summary>
     <title>パスキーを利用したパスワードレスの導入を検討しよう</title>
-    <updated>2026-08-06T11:15:51.177Z</updated>
+    <updated>2026-08-12T00:07:05.386Z</updated>
   </entry>
   <entry>
     <author>
@@ -165,7 +165,7 @@
       <![CDATA[<p>こんにちは、Azure Identity サポート チームの 夏木 です。Microsoft Entra サポート チームより、最近 Entra の利用を始めたお客様を対象に、初学者向けのブログ シリーズを作成しております。本記事はその Entra ID 初学者向けシリーズ]]>
     </summary>
     <title>Entra ID 初学者向けシリーズ第 5 弾 - Microsoft Entra Private Access 入門</title>
-    <updated>2026-08-06T11:15:51.078Z</updated>
+    <updated>2026-08-12T00:07:05.288Z</updated>
   </entry>
   <entry>
     <author>
@@ -183,7 +183,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>2026 年 5 月 7 日更新: カスタム アプリケーション作成時の [サポートされているアカウントの種類] を更新しました</p><p>2026 年 5]]>
     </summary>
     <title>条件付きアクセス ポリシーの「ベースライン スコープ」に関する動作変更の解説</title>
-    <updated>2026-08-06T11:15:50.213Z</updated>
+    <updated>2026-08-12T00:07:04.447Z</updated>
   </entry>
   <entry>
     <author>
@@ -202,7 +202,7 @@
 <p>こんにちは、Azure]]>
     </summary>
     <title>Apple デバイスでキーチェーンから Secure Enclave 利用へ</title>
-    <updated>2026-08-06T11:15:50.041Z</updated>
+    <updated>2026-08-12T00:07:04.280Z</updated>
   </entry>
   <entry>
     <author>
@@ -221,7 +221,7 @@
       <![CDATA[<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは、Azure Identity サポート チーム Lynn です。<br>条件付きアクセス ポリシーに対して変更を]]>
     </summary>
     <title>条件付きアクセス ポリシー更新時に「Update policy」の監査ログが分割されて記録される挙動について</title>
-    <updated>2026-08-06T11:15:50.581Z</updated>
+    <updated>2026-08-12T00:07:04.801Z</updated>
   </entry>
   <entry>
     <author>
@@ -239,7 +239,7 @@
 <p>公開情報「Microsoft Entra のリリースとお知らせ」および MC1263280 にて、セキュリティ強化のため 2026 年 7 月からMicrosoft Entra Conn]]>
     </summary>
     <title>Microsoft Entra Connect のハードマッチの動作変更について</title>
-    <updated>2026-08-06T11:15:49.913Z</updated>
+    <updated>2026-08-12T00:07:04.153Z</updated>
   </entry>
   <entry>
     <author>
@@ -258,7 +258,7 @@
       <![CDATA[<p>こんにちは、Azure &amp; Identity サポート チームの長谷川です。本記事は、2026 年 1 月 28 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microsoft.c]]>
     </summary>
     <title>今後の条件付きアクセスの変更 リソース除外を含むポリシーの適用強化</title>
-    <updated>2026-08-06T11:15:51.131Z</updated>
+    <updated>2026-08-12T00:07:05.340Z</updated>
   </entry>
   <entry>
     <author>
@@ -277,7 +277,7 @@
 <h2 id="説明"><a href="#説明" class="h]]>
     </summary>
     <title>certutil -deletehellocontainer コマンド実行時の注意点</title>
-    <updated>2026-08-06T11:15:50.228Z</updated>
+    <updated>2026-08-12T00:07:04.461Z</updated>
   </entry>
   <entry>
     <author>
@@ -297,7 +297,7 @@
 <p>Windows LAPS の]]>
     </summary>
     <title>ローカル管理者パスワードがバックアップされているデバイスを一覧で取得する</title>
-    <updated>2026-08-06T11:15:50.378Z</updated>
+    <updated>2026-08-12T00:07:04.604Z</updated>
   </entry>
   <entry>
     <author>
@@ -316,7 +316,7 @@
       <![CDATA[<div class="alert is-info"><p class="alert-title">Note</p><p>本記事は 2025 年 5 月に公開した <a href="/blog/azure-active-directory/WorkPlaceJoin2/">このデ]]>
     </summary>
     <title>このデバイスのすべてのアプリ、Web サイト、サービスにサインインしますか?</title>
-    <updated>2026-08-06T11:15:50.054Z</updated>
+    <updated>2026-08-12T00:07:04.292Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +334,7 @@
 <p>2025 年 12 月 9 日 に Microsoft 365 管理センターのメッセージ センターで MC1193408 の通知が行われ、2026 年 1 月 7 日より、Micro]]>
     </summary>
     <title>MC1193408 - 要対応: 2026 年 1 月 7 日までに DigiCert Global Root G2 証明機関を信頼してください</title>
-    <updated>2026-08-06T11:15:50.589Z</updated>
+    <updated>2026-08-12T00:07:04.809Z</updated>
   </entry>
   <entry>
     <author>
@@ -353,7 +353,7 @@
 <p>本記事は、2025 年 11 月 11 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommu]]>
     </summary>
     <title>AI の大波に乗る: エージェント時代に向けた Microsoft Entra の進化</title>
-    <updated>2026-08-06T11:15:50.977Z</updated>
+    <updated>2026-08-12T00:07:05.190Z</updated>
   </entry>
   <entry>
     <author>
@@ -372,7 +372,7 @@
 <p>本記事は、2025 年 11 月 5 日に米国の Microsoft Entra (Azure AD) Blog で公開された <a href="https://techcommunity]]>
     </summary>
     <title>クラウド ファーストの ID 管理 - ユーザー SOA がパブリック プレビューかつグループ SOA も一般公開に</title>
-    <updated>2026-08-06T11:15:49.909Z</updated>
+    <updated>2026-08-12T00:07:04.150Z</updated>
   </entry>
   <entry>
     <author>
@@ -391,6 +391,6 @@
 <p>本記事は、2025 年 10 月 17 日に米国の Microsoft Entra Blog で公開された <a href="https://techcommunity.microso]]>
     </summary>
     <title>Microsoft Entra の新情報 – 2025 年 9 月</title>
-    <updated>2026-08-06T11:15:51.173Z</updated>
+    <updated>2026-08-12T00:07:05.382Z</updated>
   </entry>
 </feed>
