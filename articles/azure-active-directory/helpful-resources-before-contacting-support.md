@@ -39,7 +39,7 @@ tags:
 
 1. [各製品ごとの推奨公開情報の紹介](#idx1)
 	- [Microsoft Entra ID ](#idx1-1)
-	- [Microsoft Intune)](#idx1-2)
+	- [Microsoft Intune](#idx1-2)
 	- [Configuration Manager (SCCM)](#idx1-3)
     - [Security (Microsoft Defender / Microsoft Sentinel / Security platform)](#idx1-4)
     - [Compliance](#idx1-5)
