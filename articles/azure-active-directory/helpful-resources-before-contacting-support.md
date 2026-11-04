@@ -52,6 +52,7 @@ tags:
 
 弊社におけるセキュリティ関連製品には、主に 5 種類のカテゴリがございます。トラブル シューティングや製品の情報を確認されたいときにご利用いただける推奨情報を、下記に製品ごとにご案内いたします。
 
+
 <h3 id="idx1-1">Microsoft Entra ID </h3>
 
 Microsoft Entra ID は、各製品への認証やアカウント管理を担う機能です。動作の詳細や手順などをご案内しておりますドキュメントのほか、トラブル シューティング用のガイドもございます。公開情報で網羅できていないトラブル シューティングやよくある質問を、日本語の技術情報としてブログでもご案内いたしておりますので、日本語の技術情報ブログも、公開情報と同様にご利用いただけます。
@@ -66,7 +67,9 @@ Microsoft Entra ID は、各製品への認証やアカウント管理を担う�
 | [Microsoft Security Blog](https://www.microsoft.com/security/blog/?p=90101) | セキュリティ関連アップデート | ×（英語のみ） |
 
 
+
 <h3 id="idx1-2">Microsoft Intune</h3>
+
 
 Microsoft Intune は、組織で利用するデバイスやアプリケーションをクラウド上で管理し、組織のデータ保護やセキュリティ対策を支援する製品です。機能の詳細や設定手順、トラブル シューティングをご案内する公開ドキュメントのほか、よくある質問や公開情報を補足する内容を日本語の技術情報ブログでもご案内しておりますので、併せてご利用いただけます。
 
@@ -78,7 +81,9 @@ Microsoft Intune は、組織で利用するデバイスやアプリケーショ
 
 
 
+
 <h3 id="idx1-3">Configuration Manager (SCCM)</h3>
+
 
 Configuration Manager (SCCM) は、組織内のデバイスやアプリケーションを管理するための製品です。アプリケーションや更新プログラムの展開、デバイスの構成管理など、企業内のさまざまなデバイスを効率よく管理・運用するための幅広い機能を提供しています。
 
@@ -90,15 +95,19 @@ Configuration Manager (SCCM) は、組織内のデバイスやアプリケーシ
 | [Japan MEM Support Blog](https://jpmem.github.io/blog/categories/Configuration-Manager/) | 日本語の技術情報、サポート事例 | ○（日本語のみ） |
 
 
+
 <h3 id="idx1-4">Security (Microsoft Defender / Microsoft Sentinel / Security platform)</h3>
 
+
 **Defender / Security Platform**
+
 Microsoft Defender は、エンドポイント、ID、電子メール、クラウドアプリケーションなどに対する脅威の検出、防止、調査、対応を担う機能です。
 動作の詳細や手順などをご案内しておりますドキュメントのほか、トラブル シューティング用のガイドもございます。公開情報で網羅できていないトラブル シューティングやよくある質問を、日本語の技術情報としてブログでもご案内いたしておりますので、日本語の技術情報ブログも、公開情報と同様にご利用いただけます。
 さまざまな領域から得られるセキュリティ情報を集約し、脅威の検出、調査、対応を行うための基盤として Security Platform のひとつと呼ばれる事もあります。
 Microsoft Defender ポータルを中心とした各機能の設定や連携、インシデントやアラートの管理などについて、公開ドキュメントや技術情報をご案内しています。
 
 **Microsoft Sentinel**
+
 Microsoft Sentinel は、さまざまな製品やサービスからセキュリティに関するログやデータを収集し、脅威の検出、調査、対応を行うためのサービスです。
 データの収集や分析、インシデントの調査、分析ルールや自動化など、各機能の利用方法やトラブルシューティングについて公開ドキュメントをご用意しています。また、公開情報だけでは分かりにくい内容や、よくあるお問い合わせについては、日本語の技術情報ブログでもご案内しています。
 
@@ -115,7 +124,7 @@ Microsoft Sentinel は、さまざまな製品やサービスからセキュリ�
 
 <h3 id="idx1-5">Compliance</h3>
 
-
+editing...
 
 <h2 id="idx2">エージェントでの活用方法について</h2>
 
@@ -136,7 +145,7 @@ Copilot のチャット機能などをすでに利用いただいているお客
 下記に記載の通り、 URL のレベルは 2 階層まで指定することができます。個数にも制限があるため、広く情報を収集するエージェントを作成する場合、できるだけ上位の階層（Microsoft Learn であれば個別のページよりも全体のトップのページなど）を指定します。
 
 
-    ![](./helpful-resources-before-contacting-support/helpful-resources-before-contacting-support1.png)
+![](./helpful-resources-before-contacting-support/helpful-resources-before-contacting-support1.png)
 
 詳細は [こちらの公開情報](https://learn.microsoft.com/ja-jp/microsoft-365/copilot/extensibility/agent-builder-add-knowledge#public-websites) も併せてご確認ください。
 
@@ -146,12 +155,13 @@ Copilot のチャット機能などをすでに利用いただいているお客
 上記の通り、エージェントを作成する際にはナレッジを指定できますが、指定できる数や URL の階層に制限がございます。
 実際にエージェントを作成いただく際、どの URL を優先してナレッジに指定すべきか判断に迷う場合には、下記の推奨参照順をご利用ください。
 
-Agent 構築時の推奨参照順 
-        1. Microsoft Learn（製品ドキュメント・Troubleshooting） 
-        2. 日本語 Support Blog 
-        3. Product Blog 
-        4. Community Hub 
-        5. MSRC / Security Update Guide 
+**Agent 構築時の推奨参照順**
+
+1. Microsoft Learn（製品ドキュメント・Troubleshooting）
+2. 日本語 Support Blog
+3. Product Blog
+4. Community Hub
+5. MSRC / Security Update Guide 
 
 
 Agent の回答品質を重視する場合は、Microsoft Learn を優先してナレッジに登録します。 Microsoft Learn はサービスの正式な公開情報となりますので、動作やトラブルシューティングに際し、公式な情報をお探しの際に安心してご利用いただけます。
