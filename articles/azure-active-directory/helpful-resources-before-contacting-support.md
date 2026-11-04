@@ -64,7 +64,7 @@ Microsoft Entra ID は、各製品への認証やアカウント管理を担う�
 | [Microsoft Entra Releases & Announcements](https://learn.microsoft.com/en-us/entra/fundamentals/whats-new) | 新機能、仕様変更情報 | ○ |
 | [Release Archive](https://learn.microsoft.com/en-us/entra/fundamentals/whats-new-archive) | 過去のリリース履歴 | ○ |
 | [Japan Azure Identity Support Blog](https://jpazureid.github.io/blog/) | 日本語の技術情報、サポート事例 | ○（日本語のみ） |
-| [Microsoft Security Blog](https://www.microsoft.com/security/blog/?p=90101) | セキュリティ関連アップデート | ×（英語のみ） |
+| [Microsoft Security Blog](https://www.microsoft.com/security/blog/) | セキュリティ関連アップデート | ×（英語のみ） |
 
 
 
