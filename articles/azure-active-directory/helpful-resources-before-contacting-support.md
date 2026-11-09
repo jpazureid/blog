@@ -40,7 +40,7 @@ tags:
 	- [Microsoft Intune](#idx1-2)
 	- [Microsoft Configuration Manager(MCM/旧SCCM)](#idx1-3)
     - [Security (Microsoft Defender / Microsoft Sentinel / Security platform)](#idx1-4)
-    - [Compliance](#idx1-5)
+    - [Compliance (Microsoft Purview)](#idx1-5)
 
 2. [エージェントでの活用方法について](#idx2)
     - [エージェントにおけるナレッジの指定方法について](#idx2-1)
@@ -114,9 +114,15 @@ Microsoft Sentinel は、さまざまな製品やサービスからセキュリ�
 | [Antimalware and cybersecurity portal - Microsoft Security Intelligence](https://www.microsoft.com/en-us/wdsi/) | 脅威インテリジェンス | ×（英語のみ） |
 
 
-<h3 id="idx1-5">Compliance</h3>
+<h3 id="idx1-5">Compliance (Microsoft Purview)</h3>
 
-editing...
+Microsoft Purview は、組織内のデータを適切に管理・保護し、情報漏えいの防止やコンプライアンス対応を支援する製品です。機能の詳細や設定手順、トラブル シューティングをご案内する公開ドキュメントのほか、新機能や製品の更新情報、運用に役立つ情報を公式ブログでもご案内しておりますので、併せてご利用いただけます。
+
+
+| サイト | 用途 | 日本語利用可否 |
+|---|---|---|
+| [Microsoft Purview の最新情報](https://learn.microsoft.com/ja-jp/purview/whats-new) | Purview各機能の新機能・変更点の公式まとめ | ○ |
+| [Microsoft Purview Blog](https://techcommunity.microsoft.com/category/microsoft-security/blog/microsoft-purview-blog) | Purview全般の新機能・運用ノウハウを発信する公式ブログ | ×（英語のみ）|
 
 <h2 id="idx2">エージェントでの活用方法について</h2>
 
