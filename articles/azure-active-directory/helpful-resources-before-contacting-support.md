@@ -86,7 +86,7 @@ Microsoft Configuration Manager (旧称 SCCM) は、組織内のデバイスや�
 | サイト | 用途 | 日本語利用可否 |
 |---|---|---|
 | [Configuration Manager Troubleshooting (Microsoft Learn)](https://learn.microsoft.com/ja-jp/troubleshoot/mem/configmgr/welcome-configuration-manager) | トラブルシューティング、障害対応 | ○ |
-| [Japan MEM Support Blog](https://jpmem.github.io/blog/categories/Configuration-Manager/) | 日本語の技術情報、サポート事例 | ○（日本語のみ） |
+| [Japan Configuration Manager Support Blog](https://jpmem.github.io/blog/categories/Configuration-Manager/) | 日本語の技術情報、サポート事例 | ○（日本語のみ） |
 
 <h3 id="idx1-4">Security (Microsoft Defender / Microsoft Sentinel / Security platform)</h3>
 
