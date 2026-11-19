@@ -54,7 +54,7 @@ Azure AD Connect の既定の構成では、オンプレミス AD の ObjectGUID
 6. コマンド プロンプト (PowerShell でも可) を起動し、以下のコマンドを実行します。
 
 ```powershell
-ldifde -f c:\ ldifde_user.txt -d "手順 5. でコピーした内容" -p subtree
+ldifde -f c:\ldifde_user.txt -d "手順 5. でコピーした内容" -p subtree
 ```
 
 コマンド例：
